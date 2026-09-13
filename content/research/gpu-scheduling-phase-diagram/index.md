@@ -49,7 +49,7 @@ The instrument half matters for any simulation study of a queueing system: the q
 
 ## Method
 
-Demand mix was parameterized as a one-parameter family, `P(need = 2^i)` proportional to `theta^i` over needs 1 to 64 on a 64-server cluster. `theta = 0.4` is trace-shaped, with mean gang size 2.37 and about 60 percent single-GPU jobs; `theta = 2.0` is gang-dominated, with mean gang size 43.
+Demand mix was parameterized as a one-parameter family, `P(need = 2^i)` proportional to `theta^i` over needs 1 to 64 on a 64-server cluster. `theta = 0.4` is small-job-heavy, with mean gang size 2.37 and about 60 percent single-GPU jobs. It was chosen to resemble the shapes reported for production traces; no production trace data were used anywhere in this study; `theta = 2.0` is gang-dominated, with mean gang size 43.
 
 - **E2**: 7 mixes x 3 loads (rho 0.7, 0.85, 0.95) x 4 policies x 5 seeds, 30,000 jobs each. 420 runs.
 - **E3**: mean-unbiased versus median-unbiased error, sigma in {0, 0.5, 1, 2, 3}, 3 policies, 5 seeds, at `theta = 0.4`, rho 0.85. 150 runs.
@@ -85,7 +85,7 @@ ServerFilling-SRPT and EASY backfill are stable in all 21 cells. Greedy SRPT is 
 
 **Estimation error, corrected model.** Under median-unbiased noise, where sigma is pure spread, EASY backfill's mean JCT rises from 2.107 to 7.019 as sigma goes 0 to 3, a factor of 3.3, and its worst-class JCT rises 7.1 to 43.9. ServerFilling-SRPT moves 18 percent and greedy SRPT 27 percent over the same range.
 
-Under the mean-unbiased model the backfill curve is non-monotone, peaking at 9.602 for sigma 1 and then *improving* to 3.887 at sigma 3. That is arithmetic, not scheduling: at sigma 3 the median estimate is `exp(-4.5) = 0.011` of true size, so 77 percent of jobs look nearly instantaneous, the head-of-line reservation collapses to the present moment, and EASY backfill degenerates into "start whatever fits". On a trace-shaped mix that degeneration happens to help.
+Under the mean-unbiased model the backfill curve is non-monotone, peaking at 9.602 for sigma 1 and then *improving* to 3.887 at sigma 3. That is arithmetic, not scheduling: at sigma 3 the median estimate is `exp(-4.5) = 0.011` of true size, so 77 percent of jobs look nearly instantaneous, the head-of-line reservation collapses to the present moment, and EASY backfill degenerates into "start whatever fits". On a small-job-heavy mix that degeneration happens to help.
 
 ## What changed
 

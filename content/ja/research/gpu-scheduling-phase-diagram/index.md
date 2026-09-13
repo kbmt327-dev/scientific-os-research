@@ -53,7 +53,7 @@ scheduling研究は通常、平均job完了時間で順位を付けます。あ�
 
 ## 方法
 
-需要mixを1パラメータ族として表現しました。64 serverのクラスタで、need 1〜64に対し`P(need = 2^i)`が`theta^i`に比例します。`theta = 0.4`はtrace寄りで平均gang size 2.37、約60%が1GPU job。`theta = 2.0`はgang支配で平均gang size 43です。
+需要mixを1パラメータ族として表現しました。64 serverのクラスタで、need 1〜64に対し`P(need = 2^i)`が`theta^i`に比例します。`theta = 0.4`は小job中心で平均gang size 2.37、約60%が1GPU job。production traceについて報告されている形状に似せて選びましたが、本研究のどこでも実trace dataは使っていません。`theta = 2.0`はgang支配で平均gang size 43です。
 
 - **E2**: mix 7点 × 負荷3点（rho 0.7、0.85、0.95）× policy 4種 × seed 5本、各30,000 job。420 run。
 - **E3**: 平均不偏と中位不偏のerror、sigma ∈ {0, 0.5, 1, 2, 3}、policy 3種、seed 5本、`theta = 0.4`・rho 0.85。150 run。
@@ -89,7 +89,7 @@ ServerFilling-SRPTとEASY backfillは21セル全部で安定。greedy SRPTは3�
 
 **推定誤差、補正後のmodel。** sigmaが純粋なばらつきとなる中位不偏では、EASY backfillの平均JCTはsigma 0→3で2.107から7.019へ、3.3倍になります。最悪classは7.1から43.9です。同じ範囲でServerFilling-SRPTは18%、greedy SRPTは27%しか動きません。
 
-平均不偏modelではbackfillの曲線が非単調で、sigma 1で9.602に達した後sigma 3で3.887へ**改善**します。これはschedulingではなく算術です。sigma 3では中位推定値が真の大きさの`exp(-4.5) = 0.011`となり、77%のjobがほぼ瞬時に見えます。head-of-lineの予約時刻が現在時刻へ潰れ、EASY backfillは「入るものは何でも動かす」policyへ退化します。trace寄りのmixではその退化が偶然有利に働きます。
+平均不偏modelではbackfillの曲線が非単調で、sigma 1で9.602に達した後sigma 3で3.887へ**改善**します。これはschedulingではなく算術です。sigma 3では中位推定値が真の大きさの`exp(-4.5) = 0.011`となり、77%のjobがほぼ瞬時に見えます。head-of-lineの予約時刻が現在時刻へ潰れ、EASY backfillは「入るものは何でも動かす」policyへ退化します。小job中心のmixではその退化が偶然有利に働きます。
 
 ## 何が変わったか
 

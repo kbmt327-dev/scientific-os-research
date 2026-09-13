@@ -1,53 +1,17 @@
 ---
 title: Open Research Lab
-description: Reproducible, auditable research conducted by Scientific OS.
-date: 2026-09-13
+description: Choose Japanese or English to inspect research from claim to evidence and reproduction.
 ---
 
-<p class="language-switch">日本語版：<a href="/scientific-os-research/ja/">Open Research Lab 日本語</a></p>
+<div class="gateway-kicker">SCIENTIFIC OS · PUBLIC RESEARCH INTERFACE</div>
 
-> **Research conducted by Scientific OS — published for reproduction, audit, challenge, and extension.**
+Research that keeps its predictions, failures, limits, and reproduction path visible.
 
-This is an open research lab powered by Scientific OS. Research is published with its hypotheses, evidence, failures, uncertainties, and reproduction paths. Claims are provisional unless independently replicated. Critique, replication, and falsification are welcome.
+研究の予測・失敗・限界・再現経路を、検証できる形で公開します。
 
-<div class="lab-principles">
-  <div><strong>Reproduce</strong><span>Run the code or follow the protocol.</span></div>
-  <div><strong>Audit</strong><span>Trace claims to evidence and sealed predictions.</span></div>
-  <div><strong>Falsify</strong><span>Target the conditions that would weaken a claim.</span></div>
-  <div><strong>Keep UNKNOWN</strong><span>Do not convert missing evidence into confidence.</span></div>
-</div>
+<nav class="language-gateway" aria-label="Choose a language">
+  <a href="./ja/" lang="ja"><span>日本語</span><small>研究の現在地から読む</small></a>
+  <a href="./en/" lang="en"><span>English</span><small>Read from the current claim</small></a>
+</nav>
 
-## Current research
-
-| Research Note | State | Evidence boundary |
-|---|---|---|
-| [[research/gpu-scheduling/index\|Scheduling principles reverse under workload mix and preemption friction]] | `Finding` · `Synthetic` · `Exploratory` | Simulator validated against analytic and conservation checks; no real trace validation. Two claims narrowed by later work. |
-| [[research/gpu-scheduling-phase-diagram/index\|A demand-mix phase diagram, and three stability detectors that failed]] | `Finding` · `Synthetic` · `Exploratory` | 21-cell stability map; three failed instruments disclosed, including a repeat. Graded 5/10. |
-| [[research/gpu-scheduling-starvation-mechanism/index\|Whole-cluster jobs, not mean gang size, decide when size-based scheduling breaks]] | `Finding` · `Synthetic` · `Exploratory` | Mean-matched control separates support from mean. Practical claim later demoted. Graded 7/10. |
-| [[research/gpu-scheduling-real-traces/index\|Real traces contain no pool-filling job, and the starvation boundary is continuous]] | `Finding` · `Public trace + synthetic` · `Exploratory` | Demand shape only; no policy run on a real arrival stream. Executes a pre-registered demotion. Graded 5/10 and 9/10. |
-| [[research/simulation-worlds/index\|Blind identification of batched arrivals and heterogeneous servers]] | `Finding` · `Synthetic blind benchmark` | Hidden instance recovered inside a known mechanism family; not open-world discovery. |
-| [[research/human-model/index\|Human Model Contract v0.2]] | `Method` · `Contract validation` | Fail-closed schema and cross-document checks; no human-model predictive performance. |
-| [[research/badminton-biomechanics/index\|2×2 preparation-time × backward-CoM protocol]] | `Protocol` · `Not sealed` | Design and power sensitivity only; no confirmatory data. |
-
-## From private research to public evidence
-
-```mermaid
-flowchart LR
-  A[Scientific OS] --> B[Private Research State]
-  B -->|privacy-reviewed projection| C[Public Research Note]
-  C --> D[Claim]
-  C --> E[Evidence]
-  C --> F[Reproduction]
-  C --> G[Failures and UNKNOWN]
-  C --> H[Falsification targets]
-  D & E & F & G & H --> I[External audit and replication]
-```
-
-An internal Episode is never replaced by its public projection. See [[about/methodology|methodology]] and [[about/open-research-lab|why the boundary matters]].
-
-## Start here
-
-- **Reproduce a result:** [[contribute/reproduce]]
-- **Audit or challenge a claim:** [[contribute/audit]]
-- **Collaborate:** [[contribute/collaborate]]
-- **Understand evidence labels:** [[methodology/evidence-levels]]
+<p class="gateway-note">The two editions are parallel views of the same research records. / 二つの言語版は、同じ研究記録の対等な表示です。</p>

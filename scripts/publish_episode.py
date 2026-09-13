@@ -23,6 +23,7 @@ COMMON_SECTIONS_JA = {
     "何が失敗したか", "証拠境界", "UNKNOWN", "反証条件", "再現",
     "証拠 / Artifacts", "外部監査", "次の実験",
 }
+PAIR_FIELDS = ("research_id", "type", "source_episode", "source_episode_sha256")
 
 
 def frontmatter(text: str) -> tuple[dict, str]:
@@ -41,12 +42,16 @@ def validate_note(path: Path) -> list[str]:
         meta, body = frontmatter(path.read_text(encoding="utf-8-sig"))
     except Exception as exc:
         return [f"{path}: {exc}"]
-    required = {"id", "title", "date", "domain", "type", "status", "evidence", "review", "replication", "claim_scope", "source_episode", "publication"}
+    required = {"research_id", "lang", "title", "date", "domain", "type", "status", "evidence", "review", "replication", "claim_scope", "source_episode", "source_episode_sha256", "publication"}
     missing = sorted(required - set(meta))
     if missing:
         errors.append(f"missing frontmatter: {', '.join(missing)}")
     if meta.get("type") not in TYPES:
         errors.append(f"unsupported research type: {meta.get('type')!r}")
+    if meta.get("lang") not in {"en", "ja"}:
+        errors.append("lang must be en or ja")
+    if "translation_of" in meta:
+        errors.append("translation_of is not allowed; language views share research_id")
     if not isinstance(meta.get("evidence"), dict) or not all(meta["evidence"].get(k) for k in ("class", "source")):
         errors.append("evidence.class and evidence.source are required")
     review_fields = {
@@ -69,6 +74,23 @@ def validate_note(path: Path) -> list[str]:
     required_sections = set(COMMON_SECTIONS_JA if language.startswith("ja") else COMMON_SECTIONS)
     if meta.get("type") == "Finding":
         required_sections.add("結果" if language.startswith("ja") else "Results")
+        required_sections.update(
+            {"発見", "Key figure", "この研究が示すこと", "この研究が示さないこと"}
+            if language.startswith("ja")
+            else {"The finding", "Key figure", "What this research shows", "What this research does not show"}
+        )
+    elif meta.get("type") == "Method":
+        required_sections.update(
+            {"Method", "Key figure", "このMethodが確立すること", "このMethodが確立しないこと"}
+            if language.startswith("ja")
+            else {"The method", "Key figure", "What this method establishes", "What this method does not establish"}
+        )
+    elif meta.get("type") == "Protocol":
+        required_sections.update(
+            {"問い", "Key figure", "このProtocolが確立すること", "このProtocolが確立しないこと"}
+            if language.startswith("ja")
+            else {"The question", "Key figure", "What this protocol establishes", "What this protocol does not establish"}
+        )
     missing_sections = sorted(required_sections - sections)
     if missing_sections:
         errors.append(f"missing sections: {', '.join(missing_sections)}")
@@ -79,8 +101,62 @@ def validate_note(path: Path) -> list[str]:
 
 
 def validate_tree(root: Path) -> int:
-    notes = sorted(root.glob("research/*/index.md")) + sorted(root.glob("ja/research/*/index.md"))
+    notes = sorted(root.glob("en/research/*/index.md")) + sorted(root.glob("ja/research/*/index.md"))
     errors = [error for note in notes for error in validate_note(note)]
+    pairs: dict[str, dict[str, tuple[Path, dict]]] = {}
+    for note in notes:
+        try:
+            meta, _ = frontmatter(note.read_text(encoding="utf-8-sig"))
+        except Exception:
+            continue
+        research_id = str(meta.get("research_id", ""))
+        lang = str(meta.get("lang", ""))
+        if research_id and lang:
+            if lang in pairs.setdefault(research_id, {}):
+                errors.append(f"{note}: duplicate research_id {research_id!r} for lang {lang!r}")
+            pairs[research_id][lang] = (note, meta)
+    for research_id, views in sorted(pairs.items()):
+        if set(views) != {"en", "ja"}:
+            errors.append(f"{research_id}: expected en and ja views, found {sorted(views)}")
+            continue
+        en_meta = views["en"][1]
+        ja_meta = views["ja"][1]
+        for field in PAIR_FIELDS:
+            if en_meta.get(field) != ja_meta.get(field):
+                errors.append(f"{research_id}: language views disagree on {field}")
+    manifest_path = root.parent / "publication-manifest.yaml"
+    if manifest_path.exists():
+        manifest = yaml.safe_load(manifest_path.read_text(encoding="utf-8-sig"))
+        manifest_notes = manifest.get("notes", []) if isinstance(manifest, dict) else []
+        manifest_ids: set[str] = set()
+        for entry in manifest_notes:
+            research_id = str(entry.get("research_id", ""))
+            if not research_id:
+                errors.append(f"{manifest_path}: entry missing research_id")
+                continue
+            if research_id in manifest_ids:
+                errors.append(f"{manifest_path}: duplicate research_id {research_id}")
+            manifest_ids.add(research_id)
+            views = entry.get("views")
+            if not isinstance(views, dict) or set(views) != {"en", "ja"}:
+                errors.append(f"{manifest_path}: {research_id} must declare en and ja views")
+                continue
+            for lang, public_path in views.items():
+                path = root.parent / str(public_path)
+                if not path.exists():
+                    errors.append(f"{manifest_path}: missing {lang} view for {research_id}: {public_path}")
+                    continue
+                meta, _ = frontmatter(path.read_text(encoding="utf-8-sig"))
+                if meta.get("research_id") != research_id or meta.get("lang") != lang:
+                    errors.append(f"{manifest_path}: {public_path} identity or lang does not match {research_id}/{lang}")
+                for field in ("type", "source_episode", "source_episode_sha256"):
+                    if entry.get(field) != meta.get(field):
+                        errors.append(f"{manifest_path}: {research_id} disagrees with {public_path} on {field}")
+        if manifest_ids != set(pairs):
+            errors.append(
+                f"{manifest_path}: manifest/research-note IDs differ; "
+                f"missing={sorted(set(pairs) - manifest_ids)}, extra={sorted(manifest_ids - set(pairs))}"
+            )
     if errors:
         print("Publication validation failed:")
         print("\n".join(errors))
@@ -89,7 +165,7 @@ def validate_tree(root: Path) -> int:
     return 0
 
 
-def project(source: Path, output: Path, note_type: str) -> int:
+def project(source: Path, output: Path, note_type: str, lang: str) -> int:
     text = source.read_text(encoding="utf-8-sig")
     meta, _ = frontmatter(text)
     source_id = meta.get("episode_id") or meta.get("id")
@@ -99,7 +175,8 @@ def project(source: Path, output: Path, note_type: str) -> int:
     digest = hashlib.sha256(source.read_bytes()).hexdigest()
     public_id = f"{domain}-{source_id}"
     skeleton = f'''---
-id: {public_id}
+research_id: {public_id}
+lang: {lang}
 title: TODO
 date: {meta.get("date") or meta.get("created_at") or "TODO"}
 domain: {meta.get("domain", "UNKNOWN")}
@@ -175,10 +252,11 @@ def main() -> int:
     make.add_argument("source")
     make.add_argument("output")
     make.add_argument("--type", required=True, choices=sorted(TYPES))
+    make.add_argument("--lang", choices=("en", "ja"), default="en")
     args = parser.parse_args()
     if args.command == "validate":
         return validate_tree(Path(args.content))
-    return project(Path(args.source), Path(args.output), args.type)
+    return project(Path(args.source), Path(args.output), args.type, args.lang)
 
 
 if __name__ == "__main__":

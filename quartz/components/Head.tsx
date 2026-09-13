@@ -27,9 +27,25 @@ export default (() => {
     const baseDir = fileData.slug === "404" ? path : pathToRoot(fileData.slug!)
     const iconPath = joinSegments(baseDir, "static/icon.png")
 
-    // Url of current page
+    const slug = String(fileData.slug ?? "")
+    const canonicalSlug = slug === "index" ? "" : slug.endsWith("/index") ? slug.slice(0, -6) : slug
+    // Url of the canonical public page, without exposing Quartz's folder-index filename.
     const socialUrl =
-      fileData.slug === "404" ? url.toString() : joinSegments(url.toString(), fileData.slug!)
+      fileData.slug === "404"
+        ? url.toString()
+        : canonicalSlug
+          ? joinSegments(url.toString(), canonicalSlug as FullSlug)
+          : url.toString()
+    const alternateSlug = canonicalSlug.startsWith("en/")
+      ? `ja/${canonicalSlug.slice(3)}`
+      : canonicalSlug.startsWith("ja/")
+        ? `en/${canonicalSlug.slice(3)}`
+        : undefined
+    const currentLang = String(fileData.frontmatter?.lang ?? "")
+    const alternateLang = currentLang === "en" ? "ja" : currentLang === "ja" ? "en" : undefined
+    const alternateUrl = alternateSlug
+      ? joinSegments(url.toString(), alternateSlug as FullSlug)
+      : undefined
 
     const usesCustomOgImage = ctx.cfg.plugins.emitters.some((e) => e.name === "CustomOgImages")
     const ogImageDefaultPath = `https://${cfg.baseUrl}/static/og-image.png`
@@ -92,6 +108,17 @@ export default (() => {
         <link rel="icon" href={iconPath} />
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
+        {fileData.slug !== "404" && <link rel="canonical" href={socialUrl} />}
+        {alternateUrl && alternateLang && (
+          <link rel="alternate" hrefLang={alternateLang} href={alternateUrl} />
+        )}
+        {slug === "index" && (
+          <>
+            <link rel="alternate" hrefLang="ja" href={joinSegments(url.toString(), "ja" as FullSlug)} />
+            <link rel="alternate" hrefLang="en" href={joinSegments(url.toString(), "en" as FullSlug)} />
+            <link rel="alternate" hrefLang="x-default" href={socialUrl} />
+          </>
+        )}
 
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}
         {js

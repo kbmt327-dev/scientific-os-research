@@ -1,9 +1,8 @@
 ---
-id: HUMAN-MODEL-EP-0004-JA
+research_id: HUMAN-MODEL-EP-0004
 title: Human Model Contract v0.2
 date: 2026-09-13
 lang: ja
-translation_of: HUMAN-MODEL-EP-0004
 domain: Scientific Human Model
 type: Method
 status: Contract検証済み、adapterはblocked
@@ -29,9 +28,34 @@ publication:
 tags: [method, human-model, contract, fail-closed, japanese]
 ---
 
-<p class="language-switch">English: <a href="/scientific-os-research/research/human-model/">Original Research Note</a></p>
+<p class="language-switch"><span aria-current="page">日本語</span> · <a href="/scientific-os-research/en/research/human-model/" hreflang="en">English</a></p>
 
 <div class="evidence-strip"><span>Method</span><span>Contract validation</span><span>Adapter blocked</span><span>予測性能の証拠ではない</span><span>外部再現 0</span></div>
+
+## Method
+
+Human Model Contract v0.2は、曖昧なcoordinate、未解決mapping、broken reference、target leakageを文章上のwarningで済ませずValidationCaseをblockします。正しいbundleは合格し、意図的に無効化した7 variantはすべて拒否されました。
+
+## Key figure
+
+```mermaid
+flowchart LR
+  O[ObservationSpec] --> V{文書間validator}
+  A[AdapterSpec] --> V
+  C[ValidationCase] --> V
+  V -->|全参照とguardが成立| READY[Contract-ready]
+  V -->|ambiguityまたはleakage| BLOCKED[Blocked]
+```
+
+## このMethodが確立すること
+
+公開schema bundleは、宣言したcontract-level reference、readiness gate、negative controlを強制します。
+
+## このMethodが確立しないこと
+
+数値変換、biomechanics prediction、科学的価値、model promotionは検証しません。public adapterはblockedのままです。
+
+## 詳細を検証する
 
 ## 要約
 

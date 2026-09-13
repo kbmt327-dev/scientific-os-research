@@ -1,9 +1,8 @@
 ---
-id: GPU-SCHED-EP-0002-JA
+research_id: GPU-SCHED-EP-0002
 title: 需要mixの相図と、失敗した3つの安定性判定器
 date: 2026-09-13
 lang: ja
-translation_of: GPU-SCHED-EP-0002
 domain: GPU Cluster Scheduling
 type: Finding
 status: 探索的
@@ -29,11 +28,37 @@ publication:
 tags: [finding, scheduling, simulation, falsification, instrument, japanese]
 ---
 
-<p class="language-switch">English: <a href="/scientific-os-research/research/gpu-scheduling-phase-diagram/">Original Research Note</a></p>
+<p class="language-switch"><span aria-current="page">日本語</span> · <a href="/scientific-os-research/en/research/gpu-scheduling-phase-diagram/" hreflang="en">English</a></p>
 
 <div class="evidence-strip"><span>Finding</span><span>合成simulation</span><span>探索的</span><span>peer reviewなし</span><span>外部再現 0</span></div>
 
 [[ja/research/gpu-scheduling/index|摩擦とworkload mixでGPU schedulingの原理が逆転する]]の続きで、そのnoteが公開の場で宣言した「次の実験」を実施したものです。
+
+## 発見
+
+良いaggregate meanと、arrivalに追いつかないdemand classは同時に存在し得ます。mix sweepはestimation-noise軸の交絡に加え、三つのfinite-horizon stability detectorが誤りまたは判定不能だったという、より一般的な研究上の失敗も露出しました。
+
+## Key figure
+
+```mermaid
+flowchart LR
+  A[Mean JCT: greedy SRPTが2%良く見える] --> B{demand class別に調べる}
+  B --> C[small jobs: flow balanceは約1]
+  B --> D[64-GPU class: 52倍遅い]
+  D --> E[平均値がclass starvationを隠す]
+```
+
+## この研究が示すこと
+
+- このgridではmean completion time比較より先にstabilityを検査する必要がある。
+- median-unbiased noiseでEASY backfillは3.3倍悪化し、そのpolicyに関するEP-0001の弱いnoise解釈を反転した。
+
+## この研究が示さないこと
+
+- production clusterのphase boundaryや、infinite-horizon stabilityの普遍的detectorは示さない。
+- 4つのprediction gradeは結果後に修正したdetectorに依存し、証拠weightが低い。
+
+## 詳細を検証する
 
 ## 要約
 

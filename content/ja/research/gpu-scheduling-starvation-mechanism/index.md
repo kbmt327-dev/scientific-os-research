@@ -1,9 +1,8 @@
 ---
-id: GPU-SCHED-EP-0003-JA
+research_id: GPU-SCHED-EP-0003
 title: size-based schedulingが壊れる条件は平均gang sizeではなく全クラスタjobの有無
 date: 2026-09-13
 lang: ja
-translation_of: GPU-SCHED-EP-0003
 domain: GPU Cluster Scheduling
 type: Finding
 status: 探索的
@@ -29,13 +28,33 @@ publication:
 tags: [finding, scheduling, simulation, falsification, starvation, japanese]
 ---
 
-<p class="language-switch">English: <a href="/scientific-os-research/research/gpu-scheduling-starvation-mechanism/">Original Research Note</a></p>
+<p class="language-switch"><span aria-current="page">日本語</span> · <a href="/scientific-os-research/en/research/gpu-scheduling-starvation-mechanism/" hreflang="en">English</a></p>
 
 <div class="evidence-strip"><span>Finding</span><span>合成simulation</span><span>探索的</span><span>peer reviewなし</span><span>外部再現 0</span></div>
 
 [[ja/research/gpu-scheduling-phase-diagram/index|需要mixの相図と、失敗した3つの安定性判定器]]の続きです。
 
 > **このnoteの実務的含意は降格されました。** [[ja/research/gpu-scheduling-real-traces/index|EP-0004]]が2つの公開traceの需要分布を測定し、Phillyのどのvirtual clusterにもpoolを占め切るjobが来ていないことを示しました。このnoteが要求する前提は、実測されたデータでは満たされていません。「全クラスタjobが来るか確認せよ」という規則は撤回し、pool容量に対する比の判定に置き換えます。EP-0004は本noteが自ら挙げた反証条件も満たしました。以下の機構そのものは変わらずmodel内では成立します。狭まったのはその射程です。本noteは2026-09-13時点で何を主張したかの記録として保持し、改変しません。
+
+## 発見
+
+mean gang sizeを固定してもoutcomeは固定されませんでした。clusterの半分までに制限したmixは安定し、同じmeanでrareなwhole-cluster jobを含むmixはそのclassをstarveさせました。失敗にはsize priorityとgreedy fillingの両方が必要です。EP-0004ではこの正確な前提が測定した実poolに存在せず、機構の実務的射程は当初より狭まりました。
+
+## Key figure
+
+<div class="paired-mechanism" aria-label="同じmeanで反対のoutcome"><div><b>同じmean: 4.076</b><span>largest job = 32/64</span><strong>stable</strong></div><div><b>同じmean: 4.076</b><span>largest job = 64/64</span><strong>class-starved</strong></div></div>
+
+## この研究が示すこと
+
+- 指定modelではmean gang sizeでなく、supportにwhole-cluster jobを含むことが二つのoutcomeを分ける。
+- 2×2 mechanism testはsize priority + greedy fillingに失敗を局在させ、preemptionはわずかに緩和する。
+
+## この研究が示さないこと
+
+- production trace上のstarvationや、1/2を超える全job-to-pool ratioでのstarvationは示さない。
+- 以前の「whole-cluster jobの有無を確認する」ruleはEP-0004後に撤回された。
+
+## 詳細を検証する
 
 ## 要約
 

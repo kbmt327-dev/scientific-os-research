@@ -36,9 +36,11 @@ jobs:
       - run: npx quartz plugin install
       - run: python scripts/publish_episode.py validate content
       - run: python scripts/check_links.py content
+      - run: python scripts/check_llms.py quartz/static/llms.txt content
       - run: python scripts/privacy_scan.py .
       - run: python scripts/reproduce.py --quick all
       - run: npx quartz build
+      - run: python scripts/install_llms.py quartz/static/llms.txt public/llms.txt
       - run: python scripts/check_built_site.py public
       - uses: actions/upload-pages-artifact@v4
         with:

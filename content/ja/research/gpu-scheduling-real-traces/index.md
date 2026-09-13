@@ -1,9 +1,8 @@
 ---
-id: GPU-SCHED-EP-0004-JA
+research_id: GPU-SCHED-EP-0004
 title: 実traceにpoolを占め切るjobは来ておらず、飢餓の境界は連続だった
 date: 2026-09-13
 lang: ja
-translation_of: GPU-SCHED-EP-0004
 domain: GPU Cluster Scheduling
 type: Finding
 status: 探索的
@@ -29,11 +28,31 @@ publication:
 tags: [finding, scheduling, simulation, falsification, traces, retraction, japanese]
 ---
 
-<p class="language-switch">English: <a href="/scientific-os-research/research/gpu-scheduling-real-traces/">Original Research Note</a></p>
+<p class="language-switch"><span aria-current="page">日本語</span> · <a href="/scientific-os-research/en/research/gpu-scheduling-real-traces/" hreflang="en">English</a></p>
 
 <div class="evidence-strip"><span>Finding</span><span>公開trace＋合成</span><span>探索的</span><span>peer reviewなし</span><span>外部再現 0</span></div>
 
 [[ja/research/gpu-scheduling-starvation-mechanism/index|size-based schedulingが壊れる条件は平均gang sizeではなく全クラスタjobの有無]]の続きで、そのnoteの実務的含意を降格するものです。
+
+## 発見
+
+測定したPhillyの11 virtual clusterには、pool全体を満たすjobが一つもありませんでした。half-poolからfull-poolの間では、合成劣化は急ですが連続的です。実測worst ratio 0.59ではlarge classは完了し、single-GPU jobの約7.4倍遅くなりました。model上の暫定safe boundaryは0.75で、より大きい実pool scaleは不利な向きのUNKNOWNです。
+
+## Key figure
+
+<div class="ratio-figure" aria-label="largest-jobとpool-capacityの比"><div class="ratio-track"><i style="left:59%"></i><i style="left:75%"></i><i style="left:100%"></i></div><div class="ratio-labels"><span style="left:59%"><b>0.59</b> Philly max<br>遅延、starvationではない</span><span style="left:75%"><b>0.75</b> model r_safe</span><span style="left:100%"><b>1.00</b> model starvation</span></div></div>
+
+## この研究が示すこと
+
+- 二つのpublic traceはsingle-GPU中心でtailが薄く、測定したPhilly poolにpool-filling jobはない。
+- 64-slot合成sweepではlargest-job/pool ratioに沿って害が連続的に変化し、暫定0.75 flow-balance境界を持つ。
+
+## この研究が示さないこと
+
+- 実arrival stream上でpolicyは走らせていない。traceから使ったのはdemand shapeだけ。
+- 0.75境界は217–603 GPUの測定pool規模でも、二つ以外のtraceでも未検証。
+
+## 詳細を検証する
 
 ## 要約
 

@@ -1,9 +1,8 @@
 ---
-id: IAA-EP-0008-JA
+research_id: IAA-EP-0008
 title: バドミントンスマッシュの準備時間×後方CoM 2×2 protocol
 date: 2026-09-13
 lang: ja
-translation_of: IAA-EP-0008
 domain: IAA / Badminton biomechanics
 type: Protocol
 status: Draft、未seal、data collection未承認
@@ -29,9 +28,27 @@ publication:
 tags: [protocol, biomechanics, badminton, preregistration, japanese]
 ---
 
-<p class="language-switch">English: <a href="/scientific-os-research/research/badminton-biomechanics/">Original Research Note</a></p>
+<p class="language-switch"><span aria-current="page">日本語</span> · <a href="/scientific-os-research/en/research/badminton-biomechanics/" hreflang="en">English</a></p>
 
 <div class="evidence-strip"><span>Protocol</span><span>Draft、未seal</span><span>確証dataなし</span><span>power仮定は未較正</span><span>外部再現 0</span></div>
+
+## 問い
+
+同じ熟練player内でassigned preparation timeとassigned backward CoM stateを独立に変え、contact前racket-head velocityへの効果を識別できるか。
+
+## Key figure
+
+<div class="factorial-figure" aria-label="2×2実験design"><div></div><b>Backward CoM low</b><b>Backward CoM high</b><b>Preparation long</b><span>Long × low</span><span>Long × high</span><b>Preparation short</b><span>Short × low</span><span>Short × high</span></div>
+
+## このProtocolが確立すること
+
+前向きdesignはassignment、primary outcome window、coordinate、同期event、除外、model、fallback順、再現可能なpower-sensitivity gridを固定します。
+
+## このProtocolが確立しないこと
+
+実行可能性、倫理承認、観測効果、因果解釈、最終sample sizeは確立しません。未sealで、data collectionを承認しません。
+
+## 詳細を検証する
 
 ## 要約
 

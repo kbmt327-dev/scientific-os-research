@@ -1,9 +1,8 @@
 ---
-id: SIM-WORLD-EP-0001-JA
+research_id: SIM-WORLD-EP-0001
 title: バッチ到着と不均質serverを盲検同定する
 date: 2026-09-13
 lang: ja
-translation_of: SIM-WORLD-EP-0001
 domain: Sim World / Queueing
 type: Finding
 status: 探索的
@@ -29,9 +28,36 @@ publication:
 tags: [finding, queueing, blind-benchmark, model-selection, japanese]
 ---
 
-<p class="language-switch">English: <a href="/scientific-os-research/research/simulation-worlds/">Original Research Note</a></p>
+<p class="language-switch"><span aria-current="page">日本語</span> · <a href="/scientific-os-research/en/research/simulation-worlds/" hreflang="en">English</a></p>
 
 <div class="evidence-strip"><span>Finding</span><span>合成blind benchmark</span><span>探索的</span><span>peer reviewなし</span><span>外部再現 0</span></div>
+
+## 発見
+
+開示済みの有限mechanism family内で、blind queueing instanceを幾何batch arrival + heterogeneous exponential serverとして同定しました。parsimonious modelはout-of-sample統計10個中8個を95%予測区間へ置き、reveal後に5つの構造componentすべてと一致しました。
+
+## Key figure
+
+```mermaid
+flowchart LR
+  O[大きな予測不一致] --> T[安価な代替検査]
+  T --> Q[追加観測要求をseal]
+  Q --> L[model ladderを比較]
+  L --> P[out-of-sample予測をseal]
+  P --> R[Reveal: 構造5/5一致]
+```
+
+## この研究が示すこと
+
+- 限定されたobserve–predict–request–replicate loopが、与えられたfamily内のこの1 instanceを回復した。
+- replicationにより1-run residualを不要な新mechanismへ変えずに済んだ。
+
+## この研究が示さないこと
+
+- open-world mechanism discovery、実queue性能、seed間の一般化は示さない。
+- benchmark designerとresearcherは独立ではない。
+
+## 詳細を検証する
 
 ## 要約
 

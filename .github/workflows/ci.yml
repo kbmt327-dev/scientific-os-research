@@ -33,11 +33,15 @@ jobs:
         run: python scripts/publish_episode.py validate content
       - name: Check internal links
         run: python scripts/check_links.py content
+      - name: Check bilingual llms.txt index
+        run: python scripts/check_llms.py quartz/static/llms.txt content
       - name: Scan for secrets and private paths
         run: python scripts/privacy_scan.py .
       - name: Run bounded reproduction checks
         run: python scripts/reproduce.py --quick all
       - name: Build Quartz
         run: npx quartz build
+      - name: Install llms.txt at the public root
+        run: python scripts/install_llms.py quartz/static/llms.txt public/llms.txt
       - name: Check built routes and Mermaid
         run: python scripts/check_built_site.py public

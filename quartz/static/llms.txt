@@ -1,0 +1,56 @@
+# Open Research Lab
+
+Open Research Lab is the public research interface of Scientific OS. It publishes bounded Research Notes so humans and language models can understand, inspect, reproduce, challenge, and reuse a claim without treating automation or authorship as authority.
+
+Canonical site: https://kbmt327-dev.github.io/scientific-os-research/
+Japanese home: https://kbmt327-dev.github.io/scientific-os-research/ja/
+English home: https://kbmt327-dev.github.io/scientific-os-research/en/
+
+## Reading rules
+
+- Japanese and English pages are parallel views of the same research object. Match them by `research_id`.
+- Preserve scope. `Synthetic simulation`, `public trace measurement`, `contract validation`, and `protocol` are not interchangeable evidence classes.
+- Read `What this research shows` together with `What this research does not show` (Japanese: `この研究が示すこと` / `この研究が示さないこと`).
+- Treat `UNKNOWN` as an explicit evidence frontier, not as missing copy.
+- A quick reproduction by the original repository is not an independent replication.
+- Later notes may narrow earlier dated claims. Follow forward links and treat LATEST PUBLIC as the newest published boundary, not a claim that all private work is published.
+
+## Research index
+
+### GPU scheduling program
+
+- GPU-SCHED-EP-0001 — mix and preemption friction in a synthetic 64-slot model
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling/
+- GPU-SCHED-EP-0002 — demand-mix phase diagram, corrected noise model, and failed stability detectors
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-phase-diagram/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-phase-diagram/
+- GPU-SCHED-EP-0003 — mean-matched mechanism isolation; practical reach later demoted
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-starvation-mechanism/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-starvation-mechanism/
+- GPU-SCHED-EP-0004 — LATEST PUBLIC interpretation; public-trace demand measurement plus synthetic ratio sweep
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-real-traces/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-real-traces/
+
+### Other research
+
+- SIM-WORLD-EP-0001 — synthetic blind queueing benchmark
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/simulation-worlds/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/simulation-worlds/
+- HUMAN-MODEL-EP-0004 — validated contract method; adapter remains blocked
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/human-model/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/human-model/
+- IAA-EP-0008 — prospective badminton biomechanics protocol; not sealed and no confirmatory data
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/badminton-biomechanics/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/badminton-biomechanics/
+
+## Guides and participation
+
+- How to read, English: https://kbmt327-dev.github.io/scientific-os-research/en/how-to-read/
+- 読み方, Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/how-to-read/
+- Contribute, English: https://kbmt327-dev.github.io/scientific-os-research/en/contribute/
+- 参加する, Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/contribute/
+- Repository: https://github.com/kbmt327-dev/scientific-os-research
+- Discussions: https://github.com/kbmt327-dev/scientific-os-research/discussions
+
+The Markdown Research Notes are the canonical public representation. This file is a guide and index, not a second claim database.

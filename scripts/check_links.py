@@ -10,6 +10,8 @@ from pathlib import Path
 
 WIKI = re.compile(r"!?\[\[([^\]]+)\]\]")
 MARKDOWN = re.compile(r"(?<!!)\[[^\]]*\]\(([^)]+)\)")
+HTML_HREF = re.compile(r"\bhref=[\"']([^\"']+)[\"']", flags=re.IGNORECASE)
+SITE_PREFIX = "/scientific-os-research/"
 
 
 def candidates(content: Path, source: Path, target: str) -> list[Path]:
@@ -38,9 +40,12 @@ def main() -> int:
         text = source.read_text(encoding="utf-8-sig")
         targets = [m.group(1) for m in WIKI.finditer(text)]
         targets += [m.group(1).strip("<>") for m in MARKDOWN.finditer(text)]
+        targets += [m.group(1) for m in HTML_HREF.finditer(text)]
         for target in targets:
             if target.startswith(("http://", "https://", "mailto:", "#")):
                 continue
+            if target.startswith(SITE_PREFIX):
+                target = target[len(SITE_PREFIX):]
             if not any(path.exists() for path in candidates(content, source, target)):
                 failures.append(f"{source.relative_to(content)} -> {target}")
     if failures:

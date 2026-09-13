@@ -1,9 +1,8 @@
 ---
-id: GPU-SCHED-EP-0001-JA
+research_id: GPU-SCHED-EP-0001
 title: 摩擦とworkload mixでGPU schedulingの原理が逆転する
 date: 2026-09-13
 lang: ja
-translation_of: GPU-SCHED-EP-0001
 domain: GPU Cluster Scheduling
 type: Finding
 status: 探索的
@@ -29,11 +28,38 @@ publication:
 tags: [finding, scheduling, simulation, falsification, japanese]
 ---
 
-<p class="language-switch">English: <a href="/scientific-os-research/research/gpu-scheduling/">Original Research Note</a></p>
+<p class="language-switch"><span aria-current="page">日本語</span> · <a href="/scientific-os-research/en/research/gpu-scheduling/" hreflang="en">English</a></p>
 
 <div class="evidence-strip"><span>Finding</span><span>合成simulation</span><span>探索的</span><span>peer reviewなし</span><span>外部再現 0</span></div>
 
 > **後続研究がこのnoteの2つの主張を条件付けています。** [[ja/research/gpu-scheduling-phase-diagram/index|EP-0002]]は、以下の推定誤差の結論がnoiseのparameterisationに依存すること、およびgreedy SRPTの結果が全クラスタjobを含まない需要mixに限られることを示しました。[[ja/research/gpu-scheduling-starvation-mechanism/index|EP-0003]]がその原因を分離しました。本noteは2026-09-13時点で何を主張したかの記録として保持し、改変しません。
+
+## 発見
+
+この合成64-slot clusterでは、常に最善のscheduling ruleはありませんでした。small-job-heavy mixの低frictionではgreedy SRPTが先行し、large gangとpreemptionのlost workは安定するpolicyを変えました。mixとestimation-errorの解釈は後続研究で限定されたため、実務へ移す前に上の更新通知を読んでください。
+
+## Key figure
+
+```mermaid
+flowchart LR
+  M[Demand mix] --> R{どの失敗が支配するか}
+  C[Preemption cost] --> R
+  R -->|small jobs, low friction| G[Greedy SRPTが先行]
+  R -->|whole-pool support| S[Class starvation]
+  R -->|lost workでeffective loadが1超| D[Backlog divergence]
+```
+
+## この研究が示すこと
+
+- 宣言したsimulator内のpolicy順位はworkload supportとpreemption frictionに依存する。
+- 10個のsealed predictionは7/10で、失敗・ill-posedな予測も保存されている。
+
+## この研究が示さないこと
+
+- 現在の実cluster境界は示さない。EP-0004が後にこの問いを測定した。
+- production上の優越性、公平性、普遍的crossoverは確立しない。
+
+## 詳細を検証する
 
 ## 要約
 

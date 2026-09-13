@@ -1,65 +1,62 @@
-schema_version: open-research-lab.publication-manifest.v1
+schema_version: open-research-lab.publication-manifest.v2
 notes:
-  - id: GPU-SCHED-EP-0001
+  - research_id: GPU-SCHED-EP-0001
     source_episode: GPU-SCHEDULING/EP-0001
     source_episode_sha256: c72f32f1b4269cf761083cb646ae7cd15d7a82b1a3f4c37a678739094098f1a0
-    public_note: content/research/gpu-scheduling/index.md
-    translations:
+    source_revision: a5b18ef78d1e1012baaf97adfd399b45a63b907e
+    views:
+      en: content/en/research/gpu-scheduling/index.md
       ja: content/ja/research/gpu-scheduling/index.md
     type: Finding
-    publication:
-      status: publishable
-  - id: GPU-SCHED-EP-0002
+    publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0002
     source_episode: GPU-SCHEDULING/EP-0002
     source_episode_sha256: 656775b68fee9214ef5490de02441111ac1451b4f24cab4d00556716c52649f4
-    public_note: content/research/gpu-scheduling-phase-diagram/index.md
-    translations:
+    source_revision: 59db4d1e782b2d49a02c04cbaf3e70576b17a651
+    views:
+      en: content/en/research/gpu-scheduling-phase-diagram/index.md
       ja: content/ja/research/gpu-scheduling-phase-diagram/index.md
     type: Finding
-    publication:
-      status: publishable
-  - id: GPU-SCHED-EP-0003
+    publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0003
     source_episode: GPU-SCHEDULING/EP-0003
     source_episode_sha256: ca6a566b0396730d61e2ec33a48c5cfd1a12b6246dcd2a43e5e03f067b0ff3de
-    public_note: content/research/gpu-scheduling-starvation-mechanism/index.md
-    translations:
+    source_revision: c84b564bcd9dddad8e4e007711bd341c6777bdb5
+    views:
+      en: content/en/research/gpu-scheduling-starvation-mechanism/index.md
       ja: content/ja/research/gpu-scheduling-starvation-mechanism/index.md
     type: Finding
-    publication:
-      status: publishable
-  - id: GPU-SCHED-EP-0004
+    publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0004
     source_episode: GPU-SCHEDULING/EP-0004
     source_episode_sha256: 6ec6a9dba06e28147c46effd2d7ca5d9867a55b9a0ff918f05649c40ab586653
-    public_note: content/research/gpu-scheduling-real-traces/index.md
-    translations:
+    source_revision: 7abca6d9f7db3a211e415451cc0a6d026dcf7bb8
+    views:
+      en: content/en/research/gpu-scheduling-real-traces/index.md
       ja: content/ja/research/gpu-scheduling-real-traces/index.md
     type: Finding
-    publication:
-      status: publishable
-  - id: SIM-WORLD-EP-0001
+    publication: { status: publishable }
+  - research_id: SIM-WORLD-EP-0001
     source_episode: SIM-WORLD/EP-0001
     source_episode_sha256: 0c632eb5cad1431953bcbfbe3a067925fea3d7caac6bb21547ce53cb03a7931f
-    public_note: content/research/simulation-worlds/index.md
-    translations:
+    views:
+      en: content/en/research/simulation-worlds/index.md
       ja: content/ja/research/simulation-worlds/index.md
     type: Finding
-    publication:
-      status: publishable
-  - id: HUMAN-MODEL-EP-0004
+    publication: { status: publishable }
+  - research_id: HUMAN-MODEL-EP-0004
     source_episode: HUMAN-MODEL/EP-0004
     source_episode_sha256: 260f10d6b70d75420e9aa57945ca24cd7d0335eaed053cf5a0fe9f77008f90f8
-    public_note: content/research/human-model/index.md
-    translations:
+    views:
+      en: content/en/research/human-model/index.md
       ja: content/ja/research/human-model/index.md
     type: Method
-    publication:
-      status: publishable
-  - id: IAA-EP-0008
+    publication: { status: publishable }
+  - research_id: IAA-EP-0008
     source_episode: IAA/EP-0008
     source_episode_sha256: 6c12a0f9f82a62cac5b36509d4901d10cb9ffec458bcd873cb801fe54a5f9308
-    public_note: content/research/badminton-biomechanics/index.md
-    translations:
+    views:
+      en: content/en/research/badminton-biomechanics/index.md
       ja: content/ja/research/badminton-biomechanics/index.md
     type: Protocol
-    publication:
-      status: publishable
+    publication: { status: publishable }

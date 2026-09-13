@@ -1,0 +1,94 @@
+{
+  "schema_version": "validation-case.v0.2",
+  "case_id": "VC-0001-addbiomechanics-subject40-contract-roundtrip",
+  "status": "definition_only",
+  "context_of_use": "one hashed AddBiomechanics Subject40 B3D sample; contract, source-consistency, reference and leakage validation only",
+  "model_ref": "examples/iaa-limited-human-model-spec.example.json",
+  "observation_ref": "examples/addbiomechanics-subject40-observation-spec.v0.2.json",
+  "adapter_ref": "examples/subject40-to-iaa-adapter-spec.v0.2.json",
+  "inputs": ["kinematics_pass.generalized_positions"],
+  "targets": ["raw_force_plate.wrench"],
+  "split": {
+    "unit": "trial",
+    "calibration": "no parameter fitting in contract-only test",
+    "evaluation": "one untouched contiguous time window after metadata and coordinate conversion are frozen",
+    "independence_status": "partial"
+  },
+  "baselines": [
+    {
+      "baseline_id": "B0-schema-only",
+      "description": "parse source metadata and emit explicit UNKNOWN values without numerical inference"
+    }
+  ],
+  "metrics": [
+    {
+      "metric_id": "M1-roundtrip",
+      "quantity": "channel values after source-to-contract-to-source roundtrip",
+      "unit": "source units",
+      "aggregation": "maximum absolute error and exact metadata equality"
+    },
+    {
+      "metric_id": "M2-frame-transform",
+      "quantity": "coordinate transform invertibility",
+      "unit": "dimensionless",
+      "aggregation": "maximum norm error after forward and inverse transform"
+    }
+  ],
+  "leakage_rules": [
+    {
+      "rule_id": "L1-no-force-derived-input",
+      "forbidden_tag": "uses_force_plate",
+      "applies_to": "inputs"
+    },
+    {
+      "rule_id": "L2-no-target-derived-input",
+      "forbidden_tag": "candidate_target_derived_from_target_measurement",
+      "applies_to": "inputs"
+    }
+  ],
+  "acceptance": [
+    {
+      "criterion_id": "A1-schema",
+      "condition": "all v0.2 documents validate against JSON Schema 2020-12 and the retained HumanModelSpec v0.1 schema",
+      "required": true
+    },
+    {
+      "criterion_id": "A2-references",
+      "condition": "every coordinate space, processing pass, channel, adapter, target block and target frame reference resolves uniquely",
+      "required": true
+    },
+    {
+      "criterion_id": "A3-consistency",
+      "condition": "each inconsistent source check points to a structured warning reviewed by the adapter",
+      "required": true
+    },
+    {
+      "criterion_id": "A4-leakage",
+      "condition": "no input channel carries a forbidden leakage tag",
+      "required": true
+    },
+    {
+      "criterion_id": "A5-fail-closed",
+      "condition": "unknown coordinate spaces, missing adapter_ref, mismatched cross-document refs, unreported source inconsistencies and unresolved mappings cannot produce a ready validation case",
+      "required": true
+    }
+  ],
+  "failure_behavior": [
+    "fail closed on unresolved frame, coordinate-space or unit conversion",
+    "mark trial unusable for kinetics when MissingGRFReason indicates unreliable acceleration or torque",
+    "do not substitute dynamics-pass values for independent measurements",
+    "preserve source artifact and write a separate adapter error record"
+  ],
+  "evidence_boundary": {
+    "evaluation_mode": "contract_only",
+    "promotion_eligible": false,
+    "claims_not_supported": [
+      "forward dynamics validity",
+      "human movement prediction",
+      "OpenSim-to-IAA anatomical equivalence",
+      "participant generalization",
+      "Nimble API parity",
+      "scheduler execution"
+    ]
+  }
+}

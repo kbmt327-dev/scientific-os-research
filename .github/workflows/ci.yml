@@ -1,0 +1,43 @@
+name: Validate research site
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: npm ci
+      - run: python -m pip install -r requirements-reproduce.txt
+      - run: npx quartz plugin install
+      - name: Validate publication contract
+        run: python scripts/publish_episode.py validate content
+      - name: Check internal links
+        run: python scripts/check_links.py content
+      - name: Scan for secrets and private paths
+        run: python scripts/privacy_scan.py .
+      - name: Run bounded reproduction checks
+        run: python scripts/reproduce.py --quick all
+      - name: Build Quartz
+        run: npx quartz build
+      - name: Check built routes and Mermaid
+        run: python scripts/check_built_site.py public
+

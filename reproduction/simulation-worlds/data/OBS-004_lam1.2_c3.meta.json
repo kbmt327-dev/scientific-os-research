@@ -1,0 +1,11 @@
+{
+  "schema": "queue-world.v1",
+  "observation_level": 3,
+  "c": 3,
+  "horizon": 6000.0,
+  "warmup": 300.0,
+  "requested_arrival_rate": 1.2,
+  "n_rows": 6624,
+  "run_seed": 11,
+  "time_unit": "one mean service time at an ordinary unloaded server"
+}

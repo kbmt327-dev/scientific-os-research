@@ -1,0 +1,6 @@
+{
+  "schema": "queue-world.v1",
+  "master_seed": "32d9c708124aab5834916ba59967d01e",
+  "truth_commitment_sha256": "7c4e47709de366e295aec26be7fac462100d1c6bf3d49fcd9ec03e40930b663a",
+  "note": "Only a random seed and a commitment hash are stored here. The mechanism is derived at run time and never written to disk."
+}

@@ -1,0 +1,92 @@
+{
+  "schema_version": "observation-spec.v0.1",
+  "observation_id": "addbiomechanics-small-sample-tbd",
+  "dataset": {
+    "dataset_id": "addbiomechanics-core-dataset",
+    "source_uri": "https://addbiomechanics.org/download_data.html",
+    "local_artifact_status": "not_downloaded",
+    "content_hash": null
+  },
+  "subject": {
+    "subject_id": "TBD_AFTER_SAMPLE_SELECTION",
+    "identity_status": "unknown",
+    "population_tags": []
+  },
+  "trial": {
+    "trial_id": "TBD_AFTER_SAMPLE_SELECTION",
+    "task": "TBD_AFTER_SAMPLE_SELECTION",
+    "condition": "UNKNOWN",
+    "condition_status": "unknown"
+  },
+  "timebase": {
+    "sample_rate_hz": null,
+    "sample_rate_status": "unknown",
+    "time_origin": "TBD_FROM_B3D_HEADER",
+    "synchronization_status": "unknown"
+  },
+  "channels": [
+    {
+      "channel_id": "kinematics_pass.generalized_positions",
+      "quantity_kind": "generalized_position",
+      "unit": "mixed_by_coordinate",
+      "frame_id": "opensim-model-coordinates",
+      "evidence_class": "derived",
+      "processing_pass_id": "kinematics_pass",
+      "missingness": "unknown",
+      "leakage_tags": []
+    },
+    {
+      "channel_id": "raw_force_plate.wrench",
+      "quantity_kind": "force_plate_wrench",
+      "unit": "N_and_N*m",
+      "frame_id": "force-plate-frame",
+      "evidence_class": "measured",
+      "processing_pass_id": "raw_measurement",
+      "missingness": "unknown",
+      "leakage_tags": ["target_measurement_for_kinetics"]
+    },
+    {
+      "channel_id": "dynamics_pass.joint_torques",
+      "quantity_kind": "joint_torque",
+      "unit": "N*m",
+      "frame_id": "opensim-model-coordinates",
+      "evidence_class": "model_derived",
+      "processing_pass_id": "dynamics_pass",
+      "missingness": "unknown",
+      "leakage_tags": ["uses_force_plate", "candidate_target_derived_from_target_measurement"]
+    }
+  ],
+  "processing_passes": [
+    {
+      "processing_pass_id": "raw_measurement",
+      "inputs": [],
+      "operations": ["instrument acquisition"],
+      "uses_target_measurement": false
+    },
+    {
+      "processing_pass_id": "kinematics_pass",
+      "inputs": ["marker trajectories"],
+      "operations": ["marker fitting", "kinematic estimation"],
+      "uses_target_measurement": false
+    },
+    {
+      "processing_pass_id": "dynamics_pass",
+      "inputs": ["kinematics_pass.generalized_positions", "raw_force_plate.wrench"],
+      "operations": ["inverse dynamics"],
+      "uses_target_measurement": true
+    }
+  ],
+  "rights": {
+    "license_status": "confirmed",
+    "license": "CC BY 4.0",
+    "redistribution": "allowed"
+  },
+  "provenance": {
+    "source_refs": [
+      "https://www.addbiomechanics.org/data_sharing_mission.html",
+      "https://addbiomechanics.org/download_data.html"
+    ],
+    "available_at": null,
+    "recorded_at": "2026-09-12T08:40:06Z"
+  }
+}

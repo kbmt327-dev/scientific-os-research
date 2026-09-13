@@ -1,0 +1,44 @@
+{
+  "schema_version": "human-model-contract-validation-evidence.public.v1",
+  "evidence_id": "EP-0004-contract-v0.2-validation",
+  "run_id": "manual-20260913-hmc-ep0004",
+  "as_of": "2026-09-13T00:59:56Z",
+  "evaluation_mode": "contract-only",
+  "promotion_eligible": false,
+  "command": "python tests/validate_contract_v0_2.py",
+  "result": {
+    "all_passed": true,
+    "positive_checks": [
+      "schemas",
+      "unique_identifiers",
+      "coordinate_space_references",
+      "processing_pass_references",
+      "cross_document_references",
+      "adapter_target_references",
+      "source_consistency_warnings",
+      "leakage_guard",
+      "ready_state_fail_closed"
+    ],
+    "negative_controls": [
+      "missing_coordinate_spaces rejected",
+      "unknown_channel_coordinate_space rejected",
+      "missing_adapter_ref rejected",
+      "adapter_observation_mismatch rejected",
+      "unreported_source_inconsistency rejected",
+      "ready_with_unresolved_adapter rejected",
+      "dynamics_target_leakage_as_input rejected"
+    ]
+  },
+  "public_projection": {
+    "privacy_sanitized": true,
+    "change": "Two machine-local documentation references were replaced by repository-relative placeholders.",
+    "scientific_claim_changed": false,
+    "hash_note": "Public artifact hashes differ from internal evidence hashes and must be computed from this repository commit."
+  },
+  "boundaries": [
+    "Nimble/OpenSim not executed",
+    "B3D numerical frame transform not validated",
+    "example adapter remains blocked",
+    "no prediction or model promotion evidence"
+  ]
+}

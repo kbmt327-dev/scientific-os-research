@@ -1,0 +1,58 @@
+{
+  "prediction_id": "PRED-003",
+  "registered_at": "2026-09-13",
+  "status": "sealed-before-observation",
+  "world_commitment_sha256": "7c4e47709de366e295aec26be7fac462100d1c6bf3d49fcd9ec03e40930b663a",
+  "information_cutoff": "OBS-001..004",
+  "model": {
+    "name": "M3t",
+    "server_pool": [
+      0.693,
+      0.3625,
+      0.3625,
+      1.0275
+    ],
+    "mean_batch": 1.981,
+    "assignment": "fastest idle",
+    "note": "the assignment rule is world-FAMILY knowledge (I wrote the generator), not a blind inference; A06 utilisation only confirmed it is consistent"
+  },
+  "single_run_reference": {
+    "W_mean": {
+      "mean": 2.995656636308068,
+      "sd": 0.154933774416581,
+      "lo95": 2.6687313536450055,
+      "hi95": 3.2969676543779163
+    },
+    "Wq_mean": {
+      "mean": 1.3551549918111199,
+      "sd": 0.1474634594260103,
+      "lo95": 1.0441149010953708,
+      "hi95": 1.6401930135625613
+    }
+  },
+  "predictions": [
+    {
+      "id": "R1",
+      "experiment": "OBS-005..012: eight fresh world runs, lambda=1.6, c=4, horizon 6000, warmup 300, run-seeds 101..108, level 3",
+      "claim": "the mean of W_mean over the eight runs falls in [2.891, 3.109] (M3t predictive 95% interval for an 8-run mean; point 2.996)",
+      "interval": [
+        2.8906396492361837,
+        3.1089781727878782
+      ],
+      "also": "mean of Wq_mean falls in [1.256, 1.464]",
+      "interval_Wq": [
+        1.2555729239423392,
+        1.4637589997978768
+      ],
+      "if_it_fails": "M3t is mis-specified for the waiting-time law at moderate load; the OBS-003 excess was not luck and a further mechanism is needed",
+      "if_it_holds": "the OBS-003 miss was ordinary run-to-run variation and M3t stands"
+    },
+    {
+      "id": "R2",
+      "experiment": "OBS-013: lambda=2.0, c=6, horizon 6000, warmup 300, run-seed 21, level 3",
+      "claim": "servers 0,1,2,3 reproduce the pool rates 0.6930 / 0.3625 / 0.3625 / 1.0275 within their 95% CIs; servers 4 and 5 have stable, server-specific, exponential service (per-server CV in [0.92, 1.08]).",
+      "declared_unknown": "the RATES of servers 4 and 5. Four observed rates are not enough to identify the distribution they are drawn from, so the model cannot predict capacity at c>4. This is a boundary of M3t, stated before the observation rather than after it.",
+      "if_it_fails": "server identity is not a persistent property and the pool abstraction must be replaced"
+    }
+  ]
+}

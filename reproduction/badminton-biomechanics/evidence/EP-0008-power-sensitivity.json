@@ -1,0 +1,82 @@
+{
+  "schema_version": "iaa.ep0008.power-sensitivity-summary.v1",
+  "evidence_id": "EP-0008-power-sensitivity",
+  "run_id": "manual-20260913-ep0008",
+  "as_of": "2026-09-13",
+  "status": "sensitivity_only_not_final_sample_size",
+  "reproduction": {
+    "command": "python -B analysis/ep0008_power_simulation.py --iterations 10000 --seed 20260913",
+    "script_sha256": "D6070D6E3C98CF701D0C29458E4EE9A7E38DAA046C59D5F4463B99AA5A231156",
+    "seed": 20260913,
+    "iterations_per_scenario": 10000,
+    "numpy_available": true,
+    "scipy_available": true,
+    "statsmodels_available": false
+  },
+  "assumptions": {
+    "analysis_unit": "participant-level balanced orthogonal contrast",
+    "test": "two-sided one-sample t test",
+    "trial_residual_sd": 1.0,
+    "participant_random_slope_sd": 0.2,
+    "balanced_complete_cells": true,
+    "familywise_alpha": 0.05,
+    "coprimary_tests": 3,
+    "simulation_alpha_per_test_bonferroni": 0.016666666666666666,
+    "effect_scale": "difference in trial-residual SD units",
+    "main_effect_residual_variance_multiplier": 1.0,
+    "interaction_residual_variance_multiplier": 4.0
+  },
+  "grids": {
+    "participants": [12, 16, 20, 24, 30, 36, 48],
+    "trials_per_cell": [4, 6, 8],
+    "effect_sd": [0.2, 0.3, 0.4, 0.5]
+  },
+  "minimum_grid_n_for_80pct": [
+    {"contrast": "main_effect", "trials_per_cell": 4, "effect_sd": 0.2, "n": null},
+    {"contrast": "main_effect", "trials_per_cell": 4, "effect_sd": 0.3, "n": 48},
+    {"contrast": "main_effect", "trials_per_cell": 4, "effect_sd": 0.4, "n": 24},
+    {"contrast": "main_effect", "trials_per_cell": 4, "effect_sd": 0.5, "n": 16},
+    {"contrast": "main_effect", "trials_per_cell": 6, "effect_sd": 0.2, "n": null},
+    {"contrast": "main_effect", "trials_per_cell": 6, "effect_sd": 0.3, "n": 30},
+    {"contrast": "main_effect", "trials_per_cell": 6, "effect_sd": 0.4, "n": 20},
+    {"contrast": "main_effect", "trials_per_cell": 6, "effect_sd": 0.5, "n": 12},
+    {"contrast": "main_effect", "trials_per_cell": 8, "effect_sd": 0.2, "n": 48},
+    {"contrast": "main_effect", "trials_per_cell": 8, "effect_sd": 0.3, "n": 24},
+    {"contrast": "main_effect", "trials_per_cell": 8, "effect_sd": 0.4, "n": 16},
+    {"contrast": "main_effect", "trials_per_cell": 8, "effect_sd": 0.5, "n": 12},
+    {"contrast": "interaction", "trials_per_cell": 4, "effect_sd": 0.2, "n": null},
+    {"contrast": "interaction", "trials_per_cell": 4, "effect_sd": 0.3, "n": null},
+    {"contrast": "interaction", "trials_per_cell": 4, "effect_sd": 0.4, "n": null},
+    {"contrast": "interaction", "trials_per_cell": 4, "effect_sd": 0.5, "n": 48},
+    {"contrast": "interaction", "trials_per_cell": 6, "effect_sd": 0.2, "n": null},
+    {"contrast": "interaction", "trials_per_cell": 6, "effect_sd": 0.3, "n": null},
+    {"contrast": "interaction", "trials_per_cell": 6, "effect_sd": 0.4, "n": null},
+    {"contrast": "interaction", "trials_per_cell": 6, "effect_sd": 0.5, "n": 36},
+    {"contrast": "interaction", "trials_per_cell": 8, "effect_sd": 0.2, "n": null},
+    {"contrast": "interaction", "trials_per_cell": 8, "effect_sd": 0.3, "n": null},
+    {"contrast": "interaction", "trials_per_cell": 8, "effect_sd": 0.4, "n": 48},
+    {"contrast": "interaction", "trials_per_cell": 8, "effect_sd": 0.5, "n": 30}
+  ],
+  "representative_six_trials_per_cell": [
+    {"contrast": "main_effect", "participants": 24, "effect_sd": 0.3, "contrast_sd": 0.454606, "power": 0.7422, "monte_carlo_se": 0.004374},
+    {"contrast": "main_effect", "participants": 30, "effect_sd": 0.3, "contrast_sd": 0.454606, "power": 0.8493, "monte_carlo_se": 0.003578},
+    {"contrast": "main_effect", "participants": 48, "effect_sd": 0.3, "contrast_sd": 0.454606, "power": 0.9781, "monte_carlo_se": 0.001464},
+    {"contrast": "main_effect", "participants": 24, "effect_sd": 0.4, "contrast_sd": 0.454606, "power": 0.9504, "monte_carlo_se": 0.002171},
+    {"contrast": "interaction", "participants": 24, "effect_sd": 0.3, "contrast_sd": 0.840635, "power": 0.2281, "monte_carlo_se": 0.004196},
+    {"contrast": "interaction", "participants": 30, "effect_sd": 0.3, "contrast_sd": 0.840635, "power": 0.2833, "monte_carlo_se": 0.004506},
+    {"contrast": "interaction", "participants": 48, "effect_sd": 0.3, "contrast_sd": 0.840635, "power": 0.4988, "monte_carlo_se": 0.005},
+    {"contrast": "interaction", "participants": 48, "effect_sd": 0.4, "contrast_sd": 0.840635, "power": 0.7905, "monte_carlo_se": 0.00407}
+  ],
+  "interpretation": [
+    "Under these assumptions, 30 participants with six valid trials per cell reaches about 0.85 power for a 0.30-SD main effect.",
+    "The same design has only about 0.28 power for a 0.30-SD interaction.",
+    "Even 48 participants with six valid trials per cell reaches only about 0.79 for a 0.40-SD interaction.",
+    "No final N is selected because the minimum important effect, empirical random-slope SD, missingness, and interaction priority are unresolved."
+  ],
+  "limitations": [
+    "The random-slope SD is assumed rather than estimated from an independent sample using the new protocol.",
+    "Balanced complete cells are assumed; technical missingness and attrition are not included.",
+    "The simulation uses a conservative Bonferroni threshold while the planned analysis uses Holm correction.",
+    "The mixed-effects model itself was not fit because no prospective data exist and statsmodels is not installed."
+  ]
+}

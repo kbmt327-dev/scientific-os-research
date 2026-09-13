@@ -1,0 +1,185 @@
+# yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
+configuration:
+  pageTitle: Open Research Lab
+  pageTitleSuffix: " · Scientific OS"
+  enableSPA: true
+  enablePopovers: true
+  analytics: null
+  locale: en-US
+  baseUrl: kbmt327-dev.github.io/scientific-os-research
+  ignorePatterns:
+    - private
+    - templates
+    - .obsidian
+  theme:
+    fontOrigin: local
+    cdnCaching: false
+    typography:
+      header: IBM Plex Sans
+      body: Source Sans 3
+      code: IBM Plex Mono
+    colors:
+      lightMode:
+        light: "#f5f3ed"
+        lightgray: "#dedbd1"
+        gray: "#8a8a80"
+        darkgray: "#3c403d"
+        dark: "#18201c"
+        secondary: "#2b6656"
+        tertiary: "#8a5a38"
+        highlight: "rgba(43, 102, 86, 0.12)"
+        textHighlight: "#e6d59688"
+      darkMode:
+        light: "#171b18"
+        lightgray: "#303731"
+        gray: "#7c887f"
+        darkgray: "#d5d8d1"
+        dark: "#f1f0e9"
+        secondary: "#78bba4"
+        tertiary: "#d3a278"
+        highlight: "rgba(120, 187, 164, 0.14)"
+        textHighlight: "#7b6f3288"
+plugins:
+  - source: "@quartz-community/note-properties"
+    enabled: true
+    options:
+      includeAll: false
+      includedProperties: [type, status, evidence_level, peer_reviewed, independent_replications]
+      excludedProperties: []
+      hidePropertiesView: false
+      delimiters: "---"
+      language: yaml
+    order: 5
+    layout: { position: beforeBody, priority: 15, display: all }
+  - source: "@quartz-community/created-modified-date"
+    enabled: true
+    options: { defaultDateType: modified, priority: [frontmatter, git, filesystem] }
+    order: 10
+  - source: "@quartz-community/syntax-highlighting"
+    enabled: true
+    options: { theme: { light: github-light, dark: github-dark }, keepBackground: false }
+    order: 20
+  - source: "@quartz-community/spacer"
+    enabled: true
+    options: {}
+    order: 25
+    layout: { position: left, priority: 25, display: mobile-only }
+  - source: "@quartz-community/obsidian-flavored-markdown"
+    enabled: true
+    options:
+      comments: true
+      highlight: true
+      wikilinks: true
+      callouts: true
+      mermaid: true
+      parseTags: true
+      parseArrows: true
+      parseBlockReferences: true
+      enableInHtmlEmbed: false
+      enableYouTubeEmbed: false
+      enableVideoEmbed: false
+      enableCheckbox: true
+    order: 30
+  - source: "@quartz-community/github-flavored-markdown"
+    enabled: true
+    order: 40
+  - source: "@quartz-community/unlisted-pages"
+    enabled: true
+    options: {}
+    order: 45
+  - source: "@quartz-community/table-of-contents"
+    enabled: true
+    order: 50
+    layout: { position: right, priority: 30 }
+  - source: "@quartz-community/bases-page"
+    enabled: true
+    options: {}
+    order: 50
+  - source: "@quartz-community/crawl-links"
+    enabled: true
+    options: { markdownLinkResolution: shortest }
+    order: 60
+  - source: "@quartz-community/description"
+    enabled: true
+    order: 70
+  - source: "@quartz-community/latex"
+    enabled: true
+    options: { renderEngine: katex }
+    order: 80
+  - source: "@quartz-community/hard-line-breaks"
+    enabled: false
+    order: 90
+  - source: "@quartz-community/quartz-fonts"
+    enabled: true
+    options:
+      useThemeFonts: false
+      fontOrigin: local
+      title: system-ui
+      header: system-ui
+      body: system-ui
+      code: ui-monospace
+  - source: "@quartz-community/remove-draft"
+    enabled: true
+  - source: "@quartz-community/alias-redirects"
+    enabled: true
+  - source: "@quartz-community/content-index"
+    enabled: true
+    options: { enableSiteMap: true, enableRSS: true }
+  - source: "@quartz-community/favicon"
+    enabled: true
+  - source: "@quartz-community/og-image"
+    enabled: true
+  - source: "@quartz-community/content-page"
+    enabled: true
+  - source: "@quartz-community/folder-page"
+    enabled: true
+  - source: "@quartz-community/tag-page"
+    enabled: true
+  - source: "@quartz-community/explorer"
+    enabled: true
+    layout: { position: left, priority: 50 }
+  - source: "@quartz-community/graph"
+    enabled: true
+    layout: { position: right, priority: 10 }
+  - source: "@quartz-community/search"
+    enabled: true
+    layout: { position: left, priority: 20, group: toolbar, groupOptions: { grow: true } }
+  - source: "@quartz-community/backlinks"
+    enabled: true
+    layout: { position: right, priority: 50 }
+  - source: "@quartz-community/article-title"
+    enabled: true
+    layout: { position: beforeBody, priority: 10 }
+  - source: "@quartz-community/content-meta"
+    enabled: true
+    layout: { position: beforeBody, priority: 20 }
+  - source: "@quartz-community/page-title"
+    enabled: true
+    layout: { position: left, priority: 10 }
+  - source: "@quartz-community/darkmode"
+    enabled: true
+    layout: { position: left, priority: 30, group: toolbar }
+  - source: "@quartz-community/reader-mode"
+    enabled: true
+    layout: { position: left, priority: 35, group: toolbar }
+  - source: "@quartz-community/breadcrumbs"
+    enabled: true
+    layout: { position: beforeBody, priority: 5, condition: not-index }
+  - source: "@quartz-community/footer"
+    enabled: true
+    options:
+      links:
+        Repository: https://github.com/kbmt327-dev/scientific-os-research
+        Discussions: https://github.com/kbmt327-dev/scientific-os-research/discussions
+        RSS: /scientific-os-research/index.xml
+    layout: { position: footer, priority: 50 }
+layout:
+  groups:
+    toolbar: { priority: 35, direction: row, gap: 0.5rem }
+  byPageType:
+    "404": { positions: { beforeBody: [], left: [], right: [] } }
+    content: {}
+    folder: { exclude: [reader-mode], positions: { right: [] } }
+    tag: { exclude: [reader-mode], positions: { right: [] } }
+    canvas: {}
+    bases: {}

@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scientific-human-model.local/schemas/human-model-spec.v0.1.json",
+  "title": "HumanModelSpec v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "model_id",
+    "model_version",
+    "context_of_use",
+    "components",
+    "coordinate_frames",
+    "dynamics_interface",
+    "provenance",
+    "unsupported_claims"
+  ],
+  "properties": {
+    "schema_version": { "const": "human-model-spec.v0.1" },
+    "model_id": { "type": "string", "minLength": 1 },
+    "model_version": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["candidate", "reference", "deprecated"] },
+    "context_of_use": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["population", "tasks", "quantities_of_interest", "operating_range"],
+      "properties": {
+        "population": { "type": "string", "minLength": 1 },
+        "tasks": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "quantities_of_interest": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "operating_range": { "type": "string", "minLength": 1 }
+      }
+    },
+    "components": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["component_id", "kind", "implementation", "version", "license_status"],
+        "properties": {
+          "component_id": { "type": "string", "minLength": 1 },
+          "kind": { "enum": ["anatomy", "dynamics", "controller", "environment", "observation_adapter"] },
+          "implementation": { "type": "string", "minLength": 1 },
+          "version": { "type": "string", "minLength": 1 },
+          "license_status": { "enum": ["confirmed", "unknown", "restricted"] },
+          "license": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "coordinate_frames": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["frame_id", "kind", "handedness", "origin", "axes", "orthogonality"],
+        "properties": {
+          "frame_id": { "type": "string", "minLength": 1 },
+          "kind": { "enum": ["global", "segment", "joint", "sensor", "tool"] },
+          "handedness": { "enum": ["right", "left", "unknown"] },
+          "origin": { "type": "string", "minLength": 1 },
+          "axes": {
+            "type": "array",
+            "minItems": 3,
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["axis", "meaning", "status"],
+              "properties": {
+                "axis": { "enum": ["x", "y", "z"] },
+                "meaning": { "type": "string", "minLength": 1 },
+                "status": { "enum": ["confirmed", "historical_label", "unknown"] }
+              }
+            }
+          },
+          "orthogonality": { "enum": ["orthonormal", "oblique", "unknown"] },
+          "parent_frame_id": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "dynamics_interface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["equation", "input_blocks", "output_blocks"],
+      "properties": {
+        "equation": { "type": "string", "minLength": 1 },
+        "input_blocks": { "$ref": "#/$defs/channelBlocks" },
+        "output_blocks": { "$ref": "#/$defs/channelBlocks" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_refs", "created_at", "parameterization_status"],
+      "properties": {
+        "source_refs": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "created_at": { "type": "string", "format": "date-time" },
+        "parameterization_status": { "enum": ["generic", "subject_specific", "mixed", "unknown"] }
+      }
+    },
+    "unsupported_claims": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+  },
+  "$defs": {
+    "channelBlocks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["block_id", "source_indices", "quantity_kind", "unit", "frame_id", "axes", "semantics", "semantic_status"],
+        "properties": {
+          "block_id": { "type": "string", "minLength": 1 },
+          "source_indices": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "integer", "minimum": 1 }
+          },
+          "quantity_kind": {
+            "enum": ["linear_acceleration", "relative_angular_velocity_derivative", "force", "torque", "state", "other"]
+          },
+          "unit": { "type": "string", "minLength": 1 },
+          "frame_id": { "type": "string", "minLength": 1 },
+          "axes": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "semantics": { "type": "string", "minLength": 1 },
+          "semantic_status": { "enum": ["confirmed", "partially_confirmed", "unknown"] }
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,154 @@
 @use "./variables.scss" as *;
 
-// put your custom CSS here!
+:root {
+  --lab-rule: color-mix(in srgb, var(--secondary) 36%, transparent);
+  --lab-paper: color-mix(in srgb, var(--light) 95%, var(--secondary) 5%);
+}
+body {
+  background-image:
+    linear-gradient(to right, transparent 3.45rem, var(--lab-rule) 3.45rem, var(--lab-rule) calc(3.45rem + 1px), transparent calc(3.45rem + 1px)),
+    linear-gradient(to bottom, transparent 2rem, color-mix(in srgb, var(--lightgray) 45%, transparent) calc(2rem + 1px), transparent calc(2rem + 1px));
+  background-size: 100% 100%, 100% 2rem;
+  background-attachment: local;
+}
+
+.center article {
+  background: color-mix(in srgb, var(--light) 94%, transparent);
+  border-inline-start: 2px solid var(--lab-rule);
+  padding-inline-start: clamp(1rem, 2.6vw, 2rem);
+}
+
+.center article > h1:first-of-type {
+  max-width: 19ch;
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.center article > blockquote:first-of-type {
+  margin-block: 1.5rem 2.5rem;
+  border-inline-start-width: 4px;
+  font-size: 1.15rem;
+}
+
+h2 {
+  margin-top: 3.25rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--lab-rule);
+  letter-spacing: -0.012em;
+}
+
+code {
+  font-size: 0.88em;
+}
+
+.evidence-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1rem 0 2.25rem;
+}
+
+.evidence-strip span {
+  border: 1px solid var(--gray);
+  border-radius: 999px;
+  padding: 0.28rem 0.62rem;
+  background: var(--lab-paper);
+  color: var(--darkgray);
+  font-family: var(--codeFont);
+  font-size: 0.75rem;
+  letter-spacing: 0.025em;
+}
+
+.evidence-strip span:first-child {
+  border-color: var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 13%, var(--light));
+  color: var(--dark);
+  font-weight: 700;
+}
+
+.lab-principles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 2rem 0 3rem;
+  border: 1px solid var(--lab-rule);
+  background: var(--lab-rule);
+}
+
+.lab-principles > div {
+  min-height: 7.5rem;
+  padding: 1rem 1.1rem;
+  background: var(--lab-paper);
+}
+
+.lab-principles strong,
+.lab-principles span {
+  display: block;
+}
+
+.lab-principles strong {
+  margin-bottom: 1.4rem;
+  color: var(--secondary);
+  font-family: var(--headerFont);
+  font-size: 1.15rem;
+}
+
+.lab-principles span {
+  color: var(--darkgray);
+  line-height: 1.4;
+}
+
+table {
+  font-size: 0.92rem;
+}
+
+th {
+  font-family: var(--headerFont);
+  letter-spacing: 0.015em;
+}
+
+blockquote {
+  background: color-mix(in srgb, var(--secondary) 7%, var(--light));
+}
+
+@media all and (max-width: 800px) {
+  body {
+    background-image: linear-gradient(to bottom, transparent 2rem, color-mix(in srgb, var(--lightgray) 35%, transparent) calc(2rem + 1px), transparent calc(2rem + 1px));
+    background-size: 100% 2rem;
+  }
+
+  .center article {
+    border-inline-start: 0;
+    padding-inline-start: 0;
+  }
+
+  .lab-principles {
+    grid-template-columns: 1fr;
+  }
+
+  .lab-principles > div {
+    min-height: auto;
+  }
+
+  .center article > h1:first-of-type {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .left.sidebar,
+  .right.sidebar,
+  .evidence-strip {
+    display: none;
+  }
+
+  .center article {
+    border-inline-start: 1px solid #777;
+    background: white;
+  }
+}

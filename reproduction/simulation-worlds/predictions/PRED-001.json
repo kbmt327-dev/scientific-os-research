@@ -1,0 +1,74 @@
+{
+  "prediction_id": "PRED-001",
+  "registered_at": "2026-09-13",
+  "status": "sealed-before-observation",
+  "world_commitment_sha256": "7c4e47709de366e295aec26be7fac462100d1c6bf3d49fcd9ec03e40930b663a",
+  "information_cutoff": "observations OBS-001 (level 1) only",
+  "source_refs": [
+    {"id": "OBS-001", "locator": "data/OBS-001_baseline.csv", "level": 1},
+    {"id": "A01", "locator": "analysis/a01_baseline.py"},
+    {"id": "A02", "locator": "analysis/a02_cheap_tests.py"}
+  ],
+  "requested_observation": {
+    "id": "OBS-002",
+    "kind": "observation-level escalation on the SAME run (no new sample)",
+    "command": "world.py observe --arrival-rate 2.8 --servers 4 --horizon 6000 --warmup 300 --run-seed 1 --level 3",
+    "why": "level 1 cannot separate waiting from service, cannot attribute work to servers, and cannot see exit reasons. All three are needed to discriminate H1/H2/H4."
+  },
+  "established_from_OBS-001": {
+    "E1_no_abandonment": "the 1872 customers without a departure are exactly the last 1872 arrivals (tail purity 1.000)",
+    "E2_capacity_deficit": "completion rate 2.4339 < arrival rate 2.7623; backlog grows at exactly the difference 0.3284",
+    "E3_capacity_is_congestion_independent": "completion rate is flat (+0.0117 per decile) while the backlog grows from ~0 to ~1870",
+    "E4_batch_arrivals": "49.5% of arrival timestamps are exact ties; epoch process Poisson (ID 0.933, gap CV 0.982); batch size geometric, mean 1.981, var 1.934 vs geometric 1.943",
+    "E5_effective_service": "throughput/c = 0.6085 per server under saturation => effective mean service time 1.6435 vs nominal 1.0"
+  },
+  "competing_hypotheses": {
+    "H1_heterogeneous_servers": "servers have fixed, unequal rates whose sum is 2.434",
+    "H2_homogeneous_slow": "all servers identical with rate 0.6085; the nominal rate 1.0 is simply wrong",
+    "H3_congestion_slowdown": "already falsified by E3; retained only as a null to re-check",
+    "H4_vacations_or_interruptions": "servers are unavailable part of the time even while customers wait",
+    "H5_customer_abandonment": "already falsified by E1"
+  },
+  "predictions": [
+    {
+      "id": "P1",
+      "claim": "exit_reason takes only the values 'served' and 'in_system'; zero rows are 'abandoned' or 'balked'.",
+      "falsifies_if_wrong": "E1, H5",
+      "threshold": "any abandoned/balked row > 0 falsifies"
+    },
+    {
+      "id": "P2",
+      "claim": "mean of (departure_time - service_start_time) over served customers is 1.6435, within +/- 0.05.",
+      "falsifies_if_wrong": "E5 and the identity throughput = c / E[S] under saturation",
+      "threshold": "|observed - 1.6435| > 0.05 falsifies"
+    },
+    {
+      "id": "P3",
+      "claim": "H1 vs H2 decision: per-server completion counts. Under H2 the four counts are equal within Poisson noise (chi-square p > 0.01). Under H1 they are decisively unequal (chi-square p < 1e-6) and max/min server rate > 1.5.",
+      "prior": "H1 favoured, because a mean rate of exactly 0.6085 for all four servers would require the stated nominal 1.0 to be wrong by a specific factor with no mechanism",
+      "threshold": "the chi-square p-value decides; no other outcome is allowed to be read as support"
+    },
+    {
+      "id": "P4",
+      "claim": "server busy fraction under saturation is >= 0.995 for every server, i.e. no server is idle while customers wait.",
+      "falsifies_if_wrong": "H4 (vacations / interruptions) becomes the live explanation of the capacity deficit instead of H1/H2",
+      "threshold": "any server with busy fraction < 0.99 while n_waiting > 0 falsifies"
+    },
+    {
+      "id": "P5",
+      "claim": "per-server service-duration coefficient of variation identifies the service law. I predict CV in [0.9, 1.1] for every server (exponential service), because nothing in OBS-001 requires a non-exponential law.",
+      "note": "this is the weakest prediction and the one most likely to fail; OBS-001 carries almost no information about service shape",
+      "threshold": "any server CV outside [0.9, 1.1] falsifies the exponential-service assumption"
+    },
+    {
+      "id": "P6",
+      "claim": "n_waiting at the end of the qsample series is >= 1500, and n_busy = 4 for more than 99% of samples after t = 1000.",
+      "threshold": "either part failing falsifies the saturated-FCFS reading of OBS-001"
+    }
+  ],
+  "what_this_cannot_settle": [
+    "the service-time law at an unsaturated server (all OBS-001/002 service starts happen in a saturated system)",
+    "whether server vacations exist at low load (the queue is never empty here)",
+    "whether the arrival epoch rate is time-varying on a scale longer than the 5650-unit window"
+  ]
+}

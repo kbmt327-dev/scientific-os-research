@@ -1,0 +1,115 @@
+{
+  "pred_id": "PRED-001",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0001",
+  "sealed_by": "claude-code",
+  "sealed_at": "2026-09-13",
+  "status": "sealed before running experiment E1",
+  "experiment": {
+    "id": "E1",
+    "question": "Where do estimation error (sigma) and preemption cost (c_pre) reverse the ranking of size-based policies against FCFS+backfill, and does the reversal depend on the gang-need mix?",
+    "n_servers": 64,
+    "duration_dist": "exponential, mean 1.0 (CV=1)",
+    "rho": 0.85,
+    "n_jobs": 30000,
+    "warmup_frac": 0.2,
+    "seeds": [101, 102, 103, 104, 105],
+    "mixes": {
+      "trace_like": {"needs": [1, 2, 4, 8, 16, 32], "probs": [0.5, 0.2, 0.15, 0.1, 0.04, 0.01]},
+      "gang_heavy": {"needs": [8, 16, 32, 64], "probs": [0.1, 0.2, 0.3, 0.4]}
+    },
+    "policies": ["fcfs", "easy_backfill", "srpt", "sf_srpt"],
+    "sigma": [0.0, 0.5, 1.0, 2.0],
+    "c_pre": [0.0, 0.05, 0.2],
+    "primary_metric": "mean JCT (ratio between policies, same seeds)",
+    "secondary": ["p99_jct", "jct_by_need", "preempts_per_job", "lost_work_frac", "util_over_rho"]
+  },
+  "already_established_in_calibration_not_predicted": [
+    "trace_like, no friction, rho 0.9-0.99: srpt < sf_srpt < easy_backfill < fcfs on mean JCT",
+    "gang_heavy, no friction: sf_srpt beats srpt by ~10x",
+    "rho_max by saturation: fcfs 0.918 (trace_like) / 0.730 (balanced) / 0.646 (gang_heavy); easy_backfill, srpt, sf_srpt, sf_fcfs all ~1.000",
+    "srpt starves large-gang jobs (k=32 JCT 5-21x the k=1 JCT); sf_srpt inverts that"
+  ],
+  "predictions": [
+    {
+      "id": "P1",
+      "claim": "In trace_like at sigma=1.0, c_pre=0, greedy SRPT keeps a mean-JCT advantage over easy_backfill",
+      "criterion": "mean_jct(srpt) / mean_jct(easy_backfill) < 0.95",
+      "falsified_if": "ratio >= 0.95",
+      "hypothesis": "H1 theory-robust"
+    },
+    {
+      "id": "P2",
+      "claim": "Estimation error alone does not produce a crossover within the tested range: in trace_like at sigma=2.0, c_pre=0, greedy SRPT still beats easy_backfill",
+      "criterion": "mean_jct(srpt) / mean_jct(easy_backfill) < 1.0 at sigma=2.0",
+      "falsified_if": "ratio >= 1.0",
+      "hypothesis": "H1 vs H2"
+    },
+    {
+      "id": "P3",
+      "claim": "Preemption cost, not estimation error, is the friction that reverses the ranking: in trace_like at c_pre=0.2, sigma=0, greedy SRPT loses to easy_backfill",
+      "criterion": "mean_jct(srpt) / mean_jct(easy_backfill) > 1.0",
+      "falsified_if": "ratio <= 1.0",
+      "hypothesis": "H3 preemption-cost-dominant"
+    },
+    {
+      "id": "P4",
+      "claim": "The c_pre crossover for srpt vs easy_backfill in trace_like lies strictly between 0.05 and 0.2",
+      "criterion": "ratio < 1.0 at c_pre=0.05 AND ratio > 1.0 at c_pre=0.2 (sigma=0)",
+      "falsified_if": "either leg fails",
+      "hypothesis": "H3 with a quantitative threshold"
+    },
+    {
+      "id": "P5",
+      "claim": "ServerFilling's advantage in gang_heavy is structural (avoiding waste), not informational, so it survives heavy preemption cost",
+      "criterion": "mean_jct(sf_srpt) / mean_jct(srpt) < 1.0 at c_pre=0.2, sigma=0, gang_heavy",
+      "falsified_if": "ratio >= 1.0",
+      "hypothesis": "H3 has a mix-dependent exception"
+    },
+    {
+      "id": "P6",
+      "claim": "sf_srpt pays more for preemption than srpt because it preempts about twice as often",
+      "criterion": "lost_work_frac(sf_srpt) / lost_work_frac(srpt) > 1.5 for every c_pre > 0, in both mixes",
+      "falsified_if": "ratio <= 1.5 in any such cell",
+      "hypothesis": "mechanism of H3"
+    },
+    {
+      "id": "P7",
+      "claim": "Estimation error hurts sf_srpt less than srpt in gang_heavy, because ServerFilling's serve-set is chosen by need size rather than by priority precision",
+      "criterion": "relative JCT degradation from sigma=0 to sigma=2 (c_pre=0) is smaller for sf_srpt than for srpt",
+      "falsified_if": "sf_srpt degrades at least as much as srpt",
+      "hypothesis": "information value is policy-specific"
+    },
+    {
+      "id": "P8",
+      "claim": "EASY backfill is robust to estimation error",
+      "criterion": "|mean_jct(easy_backfill, sigma=2) / mean_jct(easy_backfill, sigma=0) - 1| < 0.15 in trace_like",
+      "falsified_if": "the change exceeds 15%",
+      "hypothesis": "why the practical baseline is hard to beat"
+    },
+    {
+      "id": "P9",
+      "claim": "FCFS is a valid control: neither friction touches it",
+      "criterion": "max |mean_jct(fcfs, cell) / mean_jct(fcfs, sigma=0,c_pre=0) - 1| < 0.03 across all cells of a mix",
+      "falsified_if": "any cell moves more than 3%",
+      "hypothesis": "instrument check"
+    },
+    {
+      "id": "P10",
+      "claim": "In gang_heavy at rho=0.85 FCFS is beyond its stability region (measured rho_max 0.646) and its backlog grows in every cell",
+      "criterion": "backlog_growing is true for fcfs in every gang_heavy cell",
+      "falsified_if": "any gang_heavy fcfs cell is not flagged",
+      "hypothesis": "H4 stability-region-dominant"
+    }
+  ],
+  "declared_unknowns": [
+    "whether a sigma crossover exists above sigma=2.0",
+    "whether the c_pre crossover location depends on the mix",
+    "the shape of the reversal contour between the two axes (only 4x3 grid points are measured)"
+  ],
+  "rules": [
+    "This file is not edited after sealing. Its sha256 is recorded in the episode note before the sweep runs.",
+    "Failed predictions stay in the ledger as failed.",
+    "Calibration findings listed above are NOT counted as predictions."
+  ]
+}

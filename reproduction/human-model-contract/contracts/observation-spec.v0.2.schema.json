@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scientific-human-model.local/schemas/observation-spec.v0.2.json",
+  "title": "ObservationSpec v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "observation_id",
+    "dataset",
+    "subject",
+    "trial",
+    "timebase",
+    "coordinate_spaces",
+    "channels",
+    "processing_passes",
+    "source_consistency_checks",
+    "source_consistency_warnings",
+    "rights",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": { "const": "observation-spec.v0.2" },
+    "observation_id": { "type": "string", "minLength": 1 },
+    "dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dataset_id", "source_uri", "local_artifact_status"],
+      "properties": {
+        "dataset_id": { "type": "string", "minLength": 1 },
+        "source_uri": { "type": "string", "minLength": 1 },
+        "local_artifact_status": { "enum": ["available", "not_downloaded", "restricted", "missing"] },
+        "content_hash": { "type": ["string", "null"] }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subject_id", "identity_status", "population_tags"],
+      "properties": {
+        "subject_id": { "type": "string", "minLength": 1 },
+        "identity_status": { "enum": ["confirmed", "pseudonymous", "unknown"] },
+        "population_tags": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "trial": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trial_id", "task", "condition", "condition_status"],
+      "properties": {
+        "trial_id": { "type": "string", "minLength": 1 },
+        "task": { "type": "string", "minLength": 1 },
+        "condition": { "type": "string", "minLength": 1 },
+        "condition_status": { "enum": ["confirmed", "candidate", "unknown"] }
+      }
+    },
+    "timebase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sample_rate_hz", "sample_rate_status", "time_origin", "synchronization_status"],
+      "properties": {
+        "sample_rate_hz": { "type": ["number", "null"], "exclusiveMinimum": 0 },
+        "sample_rate_status": { "enum": ["confirmed", "estimated", "unknown"] },
+        "time_origin": { "type": "string", "minLength": 1 },
+        "synchronization_status": { "enum": ["confirmed", "estimated", "unknown"] }
+      }
+    },
+    "coordinate_spaces": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["coordinate_space_id", "representation_kind", "dimension", "coordinate_names", "coordinate_units", "basis_source", "status", "source_refs"],
+        "properties": {
+          "coordinate_space_id": { "type": "string", "minLength": 1 },
+          "representation_kind": { "enum": ["cartesian_frame", "generalized_coordinates", "instrument_frame", "mixed", "unknown"] },
+          "dimension": { "type": ["integer", "null"], "minimum": 1 },
+          "coordinate_names": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+          "coordinate_units": { "type": "array", "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+          "basis_source": { "type": "string", "minLength": 1 },
+          "status": { "enum": ["confirmed", "partially_confirmed", "unknown"] },
+          "source_refs": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+        }
+      }
+    },
+    "channels": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["channel_id", "quantity_kind", "unit", "frame_id", "coordinate_space_id", "evidence_class", "processing_pass_id", "missingness", "leakage_tags"],
+        "properties": {
+          "channel_id": { "type": "string", "minLength": 1 },
+          "quantity_kind": { "type": "string", "minLength": 1 },
+          "unit": { "type": "string", "minLength": 1 },
+          "frame_id": { "type": "string", "minLength": 1 },
+          "coordinate_space_id": { "type": "string", "minLength": 1 },
+          "evidence_class": { "enum": ["measured", "derived", "model_derived", "synthetic", "unknown"] },
+          "processing_pass_id": { "type": "string", "minLength": 1 },
+          "missingness": { "enum": ["none", "flagged", "unknown"] },
+          "leakage_tags": { "type": "array", "uniqueItems": true, "items": { "type": "string" } }
+        }
+      }
+    },
+    "processing_passes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["processing_pass_id", "inputs", "operations", "uses_target_measurement"],
+        "properties": {
+          "processing_pass_id": { "type": "string", "minLength": 1 },
+          "inputs": { "type": "array", "items": { "type": "string" } },
+          "operations": { "type": "array", "items": { "type": "string" } },
+          "uses_target_measurement": { "type": "boolean" }
+        }
+      }
+    },
+    "source_consistency_checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check_id", "declared_field", "declared_value", "observed_field", "observed_value", "consistent", "warning_id"],
+        "properties": {
+          "check_id": { "type": "string", "minLength": 1 },
+          "declared_field": { "type": "string", "minLength": 1 },
+          "declared_value": {},
+          "observed_field": { "type": "string", "minLength": 1 },
+          "observed_value": {},
+          "consistent": { "type": "boolean" },
+          "warning_id": { "type": ["string", "null"] }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "consistent": { "const": false } }, "required": ["consistent"] },
+            "then": { "properties": { "warning_id": { "type": "string", "minLength": 1 } } },
+            "else": { "properties": { "warning_id": { "type": "null" } } }
+          }
+        ]
+      }
+    },
+    "source_consistency_warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["warning_id", "severity", "status", "message", "affected_refs", "behavior"],
+        "properties": {
+          "warning_id": { "type": "string", "minLength": 1 },
+          "severity": { "enum": ["warning", "error"] },
+          "status": { "enum": ["unresolved", "accepted_with_boundary", "resolved", "invalidated"] },
+          "message": { "type": "string", "minLength": 1 },
+          "affected_refs": { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } },
+          "behavior": { "enum": ["continue_with_warning", "fail_closed", "exclude_affected_data"] }
+        }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["license_status", "license", "redistribution"],
+      "properties": {
+        "license_status": { "enum": ["confirmed", "unknown", "restricted"] },
+        "license": { "type": ["string", "null"] },
+        "redistribution": { "enum": ["allowed", "not_allowed", "unknown"] }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_refs", "available_at", "recorded_at"],
+      "properties": {
+        "source_refs": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+        "available_at": { "type": ["string", "null"], "format": "date-time" },
+        "recorded_at": { "type": "string", "format": "date-time" }
+      }
+    }
+  }
+}

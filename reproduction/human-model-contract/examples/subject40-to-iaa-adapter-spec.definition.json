@@ -1,0 +1,79 @@
+{
+  "schema_version": "adapter-spec.v0.1",
+  "adapter_id": "addbiomechanics-subject40-to-iaa-18d",
+  "adapter_version": "0.1.0-definition",
+  "status": "blocked",
+  "source_observation_ref": "examples/addbiomechanics-subject40-observation-spec.example.json",
+  "target_model_ref": "examples/iaa-limited-human-model-spec.example.json",
+  "mappings": [
+    {
+      "mapping_id": "M1-kinematics-acc-to-iaa-input",
+      "source_channel_id": "kinematics_pass.generalized_accelerations",
+      "target_block_ids": [
+        "lower_trunk_com_acceleration",
+        "trunk_relative_angular_velocity_derivative",
+        "shoulder_relative_angular_velocity_derivative",
+        "elbow_relative_angular_velocity_derivative",
+        "wrist_relative_angular_velocity_derivative",
+        "racket_hand_relative_angular_velocity_derivative"
+      ],
+      "transform_kind": "unresolved",
+      "status": "unresolved",
+      "required_evidence": [
+        "source-to-GCS segment transforms for each frame",
+        "IAA lower-trunk COM and TrCS/ShCS/ElCS/WrCS/RacketSCS construction",
+        "racket observation absent from this source sample or an explicit no-racket mapping"
+      ],
+      "loss_fields": [
+        "source has 37 active DOFs while embedded XML lists 39 coordinates including dependent knee-beta coordinates",
+        "source right arm has 7 coordinates while IAA shoulder/elbow/wrist has 9 basis components",
+        "source pelvis translation is not lower-trunk COM acceleration",
+        "racket-specific state",
+        "IAA joint-basis semantics"
+      ]
+    },
+    {
+      "mapping_id": "M2-dynamics-load-to-iaa-output",
+      "source_channel_id": "dynamics_pass.joint_torques",
+      "target_block_ids": [
+        "base_resultant_force",
+        "trunk_torque",
+        "shoulder_torque",
+        "elbow_torque",
+        "wrist_torque",
+        "racket_torque"
+      ],
+      "transform_kind": "unresolved",
+      "status": "unresolved",
+      "required_evidence": [
+        "generalized-load to GCS joint-torque transform",
+        "segment scope equivalence",
+        "sign and unit audit"
+      ],
+      "loss_fields": ["different model topology", "different generalized coordinates"]
+    }
+  ],
+  "unmapped_source": [
+    "OpenSim coordinates outside IAA right-upper-limb+racket scope",
+    "left-side and lower-limb dynamics",
+    "two-foot contact-body representation",
+    "right-arm coordinates arm_flex_r, arm_add_r, arm_rot_r, elbow_flex_r, pro_sup_r, wrist_flex_r, wrist_dev_r require non-positional mapping"
+  ],
+  "unmapped_target": [
+    "racket-hand relative angular velocity derivative",
+    "racket torque",
+    "IAA INT and GRA source decomposition"
+  ],
+  "invariants": [
+    "never map by array position alone",
+    "preserve source and target frame identifiers",
+    "do not use dynamics-pass values as inputs when force or torque is a target",
+    "unresolved mapping remains UNKNOWN and produces no numerical output"
+  ],
+  "failure_behavior": [
+    "fail closed while any required mapping is unresolved",
+    "emit a structured unmapped-field report",
+    "do not interpolate absent racket state",
+    "do not relabel OpenSim generalized loads as IAA GCS torques"
+  ]
+}

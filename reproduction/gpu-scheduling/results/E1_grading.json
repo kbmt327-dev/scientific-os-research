@@ -1,0 +1,52 @@
+[
+  {
+    "id": "P1",
+    "pass": true,
+    "detail": "ratio=0.6586"
+  },
+  {
+    "id": "P2",
+    "pass": true,
+    "detail": "ratio=0.9091"
+  },
+  {
+    "id": "P3",
+    "pass": true,
+    "detail": "ratio=inf"
+  },
+  {
+    "id": "P4",
+    "pass": true,
+    "detail": "ratio(c=0.05)=0.7937, ratio(c=0.2)=inf"
+  },
+  {
+    "id": "P5",
+    "pass": true,
+    "detail": "ratio=0.1286"
+  },
+  {
+    "id": "P6",
+    "pass": false,
+    "detail": "trace_like/c=0.05: 1.85, trace_like/c=0.2: 1.25, gang_heavy/c=0.05: 1.62, gang_heavy/c=0.2: 1.88"
+  },
+  {
+    "id": "P7",
+    "pass": false,
+    "detail": "sf_srpt x1.363 vs srpt x1.140"
+  },
+  {
+    "id": "P8",
+    "pass": false,
+    "detail": "change=-16.16% (1.583 -> 1.327)"
+  },
+  {
+    "id": "P9",
+    "pass": true,
+    "detail": "max deviation=0.00%"
+  },
+  {
+    "id": "P10",
+    "pass": true,
+    "detail": "diverged cells 4/4, util/rho=0.9010"
+  }
+]

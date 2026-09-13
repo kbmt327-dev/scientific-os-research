@@ -1,0 +1,83 @@
+{
+  "schema_version": "iaa-preregistration-draft.v1",
+  "protocol_id": "IAA-2X2-TIME-COM-001",
+  "version": "0.1.0-draft",
+  "run_id": "manual-20260913-ep0008",
+  "as_of": "2026-09-13",
+  "status": "draft_not_sealed",
+  "prospective_data_authorized": false,
+  "design": {
+    "type": "within-subject 2x2",
+    "factor_time": ["long", "short"],
+    "factor_backward_com": ["low", "high"],
+    "assignment_is_primary": true,
+    "reclassification_by_achieved_value": false,
+    "pilot_excluded_from_confirmatory_sample": true
+  },
+  "coding": {
+    "time": {"long": -0.5, "short": 0.5},
+    "backward_com": {"low": -0.5, "high": 0.5}
+  },
+  "coordinate_system": {
+    "origin": "standard initial position on calibrated court plane",
+    "positive_x": "horizontal from initial position toward net center",
+    "positive_z": "vertical upward",
+    "positive_y": "+Z cross +X",
+    "backward_com_metric": "v_CoM dot (-X)",
+    "target_axis": "fixed unit vector from calibrated nominal impact center to fixed target center"
+  },
+  "events": {
+    "cue_onset": "synchronized cue-device TTL rising edge",
+    "ground_contact": "resultant vertical GRF above 20 N for at least 10 ms",
+    "contact": "first visible shuttle-stringbed contact frame in synchronized video at 1000 fps or higher"
+  },
+  "primary_outcome": {
+    "metric": "mean racket-head ground-frame velocity projected onto fixed target unit vector",
+    "window_ms_relative_to_contact": [-10, -2],
+    "unit": "m/s"
+  },
+  "manipulation_checks": {
+    "time": "contact minus cue_onset",
+    "backward_com": "mean v_CoM dot (-X) in GC-20 ms to GC+20 ms",
+    "failure_rule": "report ITT estimate and manipulation failure; do not relabel trials or claim causal discrimination"
+  },
+  "mechanistic_windows": {
+    "early": "GC to midpoint of GC-contact interval",
+    "late": "midpoint of GC-contact interval to contact-10 ms"
+  },
+  "primary_model": {
+    "fixed_effects": ["time", "backward_com", "time_x_backward_com", "trial_order", "block"],
+    "random_effects": ["participant_intercept", "participant_time_slope", "participant_backward_com_slope", "participant_interaction_slope"],
+    "fallback_order": ["correlated_time_backward_interaction_slopes", "uncorrelated_time_backward_interaction_slopes", "uncorrelated_time_backward_slopes", "random_intercept_only"],
+    "coprimary_terms": ["beta_time", "beta_backward_com", "beta_interaction"],
+    "multiplicity": "two-sided Holm familywise alpha 0.05"
+  },
+  "exclusion_principles": {
+    "retain_all_attempts_in_ledger": true,
+    "no_outcome_based_exclusion": true,
+    "no_primary_window_interpolation": true,
+    "force_plate_miss_only_invalidates_force_dependent_outcomes": true,
+    "primary_participant_requirement": "at least one valid primary outcome in every assigned cell",
+    "complete_dose_sensitivity": "at least four valid trials in every cell"
+  },
+  "unresolved_before_seal": [
+    "ethics and safety criteria",
+    "equipment feasibility",
+    "T_long and T_short",
+    "backward-state manipulation geometry",
+    "minimum manipulation margins",
+    "shuttle-feed tolerance",
+    "rest rule",
+    "minimum important effect",
+    "empirical random-slope SD",
+    "technical missingness and attrition allowance",
+    "interaction priority and final sample size",
+    "analysis code and environment hashes",
+    "confirmatory data cutoff and sealed prediction hash"
+  ],
+  "references": {
+    "human_readable_protocol": "Projects/Scientific Scientist/IAA/Protocol-0001 2x2 Time-CoM Experiment.md",
+    "power_script": "Projects/Scientific Scientist/IAA/analysis/ep0008_power_simulation.py",
+    "power_summary": "Projects/Scientific Scientist/IAA/evidence/EP-0008-power-sensitivity.json"
+  }
+}

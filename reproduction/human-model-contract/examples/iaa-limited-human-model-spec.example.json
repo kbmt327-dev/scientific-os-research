@@ -1,0 +1,146 @@
+{
+  "schema_version": "human-model-spec.v0.1",
+  "model_id": "iaa-right-upper-limb-racket-5link",
+  "model_version": "recovered-matlab-20260906-adapter-draft",
+  "status": "candidate",
+  "context_of_use": {
+    "population": "UNKNOWN participant mapping; badminton forehand data only",
+    "tasks": ["observed badminton forehand inverse analysis"],
+    "quantities_of_interest": ["18 generalized loads", "IAA source contributions"],
+    "operating_range": "observed trajectories at 200 Hz; no forward motion generation"
+  },
+  "components": [
+    {
+      "component_id": "iaa-newton-euler-5link",
+      "kind": "dynamics",
+      "implementation": "iaa-python deterministic inverse dynamics adapter",
+      "version": "0.1.0",
+      "license_status": "unknown",
+      "license": null
+    },
+    {
+      "component_id": "recovered-segment-parameters",
+      "kind": "anatomy",
+      "implementation": "saved segdat parameter set",
+      "version": "UNKNOWN",
+      "license_status": "unknown",
+      "license": null
+    }
+  ],
+  "coordinate_frames": [
+    {
+      "frame_id": "GCS",
+      "kind": "global",
+      "handedness": "right",
+      "origin": "back-boundary and center-line intersection",
+      "axes": [
+        { "axis": "x", "meaning": "toward net", "status": "confirmed" },
+        { "axis": "y", "meaning": "Z cross X", "status": "confirmed" },
+        { "axis": "z", "meaning": "up", "status": "confirmed" }
+      ],
+      "orthogonality": "orthonormal",
+      "parent_frame_id": null
+    },
+    {
+      "frame_id": "TrCS",
+      "kind": "joint",
+      "handedness": "unknown",
+      "origin": "trunk joint origin",
+      "axes": [
+        { "axis": "x", "meaning": "basis column 1; anatomical positive sign unresolved", "status": "historical_label" },
+        { "axis": "y", "meaning": "basis column 2; anatomical positive sign unresolved", "status": "historical_label" },
+        { "axis": "z", "meaning": "basis column 3; anatomical positive sign unresolved", "status": "historical_label" }
+      ],
+      "orthogonality": "oblique",
+      "parent_frame_id": "GCS"
+    },
+    {
+      "frame_id": "ShCS",
+      "kind": "joint",
+      "handedness": "unknown",
+      "origin": "right shoulder joint center",
+      "axes": [
+        { "axis": "x", "meaning": "basis column 1", "status": "historical_label" },
+        { "axis": "y", "meaning": "basis column 2", "status": "historical_label" },
+        { "axis": "z", "meaning": "basis column 3", "status": "historical_label" }
+      ],
+      "orthogonality": "oblique",
+      "parent_frame_id": "GCS"
+    },
+    {
+      "frame_id": "ElCS",
+      "kind": "joint",
+      "handedness": "unknown",
+      "origin": "right elbow joint center",
+      "axes": [
+        { "axis": "x", "meaning": "basis column 1", "status": "historical_label" },
+        { "axis": "y", "meaning": "basis column 2", "status": "historical_label" },
+        { "axis": "z", "meaning": "basis column 3", "status": "historical_label" }
+      ],
+      "orthogonality": "oblique",
+      "parent_frame_id": "GCS"
+    },
+    {
+      "frame_id": "WrCS",
+      "kind": "joint",
+      "handedness": "unknown",
+      "origin": "right wrist joint center",
+      "axes": [
+        { "axis": "x", "meaning": "basis column 1", "status": "historical_label" },
+        { "axis": "y", "meaning": "basis column 2", "status": "historical_label" },
+        { "axis": "z", "meaning": "basis column 3", "status": "historical_label" }
+      ],
+      "orthogonality": "oblique",
+      "parent_frame_id": "GCS"
+    },
+    {
+      "frame_id": "RacketSCS",
+      "kind": "tool",
+      "handedness": "unknown",
+      "origin": "racket segment origin",
+      "axes": [
+        { "axis": "x", "meaning": "segment basis column 1", "status": "confirmed" },
+        { "axis": "y", "meaning": "segment basis column 2", "status": "confirmed" },
+        { "axis": "z", "meaning": "Bottom-to-Top direction", "status": "confirmed" }
+      ],
+      "orthogonality": "orthonormal",
+      "parent_frame_id": "GCS"
+    }
+  ],
+  "dynamics_interface": {
+    "equation": "tau = Itheta qdd - INT - GRA",
+    "input_blocks": [
+      { "block_id": "lower_trunk_com_acceleration", "source_indices": [1, 2, 3], "quantity_kind": "linear_acceleration", "unit": "m/s^2", "frame_id": "GCS", "axes": ["x", "y", "z"], "semantics": "lower-trunk COM acceleration", "semantic_status": "confirmed" },
+      { "block_id": "trunk_relative_angular_velocity_derivative", "source_indices": [4, 5, 6], "quantity_kind": "relative_angular_velocity_derivative", "unit": "rad/s^2", "frame_id": "TrCS", "axes": ["basis_1", "basis_2", "basis_3"], "semantics": "relative angular velocity derivative; not automatically Euler-angle acceleration", "semantic_status": "confirmed" },
+      { "block_id": "shoulder_relative_angular_velocity_derivative", "source_indices": [7, 8, 9], "quantity_kind": "relative_angular_velocity_derivative", "unit": "rad/s^2", "frame_id": "ShCS", "axes": ["basis_1", "basis_2", "basis_3"], "semantics": "relative angular velocity derivative", "semantic_status": "confirmed" },
+      { "block_id": "elbow_relative_angular_velocity_derivative", "source_indices": [10, 11, 12], "quantity_kind": "relative_angular_velocity_derivative", "unit": "rad/s^2", "frame_id": "ElCS", "axes": ["basis_1", "basis_2", "basis_3"], "semantics": "relative angular velocity derivative", "semantic_status": "confirmed" },
+      { "block_id": "wrist_relative_angular_velocity_derivative", "source_indices": [13, 14, 15], "quantity_kind": "relative_angular_velocity_derivative", "unit": "rad/s^2", "frame_id": "WrCS", "axes": ["basis_1", "basis_2", "basis_3"], "semantics": "relative angular velocity derivative", "semantic_status": "confirmed" },
+      { "block_id": "racket_hand_relative_angular_velocity_derivative", "source_indices": [16, 17, 18], "quantity_kind": "relative_angular_velocity_derivative", "unit": "rad/s^2", "frame_id": "RacketSCS", "axes": ["basis_1", "basis_2", "basis_3"], "semantics": "racket-hand relative angular velocity derivative", "semantic_status": "confirmed" }
+    ],
+    "output_blocks": [
+      { "block_id": "base_resultant_force", "source_indices": [1, 2, 3], "quantity_kind": "force", "unit": "N", "frame_id": "GCS", "axes": ["x", "y", "z"], "semantics": "base resultant force", "semantic_status": "confirmed" },
+      { "block_id": "trunk_torque", "source_indices": [4, 5, 6], "quantity_kind": "torque", "unit": "N*m", "frame_id": "GCS", "axes": ["x", "y", "z"], "semantics": "global torque components; historical anatomical labels are not authoritative", "semantic_status": "confirmed" },
+      { "block_id": "shoulder_torque", "source_indices": [7, 8, 9], "quantity_kind": "torque", "unit": "N*m", "frame_id": "GCS", "axes": ["x", "y", "z"], "semantics": "global torque components", "semantic_status": "confirmed" },
+      { "block_id": "elbow_torque", "source_indices": [10, 11, 12], "quantity_kind": "torque", "unit": "N*m", "frame_id": "GCS", "axes": ["x", "y", "z"], "semantics": "global torque components", "semantic_status": "confirmed" },
+      { "block_id": "wrist_torque", "source_indices": [13, 14, 15], "quantity_kind": "torque", "unit": "N*m", "frame_id": "GCS", "axes": ["x", "y", "z"], "semantics": "global torque components", "semantic_status": "confirmed" },
+      { "block_id": "racket_torque", "source_indices": [16, 17, 18], "quantity_kind": "torque", "unit": "N*m", "frame_id": "GCS", "axes": ["x", "y", "z"], "semantics": "global racket torque components", "semantic_status": "confirmed" }
+    ]
+  },
+  "provenance": {
+    "source_refs": [
+      "docs/coordinate_conventions.md",
+      "docs/mathematical_model.md",
+      "Projects/Scientific Scientist/Human Model/Inventory 2026-09-12.md"
+    ],
+    "created_at": "2026-09-12T08:40:06Z",
+    "parameterization_status": "unknown"
+  },
+  "unsupported_claims": [
+    "full-body human model",
+    "muscle or neural controller model",
+    "forward motion generation",
+    "anatomical meaning of historical plot labels",
+    "public redistribution rights",
+    "participant-general prediction"
+  ]
+}

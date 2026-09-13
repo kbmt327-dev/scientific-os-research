@@ -1,0 +1,195 @@
+{
+  "schema_version": "observation-spec.v0.2",
+  "observation_id": "addbiomechanics-1.0-tiziana2019-subject40-trial0",
+  "dataset": {
+    "dataset_id": "addbiomechanics-1.0-core",
+    "source_uri": "zip+http://archive.simtk.org/addbiomechanics/addbiomechanics.zip!/train/With_Arm/Tiziana2019_Formatted_With_Arm/Subject40/Subject40.b3d",
+    "local_artifact_status": "available",
+    "content_hash": "sha256:01E6B23C575B94974261756390129BA3E44F10149D239D0E98313EB29D6E08CF"
+  },
+  "subject": {
+    "subject_id": "Tiziana2019/Subject40",
+    "identity_status": "pseudonymous",
+    "population_tags": ["pediatric", "with-arm-model"]
+  },
+  "trial": {
+    "trial_id": "t1_segment_0",
+    "task": "t1; semantic task label not independently resolved",
+    "condition": "UNKNOWN",
+    "condition_status": "unknown"
+  },
+  "timebase": {
+    "sample_rate_hz": 61.30434782608696,
+    "sample_rate_status": "confirmed",
+    "time_origin": "trial frame 0",
+    "synchronization_status": "confirmed"
+  },
+  "coordinate_spaces": [
+    {
+      "coordinate_space_id": "opensim-active-generalized-coordinates",
+      "representation_kind": "generalized_coordinates",
+      "dimension": 37,
+      "coordinate_names": [
+        "arm_flex_r",
+        "arm_add_r",
+        "arm_rot_r",
+        "elbow_flex_r",
+        "pro_sup_r",
+        "wrist_flex_r",
+        "wrist_dev_r"
+      ],
+      "coordinate_units": ["m", "rad"],
+      "basis_source": "B3D header active DOF ordering plus embedded OpenSim XML; only the right-arm subset is copied here",
+      "status": "partially_confirmed",
+      "source_refs": [
+        "evidence/EP-0003-b3d-sample-vc0001.json#b3d_observations",
+        "embedded OpenSim XML in the hashed Subject40 B3D"
+      ]
+    },
+    {
+      "coordinate_space_id": "source-force-plate-frames",
+      "representation_kind": "instrument_frame",
+      "dimension": 6,
+      "coordinate_names": ["force_x", "force_y", "force_z", "moment_x", "moment_y", "moment_z"],
+      "coordinate_units": ["N", "N*m"],
+      "basis_source": "B3D force-plate metadata; full transform parity awaits Nimble API execution",
+      "status": "partially_confirmed",
+      "source_refs": ["evidence/EP-0003-b3d-sample-vc0001.json#trial_0"]
+    }
+  ],
+  "channels": [
+    {
+      "channel_id": "kinematics_pass.generalized_positions",
+      "quantity_kind": "generalized_position_37d",
+      "unit": "mixed_by_coordinate",
+      "frame_id": "embedded-opensim-model-coordinates",
+      "coordinate_space_id": "opensim-active-generalized-coordinates",
+      "evidence_class": "derived",
+      "processing_pass_id": "kinematics_pass",
+      "missingness": "flagged",
+      "leakage_tags": []
+    },
+    {
+      "channel_id": "kinematics_pass.generalized_velocities",
+      "quantity_kind": "generalized_velocity_37d",
+      "unit": "mixed_by_coordinate_per_second",
+      "frame_id": "embedded-opensim-model-coordinates",
+      "coordinate_space_id": "opensim-active-generalized-coordinates",
+      "evidence_class": "derived",
+      "processing_pass_id": "kinematics_pass",
+      "missingness": "flagged",
+      "leakage_tags": []
+    },
+    {
+      "channel_id": "kinematics_pass.generalized_accelerations",
+      "quantity_kind": "generalized_acceleration_37d",
+      "unit": "mixed_by_coordinate_per_second_squared",
+      "frame_id": "embedded-opensim-model-coordinates",
+      "coordinate_space_id": "opensim-active-generalized-coordinates",
+      "evidence_class": "derived",
+      "processing_pass_id": "kinematics_pass",
+      "missingness": "flagged",
+      "leakage_tags": []
+    },
+    {
+      "channel_id": "raw_force_plate.wrench",
+      "quantity_kind": "two_force_plate_wrenches",
+      "unit": "N_and_N*m",
+      "frame_id": "source-force-plate-frames",
+      "coordinate_space_id": "source-force-plate-frames",
+      "evidence_class": "measured",
+      "processing_pass_id": "raw_measurement",
+      "missingness": "flagged",
+      "leakage_tags": ["target_measurement_for_kinetics"]
+    },
+    {
+      "channel_id": "dynamics_pass.joint_torques",
+      "quantity_kind": "generalized_load_37d",
+      "unit": "mixed_by_coordinate",
+      "frame_id": "embedded-opensim-model-coordinates",
+      "coordinate_space_id": "opensim-active-generalized-coordinates",
+      "evidence_class": "model_derived",
+      "processing_pass_id": "dynamics_pass",
+      "missingness": "flagged",
+      "leakage_tags": ["uses_force_plate", "candidate_target_derived_from_target_measurement"]
+    }
+  ],
+  "processing_passes": [
+    {
+      "processing_pass_id": "raw_measurement",
+      "inputs": [],
+      "operations": ["29 marker trajectories", "2 force plates"],
+      "uses_target_measurement": false
+    },
+    {
+      "processing_pass_id": "kinematics_pass",
+      "inputs": ["marker trajectories"],
+      "operations": ["AddBiomechanics kinematics"],
+      "uses_target_measurement": false
+    },
+    {
+      "processing_pass_id": "low_pass_filter_pass",
+      "inputs": ["kinematics_pass"],
+      "operations": ["low-pass filter"],
+      "uses_target_measurement": false
+    },
+    {
+      "processing_pass_id": "dynamics_pass",
+      "inputs": ["low_pass_filter_pass", "raw_force_plate.wrench"],
+      "operations": ["AddBiomechanics dynamics"],
+      "uses_target_measurement": true
+    }
+  ],
+  "source_consistency_checks": [
+    {
+      "check_id": "SC-001-trial-count",
+      "declared_field": "header.num_trials",
+      "declared_value": 0,
+      "observed_field": "header.trial_header_count",
+      "observed_value": 1,
+      "consistent": false,
+      "warning_id": "SW-001-trial-count"
+    },
+    {
+      "check_id": "SC-002-joint-count",
+      "declared_field": "header.num_joints",
+      "declared_value": 0,
+      "observed_field": "embedded_opensim_xml.joint_count",
+      "observed_value": 22,
+      "consistent": false,
+      "warning_id": "SW-002-joint-count"
+    }
+  ],
+  "source_consistency_warnings": [
+    {
+      "warning_id": "SW-001-trial-count",
+      "severity": "warning",
+      "status": "accepted_with_boundary",
+      "message": "Declared trial count is zero while one repeated trial header is present; adapters must enumerate repeated fields instead of trusting the summary count.",
+      "affected_refs": ["header.num_trials", "header.trials"],
+      "behavior": "continue_with_warning"
+    },
+    {
+      "warning_id": "SW-002-joint-count",
+      "severity": "warning",
+      "status": "accepted_with_boundary",
+      "message": "Declared joint count is zero while the embedded OpenSim XML contains 22 joints; model topology must be read from the embedded model.",
+      "affected_refs": ["header.num_joints", "embedded_opensim_xml.joints"],
+      "behavior": "continue_with_warning"
+    }
+  ],
+  "rights": {
+    "license_status": "confirmed",
+    "license": "CC BY 4.0",
+    "redistribution": "allowed"
+  },
+  "provenance": {
+    "source_refs": [
+      "https://addbiomechanics.org/download_data.html",
+      "https://nimblephysics.org/docs/working-with-addbiomechanics-data.html",
+      "https://raw.githubusercontent.com/keenon/nimblephysics/master/dart/proto/SubjectOnDisk.proto"
+    ],
+    "available_at": "2025-04-02T18:47:20Z",
+    "recorded_at": "2026-09-12T08:52:12Z"
+  }
+}

@@ -1,0 +1,87 @@
+
+=== trace_like  (rho=0.85, N=64, n_jobs=30000, 5 seeds) ===
+mean JCT   (D = diverged: backlog grows over the window)
+policy         sigma   c=0.0    c=0.05   c=0.2  
+fcfs             0.0      2.77      2.77      2.77 
+fcfs             0.5      2.77      2.77      2.77 
+fcfs             1.0      2.77      2.77      2.77 
+fcfs             2.0      2.77      2.77      2.77 
+easy_backfill    0.0      1.58      1.58      1.58 
+easy_backfill    0.5      1.97      1.97      1.97 
+easy_backfill    1.0      1.83      1.83      1.83 
+easy_backfill    2.0      1.33      1.33      1.33 
+srpt             0.0      1.13      1.25      24.6D
+srpt             0.5      1.15      1.33      34.3D
+srpt             1.0      1.18      1.43      46.2D
+srpt             2.0      1.20      1.46      49.6D
+sf_srpt          0.0      1.35      1.62      17.1D
+sf_srpt          0.5      1.39      1.72      20.9D
+sf_srpt          1.0      1.45      1.82      24.0D
+sf_srpt          2.0      1.54      1.93      22.3D
+
+  reversal map: mean_jct(srpt)/mean_jct(easy_backfill)  (>1 = backfill wins)
+    sigma=0.0     0.717   0.794     inf
+    sigma=0.5     0.596   0.688     inf
+    sigma=1.0     0.659   0.791     inf
+    sigma=2.0     0.909   1.102     inf
+  sf_srpt/srpt  (<1 = ServerFilling wins)
+    sigma=0.0     1.201   1.300   0.704
+    sigma=0.5     1.213   1.289   0.607
+    sigma=1.0     1.235   1.277   0.518
+    sigma=2.0     1.273   1.316   0.448
+
+=== gang_heavy  (rho=0.85, N=64, n_jobs=30000, 5 seeds) ===
+mean JCT   (D = diverged: backlog grows over the window)
+policy         sigma   c=0.0    c=0.05   c=0.2  
+fcfs             0.0    1327.6D   1327.6D   1327.6D
+fcfs             0.5    1327.6D   1327.6D   1327.6D
+fcfs             1.0    1327.6D   1327.6D   1327.6D
+fcfs             2.0    1327.6D   1327.6D   1327.6D
+easy_backfill    0.0      7.84      7.84      7.84 
+easy_backfill    0.5      9.59      9.59      9.59 
+easy_backfill    1.0     11.86     11.86     11.86 
+easy_backfill    2.0     21.30     21.30     21.30 
+srpt             0.0      29.7D     58.4D    176.0D
+srpt             0.5      24.2D     50.7D    166.4D
+srpt             1.0      25.6D     52.0D    167.2D
+srpt             2.0      33.8D     54.2D    141.4D
+sf_srpt          0.0      3.54      4.18      23.3D
+sf_srpt          0.5      3.89      4.67      33.0D
+sf_srpt          1.0      4.31      5.16      34.0D
+sf_srpt          2.0      4.82      5.57     15.13 
+
+  reversal map: mean_jct(srpt)/mean_jct(easy_backfill)  (>1 = backfill wins)
+    sigma=0.0       inf     inf     inf
+    sigma=0.5       inf     inf     inf
+    sigma=1.0       inf     inf     inf
+    sigma=2.0       inf     inf     inf
+  sf_srpt/srpt  (<1 = ServerFilling wins)
+    sigma=0.0     0.000   0.000   0.129
+    sigma=0.5     0.000   0.000   0.190
+    sigma=1.0     0.000   0.000   0.196
+    sigma=2.0     0.000   0.000   0.000
+
+
+=== PRED-001 grading ===
+P1  PASS  trace_like sigma=1, c=0: srpt/backfill < 0.95
+      ratio=0.6586
+P2  PASS  trace_like sigma=2, c=0: srpt still beats backfill (<1.0)
+      ratio=0.9091
+P3  PASS  trace_like c=0.2, sigma=0: srpt loses to backfill (>1.0)
+      ratio=inf
+P4  PASS  crossover in c_pre strictly between 0.05 and 0.2
+      ratio(c=0.05)=0.7937, ratio(c=0.2)=inf
+P5  PASS  gang_heavy c=0.2: sf_srpt still beats srpt (<1.0)
+      ratio=0.1286
+P6  FAIL  lost_work_frac(sf_srpt)/lost(srpt) > 1.5 in every c>0 cell
+      trace_like/c=0.05: 1.85, trace_like/c=0.2: 1.25, gang_heavy/c=0.05: 1.62, gang_heavy/c=0.2: 1.88
+P7  FAIL  gang_heavy: sigma 0->2 degrades sf_srpt less than srpt
+      sf_srpt x1.363 vs srpt x1.140
+P8  FAIL  trace_like: backfill JCT change from sigma 0->2 within 15%
+      change=-16.16% (1.583 -> 1.327)
+P9  PASS  fcfs is untouched by the frictions (<3% across cells)
+      max deviation=0.00%
+P10  PASS  gang_heavy: fcfs backlog grows in every cell
+      diverged cells 4/4, util/rho=0.9010
+
+7/10 sealed predictions passed

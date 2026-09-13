@@ -1,0 +1,119 @@
+{
+  "schema_version": "observation-spec.v0.1",
+  "observation_id": "addbiomechanics-1.0-tiziana2019-subject40-trial0",
+  "dataset": {
+    "dataset_id": "addbiomechanics-1.0-core",
+    "source_uri": "zip+http://archive.simtk.org/addbiomechanics/addbiomechanics.zip!/train/With_Arm/Tiziana2019_Formatted_With_Arm/Subject40/Subject40.b3d",
+    "local_artifact_status": "available",
+    "content_hash": "sha256:01E6B23C575B94974261756390129BA3E44F10149D239D0E98313EB29D6E08CF"
+  },
+  "subject": {
+    "subject_id": "Tiziana2019/Subject40",
+    "identity_status": "pseudonymous",
+    "population_tags": ["pediatric", "with-arm-model"]
+  },
+  "trial": {
+    "trial_id": "t1_segment_0",
+    "task": "t1; semantic task label not independently resolved",
+    "condition": "UNKNOWN",
+    "condition_status": "unknown"
+  },
+  "timebase": {
+    "sample_rate_hz": 61.30434782608696,
+    "sample_rate_status": "confirmed",
+    "time_origin": "trial frame 0",
+    "synchronization_status": "confirmed"
+  },
+  "channels": [
+    {
+      "channel_id": "kinematics_pass.generalized_positions",
+      "quantity_kind": "generalized_position_37d",
+      "unit": "mixed_by_coordinate",
+      "frame_id": "embedded-opensim-model-coordinates",
+      "evidence_class": "derived",
+      "processing_pass_id": "kinematics_pass",
+      "missingness": "flagged",
+      "leakage_tags": []
+    },
+    {
+      "channel_id": "kinematics_pass.generalized_velocities",
+      "quantity_kind": "generalized_velocity_37d",
+      "unit": "mixed_by_coordinate_per_second",
+      "frame_id": "embedded-opensim-model-coordinates",
+      "evidence_class": "derived",
+      "processing_pass_id": "kinematics_pass",
+      "missingness": "flagged",
+      "leakage_tags": []
+    },
+    {
+      "channel_id": "kinematics_pass.generalized_accelerations",
+      "quantity_kind": "generalized_acceleration_37d",
+      "unit": "mixed_by_coordinate_per_second_squared",
+      "frame_id": "embedded-opensim-model-coordinates",
+      "evidence_class": "derived",
+      "processing_pass_id": "kinematics_pass",
+      "missingness": "flagged",
+      "leakage_tags": []
+    },
+    {
+      "channel_id": "raw_force_plate.wrench",
+      "quantity_kind": "two_force_plate_wrenches",
+      "unit": "N_and_N*m",
+      "frame_id": "source-force-plate-frames",
+      "evidence_class": "measured",
+      "processing_pass_id": "raw_measurement",
+      "missingness": "flagged",
+      "leakage_tags": ["target_measurement_for_kinetics"]
+    },
+    {
+      "channel_id": "dynamics_pass.joint_torques",
+      "quantity_kind": "generalized_load_37d",
+      "unit": "mixed_by_coordinate",
+      "frame_id": "embedded-opensim-model-coordinates",
+      "evidence_class": "model_derived",
+      "processing_pass_id": "dynamics_pass",
+      "missingness": "flagged",
+      "leakage_tags": ["uses_force_plate", "candidate_target_derived_from_target_measurement"]
+    }
+  ],
+  "processing_passes": [
+    {
+      "processing_pass_id": "raw_measurement",
+      "inputs": [],
+      "operations": ["29 marker trajectories", "2 force plates"],
+      "uses_target_measurement": false
+    },
+    {
+      "processing_pass_id": "kinematics_pass",
+      "inputs": ["marker trajectories"],
+      "operations": ["AddBiomechanics kinematics"],
+      "uses_target_measurement": false
+    },
+    {
+      "processing_pass_id": "low_pass_filter_pass",
+      "inputs": ["kinematics_pass"],
+      "operations": ["low-pass filter"],
+      "uses_target_measurement": false
+    },
+    {
+      "processing_pass_id": "dynamics_pass",
+      "inputs": ["low_pass_filter_pass", "raw_force_plate.wrench"],
+      "operations": ["AddBiomechanics dynamics"],
+      "uses_target_measurement": true
+    }
+  ],
+  "rights": {
+    "license_status": "confirmed",
+    "license": "CC BY 4.0",
+    "redistribution": "allowed"
+  },
+  "provenance": {
+    "source_refs": [
+      "https://addbiomechanics.org/download_data.html",
+      "https://nimblephysics.org/docs/working-with-addbiomechanics-data.html",
+      "https://raw.githubusercontent.com/keenon/nimblephysics/master/dart/proto/SubjectOnDisk.proto"
+    ],
+    "available_at": "2025-04-02T18:47:20Z",
+    "recorded_at": "2026-09-12T08:52:12Z"
+  }
+}

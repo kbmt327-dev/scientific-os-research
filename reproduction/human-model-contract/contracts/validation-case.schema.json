@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scientific-human-model.local/schemas/validation-case.v0.1.json",
+  "title": "ValidationCase v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "status",
+    "context_of_use",
+    "model_ref",
+    "observation_ref",
+    "inputs",
+    "targets",
+    "split",
+    "baselines",
+    "metrics",
+    "leakage_rules",
+    "acceptance",
+    "failure_behavior",
+    "evidence_boundary"
+  ],
+  "properties": {
+    "schema_version": { "const": "validation-case.v0.1" },
+    "case_id": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["definition_only", "ready", "running", "evaluated", "invalidated"] },
+    "context_of_use": { "type": "string", "minLength": 1 },
+    "model_ref": { "type": "string", "minLength": 1 },
+    "observation_ref": { "type": "string", "minLength": 1 },
+    "inputs": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+    "targets": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string" } },
+    "split": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unit", "calibration", "evaluation", "independence_status"],
+      "properties": {
+        "unit": { "enum": ["participant", "trial", "record", "time_window", "unknown"] },
+        "calibration": { "type": "string", "minLength": 1 },
+        "evaluation": { "type": "string", "minLength": 1 },
+        "independence_status": { "enum": ["confirmed", "partial", "unknown"] }
+      }
+    },
+    "baselines": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["baseline_id", "description"],
+        "properties": {
+          "baseline_id": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["metric_id", "quantity", "unit", "aggregation"],
+        "properties": {
+          "metric_id": { "type": "string", "minLength": 1 },
+          "quantity": { "type": "string", "minLength": 1 },
+          "unit": { "type": "string", "minLength": 1 },
+          "aggregation": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "leakage_rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rule_id", "forbidden_tag", "applies_to"],
+        "properties": {
+          "rule_id": { "type": "string", "minLength": 1 },
+          "forbidden_tag": { "type": "string", "minLength": 1 },
+          "applies_to": { "enum": ["inputs", "calibration", "all"] }
+        }
+      }
+    },
+    "acceptance": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["criterion_id", "condition", "required"],
+        "properties": {
+          "criterion_id": { "type": "string", "minLength": 1 },
+          "condition": { "type": "string", "minLength": 1 },
+          "required": { "type": "boolean" }
+        }
+      }
+    },
+    "failure_behavior": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "evidence_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evaluation_mode", "promotion_eligible", "claims_not_supported"],
+      "properties": {
+        "evaluation_mode": { "enum": ["contract_only", "retrospective", "prospective", "synthetic"] },
+        "promotion_eligible": { "type": "boolean" },
+        "claims_not_supported": { "type": "array", "minItems": 1, "items": { "type": "string" } }
+      }
+    }
+  }
+}

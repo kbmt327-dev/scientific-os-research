@@ -1,0 +1,344 @@
+{
+  "prediction_id": "PRED-002",
+  "registered_at": "2026-09-13",
+  "status": "sealed-before-observation",
+  "world_commitment_sha256": "7c4e47709de366e295aec26be7fac462100d1c6bf3d49fcd9ec03e40930b663a",
+  "information_cutoff": "OBS-001 (level 1) and OBS-002 (level 3), both from run-seed 1 at lambda=2.8, c=4",
+  "candidate_model_M3": {
+    "arrivals": "homogeneous Poisson epochs at rate lambda/E[B]; batch size Geometric{1,2,..} with E[B]=1.9810",
+    "service": "exponential, server-specific rate",
+    "server_pool": [
+      0.693,
+      0.3625,
+      0.3625,
+      1.0275
+    ],
+    "discipline": "FCFS, infinite queue, no abandonment, no balking, no vacation",
+    "free_parameters": "E[B], mu_A=0.6930, mu_B=0.3625 (shared by servers 1 and 2), mu_C=1.0275  -> 4",
+    "capacity_c4": 2.4455,
+    "capacity_c3": 1.418,
+    "assignment_policy": "UNIDENTIFIED by OBS-001/002 (saturated); predicted separately below"
+  },
+  "baseline_for_comparison_M_M_c": {
+    "note": "M/M/4 with the nominal mu=1 predicts a stable queue with W=1.33 at lambda=2.76; it was wrong by a factor of 234 on OBS-001 and predicts the wrong stability regime here too"
+  },
+  "experiments_requested": [
+    {
+      "id": "OBS-003",
+      "command": "world.py observe --arrival-rate 1.6 --servers 4 --horizon 6000 --warmup 300 --run-seed 7 --level 3",
+      "conditions": {
+        "lam": 1.6,
+        "c": 4,
+        "horizon": 6000,
+        "warmup": 300
+      },
+      "fitted_capacity": 2.4455,
+      "predicted_rho": 0.6542629319157637,
+      "by_policy": {
+        "fastest": {
+          "throughput": {
+            "mean": 1.5994780701754387,
+            "sd": 0.028566504055151126,
+            "lo95": 1.5504868421052633,
+            "hi95": 1.6548684210526314
+          },
+          "W_mean": {
+            "mean": 3.0168838974499566,
+            "sd": 0.16421788428575382,
+            "lo95": 2.7627851208412206,
+            "hi95": 3.409459749508611
+          },
+          "Wq_mean": {
+            "mean": 1.3718482703500654,
+            "sd": 0.16264335069761127,
+            "lo95": 1.1280031081933106,
+            "hi95": 1.7446495313918509
+          },
+          "P_wait": {
+            "mean": 0.5777097737314097,
+            "sd": 0.01571119383609706,
+            "lo95": 0.5483612191897197,
+            "hi95": 0.6117750481637275
+          },
+          "W_q90": {
+            "mean": 6.863120857124599,
+            "sd": 0.4217184575309052,
+            "lo95": 6.2161716582473,
+            "hi95": 7.733823855273458
+          },
+          "W_q99": {
+            "mean": 13.270229007182877,
+            "sd": 1.4471936788914972,
+            "lo95": 11.669782496563268,
+            "hi95": 16.652329269529304
+          },
+          "Lq": {
+            "mean": 2.206818917499741,
+            "sd": 0.2802942448812094,
+            "lo95": 1.8145342455706752,
+            "hi95": 2.813038397536377
+          },
+          "util": {
+            "mean": [
+              0.6495910718038045,
+              0.6878438964648196,
+              0.6406701257186848,
+              0.6529780797147979
+            ],
+            "lo95": [
+              0.6304136566971877,
+              0.6671562398673464,
+              0.6159498663678333,
+              0.6345492278593083
+            ],
+            "hi95": [
+              0.6724545632899599,
+              0.7118360050384666,
+              0.6646737816545775,
+              0.6751409603368335
+            ]
+          }
+        },
+        "random": {
+          "throughput": {
+            "mean": 1.5932280701754384,
+            "sd": 0.02574032056063216,
+            "lo95": 1.5384473684210527,
+            "hi95": 1.6341491228070175
+          },
+          "W_mean": {
+            "mean": 3.0562292281388217,
+            "sd": 0.14059898522816702,
+            "lo95": 2.772458809964952,
+            "hi95": 3.2785775180136096
+          },
+          "Wq_mean": {
+            "mean": 1.353738237348258,
+            "sd": 0.1367927439030854,
+            "lo95": 1.0705249044441294,
+            "hi95": 1.569471873919423
+          },
+          "P_wait": {
+            "mean": 0.5892181967228243,
+            "sd": 0.017504891898456356,
+            "lo95": 0.5514998731125492,
+            "hi95": 0.6165352698346552
+          },
+          "W_q90": {
+            "mean": 6.853732045296772,
+            "sd": 0.38029820488545585,
+            "lo95": 6.075584170890363,
+            "hi95": 7.461731327322129
+          },
+          "W_q99": {
+            "mean": 13.043409727068626,
+            "sd": 0.9547467625724465,
+            "lo95": 11.532538056545192,
+            "hi95": 15.29263562885607
+          },
+          "Lq": {
+            "mean": 2.1603624079716943,
+            "sd": 0.2318389640920862,
+            "lo95": 1.7289102103984355,
+            "hi95": 2.5501212012747896
+          },
+          "util": {
+            "mean": [
+              0.645253941717169,
+              0.7371462797276123,
+              0.7353485837147437,
+              0.5946595198770421
+            ],
+            "lo95": [
+              0.6174527636817148,
+              0.7143193135783945,
+              0.7145528967809868,
+              0.5693244744248859
+            ],
+            "hi95": [
+              0.6671343684025323,
+              0.7550934891312734,
+              0.7558653909980977,
+              0.6196280358969569
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "OBS-004",
+      "command": "world.py observe --arrival-rate 1.2 --servers 3 --horizon 6000 --warmup 300 --run-seed 11 --level 3",
+      "conditions": {
+        "lam": 1.2,
+        "c": 3,
+        "horizon": 6000,
+        "warmup": 300
+      },
+      "fitted_capacity": 1.418,
+      "predicted_rho": 0.846262341325811,
+      "by_policy": {
+        "fastest": {
+          "throughput": {
+            "mean": 1.196298245614035,
+            "sd": 0.02951745245390669,
+            "lo95": 1.1517149122807018,
+            "hi95": 1.2473552631578948
+          },
+          "W_mean": {
+            "mean": 9.402122693587046,
+            "sd": 1.8593614019165294,
+            "lo95": 7.027464237704051,
+            "hi95": 13.544930437654399
+          },
+          "Wq_mean": {
+            "mean": 7.279750315478992,
+            "sd": 1.8483856552655296,
+            "lo95": 4.907735675193444,
+            "hi95": 11.39974750295879
+          },
+          "P_wait": {
+            "mean": 0.8329693550962487,
+            "sd": 0.026148070771658843,
+            "lo95": 0.7884556320406455,
+            "hi95": 0.8807546659813524
+          },
+          "W_q90": {
+            "mean": 20.988425356697867,
+            "sd": 4.781966929838293,
+            "lo95": 14.993620028755691,
+            "hi95": 31.82182669477389
+          },
+          "W_q99": {
+            "mean": 37.130788980498046,
+            "sd": 10.811279220918268,
+            "lo95": 24.344502853429578,
+            "hi95": 63.31338642495789
+          },
+          "Lq": {
+            "mean": 8.607566242283522,
+            "sd": 2.201058700663703,
+            "lo95": 5.525682731921352,
+            "hi95": 13.509803004758439
+          },
+          "util": {
+            "mean": [
+              0.8428027207244698,
+              0.8594266796782604,
+              0.8366846664156027
+            ],
+            "lo95": [
+              0.8064729533251688,
+              0.8255407658912057,
+              0.7926269272983651
+            ],
+            "hi95": [
+              0.8806050781926171,
+              0.895441904035339,
+              0.8788034699445033
+            ]
+          }
+        },
+        "random": {
+          "throughput": {
+            "mean": 1.2017499999999999,
+            "sd": 0.025649550723101548,
+            "lo95": 1.1405614035087719,
+            "hi95": 1.2410219298245615
+          },
+          "W_mean": {
+            "mean": 10.165761682932692,
+            "sd": 2.384836300575701,
+            "lo95": 7.176972242397049,
+            "hi95": 16.191801465737065
+          },
+          "Wq_mean": {
+            "mean": 8.032476447824038,
+            "sd": 2.373708066223653,
+            "lo95": 5.070046874340329,
+            "hi95": 14.056362381067933
+          },
+          "P_wait": {
+            "mean": 0.8411045109643462,
+            "sd": 0.022709248596325834,
+            "lo95": 0.7980188317495946,
+            "hi95": 0.8886629183154253
+          },
+          "W_q90": {
+            "mean": 23.1259384854175,
+            "sd": 6.6109956455181536,
+            "lo95": 15.295785262579688,
+            "hi95": 38.818048347714175
+          },
+          "W_q99": {
+            "mean": 39.2290761306147,
+            "sd": 12.523152352229626,
+            "lo95": 25.274374408596902,
+            "hi95": 64.16041428894577
+          },
+          "Lq": {
+            "mean": 9.568716758513968,
+            "sd": 2.8531810577227326,
+            "lo95": 5.8974784165622305,
+            "hi95": 17.315849929967545
+          },
+          "util": {
+            "mean": [
+              0.8262532490729996,
+              0.8688264537597771,
+              0.8684370394533817
+            ],
+            "lo95": [
+              0.7872148159243387,
+              0.8423811278272602,
+              0.8301220315516455
+            ],
+            "hi95": [
+              0.8765530776395309,
+              0.9128367984885483,
+              0.9081423963916001
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "structural_predictions": [
+    {
+      "id": "Q1",
+      "claim": "OBS-003 (lambda=1.6, c=4) is STABLE: no systematic growth of sojourn time across time deciles, and throughput equals the arrival rate to within 1%.",
+      "because": "lambda=1.6 < fitted capacity 2.4455"
+    },
+    {
+      "id": "Q2",
+      "claim": "OBS-004 (lambda=1.2, c=3) is STABLE with utilisation near 0.85.",
+      "because": "server identity is assumed to persist when c changes, so capacity(c=3) = 1.4180; this is an assumption from the world FAMILY (which I authored), not a blind inference, and it is exactly what this experiment tests"
+    },
+    {
+      "id": "Q3",
+      "claim": "In OBS-004 the three per-server rates recomputed from completions/busy-time will match servers 0,1,2 of OBS-002 to within their 95% CIs (0.6930, 0.3625, 0.3625).",
+      "falsifies_if_wrong": "server identity does not persist across configurations; the 'server pool' abstraction would have to be replaced by a per-configuration draw"
+    },
+    {
+      "id": "Q4",
+      "claim": "Exit reasons in both runs are only 'served' / 'in_system'; no abandonment, no balking."
+    },
+    {
+      "id": "Q5",
+      "claim": "In both runs, batch sizes stay Geometric with mean in [1.90, 2.06], and epoch inter-arrival times stay exponential (KS p > 0.01)."
+    },
+    {
+      "id": "Q6",
+      "claim": "The dispersion-index excess seen at bin width 80-160 in OBS-002 (ID=1.61, z=+3.6) does NOT replicate in the new runs. I am calling it sampling noise from only 36-72 bins. If it replicates in both new runs, the homogeneous Poisson epoch assumption is wrong and an MMPP/cyclic arrival term is needed."
+    },
+    {
+      "id": "Q7",
+      "claim": "Assignment policy is identified by per-server utilisation at low load. See the numeric table: 'fastest-idle' predicts the fast server (index 3) much more loaded than the slow ones; 'random idle' predicts utilisations far closer together. Whichever policy's interval contains the observation wins; if neither does, M3 is structurally wrong."
+    }
+  ],
+  "what_would_falsify_M3_as_a_whole": [
+    "either run unstable when predicted stable, or vice versa",
+    "observed mean sojourn outside the 95% predictive interval of BOTH assignment policies",
+    "per-server rates in OBS-004 inconsistent with the OBS-002 pool",
+    "any abandonment/balking rows"
+  ]
+}

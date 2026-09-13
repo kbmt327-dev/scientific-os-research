@@ -8,6 +8,7 @@ description: Published Findings, Protocols, and Methods.
 - [[gpu-scheduling/index|Scheduling principles reverse under workload mix and preemption friction]]
 - [[gpu-scheduling-phase-diagram/index|A demand-mix phase diagram, and three stability detectors that failed]]
 - [[gpu-scheduling-starvation-mechanism/index|Whole-cluster jobs, not mean gang size, decide when size-based scheduling breaks]]
+- [[gpu-scheduling-real-traces/index|Real traces contain no pool-filling job, and the starvation boundary is continuous]]
 - [[simulation-worlds/index|Blind identification of batched arrivals and heterogeneous servers]]
 
 ## Method

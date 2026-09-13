@@ -1,0 +1,67 @@
+{
+  "n_pass": 5,
+  "n_total": 10,
+  "consequence_triggered": false,
+  "results": [
+    {
+      "id": "S1",
+      "claim": "PAI: P(k=1) >= 0.50",
+      "pass": true,
+      "detail": "0.7881"
+    },
+    {
+      "id": "S2",
+      "claim": "PAI: p_64 >= 0.0005 (a 64-GPU pool is in the binding regime)",
+      "pass": true,
+      "detail": "p_64 = 0.00164 = 3.3x the threshold"
+    },
+    {
+      "id": "S3",
+      "claim": "PAI: critical pool size N* >= 128",
+      "pass": false,
+      "detail": "N* = 64; p_128 = 0.00011 < 0.0005"
+    },
+    {
+      "id": "S4",
+      "claim": "Philly: N* >= 128 and p_64 >= 0.0005",
+      "pass": false,
+      "detail": "N* = 32, p_64 = 0.00035 (below threshold), p_32 = 0.00226"
+    },
+    {
+      "id": "S5",
+      "claim": "both: P(k is power of two) >= 0.70",
+      "pass": true,
+      "detail": "PAI 0.8764, Philly 0.9995"
+    },
+    {
+      "id": "S6",
+      "claim": "both: E[k] <= 8",
+      "pass": true,
+      "detail": "PAI 2.736, Philly 1.744"
+    },
+    {
+      "id": "S7",
+      "claim": "both: work share / count share for k>=64 is >= 10x",
+      "pass": false,
+      "detail": "PAI 52.9x, Philly 8.1x"
+    },
+    {
+      "id": "S8",
+      "claim": "real tail is HEAVIER than the matched geometric family at p_64",
+      "pass": false,
+      "detail": "PAI real 0.00164 vs geom 0.00403; Philly real 0.00035 vs geom 0.00073. Both real tails are LIGHTER: my synthetic family over-represented big gangs"
+    },
+    {
+      "id": "S9",
+      "claim": "the two traces' N* agree within a factor of 8",
+      "pass": true,
+      "detail": "PAI N*=64 vs Philly N*=32, ratio 2x"
+    },
+    {
+      "id": "S10",
+      "claim": "max k >= 256 in Philly and >= 64 in PAI",
+      "pass": false,
+      "detail": "Philly max 128 (< 256), PAI max 150"
+    }
+  ]
+}

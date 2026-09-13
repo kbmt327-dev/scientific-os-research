@@ -1,0 +1,71 @@
+m class: flow balance (S starved <0.5, d degraded <0.9) and its mean JCT
+
+=== N=64, rho=0.7 ===
+   m/N    m               fcfs      easy_backfill               srpt            srpt_np  jct_1(srpt)
+   0.5   32   0.999        1.6   0.999        1.5   1.000        1.6   0.999        3.0         1.02
+ 0.531   34   1.000        1.6   1.000        1.6   1.000        1.8   1.000        3.4         1.02
+ 0.563   36   1.000        1.7   1.000        1.6   1.000        2.1   0.996        3.9         1.02
+ 0.594   38   1.000        1.7   1.000        1.7   1.000        2.5   0.996        5.3         1.02
+ 0.625   40   1.000        1.8   1.000        1.7   0.996        3.2   0.996        6.5         1.02
+ 0.688   44   1.000        2.0   1.000        1.9   0.996        5.8   0.991       11.3         1.02
+  0.75   48   1.000        2.2   1.000        2.1   0.985       17.5   0.973       35.4         1.03
+ 0.875   56   1.000        3.0   1.000        2.8   0.856d     105.1   0.175S     547.6         1.03
+   1.0   64   1.000        7.4   1.000        5.2   0.429S     361.8   0.000S     632.8         1.02
+
+=== N=64, rho=0.85 ===
+   m/N    m               fcfs      easy_backfill               srpt            srpt_np  jct_1(srpt)
+   0.5   32   0.999        3.0   0.999        2.3   0.998        3.7   0.982       12.5         1.07
+ 0.531   34   1.000        3.1   1.000        2.3   0.996        4.8   0.972       19.0         1.07
+ 0.563   36   1.000        3.2   1.000        2.4   0.996        6.2   0.945       29.3         1.07
+ 0.594   38   1.000        3.3   1.000        2.5   0.996        7.9   0.931       39.4         1.07
+ 0.625   40   1.000        3.5   1.000        2.5   0.984       13.7   0.900d      56.3         1.07
+ 0.688   44   1.000        3.8   1.000        2.7   0.949       30.9   0.654d     192.5         1.07
+  0.75   48   1.000        4.5   1.000        3.0   0.913       49.2   0.308S     372.4         1.07
+ 0.875   56   0.992        7.2   1.000        3.8   0.708d     151.5   0.000S     518.5         1.06
+   1.0   64   0.916       54.7   1.000        6.7   0.390S     330.7   0.000S     525.0         1.05
+
+=== ServerFilling where applicable (powers of two only) ===
+   m/N            sf_srpt            sf_fcfs
+   0.5   0.999        1.2   0.999        1.5
+   1.0   1.000        1.4   1.000        1.6
+
+=== scale check: greedy SRPT flow balance at matched m/N, rho=0.85 ===
+   m/N      N=64     N=128     diff
+   0.5     0.998     0.987    0.011
+ 0.531     0.996     0.988    0.009
+ 0.563     0.996     0.976    0.021
+ 0.594     0.996     0.964    0.033
+ 0.625     0.984     0.943    0.042
+ 0.688     0.949     0.910    0.038
+  0.75     0.913     0.842    0.071
+ 0.875     0.708     0.613    0.095
+   1.0     0.390     0.236    0.154
+
+largest m/N at which greedy SRPT keeps the class fed (fb >= 0.9) at rho=0.85: r_safe = 0.75
+
+
+=== PRED-005 grading ===
+ T1  PASS  degradation is continuous in m; no >10x jump before m=N
+      jct by m/N: 0.5:3.7 0.531:4.8 0.563:6.2 0.594:7.9 0.625:13.7 0.688:30.9 0.75:49.2 0.875:151.5 1.0:330.7; monotone=True; >10x jumps at none
+ T2  PASS  m = N/2 does not starve (reproduces EP-0003)
+      rho=0.7: fb=1.000 jct=1.62; rho=0.85: fb=0.998 jct=3.71
+ T3  PASS  m = N starves (reproduces EP-0003)
+      rho=0.7: fb=0.429 jct=361.8; rho=0.85: fb=0.390 jct=330.7
+ T4  PASS  DECIDING: at m/N = 0.594 (Philly VC 11cb48's real ratio) greedy SRPT does NOT starve the class
+      fb=0.996 (safe), class JCT 7.87, need=1 JCT 1.07, arrivals 51
+ T5  PASS  the m/N=0.594 class is still measurably harmed: JCT >= 5x the need=1 class
+      7.87 / 1.07 = 7.4x
+ T6  FAIL  the onset is a ratio, not an absolute size (N=64 vs N=128 within 0.15)
+      largest |difference| across matched ratios = 0.154
+ T7  PASS  EASY backfill never starves the m class at any m
+      cells below 0.9: none; worst fb = 0.999
+ T8  PASS  srpt_np is at least as bad as srpt at every m
+      m/N where srpt_np is better: none
+ T9  PASS  at m=N the starved class's delay is unbounded (>=2x over a 4x horizon) while need=1 grows <=1.2x
+      class JCT 295 -> 1379 (x4.67), need=1 x1.02
+T10  PASS  a usable boundary exists: 0.5 < r_safe < 1.0
+      r_safe = 0.75; verdicts: 0.5:safe 0.531:safe 0.563:safe 0.594:safe 0.625:safe 0.688:safe 0.75:safe 0.875:degraded 1.0:starved
+
+9/10 sealed predictions passed
+
+pre-committed consequence: T4 PASSED -- the EP-0003 mechanism does not reach any measured production pool; demote the practical implications to a conditional on pool sizing.

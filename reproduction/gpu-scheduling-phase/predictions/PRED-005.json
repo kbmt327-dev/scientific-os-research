@@ -1,0 +1,110 @@
+{
+  "pred_id": "PRED-005",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0004",
+  "sealed_by": "claude-code",
+  "sealed_at": "2026-09-13",
+  "status": "sealed before running experiment E6",
+  "why_this_is_the_decisive_experiment": {
+    "situation": "E5 measured the real scheduling pools in the Philly trace. In all 11 virtual clusters, no job ever needs the whole pool: the largest gang is 2%-59% of the pool's peak concurrent capacity, so p(k >= pool) = 0.00000 everywhere. EP-0003's starvation mechanism, as stated (support contains N), therefore does not bind anywhere in that trace.",
+    "the_one_opening": "Exactly one VC (11cb48: peak 217 GPUs, largest gang 128) sits at k/N = 0.59, inside the band EP-0003 never tested. EP-0003 measured only k = N/2 (no starvation, JCT 1.57) and k = N (starvation, JCT 402). Everything between is unmeasured.",
+    "stake": "If starvation switches on somewhere above N/2, the mechanism reaches a real production pool and the practical claim survives in narrowed form. If it requires k = N exactly, the mechanism is real but has no purchase on either measured trace, and the practical implications in Current Understanding v3 must be withdrawn rather than narrowed."
+  },
+  "mechanism_reasoning_stated_before_measuring": "Greedy SRPT walks jobs in priority order and starts each that fits in the remaining capacity. A job needing m servers is admitted when it is reached while at least m servers are still unclaimed by higher-priority jobs. For m = N this requires the job to be rank 1 outright, which never happens because its remaining time is frozen while it waits. For m < N it only needs to appear early enough that fewer than N-m servers have been claimed ahead of it. That is a continuous requirement, not a threshold one, so I expect a steep but CONTINUOUS degradation as m approaches N, with m = N qualitatively worse than any m < N, rather than a clean switch at N/2.",
+  "experiment": {
+    "E6": {
+      "design": "background of small jobs (the theta=0.4 geometric shape over needs 1..N/2) plus one large class at need = m, arriving with probability p_m. Sweep m across the untested band.",
+      "n_servers": 64,
+      "m_values": [32, 34, 36, 38, 40, 44, 48, 56, 64],
+      "m_over_N": [0.5, 0.531, 0.563, 0.594, 0.625, 0.688, 0.75, 0.875, 1.0],
+      "p_m": 0.002,
+      "rho": [0.7, 0.85],
+      "policies": ["fcfs", "easy_backfill", "srpt", "srpt_np"],
+      "serverfilling_note": "sf_srpt and sf_fcfs require powers of two, so they are run ONLY at m in {32, 64} and are excluded from the m sweep. Reporting them at non-power-of-two m would be an invalid use of the algorithm.",
+      "scale_check": "the same sweep at N=128 with m/N matched, to test whether the threshold is a ratio or an absolute size",
+      "n_jobs": 30000,
+      "horizon_check": "every cell also at 120000 jobs, one seed",
+      "seeds": [401, 402, 403, 404, 405]
+    }
+  },
+  "detector": {
+    "class_starved": "flow balance of the m class < 0.5 while the small classes are >= 0.9",
+    "stable": "min flow balance >= 0.995",
+    "otherwise": "decided by the 30k vs 120k horizon test: overloaded if mean JCT grows >= 2.0x, stable if <= 1.3x",
+    "note": "same layered detector as PRED-003, carried forward unchanged (M-7)"
+  },
+  "predictions": [
+    {
+      "id": "T1",
+      "claim": "Degradation is continuous in m, not a step at N/2: the m-class JCT rises monotonically across the sweep with no single jump larger than 10x between adjacent grid points except possibly the last step into m = N",
+      "criterion": "jct(m) monotone non-decreasing in m, and at most one adjacent-pair ratio above 10x",
+      "falsified_if": "a step above 10x occurs before m = N, or JCT is non-monotone",
+      "hypothesis": "H23 admission is a continuous capacity race, not a threshold"
+    },
+    {
+      "id": "T2",
+      "claim": "m = N/2 = 32 does not starve, reproducing EP-0003",
+      "criterion": "flow balance of the 32 class >= 0.9 at both loads",
+      "falsified_if": "the 32 class starves"
+    },
+    {
+      "id": "T3",
+      "claim": "m = N = 64 starves, reproducing EP-0003",
+      "criterion": "flow balance of the 64 class < 0.5 at both loads",
+      "falsified_if": "the 64 class does not starve"
+    },
+    {
+      "id": "T4",
+      "claim": "THE DECIDING PREDICTION. At m/N = 0.594 (m=38), the ratio measured in Philly's 11cb48 virtual cluster, greedy SRPT does NOT starve the class at rho=0.85: it is harmed but fed",
+      "criterion": "flow balance of the m=38 class >= 0.5",
+      "falsified_if": "flow balance < 0.5, which would mean the mechanism DOES reach a real production pool",
+      "note": "I expect this to pass, which is the outcome UNFAVOURABLE to my own prior claim's practical relevance"
+    },
+    {
+      "id": "T5",
+      "claim": "Even where it does not starve, the m=38 class is measurably harmed: its mean JCT is at least 5x the need=1 class at rho=0.85",
+      "criterion": "jct(m=38) / jct(need=1) >= 5",
+      "falsified_if": "the ratio is below 5"
+    },
+    {
+      "id": "T6",
+      "claim": "The onset is a ratio, not an absolute size: at N=128 the flow balance at each matched m/N is within 0.15 of the N=64 value at the same ratio",
+      "criterion": "max |fb(N=128, r) - fb(N=64, r)| <= 0.15 over the shared ratios",
+      "falsified_if": "any matched ratio differs by more than 0.15",
+      "hypothesis": "H24 scale invariance in m/N"
+    },
+    {
+      "id": "T7",
+      "claim": "EASY backfill never starves the m class at any m, including m = N",
+      "criterion": "flow balance >= 0.9 for easy_backfill at every m and both loads",
+      "falsified_if": "backfill starves at any m"
+    },
+    {
+      "id": "T8",
+      "claim": "srpt_np is at least as bad as srpt at every m: no preemption means no rescue",
+      "criterion": "flow balance(srpt_np, m) <= flow balance(srpt, m) + 0.05 at every m",
+      "falsified_if": "srpt_np is meaningfully better at any m"
+    },
+    {
+      "id": "T9",
+      "claim": "Where the class is starved, its delay is unbounded: at m = N the class JCT grows at least 2x over a 4x horizon while the need=1 class grows at most 1.2x",
+      "criterion": "both legs hold at rho=0.85",
+      "falsified_if": "either leg fails"
+    },
+    {
+      "id": "T10",
+      "claim": "There is a usable practical boundary: the largest m/N at which flow balance stays >= 0.9 lies strictly between 0.5 and 1.0, so the answer is neither 'only k=N is dangerous' nor 'anything above N/2 is dangerous'",
+      "criterion": "the largest safe ratio r_safe satisfies 0.5 < r_safe < 1.0",
+      "falsified_if": "r_safe == 0.5 (everything above N/2 is unsafe) or the class is safe at every m < N"
+    }
+  ],
+  "pre_committed_consequence": {
+    "if_T4_passes": "The EP-0003 mechanism does not reach any measured production pool. Current Understanding's practical implications get demoted from 'confirm whether whole-pool jobs arrive' to a conditional statement about pools sized within roughly 1/r_safe of their largest job, and the domain's headline claim is rewritten to say the effect is real in the model but unobserved in the two public traces examined.",
+    "if_T4_fails": "The mechanism reaches Philly's 11cb48 VC. The practical claim survives, narrowed to pools whose largest job exceeds r_safe of capacity, and the next step is to look for that condition in more traces."
+  },
+  "rules": [
+    "Not edited after sealing. sha256 in predictions/PRED-005.sha256 before the runs.",
+    "Failed predictions stay in the ledger as failed.",
+    "Comparisons use paired seeds and only cells whose verdict is stable."
+  ]
+}

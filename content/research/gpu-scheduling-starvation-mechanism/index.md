@@ -31,6 +31,8 @@ tags: [finding, scheduling, simulation, falsification, starvation]
 
 Follows [[research/gpu-scheduling-phase-diagram/index|A demand-mix phase diagram, and three stability detectors that failed]].
 
+> **The practical claim in this note has been demoted.** [[research/gpu-scheduling-real-traces/index|EP-0004]] measured the demand distributions of two public traces and found no Philly virtual cluster receiving a job that fills it, so the precondition this note requires was not met in the measured data. The rule "check whether whole-cluster jobs arrive" is withdrawn and replaced by a ratio test against pool capacity. That note also hit this note's own stated falsification target. The mechanism below is unchanged and still holds inside the model; its reach is what narrowed. This note is kept as the record of what was claimed on 2026-09-13 and is not edited.
+
 ## Summary
 
 Two earlier studies disagreed. EP-0001 found greedy SRPT winning on a mix whose mean gang size was 3.26 and whose largest job needed half the cluster. EP-0002 found greedy SRPT starving a demand class on a mix whose mean gang size was *smaller*, 2.37, but which included jobs needing the whole cluster. The mean pointed the wrong way, so we held it fixed and moved only the support.

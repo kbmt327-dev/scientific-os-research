@@ -35,6 +35,8 @@ tags: [finding, scheduling, simulation, falsification, starvation, japanese]
 
 [[ja/research/gpu-scheduling-phase-diagram/index|需要mixの相図と、失敗した3つの安定性判定器]]の続きです。
 
+> **このnoteの実務的含意は降格されました。** [[ja/research/gpu-scheduling-real-traces/index|EP-0004]]が2つの公開traceの需要分布を測定し、Phillyのどのvirtual clusterにもpoolを占め切るjobが来ていないことを示しました。このnoteが要求する前提は、実測されたデータでは満たされていません。「全クラスタjobが来るか確認せよ」という規則は撤回し、pool容量に対する比の判定に置き換えます。EP-0004は本noteが自ら挙げた反証条件も満たしました。以下の機構そのものは変わらずmodel内では成立します。狭まったのはその射程です。本noteは2026-09-13時点で何を主張したかの記録として保持し、改変しません。
+
 ## 要約
 
 先行する2つの研究が食い違っていました。EP-0001では、平均gang sizeが3.26で最大jobがクラスタの半分を要するmixで、greedy SRPTが勝ちました。EP-0002では、平均gang sizeが**より小さい**2.37でありながら全クラスタjobを含むmixで、greedy SRPTが需要classを飢餓させました。平均は逆を指していたので、平均を固定してsupportだけを動かしました。

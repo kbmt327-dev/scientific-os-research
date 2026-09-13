@@ -1,0 +1,68 @@
+{
+  "n_pass": 9,
+  "n_total": 10,
+  "r_safe": 0.75,
+  "t4_passed": true,
+  "results": [
+    {
+      "id": "T1",
+      "claim": "degradation is continuous in m; no >10x jump before m=N",
+      "pass": true,
+      "detail": "jct by m/N: 0.5:3.7 0.531:4.8 0.563:6.2 0.594:7.9 0.625:13.7 0.688:30.9 0.75:49.2 0.875:151.5 1.0:330.7; monotone=True; >10x jumps at none"
+    },
+    {
+      "id": "T2",
+      "claim": "m = N/2 does not starve (reproduces EP-0003)",
+      "pass": true,
+      "detail": "rho=0.7: fb=1.000 jct=1.62; rho=0.85: fb=0.998 jct=3.71"
+    },
+    {
+      "id": "T3",
+      "claim": "m = N starves (reproduces EP-0003)",
+      "pass": true,
+      "detail": "rho=0.7: fb=0.429 jct=361.8; rho=0.85: fb=0.390 jct=330.7"
+    },
+    {
+      "id": "T4",
+      "claim": "DECIDING: at m/N = 0.594 (Philly VC 11cb48's real ratio) greedy SRPT does NOT starve the class",
+      "pass": true,
+      "detail": "fb=0.996 (safe), class JCT 7.87, need=1 JCT 1.07, arrivals 51"
+    },
+    {
+      "id": "T5",
+      "claim": "the m/N=0.594 class is still measurably harmed: JCT >= 5x the need=1 class",
+      "pass": true,
+      "detail": "7.87 / 1.07 = 7.4x"
+    },
+    {
+      "id": "T6",
+      "claim": "the onset is a ratio, not an absolute size (N=64 vs N=128 within 0.15)",
+      "pass": false,
+      "detail": "largest |difference| across matched ratios = 0.154"
+    },
+    {
+      "id": "T7",
+      "claim": "EASY backfill never starves the m class at any m",
+      "pass": true,
+      "detail": "cells below 0.9: none; worst fb = 0.999"
+    },
+    {
+      "id": "T8",
+      "claim": "srpt_np is at least as bad as srpt at every m",
+      "pass": true,
+      "detail": "m/N where srpt_np is better: none"
+    },
+    {
+      "id": "T9",
+      "claim": "at m=N the starved class's delay is unbounded (>=2x over a 4x horizon) while need=1 grows <=1.2x",
+      "pass": true,
+      "detail": "class JCT 295 -> 1379 (x4.67), need=1 x1.02"
+    },
+    {
+      "id": "T10",
+      "claim": "a usable boundary exists: 0.5 < r_safe < 1.0",
+      "pass": true,
+      "detail": "r_safe = 0.75; verdicts: 0.5:safe 0.531:safe 0.563:safe 0.594:safe 0.625:safe 0.688:safe 0.75:safe 0.875:degraded 1.0:starved"
+    }
+  ]
+}

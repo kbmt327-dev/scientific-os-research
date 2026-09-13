@@ -1,0 +1,57 @@
+
+=== Alibaba PAI v2020 (100K sample) ===
+  GPU jobs 82,184   E[k]=2.736   median=1   max=150
+  P(k=1)=0.7881   P(k is power of 2)=0.8764
+  tail  N=8:0.07756  N=16:0.03886  N=32:0.01055  N=64:0.00164  N=128:0.00011  N=256:0.00000  N=512:0.00000  N=1024:0.00000  N=2048:0.00000
+  critical pool size N* = 64   (largest N with p_N >= 0.0005)
+  k>=64: count share 0.00164, work share 0.0869, ratio 52.9x
+  geometric family matched to E[k]: theta=0.3996
+  p(k>=64): real 0.00164  vs geometric 0.00403  -> real is lighter
+  CPU-only rows excluded: 0.178 of 100,000
+
+=== Microsoft Philly (cluster_job_log) ===
+  GPU jobs 112,018   E[k]=1.744   median=1   max=128
+  P(k=1)=0.8660   P(k is power of 2)=0.9995
+  tail  N=8:0.06189  N=16:0.01032  N=32:0.00226  N=64:0.00035  N=128:0.00010  N=256:0.00000  N=512:0.00000  N=1024:0.00000  N=2048:0.00000
+  critical pool size N* = 32   (largest N with p_N >= 0.0005)
+  k>=64: count share 0.00035, work share 0.0028, ratio 8.1x
+  geometric family matched to E[k]: theta=0.3001
+  p(k>=64): real 0.00035  vs geometric 0.00073  -> real is lighter
+  jobs with no attempt detail: 5,307 of 117,325
+
+=== Philly virtual clusters (the actual scheduling pools) ===
+pool size proxy = the largest gang ever run in that VC is a LOWER bound on its size;
+we use the 99.9th percentile of concurrent GPU demand as an upper-ish proxy and report both.
+
+      vc     jobs   max k  p(k>=32)  p(k>=64)  p(k>=128)     N*
+  6214e9   51,980      16   0.00000   0.00000    0.00000      8
+  11cb48   19,401     128   0.00088   0.00031    0.00005     32
+  6c71a0   15,014      48   0.00020   0.00000    0.00000     16
+  b436b2    9,264      32   0.00011   0.00000    0.00000     16
+  ee9e8c    5,859     128   0.01639   0.00563    0.00171    128
+  103959    2,781       4   0.00000   0.00000    0.00000   None
+  0e4a51    2,715       8   0.00000   0.00000    0.00000      8
+  7f04ca    1,507      32   0.01659   0.00000    0.00000     32
+  ed69ec    1,428       1   0.00000   0.00000    0.00000   None
+  2869ce    1,000      32   0.10800   0.00000    0.00000     32
+  e13805      981      32   0.00306   0.00000    0.00000     32
+
+1/11 virtual clusters have N* >= 64
+
+=== measured VC capacity vs whole-pool job rate ===
+      vc     jobs  peak GPUs  p99 GPUs   max k   k/peak  p(k>=peak)  p(k>=p99)
+  6214e9   51,980        603       397      16     0.03     0.00000    0.00000
+  11cb48   19,401        217       157     128     0.59     0.00000    0.00000
+  6c71a0   15,014        290       258      48     0.17     0.00000    0.00000
+  b436b2    9,264        340       292      32     0.09     0.00000    0.00000
+  ee9e8c    5,859        532       471     128     0.24     0.00000    0.00000
+  103959    2,781         76        52       4     0.05     0.00000    0.00000
+  0e4a51    2,715        284       236       8     0.03     0.00000    0.00000
+  7f04ca    1,507        252       231      32     0.13     0.00000    0.00000
+  ed69ec    1,428         66        40       1     0.02     0.00000    0.00000
+  2869ce    1,000        360       186      32     0.09     0.00000    0.00000
+  e13805      981        130       115      32     0.25     0.00000    0.00000
+
+0/11 VCs receive jobs needing their whole typical capacity at a rate >= 0.0005
+
+wrote results/E5_traces.json

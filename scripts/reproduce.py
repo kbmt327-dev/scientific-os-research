@@ -40,6 +40,8 @@ def gpu_phase() -> None:
     expected = {
         "PRED-002": "d726c5a701367f3be0bff47eba10267ee5fcd43bc4b830ec70c97a22477ed8a0",
         "PRED-003": "2f3b1808d806e9af888acaa77a7e00f7e9af86a13d58e42ac75e514a91157d05",
+        "PRED-004": "7ef0f5b21d46318e6008a1be3021e9c1ffbefbe3fb23e959c3cffa7268048cbe",
+        "PRED-005": "fe3e27d68d27c5c8eb9fb6633d133e17fd6c4ba09158ab80d901dc4630ccb902",
     }
     for name, want in expected.items():
         # read_text() applies universal newlines, so this is the LF byte
@@ -55,7 +57,23 @@ def gpu_phase() -> None:
     assert e4["n_total"] == 10 and e4["n_pass"] == 7
     starved = {r["id"] for r in e4["results"] if r["pass"]}
     assert {"R1", "R3", "R6"} <= starved, starved
-    print("gpu-phase: PRED-002/003 digests, 5/10 and 7/10 gradings verified")
+    # Real-trace measurement. No whole-pool job appears in any Philly virtual
+    # cluster, which is what demoted the practical claim of the previous study.
+    traces = json.loads((root / "results" / "E5_traces.json").read_text(encoding="utf-8"))
+    vcs = traces["philly_vc_capacity"]
+    assert len(vcs) == 11, len(vcs)
+    assert all(vc["p_ge_peak"] == 0.0 for vc in vcs), vcs
+    assert max(vc["max_k_over_peak"] for vc in vcs) < 1.0
+    e5 = json.loads((root / "results" / "E5_grading.json").read_text(encoding="utf-8"))
+    assert e5["n_total"] == 10 and e5["n_pass"] == 5
+    # The decisive prediction was named against the project's own claim, and
+    # passing it is what triggered the pre-registered demotion.
+    e6 = json.loads((root / "results" / "E6_grading.json").read_text(encoding="utf-8"))
+    assert e6["n_total"] == 10 and e6["n_pass"] == 9
+    assert e6["t4_passed"] is True
+    assert e6["r_safe"] == 0.75
+    print("gpu-phase: PRED-002/003/004/005 digests and 5/7/5/9 gradings verified; "
+          "no whole-pool job in any measured virtual cluster")
 
 
 def queue() -> None:

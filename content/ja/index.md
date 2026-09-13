@@ -24,7 +24,8 @@ Open Research Labは、Scientific OSを用いて進めた研究の公開面で�
 |---|---|---|
 | [[ja/research/gpu-scheduling/index\|摩擦とworkload mixでGPU schedulingの原理が逆転する]] | `Finding` · `合成simulation` · `探索的` | 解析解と保存則でsimulatorを検算。実traceは未検証。主張2点は後続研究が条件付け。 |
 | [[ja/research/gpu-scheduling-phase-diagram/index\|需要mixの相図と、失敗した3つの安定性判定器]] | `Finding` · `合成simulation` · `探索的` | 21セルの安定性相図。再発1件を含む計測器の失敗3件を開示。採点5/10。 |
-| [[ja/research/gpu-scheduling-starvation-mechanism/index\|size-based schedulingが壊れる条件は平均gang sizeではなく全クラスタjobの有無]] | `Finding` · `合成simulation` · `探索的` | 平均を一致させた対照群でsupportと平均を分離。実traceは未検証。採点7/10。 |
+| [[ja/research/gpu-scheduling-starvation-mechanism/index\|size-based schedulingが壊れる条件は平均gang sizeではなく全クラスタjobの有無]] | `Finding` · `合成simulation` · `探索的` | 平均を一致させた対照群でsupportと平均を分離。実務的含意は後に降格。採点7/10。 |
+| [[ja/research/gpu-scheduling-real-traces/index\|実traceにpoolを占め切るjobは来ておらず、飢餓の境界は連続だった]] | `Finding` · `公開trace＋合成` · `探索的` | 取得したのは需要の形のみ。実到着列でpolicyは走らせていない。事前約束による降格を履行。採点5/10と9/10。 |
 | [[ja/research/simulation-worlds/index\|バッチ到着と不均質serverを盲検同定する]] | `Finding` · `合成blind benchmark` | 既知の候補機構族内での同定。未知の仮説空間の発見ではない。 |
 | [[ja/research/human-model/index\|Human Model Contract v0.2]] | `Method` · `Contract validation` | fail-closed contractの検証。人体モデルの予測性能ではない。 |
 | [[ja/research/badminton-biomechanics/index\|バドミントンスマッシュの準備時間×後方CoM 2×2 protocol]] | `Protocol` · `未seal` | 設計とpower感度のみ。確証データはない。 |

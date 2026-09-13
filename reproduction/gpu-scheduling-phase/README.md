@@ -1,8 +1,9 @@
-# GPU scheduling EP-0002 / EP-0003 reproduction
+# GPU scheduling EP-0002 / EP-0003 / EP-0004 reproduction
 
-This package covers the two experiments that followed EP-0001: the demand-mix
-phase diagram with the rebuilt stability instrument (EP-0002), and the support
-and mechanism experiment (EP-0003).
+This package covers the three studies that followed EP-0001: the demand-mix
+phase diagram with the rebuilt stability instrument (EP-0002), the support and
+mechanism experiment (EP-0003), and the real-trace measurement plus threshold
+sweep that demoted EP-0003's practical claim (EP-0004).
 
 It is a separate package from `reproduction/gpu-scheduling/`, which stays pinned
 to the E1 simulator. The simulator here carries metrics that did not exist at
@@ -36,7 +37,14 @@ python adjudicate.py                 # 59 ambiguous cells, two horizons
 python analyze_e2e3.py               # rewrites results/E2E3_grading.json
 python run_e4.py                     # E4 432 runs
 python analyze_e4.py                 # rewrites results/E4_grading.json
+python run_e6.py                     # E6 463 runs, the m/N threshold sweep
+python analyze_e6.py                 # rewrites results/E6_grading.json
 ```
+
+`analyze_traces.py` measures the demand shape of the public traces and is
+included, but the raw traces are not redistributed. Obtain them from
+`msr-fiddle/philly-traces` and `alibaba/clusterdata`; `results/E5_traces.json`
+holds the derived per-trace and per-virtual-cluster measurements.
 
 On the source machine E2/E3 took about 220 seconds, the adjudication about 750
 seconds, and E4 about 570 seconds, with `WORKERS=8`. Runtime varies by machine.
@@ -67,9 +75,21 @@ The detector used for grading is written into `predictions/PRED-003.json` under
 four of its ten predictions turn on which detector is applied; both gradings are
 therefore reported.
 
+## What the real-trace part does and does not show
+
+`results/E5_traces.json` carries the measurement that demoted the previous
+study's practical claim: across all 11 Philly virtual clusters, the probability
+that a job requires the full measured pool capacity is 0.00000, and the largest
+ratio of job size to capacity is 0.59. Capacity is estimated from peak
+concurrent GPU usage, which is a lower bound, so a larger true quota only makes
+those ratios smaller.
+
+Only the *shape* of demand was taken from the traces. No policy was run on a
+real arrival stream; the threshold sweep fed measured ratios into the synthetic
+model. The measurement is retrospective on existing public data.
+
 ## Boundary
 
 Synthetic multi-server-job simulation, 64 servers, exponential service, no
-locality constraints, no network interference, no failures. These runs are not
-evidence from production traces. The public research notes state the claim scope
-that these artifacts support.
+locality constraints, no network interference, no failures. The public research
+notes state the claim scope that these artifacts support.

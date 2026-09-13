@@ -1,0 +1,109 @@
+{
+  "pred_id": "PRED-004",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0004",
+  "sealed_by": "claude-code",
+  "sealed_at": "2026-09-13",
+  "status": "sealed before measuring any trace distribution",
+  "evidence_class": "public-trace-retrospective",
+  "honesty_notes": [
+    "This is RETROSPECTIVE. The traces already exist and I hold literature priors about them (that single-GPU jobs dominate both Philly and Alibaba PAI). The seal records what I expect before measuring, but it cannot claim independence from prior knowledge, and this episode does NOT count toward real_prospective_cycle_count.",
+    "What my priors do NOT already answer is the DERIVED quantity: the largest scheduling-pool size at which whole-pool jobs are common enough to trigger the EP-0003 starvation mechanism. Nobody publishes that number. That is where this seal has teeth.",
+    "At the time of sealing I have downloaded pai_job_no_estimate_100K.csv and read only its column header, and I am downloading the Philly trace archive. No distribution, count, or summary statistic of either trace has been computed or viewed."
+  ],
+  "why_this_matters": {
+    "claim_under_test": "EP-0003 found that greedy size-priority scheduling starves the whole-pool job class once the need distribution's support contains N, at a rate as low as p=0.0005 of jobs. That result is about a synthetic model with N=64.",
+    "the_stake": "If real traces have NO jobs anywhere near pool size, or whole-pool jobs rarer than 0.0005, then the mechanism does not bind at realistic pool sizes and the practical implication in Current Understanding v3 must be WITHDRAWN, not merely qualified.",
+    "pre_committed_consequence": "If S2 and S4 both fail (neither trace reaches p>=0.0005 at any pool size >= 64), I will strike the v3 practical implications and record the mechanism as real but practically inert at cluster scale."
+  },
+  "measurement_definitions": {
+    "pai_gang_size": "k = ceil(num_inst * num_gpu) over rows with num_gpu > 0. num_gpu < 1 denotes GPU sharing, so num_inst * num_gpu is the simultaneous GPU demand. CPU-only rows (num_gpu == 0) are excluded from the gang distribution and their share is reported separately.",
+    "philly_gang_size": "k = number of GPUs held simultaneously by the job, taken from its longest/first successful attempt in cluster_job_log.json as the sum over that attempt's detail entries of len(gpus).",
+    "p_N": "P(k >= N) over GPU jobs of that trace.",
+    "critical_pool_size": "N* = the largest N in {8,16,32,64,128,256,512,1024,2048} with p_N >= 0.0005, the threshold measured in EP-0003. For any scheduling pool of size <= N*, whole-pool jobs arrive at least as often as the rate that produced starvation in E4.",
+    "work_share": "share of sum(k * duration) carried by a job set, vs its share of job count."
+  },
+  "predictions": [
+    {
+      "id": "S1",
+      "claim": "Alibaba PAI: single-GPU jobs (k=1) are at least 50% of GPU jobs",
+      "criterion": "P(k == 1) >= 0.50",
+      "confidence": "high (literature prior)",
+      "falsified_if": "P(k == 1) < 0.50"
+    },
+    {
+      "id": "S2",
+      "claim": "Alibaba PAI: a 64-GPU pool is already in the binding regime",
+      "criterion": "p_64 >= 0.0005",
+      "confidence": "genuinely uncertain -- PAI jobs are known to be small, and 64+ GPU jobs may well be rarer than 1 in 2000",
+      "falsified_if": "p_64 < 0.0005"
+    },
+    {
+      "id": "S3",
+      "claim": "Alibaba PAI: the critical pool size is at least 128",
+      "criterion": "N* >= 128",
+      "confidence": "uncertain",
+      "falsified_if": "N* < 128"
+    },
+    {
+      "id": "S4",
+      "claim": "Philly: the critical pool size is at least 128, i.e. any pool of 128 GPUs or fewer sees whole-pool jobs at or above the EP-0003 rate",
+      "criterion": "N* >= 128 and p_64 >= 0.0005",
+      "confidence": "moderate -- Philly is a training cluster with large multi-node jobs",
+      "falsified_if": "either leg fails"
+    },
+    {
+      "id": "S5",
+      "claim": "Powers of two dominate both traces, which is what makes ServerFilling applicable at all",
+      "criterion": "in each trace, P(k is a power of two) >= 0.70",
+      "confidence": "moderate",
+      "falsified_if": "either trace is below 0.70"
+    },
+    {
+      "id": "S6",
+      "claim": "Mean gang size is small in both traces",
+      "criterion": "E[k] <= 8 in each trace",
+      "confidence": "high",
+      "falsified_if": "either trace exceeds 8"
+    },
+    {
+      "id": "S7",
+      "claim": "The large-gang class is rare by count but heavy by work, which is why a count-weighted view understates it",
+      "criterion": "in each trace, (work share of jobs with k >= 64) / (count share of jobs with k >= 64) >= 10",
+      "confidence": "moderate",
+      "falsified_if": "the ratio is below 10 in either trace"
+    },
+    {
+      "id": "S8",
+      "claim": "The real need distribution has a HEAVIER large-gang tail than my synthetic geometric family at the same mean, i.e. my theta family understated the danger",
+      "criterion": "fit theta so that the geometric mix over (1,2,...,1024) has the same E[k] as the trace; then p_64(real) > p_64(geometric)",
+      "confidence": "uncertain -- it could go either way",
+      "falsified_if": "p_64(real) <= p_64(geometric) in both traces"
+    },
+    {
+      "id": "S9",
+      "claim": "The two traces agree on the critical pool size within a factor of 8",
+      "criterion": "max(N*_pai, N*_philly) / min(N*_pai, N*_philly) <= 8, both defined",
+      "confidence": "uncertain",
+      "falsified_if": "the ratio exceeds 8, or either N* is undefined"
+    },
+    {
+      "id": "S10",
+      "claim": "Both traces contain jobs large enough to be whole-pool for a common pool size",
+      "criterion": "max k >= 256 in Philly and max k >= 64 in Alibaba PAI",
+      "confidence": "moderate",
+      "falsified_if": "either leg fails"
+    }
+  ],
+  "declared_unknowns": [
+    "whether real clusters actually schedule over pools as small as N*, or always over the full cluster (the trace cannot answer this; it only says how often whole-pool jobs would appear at a given pool size)",
+    "whether the arrival process and duration correlation in the real trace change the starvation rate relative to the synthetic Poisson/exponential model",
+    "whether the Philly job log's GPU count reflects the gang requirement or only what was granted",
+    "the Alibaba v2023 openb trace caps num_gpu at 8 (node-level scheduling), so it cannot test the whole-pool question and is not used here"
+  ],
+  "rules": [
+    "Not edited after sealing. sha256 recorded in predictions/PRED-004.sha256 before any distribution is computed.",
+    "Failed predictions stay in the ledger as failed.",
+    "This episode does not count toward real_prospective_cycle_count."
+  ]
+}

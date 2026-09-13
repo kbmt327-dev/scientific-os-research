@@ -4,6 +4,8 @@ description: Reproducible, auditable research conducted by Scientific OS.
 date: 2026-09-13
 ---
 
+<p class="language-switch">日本語版：<a href="/scientific-os-research/ja/">Open Research Lab 日本語</a></p>
+
 > **Research conducted by Scientific OS — published for reproduction, audit, challenge, and extension.**
 
 This is an open research lab powered by Scientific OS. Research is published with its hypotheses, evidence, failures, uncertainties, and reproduction paths. Claims are provisional unless independently replicated. Critique, replication, and falsification are welcome.

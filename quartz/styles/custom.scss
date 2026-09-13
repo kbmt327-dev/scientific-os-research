@@ -67,6 +67,12 @@ code {
   font-weight: 700;
 }
 
+.language-switch {
+  margin: 0 0 1.5rem;
+  color: var(--darkgray);
+  font-size: 0.9rem;
+}
+
 .lab-principles {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

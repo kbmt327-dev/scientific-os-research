@@ -8,6 +8,8 @@ Open Research Lab is the public research surface of Scientific OS. It publishes 
 
 The public site is: <https://kbmt327-dev.github.io/scientific-os-research/>
 
+Japanese edition: <https://kbmt327-dev.github.io/scientific-os-research/ja/>
+
 ## 2. Research principles
 
 - Claims remain provisional unless independently replicated.

@@ -18,6 +18,11 @@ COMMON_SECTIONS = {
     "What failed", "Evidence boundary", "UNKNOWN", "Falsification targets", "Reproduce",
     "Evidence / Artifacts", "External audit", "Next experiment",
 }
+COMMON_SECTIONS_JA = {
+    "要約", "研究質問", "なぜ重要か", "方法", "何が変わったか",
+    "何が失敗したか", "証拠境界", "UNKNOWN", "反証条件", "再現",
+    "証拠 / Artifacts", "外部監査", "次の実験",
+}
 
 
 def frontmatter(text: str) -> tuple[dict, str]:
@@ -54,19 +59,21 @@ def validate_note(path: Path) -> list[str]:
     if re.search(r"[A-Za-z]:[\\/]", str(meta.get("source_episode", ""))):
         errors.append("source_episode must be an opaque public identifier, not a local path")
     sections = set(re.findall(r"^##\s+(.+?)\s*$", body, flags=re.MULTILINE))
-    required_sections = set(COMMON_SECTIONS)
+    language = str(meta.get("lang", "en")).lower()
+    required_sections = set(COMMON_SECTIONS_JA if language.startswith("ja") else COMMON_SECTIONS)
     if meta.get("type") == "Finding":
-        required_sections.add("Results")
+        required_sections.add("結果" if language.startswith("ja") else "Results")
     missing_sections = sorted(required_sections - sections)
     if missing_sections:
         errors.append(f"missing sections: {', '.join(missing_sections)}")
-    if meta.get("type") == "Protocol" and re.search(r"\b(confirmatory result|we found|demonstrates an effect)\b", body, flags=re.IGNORECASE):
+    result_claim = r"\b(confirmatory result|we found|demonstrates an effect)\b|確証的な結果|効果を示した|効果を実証"
+    if meta.get("type") == "Protocol" and re.search(result_claim, body, flags=re.IGNORECASE):
         errors.append("protocol contains result-like claim requiring manual review")
     return [f"{path}: {error}" for error in errors]
 
 
 def validate_tree(root: Path) -> int:
-    notes = sorted(root.glob("research/*/index.md"))
+    notes = sorted(root.glob("research/*/index.md")) + sorted(root.glob("ja/research/*/index.md"))
     errors = [error for note in notes for error in validate_note(note)]
     if errors:
         print("Publication validation failed:")
@@ -168,4 +175,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

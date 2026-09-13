@@ -4,6 +4,8 @@ notes:
     source_episode: GPU-SCHEDULING/EP-0001
     source_episode_sha256: c72f32f1b4269cf761083cb646ae7cd15d7a82b1a3f4c37a678739094098f1a0
     public_note: content/research/gpu-scheduling/index.md
+    translations:
+      ja: content/ja/research/gpu-scheduling/index.md
     type: Finding
     publication:
       status: publishable
@@ -11,6 +13,8 @@ notes:
     source_episode: SIM-WORLD/EP-0001
     source_episode_sha256: 0c632eb5cad1431953bcbfbe3a067925fea3d7caac6bb21547ce53cb03a7931f
     public_note: content/research/simulation-worlds/index.md
+    translations:
+      ja: content/ja/research/simulation-worlds/index.md
     type: Finding
     publication:
       status: publishable
@@ -18,6 +22,8 @@ notes:
     source_episode: HUMAN-MODEL/EP-0004
     source_episode_sha256: 260f10d6b70d75420e9aa57945ca24cd7d0335eaed053cf5a0fe9f77008f90f8
     public_note: content/research/human-model/index.md
+    translations:
+      ja: content/ja/research/human-model/index.md
     type: Method
     publication:
       status: publishable
@@ -25,6 +31,8 @@ notes:
     source_episode: IAA/EP-0008
     source_episode_sha256: 6c12a0f9f82a62cac5b36509d4901d10cb9ffec458bcd873cb801fe54a5f9308
     public_note: content/research/badminton-biomechanics/index.md
+    translations:
+      ja: content/ja/research/badminton-biomechanics/index.md
     type: Protocol
     publication:
       status: publishable

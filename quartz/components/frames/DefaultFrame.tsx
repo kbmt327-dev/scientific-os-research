@@ -1,5 +1,6 @@
 import { PageFrame, PageFrameProps } from "./types"
 import HeaderConstructor from "../Header"
+import { LabFooter, LabHeader, LabSidebar } from "../LabChrome"
 
 const Header = HeaderConstructor()
 
@@ -19,16 +20,19 @@ export const DefaultFrame: PageFrame = {
     afterBody,
     left,
     right,
-    footer,
   }: PageFrameProps) {
     return (
       <>
+        <LabHeader {...componentData} />
         <div class="left sidebar">
-          {left.map((BodyComponent) => (
-            <BodyComponent {...componentData} />
-          ))}
+          <LabSidebar {...componentData} />
+          <div class="lab-sidebar-tools">
+            {left.map((BodyComponent) => (
+              <BodyComponent {...componentData} />
+            ))}
+          </div>
         </div>
-        <div class="center">
+        <main id="lab-main-content" class="center">
           <div class="page-header">
             <Header {...componentData}>
               {header.map((HeaderComponent) => (
@@ -48,15 +52,13 @@ export const DefaultFrame: PageFrame = {
               <BodyComponent {...componentData} />
             ))}
           </div>
-        </div>
+        </main>
         <div class="right sidebar">
           {right.map((BodyComponent) => (
             <BodyComponent {...componentData} />
           ))}
         </div>
-        {footer.map((FooterComponent) => (
-          <FooterComponent {...componentData} />
-        ))}
+        <LabFooter />
       </>
     )
   },

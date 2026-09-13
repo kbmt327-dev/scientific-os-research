@@ -45,7 +45,7 @@ def main() -> int:
     allowed_roots = {"", "en/", "ja/", "en/how-to-read/", "ja/how-to-read/", "en/contribute/", "ja/contribute/"}
     for suffix in sorted(local_urls):
         suffix = suffix.rstrip(".,")
-        if suffix in allowed_roots or suffix.startswith(("en/research/", "ja/research/")):
+        if suffix in allowed_roots or suffix.startswith(("en/research/", "ja/research/", "en/programs/", "ja/programs/")):
             continue
         errors.append(f"unrecognized site URL in llms.txt: {SITE}/{suffix}")
 

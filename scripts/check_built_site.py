@@ -72,6 +72,14 @@ def main() -> int:
         "ja/how-to-read/index.html",
         "en/contribute/index.html",
         "ja/contribute/index.html",
+        "en/programs/gpu-scheduling/index.html",
+        "ja/programs/gpu-scheduling/index.html",
+        "en/programs/queueing-system-identification/index.html",
+        "ja/programs/queueing-system-identification/index.html",
+        "en/programs/human-model-interface/index.html",
+        "ja/programs/human-model-interface/index.html",
+        "en/programs/badminton-biomechanics/index.html",
+        "ja/programs/badminton-biomechanics/index.html",
         *[f"en/research/{slug}/index.html" for slug in slugs],
         *[f"ja/research/{slug}/index.html" for slug in slugs],
     ]
@@ -79,6 +87,19 @@ def main() -> int:
     if missing:
         print("Missing built routes: " + ", ".join(missing))
         return 1
+    root = (public / "index.html").read_text(encoding="utf-8")
+    if "orl-language" not in root or "location.replace" not in root:
+        print("Root page is missing automatic language selection")
+        return 1
+    for lang in ("en", "ja"):
+        home = (public / lang / "index.html").read_text(encoding="utf-8")
+        for marker in ("lab-sidebar-toggle", "lab-primary-nav", "program-index", "GitHub"):
+            if marker not in home:
+                print(f"Missing {marker} on {lang} home")
+                return 1
+        if "Powered by" not in home or "© 2026 kbmt327" not in home:
+            print(f"Missing site-owner footer on {lang} home")
+            return 1
     for lang, other_lang in (("en", "ja"), ("ja", "en")):
         for path in (f"{lang}/index.html", f"{lang}/research/gpu-scheduling/index.html"):
             page = (public / path).read_text(encoding="utf-8")
@@ -110,7 +131,7 @@ def main() -> int:
     if "The Markdown Research Notes are the canonical public representation" not in llms:
         print("Built llms.txt is missing its canonical-representation boundary")
         return 1
-    print(f"Built-site check passed: {len(required)} canonical routes, {len(slugs)} redirects, bilingual Mermaid and hreflang")
+    print(f"Built-site check passed: {len(required)} canonical routes, {len(slugs)} redirects, language routing, lab chrome, bilingual Mermaid and hreflang")
     return 0
 
 

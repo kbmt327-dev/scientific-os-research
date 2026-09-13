@@ -16,6 +16,7 @@ import { styleText } from "util"
 import { resolveFrame } from "./frames"
 import type { TreeTransform } from "../plugins/types"
 import type { BuildCtx } from "../util/ctx"
+import { labChromeScript } from "./LabChrome"
 
 interface RenderComponents {
   head: QuartzComponent
@@ -369,6 +370,7 @@ export function renderPage(
       {pageResources.js
         .filter((resource) => resource.loadTime === "afterDOMReady")
         .map((res) => JSResourceToScriptElement(res, true))}
+      <script dangerouslySetInnerHTML={{ __html: labChromeScript }} />
     </html>
   )
 

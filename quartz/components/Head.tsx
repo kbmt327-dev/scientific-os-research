@@ -36,20 +36,31 @@ export default (() => {
         : canonicalSlug
           ? joinSegments(url.toString(), canonicalSlug as FullSlug)
           : url.toString()
-    const alternateSlug = canonicalSlug === "en"
-      ? "ja"
-      : canonicalSlug === "ja"
-        ? "en"
-        : canonicalSlug.startsWith("en/")
-          ? `ja/${canonicalSlug.slice(3)}`
-          : canonicalSlug.startsWith("ja/")
-            ? `en/${canonicalSlug.slice(3)}`
-            : undefined
+    const alternateSlug =
+      canonicalSlug === "en"
+        ? "ja"
+        : canonicalSlug === "ja"
+          ? "en"
+          : canonicalSlug.startsWith("en/")
+            ? `ja/${canonicalSlug.slice(3)}`
+            : canonicalSlug.startsWith("ja/")
+              ? `en/${canonicalSlug.slice(3)}`
+              : undefined
     const currentLang = String(fileData.frontmatter?.lang ?? "")
     const alternateLang = currentLang === "en" ? "ja" : currentLang === "ja" ? "en" : undefined
     const alternateUrl = alternateSlug
       ? joinSegments(url.toString(), alternateSlug as FullSlug)
       : undefined
+    const redirectBase = ctx.argv.serve ? "" : url.pathname.replace(/\/$/, "")
+    const languageRedirect = `(() => {
+      let preferred;
+      try { preferred = localStorage.getItem("orl-language"); } catch {}
+      if (preferred !== "ja" && preferred !== "en") {
+        const languages = navigator.languages?.length ? navigator.languages : [navigator.language];
+        preferred = languages.some((value) => String(value).toLowerCase().startsWith("ja")) ? "ja" : "en";
+      }
+      location.replace(${JSON.stringify(redirectBase)} + "/" + preferred + "/");
+    })()`
 
     const usesCustomOgImage = ctx.cfg.plugins.emitters.some((e) => e.name === "CustomOgImages")
     const ogImageDefaultPath = `https://${cfg.baseUrl}/static/og-image.png`
@@ -121,9 +132,18 @@ export default (() => {
         )}
         {slug === "index" && (
           <>
-            <link rel="alternate" hrefLang="ja" href={joinSegments(url.toString(), "ja" as FullSlug)} />
-            <link rel="alternate" hrefLang="en" href={joinSegments(url.toString(), "en" as FullSlug)} />
+            <link
+              rel="alternate"
+              hrefLang="ja"
+              href={joinSegments(url.toString(), "ja" as FullSlug)}
+            />
+            <link
+              rel="alternate"
+              hrefLang="en"
+              href={joinSegments(url.toString(), "en" as FullSlug)}
+            />
             <link rel="alternate" hrefLang="x-default" href={socialUrl} />
+            <script dangerouslySetInnerHTML={{ __html: languageRedirect }} />
           </>
         )}
 

@@ -46,7 +46,8 @@ plugins:
     enabled: true
     options:
       includeAll: false
-      includedProperties: [research_id, lang, type, status, evidence_level, peer_reviewed, independent_replications]
+      includedProperties:
+        [research_id, lang, type, status, evidence_level, peer_reviewed, independent_replications]
       excludedProperties: []
       hidePropertiesView: true
       delimiters: "---"
@@ -61,7 +62,7 @@ plugins:
     options: { theme: { light: github-light, dark: github-dark }, keepBackground: false }
     order: 20
   - source: "@quartz-community/spacer"
-    enabled: true
+    enabled: false
     options: {}
     order: 25
     layout: { position: left, priority: 25, display: mobile-only }
@@ -152,7 +153,7 @@ plugins:
     enabled: true
     layout: { position: beforeBody, priority: 20 }
   - source: "@quartz-community/page-title"
-    enabled: true
+    enabled: false
     layout: { position: left, priority: 10 }
   - source: "@quartz-community/darkmode"
     enabled: true
@@ -164,7 +165,7 @@ plugins:
     enabled: true
     layout: { position: beforeBody, priority: 5, condition: not-index }
   - source: "@quartz-community/footer"
-    enabled: true
+    enabled: false
     options:
       links:
         Repository: https://github.com/kbmt327-dev/scientific-os-research

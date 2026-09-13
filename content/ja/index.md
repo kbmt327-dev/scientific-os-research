@@ -1,59 +1,56 @@
 ---
 title: Open Research Lab
-description: GPUクラスタのスケジューリングなどの研究を、結論・証拠・限界・再現手順まで公開しています。
+description: Scientific OSを用いた研究を、結果・根拠・限界・未解決点とともに公開しています。
 lang: ja
 ---
 
-<p class="site-lede">ここは研究を公開する場所です。結論だけでなく、どの条件で成り立つか、何が外れたか、どこから自分で確かめられるかまで載せています。<a href="/en/" hreflang="en">English</a></p>
+<p class="site-definition">Scientific OSを用いて研究上の問いについて、結果だけでなく、何を根拠にどこまで言えるのか、何がまだ分からないのかを公開する場所</p>
 
-Scientific OSという自律研究の仕組みが出した成果のうち、第三者が確認・再現・反証できるものを選んで公開しています。結論は、外部の独立した再現が出るまで暫定です。
+<p class="site-boundary">完成済みの成果一覧ではありません。研究は段階も証拠の種類も異なり、外部からの再現や反証によって更新されます。</p>
 
-## いま分かっていること
+## いま取り組んでいる研究
 
-<div class="feature-finding">
-  <p class="eyebrow">GPUクラスタのスケジューリング</p>
-  <h3>実際のGPUクラスタには、プール全体を占めるジョブが来ていなかった</h3>
-  <p>短いジョブを先に通す「サイズ優先」のスケジューリングは、クラスタ全体を要する巨大ジョブが混じるとそのジョブを永久に待たせます。ただし公開トレース2本を測ったところ、実際に運用されている11個のプールのどれにも、そんなジョブは来ていませんでした。</p>
-  <p>そこで見るべき指標を「クラスタ全体のジョブが来るか」から「<b>最大ジョブがプール容量の何割か</b>」に置き換えました。安全側の目安は0.75、実測された最悪値は0.59です。予想される害は無限の待ちではなく、1 GPUジョブの約7.4倍という遅れです。</p>
-  <p class="feature-meta"><b>証拠の強さ：</b>公開トレース2本の測定と合成シミュレーション。実際の到着列でスケジューラを動かしたわけではありません。外部再現は0件です。</p>
-  <p class="feature-actions"><a href="/ja/research/gpu-scheduling-real-traces/">この研究を読む →</a></p>
+<div class="program-index">
+  <article class="program-row">
+    <div>
+      <h3>GPUクラスタのスケジューリング</h3>
+      <p>短いジョブを優先する方式が、どの条件で有効になり、どこで破綻するのかを調べています。</p>
+    </div>
+    <nav aria-label="GPUクラスタのスケジューリング">
+      <a href="/ja/programs/gpu-scheduling/">研究概要</a>
+      <a href="/ja/research/gpu-scheduling-real-traces/">最新Note</a>
+    </nav>
+  </article>
+  <article class="program-row">
+    <div>
+      <h3>待ち行列のシステム同定</h3>
+      <p>外から観測できる記録だけで、内部の待ち行列機構をどこまで特定できるかを検査しています。</p>
+    </div>
+    <nav aria-label="待ち行列のシステム同定">
+      <a href="/ja/programs/queueing-system-identification/">研究概要</a>
+      <a href="/ja/research/simulation-worlds/">最新Note</a>
+    </nav>
+  </article>
+  <article class="program-row">
+    <div>
+      <h3>人体運動モデルのデータ接続</h3>
+      <p>計測データとモデルを接続するときの座標の取り違えや答えの漏れを、機械的に防ぐ方法を研究しています。</p>
+    </div>
+    <nav aria-label="人体運動モデルのデータ接続">
+      <a href="/ja/programs/human-model-interface/">研究概要</a>
+      <a href="/ja/research/human-model/">最新Note</a>
+    </nav>
+  </article>
+  <article class="program-row">
+    <div>
+      <h3>バドミントンのバイオメカニクス</h3>
+      <p>スマッシュの準備時間と身体重心が動作に与える影響を、切り分けて測る実験を設計しています。</p>
+    </div>
+    <nav aria-label="バドミントンのバイオメカニクス">
+      <a href="/ja/programs/badminton-biomechanics/">研究概要</a>
+      <a href="/ja/research/badminton-biomechanics/">最新Note</a>
+    </nav>
+  </article>
 </div>
 
-## 研究一覧
-
-<div class="research-list">
-  <a href="/ja/research/gpu-scheduling-real-traces/">
-    <b>GPUクラスタのスケジューリング</b>
-    <span>サイズ優先方式が壊れる条件。合成シミュレーションで仕組みを切り分け、公開トレースでその前提を検査しました。4本の更新履歴があります。</span>
-    <small>Finding · 最新の結論はEP-0004</small>
-  </a>
-  <a href="/ja/research/simulation-worlds/">
-    <b>待ち行列のシステム同定</b>
-    <span>中身を隠した待ち行列の世界に対し、外から見える記録だけで仕組みを当てられるかを、正解付きで検査しました。</span>
-    <small>Finding · 候補集合は開示済み</small>
-  </a>
-  <a href="/ja/research/human-model/">
-    <b>人体運動モデルのデータ接続</b>
-    <span>計測データをモデルへ渡すときの座標の取り違えや答えの漏れを、機械が検査して止める仕組みです。接続部は現在停止中です。</span>
-    <small>Method · 予測性能の証拠ではない</small>
-  </a>
-  <a href="/ja/research/badminton-biomechanics/">
-    <b>バドミントンのバイオメカニクス</b>
-    <span>スマッシュの準備時間と後方重心を独立に割り付ける2×2実験の設計です。まだ封印しておらず、データ取得は未承認です。</span>
-    <small>Protocol · 観測はまだありません</small>
-  </a>
-</div>
-
-[研究一覧をすべて見る →](/ja/research/)
-
-## この場所の読み方
-
-各研究には、結論とその適用範囲を分けて書いています。何が変わったか、何が外れたか、何がまだ分からないか、どこから再現できるかも残します。全部を読む必要はありません。
-
-まず **[[ja/how-to-read/index|研究の読み方]]** を見てください。背後の研究の進め方が気になったときだけ、[[ja/about/scientific-os|Scientific OSの進め方]]へ進んでください。
-
-## 証拠を持ち寄る
-
-いちばん価値がある次の出来事は、Starではありません。独立した再実行、再現の失敗、反例、より良い観測です。**[[ja/contribute/index|再現・反証・拡張・共同研究の入口へ →]]**
-
-<p class="quiet-meta"><a href="/ja/about/open-research-lab/">このLabと、作っている人について</a>。各研究に明記がない限り、公開前の編集上の確認は受けていますが、科学的な査読・分野専門家によるレビュー・ピアレビューは受けていません。</p>
+<p class="program-index-more"><a href="/ja/research/">公開中のResearch Noteをすべて見る</a></p>

@@ -9,6 +9,24 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - id: GPU-SCHED-EP-0002
+    source_episode: GPU-SCHEDULING/EP-0002
+    source_episode_sha256: 656775b68fee9214ef5490de02441111ac1451b4f24cab4d00556716c52649f4
+    public_note: content/research/gpu-scheduling-phase-diagram/index.md
+    translations:
+      ja: content/ja/research/gpu-scheduling-phase-diagram/index.md
+    type: Finding
+    publication:
+      status: publishable
+  - id: GPU-SCHED-EP-0003
+    source_episode: GPU-SCHEDULING/EP-0003
+    source_episode_sha256: ca6a566b0396730d61e2ec33a48c5cfd1a12b6246dcd2a43e5e03f067b0ff3de
+    public_note: content/research/gpu-scheduling-starvation-mechanism/index.md
+    translations:
+      ja: content/ja/research/gpu-scheduling-starvation-mechanism/index.md
+    type: Finding
+    publication:
+      status: publishable
   - id: SIM-WORLD-EP-0001
     source_episode: SIM-WORLD/EP-0001
     source_episode_sha256: 0c632eb5cad1431953bcbfbe3a067925fea3d7caac6bb21547ce53cb03a7931f

@@ -1,0 +1,88 @@
+{
+  "detector": "layered: spread / level / two-horizon (adjudicate.py)",
+  "n_pass": 5,
+  "n_total": 10,
+  "n_pass_asrun": 4,
+  "results": [
+    {
+      "id": "Q1",
+      "claim": "a mix threshold exists between theta=0.4 and 0.8 (rho=0.85): sf/srpt > 1 then < 1",
+      "pass": false,
+      "detail": "ratio(0.4)=nan, ratio(0.8)=nan; greedy SRPT is class-starved at theta=0.4 (starving [64]) and overloaded at theta=0.8. No like-for-like crossover exists at rho=0.85: greedy SRPT is never stable on this grid, so the prediction's frame was wrong.",
+      "pass_asrun": null,
+      "detail_asrun": null
+    },
+    {
+      "id": "Q2",
+      "claim": "crossover moves at most one grid step between rho=0.7 and 0.95",
+      "pass": false,
+      "detail": "theta* = 1.25 (rho=0.7) vs None (rho=0.95)",
+      "pass_asrun": null,
+      "detail_asrun": null
+    },
+    {
+      "id": "Q3",
+      "claim": "sf/srpt ratio decreases monotonically in theta (rho=0.85)",
+      "pass": false,
+      "detail": "0 comparable cells: none -- too few to test monotonicity",
+      "pass_asrun": null,
+      "detail_asrun": null
+    },
+    {
+      "id": "Q4",
+      "claim": "srpt stable at theta<=0.8 and unstable at theta=1.6 (rho=0.85)",
+      "pass": false,
+      "detail": "verdict by theta: 0.4:class-starved, 0.6:class-starved, 0.8:overloaded, 1.0:overloaded, 1.25:overloaded, 1.6:overloaded, 2.0:undetermined",
+      "pass_asrun": null,
+      "detail_asrun": null
+    },
+    {
+      "id": "Q5",
+      "claim": "easy_backfill never becomes unstable anywhere in E2",
+      "pass": true,
+      "detail": "unstable cells: none; worst flow balance over all 21 backfill cells = 0.984",
+      "pass_asrun": false,
+      "detail_asrun": "as-run detector flagged [(0.4, 0.95)]"
+    },
+    {
+      "id": "Q6",
+      "claim": "fcfs stable at theta=0.4, unstable at theta>=1.0 (rho=0.85)",
+      "pass": true,
+      "detail": "verdict by theta: 0.4:stable, 0.6:unusable, 0.8:unusable, 1.0:unusable, 1.25:unusable, 1.6:overloaded, 2.0:overloaded; fcfs mean JCT at theta=0.4 is 80.5 vs 2.11 for backfill, i.e. stable but 38x worse",
+      "pass_asrun": null,
+      "detail_asrun": null
+    },
+    {
+      "id": "Q7",
+      "claim": "easy_backfill is never the best policy in a stable cell",
+      "pass": true,
+      "detail": "cells where backfill wins on mean JCT: none; but on WORST-CLASS JCT backfill beats greedy SRPT in 19/21 cells, so 'never best' holds only for the aggregate metric",
+      "pass_asrun": null,
+      "detail_asrun": null
+    },
+    {
+      "id": "Q8",
+      "claim": "median-unbiased: backfill mean JCT is monotone non-decreasing in sigma",
+      "pass": true,
+      "detail": "JCT 0.0:2.107+-0.077 0.5:4.524+-0.683 1.0:6.525+-1.044 2.0:6.123+-0.309 3.0:7.019+-1.027",
+      "pass_asrun": null,
+      "detail_asrun": null
+    },
+    {
+      "id": "Q9",
+      "claim": "median-unbiased sigma=3: srpt still beats backfill on mean JCT",
+      "pass": false,
+      "detail": "ratio=nan; greedy SRPT is class-starved (starving [64]), so the paired ratio is withheld. Unpaired means: srpt 2.623 vs backfill 7.019; worst-class 553.9 vs 43.9",
+      "pass_asrun": null,
+      "detail_asrun": null
+    },
+    {
+      "id": "Q10",
+      "claim": "at sigma=3 backfill is worse under median-unbiased than mean-unbiased",
+      "pass": true,
+      "detail": "median=7.019+-1.027 vs mean=3.887+-0.467",
+      "pass_asrun": null,
+      "detail_asrun": null
+    }
+  ]
+}

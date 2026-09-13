@@ -1,0 +1,110 @@
+{
+  "pred_id": "PRED-002",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0002",
+  "sealed_by": "claude-code",
+  "sealed_at": "2026-09-13",
+  "status": "sealed before running experiments E2 and E3",
+  "carried_lesson": "Every comparison below is conditioned on BOTH cells being stable. EP-0001's P7 failed because the baseline policy diverged and the criterion was undefined (lesson M-4). Diverged cells are a separate category and their mean JCT is not used in any ratio (M-5).",
+  "experiments": {
+    "E2": {
+      "question": "Is there a gang-need-mix threshold theta* where ServerFilling-SRPT overtakes greedy SRPT, and is theta* independent of load?",
+      "mix_family": "P(need = 2^i) proportional to theta^i for needs (1,2,4,8,16,32,64)",
+      "theta": [0.4, 0.6, 0.8, 1.0, 1.25, 1.6, 2.0],
+      "rho": [0.7, 0.85, 0.95],
+      "policies": ["fcfs", "easy_backfill", "srpt", "sf_srpt"],
+      "sigma": 0.0, "c_pre": 0.0,
+      "n_servers": 64, "n_jobs": 30000, "seeds": [201, 202, 203, 204, 205]
+    },
+    "E3": {
+      "question": "Was EP-0001's finding that estimation error barely matters an artifact of the noise parameterisation? Mean-unbiased lognormal noise shrinks the median estimate by exp(-sigma^2/2); median-unbiased noise makes sigma pure spread.",
+      "est_mode": ["mean", "median"],
+      "sigma": [0.0, 0.5, 1.0, 2.0, 3.0],
+      "theta": 0.4, "rho": 0.85, "c_pre": 0.0,
+      "policies": ["easy_backfill", "srpt", "sf_srpt"],
+      "n_servers": 64, "n_jobs": 30000, "seeds": [201, 202, 203, 204, 205]
+    }
+  },
+  "predictions": [
+    {
+      "id": "Q1",
+      "claim": "A mix threshold exists between theta=0.4 and theta=0.8: at rho=0.85 greedy SRPT wins at theta=0.4 and ServerFilling-SRPT wins at theta=0.8",
+      "criterion": "ratio sf_srpt/srpt > 1 at theta=0.4 AND < 1 at theta=0.8 (both stable)",
+      "falsified_if": "either leg fails or either cell is unstable",
+      "hypothesis": "H11 mix determines the ranking"
+    },
+    {
+      "id": "Q2",
+      "claim": "The crossover position is insensitive to load: the smallest theta at which sf_srpt wins differs by at most one grid step between rho=0.7 and rho=0.95",
+      "criterion": "|index(theta*) at rho=0.7 - index(theta*) at rho=0.95| <= 1",
+      "falsified_if": "the crossover moves by two or more grid steps",
+      "hypothesis": "H11 (the advantage is a mix effect, not a load effect)"
+    },
+    {
+      "id": "Q3",
+      "claim": "The sf_srpt/srpt mean-JCT ratio decreases monotonically in theta at rho=0.85 over the stable cells",
+      "criterion": "no increase greater than 1 standard error between consecutive theta values",
+      "falsified_if": "a significant non-monotonicity appears",
+      "hypothesis": "H11"
+    },
+    {
+      "id": "Q4",
+      "claim": "Greedy SRPT's divergence at rho=0.85 sets in between theta=1.0 and theta=1.6, and it is stable at theta <= 0.8",
+      "criterion": "srpt stable at theta in {0.4,0.6,0.8}, diverged at theta=1.6",
+      "falsified_if": "either leg fails",
+      "hypothesis": "H4 stability region is the binding constraint"
+    },
+    {
+      "id": "Q5",
+      "claim": "EASY backfill never diverges at any theta for rho <= 0.95",
+      "criterion": "no diverged easy_backfill cell in E2",
+      "falsified_if": "any easy_backfill cell diverges",
+      "hypothesis": "H13 backfill is chosen for worst-case robustness"
+    },
+    {
+      "id": "Q6",
+      "claim": "FCFS at rho=0.85 is stable at theta=0.4 and diverged at every theta >= 1.0",
+      "criterion": "fcfs stable at theta=0.4, diverged at theta in {1.0,1.25,1.6,2.0}",
+      "falsified_if": "either leg fails",
+      "hypothesis": "measured rho_max 0.918 / 0.730 / 0.646 extrapolates along the mix axis"
+    },
+    {
+      "id": "Q7",
+      "claim": "EASY backfill is never the best policy in any stable E2 cell: min(srpt, sf_srpt) always beats it",
+      "criterion": "for every stable cell, min(mean_jct(srpt), mean_jct(sf_srpt)) < mean_jct(easy_backfill)",
+      "falsified_if": "backfill is best in any stable cell",
+      "hypothesis": "H13 (robust but never optimal)"
+    },
+    {
+      "id": "Q8",
+      "claim": "Under median-unbiased noise, easy_backfill's mean JCT is monotone non-decreasing in sigma; EP-0001's non-monotonic result was the mean-unbiased confound",
+      "criterion": "no decrease greater than 1 standard error between consecutive sigma values, est_mode=median",
+      "falsified_if": "a significant decrease appears",
+      "hypothesis": "U-2 is a real confound"
+    },
+    {
+      "id": "Q9",
+      "claim": "Even with pure spread (median-unbiased) at sigma=3, greedy SRPT still beats easy_backfill",
+      "criterion": "mean_jct(srpt)/mean_jct(easy_backfill) < 1.0 at sigma=3, est_mode=median (both stable)",
+      "falsified_if": "ratio >= 1.0 or either cell diverges",
+      "hypothesis": "H1 survives the harder test"
+    },
+    {
+      "id": "Q10",
+      "claim": "The systematic underestimation in mean-unbiased noise was HELPING easy_backfill: at sigma=3 backfill is worse under median-unbiased noise than under mean-unbiased noise",
+      "criterion": "mean_jct(easy_backfill, median, sigma=3) > mean_jct(easy_backfill, mean, sigma=3)",
+      "falsified_if": "median mode is equal or better",
+      "hypothesis": "mechanism behind EP-0001 P8"
+    }
+  ],
+  "declared_unknowns": [
+    "whether theta* also depends on the service-time distribution (exponential only here)",
+    "whether the srpt divergence onset theta is sharp or gradual (7 grid points only)",
+    "whether sf_srpt's mean JCT is monotone in theta (not predicted)"
+  ],
+  "rules": [
+    "Not edited after sealing. sha256 recorded in the episode note before the runs.",
+    "Failed predictions stay in the ledger as failed.",
+    "Comparisons use paired seeds and only stable cells."
+  ]
+}

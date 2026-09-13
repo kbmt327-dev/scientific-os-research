@@ -1,0 +1,173 @@
+=== PHASE DIAGRAM  (. stable   S class-starved   O overloaded   X unusable   ? undetermined) ===
+   rho  theta           fcfs  easy_backfill           srpt        sf_srpt
+   0.7    0.4              .              .              S              .
+   0.7    0.6              O              .              S              .
+   0.7    0.8              X              .              O              .
+   0.7    1.0              O              .              O              .
+   0.7   1.25              O              .              .              .
+   0.7    1.6              .              .              .              .
+   0.7    2.0              .              .              .              .
+  0.85    0.4              .              .              S              .
+  0.85    0.6              X              .              S              .
+  0.85    0.8              X              .              O              .
+  0.85    1.0              X              .              O              .
+  0.85   1.25              X              .              O              .
+  0.85    1.6              O              .              O              .
+  0.85    2.0              O              .              ?              .
+  0.95    0.4              X              .              S              .
+  0.95    0.6              X              .              S              .
+  0.95    0.8              X              .              S              .
+  0.95    1.0              X              .              O              .
+  0.95   1.25              X              .              O              .
+  0.95    1.6              X              .              O              .
+  0.95    2.0              O              .              O              .
+
+=== E2  mean JCT over all jobs (verdict mark appended) ===
+
+ rho=0.7
+ theta            fcfs   easy_backfill            srpt         sf_srpt   sf/srpt
+   0.4           5.11.           1.39.           2.11S           1.22.      n/a
+   0.6         335.08O           2.02.          12.41S           1.73.      n/a
+   0.8         940.72X           2.77.          39.14O           2.30.      n/a
+   1.0        1250.76O           3.53.          48.81O           2.71.      n/a
+  1.25         816.90O           4.03.          13.42.           2.93.    0.248
+   1.6          30.57.           4.27.           2.76.           2.95.    1.070
+   2.0          10.27.           4.31.           2.45.           2.86.    1.169
+
+ rho=0.85
+ theta            fcfs   easy_backfill            srpt         sf_srpt   sf/srpt
+   0.4          80.54.           2.11.           2.06S           1.44.      n/a
+   0.6         409.05X           3.32.          12.96S           2.31.      n/a
+   0.8         883.91X           4.83.          52.18O           3.31.      n/a
+   1.0        1406.15X           6.51.          98.78O           4.05.      n/a
+  1.25        1948.64X           8.11.         120.99O           4.54.      n/a
+   1.6        2231.13O           9.24.          93.11O           4.71.      n/a
+   2.0        1484.28O           9.69.          43.31?           4.67.      n/a
+
+ rho=0.95
+ theta            fcfs   easy_backfill            srpt         sf_srpt   sf/srpt
+   0.4         152.63X           5.04.           2.07S           1.96.      n/a
+   0.6         413.04X           9.22.          13.04S           3.90.      n/a
+   0.8         883.98X          13.24.          57.21S           5.69.      n/a
+   1.0        1418.68X          16.86.         124.17O           6.80.      n/a
+  1.25        1903.88X          21.58.         185.81O           7.68.      n/a
+   1.6        2358.71X          27.44.         210.66O           8.46.      n/a
+   2.0        2972.60O          30.58.         190.69O           8.63.      n/a
+
+=== E2  worst need-class mean JCT (what the unluckiest class sees) ===
+
+ rho=0.7
+ theta            fcfs   easy_backfill            srpt         sf_srpt
+   0.4            8.6.            5.7.          402.6S            1.3.
+   0.6          338.9O            6.8.          590.7S            1.9.
+   0.8          950.7X            7.2.          570.9O            2.9.
+   1.0         1260.7O            7.2.          333.0O            4.0.
+  1.25          824.7O            6.5.           48.8.            5.4.
+   1.6           31.1.            5.8.            4.8.            6.9.
+   2.0           10.6.            5.3.            3.4.            7.9.
+
+ rho=0.85
+ theta            fcfs   easy_backfill            srpt         sf_srpt
+   0.4           83.6.            7.1.          366.1S            1.6.
+   0.6          418.1X           10.0.          617.8S            2.7.
+   0.8          894.9X           12.3.          765.8O            4.5.
+   1.0         1423.3X           13.5.          682.0O            7.1.
+  1.25         1968.3X           13.6.          474.1O           11.1.
+   1.6         2261.0O           13.0.          237.4O           18.1.
+   2.0         1507.6O           12.3.           84.4?           26.7.
+
+ rho=0.95
+ theta            fcfs   easy_backfill            srpt         sf_srpt
+   0.4          157.4X           11.0.          342.8S            2.4.
+   0.6          420.7X           20.1.          620.1S            4.7.
+   0.8          891.1X           27.5.          840.4S            8.2.
+   1.0         1430.0X           31.4.          858.9O           13.0.
+  1.25         1922.7X           34.6.          730.5O           21.0.
+   1.6         2379.3X           38.0.          540.1O           42.8.
+   2.0         3020.2O           38.6.          377.3O           81.2.
+
+=== E2  starving need classes by cell ===
+ rho=0.7 fcfs           0.4:- 0.6:- 0.8:- 1.0:- 1.25:- 1.6:- 2.0:-
+ rho=0.7 easy_backfill  0.4:- 0.6:- 0.8:- 1.0:- 1.25:- 1.6:- 2.0:-
+ rho=0.7 srpt           0.4:64 0.6:- 0.8:- 1.0:- 1.25:- 1.6:- 2.0:-
+ rho=0.7 sf_srpt        0.4:- 0.6:- 0.8:- 1.0:- 1.25:- 1.6:- 2.0:-
+ rho=0.85 fcfs           0.4:- 0.6:1,2,4,8,16,32,64 0.8:1,2,4,8,16,32,64 1.0:1,2,4,8,16,32,64 1.25:- 1.6:- 2.0:-
+ rho=0.85 easy_backfill  0.4:- 0.6:- 0.8:- 1.0:- 1.25:- 1.6:- 2.0:-
+ rho=0.85 srpt           0.4:64 0.6:- 0.8:- 1.0:- 1.25:- 1.6:- 2.0:-
+ rho=0.85 sf_srpt        0.4:- 0.6:- 0.8:- 1.0:- 1.25:- 1.6:- 2.0:-
+ rho=0.95 fcfs           0.4:- 0.6:1,2,4,8,16,32,64 0.8:1,2,4,8,16,32,64 1.0:1,2,4,8,16,32,64 1.25:1,2,4,8,16,32,64 1.6:1,2,4,8,16,32,64 2.0:-
+ rho=0.95 easy_backfill  0.4:- 0.6:- 0.8:- 1.0:- 1.25:- 1.6:- 2.0:-
+ rho=0.95 srpt           0.4:64 0.6:64 0.8:- 1.0:- 1.25:- 1.6:- 2.0:-
+ rho=0.95 sf_srpt        0.4:- 0.6:- 0.8:- 1.0:- 1.25:- 1.6:- 2.0:-
+
+=== stable region per policy (all classes fed, no horizon growth) ===
+  rho=0.7 fcfs           [0.4, 1.6, 2.0]
+  rho=0.7 easy_backfill  [0.4, 0.6, 0.8, 1.0, 1.25, 1.6, 2.0]
+  rho=0.7 srpt           [1.25, 1.6, 2.0]
+  rho=0.7 sf_srpt        [0.4, 0.6, 0.8, 1.0, 1.25, 1.6, 2.0]
+  rho=0.85 fcfs           [0.4]
+  rho=0.85 easy_backfill  [0.4, 0.6, 0.8, 1.0, 1.25, 1.6, 2.0]
+  rho=0.85 srpt           none
+  rho=0.85 sf_srpt        [0.4, 0.6, 0.8, 1.0, 1.25, 1.6, 2.0]
+  rho=0.95 fcfs           none
+  rho=0.95 easy_backfill  [0.4, 0.6, 0.8, 1.0, 1.25, 1.6, 2.0]
+  rho=0.95 srpt           none
+  rho=0.95 sf_srpt        [0.4, 0.6, 0.8, 1.0, 1.25, 1.6, 2.0]
+
+crossover theta* (smallest theta where sf_srpt beats srpt, both stable):
+  rho=0.7: theta*=1.25
+  rho=0.85: theta*=None
+  rho=0.95: theta*=None
+
+=== E3  theta=0.4, rho=0.85 (mean JCT) ===
+   mode  sigma    easy_backfill             srpt          sf_srpt   srpt/backfill
+   mean    0.0           2.107.           2.057S           1.436.           n/a
+   mean    0.5           5.205.           2.233S           1.493.           n/a
+   mean    1.0           9.602.           2.578S           1.561.           n/a
+   mean    2.0           3.880.           2.630S           1.669.           n/a
+   mean    3.0           3.887.           2.627S           1.759.           n/a
+ median    0.0           2.107.           2.057S           1.436.           n/a
+ median    0.5           4.524.           2.141S           1.491.           n/a
+ median    1.0           6.525.           2.336S           1.556.           n/a
+ median    2.0           6.123.           2.524S           1.643.           n/a
+ median    3.0           7.019.           2.623S           1.699.           n/a
+
+=== E3  worst need-class mean JCT ===
+   mode  sigma    easy_backfill             srpt          sf_srpt
+   mean    0.0             7.1.           366.1S             1.6.
+   mean    0.5            16.9.           428.0S             1.9.
+   mean    1.0            40.0.           553.3S             2.1.
+   mean    2.0            23.9.           570.3S             2.2.
+   mean    3.0            23.5.           573.2S             2.1.
+ median    0.0             7.1.           366.1S             1.6.
+ median    0.5            14.6.           392.0S             1.9.
+ median    1.0            25.1.           458.2S             2.1.
+ median    2.0            37.4.           520.2S             2.3.
+ median    3.0            43.9.           553.9S             2.4.
+
+
+=== PRED-002 grading ===
+Q1  FAIL  a mix threshold exists between theta=0.4 and 0.8 (rho=0.85): sf/srpt > 1 then < 1
+      ratio(0.4)=nan, ratio(0.8)=nan; greedy SRPT is class-starved at theta=0.4 (starving [64]) and overloaded at theta=0.8. No like-for-like crossover exists at rho=0.85: greedy SRPT is never stable on this grid, so the prediction's frame was wrong.
+Q2  FAIL  crossover moves at most one grid step between rho=0.7 and 0.95
+      theta* = 1.25 (rho=0.7) vs None (rho=0.95)
+Q3  FAIL  sf/srpt ratio decreases monotonically in theta (rho=0.85)
+      0 comparable cells: none -- too few to test monotonicity
+Q4  FAIL  srpt stable at theta<=0.8 and unstable at theta=1.6 (rho=0.85)
+      verdict by theta: 0.4:class-starved, 0.6:class-starved, 0.8:overloaded, 1.0:overloaded, 1.25:overloaded, 1.6:overloaded, 2.0:undetermined
+Q5  PASS  easy_backfill never becomes unstable anywhere in E2
+      unstable cells: none; worst flow balance over all 21 backfill cells = 0.984
+      [as-run detector would have said FAIL: as-run detector flagged [(0.4, 0.95)]]
+Q6  PASS  fcfs stable at theta=0.4, unstable at theta>=1.0 (rho=0.85)
+      verdict by theta: 0.4:stable, 0.6:unusable, 0.8:unusable, 1.0:unusable, 1.25:unusable, 1.6:overloaded, 2.0:overloaded; fcfs mean JCT at theta=0.4 is 80.5 vs 2.11 for backfill, i.e. stable but 38x worse
+Q7  PASS  easy_backfill is never the best policy in a stable cell
+      cells where backfill wins on mean JCT: none; but on WORST-CLASS JCT backfill beats greedy SRPT in 19/21 cells, so 'never best' holds only for the aggregate metric
+Q8  PASS  median-unbiased: backfill mean JCT is monotone non-decreasing in sigma
+      JCT 0.0:2.107+-0.077 0.5:4.524+-0.683 1.0:6.525+-1.044 2.0:6.123+-0.309 3.0:7.019+-1.027
+Q9  FAIL  median-unbiased sigma=3: srpt still beats backfill on mean JCT
+      ratio=nan; greedy SRPT is class-starved (starving [64]), so the paired ratio is withheld. Unpaired means: srpt 2.623 vs backfill 7.019; worst-class 553.9 vs 43.9
+Q10  PASS  at sigma=3 backfill is worse under median-unbiased than mean-unbiased
+      median=7.019+-1.027 vs mean=3.887+-0.467
+
+5/10 sealed predictions passed
+as-run detector would have given: 4/10

@@ -29,6 +29,8 @@ tags: [finding, scheduling, simulation, falsification]
 
 <div class="evidence-strip"><span>Finding</span><span>Synthetic simulation</span><span>Exploratory</span><span>Not peer reviewed</span><span>0 external replications</span></div>
 
+> **Later work narrows two claims in this note.** [[research/gpu-scheduling-phase-diagram/index|EP-0002]] found that the estimation-error conclusion below depends on the noise parameterization, and that the greedy-SRPT result holds only for demand mixes without whole-cluster jobs. [[research/gpu-scheduling-starvation-mechanism/index|EP-0003]] isolated the cause. This note is kept as the record of what was claimed on 2026-09-13 and is not edited.
+
 ## Summary
 
 We tested where size-based GPU scheduling loses to FCFS or EASY backfill when job-size estimates are noisy and preemption destroys work. In a 64-server synthetic multi-server-job simulator, the workload mix changed the result qualitatively: greedy SRPT led on a small-job-heavy mix at low friction, but diverged on a gang-heavy mix where ServerFilling-SRPT remained stable. Within the tested range, estimation noise alone did not reverse greedy SRPT against EASY; a preemption cost of 0.2 pushed effective load above capacity and caused divergence. These are simulation findings, not evidence from production traces.

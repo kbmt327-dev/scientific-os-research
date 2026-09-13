@@ -33,6 +33,8 @@ tags: [finding, scheduling, simulation, falsification, japanese]
 
 <div class="evidence-strip"><span>Finding</span><span>合成simulation</span><span>探索的</span><span>peer reviewなし</span><span>外部再現 0</span></div>
 
+> **後続研究がこのnoteの2つの主張を条件付けています。** [[ja/research/gpu-scheduling-phase-diagram/index|EP-0002]]は、以下の推定誤差の結論がnoiseのparameterisationに依存すること、およびgreedy SRPTの結果が全クラスタjobを含まない需要mixに限られることを示しました。[[ja/research/gpu-scheduling-starvation-mechanism/index|EP-0003]]がその原因を分離しました。本noteは2026-09-13時点で何を主張したかの記録として保持し、改変しません。
+
 ## 要約
 
 job sizeの推定に誤差があり、preemptionで処理済みworkが失われるとき、size-based GPU schedulingがFCFSやEASY backfillに負ける境界を調べました。64 serverの合成multi-server-job simulatorではworkload mixが結果を質的に変え、小job中心では摩擦が小さいとgreedy SRPTが優位でしたが、large gang中心では発散し、ServerFilling-SRPTは安定しました。検査範囲では推定誤差だけでgreedy SRPTとEASYの順位は逆転せず、preemption cost 0.2で実効負荷がcapacityを超え発散しました。これはsimulation結果であり、production traceの証拠ではありません。

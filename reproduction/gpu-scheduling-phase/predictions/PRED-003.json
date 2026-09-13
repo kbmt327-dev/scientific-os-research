@@ -1,0 +1,129 @@
+{
+  "pred_id": "PRED-003",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0003",
+  "sealed_by": "claude-code",
+  "sealed_at": "2026-09-13",
+  "status": "sealed before running experiment E4",
+  "carried_lessons": [
+    "M-4: every comparison carries a stability condition; a ratio against an unstable baseline is undefined.",
+    "M-7 (new, from EP-0002): the seal must fix the STABILITY DETECTOR, not just the comparison. PRED-002 left it open and four of its ten predictions turned on which detector was used. The detector for E4 is therefore written out below and is the one validated in calib/c06 and adjudicate.py.",
+    "M-8 (new, from EP-0002): aggregate mean JCT can look healthy while one need class starves, so every E4 prediction names the metric it is about (aggregate vs worst-class vs flow balance)."
+  ],
+  "detector": {
+    "unusable": "aborted_backlog or hit_time_limit or completion_frac < 0.98",
+    "class_starved": "max-min spread of flow_balance_by_need > 0.30",
+    "stable": "min flow_balance_by_need >= 0.995",
+    "otherwise": "re-run at 30k and 120k jobs; overloaded if mean JCT grows >= 2.0x, stable if <= 1.3x, else undetermined",
+    "ratios": "only cells whose verdict is 'stable' may enter a ratio"
+  },
+  "experiment": {
+    "E4": {
+      "question": "EP-0001 found greedy SRPT beating ServerFilling-SRPT in a trace-like mix whose largest gang was N/2=32. E2 found greedy SRPT starving the need=64 class in a mix with a LOWER mean need (2.37 vs 3.26) that included need=N. Is the deciding factor the SUPPORT of the need distribution containing N, rather than the mean gang size? And is the starvation produced by size-based priority, by greedy work conservation, or only by their combination?",
+      "n_servers": 64,
+      "p64_sweep": "weights over needs (1,2,4,8,16,32) keep the theta=0.4 geometric shape, renormalised to 1-p64; p64 is placed on need=64. p64 in {0, 0.0005, 0.002, 0.008, 0.03}",
+      "matched_control": "a mix with max need 32 whose mean need equals the p64=0.03 cell's mean need (theta solved numerically). Separates 'support contains N' from 'E[k] is larger'.",
+      "policies": ["fcfs", "easy_backfill", "srpt", "srpt_np", "sf_srpt", "sf_fcfs"],
+      "mechanism_2x2": "priority (size vs arrival) x filling (greedy vs ServerFilling exact): srpt / fcfs / sf_srpt / sf_fcfs",
+      "rho": [0.7, 0.85],
+      "sigma": 0.0,
+      "c_pre": 0.0,
+      "n_jobs": 30000,
+      "horizon_check": "every policy at p64=0.002, rho=0.85, also run at 120000 jobs",
+      "seeds": [301, 302, 303, 304, 305]
+    }
+  },
+  "predictions": [
+    {
+      "id": "R1",
+      "claim": "Greedy SRPT starves the need=64 class at EVERY p64 > 0, including p64=0.0005, at rho=0.85",
+      "criterion": "verdict is class-starved with 64 among the starving needs, for p64 in {0.0005, 0.002, 0.008, 0.03}",
+      "falsified_if": "any p64 > 0 cell has greedy SRPT stable, or the starving class is not 64",
+      "metric": "flow balance",
+      "hypothesis": "H15 the starvation is structural, not a load effect: a need=N job can only start when it is the global SRPT minimum, but its remaining time never decreases because it never runs"
+    },
+    {
+      "id": "R2",
+      "claim": "At p64 = 0 greedy SRPT starves nothing and beats ServerFilling-SRPT on aggregate mean JCT, reproducing EP-0001",
+      "criterion": "greedy SRPT stable at p64=0 for both rho, and mean_jct(srpt) < mean_jct(sf_srpt) at rho=0.85",
+      "falsified_if": "greedy SRPT is not stable at p64=0, or does not beat sf_srpt there",
+      "metric": "aggregate mean JCT",
+      "hypothesis": "H16 the support containing N is the switch"
+    },
+    {
+      "id": "R3",
+      "claim": "The E[k]-matched control with max need 32 does NOT starve under greedy SRPT, even though its mean need equals the p64=0.03 mix's",
+      "criterion": "greedy SRPT stable in the matched_max32 cell at rho=0.85",
+      "falsified_if": "the matched control starves or is overloaded under greedy SRPT",
+      "metric": "flow balance",
+      "hypothesis": "H16 (the effect is the support, not E[k])"
+    },
+    {
+      "id": "R4",
+      "claim": "ServerFilling-SRPT is insensitive to p64: its aggregate mean JCT at rho=0.85 changes by less than 25% between p64=0 and p64=0.008",
+      "criterion": "|jct(sf_srpt, p64=0.008) / jct(sf_srpt, p64=0) - 1| < 0.25, both stable",
+      "falsified_if": "the change exceeds 25% or either cell is not stable",
+      "metric": "aggregate mean JCT",
+      "hypothesis": "exact filling neutralises the whole-cluster class"
+    },
+    {
+      "id": "R5",
+      "claim": "EASY backfill starves nothing at any p64 and at both loads",
+      "criterion": "every easy_backfill cell in E4 is stable",
+      "falsified_if": "any easy_backfill cell is class-starved, overloaded or unusable",
+      "metric": "flow balance",
+      "hypothesis": "H13 the head-of-line reservation is what feeds the whole-cluster class"
+    },
+    {
+      "id": "R6",
+      "claim": "The 2x2 isolates the cause to the COMBINATION: size priority alone (fcfs has none) and greedy filling alone do not starve. Exactly the two greedy+size-priority policies (srpt, srpt_np) starve the 64 class at p64=0.008, rho=0.85; fcfs, sf_srpt, sf_fcfs do not",
+      "criterion": "starving_needs contains 64 for srpt and srpt_np, and is empty for fcfs, sf_srpt, sf_fcfs (among cells that are not overloaded for an unrelated reason)",
+      "falsified_if": "any of sf_srpt/sf_fcfs starves the 64 class, or srpt_np does not",
+      "metric": "flow balance",
+      "hypothesis": "H15 + H17 ServerFilling's exact fill is what guarantees the large class a slot"
+    },
+    {
+      "id": "R7",
+      "claim": "At p64=0.002, rho=0.85, greedy SRPT's need=64 class JCT grows at least 2x when the horizon goes from 30k to 120k jobs, while its need=1 class JCT grows less than 1.2x",
+      "criterion": "jct_by_need[64] ratio >= 2.0 and jct_by_need[1] ratio <= 1.2",
+      "falsified_if": "either leg fails",
+      "metric": "per-class JCT vs horizon",
+      "hypothesis": "the starved class's delay is unbounded, not merely large"
+    },
+    {
+      "id": "R8",
+      "claim": "Greedy SRPT's AGGREGATE mean JCT stays within 30% of EASY backfill's at every p64 <= 0.008 at rho=0.85, i.e. the aggregate metric cannot see the starvation",
+      "criterion": "0.7 <= mean_jct(srpt)/mean_jct(easy_backfill) <= 1.3 for p64 in {0, 0.0005, 0.002, 0.008}",
+      "falsified_if": "the ratio leaves that band at any of those p64",
+      "metric": "aggregate mean JCT",
+      "hypothesis": "M-8: the standard metric is blind to class starvation"
+    },
+    {
+      "id": "R9",
+      "claim": "Worst-class JCT under greedy SRPT rises monotonically with p64 at rho=0.85 and exceeds 100 at p64 >= 0.002, while EASY backfill's worst-class JCT stays below 25 at every p64",
+      "criterion": "both legs hold",
+      "falsified_if": "either leg fails",
+      "metric": "worst need-class mean JCT",
+      "hypothesis": "H13 vs H15"
+    },
+    {
+      "id": "R10",
+      "claim": "sf_fcfs (exact filling, arrival priority) is stable everywhere in E4 but worse than sf_srpt on aggregate mean JCT at every p64, i.e. the filling rule buys stability and the priority rule buys mean response time -- they are separable",
+      "criterion": "every sf_fcfs cell stable, and mean_jct(sf_fcfs) > mean_jct(sf_srpt) at every p64 at rho=0.85",
+      "falsified_if": "sf_fcfs is unstable anywhere, or beats sf_srpt on mean JCT at any p64",
+      "metric": "aggregate mean JCT + flow balance",
+      "hypothesis": "H17 filling and priority are independent design axes"
+    }
+  ],
+  "declared_unknowns": [
+    "whether the starvation threshold is exactly need = N or begins somewhere above N/2 (only 32 and 64 are on the grid)",
+    "whether a heavy-tailed size distribution changes the p64 at which the aggregate metric starts to notice",
+    "whether preemption cost (c_pre > 0) interacts with the starvation, since E4 runs at c_pre = 0",
+    "whether srpt_np starves for the same reason as srpt or merely because it cannot preempt"
+  ],
+  "rules": [
+    "Not edited after sealing. sha256 recorded in the episode note and in predictions/PRED-003.sha256 before the runs.",
+    "Failed predictions stay in the ledger as failed.",
+    "Comparisons use paired seeds and only cells whose verdict is 'stable' under the detector fixed above."
+  ]
+}

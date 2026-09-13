@@ -1,0 +1,141 @@
+mixes (E[k], max need, p(64)):
+  p64=0.0                                      E[k]=2.223  max_need=64  p(64)=0.0000
+  p64=0.0005                                   E[k]=2.254  max_need=64  p(64)=0.0005
+  p64=0.002                                    E[k]=2.346  max_need=64  p(64)=0.0020
+  p64=0.008                                    E[k]=2.717  max_need=64  p(64)=0.0080
+  p64=0.03                                     E[k]=4.076  max_need=64  p(64)=0.0300
+  matched_max32(E[k]=4.076,theta=0.593)        E[k]=4.076  max_need=32  p(64)=0.0000
+
+=== PHASE  (. stable  S class-starved  O overloaded  X unusable) ===
+
+ rho=0.7
+mix                                                    fcfs  easy_backfill           srpt        srpt_np        sf_srpt        sf_fcfs
+p64=0.0                                                   .              .              .              .              .              .
+p64=0.0005                                                .              .              S              S              .              .
+p64=0.002                                                 !              .              S              S              .              .
+p64=0.008                                                 O              .              S              S              .              .
+p64=0.03                                                  O              .              S              S              .              .
+matched_max32(E[k]=4.076,theta=0.593)                     .              .              .              .              .              .
+
+ rho=0.85
+mix                                                    fcfs  easy_backfill           srpt        srpt_np        sf_srpt        sf_fcfs
+p64=0.0                                                   .              .              .              .              .              .
+p64=0.0005                                                .              .              S              S              .              .
+p64=0.002                                                 O              .              S              S              .              .
+p64=0.008                                                 O              .              S              S              .              .
+p64=0.03                                                  O              .              S              S              .              !
+matched_max32(E[k]=4.076,theta=0.593)                     !              .              .              .              .              .
+
+=== mean JCT (all jobs) ===
+
+ rho=0.7
+mix                                                    fcfs  easy_backfill           srpt        srpt_np        sf_srpt        sf_fcfs
+p64=0.0                                              1.211.         1.111.         1.023.         1.028.         1.080.         1.149.
+p64=0.0005                                           1.524.         1.165.         1.206S         1.365S         1.100.         1.182.
+p64=0.002                                            2.921!         1.336.         1.897S         2.359S         1.171.         1.318.
+p64=0.008                                          125.177O         1.757.         4.627S         7.315S         1.402.         1.700.
+p64=0.03                                           949.990O         2.809.        20.761S        39.468S         2.109.         2.597.
+matched_max32(E[k]=4.076,theta=0.593)                1.749.         1.213.         1.060.         1.089.         1.248.         1.417.
+
+ rho=0.85
+mix                                                    fcfs  easy_backfill           srpt        srpt_np        sf_srpt        sf_fcfs
+p64=0.0                                              1.873.         1.433.         1.084.         1.105.         1.210.         1.477.
+p64=0.0005                                           5.071.         1.566.         1.253S         1.373S         1.241.         1.548.
+p64=0.002                                           37.049O         1.886.         1.851S         2.179S         1.343.         1.832.
+p64=0.008                                          313.377O         2.602.         4.409S         6.307S         1.674.         2.547.
+p64=0.03                                          1236.847O         4.401.        20.549S        34.132S         2.713.         4.190!
+matched_max32(E[k]=4.076,theta=0.593)                6.400!         1.713.         1.167.         1.285.         1.533.         2.057.
+
+=== worst need-class mean JCT ===
+
+ rho=0.7
+mix                                                    fcfs  easy_backfill           srpt        srpt_np        sf_srpt        sf_fcfs
+p64=0.0                                              1.603.         1.554.         1.913.         2.980.         1.131.         1.181.
+p64=0.0005                                           4.757.         4.616.       331.207S       607.130S         1.293.         1.213.
+p64=0.002                                            6.226!         5.125.       437.657S       668.276S         1.404.         1.388.
+p64=0.008                                          128.980O         7.020.       455.419S       797.147S         1.466.         1.793.
+p64=0.03                                           981.248O        11.129.       662.848S      1293.191S         2.177.         2.658.
+matched_max32(E[k]=4.076,theta=0.593)                2.209.         1.918.         1.771.         2.661.         1.344.         1.517.
+
+ rho=0.85
+mix                                                    fcfs  easy_backfill           srpt        srpt_np        sf_srpt        sf_fcfs
+p64=0.0                                              2.435.         2.121.         4.406.         9.501.         1.307.         1.515.
+p64=0.0005                                           8.979.         5.396.       312.527S       501.967S         1.542.         1.636.
+p64=0.002                                           40.004O         6.225.       394.352S       554.507S         1.761.         1.905.
+p64=0.008                                          322.462O         9.390.       425.747S       667.998S         1.847.         2.677.
+p64=0.03                                          1277.635O        15.838.       655.682S      1113.473S         2.845.         4.300!
+matched_max32(E[k]=4.076,theta=0.593)                6.971!         2.928.         3.313.         7.537.         1.745.         2.267.
+
+=== need=64 class mean JCT ===
+
+ rho=0.7
+mix                                                    fcfs  easy_backfill           srpt        srpt_np        sf_srpt        sf_fcfs
+p64=0.0                                                nan.           nan.           nan.           nan.           nan.           nan.
+p64=0.0005                                           4.757.         4.616.       331.207S       607.130S         1.069.         1.005.
+p64=0.002                                            6.226!         5.125.       437.657S       668.276S         1.342.         1.292.
+p64=0.008                                          126.362O         7.020.       455.419S       797.147S         1.352.         1.515.
+p64=0.03                                           955.670O        11.129.       662.848S      1293.191S         1.431.         2.005.
+matched_max32(E[k]=4.076,theta=0.593)                  nan.           nan.           nan.           nan.           nan.           nan.
+
+ rho=0.85
+mix                                                    fcfs  easy_backfill           srpt        srpt_np        sf_srpt        sf_fcfs
+p64=0.0                                                nan.           nan.           nan.           nan.           nan.           nan.
+p64=0.0005                                           8.979.         5.396.       312.527S       501.967S         1.211.         1.341.
+p64=0.002                                           39.384O         6.225.       394.352S       554.507S         1.655.         1.744.
+p64=0.008                                          312.784O         9.390.       425.747S       667.998S         1.739.         2.306.
+p64=0.03                                          1243.967O        15.838.       655.682S      1113.473S         1.865.         3.419!
+matched_max32(E[k]=4.076,theta=0.593)                  nan!           nan.           nan.           nan.           nan.           nan.
+
+=== need=64 class flow balance ===
+
+ rho=0.7
+mix                                                    fcfs  easy_backfill           srpt        srpt_np        sf_srpt        sf_fcfs
+p64=0.0                                                nan.           nan.           nan.           nan.           nan.           nan.
+p64=0.0005                                           0.989.         0.989.         0.498S         0.000S         1.000.         1.000.
+p64=0.002                                            0.992!         0.992.         0.374S         0.000S         0.996.         0.996.
+p64=0.008                                            0.881O         0.991.         0.446S         0.000S         0.997.         0.997.
+p64=0.03                                             0.538O         0.992.         0.515S         0.016S         0.998.         0.998.
+matched_max32(E[k]=4.076,theta=0.593)                  nan.           nan.           nan.           nan.           nan.           nan.
+
+ rho=0.85
+mix                                                    fcfs  easy_backfill           srpt        srpt_np        sf_srpt        sf_fcfs
+p64=0.0                                                nan.           nan.           nan.           nan.           nan.           nan.
+p64=0.0005                                           0.989.         0.989.         0.397S         0.000S         1.000.         1.000.
+p64=0.002                                            0.962O         0.992.         0.308S         0.000S         0.996.         0.996.
+p64=0.008                                            0.677O         0.987.         0.386S         0.000S         0.997.         0.995.
+p64=0.03                                             0.395O         0.987.         0.443S         0.000S         0.998.         0.996!
+matched_max32(E[k]=4.076,theta=0.593)                  nan!           nan.           nan.           nan.           nan.           nan.
+
+=== horizon check at p64=0.002, rho=0.85 (30000 -> 120000) ===
+policy             jct@30k  jct@120k   grow  jct64@30k  jct64@120k  grow64  jct1@30k  grow1
+fcfs                 49.22    134.95   2.74       47.4       142.3    3.00     49.16   2.74
+easy_backfill         2.12      2.05   0.97        6.6         7.0    1.06      2.02   0.97
+srpt                  1.97      3.37   1.72      429.8      1218.1    2.83      1.03   1.02
+srpt_np               2.34      4.83   2.06      610.1      1993.4    3.27      1.00   1.02
+sf_srpt               1.39      1.40   1.01        2.5         1.4    0.57      1.43   1.02
+sf_fcfs               2.02      1.89   0.94        2.0         1.7    0.89      2.05   0.95
+
+
+=== PRED-003 grading ===
+R1  PASS  greedy SRPT starves need=64 at every p64>0 (rho=0.85)
+      p64=0.0005:class-starved/starving=[64]; p64=0.002:class-starved/starving=[64]; p64=0.008:class-starved/starving=[64]; p64=0.03:class-starved/starving=[64]
+R2  PASS  at p64=0 greedy SRPT starves nothing and beats sf_srpt on mean JCT
+      srpt p64=0: rho=0.7 stable, rho=0.85 stable; mean JCT srpt 1.084 vs sf_srpt 1.210 (paired ratio 0.896)
+R3  PASS  the E[k]-matched max-need-32 control does not starve under greedy SRPT
+      matched control (E[k]=4.076, max need 32): stable, min_fb=0.997, mean JCT 1.167; same-E[k] p64=0.03 mix: class-starved (starving [64]), mean JCT 20.549
+R4  FAIL  sf_srpt's mean JCT changes by less than 25% from p64=0 to 0.008
+      1.210 -> 1.674 (1.384x), verdicts stable/stable
+R5  PASS  EASY backfill starves nothing at any p64 or load
+      non-stable backfill cells: none; worst min_fb=0.983
+R6  PASS  at p64=0.008 exactly the greedy+size-priority policies starve need=64
+      fcfs:overloaded/starving=[]; easy_backfill:stable/starving=[]; srpt:class-starved/starving=[64]; srpt_np:class-starved/starving=[64]; sf_srpt:stable/starving=[]; sf_fcfs:stable/starving=[]
+R7  PASS  greedy SRPT's need=64 JCT grows >=2x over a 4x horizon while need=1 grows <=1.2x (p64=0.002, rho=0.85)
+      need=64 x2.83, need=1 x1.02, aggregate x1.72
+R8  FAIL  greedy SRPT's aggregate mean JCT stays within 30% of backfill's for p64<=0.008 (the aggregate metric cannot see the starvation)
+      p64=0.0:0.756; p64=0.0005:0.800; p64=0.002:0.982; p64=0.008:1.695
+R9  PASS  worst-class JCT under greedy SRPT rises monotonically with p64 and exceeds 100 for p64>=0.002, while backfill stays below 25
+      srpt worst-class: [4.4, 312.5, 394.4, 425.7, 655.7] (monotone=True); backfill: [2.1, 5.4, 6.2, 9.4, 15.8]
+R10  FAIL  sf_fcfs is stable everywhere but worse than sf_srpt on mean JCT at every p64 (filling and priority are separable axes)
+      non-stable sf_fcfs cells: [('p64=0.03', 'unadjudicated')]; p64=0.0:1.48 vs 1.21; p64=0.0005:1.55 vs 1.24; p64=0.002:1.83 vs 1.34; p64=0.008:2.55 vs 1.67; p64=0.03:4.19 vs 2.71; matched_max32(E[k]=4.076,theta=0.593):2.06 vs 1.53
+
+7/10 sealed predictions passed

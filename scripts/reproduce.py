@@ -34,6 +34,30 @@ def gpu() -> None:
     print("gpu: sealed prediction hash and 7/10 grading verified")
 
 
+def gpu_phase() -> None:
+    root = ROOT / "reproduction" / "gpu-scheduling-phase"
+    # Both digests were computed from the repository's LF byte stream.
+    expected = {
+        "PRED-002": "d726c5a701367f3be0bff47eba10267ee5fcd43bc4b830ec70c97a22477ed8a0",
+        "PRED-003": "2f3b1808d806e9af888acaa77a7e00f7e9af86a13d58e42ac75e514a91157d05",
+    }
+    for name, want in expected.items():
+        # read_text() applies universal newlines, so this is the LF byte
+        # stream the digest was sealed over, whatever the checkout style.
+        text = (root / "predictions" / f"{name}.json").read_text(encoding="utf-8")
+        got = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        assert got == want, (name, got, want)
+    e2e3 = json.loads((root / "results" / "E2E3_grading.json").read_text(encoding="utf-8"))
+    assert e2e3["n_total"] == 10 and e2e3["n_pass"] == 5
+    # The as-run detector is kept so the post-hoc detector change stays auditable.
+    assert e2e3["n_pass_asrun"] == 4
+    e4 = json.loads((root / "results" / "E4_grading.json").read_text(encoding="utf-8"))
+    assert e4["n_total"] == 10 and e4["n_pass"] == 7
+    starved = {r["id"] for r in e4["results"] if r["pass"]}
+    assert {"R1", "R3", "R6"} <= starved, starved
+    print("gpu-phase: PRED-002/003 digests, 5/10 and 7/10 gradings verified")
+
+
 def queue() -> None:
     root = ROOT / "reproduction" / "simulation-worlds"
     output = run([sys.executable, "analysis/a11_verify_against_truth.py"], root)
@@ -60,7 +84,8 @@ def iaa() -> None:
     print("iaa: 168-scenario bounded power sensitivity rerun verified")
 
 
-CHECKS = {"gpu": gpu, "queue": queue, "human": human, "iaa": iaa}
+CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase, "queue": queue,
+          "human": human, "iaa": iaa}
 
 
 def main() -> int:

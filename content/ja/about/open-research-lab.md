@@ -17,3 +17,9 @@ Episodeはsystemの研究履歴を保存します。Research Noteは外部読者
 ## 何が信用を作るか
 
 AI systemの権威ではありません。確認可能なartifact、再現可能な手順、反証可能な主張、見える失敗、明示した不確実性、独立再現によって信用を積み上げます。
+
+## 誰が、なぜ作っているか
+
+私は、監査可能な自律研究がどこまで成立するかを試すためにScientific OSを作っています。ここで公開するすべてのdomainの専門家ではありません。それもこの実験の一部です。主張は、著者やsystemの権威ではなく、確認可能な証拠によって評価されるべきだと考えています。
+
+現在のnoteが受けているのはeditorial／privacy reviewであり、scientific、domain-expert、peer reviewではありません。結果を再現、反証、拡張できる方は、[Discussionsで知らせてください](https://github.com/kbmt327-dev/scientific-os-research/discussions)。

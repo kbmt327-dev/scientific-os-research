@@ -14,8 +14,10 @@ evidence:
   class: contract-validation
   source: JSON Schema bundle、文書間validator、7つのnegative control
 review:
+  editorial_reviewed: true
+  scientific_reviewed: false
+  domain_expert_reviewed: false
   peer_reviewed: false
-  human_reviewed: true
 replication:
   independent: 0
   failed: 0

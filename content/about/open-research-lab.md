@@ -16,3 +16,9 @@ The Episode preserves research history for the system. The Research Note is a st
 ## What earns trust here
 
 Trust is not based on the authority of an AI system. It is earned through inspectable artifacts, reproducible procedures, falsifiable claims, visible failures, explicit uncertainty, and independent replication.
+
+## Who is building this
+
+I am building Scientific OS as an experiment in auditable autonomous research. I am not a domain expert in every field published here. That is part of the test: claims should stand on inspectable evidence rather than the authority of their author or the system that generated them.
+
+The current notes have received editorial and privacy review, not scientific, domain-expert, or peer review. If you can reproduce, falsify, or extend a result, [I would like to hear from you](https://github.com/kbmt327-dev/scientific-os-research/discussions).

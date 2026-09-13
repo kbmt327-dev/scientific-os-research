@@ -12,8 +12,10 @@ evidence:
   class: synthetic-simulation
   source: Public simulator, calibration artifacts, sealed prediction, and E1 outputs
 review:
+  editorial_reviewed: true
+  scientific_reviewed: false
+  domain_expert_reviewed: false
   peer_reviewed: false
-  human_reviewed: true
 replication:
   independent: 0
   failed: 0
@@ -72,7 +74,7 @@ Score: **7/10 supported**. P7 also exposed a design error: a performance-degrada
 - 30,000 jobs per cell, 20% warm-up, five fixed seeds.
 - Policies: FCFS, EASY backfill, greedy SRPT, ServerFilling-SRPT.
 - `sigma in {0,0.5,1,2}` and `c_pre / E[S] in {0,0.05,0.2}`.
-- Two demand mixes: `trace_like` dominated by 1-GPU jobs and `gang_heavy` dominated by 32/64-GPU jobs.
+- Two synthetic demand mixes: a small-job-heavy mix with internal scenario ID `trace_like`, dominated by 1-GPU jobs, and `gang_heavy`, dominated by 32/64-GPU jobs. The name `trace_like` does not mean that production trace data were used.
 - 320 E1 runs; long-horizon adjudication separated stable queues from growing backlog.
 
 Before E1, the simulator was checked against M/M/c, Little's law, work conservation, a pooled-SRPT lower bound, and the ServerFilling selection rule.
@@ -81,13 +83,13 @@ Before E1, the simulator was checked against M/M/c, Little's law, work conservat
 
 ### The mix changed the winning principle
 
-For `trace_like`, zero-cost greedy SRPT had mean JCT 1.13 at `sigma=0`, versus 1.35 for ServerFilling-SRPT and 1.58 for EASY. At `sigma=2`, greedy SRPT remained ahead of EASY: 1.20 versus 1.33.
+For the small-job-heavy synthetic mix (internal ID `trace_like`), zero-cost greedy SRPT had mean JCT 1.13 at `sigma=0`, versus 1.35 for ServerFilling-SRPT and 1.58 for EASY. At `sigma=2`, greedy SRPT remained ahead of EASY: 1.20 versus 1.33.
 
 For `gang_heavy` at zero friction, greedy SRPT diverged while ServerFilling-SRPT remained stable with mean JCT 3.54. Greedy SRPT gave 64-GPU jobs mean JCT 71.5, about 48 times its 8-GPU-job value; ServerFilling-SRPT reversed that class ordering and gave 64-GPU jobs mean JCT 2.3.
 
 ### Preemption cost changed stability, not just average latency
 
-In `trace_like`, greedy SRPT's preemptions per job rose from 0.62 at zero cost to 1.99 at cost 0.2. Lost work reached 40%, giving `rho_eff = 0.85 * (1 + 0.40) = 1.19`. Long-horizon backlog slope did not shrink. ServerFilling-SRPT at cost 0.2 also crossed effective capacity in this mix.
+In the same small-job-heavy synthetic mix, greedy SRPT's preemptions per job rose from 0.62 at zero cost to 1.99 at cost 0.2. Lost work reached 40%, giving `rho_eff = 0.85 * (1 + 0.40) = 1.19`. Long-horizon backlog slope did not shrink. ServerFilling-SRPT at cost 0.2 also crossed effective capacity in this mix.
 
 ```mermaid
 flowchart LR

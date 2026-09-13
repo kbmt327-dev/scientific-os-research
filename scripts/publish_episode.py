@@ -49,8 +49,14 @@ def validate_note(path: Path) -> list[str]:
         errors.append(f"unsupported research type: {meta.get('type')!r}")
     if not isinstance(meta.get("evidence"), dict) or not all(meta["evidence"].get(k) for k in ("class", "source")):
         errors.append("evidence.class and evidence.source are required")
-    if not isinstance(meta.get("review"), dict) or "peer_reviewed" not in meta["review"] or "human_reviewed" not in meta["review"]:
-        errors.append("review.peer_reviewed and review.human_reviewed are required")
+    review_fields = {
+        "editorial_reviewed", "scientific_reviewed",
+        "domain_expert_reviewed", "peer_reviewed",
+    }
+    if not isinstance(meta.get("review"), dict) or not review_fields.issubset(meta["review"]):
+        errors.append("review must separate editorial, scientific, domain-expert, and peer review")
+    elif any(not isinstance(meta["review"][field], bool) for field in review_fields):
+        errors.append("all review fields must be boolean")
     if not isinstance(meta.get("replication"), dict) or not all(k in meta["replication"] for k in ("independent", "failed")):
         errors.append("replication.independent and replication.failed are required")
     publication = meta.get("publication")
@@ -103,8 +109,10 @@ evidence:
   class: TODO
   source: TODO
 review:
+  editorial_reviewed: false
+  scientific_reviewed: false
+  domain_expert_reviewed: false
   peer_reviewed: false
-  human_reviewed: false
 replication:
   independent: 0
   failed: 0

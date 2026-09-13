@@ -14,8 +14,10 @@ evidence:
   class: synthetic-simulation
   source: 公開simulator、較正artifact、sealed prediction、E1出力
 review:
+  editorial_reviewed: true
+  scientific_reviewed: false
+  domain_expert_reviewed: false
   peer_reviewed: false
-  human_reviewed: true
 replication:
   independent: 0
   failed: 0
@@ -76,7 +78,7 @@ E1の前に10予測をsealしました。Prediction JSONのSHA-256は`dd977a92c0
 - 各cell 30,000 job、warm-up 20%、固定seed 5本。
 - Policy：FCFS、EASY backfill、greedy SRPT、ServerFilling-SRPT。
 - `sigma in {0,0.5,1,2}`、`c_pre / E[S] in {0,0.05,0.2}`。
-- 1-GPU job中心の`trace_like`と、32/64-GPU job中心の`gang_heavy`。
+- 2つの合成demand mix。1-GPU job中心のsmall-job-heavy mixは内部scenario IDを`trace_like`とし、もう一方の`gang_heavy`は32/64-GPU job中心。`trace_like`という名称はproduction traceを使用したという意味ではありません。
 - E1は320 run。長horizonの裁定で安定queueと増加backlogを分離。
 
 E1前にM/M/c、Little's law、work conservation、pooled-SRPT lower bound、ServerFilling選択規則でsimulatorを検算しました。
@@ -85,13 +87,13 @@ E1前にM/M/c、Little's law、work conservation、pooled-SRPT lower bound、Ser
 
 ### Mixで勝つ原理が変わった
 
-`trace_like`かつcost 0では、`sigma=0`のgreedy SRPT平均JCTは1.13で、ServerFilling-SRPT 1.35、EASY 1.58より小さくなりました。`sigma=2`でもgreedy SRPTは1.20対1.33でEASYより優位でした。
+small-job-heavyな合成mix（内部ID `trace_like`）かつcost 0では、`sigma=0`のgreedy SRPT平均JCTは1.13で、ServerFilling-SRPT 1.35、EASY 1.58より小さくなりました。`sigma=2`でもgreedy SRPTは1.20対1.33でEASYより優位でした。
 
 `gang_heavy`かつ摩擦0ではgreedy SRPTが発散し、ServerFilling-SRPTは平均JCT 3.54で安定しました。greedy SRPTの64-GPU job平均JCTは71.5で、8-GPU jobの約48倍でした。ServerFilling-SRPTではclass順位が逆転し、64-GPU jobは2.3でした。
 
 ### Preemption costは平均遅延だけでなく安定性を変えた
 
-`trace_like`ではgreedy SRPTのjob当たりpreemptionがcost 0の0.62からcost 0.2の1.99へ増えました。lost workは40%に達し、`rho_eff = 0.85 * (1 + 0.40) = 1.19`となり、長horizonでもbacklog slopeは縮みませんでした。このmixではServerFilling-SRPTもcost 0.2で実効capacityを超えました。
+同じsmall-job-heavyな合成mixでは、greedy SRPTのjob当たりpreemptionがcost 0の0.62からcost 0.2の1.99へ増えました。lost workは40%に達し、`rho_eff = 0.85 * (1 + 0.40) = 1.19`となり、長horizonでもbacklog slopeは縮みませんでした。このmixではServerFilling-SRPTもcost 0.2で実効capacityを超えました。
 
 ```mermaid
 flowchart LR

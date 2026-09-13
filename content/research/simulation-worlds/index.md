@@ -12,8 +12,10 @@ evidence:
   class: synthetic-blind-benchmark
   source: Public hidden-world generator, observations, sealed predictions, fitted simulator, and reveal
 review:
+  editorial_reviewed: true
+  scientific_reviewed: false
+  domain_expert_reviewed: false
   peer_reviewed: false
-  human_reviewed: true
 replication:
   independent: 0
   failed: 0

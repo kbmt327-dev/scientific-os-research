@@ -1,37 +1,60 @@
 ---
 title: Research
-description: Findings, Methods, and Protocols with explicit evidence boundaries.
+description: Research areas, what each currently claims, and what kind of evidence backs it.
 lang: en
 aliases: [/research/index]
 ---
 
-<p class="language-switch"><a href="/scientific-os-research/ja/research/" hreflang="ja">日本語</a> · <span aria-current="page">English</span></p>
+<p class="site-lede">Grouped by research area. Each entry says what can be claimed right now and what kind of evidence supports it. <a href="/ja/research/" hreflang="ja">日本語</a></p>
 
-Research Notes are grouped by what they contribute, not by how confident they sound. A **Finding** reports an observed result, a **Method** defines a research interface, and a **Protocol** freezes a future test before confirmatory data.
+Notes are grouped by what they contribute, not by how confident they sound. A **Finding** reports an observed result, a **Method** defines a research interface, and a **Protocol** freezes a future test before confirmatory data exists.
 
-## Findings
+## GPU cluster scheduling
 
-### GPU scheduling program
+**Question:** under what conditions does size-based scheduling — run the shortest job first — break?
 
-This is one connected public revision sequence. Read EP-0004 for the latest published boundary; read backward when you need the claim history. The public sequence does not imply that every internal update is published.
+**Current claim:** the breaking mechanism is real inside synthetic simulation. A single job that needs the entire cluster is enough: size priority combined with greedy packing leaves it waiting indefinitely. But measuring two public traces showed no such job in any pool actually in production. The quantity to watch is the largest job as a fraction of pool capacity; the safe boundary is 0.75 and the worst measured ratio is 0.59. The harm is a several-fold delay, not starvation.
 
-<div class="revision-chain vertical" id="gpu-scheduling-program">
-  <a href="/scientific-os-research/en/research/gpu-scheduling/"><b>EP-0001 · SYNTHETIC</b><span>Workload mix and preemption friction reversed scheduler rankings. Later notes narrow two claims.</span></a>
-  <a href="/scientific-os-research/en/research/gpu-scheduling-phase-diagram/"><b>EP-0002 · SYNTHETIC</b><span>A phase diagram exposed a confounded noise axis and three failed stability detectors.</span></a>
-  <a href="/scientific-os-research/en/research/gpu-scheduling-starvation-mechanism/"><b>EP-0003 · MECHANISM</b><span>A mean-matched control isolated whole-pool support—but its practical rule was later demoted.</span></a>
-  <a class="current" href="/scientific-os-research/en/research/gpu-scheduling-real-traces/"><b>EP-0004 · TRACE MEASUREMENT + SYNTHETIC · LATEST PUBLIC</b><span>No measured pool-filling job; degradation is continuous, with a provisional 0.75 ratio boundary in the model.</span></a>
+**[Read the current claim (EP-0004) →](/en/research/gpu-scheduling-real-traces/)**
+
+<details class="series-history" id="gpu-scheduling-program">
+<summary>The four studies that led here</summary>
+
+<div class="revision-chain vertical" aria-label="How the GPU scheduling claim changed">
+  <a href="/en/research/gpu-scheduling/"><b>EP-0001 · synthetic</b><span>Estimation error and restart cost reverse which scheduler wins. Two claims were later made conditional.</span></a>
+  <a href="/en/research/gpu-scheduling-phase-diagram/"><b>EP-0002 · synthetic</b><span>A good average hides a job class that never finishes; three stability detectors failed.</span></a>
+  <a href="/en/research/gpu-scheduling-starvation-mechanism/"><b>EP-0003 · mechanism</b><span>A mean-matched control isolated the cause — but the practical rule stated here was later withdrawn.</span></a>
+  <a class="current" href="/en/research/gpu-scheduling-real-traces/"><b>EP-0004 · trace measurement + synthetic · current</b><span>No measured pool met the condition; degradation is continuous, with a provisional 0.75 boundary in the model.</span></a>
 </div>
 
-### Other finding
+Read backward from EP-0004 when you want the claim history. This is the published revision sequence; it does not imply that every internal update is published.
 
-- **[[en/research/simulation-worlds/index|Blind identification of batched arrivals and heterogeneous servers]]** — five structural matches inside a disclosed synthetic hypothesis family; not open-world discovery.
+</details>
 
-## Methods
+## Queueing system identification
 
-- **[[en/research/human-model/index|Human Model Contract v0.2]]** — a validated fail-closed data/model contract; not evidence of numerical correctness.
+**Question:** given a queueing world whose mechanism is hidden, how much of that mechanism can external records alone recover?
 
-## Protocols
+**Current claim:** inside a disclosed family of candidate mechanisms, one hidden instance was identified correctly — all five structural components matched the withheld truth. This tests selection from given options, not discovery from an unknown hypothesis space.
 
-- **[[en/research/badminton-biomechanics/index|2×2 preparation-time × backward-CoM protocol]]** — a prospective design and power sensitivity; not sealed and not authorized for data collection.
+**[Read this study →](/en/research/simulation-worlds/)** — Finding
+
+## Human movement model interfaces
+
+**Question:** when measured human motion reaches a model, can coordinate mix-ups and target leakage be blocked by machine rather than by a note in the prose?
+
+**Current claim:** they can. A correct bundle passes nine check groups and seven deliberately broken variants are all rejected. This is evidence that the connection assumptions hold, not that the numerical conversion or the predictive performance is right. The public example's adapter stays blocked because a coordinate mismatch is unresolved.
+
+**[Read this study →](/en/research/human-model/)** — Method
+
+## Badminton biomechanics
+
+**Question:** in the smash, can the effect of short preparation time be separated from the effect of backward centre of mass?
+
+**Current state:** design and power sensitivity only. **No observations yet.** Detecting the interaction needs far more participants than the main effects, so the sample size is undecided. Instrument feasibility and ethics are unresolved, so the protocol is not sealed and data collection is not authorized.
+
+**[Read this protocol →](/en/research/badminton-biomechanics/)** — Protocol
+
+---
 
 Future records may include Replication, Negative Result, Dataset, and Benchmark without changing existing research identities.

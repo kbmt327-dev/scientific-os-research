@@ -1,17 +1,17 @@
 ---
 research_id: IAA-EP-0008
-title: バドミントンスマッシュの準備時間×後方CoM 2×2 protocol
+title: バドミントンのスマッシュで、準備時間と後方重心を切り分ける2×2実験の設計
 date: 2026-09-13
 lang: ja
 domain: IAA / Badminton biomechanics
 type: Protocol
-status: Draft、未seal、data collection未承認
-evidence_level: Design and power simulation
+status: 下書き、未封印、データ取得は未承認
+evidence_level: 設計と検出力シミュレーション
 peer_reviewed: false
 independent_replications: 0
 evidence:
   class: protocol-and-power-sensitivity
-  source: 公開事前登録draftとMonte Carlo感度analysis
+  source: 公開した事前登録の下書きと、モンテカルロによる感度解析
 review:
   editorial_reviewed: true
   scientific_reviewed: false
@@ -20,7 +20,7 @@ review:
 replication:
   independent: 0
   failed: 0
-claim_scope: 前向きdesignのみ、確証的観測なし
+claim_scope: 前向きの実験設計のみ、確証的な観測はなし
 source_episode: IAA/EP-0008
 source_episode_sha256: 6c12a0f9f82a62cac5b36509d4901d10cb9ffec458bcd873cb801fe54a5f9308
 publication:
@@ -28,130 +28,134 @@ publication:
 tags: [protocol, biomechanics, badminton, preregistration, japanese]
 ---
 
-<p class="language-switch"><span aria-current="page">日本語</span> · <a href="/scientific-os-research/en/research/badminton-biomechanics/" hreflang="en">English</a></p>
+<p class="research-area"><b>バドミントンのバイオメカニクス</b><span>実験を始める前に、何を固定したかを公開する</span><a href="/en/research/badminton-biomechanics/" hreflang="en">English</a></p>
 
-<div class="evidence-strip"><span>Protocol</span><span>Draft、未seal</span><span>確証dataなし</span><span>power仮定は未較正</span><span>外部再現 0</span></div>
+<div class="evidence-strip"><span>Protocol</span><span>下書き、未封印</span><span>確証データなし</span><span>検出力の仮定は未較正</span><span>外部再現 0</span></div>
 
-## 問い
+## この実験計画の要点
 
-同じ熟練player内でassigned preparation timeとassigned backward CoM stateを独立に変え、contact前racket-head velocityへの効果を識別できるか。
+オーバーヘッドスマッシュでは、準備時間の短さと、重心が後ろに残っていることが、どちらもラケット速度を下げる要因として知られています。しかし実際のプレーでは両者が絡み合っていて、観測された記録からは切り離せません。
 
-## Key figure
+この計画は、同じ熟練プレーヤーの中で、**準備時間と後方重心の状態を独立に割り付ける2×2の実験**を提案します。狙いは、時間の圧力による効果と身体の状態による効果を分けること、そして熟練者が後方状態を補償できるかを調べることです。
 
-<div class="factorial-figure" aria-label="2×2実験design"><div></div><b>Backward CoM low</b><b>Backward CoM high</b><b>Preparation long</b><span>Long × low</span><span>Long × high</span><b>Preparation short</b><span>Short × low</span><span>Short × high</span></div>
+確証データを取る前に、主要な測定量（インパクト直前のラケットヘッド速度）、座標系、同期イベント、除外基準、統計モデル、モデルが収束しないときの代替手順を固定してあります。検出力の感度解析では、明示した仮定のもとで、**交互作用を同じ大きさで検出するには主効果よりずっと多い参加者が必要**でした（主効果0.30 SDでN=30、交互作用0.30 SDでN=48でも検出力0.50）。
 
-## このProtocolが確立すること
+**この計画はまだ封印しておらず、データ取得を承認していません。** 機器が実際に使えるか、倫理審査、操作する水準、実際のばらつき、意味のある最小の効果量、欠測、最終的な人数——いずれも未解決だからです。
 
-前向きdesignはassignment、primary outcome window、coordinate、同期event、除外、model、fallback順、再現可能なpower-sensitivity gridを固定します。
+## 図で見る
 
-## このProtocolが確立しないこと
+<div class="factorial-figure" aria-label="2×2の実験設計"><div></div><b>後方重心 低</b><b>後方重心 高</b><b>準備時間 長</b><span>長 × 低</span><span>長 × 高</span><b>準備時間 短</b><span>短 × 低</span><span>短 × 高</span></div>
 
-実行可能性、倫理承認、観測効果、因果解釈、最終sample sizeは確立しません。未sealで、data collectionを承認しません。
+## この計画が決めていること
 
-## 詳細を検証する
+主要な測定量、その測定窓、座標系、同期イベント、除外基準、統計モデル、モデルが収束しないときの代替順序、そして再現できる検出力の感度表。これらは確証データを見る前に固定してあります。
 
-## 要約
+## この計画が決めていないこと
 
-このprotocolは、同じ熟練participant内でバドミントンoverhead smashの準備時間と後方center-of-mass状態を独立に割り付ける2×2実験を提案します。確証data取得前にprimary racket-velocity outcome、座標系、同期event、除外、階層model、model fallback順を固定します。Monte Carlo感度analysisでは、明示した仮定下でinteraction effectは同程度のmain effectより大幅に多いparticipantを要しました。機器の実行可能性、倫理、操作水準、経験的分散、最小重要効果、欠測、最終sample sizeは未解決なので、protocolは未sealでdata collectionを承認しません。
-
-## 研究質問
-
-同じ熟練participant内でassigned preparation timeとassigned backward-CoM stateを分離すると、contact前の固定target方向racket-head velocityへどう影響するか。
+実行可能性、倫理承認、観測される効果、因果の解釈、最終的な人数。まだ封印しておらず、データ取得を承認していません。
 
 ## なぜ重要か
 
-retrospectiveなswingでは、観測された準備時間、後方移動、skill adaptation、racket outcomeが絡み合います。時間圧とbody-state effectを分け、熟練した再編成が後方状態を補償できるか調べるには独立割付が必要です。
+実際のスイングを後から観察すると、準備時間、後方への移動、技術的な適応、ラケットの結果が絡み合っています。時間の圧力による効果と身体の状態による効果を分け、熟練者の再編成が後方状態を補償できるのかを調べるには、独立に割り付ける以外にありません。
+
+## 何を調べたか
+
+同じ熟練参加者の中で、割り付けた準備時間と割り付けた後方重心の状態を分離したとき、インパクト直前の、固定した目標方向へのラケットヘッド速度はどう変わるか。
 
 ## 競合仮説
 
-- **H1:** 短いassigned preparation timeはprimary velocity projectionを下げる（`beta_T < 0`）。
-- **H2:** 高いassigned backward-CoM stateはそれを下げる（`beta_B < 0`）。
-- **H6:** braking／reorganizationに成功するregimeでは、高いbackward stateが`beta_B > 0`またはmechanism outcomeと整合する条件依存interactionを生み得る。`beta_B = 0`だけではH6を支持しない。
+- **H1：** 割り付けた準備時間が短いと、主要な速度成分が下がる（`beta_T < 0`）。
+- **H2：** 割り付けた後方重心が高いと、それが下がる（`beta_B < 0`）。
+- **H6：** 制動と再編成に成功する条件では、後方状態が高いほうが `beta_B > 0` になる、あるいは仕組みと整合する条件依存の交互作用が生じうる。`beta_B = 0` というだけではH6を支持しません。
 
-## 予測
+## 事前に固定した予測
 
-確証予測はsealしていません。Placeholder `PENDING-2X2-EP-0007`はfeasibilityとdesign blockerが解けるまで意図的に未sealです。
+確証的な予測はまだ封印していません。仮置きの `PENDING-2X2-EP-0007` は、実行可能性と設計上の障害が解けるまで、意図的に未封印のままにしてあります。
 
 ## 方法
 
-- participant内2×2：assigned preparation time（`long/short`）× assigned backward-CoM state（`low/high`）。
-- primary contrastは達成値でなくassignmentが定義し、観測時間やCoMでtrialを再labelしない。
-- Ground axis：`+X`はnet center方向、`+Z`は上、`+Y = +Z cross +X`。backward CoMはvelocityの`-X`射影。
-- Primary outcome：contact前`[-10,-2] ms`におけるground-frame racket-head velocityの固定target vector方向平均。
-- Cue：同期TTL rising edge。Contact：1000 fps以上で最初に見えるshuttle／stringbed接触。Ground contact：vertical GRFが10 ms以上20 Nを超える最初の時点。
-- Primary model：time、backward state、interaction、order、blockをfixed effect、participant interceptとtime／backward／interaction slopeをrandom effectとするtrial-level linear mixed model。
-- Co-primary termは両側Holm familywise alpha 0.05。非収束／singularity時は固定simplification順を使う。
+- 参加者内2×2：割り付けた準備時間（`long / short`）× 割り付けた後方重心の状態（`low / high`）。
+- 主要な対比は、達成された値ではなく**割り付け**で定義します。観測された時間や重心で試行をラベルし直すことはしません。
+- 地面座標：`+X` はネット中央の方向、`+Z` は上、`+Y = +Z × +X`。後方重心は速度の `-X` 成分です。
+- 主要な測定量：インパクト前 `[-10, -2] ms` における、地面座標でのラケットヘッド速度の、固定した目標ベクトル方向への平均。
+- 合図：同期したTTLの立ち上がり。インパクト：1000 fps以上で最初に見えるシャトルとストリング面の接触。接地：鉛直方向の床反力が10 ms以上20 Nを超える最初の時点。
+- 主モデル：時間、後方状態、交互作用、順序、ブロックを固定効果、参加者の切片と時間・後方・交互作用の傾きを変量効果とする、試行水準の線形混合モデル。
+- 同格の主要項は両側Holm法で、検定族全体のalpha 0.05。収束しない／特異になった場合は、固定した簡略化の順序に従います。
 
-Technical missingnessはoutcome別です。Force-plate missはforce-dependent outcomeを無効にしますが、有効なcontact-based racket outcomeまでは除外しません。Primary windowは補間せず、値が低い／予想外という理由で除外しません。
+技術的な欠測は測定量ごとに扱います。床反力の欠測は力に依存する測定量を無効にしますが、有効な接触ベースのラケット測定量まで除外はしません。主要な測定窓は補間せず、値が低い・予想外だからという理由で除外しません。
 
-## Power感度
+## 検出力の感度
 
-Simulationはresidual SD 1.0、participant random-slope SD 0.20、balanced complete cell、planned Holmの保守的近似としてBonferroni alpha `0.05/3`を仮定します。各cell 6 trialです。
+シミュレーションは、残差SD 1.0、参加者ごとの傾きのSD 0.20、各セルが均等に埋まること、そして計画しているHolm法の保守的な近似としてBonferroniのalpha `0.05/3` を仮定します。各セル6試行です。
 
-| Contrast | Effect | power >= .80となる最小tested N |
+| 対比 | 効果量 | 検出力0.80以上に必要な最小N |
 |---|---:|---:|
-| Main effect | 0.30 SD | 30 |
-| Main effect | 0.40 SD | 20 |
-| Interaction | 0.30 SD | >48、N=48でpower 0.4988 |
-| Interaction | 0.40 SD | >48、N=48でpower 0.7905 |
-| Interaction | 0.50 SD | 36 |
+| 主効果 | 0.30 SD | 30 |
+| 主効果 | 0.40 SD | 20 |
+| 交互作用 | 0.30 SD | 48超（N=48で検出力0.4988） |
+| 交互作用 | 0.40 SD | 48超（N=48で検出力0.7905） |
+| 交互作用 | 0.50 SD | 36 |
 
-これは感度結果であり、最終sample-size決定ではありません。
+これは感度の計算結果であり、最終的な人数の決定ではありません。
+
+## 結果
+
+この計画はまだ観測を持ちません。出力は設計そのものと、上の感度表だけです。データ取得はまだ承認されていません。
 
 ## 何が変わったか
 
-- 曖昧だったimpact前方向を、固定target-vector projectionと`[-10,-2] ms` primary windowへ変えました。
-- post hoc relabelを防ぐため、assigned factorとachieved manipulation valueを分離しました。
-- interaction powerがmain-effect powerと大きく異なるため、単一の固定sample sizeを棄却しました。
+- 曖昧だった「インパクト前の方向」を、固定した目標ベクトルへの成分と `[-10, -2] ms` の測定窓に置き換えました。
+- 後からのラベル付け替えを防ぐため、割り付けた因子と、実際に達成された操作量を分離しました。
+- 交互作用の検出力が主効果と大きく違うため、単一の固定した人数を決めるのをやめました。
 
 ## 何が失敗したか
 
-仮定したrandom-slope SDやmanipulation levelを支持するempirical pilotはありません。同期1000-fps video、TTL、force plate、racket markerの利用可能性も未実証です。したがって現時点で実行gateを通らずdraftのままです。
+仮定した傾きのSDや操作水準を裏づける予備データがありません。同期した1000 fps映像、TTL、床反力計、ラケットマーカーが実際に使えるかも実証されていません。したがって現時点では実行の条件を満たさず、下書きのままです。
 
-## 証拠境界
+## 証拠の範囲
 
-**支持されること：** event、座標、除外、model、powerの仮定を外部から確認できる程度にdesignが定義され、公開simulationで感度gridを再現できる。
+**言えること：** イベント、座標、除外、モデル、検出力の仮定が、外部から確認できる程度に定義されていること。公開したシミュレーションで感度表を再現できること。
 
-**支持されないこと：** 実行可能性、倫理承認、観測されたbiomechanics effect、因果解釈、最終sample size、確証研究を開始できる状態。
+**言えないこと：** 実行可能性、倫理承認、観測されるバイオメカニクスの効果、因果の解釈、最終的な人数、確証研究を開始できる状態にあること。
 
-## UNKNOWN
+## まだ分からないこと
 
-- 倫理／安全基準と対象skill level。
-- 実行可能な`T_long/T_short`とbackward-state manipulation geometry。
-- 最小manipulation marginとshuttle-feed tolerance。
-- 経験的random-slope variance、technical missingness、attrition、最小重要効果。
-- interactionをsample size決定に使うco-primaryとするか。
-- 最終code／environment hashとconfirmatory data cutoff。
+- 倫理・安全の基準と、対象とする技術水準。
+- 実行可能な `T_long / T_short` と、後方状態を操作する幾何条件。
+- 操作が成立したと言える最小の差と、シャトル供給のばらつき許容範囲。
+- 実際の傾きの分散、技術的な欠測、脱落、意味のある最小の効果量。
+- 交互作用を、人数決定に使う同格の主要項とするかどうか。
+- 最終的なコードと環境のハッシュ、確証データの締め切り。
 
-## 反証条件
+## この結論が崩れるとき
 
-- assigned timeが事前登録margin以上にachieved preparation timeを分離しない。
-- time assignmentを保ったままassigned backward stateが`v_CoM dot (-X)`を分離しない。
-- 同期または較正が固定event／window定義を支えられない。
-- pilotの分散・欠測により現在のpower gridが実質的に楽観的と分かる。
-- manipulation成功下の新confirmatory sampleで`beta_B < 0`が再現され、H6が弱まる。
+- 割り付けた時間が、事前登録した差以上に、実際の準備時間を分離しない。
+- 時間の割り付けを保ったまま、割り付けた後方状態が `v_CoM · (-X)` を分離しない。
+- 同期または較正が、固定したイベントと測定窓の定義を支えられない。
+- 予備データの分散や欠測から、現在の検出力表が実質的に楽観的だと分かる。
+- 操作が成功した条件での新しい確証データで `beta_B < 0` が再現され、H6が弱まる。
 
-## 再現
+## 自分で確かめる
 
 ```bash
 python -m pip install -r requirements-reproduce.txt
 python scripts/reproduce.py --quick iaa
 ```
 
-公開仮定下のpower計算を再現します。確証dataが存在しないため、実験を再現するものではありません。
+公開した仮定のもとでの検出力計算を再現します。確証データが存在しないため、実験そのものを再現するものではありません。
 
-## 証拠 / Artifacts
+## 証拠とデータ
 
-- [事前登録draft、power script、output](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/badminton-biomechanics)
-- 内部source Episode digest：`6c12a0f9f82a62cac5b36509d4901d10cb9ffec458bcd873cb801fe54a5f9308`
+- [事前登録の下書き、検出力スクリプト、出力](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/badminton-biomechanics)
+- 内部の元Episodeのハッシュ：`6c12a0f9f82a62cac5b36509d4901d10cb9ffec458bcd873cb801fe54a5f9308`
 
-## 外部監査
+## 外部からの検証
 
 - 独立再現：0
 - 再現失敗：0
 - 公開後に確認されたbug：0
-- 未解決critique：0
+- 未解決の批判：0
 
 ## 次の実験
 
-confirmatory sampleとは別のfeasibility pilotで同期と直交manipulationを確認し、分散と欠測を推定し、最小重要効果を選び、interactionをco-primaryにするか決めます。その後にだけ最終protocolとsample sizeをsealします。
+確証データとは別に実行可能性の予備実験を行い、同期と、2つの操作が直交していることを確認し、分散と欠測を推定し、意味のある最小の効果量を選び、交互作用を同格の主要項にするかを決めます。それが済んでから、最終的な計画と人数を封印します。

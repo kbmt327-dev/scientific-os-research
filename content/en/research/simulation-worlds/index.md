@@ -2,7 +2,7 @@
 research_id: SIM-WORLD-EP-0001
 lang: en
 aliases: [/research/simulation-worlds/index]
-title: Blind identification of batched arrivals and heterogeneous servers
+title: How much of a hidden queueing mechanism can observation alone recover?
 date: 2026-09-13
 domain: Sim World / Queueing
 type: Finding
@@ -29,13 +29,15 @@ publication:
 tags: [finding, queueing, blind-benchmark, model-selection]
 ---
 
-<p class="language-switch"><a href="/scientific-os-research/ja/research/simulation-worlds/" hreflang="ja">日本語</a> · <span aria-current="page">English</span></p>
+<p class="research-area"><b>Queueing system identification</b><span>How far observation alone can recover a mechanism</span><a href="/ja/research/simulation-worlds/" hreflang="ja">日本語</a></p>
 
 <div class="evidence-strip"><span>Finding</span><span>Synthetic blind benchmark</span><span>Exploratory</span><span>Not peer reviewed</span><span>0 external replications</span></div>
 
-## The finding
+## Current finding
 
 Inside a disclosed finite mechanism family, a blind queueing instance was identified as geometric batch arrivals plus heterogeneous exponential servers. The parsimonious model placed 8 of 10 out-of-sample statistics inside 95% predictive intervals and matched all five structural components after reveal.
+
+A hidden queueing world presented an apparent M/M/c baseline whose observed mean sojourn time was 234 times the analytic prediction and grew over time. Cheap tests identified simultaneous geometric batches; a sealed request for server-level observations then separated heterogeneous service rates from a globally wrong nominal rate. A parsimonious batched-arrival, exponential-service, tied-rate heterogeneous-server model put 8 of 10 out-of-sample statistics inside 95% predictive intervals and matched the final hidden-world reveal. The benchmark tested identification inside a known mechanism family, not discovery of an unknown hypothesis space.
 
 ## Key figure
 
@@ -57,12 +59,6 @@ flowchart LR
 
 - It does not demonstrate open-world mechanism discovery, real-queue performance, or generalization across seeds.
 - The benchmark designer and researcher were not independent.
-
-## Inspect the record
-
-## Summary
-
-A hidden queueing world presented an apparent M/M/c baseline whose observed mean sojourn time was 234 times the analytic prediction and grew over time. Cheap tests identified simultaneous geometric batches; a sealed request for server-level observations then separated heterogeneous service rates from a globally wrong nominal rate. A parsimonious batched-arrival, exponential-service, tied-rate heterogeneous-server model put 8 of 10 out-of-sample statistics inside 95% predictive intervals and matched the final hidden-world reveal. The benchmark tested identification inside a known mechanism family, not discovery of an unknown hypothesis space.
 
 ## Research question
 

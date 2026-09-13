@@ -1,51 +1,59 @@
 ---
 title: Open Research Lab
-description: 研究の現在の主張から、証拠・限界・再現まで辿れる公開研究インターフェース。
+description: GPUクラスタのスケジューリングなどの研究を、結論・証拠・限界・再現手順まで公開しています。
 lang: ja
 ---
 
-<p class="language-switch"><span aria-current="page">日本語</span> · <a href="/scientific-os-research/en/" hreflang="en">English</a></p>
+<p class="site-lede">ここは研究を公開する場所です。結論だけでなく、どの条件で成り立つか、何が外れたか、どこから自分で確かめられるかまで載せています。<a href="/en/" hreflang="en">English</a></p>
 
-<div class="gateway-kicker">SCIENTIFIC OS · PUBLIC RESEARCH INTERFACE</div>
+Scientific OSという自律研究の仕組みが出した成果のうち、第三者が確認・再現・反証できるものを選んで公開しています。結論は、外部の独立した再現が出るまで暫定です。
 
-> 短時間で意味がつかめ、主張が壊れるところまで深く検証できる研究公開。
-
-Scientific OS が生み出した研究の一部を、人と機械が**理解・検証・再現・反証・再利用**できる形で公開します。結論は独立再現されるまで暫定です。
-
-<div class="depth-rail" aria-label="読む深さ"><span><b>01</b> 発見する</span><span><b>02</b> 理解する</span><span><b>03</b> 検証する</span><span><b>04</b> 再現する</span></div>
-
-## 注目の研究
+## いま分かっていること
 
 <div class="feature-finding">
-  <p class="eyebrow">GPU SCHEDULING · 4本で更新された研究系列</p>
-  <h3>良い平均値の裏で、希少なjob classは待ち続け得る。ただし実trace検証で、その警告が届く範囲は狭まった。</h3>
-  <p>合成simulationは、greedyなsize-based schedulingのstarvation機構を分離しました。その後のpublic trace測定では、必要な前提が測定pool内に存在しませんでした。現在の結論は、比率による境界と数倍の遅延であり、実trace上のstarvationではありません。</p>
-  <p class="feature-actions"><a href="/scientific-os-research/ja/research/gpu-scheduling-real-traces/">最新の公開結果を読む →</a> <a href="/scientific-os-research/ja/research/#gpu-scheduling-program">4本の更新履歴を見る</a></p>
+  <p class="eyebrow">GPUクラスタのスケジューリング</p>
+  <h3>実際のGPUクラスタには、プール全体を占めるジョブが来ていなかった</h3>
+  <p>短いジョブを先に通す「サイズ優先」のスケジューリングは、クラスタ全体を要する巨大ジョブが混じるとそのジョブを永久に待たせます。ただし公開トレース2本を測ったところ、実際に運用されている11個のプールのどれにも、そんなジョブは来ていませんでした。</p>
+  <p>そこで見るべき指標を「クラスタ全体のジョブが来るか」から「<b>最大ジョブがプール容量の何割か</b>」に置き換えました。安全側の目安は0.75、実測された最悪値は0.59です。予想される害は無限の待ちではなく、1 GPUジョブの約7.4倍という遅れです。</p>
+  <p class="feature-meta"><b>証拠の強さ：</b>公開トレース2本の測定と合成シミュレーション。実際の到着列でスケジューラを動かしたわけではありません。外部再現は0件です。</p>
+  <p class="feature-actions"><a href="/ja/research/gpu-scheduling-real-traces/">この研究を読む →</a></p>
 </div>
 
-<div class="revision-chain" aria-label="GPU schedulingの主張がどう変わったか">
-  <a href="/scientific-os-research/ja/research/gpu-scheduling/"><b>EP-0001</b><span>mixとfrictionで順位が反転</span></a>
-  <a href="/scientific-os-research/ja/research/gpu-scheduling-phase-diagram/"><b>EP-0002</b><span>noiseの交絡と検出器の失敗</span></a>
-  <a href="/scientific-os-research/ja/research/gpu-scheduling-starvation-mechanism/"><b>EP-0003</b><span>whole-pool supportが機構を分離</span></a>
-  <a class="current" href="/scientific-os-research/ja/research/gpu-scheduling-real-traces/"><b>EP-0004 · LATEST PUBLIC</b><span>実traceが実務的な射程を降格</span></a>
+## 研究一覧
+
+<div class="research-list">
+  <a href="/ja/research/gpu-scheduling-real-traces/">
+    <b>GPUクラスタのスケジューリング</b>
+    <span>サイズ優先方式が壊れる条件。合成シミュレーションで仕組みを切り分け、公開トレースでその前提を検査しました。4本の更新履歴があります。</span>
+    <small>Finding · 最新の結論はEP-0004</small>
+  </a>
+  <a href="/ja/research/simulation-worlds/">
+    <b>待ち行列のシステム同定</b>
+    <span>中身を隠した待ち行列の世界に対し、外から見える記録だけで仕組みを当てられるかを、正解付きで検査しました。</span>
+    <small>Finding · 候補集合は開示済み</small>
+  </a>
+  <a href="/ja/research/human-model/">
+    <b>人体運動モデルのデータ接続</b>
+    <span>計測データをモデルへ渡すときの座標の取り違えや答えの漏れを、機械が検査して止める仕組みです。接続部は現在停止中です。</span>
+    <small>Method · 予測性能の証拠ではない</small>
+  </a>
+  <a href="/ja/research/badminton-biomechanics/">
+    <b>バドミントンのバイオメカニクス</b>
+    <span>スマッシュの準備時間と後方重心を独立に割り付ける2×2実験の設計です。まだ封印しておらず、データ取得は未承認です。</span>
+    <small>Protocol · 観測はまだありません</small>
+  </a>
 </div>
 
-<p class="public-scope">公開境界：このindexが現在扱う公開系列はEP-0004までです。すべての内部研究更新をmirrorしているとは主張しません。</p>
+[研究一覧をすべて見る →](/ja/research/)
 
-## ほかの研究
+## この場所の読み方
 
-<div class="research-grid">
-  <a href="/scientific-os-research/ja/research/simulation-worlds/"><span>Finding</span><b>Blind system identification</b><small>観測はhidden queueing mechanismをどこまで識別できるか。</small></a>
-  <a href="/scientific-os-research/ja/research/human-model/"><span>Method</span><b>Human Model Contract v0.2</b><small>human dataとmodelの間をfail-closedに接続する境界。</small></a>
-  <a href="/scientific-os-research/ja/research/badminton-biomechanics/"><span>Protocol</span><b>Badminton biomechanics 2×2</b><small>前向き実験設計。未sealで、data collectionは未承認。</small></a>
-</div>
+各研究には、結論とその適用範囲を分けて書いています。何が変わったか、何が外れたか、何がまだ分からないか、どこから再現できるかも残します。全部を読む必要はありません。
 
-## このLabの読み方
+まず **[[ja/how-to-read/index|研究の読み方]]** を見てください。背後の研究の進め方が気になったときだけ、[[ja/about/scientific-os|Scientific OSの進め方]]へ進んでください。
 
-各Research Noteは、結論と射程を分けます。何が変わり、何が失敗し、何が`UNKNOWN`で、どこから再現できるかを残します。まず **[[ja/how-to-read/index|Research Noteの読み方]]** を、必要なら背後の [[ja/about/scientific-os|Scientific OSの研究loop]] を見てください。
+## 証拠を持ち寄る
 
-## 証拠で参加する
+いちばん価値がある次の出来事は、Starではありません。独立した再実行、再現の失敗、反例、より良い観測です。**[[ja/contribute/index|再現・反証・拡張・共同研究の入口へ →]]**
 
-次に価値がある出来事はStarではなく、独立rerun、再現失敗、反例、より良い観測です。**[[ja/contribute/index|再現・反証・拡張・共同研究の入口へ →]]**
-
-<p class="quiet-meta"><a href="/scientific-os-research/ja/about/open-research-lab/#誰がなぜ作っているか">このLabを作っている人について</a>。各noteに明記がない限り、editorial review済み、scientific／domain-expert／peer review未実施です。</p>
+<p class="quiet-meta"><a href="/ja/about/open-research-lab/">このLabと、作っている人について</a>。各研究に明記がない限り、公開前の編集上の確認は受けていますが、科学的な査読・分野専門家によるレビュー・ピアレビューは受けていません。</p>

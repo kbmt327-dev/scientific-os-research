@@ -1,17 +1,17 @@
 ---
 research_id: SIM-WORLD-EP-0001
-title: バッチ到着と不均質serverを盲検同定する
+title: 待ち行列の外側だけを見て、隠された仕組みをどこまで言い当てられるか
 date: 2026-09-13
 lang: ja
 domain: Sim World / Queueing
 type: Finding
 status: 探索的
-evidence_level: 合成blind benchmark
+evidence_level: 合成ブラインドベンチマーク
 peer_reviewed: false
 independent_replications: 0
 evidence:
   class: synthetic-blind-benchmark
-  source: 公開hidden-world generator、観測、sealed prediction、fitted simulator、reveal
+  source: 公開されている隠し世界の生成器、観測データ、封印した予測、当てはめたシミュレータ、正解の開示
 review:
   editorial_reviewed: true
   scientific_reviewed: false
@@ -20,7 +20,7 @@ review:
 replication:
   independent: 0
   failed: 0
-claim_scope: 開示済みの有限mechanism family内にある1つのhidden instance
+claim_scope: あらかじめ開示された有限の仕組みの候補集合の中にある、隠された1事例
 source_episode: SIM-WORLD/EP-0001
 source_episode_sha256: 0c632eb5cad1431953bcbfbe3a067925fea3d7caac6bb21547ce53cb03a7931f
 publication:
@@ -28,130 +28,134 @@ publication:
 tags: [finding, queueing, blind-benchmark, model-selection, japanese]
 ---
 
-<p class="language-switch"><span aria-current="page">日本語</span> · <a href="/scientific-os-research/en/research/simulation-worlds/" hreflang="en">English</a></p>
+<p class="research-area"><b>待ち行列のシステム同定</b><span>観測だけで仕組みを特定できるかを、正解付きで検査する</span><a href="/en/research/simulation-worlds/" hreflang="en">English</a></p>
 
-<div class="evidence-strip"><span>Finding</span><span>合成blind benchmark</span><span>探索的</span><span>peer reviewなし</span><span>外部再現 0</span></div>
+<div class="evidence-strip"><span>Finding</span><span>合成ブラインドベンチマーク</span><span>探索的</span><span>査読なし</span><span>外部再現 0</span></div>
 
-## 発見
+## 現在わかっていること
 
-開示済みの有限mechanism family内で、blind queueing instanceを幾何batch arrival + heterogeneous exponential serverとして同定しました。parsimonious modelはout-of-sample統計10個中8個を95%予測区間へ置き、reveal後に5つの構造componentすべてと一致しました。
+中身の仕組みが隠された待ち行列の世界を用意し、外から見える記録だけを渡して、どんなモデルなのかを当てにいきました。正解は最後まで開示せず、当てた後に照合します。
 
-## Key figure
+最初の観測は極端でした。見かけ上はM/M/4（到着も処理も指数分布、窓口4つ）に見えるのに、**滞在時間の実測平均が理論値の234倍**あり、しかも時間とともに増え続けていました。
+
+ここで新しい仕組みを足す前に、安い検査から順に潰しました。結果、**到着の49.5%がまったく同じ時刻に重なっている**ことが分かり、まとまって到着する（バッチ到着）と特定できました。次に、窓口ごとの記録を見せてほしいと要求し、その要求と6本の予測を封印してから追加の観測を受け取りました。窓口の処理速度は約 `0.693 / 0.361 / 0.364 / 1.028` で、「全部同じ速度」という説明は棄却されました。
+
+最終的に選んだモデルは、バッチ到着＋指数サービス＋速度の違う窓口（近い2つの速度は同じとみなして1つにまとめた）です。このモデルは、事前に封印した**10個の予測統計量のうち8個を95%予測区間の中に収め**、正解の開示後に構造の5要素すべてと一致しました。
+
+重要な限界があります。**このベンチマークが検査したのは、あらかじめ示された候補集合の中で正しい一つを選べるかであって、未知の仮説空間から新しい仕組みを発見できるかではありません。**
+
+## 図で見る
 
 ```mermaid
 flowchart LR
-  O[大きな予測不一致] --> T[安価な代替検査]
-  T --> Q[追加観測要求をseal]
-  Q --> L[model ladderを比較]
-  L --> P[out-of-sample予測をseal]
-  P --> R[Reveal: 構造5/5一致]
+  O[予測と観測が大きく食い違う] --> T[安い代替説明から潰す]
+  T --> Q[追加観測の要求を封印する]
+  Q --> L[モデルの階段を比べる]
+  L --> P[予測外データへの予測を封印する]
+  P --> R[正解を開示: 構造5要素すべて一致]
 ```
 
 ## この研究が示すこと
 
-- 限定されたobserve–predict–request–replicate loopが、与えられたfamily内のこの1 instanceを回復した。
-- replicationにより1-run residualを不要な新mechanismへ変えずに済んだ。
+- 「観測する → 予測する → 追加観測を要求する → 複製する」という限定された手順で、与えられた候補集合の中のこの1事例を回復できた。
+- 1回の実行で出た残差を、新しい仕組みを足す理由にせず、複製で確かめるという判断が機能した。
 
 ## この研究が示さないこと
 
-- open-world mechanism discovery、実queue性能、seed間の一般化は示さない。
-- benchmark designerとresearcherは独立ではない。
-
-## 詳細を検証する
-
-## 要約
-
-hidden queueing worldでは、見かけ上のM/M/c baselineに対し、観測平均sojourn timeが解析予測の234倍で時間とともに増加しました。安価な検査で同時刻の幾何batchを特定し、server-level観測をsealed requestした後、不均質service rateと単一の誤ったnominal rateを区別しました。batch arrival・指数service・rateを一部tieした不均質server modelは、out-of-sample統計10個中8個を95%予測区間内に置き、最終的なhidden-world revealと一致しました。このbenchmarkが検査したのは既知mechanism family内の同定であり、未知の仮説空間の発見ではありません。
-
-## 研究質問
-
-予測不一致、必要な追加観測、sealed out-of-sample test、複製、model ladderを用いて、hidden simulated worldを説明する最小のqueueing modelを同定できるか。
+- 未知の仮説空間からの発見、実際の待ち行列での性能、別のシードへの一般化は示しません。
+- ベンチマークを作った人と解く人は独立ではありません。
 
 ## なぜ重要か
 
-不一致の後に複雑性を加えるのは簡単です。このbenchmarkでは、まず安価な代替説明を除外し、新しい観測channelを要求する理由を示し、modelを拡張する前に残差を複製することを求めました。
+予測が外れたあとにモデルを複雑にするのは簡単です。このベンチマークでは、まず安い代替説明を除外し、新しい観測チャネルを要求する理由を明示し、モデルを拡張する前に残差を複製することを自分に課しました。手順そのものが検査対象です。
+
+## 何を調べたか
+
+予測との食い違い、追加観測の要求、封印した予測外データでの検証、複製、そしてモデルの階段的比較を使って、隠された世界を説明する最小の待ち行列モデルを同定できるか。
 
 ## 競合仮説
 
-候補族にはarrival process、service law、server構造、customer behaviorの代替を含めました。主な候補はabandonment／balking、congestion-dependent slowdown、batch arrival、誤った共通service rate、不均質server rate、非指数serviceでした。
+候補集合には、到着過程、サービス法則、窓口の構造、客の振る舞いについての代替案を含めました。主な候補は、途中離脱・入室拒否、混雑に応じた処理速度低下、バッチ到着、共通サービス速度の誤り、窓口ごとに異なる処理速度、指数分布でないサービス時間です。
 
-## 予測
+## 事前に固定した予測
 
-- **PRED-001：** 既存の同一runをobservation level 1から3へ上げる前にseal。強いserver-rate heterogeneityを含む6予測すべてが支持。
-- **PRED-002：** 2つのout-of-sample条件前にseal。報告統計10個中8個が95%予測区間内。
-- **PRED-003：** 1つの残差が新mechanismを要するか判定する8回の同条件複製前にseal。複製平均は区間内へ戻った。
-- **FINAL-MODEL：** hidden worldをrevealする前にseal。
+封印とは、結果を見る前に予測文と判定基準を確定し、ハッシュで固定することです。
+
+- **PRED-001：** 同じ実行の観測レベルを1から3へ上げる前に封印。窓口速度に強い不均一があるという予測を含む6本すべてが的中。
+- **PRED-002：** 2つの予測外条件の前に封印。報告した10個の統計量のうち8個が95%予測区間内。
+- **PRED-003：** ある残差が新しい仕組みを要するかどうかを判定する、同条件8回の複製の前に封印。複製の平均は区間内へ戻りました。
+- **FINAL-MODEL：** 隠された世界を開示する前に封印。
 
 ## 方法
 
-worldは実行時に16-byte seedを生成し、seedとSHA-256 commitmentだけを保存しました。mechanismとparameterはseedから導出されます。Observation levelは段階的に情報を公開しました。最初はarrivalとdepartureだけで分析し、service start、server ID、exit reason、queue-length sampleは要求と6予測をsealした後にだけ追加しました。
+世界は実行時に16バイトのシードを生成し、シードとSHA-256のコミットメントだけを保存します。仕組みとパラメータはシードから導出されます。観測レベルは段階的に情報を開きました。最初は到着と退出だけで分析し、サービス開始時刻、窓口ID、退出理由、待ち人数のサンプルは、要求と6本の予測を封印した後にだけ追加しています。
 
-Model ladderではnominal M/M/c、fitted-rate M/M/c、均質batch arrival、不均質batch-arrival modelを比較しました。選択modelは統計的に区別できない2つのserver rateをtieし、完全heterogeneous modelよりparameterを1つ減らしました。
+モデルの階段では、公称M/M/c、速度を当てはめたM/M/c、均一なバッチ到着モデル、不均一なバッチ到着モデルを比べました。選んだモデルは、統計的に区別できない2つの窓口速度を同じ値とみなし、完全に不均一なモデルよりパラメータを1つ減らしています。
 
 ## 結果
 
-- Baseline M/M/4は平均sojourn `W=1.335`を予測したが、観測は`W=311.8`で線形増加。
-- arrivalの49.5%が正確に同じtimestampを共有し、batch sizeは幾何分布に近かった。
-- server rateは約`0.693 / 0.361 / 0.364 / 1.028`で、均質rate説明を棄却。
-- parsimonious heterogeneous modelは予測区間hit 8/10、相対誤差median 0.102。
-- revealした構造は宣言した5 componentすべてと一致。mean batch size誤差0.53%、server-rate最大誤差2.29%、`c=3,4,6`のcapacity誤差は0.3%未満。
+- 基準のM/M/4は平均滞在時間 `W = 1.335` を予測しましたが、観測は `W = 311.8` で、しかも線形に増加していました。
+- 到着の49.5%がまったく同じ時刻を共有し、まとまりの大きさは幾何分布に近い形でした。
+- 窓口速度はおよそ `0.693 / 0.361 / 0.364 / 1.028` で、均一な速度という説明を棄却しました。
+- 節約したモデルは予測区間への的中が10個中8個、相対誤差の中央値は0.102でした。
+- 開示された構造は、宣言した5要素すべてと一致しました。平均バッチサイズの誤差0.53%、窓口速度の最大誤差2.29%、`c = 3, 4, 6` での容量の誤差は0.3%未満です。
 
 ## 何が変わったか
 
-- cheap testでabandonmentとslowdownを除外した後、観測追加を1つのchannel upgradeに限定しました。
-- 1 runのwaiting-time残差に対し、新mechanism追加ではなく複製を選びました。
-- 近い2 rateはexact equalityと主張せず、経済的なtieとして表現しました。
+- 安い検査で途中離脱と処理速度低下を除外した後、追加する観測を1つのチャネルだけに限定しました。
+- 1回の実行で出た待ち時間の残差に対し、新しい仕組みを足すのではなく複製することを選びました。
+- 近い2つの速度は「厳密に等しい」とは主張せず、節約のためにまとめた、という表現にしました。
 
 ## 何が失敗したか
 
-初期analysisは、末尾の不完全time binを含めたためarrival epochをover-dispersedと報告しました。完全binと経験的Poisson nullを使うと見かけの効果は消えました。修正しなければ不要なmodulated／periodic arrival processを追加していました。
+初期の解析は、末尾の不完全な時間区間を含めてしまったために、到着時刻の分散が過大だと報告していました。完全な区間だけを使い、経験的なポアソン帰無分布と比べると、見かけの効果は消えました。直さなければ、必要のない「変動する／周期的な到着過程」をモデルに足していたはずです。
 
-候補mechanism familyと割当規則は事前に与えられていました。hidden instanceはblindでしたが、仮説空間はblindではありません。
+候補となる仕組みの集合と割当規則は、あらかじめ与えられていました。隠されていたのは事例であって、仮説空間ではありません。
 
-## 証拠境界
+## 証拠の範囲
 
-**支持されること：** 宣言済みの有限family内にある1つの合成hidden instanceを同定し、sealed predictionとout-of-sample check後の最終構造・parameterがrevealと一致した。
+**言えること：** 宣言済みの有限の候補集合の中にある合成の隠し事例を1つ同定し、封印した予測と予測外データでの検査を経た最終的な構造とパラメータが、開示された正解と一致した。
 
-**支持されないこと：** open-world mechanism discovery、実queueでの性能、hidden seed間の一般性、benchmark designerとresearcherの独立性。
+**言えないこと：** 未知の仮説空間からの発見、実際の待ち行列での性能、隠しシードを変えたときの一般性、ベンチマークを作った人と解く人の独立性。
 
-## UNKNOWN
+## まだ分からないこと
 
-- 独立に拡張されたmechanism familyでも同じ手順が成功するか。
-- 観測windowが10分の1のときの検出力。
-- heterogeneous serverとcongestion-dependent slowdownなど複数逸脱が相互作用するときの識別可能性。
-- 新しいhidden seed、独立researcherへの一般化。
+- 第三者が独立に拡張した候補集合でも、同じ手順が成功するか。
+- 観測の長さが10分の1のときの検出力。
+- 不均一な窓口と混雑依存の速度低下のように、複数のずれが同時にあるとき区別できるか。
+- 新しい隠しシード、そして独立した解き手への一般化。
 
-## 反証条件
+## この結論が崩れるとき
 
-- 同じfamilyの新しいsealed seedで誤った構造を繰り返し選ぶ。
-- 高load条件のcapacityがfitted rate総和と一致しない。
-- server identityのpermutationで予測rate trackingが壊れる。
-- 独立再解析でseedまたはrevealからpredictionへのleakを発見する。
+- 同じ候補集合の新しい封印シードで、誤った構造を繰り返し選ぶ。
+- 高負荷条件での容量が、当てはめた速度の総和と一致しない。
+- 窓口の並び順を入れ替えると、速度の追跡が壊れる。
+- 独立した再解析が、シードや正解から予測への情報漏れを発見する。
 
-## 再現
+## 自分で確かめる
 
 ```bash
 python -m pip install -r requirements-reproduce.txt
 python scripts/reproduce.py --quick queue
 ```
 
-新しいblind run全体を行う場合は新sealを生成し、final modelをsealするまでanalystに`reveal`を渡さないでください。同梱した完了runは公開計算を再現できますが、revealが公開済みなのでblindではありません。
+新しいブラインド実行を最初からやる場合は、新しい封印を生成し、最終モデルを封印するまで解き手に `reveal` を渡さないでください。同梱した完了済みの実行は公開された計算を再現できますが、正解が公開済みなのでブラインドではありません。
 
-## 証拠 / Artifacts
+## 証拠とデータ
 
-- [World generatorとobservation data](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/simulation-worlds)
-- [Sealed predictions](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/simulation-worlds/predictions)
-- [Analysis ladder](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/simulation-worlds/analysis)
-- Hidden-world commitment：`7c4e47709de366e295aec26be7fac462100d1c6bf3d49fcd9ec03e40930b663a`
-- 内部source Episode digest：`0c632eb5cad1431953bcbfbe3a067925fea3d7caac6bb21547ce53cb03a7931f`
+- [世界の生成器と観測データ](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/simulation-worlds)
+- [封印した予測](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/simulation-worlds/predictions)
+- [モデルの階段の解析](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/simulation-worlds/analysis)
+- 隠し世界のコミットメント：`7c4e47709de366e295aec26be7fac462100d1c6bf3d49fcd9ec03e40930b663a`
+- 内部の元Episodeのハッシュ：`0c632eb5cad1431953bcbfbe3a067925fea3d7caac6bb21547ce53cb03a7931f`
 
-## 外部監査
+## 外部からの検証
 
 - 独立再現：0
 - 再現失敗：0
 - 公開後に確認されたbug：0
-- 未解決critique：0
+- 未解決の批判：0
 
 ## 次の実験
 
-独立processにmechanism familyを拡張してもらい、複数のsealed instanceを作り、truthやfamily-construction logicをanalystへ共有せず構造回復を評価します。
+独立した第三者に候補集合を拡張してもらい、封印した事例を複数作って、正解も集合の作り方も解き手に渡さずに、構造をどれだけ回復できるか評価します。

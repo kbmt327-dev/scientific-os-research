@@ -40,16 +40,17 @@ configuration:
         highlight: "rgba(120, 187, 164, 0.14)"
         textHighlight: "#7b6f3288"
 plugins:
+  # Parses YAML frontmatter for the whole site; the properties table itself is
+  # not part of the reading path, so its view stays off.
   - source: "@quartz-community/note-properties"
     enabled: true
     options:
       includeAll: false
       includedProperties: [research_id, lang, type, status, evidence_level, peer_reviewed, independent_replications]
       excludedProperties: []
-      hidePropertiesView: false
+      hidePropertiesView: true
       delimiters: "---"
       language: yaml
-    layout: { position: beforeBody, priority: 15, display: all }
     order: 5
   - source: "@quartz-community/created-modified-date"
     enabled: true
@@ -136,17 +137,14 @@ plugins:
   - source: "@quartz-community/tag-page"
     enabled: true
   - source: "@quartz-community/explorer"
-    enabled: true
-    layout: { position: left, priority: 50 }
+    enabled: false
   - source: "@quartz-community/graph"
-    enabled: true
-    layout: { position: right, priority: 10 }
+    enabled: false
   - source: "@quartz-community/search"
     enabled: true
     layout: { position: left, priority: 20, group: toolbar, groupOptions: { grow: true } }
   - source: "@quartz-community/backlinks"
-    enabled: true
-    layout: { position: right, priority: 50 }
+    enabled: false
   - source: "@quartz-community/article-title"
     enabled: true
     layout: { position: beforeBody, priority: 10 }

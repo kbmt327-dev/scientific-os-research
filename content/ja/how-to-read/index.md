@@ -1,34 +1,45 @@
 ---
-title: Research Noteの読み方
-description: 結論から証拠境界、UNKNOWN、再現経路まで、必要な深さで読む。
+title: 研究の読み方
+description: 結論から証拠の範囲、未解決点、再現手順まで、必要な深さで読む。
 lang: ja
 aliases: [/ja/methodology/]
 ---
 
-<p class="language-switch"><span aria-current="page">日本語</span> · <a href="/scientific-os-research/en/how-to-read/" hreflang="en">English</a></p>
-
-すべてのsectionを読む必要はありません。自分の問いに答えられた深さで止められます。
+<p class="site-lede">全部を読む必要はありません。自分の問いに答えが出た深さで止められる構成にしています。<a href="/en/how-to-read/" hreflang="en">English</a></p>
 
 <div class="depth-guide">
-  <section><b>01 · 発見する</b><h3>何が分かったのか</h3><p>冒頭の主張、status、key figureを読む。約15秒。</p></section>
-  <section><b>02 · 理解する</b><h3>なぜ、どの条件で起きるのか</h3><p>重要性、機構、「示すこと／示さないこと」を読む。</p></section>
-  <section><b>03 · 検証する</b><h3>その証拠で考えは変わるか</h3><p>予測、失敗、証拠境界、artifact、`UNKNOWN`を調べる。</p></section>
-  <section><b>04 · 再現する</b><h3>同じ観測を得られるか</h3><p>公開packageを実行し、commit、環境、差分を報告する。</p></section>
+  <section><b>01</b><h3>何が分かったのか</h3><p>タイトル、分野、証拠の帯、冒頭の「現在わかっていること」を読む。15秒ほど。</p></section>
+  <section><b>02</b><h3>どの条件で成り立つのか</h3><p>「なぜ重要か」「この研究が示すこと／示さないこと」を読む。</p></section>
+  <section><b>03</b><h3>その証拠で考えは変わるか</h3><p>予測、何が失敗したか、証拠の範囲、まだ分からないこと、元データを調べる。</p></section>
+  <section><b>04</b><h3>同じ観測を自分で得られるか</h3><p>公開パッケージを実行し、コミット、環境、差分を報告する。</p></section>
 </div>
 
-## Labelを文字どおり読む
+## 各記事の並び
 
-- **Evidence class**は何を観測したかであり、topicの重要度ではありません。[[evidence-levels|証拠レベルの比較]]。
-- **UNKNOWN**は証拠の境界と、次に必要な識別的観測です。空欄ではありません。
-- **Editorial review**は公開表現とprivacy境界の確認です。scientific／domain-expert／peer reviewを意味しません。
-- **Quick reproduction**は公開artifactと限定経路の検査です。独立再現ではありません。
+どの研究も、次の順に読めるようにしています。
+
+1. **現在わかっていること** — いま何が言えるか。過去の経緯を知らなくても読めます。
+2. **図で見る** — 結論の中心にある関係を1つの図に。
+3. **この研究が示すこと／示さないこと** — 主張が届く範囲と、届かない範囲。
+4. **なぜ重要か** — この結果で何が変わるか。
+5. **何を調べたか／方法／結果** — 実際にやったこと。
+6. **何が変わったか／何が失敗したか** — 前の主張の改訂と、外れた予測。
+7. **証拠の範囲／まだ分からないこと／この結論が崩れるとき** — 慎重に読むための境界。
+8. **自分で確かめる／証拠とデータ／外部からの検証** — 手を動かすための入口。
+
+## ラベルは文字どおりに読む
+
+- **証拠の種類**は、実際に何を観測したかを表します。テーマの重要度ではありません。→ [[ja/how-to-read/evidence-levels|証拠の種類を比べる]]
+- **まだ分からないこと**は、証拠がどこで途切れているかと、次に必要な観測です。書き忘れではありません。
+- **編集上の確認**は、公開表現とプライバシーの確認です。科学的な査読や分野専門家のレビューを意味しません。
+- **簡易確認（quick reproduction）**は、公開データと限られた経路の検査です。独立再現ではありません。
 
 ## 訂正は前向きに読む
 
-日付付きnoteは記録として残します。後続証拠が主張を狭めた場合、旧noteから目立つ形で前方linkを置き、research indexで現在のnoteを示します。失敗予測、analysis defect、降格した主張も消しません。
+日付の付いた記事は、記録として残します。後続の証拠が主張を狭めた場合、古い記事の冒頭に目立つ形で前方リンクを置き、研究一覧では現在の結論を指します。外れた予測、解析の欠陥、取り下げた主張も消しません。
 
-## 深く読む
+## もっと深く
 
-- [[prediction-sealing|予測のseal]]
-- [[falsification|反証と反例]]
-- [[replication|再現と独立再現の違い]]
+- [[ja/how-to-read/prediction-sealing|予測を封印するとはどういうことか]]
+- [[ja/how-to-read/falsification|反証と反例]]
+- [[ja/how-to-read/replication|再現と独立再現の違い]]

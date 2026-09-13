@@ -2,7 +2,7 @@
 research_id: IAA-EP-0008
 lang: en
 aliases: [/research/badminton-biomechanics/index]
-title: A 2x2 preparation-time x backward-CoM protocol for badminton smash biomechanics
+title: A 2x2 design separating preparation time from backward CoM in the badminton smash
 date: 2026-09-13
 domain: IAA / Badminton biomechanics
 type: Protocol
@@ -29,13 +29,15 @@ publication:
 tags: [protocol, biomechanics, badminton, preregistration]
 ---
 
-<p class="language-switch"><a href="/scientific-os-research/ja/research/badminton-biomechanics/" hreflang="ja">日本語</a> · <span aria-current="page">English</span></p>
+<p class="research-area"><b>Badminton biomechanics</b><span>Fixing the design before any data is collected</span><a href="/ja/research/badminton-biomechanics/" hreflang="ja">日本語</a></p>
 
 <div class="evidence-strip"><span>Protocol</span><span>Draft, not sealed</span><span>No confirmatory data</span><span>Power assumptions uncalibrated</span><span>0 external replications</span></div>
 
-## The question
+## What this design fixes
 
 Can assigned preparation time and assigned backward center-of-mass state be varied independently within the same skilled player, so their effects on pre-contact racket-head velocity become identifiable?
+
+This protocol proposes a within-subject 2×2 experiment that independently assigns preparation time and backward center-of-mass state during a badminton overhead smash. It freezes the primary racket-velocity outcome, coordinate system, synchronized events, exclusions, hierarchical model, and model fallback order before confirmatory data collection. A Monte Carlo sensitivity analysis shows that interaction effects require substantially more participants than comparable main effects under the stated assumptions. Equipment feasibility, ethics, manipulation levels, empirical variance, minimum important effect, missingness, and final sample size remain unresolved, so the protocol is not sealed and does not authorize data collection.
 
 ## Key figure
 
@@ -48,12 +50,6 @@ The prospective design fixes assignment, the primary outcome window, coordinates
 ## What this protocol does not establish
 
 It does not establish feasibility, ethics approval, an observed effect, causal interpretation, or a final sample size. It is not sealed and does not authorize data collection.
-
-## Inspect the record
-
-## Summary
-
-This protocol proposes a within-subject 2×2 experiment that independently assigns preparation time and backward center-of-mass state during a badminton overhead smash. It freezes the primary racket-velocity outcome, coordinate system, synchronized events, exclusions, hierarchical model, and model fallback order before confirmatory data collection. A Monte Carlo sensitivity analysis shows that interaction effects require substantially more participants than comparable main effects under the stated assumptions. Equipment feasibility, ethics, manipulation levels, empirical variance, minimum important effect, missingness, and final sample size remain unresolved, so the protocol is not sealed and does not authorize data collection.
 
 ## Research question
 

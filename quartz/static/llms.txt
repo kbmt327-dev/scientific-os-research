@@ -1,55 +1,89 @@
 # Open Research Lab
 
-Open Research Lab is the public research interface of Scientific OS. It publishes bounded Research Notes so humans and language models can understand, inspect, reproduce, challenge, and reuse a claim without treating automation or authorship as authority.
+Open Research Lab publishes research produced by Scientific OS, an autonomous research workflow. Each Research Note is written so a human or a language model can understand the claim, see how far it reaches, find the evidence, and reproduce or refute it — without treating automation or authorship as authority.
 
 Canonical site: https://kbmt327-dev.github.io/scientific-os-research/
 Japanese home: https://kbmt327-dev.github.io/scientific-os-research/ja/
 English home: https://kbmt327-dev.github.io/scientific-os-research/en/
 
-## Reading rules
+This file is a map and a reading guide. When this file and a Research Note disagree, the note wins.
 
-- Japanese and English pages are parallel views of the same research object. Match them by `research_id`.
-- Preserve scope. `Synthetic simulation`, `public trace measurement`, `contract validation`, and `protocol` are not interchangeable evidence classes.
-- Read `What this research shows` together with `What this research does not show` (Japanese: `この研究が示すこと` / `この研究が示さないこと`).
-- Treat `UNKNOWN` as an explicit evidence frontier, not as missing copy.
-- A quick reproduction by the original repository is not an independent replication.
-- Later notes may narrow earlier dated claims. Follow forward links and treat LATEST PUBLIC as the newest published boundary, not a claim that all private work is published.
+## How a Research Note is ordered
 
-## Research index
+The current claim comes first; the history comes later. The sections you need in order to state a claim correctly:
 
-### GPU scheduling program
+| What you need | English heading | Japanese heading |
+|---|---|---|
+| The current claim | `Current finding` | `現在わかっていること` |
+| Where the claim reaches | `What this research shows` | `この研究が示すこと` |
+| Where it stops | `What this research does not show` | `この研究が示さないこと` |
+| What the evidence covers | `Evidence boundary` | `証拠の範囲` |
+| Where the evidence ends | `UNKNOWN` | `まだ分からないこと` |
+| What would refute it | `Falsification targets` | `この結論が崩れるとき` |
+| Predictions that missed | `What failed` | `何が失敗したか` |
 
-- GPU-SCHED-EP-0001 — mix and preemption friction in a synthetic 64-slot model
+Method notes use `What this method does` / `What this method establishes` / `What this method does not establish`, in Japanese `この方法がすること` / `この方法が保証すること` / `この方法が保証しないこと`. Protocol notes use `What this design fixes` / `What this protocol establishes` / `What this protocol does not establish`, in Japanese `この実験計画の要点` / `この計画が決めていること` / `この計画が決めていないこと`.
+
+## Rules that keep a summary correct
+
+- Never state a `Current finding` without the matching "does not show" section. Every claim here is conditional, and the condition lives in that section.
+- Evidence classes are not interchangeable. Synthetic simulation, public trace measurement, contract validation, and protocol support different things. A simulation result is not a result about production clusters.
+- `UNKNOWN` is a stated evidence frontier, not missing text.
+- A quick reproduction run by the original repository is not an independent replication. Every independent replication count on this site is zero.
+- Japanese and English pages are parallel views of the same research object, written independently in each language rather than translated. Match them by `research_id`; the scientific content matches, the prose does not.
+- Later notes narrow earlier dated claims. Follow forward links. The newest published note is the current claim, which is not a claim that all internal work is published.
+
+## Research areas
+
+### GPU cluster scheduling
+
+Under what conditions does size-based scheduling — run the shortest job first — break? Four studies; EP-0004 carries the current claim.
+
+Current claim: the breaking mechanism is real inside synthetic simulation, and one job needing the entire cluster is enough to trigger it when size priority is combined with greedy packing. But two public traces contained no such job in any pool actually in production. The quantity to watch is the largest job as a fraction of pool capacity (safe boundary 0.75, worst measured 0.59), and the predicted harm is a several-fold delay rather than starvation.
+
+- GPU-SCHED-EP-0001 — synthetic simulation; estimation error and restart cost reverse which scheduler wins. Two claims later made conditional.
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling/
-- GPU-SCHED-EP-0002 — demand-mix phase diagram, corrected noise model, and failed stability detectors
+- GPU-SCHED-EP-0002 — synthetic simulation; a good average hides a job class that never finishes, and three stability detectors failed.
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-phase-diagram/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-phase-diagram/
-- GPU-SCHED-EP-0003 — mean-matched mechanism isolation; practical reach later demoted
+- GPU-SCHED-EP-0003 — synthetic simulation; a mean-matched control isolated the cause. The practical rule stated here was later withdrawn.
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-starvation-mechanism/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-starvation-mechanism/
-- GPU-SCHED-EP-0004 — LATEST PUBLIC interpretation; public-trace demand measurement plus synthetic ratio sweep
+- GPU-SCHED-EP-0004 — CURRENT CLAIM; public-trace demand measurement plus a synthetic ratio sweep.
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-real-traces/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-real-traces/
 
-### Other research
+### Queueing system identification
 
-- SIM-WORLD-EP-0001 — synthetic blind queueing benchmark
+Given a queueing world whose mechanism is hidden, how much can external records alone recover? One hidden instance was identified correctly inside a disclosed family of candidate mechanisms, and all five structural components matched the withheld truth. This tests selection from given options, not discovery from an unknown hypothesis space.
+
+- SIM-WORLD-EP-0001 — synthetic blind benchmark.
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/simulation-worlds/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/simulation-worlds/
-- HUMAN-MODEL-EP-0004 — validated contract method; adapter remains blocked
+
+### Human movement model interfaces
+
+Can coordinate mix-ups and target leakage be blocked by machine when measured human motion reaches a model? A correct bundle passes nine check groups and seven deliberately broken variants are all rejected. This is evidence about the connection assumptions, not about numerical conversion or predictive performance. The public adapter stays blocked because a coordinate mismatch is unresolved.
+
+- HUMAN-MODEL-EP-0004 — contract validation.
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/human-model/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/human-model/
-- IAA-EP-0008 — prospective badminton biomechanics protocol; not sealed and no confirmatory data
+
+### Badminton biomechanics
+
+Can the effect of short preparation time be separated from the effect of backward centre of mass in the smash? Design and power sensitivity only. No observations exist. Not sealed, and data collection is not authorized.
+
+- IAA-EP-0008 — protocol and power sensitivity.
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/badminton-biomechanics/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/badminton-biomechanics/
 
 ## Guides and participation
 
-- How to read, English: https://kbmt327-dev.github.io/scientific-os-research/en/how-to-read/
-- 読み方, Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/how-to-read/
-- Contribute, English: https://kbmt327-dev.github.io/scientific-os-research/en/contribute/
-- 参加する, Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/contribute/
+- How to read a Research Note, English: https://kbmt327-dev.github.io/scientific-os-research/en/how-to-read/
+- 研究の読み方, Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/how-to-read/
+- Contribute evidence, English: https://kbmt327-dev.github.io/scientific-os-research/en/contribute/
+- 証拠を持ち寄る, Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/contribute/
 - Repository: https://github.com/kbmt327-dev/scientific-os-research
 - Discussions: https://github.com/kbmt327-dev/scientific-os-research/discussions
 

@@ -1,17 +1,17 @@
 ---
 research_id: GPU-SCHED-EP-0003
-title: size-based schedulingが壊れる条件は平均gang sizeではなく全クラスタjobの有無
+title: 飢餓を決めるのは平均ジョブ幅ではなく、クラスタ全体を要するジョブが1本でもあるかどうか
 date: 2026-09-13
 lang: ja
 domain: GPU Cluster Scheduling
 type: Finding
 status: 探索的
-evidence_level: 合成simulation
+evidence_level: 合成シミュレーション
 peer_reviewed: false
 independent_replications: 0
 evidence:
   class: synthetic-simulation
-  source: 公開simulator、平均を一致させた対照mix、優先度×充填の要因計画、sealed prediction、E4出力
+  source: 公開シミュレータ、平均を揃えた対照群、優先度×充填の要因計画、封印した予測、E4の出力
 review:
   editorial_reviewed: true
   scientific_reviewed: false
@@ -20,7 +20,7 @@ review:
 replication:
   independent: 0
   failed: 0
-claim_scope: 全クラスタjob比率0〜0.03の合成需要mixと平均を一致させた対照群1つ、64 server、指数service、rho 0.7と0.85、preemption cost 0
+claim_scope: クラスタ全体を要するジョブの比率0〜0.03の合成需要構成と平均を揃えた対照群1つ、64サーバ、指数サービス時間、rho 0.7と0.85、再実行コスト0
 source_episode: GPU-SCHEDULING/EP-0003
 source_episode_sha256: ca6a566b0396730d61e2ec33a48c5cfd1a12b6246dcd2a43e5e03f067b0ff3de
 publication:
@@ -28,55 +28,52 @@ publication:
 tags: [finding, scheduling, simulation, falsification, starvation, japanese]
 ---
 
-<p class="language-switch"><span aria-current="page">日本語</span> · <a href="/scientific-os-research/en/research/gpu-scheduling-starvation-mechanism/" hreflang="en">English</a></p>
+<p class="research-area"><b>GPUクラスタのスケジューリング</b><span>飢餓を引き起こす原因を切り分ける</span><a href="/en/research/gpu-scheduling-starvation-mechanism/" hreflang="en">English</a></p>
 
-<div class="evidence-strip"><span>Finding</span><span>合成simulation</span><span>探索的</span><span>peer reviewなし</span><span>外部再現 0</span></div>
+<div class="evidence-strip"><span>Finding</span><span>合成シミュレーション</span><span>探索的</span><span>査読なし</span><span>外部再現 0</span></div>
 
-[[ja/research/gpu-scheduling-phase-diagram/index|需要mixの相図と、失敗した3つの安定性判定器]]の続きです。
+> **この記事が出した運用規則は、後に取り下げました。** [[ja/research/gpu-scheduling-real-traces/index|EP-0004]]が2つの公開トレースの需要分布を測り、Phillyのどの仮想クラスタにもプールを占め切るジョブが来ていないことを示したためです。この記事が要求する前提は、実測データでは満たされていません。「クラスタ全体を要するジョブが来るか確認せよ」という規則は取り下げ、プール容量に対する比の判定に置き換えました。EP-0004は、この記事が自分で挙げた反証条件も満たしています。**下に書いた仕組みそのものはモデルの中では変わらず成立します。狭まったのは、それが届く範囲です。** この記事は2026-09-13時点で何を主張したかの記録として、書き換えずに残します。
 
-> **このnoteの実務的含意は降格されました。** [[ja/research/gpu-scheduling-real-traces/index|EP-0004]]が2つの公開traceの需要分布を測定し、Phillyのどのvirtual clusterにもpoolを占め切るjobが来ていないことを示しました。このnoteが要求する前提は、実測されたデータでは満たされていません。「全クラスタjobが来るか確認せよ」という規則は撤回し、pool容量に対する比の判定に置き換えます。EP-0004は本noteが自ら挙げた反証条件も満たしました。以下の機構そのものは変わらずmodel内では成立します。狭まったのはその射程です。本noteは2026-09-13時点で何を主張したかの記録として保持し、改変しません。
+## 現在わかっていること
 
-## 発見
+前の2本の研究の結果が食い違っていました。[[ja/research/gpu-scheduling/index|EP-0001]]では、平均ジョブ幅3.26で最大ジョブがクラスタの半分を要する構成で、greedy SRPTが勝ちました。[[ja/research/gpu-scheduling-phase-diagram/index|EP-0002]]では、平均ジョブ幅が**より小さい**2.37なのに、クラスタ全体を要するジョブを含む構成で、greedy SRPTがそのクラスを飢餓させました。平均は逆を指しています。
 
-mean gang sizeを固定してもoutcomeは固定されませんでした。clusterの半分までに制限したmixは安定し、同じmeanでrareなwhole-cluster jobを含むmixはそのclassをstarveさせました。失敗にはsize priorityとgreedy fillingの両方が必要です。EP-0004ではこの正確な前提が測定した実poolに存在せず、機構の実務的射程は当初より狭まりました。
+そこで平均ジョブ幅を4.076に固定し、分布の届く範囲だけを変えました。**結果は正反対でした。** 最大ジョブがクラスタの半分で頭打ちになる構成は安定します（最も遅いクラスの平均JCT 3.31）。同じ平均で、クラスタ全体を要するジョブを3%含む構成は飢餓します（最も遅いクラスの平均JCT 655.7）。決めているのは平均ではなく、分布がクラスタ全体まで届いているかどうかでした。
 
-## Key figure
+必要な比率は驚くほど低く、**30,000本中15本（0.0005）で十分**です。さらに、優先度規則と充填規則を2×2で組み合わせて調べると、失敗にはサイズ優先と貪欲な詰め込みの**両方**が必要でした。どちらか一方だけでは起きません。preemptionは原因ではなく、むしろ害を和らげる側に働きます。
 
-<div class="paired-mechanism" aria-label="同じmeanで反対のoutcome"><div><b>同じmean: 4.076</b><span>largest job = 32/64</span><strong>stable</strong></div><div><b>同じmean: 4.076</b><span>largest job = 64/64</span><strong>class-starved</strong></div></div>
+したがって当時の運用上の読み方は、「大きいジョブが何%あるか」ではなく「クラスタ全体を要するジョブが1本でもあるか」になりました。**ただし上の通り、この規則はEP-0004で取り下げています。**
+
+## 図で見る
+
+<div class="paired-mechanism" aria-label="同じ平均、正反対の結果"><div><b>平均は同じ 4.076</b><span>最大ジョブ = 32/64</span><strong>安定</strong></div><div><b>平均は同じ 4.076</b><span>最大ジョブ = 64/64</span><strong>そのクラスが飢餓</strong></div></div>
 
 ## この研究が示すこと
 
-- 指定modelではmean gang sizeでなく、supportにwhole-cluster jobを含むことが二つのoutcomeを分ける。
-- 2×2 mechanism testはsize priority + greedy fillingに失敗を局在させ、preemptionはわずかに緩和する。
+- 指定したモデルの中では、平均ジョブ幅ではなく「分布がクラスタ全体まで届いているか」が2つの結果を分ける。
+- 優先度規則と充填規則の2×2は、失敗の原因をサイズ優先と貪欲な詰め込みの組み合わせに局在させる。preemptionはわずかに害を和らげる。
 
 ## この研究が示さないこと
 
-- production trace上のstarvationや、1/2を超える全job-to-pool ratioでのstarvationは示さない。
-- 以前の「whole-cluster jobの有無を確認する」ruleはEP-0004後に撤回された。
-
-## 詳細を検証する
-
-## 要約
-
-先行する2つの研究が食い違っていました。EP-0001では、平均gang sizeが3.26で最大jobがクラスタの半分を要するmixで、greedy SRPTが勝ちました。EP-0002では、平均gang sizeが**より小さい**2.37でありながら全クラスタjobを含むmixで、greedy SRPTが需要classを飢餓させました。平均は逆を指していたので、平均を固定してsupportだけを動かしました。
-
-平均gang sizeを4.076に一致させると、クラスタの半分で頭打ちのmixはgreedy SRPTで安定し（最悪classの平均JCT 3.31）、全クラスタjobを3%含むmixは飢餓します（最悪classの平均JCT 655.7）。閾値は3%よりはるかに低く、30,000本中15本で十分で、rho 0.85と同様にrho 0.7でも起きます。優先度規則と充填規則の2×2は、原因がsize優先度とgreedyな仕事保存の**組み合わせ**にあることを示します。どちらか単独では起きません。preemptionは原因ではなく、むしろ緩和します。封印した10本の予測は7/10でした。
-
-## 研究質問
-
-全クラスタjobの飢餓を引き起こすのは、平均gang sizeではなく、need分布のsupportがクラスタサイズNを含むことか。またその飢餓はsize優先度によるのか、greedyな仕事保存によるのか、両者が揃ったときだけか。
+- 運用トレース上での飢餓は示しません。また、ジョブがプールの1/2を超えて全体未満という範囲での飢餓も示していません。
+- 「クラスタ全体を要するジョブの有無を確認せよ」という運用規則は、EP-0004の後に取り下げました。
 
 ## なぜ重要か
 
-「大gang workloadは素朴なschedulerを壊す」は比率についての言明であり、容量計画上の対応を促します。大jobの比率を監視せよ、と。しかし真の引き金が**クラスタ全体を要求するjob classの存在**であるなら、運用上の規則は別物で、はるかに鋭くなります。問われるのは何本あるかではなく、1本でもあるかどうかです。
+「大きいジョブが多いワークロードは素朴なスケジューラを壊す」は比率についての言明で、容量計画の対応を促します——大きいジョブの比率を監視せよ、と。しかし本当の引き金が**クラスタ全体を要求するジョブクラスの存在**であるなら、運用上の規則は別物で、はるかに鋭くなります。問うべきは何本あるかではなく、1本でもあるかどうかです。
 
-監視すべき対象も変わります。集約平均が盲目になるのは、まさに全クラスタjobが希少な領域であり、そこは見落としが最も起きやすい領域でもあります。
+監視すべき対象も変わります。全体の平均が異常に気づけなくなるのは、まさにクラスタ全体ジョブが希少な領域であり、そこは見落としが最も起きやすい領域でもあります。
+
+## 何を調べたか
+
+1. クラスタ全体を要するジョブの飢餓を引き起こしているのは、平均ジョブ幅か、それとも必要GPU数の分布がクラスタ規模Nまで届いていることか。
+2. その飢餓は、サイズ優先によるのか、貪欲な仕事保存によるのか、両方が揃ったときだけか。
 
 ## 方法
 
-need 1〜32への重みは`theta = 0.4`の形を保ったまま`1 - p64`へ正規化し、残りの質量`p64`を64 serverクラスタのneed 64へ置きます。変わるのはsupportだけです。
+必要GPU数1〜32への重みは `theta = 0.4` の形を保ったまま `1 - p64` へ正規化し、残りの確率質量 `p64` を、64サーバのクラスタで必要GPU数64のところへ置きます。変わるのは分布の届く範囲だけです。
 
-| mix | 平均gang size | 最大need | 全クラスタjob比率 |
+| 構成 | 平均ジョブ幅 | 最大必要GPU数 | クラスタ全体ジョブの比率 |
 |---|---|---|---|
 | p64 = 0 | 2.223 | 32 | 0 |
 | p64 = 0.0005 | 2.254 | 64 | 0.0005 |
@@ -85,45 +82,45 @@ need 1〜32への重みは`theta = 0.4`の形を保ったまま`1 - p64`へ正�
 | p64 = 0.03 | 4.076 | 64 | 0.03 |
 | **対照群** | **4.076** | **32** | **0** |
 
-対照群の形状parameterは数値解で求め、平均gang sizeが`p64 = 0.03`のmixと一致するようにしました。飢餓が平均を追うなら、対照群も飢餓しなければなりません。
+対照群の形状パラメータは数値解で求め、平均ジョブ幅が `p64 = 0.03` の構成と一致するようにしました。飢餓が平均を追うなら、対照群も飢餓しなければなりません。
 
-機構の要因計画は優先度規則と充填規則を交差させます。greedy SRPT（size優先度・greedy充填）、ServerFilling-SRPT（size・厳密充填）、FCFS（到着順・greedy）、ServerFilling-FCFS（到着順・厳密）、加えてEASY backfill（到着順＋予約）と非preemptiveなgreedy SRPT。負荷2点、seed 5本、30,000 job、全セルに120,000 jobのhorizon確認。432 run。
+仕組みを切り分ける要因計画は、優先度規則と充填規則を交差させます。greedy SRPT（サイズ優先・貪欲充填）、ServerFilling-SRPT（サイズ優先・厳密充填）、FCFS（到着順・貪欲）、ServerFilling-FCFS（到着順・厳密）、加えてEASY backfill（到着順＋予約）と、preemptionを使わないgreedy SRPT。負荷2点、シード5本、30,000ジョブ、全セルで120,000ジョブの観測長を確認しました。432回の実行です。
 
-予測はSHA-256 `2f3b1808d806e9af888acaa77a7e00f7e9af86a13d58e42ac75e514a91157d05`で封印し、結果ファイルが存在しない状態でcommitしました。前研究の教訓を踏まえ、安定性の判定器そのものをsealed fileの`detector`に書き込んでいます。
+予測はSHA-256 `2f3b1808d806e9af888acaa77a7e00f7e9af86a13d58e42ac75e514a91157d05` で封印し、結果ファイルが存在しない状態でコミットしました。前の研究の教訓を踏まえ、安定性の判定器そのものを封印ファイルの `detector` に書き込んでいます。
 
 ## 結果
 
-**平均を一致させた対照群が決着をつけます。** 平均gang sizeは同じ、結果は逆です。
+**平均を揃えた対照群が決着をつけます。** 平均ジョブ幅は同じ、結果は逆です。
 
-| | 判定 | 平均JCT | 最悪classの平均JCT |
+| | 判定 | 平均JCT | 最も遅いクラスの平均JCT |
 |---|---|---|---|
-| 対照群、最大need 32、平均4.076 | 安定、最小flow balance 0.997 | 1.167 | 3.31 |
-| p64 = 0.03、最大need 64、平均4.076 | class飢餓 | 20.55 | 655.7 |
+| 対照群、最大必要GPU数32、平均4.076 | 安定、最小flow balance 0.997 | 1.167 | 3.31 |
+| p64 = 0.03、最大必要GPU数64、平均4.076 | そのクラスが飢餓 | 20.55 | 655.7 |
 
-**閾値は非常に低い。** `p64 = 0.0005`、すなわち30,000本中15本の全クラスタjobで、greedy SRPTは両負荷で既にそのclassを飢餓させます。64GPU classの平均JCTは312.5、EASY backfillは5.40、ServerFillingは1.21です。
+**必要な比率は非常に低い。** `p64 = 0.0005`、すなわち30,000本中15本のクラスタ全体ジョブで、greedy SRPTは両方の負荷で既にそのクラスを飢餓させます。64 GPUクラスの平均JCTは312.5、EASY backfillは5.40、ServerFillingは1.21です。
 
-**壊れるのは組み合わせだけ。** rho 0.85での64GPU classのflow balance。1.0は到着と同じ速さで完了していることを意味します。
+**壊れるのは組み合わせだけ。** rho 0.85での64 GPUクラスのflow balanceです。1.0は、到着と同じ速さで完了していることを意味します。
 
-| mix | FCFS | EASY backfill | greedy SRPT | greedy SRPT（preemptionなし） | ServerFilling-SRPT | ServerFilling-FCFS |
+| 構成 | FCFS | EASY backfill | greedy SRPT | greedy SRPT（preemptionなし） | ServerFilling-SRPT | ServerFilling-FCFS |
 |---|---|---|---|---|---|---|
 | p64 = 0.0005 | 0.989 | 0.989 | **0.397** | **0.000** | 1.000 | 1.000 |
 | p64 = 0.002 | 0.962 | 0.992 | **0.308** | **0.000** | 0.996 | 0.996 |
 | p64 = 0.008 | 0.677 | 0.987 | **0.386** | **0.000** | 0.997 | 0.995 |
 | p64 = 0.03 | 0.395 | 0.987 | **0.443** | **0.000** | 0.998 | 0.996 |
 
-size優先度だけでは飢餓せず、greedy充填だけでも飢餓しません。両方揃うと飢餓します。想定される機構は次のとおりです。クラスタ全体を要する jobは残り時間が全体最小になったときにしか開始できませんが、その残り時間は決して減りません。走らないからです。到着順優先度はhead-of-line blockingがクラスタを空けるためこの罠を逃れ、厳密充填は降順充填が最大jobに枠を確保するため逃れます。
+サイズ優先だけでは飢餓せず、貪欲充填だけでも飢餓しません。両方揃うと飢餓します。想定される仕組みはこうです。クラスタ全体を要するジョブは、残り時間が全体で最小になったときにしか開始できません。ところがその残り時間は決して減りません——走らないからです。到着順の優先度は、先頭ジョブが後続を止めることでクラスタが空くため、この罠を逃れます。厳密充填は、大きい順に詰めることで最大ジョブに枠を確保するため逃れます。
 
-**遅延は大きいのではなく有界でない。** 4倍のhorizonで飢餓classの平均JCTは2.83倍になり、1GPU classは1.02倍にとどまります。
+**遅延は「大きい」のではなく「上限がない」。** 観測長を4倍にすると、飢えているクラスの平均JCTは2.83倍になり、1 GPUクラスは1.02倍にとどまります。
 
-**preemptionは原因ではない。** 非preemptive版のほうが悪く、flow balanceはちょうど0.000です。到着が続く間、全クラスタjobは1本も完了しません。preemptionは、先頭に到達しさえすればクラスタを掌握できるため、緩和側に働きます。
+**preemptionは原因ではありません。** preemptionを使わない版のほうが悪く、flow balanceはちょうど0.000です。到着が続く間、クラスタ全体ジョブは1本も完了しません。preemptionは、いったん先頭に到達しさえすればクラスタを掌握できるため、害を和らげる側に働きます。
 
-**集約指標の盲目性には境界がある。** greedy SRPTとEASY backfillの平均JCT比は、`p64`が0、0.0005、0.002、0.008と進むにつれ0.756、0.800、0.982、1.695と動きます。`p64 = 0.002`では比0.982で健全なpolicyと区別がつきませんが、全クラスタclassは63倍悪化しています。`p64 = 0.008`になると集約にも現れます。この指標は、希少なclassが希少であるうちだけ盲目です。
+**全体指標が気づけない範囲には境界があります。** greedy SRPTとEASY backfillの平均JCT比は、`p64` が0、0.0005、0.002、0.008と進むにつれて0.756、0.800、0.982、1.695と動きます。`p64 = 0.002` では比0.982で、健全な方式と区別がつきません。しかしクラスタ全体クラスは63倍悪化しています。`p64 = 0.008` になると全体指標にも現れます。つまりこの指標は、問題のクラスが希少であるうちだけ気づけません。
 
 ## 何が変わったか
 
-EP-0002は「supportがNを含むこと」を仮説として提示しました。平均を一致させた対照群により、これは分離された結果になります。運用上の読み方も比率から述語へ変わります。問うべきは、クラスタ全体を要するjobが何本あるかではなく、1本でもあるかどうかです。
+EP-0002は「分布がNまで届いていること」を仮説として提示しました。平均を揃えた対照群によって、これは切り分けられた結果になりました。運用上の読み方も、比率から「あるか／ないか」へ変わります。問うべきは、クラスタ全体を要するジョブが何本あるかではなく、1本でもあるかどうかです。
 
-さらに2点。preemptionは悪化要因の疑いから緩和要因の実証へ移り、「集約指標はclass飢餓を見ない」という主張には条件が付きます。そのclassが希少である間に限る、という条件です。
+さらに2点あります。preemptionは「悪化要因の疑い」から「害を和らげる要因の実証」へ移りました。そして「全体指標はクラスの飢餓を見ない」という主張には条件が付きました——そのクラスが希少である間に限る、という条件です。
 
 ## 何が失敗したか
 
@@ -131,53 +128,53 @@ EP-0002は「supportがNを含むこと」を仮説として提示しました�
 
 | 予測 | 判定基準 | 結果 |
 |---|---|---|
-| R1 | p64が正の全点でgreedy SRPTがneed 64を飢餓させる | 4点すべてで支持 |
-| R2 | p64 = 0では飢餓せずServerFillingに勝つ | 支持。1.084 対 1.210、対比0.896でEP-0001を再現 |
-| R3 | 平均を一致させた対照群は飢餓しない | 支持。安定、最小flow balance 0.997 |
-| R4 | ServerFillingの平均JCTはp64 0→0.008で25%未満しか動かない | **外れ。** 38%動いた（1.210→1.674）。厳密充填は飢餓を防ぐがコストは吸収しない |
-| R5 | EASY backfillはどこでも飢餓しない | 支持。12/12セルが安定 |
-| R6 | 飢餓するのはgreedy＋size優先度の組だけ | 支持 |
-| R7 | 飢餓classは4倍horizonで2倍以上、小classは1.2倍未満 | 支持。2.83倍と1.02倍 |
-| R8 | 集約比はp64 = 0.008まで30%以内に収まる | **外れ。** 0.008で1.695。盲目性には上記の希少性条件が必要 |
-| R9 | 最悪class JCTは単調増加しp64 0.002以上で100を超える | 支持。4.4、312.5、394.4、425.7、655.7 |
-| R10 | ServerFilling-FCFSはどこでも安定で平均JCTではServerFilling-SRPTに劣る | **外れ。** 平均JCTの側は6 mix全部で成立。ただし1セルが閾値1.30に対し1.31倍成長し裁定不能 |
+| R1 | p64が正の全点で、greedy SRPTが必要GPU数64を飢餓させる | 4点すべてで的中 |
+| R2 | p64 = 0では飢餓せず、ServerFillingに勝つ | 的中。1.084 対 1.210、比0.896でEP-0001を再現 |
+| R3 | 平均を揃えた対照群は飢餓しない | 的中。安定、最小flow balance 0.997 |
+| R4 | ServerFillingの平均JCTはp64 0→0.008で25%未満しか動かない | **外れ。** 38%動いた（1.210→1.674）。厳密充填は飢餓を防ぐが、コストまでは吸収しない |
+| R5 | EASY backfillはどこでも飢餓しない | 的中。12/12セルが安定 |
+| R6 | 飢餓するのは貪欲充填＋サイズ優先の組だけ | 的中 |
+| R7 | 飢えているクラスは観測長4倍で2倍以上、小さいクラスは1.2倍未満 | 的中。2.83倍と1.02倍 |
+| R8 | 全体の比はp64 = 0.008まで30%以内に収まる | **外れ。** 0.008で1.695。気づけない範囲には上記の希少性条件が必要 |
+| R9 | 最も遅いクラスのJCTは単調増加し、p64 0.002以上で100を超える | 的中。4.4、312.5、394.4、425.7、655.7 |
+| R10 | ServerFilling-FCFSはどこでも安定で、平均JCTではServerFilling-SRPTに劣る | **外れ。** 平均JCTの側は6構成すべてで成立。ただし1セルが閾値1.30に対し1.31倍成長し、裁定不能 |
 
-R10は際どい側で落ちました。完了率は1.000、abortなし、flow balanceはhorizonとともに改善しています。閾値を事後に動かさなかったので、外れとして残します。
+R10は際どいところで落ちました。完了率は1.000、中断もなく、flow balanceは観測長とともに改善しています。閾値を後から動かさなかったので、外れとして残します。
 
-解析上の欠陥を1つ、結果を見た後に修正しました。採点が厳しくなる方向です。horizon比較が当初、単一seedの長時間実行を5 seedの短時間平均で割っており、seed間変動が成長率に混入していました。現在は同一seed対で比較します。R10の判定は変わりませんでした。
+解析上の欠陥を1つ、結果を見た後に直しました。採点が厳しくなる方向です。観測長の比較が当初、単一シードの長時間実行を5シードの短時間平均で割っており、シード間の変動が成長率に混入していました。現在は同一シード同士で比較します。R10の判定は変わりませんでした。
 
-## 証拠境界
+## 証拠の範囲
 
-**支持されること:** このsimulatorとこれらのmixの下で、greedyなsize-based schedulingにおける全クラスタjobの飢餓が、需要分布の平均ではなくsupportを追うこと。全クラスタjob比率0.0005で現れること。size優先度とgreedyな仕事保存の両方を要すること。preemptionが原因ではなく緩和側に働くこと。
+**言えること：** このシミュレータとこれらの需要構成の下で、貪欲なサイズ優先スケジューリングにおけるクラスタ全体ジョブの飢餓が、需要分布の平均ではなく「届く範囲」に従うこと。クラスタ全体ジョブの比率0.0005で現れること。サイズ優先と貪欲な仕事保存の両方を要すること。preemptionが原因ではなく、害を和らげる側に働くこと。
 
-**支持されないこと:** production clusterについての主張。need格子は2の冪なので、「クラスタの半分」と「クラスタ全体」の間（33〜63）は未検証です。preemption costは0、service時間は指数分布。実traceは未実行であり、そもそも実際のGPU clusterに全クラスタjob classが存在するのか——この発見が実務上意味を持つための前提——は、ここでは検証されていません。
+**言えないこと：** 運用クラスタについての主張。必要GPU数の格子は2のべき乗なので、「クラスタの半分」と「クラスタ全体」の間（33〜63）は検証していません。再実行コストは0、サービス時間は指数分布です。実トレースは使っておらず、そもそも実在のGPUクラスタにクラスタ全体ジョブのクラスが存在するのか——この発見が実務上意味を持つための前提——は、ここでは検証していません。
 
-## UNKNOWN
+## まだ分からないこと
 
-- 閾値がちょうどneed = Nなのか、N/2より上のどこかから始まるのか。格子上には32と64しかありません。
-- preemption costが非ゼロのとき緩和が消えるか。
-- 重尾service時間が、集約指標が気づき始める比率を変えるか。
-- 非preemptive版が同じ理由で飢餓するのか、単にpreemptできないためか。
-- 実traceの需要分布。最優先の未解決項目であり、PhillyやAlibaba PAIにおける全クラスタjobの比率は0.0005という閾値と直接比較できます。
+- 閾値がちょうど必要GPU数 = Nなのか、N/2より上のどこかから始まるのか。格子上には32と64しかありません。
+- 再実行コストが0でないとき、preemptionによる緩和が消えるか。
+- サービス時間が重い裾を持つとき、全体指標が気づき始める比率が変わるか。
+- preemptionを使わない版が同じ理由で飢餓するのか、単に中断できないためか。
+- 実トレースの需要分布。最優先の未解決項目で、PhillyやAlibaba PAIにおけるクラスタ全体ジョブの比率は、0.0005という閾値と直接比較できます。
 
-## 反証条件
+## この結論が崩れるとき
 
-- 独立のsimulatorで、平均を一致させた対照群が飢餓する。その場合、平均gang sizeが駆動要因として復活します。
-- 全クラスタjobを含むmixが、いずれかの負荷でgreedy SRPTのもと安定に動く。
-- より長いhorizonで飢餓classのJCTが収束する。
-- ServerFilling-FCFSまたはFCFSが全クラスタclassを飢餓させる。その場合、優先度と充填の分離が崩れます。
-- 公開traceに全クラスタjob classが存在しない。その場合、この発見はmodelについては真であるが実務には無関係ということになります。
+- 独立に実装したシミュレータで、平均を揃えた対照群が飢餓する。その場合、平均ジョブ幅が原因として復活します。
+- クラスタ全体ジョブを含む構成が、いずれかの負荷でgreedy SRPTのもと安定に動く。
+- 観測長をさらに延ばすと、飢えているクラスのJCTが収束する。
+- ServerFilling-FCFSまたはFCFSがクラスタ全体クラスを飢餓させる。その場合、優先度と充填の切り分けが崩れます。
+- 公開トレースにクラスタ全体ジョブのクラスが存在しない。その場合、この発見はモデルについては真だが、実務には無関係ということになります。**これは実際に起きました。EP-0004を参照してください。**
 
-## 再現
+## 自分で確かめる
 
-### artifactと採点の簡易確認
+### データと採点の簡易確認
 
 ```bash
 python -m pip install -r requirements-reproduce.txt
 python scripts/reproduce.py --quick gpu-phase
 ```
 
-### 完全な再走
+### 完全な再実行
 
 ```bash
 cd reproduction/gpu-scheduling-phase
@@ -185,22 +182,25 @@ python run_e4.py
 python analyze_e4.py
 ```
 
-`run_e4.py`は全セルに120,000 jobのhorizon確認を含むため、裁定されていない仮定に依存する判定はありません。
+`run_e4.py` は全セルで120,000ジョブの観測長確認を含むため、裁定していない仮定に依存する判定はありません。
 
-## 証拠 / Artifacts
+## 証拠とデータ
 
-- [公開再現package](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/gpu-scheduling-phase)
-- [封印済みPRED-003、判定器を含む](https://github.com/kbmt327-dev/scientific-os-research/blob/main/reproduction/gpu-scheduling-phase/predictions/PRED-003.json)
+- [公開再現パッケージ](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/gpu-scheduling-phase)
+- [封印済みPRED-003（判定器を含む）](https://github.com/kbmt327-dev/scientific-os-research/blob/main/reproduction/gpu-scheduling-phase/predictions/PRED-003.json)
 - [E4の採点](https://github.com/kbmt327-dev/scientific-os-research/blob/main/reproduction/gpu-scheduling-phase/results/E4_grading.json)
-- [E4 report、平均を一致させた対照群を含む](https://github.com/kbmt327-dev/scientific-os-research/blob/main/reproduction/gpu-scheduling-phase/results/E4_report.txt)
+- [E4のレポート（平均を揃えた対照群を含む）](https://github.com/kbmt327-dev/scientific-os-research/blob/main/reproduction/gpu-scheduling-phase/results/E4_report.txt)
+- 内部の元Episodeのハッシュ：`ca6a566b0396730d61e2ec33a48c5cfd1a12b6246dcd2a43e5e03f067b0ff3de`
 
-## 外部監査
+## 外部からの検証
 
-- 独立再現: 0
-- 失敗した再現: 0
-- 確認されたbug: 0
-- 未解決の批判: 0
+- 独立再現：0
+- 再現失敗：0
+- 公開後に確認されたbug：0
+- 未解決の批判：0
 
 ## 次の実験
 
-公開production traceにおける全クラスタjobの比率を測ります。Blox経由のPhilly、Kubernetes scheduler simulator経由のAlibaba PAIで、0.0005という閾値と比較します。それが済むまで、この発見はmodelを記述しているのであって、実在するclusterを記述してはいません。副次的な実験として、2の冪の制約を外し、クラスタの半分と全体の間のどこに飢餓の境界があるかを特定します。
+公開されている運用トレースで、クラスタ全体ジョブの比率を測ります。Blox経由のPhilly、Kubernetesスケジューラシミュレータ経由のAlibaba PAIで、0.0005という閾値と比較します。それが済むまで、この発見はモデルを記述しているのであって、実在のクラスタを記述してはいません。副次的な実験として、2のべき乗の制約を外し、クラスタの半分と全体の間のどこに飢餓の境界があるかを特定します。
+
+（この実験は[[ja/research/gpu-scheduling-real-traces/index|EP-0004]]として実施され、上の運用規則を取り下げる結果になりました。）

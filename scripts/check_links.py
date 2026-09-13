@@ -13,6 +13,11 @@ MARKDOWN = re.compile(r"(?<!!)\[[^\]]*\]\(([^)]+)\)")
 HTML_HREF = re.compile(r"\bhref=[\"']([^\"']+)[\"']", flags=re.IGNORECASE)
 SITE_PREFIX = "/scientific-os-research/"
 
+# Quartz resolves an href that starts with "/" against the content root, not the
+# deployed base path. A link written with the base path baked in (for example
+# "/scientific-os-research/ja/") is therefore emitted as a broken relative URL,
+# so the base path is rejected here and content-root links are checked instead.
+
 
 def candidates(content: Path, source: Path, target: str) -> list[Path]:
     # Markdown tables require the wikilink alias separator to be escaped.
@@ -45,7 +50,12 @@ def main() -> int:
             if target.startswith(("http://", "https://", "mailto:", "#")):
                 continue
             if target.startswith(SITE_PREFIX):
-                target = target[len(SITE_PREFIX):]
+                failures.append(
+                    f"{source.relative_to(content)} -> {target} "
+                    "(drop the base path; write it as a content-root link)"
+                )
+                continue
+            target = target.lstrip("/")
             if not any(path.exists() for path in candidates(content, source, target)):
                 failures.append(f"{source.relative_to(content)} -> {target}")
     if failures:

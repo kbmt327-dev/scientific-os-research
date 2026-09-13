@@ -4,7 +4,50 @@
 from __future__ import annotations
 
 import sys
+import re
 from pathlib import Path
+from urllib.parse import unquote
+
+
+HREF = re.compile(r'<a\s[^>]*href="([^"]+)"', flags=re.IGNORECASE)
+
+
+BASE_PATH = "/scientific-os-research/"
+
+
+def broken_local_links(public: Path) -> list[tuple[str, str]]:
+    """Follow every local <a href> in the built HTML and report the dead ones.
+
+    Links written inside raw HTML blocks are rewritten by Quartz, so a link that
+    looks right in Markdown can still resolve outside the site. Only the built
+    output shows that.
+    """
+    broken: list[tuple[str, str]] = []
+    for page in sorted(public.rglob("*.html")):
+        html = page.read_text(encoding="utf-8", errors="ignore")
+        for href in HREF.findall(html):
+            if href.startswith(("http://", "https://", "mailto:", "#", "data:")):
+                continue
+            path = unquote(href.split("#")[0].split("?")[0])
+            if not path:
+                continue
+            if path.rstrip("/") == BASE_PATH.rstrip("/"):
+                path = BASE_PATH
+            if path.startswith("/"):
+                # Components emit deploy-absolute links; resolve them at the site root.
+                if not path.startswith(BASE_PATH):
+                    broken.append((str(page.relative_to(public)), href))
+                    continue
+                target = (public / path[len(BASE_PATH):]).resolve()
+            else:
+                target = (page.parent / path).resolve()
+            if target.is_dir():
+                target = target / "index.html"
+            elif not target.suffix:
+                target = target.with_suffix(".html")
+            if not target.exists():
+                broken.append((str(page.relative_to(public)), href))
+    return broken
 
 
 def main() -> int:
@@ -57,6 +100,12 @@ def main() -> int:
         if not legacy.exists() or 'http-equiv="refresh"' not in legacy.read_text(encoding="utf-8"):
             print(f"Missing legacy redirect for /research/{slug}/")
             return 1
+    broken = broken_local_links(public)
+    if broken:
+        print("Broken links in the built site:")
+        for where, href in broken[:40]:
+            print(f"- {where} -> {href}")
+        return 1
     llms = (public / "llms.txt").read_text(encoding="utf-8")
     if "The Markdown Research Notes are the canonical public representation" not in llms:
         print("Built llms.txt is missing its canonical-representation boundary")

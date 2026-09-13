@@ -2,7 +2,7 @@
 research_id: GPU-SCHED-EP-0004
 lang: en
 aliases: [/research/gpu-scheduling-real-traces/index]
-title: Real traces contain no pool-filling job, and the starvation boundary is continuous
+title: Real GPU clusters never received a job that filled the pool
 date: 2026-09-13
 domain: GPU Cluster Scheduling
 type: Finding
@@ -29,15 +29,21 @@ publication:
 tags: [finding, scheduling, simulation, falsification, traces, retraction]
 ---
 
-<p class="language-switch"><a href="/scientific-os-research/ja/research/gpu-scheduling-real-traces/" hreflang="ja">日本語</a> · <span aria-current="page">English</span></p>
+<p class="research-area"><b>GPU cluster scheduling</b><span>Testing the precondition against real data</span><a href="/ja/research/gpu-scheduling-real-traces/" hreflang="ja">日本語</a></p>
 
 <div class="evidence-strip"><span>Finding</span><span>Public trace + synthetic</span><span>Exploratory</span><span>Not peer reviewed</span><span>0 external replications</span></div>
 
 Follows [[en/research/gpu-scheduling-starvation-mechanism/index|Whole-cluster jobs, not mean gang size, decide when size-based scheduling breaks]], whose practical claim this study demotes.
 
-## The finding
+## Current finding
 
 None of the 11 measured Philly virtual clusters received a job that filled its pool. Between half-pool and full-pool jobs, synthetic degradation was steep but continuous: at the observed worst ratio of 0.59 the large class completed, about 7.4× slower than single-GPU jobs. The model's provisional safety boundary was 0.75; larger real pool sizes remain an unfavorable unknown.
+
+The previous study concluded that a demand distribution containing whole-cluster jobs breaks greedy size-based scheduling at a share as low as 0.0005, and gave the practical rule: check first whether jobs requiring the entire cluster arrive. This study put that rule in front of two public traces and, as promised in the sealed file beforehand, demoted it.
+
+Across all 11 Philly virtual clusters — the units Philly actually schedules against — the probability that a job needs the whole pool is 0.00000. The largest job in the worst case needs 59 percent of its pool. So the condition the mechanism requires was not met anywhere in the measured data.
+
+That put the entire practical relevance of the work on a band the previous study had never measured: jobs between half and all of the pool. Sweeping it shows no threshold. Degradation is continuous and steep, complete starvation occurs only at exactly the full pool size, and a usable safety boundary sits at 0.75. At the real measured ratio of 0.59 the class does not starve; it runs 7.4x slower than a single-GPU job. The harm is real but it is a delay, not an unbounded wait.
 
 ## Key figure
 
@@ -52,16 +58,6 @@ None of the 11 measured Philly virtual clusters received a job that filled its p
 
 - No policy was run on a real arrival stream; only demand shape came from traces.
 - The 0.75 boundary is not yet validated at the 217–603 GPU scale of measured pools or beyond these two traces.
-
-## Inspect the record
-
-## Summary
-
-The previous study concluded that a demand distribution containing whole-cluster jobs breaks greedy size-based scheduling at a share as low as 0.0005, and gave the practical rule: check first whether jobs requiring the entire cluster arrive. This study put that rule in front of two public traces and, as promised in the sealed file beforehand, demoted it.
-
-Across all 11 Philly virtual clusters — the units Philly actually schedules against — the probability that a job needs the whole pool is 0.00000. The largest job in the worst case needs 59 percent of its pool. So the condition the mechanism requires was not met anywhere in the measured data.
-
-That put the entire practical relevance of the work on a band the previous study had never measured: jobs between half and all of the pool. Sweeping it shows no threshold. Degradation is continuous and steep, complete starvation occurs only at exactly the full pool size, and a usable safety boundary sits at 0.75. At the real measured ratio of 0.59 the class does not starve; it runs 7.4x slower than a single-GPU job. The harm is real but it is a delay, not an unbounded wait.
 
 ## Research question
 
@@ -202,3 +198,12 @@ The trace measurement itself requires the raw public traces, which are not redis
 ## Next experiment
 
 Measure `r_safe` at 64, 128, 256 and 512 servers. The one failed prediction of this study says ratio invariance does not hold and that the error runs toward larger pools being worse, while real virtual clusters are larger than anything measured so far. Whether Philly's 0.59 is genuinely on the safe side depends on that measurement.
+
+## How this claim got here
+
+<div class="revision-chain vertical" aria-label="How the GPU scheduling claim changed">
+  <a href="/en/research/gpu-scheduling/"><b>EP-0001</b><span>Estimation error and restart cost reverse which scheduler wins.</span></a>
+  <a href="/en/research/gpu-scheduling-phase-diagram/"><b>EP-0002</b><span>A good average hides a job class that never finishes; three stability detectors failed.</span></a>
+  <a href="/en/research/gpu-scheduling-starvation-mechanism/"><b>EP-0003</b><span>Whole-cluster jobs, not mean gang size, decide when size-based scheduling breaks.</span></a>
+  <a class="current" href="/en/research/gpu-scheduling-real-traces/"><b>EP-0004 &middot; current</b><span>Measured pools never met that condition; the harm is a several-fold delay, not starvation.</span></a>
+</div>

@@ -1,9 +1,9 @@
 ---
-title: 公開実装の詳細
-description: maintainer向けfail-closed publication pipelineの所在。
+title: 公開作業の手順
+description: メンテナ向けの公開パイプラインの所在。
 lang: ja
 ---
 
-Publication pipelineはrepository運用であり、Labの公開研究方法そのものではありません。主張と証拠の読み方は **[[ja/how-to-read/index|Research Noteの読み方]]** を見てください。
+このページはメンテナ向けです。研究の読み方を探している場合は **[[ja/how-to-read/index|研究の読み方]]** へ。
 
-Maintainer向けのprojection境界、manifest contract、command、fail-closed検査は [`docs/PUBLICATION_PIPELINE.md`](https://github.com/kbmt327-dev/scientific-os-research/blob/main/docs/PUBLICATION_PIPELINE.md) にあります。
+公開パイプライン（どの範囲を公開版に落とすか、公開一覧ファイルとの整合、コマンド、条件を満たさないときに止まる検査）は、リポジトリの [`docs/PUBLICATION_PIPELINE.md`](https://github.com/kbmt327-dev/scientific-os-research/blob/main/docs/PUBLICATION_PIPELINE.md) にあります。

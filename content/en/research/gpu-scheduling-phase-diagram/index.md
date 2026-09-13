@@ -2,7 +2,7 @@
 research_id: GPU-SCHED-EP-0002
 lang: en
 aliases: [/research/gpu-scheduling-phase-diagram/index]
-title: A demand-mix phase diagram, and three stability detectors that failed
+title: A good average, a job class that never finishes, and three broken stability detectors
 date: 2026-09-13
 domain: GPU Cluster Scheduling
 type: Finding
@@ -29,15 +29,19 @@ publication:
 tags: [finding, scheduling, simulation, falsification, instrument]
 ---
 
-<p class="language-switch"><a href="/scientific-os-research/ja/research/gpu-scheduling-phase-diagram/" hreflang="ja">日本語</a> · <span aria-current="page">English</span></p>
+<p class="research-area"><b>GPU cluster scheduling</b><span>What the average hides, and how stability is measured</span><a href="/ja/research/gpu-scheduling-phase-diagram/" hreflang="ja">日本語</a></p>
 
 <div class="evidence-strip"><span>Finding</span><span>Synthetic simulation</span><span>Exploratory</span><span>Not peer reviewed</span><span>0 external replications</span></div>
 
 Follows [[en/research/gpu-scheduling/index|Scheduling principles reverse under workload mix and preemption friction]], whose declared next experiment this study carries out.
 
-## The finding
+## Current finding
 
 A good aggregate mean can coexist with a demand class that does not keep up with its arrivals. The mix sweep also exposed a confounded estimation-noise axis and a more general research failure: three finite-horizon stability detectors were wrong or inconclusive.
+
+We swept GPU demand mix as a continuous axis to locate the threshold where ServerFilling-SRPT overtakes greedy SRPT, and re-ran the estimation-error axis under a corrected noise model. Both sealed expectations were wrong in instructive ways. There is no low-mix crossover, because greedy SRPT is not stable anywhere on the grid at rho 0.85 or above; the ranking reversal sits at the *opposite* end, where gang sizes are homogeneous and greedy SRPT wins by 7 to 17 percent. The corrected noise model overturned EP-0001's estimation-error conclusion for the one policy that reserves capacity.
+
+The larger result is about measurement, not scheduling. Three single-horizon detectors for "stable or divergent" failed in succession, and the second failure was a detector this project had already recorded as invalid, revived inside the next analysis script. Ten predictions graded 5/10 under the corrected instrument and 4/10 under the one actually carried into the run.
 
 ## Key figure
 
@@ -58,14 +62,6 @@ flowchart LR
 
 - It does not show a production-cluster phase boundary or a universal detector for infinite-horizon stability.
 - Four prediction grades depend on a detector corrected after results and carry reduced weight.
-
-## Inspect the record
-
-## Summary
-
-We swept GPU demand mix as a continuous axis to locate the threshold where ServerFilling-SRPT overtakes greedy SRPT, and re-ran the estimation-error axis under a corrected noise model. Both sealed expectations were wrong in instructive ways. There is no low-mix crossover, because greedy SRPT is not stable anywhere on the grid at rho 0.85 or above; the ranking reversal sits at the *opposite* end, where gang sizes are homogeneous and greedy SRPT wins by 7 to 17 percent. The corrected noise model overturned EP-0001's estimation-error conclusion for the one policy that reserves capacity.
-
-The larger result is about measurement, not scheduling. Three single-horizon detectors for "stable or divergent" failed in succession, and the second failure was a detector this project had already recorded as invalid, revived inside the next analysis script. Ten predictions graded 5/10 under the corrected instrument and 4/10 under the one actually carried into the run.
 
 ## Research question
 

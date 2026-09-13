@@ -29,7 +29,7 @@ publication:
 tags: [finding, scheduling, simulation, falsification, starvation]
 ---
 
-<p class="language-switch"><a href="/scientific-os-research/ja/research/gpu-scheduling-starvation-mechanism/" hreflang="ja">日本語</a> · <span aria-current="page">English</span></p>
+<p class="research-area"><b>GPU cluster scheduling</b><span>Isolating the cause of starvation</span><a href="/ja/research/gpu-scheduling-starvation-mechanism/" hreflang="ja">日本語</a></p>
 
 <div class="evidence-strip"><span>Finding</span><span>Synthetic simulation</span><span>Exploratory</span><span>Not peer reviewed</span><span>0 external replications</span></div>
 
@@ -37,9 +37,13 @@ Follows [[en/research/gpu-scheduling-phase-diagram/index|A demand-mix phase diag
 
 > **The practical claim in this note has been demoted.** [[en/research/gpu-scheduling-real-traces/index|EP-0004]] measured the demand distributions of two public traces and found no Philly virtual cluster receiving a job that fills it, so the precondition this note requires was not met in the measured data. The rule "check whether whole-cluster jobs arrive" is withdrawn and replaced by a ratio test against pool capacity. That note also hit this note's own stated falsification target. The mechanism below is unchanged and still holds inside the model; its reach is what narrowed. This note is kept as the record of what was claimed on 2026-09-13 and is not edited.
 
-## The finding
+## Current finding
 
 Holding mean gang size fixed did not hold the outcome fixed. A mix capped at half the cluster stayed stable; a mean-matched mix containing rare whole-cluster jobs starved that class. The failure required size priority and greedy filling together. EP-0004 later found the exact precondition absent in the measured real pools, so this mechanism's practical reach is narrower than first claimed.
+
+Two earlier studies disagreed. EP-0001 found greedy SRPT winning on a mix whose mean gang size was 3.26 and whose largest job needed half the cluster. EP-0002 found greedy SRPT starving a demand class on a mix whose mean gang size was *smaller*, 2.37, but which included jobs needing the whole cluster. The mean pointed the wrong way, so we held it fixed and moved only the support.
+
+With mean gang size matched at 4.076, a mix capped at half the cluster is stable under greedy SRPT — worst-class mean JCT 3.31 — while a mix containing 3 percent whole-cluster jobs starves, at worst-class mean JCT 655.7. The threshold is far lower than 3 percent: 15 whole-cluster jobs in 30,000 are enough, and it happens at rho 0.7 as readily as at 0.85. A two-by-two over priority rule and filling rule locates the cause in the *combination* of size-based priority with greedy work conservation; neither alone produces it. Preemption is not the cause and mildly mitigates it. Ten sealed predictions graded 7/10.
 
 ## Key figure
 
@@ -54,14 +58,6 @@ Holding mean gang size fixed did not hold the outcome fixed. A mix capped at hal
 
 - It does not show starvation in a production trace or at every job-to-pool ratio above one half.
 - Its former rule, “check whether whole-cluster jobs arrive,” was withdrawn after EP-0004.
-
-## Inspect the record
-
-## Summary
-
-Two earlier studies disagreed. EP-0001 found greedy SRPT winning on a mix whose mean gang size was 3.26 and whose largest job needed half the cluster. EP-0002 found greedy SRPT starving a demand class on a mix whose mean gang size was *smaller*, 2.37, but which included jobs needing the whole cluster. The mean pointed the wrong way, so we held it fixed and moved only the support.
-
-With mean gang size matched at 4.076, a mix capped at half the cluster is stable under greedy SRPT — worst-class mean JCT 3.31 — while a mix containing 3 percent whole-cluster jobs starves, at worst-class mean JCT 655.7. The threshold is far lower than 3 percent: 15 whole-cluster jobs in 30,000 are enough, and it happens at rho 0.7 as readily as at 0.85. A two-by-two over priority rule and filling rule locates the cause in the *combination* of size-based priority with greedy work conservation; neither alone produces it. Preemption is not the cause and mildly mitigates it. Ten sealed predictions graded 7/10.
 
 ## Research question
 

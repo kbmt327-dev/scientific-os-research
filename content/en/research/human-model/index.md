@@ -2,7 +2,7 @@
 research_id: HUMAN-MODEL-EP-0004
 lang: en
 aliases: [/research/human-model/index]
-title: Human Model Contract v0.2
+title: A contract that stops human data reaching a model on ambiguous terms
 date: 2026-09-13
 domain: Scientific Human Model
 type: Method
@@ -29,13 +29,15 @@ publication:
 tags: [method, human-model, contract, fail-closed]
 ---
 
-<p class="language-switch"><a href="/scientific-os-research/ja/research/human-model/" hreflang="ja">日本語</a> · <span aria-current="page">English</span></p>
+<p class="research-area"><b>Human movement model interfaces</b><span>Making connection assumptions machine-checkable</span><a href="/ja/research/human-model/" hreflang="ja">日本語</a></p>
 
 <div class="evidence-strip"><span>Method</span><span>Contract validation</span><span>Adapter blocked</span><span>Not predictive evidence</span><span>0 external replications</span></div>
 
-## The method
+## What this method does
 
 Human Model Contract v0.2 makes ambiguous coordinates, unresolved mappings, broken references, and target leakage block a validation case instead of surviving as prose warnings. One valid bundle passed; seven intentionally invalid variants were rejected.
+
+Contract v0.2 turns coordinate-system identity, adapter references, source inconsistencies, and target leakage into machine-checkable requirements across `ObservationSpec`, `AdapterSpec`, and `ValidationCase`. A positive bundle passed nine classes of checks, while seven deliberately invalid variants were rejected. Earlier v0.1 artifacts remained unchanged so prior evidence hashes were not invalidated. This demonstrates fail-closed contract behavior only; it does not demonstrate correct numerical transforms or human-model predictive performance.
 
 ## Key figure
 
@@ -55,12 +57,6 @@ The published schema bundle enforces its declared contract-level references, rea
 ## What this method does not establish
 
 It does not validate numerical transforms, biomechanical predictions, scientific value, or model promotion. The public adapter remains blocked.
-
-## Inspect the record
-
-## Summary
-
-Contract v0.2 turns coordinate-system identity, adapter references, source inconsistencies, and target leakage into machine-checkable requirements across `ObservationSpec`, `AdapterSpec`, and `ValidationCase`. A positive bundle passed nine classes of checks, while seven deliberately invalid variants were rejected. Earlier v0.1 artifacts remained unchanged so prior evidence hashes were not invalidated. This demonstrates fail-closed contract behavior only; it does not demonstrate correct numerical transforms or human-model predictive performance.
 
 ## Research question
 

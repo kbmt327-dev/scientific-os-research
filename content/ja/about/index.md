@@ -1,12 +1,10 @@
 ---
-title: About
-description: Open Research Lab、背後の研究workflow、作者について。
+title: このLabについて
+description: なぜこのLabがあるのか、どこまで信用してよいのか、誰が作っているのか。
 lang: ja
 ---
 
-Open Research Labは公開interface、Scientific OSは背後のprivate research workflowです。workflowが証拠を整理できることと、主張が正しいことは別です。
+- [[ja/about/open-research-lab|なぜこのLabがあるのか]] — 目的、どこまで信用してよいか、誰が作っているか
+- [[ja/about/scientific-os|Scientific OSの進め方]] — 問い → 予測 → 観測 → 改訂
 
-- [[open-research-lab|Labと作者について]] — 目的、信用境界、なぜ作るのか
-- [[scientific-os|Scientific OS]] — 問い → 予測 → 観測 → 改訂
-
-公開運用の実装詳細は、主要な読解経路ではなくrepositoryの [`docs/PUBLICATION_PIPELINE.md`](https://github.com/kbmt327-dev/scientific-os-research/blob/main/docs/PUBLICATION_PIPELINE.md) に置いています。
+公開作業そのものの手順（どのファイルをどう検査して公開しているか）は、読むための経路ではないのでリポジトリの [`docs/PUBLICATION_PIPELINE.md`](https://github.com/kbmt327-dev/scientific-os-research/blob/main/docs/PUBLICATION_PIPELINE.md) に置いています。

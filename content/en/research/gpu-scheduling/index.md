@@ -2,7 +2,7 @@
 research_id: GPU-SCHED-EP-0001
 lang: en
 aliases: [/research/gpu-scheduling/index]
-title: Scheduling principles reverse under workload mix and preemption friction
+title: Estimation error and restart cost reverse which GPU scheduler wins
 date: 2026-09-13
 domain: GPU Cluster Scheduling
 type: Finding
@@ -29,15 +29,21 @@ publication:
 tags: [finding, scheduling, simulation, falsification]
 ---
 
-<p class="language-switch"><a href="/scientific-os-research/ja/research/gpu-scheduling/" hreflang="ja">日本語</a> · <span aria-current="page">English</span></p>
+<p class="research-area"><b>GPU cluster scheduling</b><span>Where this line of work started (EP-0001)</span><a href="/ja/research/gpu-scheduling/" hreflang="ja">日本語</a></p>
 
 <div class="evidence-strip"><span>Finding</span><span>Synthetic simulation</span><span>Exploratory</span><span>Not peer reviewed</span><span>0 external replications</span></div>
 
 > **Later work narrows two claims in this note.** [[en/research/gpu-scheduling-phase-diagram/index|EP-0002]] found that the estimation-error conclusion below depends on the noise parameterization, and that the greedy-SRPT result holds only for demand mixes without whole-cluster jobs. [[en/research/gpu-scheduling-starvation-mechanism/index|EP-0003]] isolated the cause. This note is kept as the record of what was claimed on 2026-09-13 and is not edited.
 
-## The finding
+## Current finding
 
-In this synthetic 64-slot cluster, there was no single best scheduling rule. Greedy SRPT led for a small-job-heavy mix at low friction, while large gangs and lost preemption work changed the stable policy. Later studies narrowed both the mix and estimation-error interpretations; follow the notice above before transferring this result.
+A GPU scheduler decides which job runs next. In theory, running the shortest remaining job first minimises mean completion time. Production adds two frictions: job durations are not known exactly, and preempting a running job throws away the work it had already done.
+
+With both frictions in a 64-slot synthetic cluster, **there was no single best rule**. Greedy SRPT led on a small-job-heavy mix at low friction. On a gang-heavy mix — jobs asking for 32 or 64 GPUs at once — greedy SRPT diverged while ServerFilling-SRPT stayed stable.
+
+The surprise was which friction decided it. **Within the range tested, estimation noise alone never reversed greedy SRPT against EASY backfill.** Restart cost did. At a preemption cost of 0.2, discarded work accumulated until effective load exceeded capacity and the backlog diverged.
+
+These are simulation findings, not evidence from production traces. Read the notice above and the three later studies before transferring anything here into practice.
 
 ## Key figure
 
@@ -59,12 +65,6 @@ flowchart LR
 
 - It does not identify the current real-cluster boundary; EP-0004 later measured that question.
 - It does not establish production superiority, fairness, or a universal crossover.
-
-## Inspect the record
-
-## Summary
-
-We tested where size-based GPU scheduling loses to FCFS or EASY backfill when job-size estimates are noisy and preemption destroys work. In a 64-server synthetic multi-server-job simulator, the workload mix changed the result qualitatively: greedy SRPT led on a small-job-heavy mix at low friction, but diverged on a gang-heavy mix where ServerFilling-SRPT remained stable. Within the tested range, estimation noise alone did not reverse greedy SRPT against EASY; a preemption cost of 0.2 pushed effective load above capacity and caused divergence. These are simulation findings, not evidence from production traces.
 
 ## Research question
 

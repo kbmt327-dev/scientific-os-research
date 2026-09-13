@@ -14,15 +14,32 @@ import yaml
 TYPES = {"Finding", "Protocol", "Method", "Replication", "Negative Result", "Dataset", "Benchmark"}
 PUBLICATION_STATES = {"draft", "candidate", "publishable"}
 COMMON_SECTIONS = {
-    "Summary", "Research question", "Why this matters", "Method", "What changed",
+    "Research question", "Why this matters", "Method", "What changed",
     "What failed", "Evidence boundary", "UNKNOWN", "Falsification targets", "Reproduce",
     "Evidence / Artifacts", "External audit", "Next experiment",
 }
 COMMON_SECTIONS_JA = {
-    "要約", "研究質問", "なぜ重要か", "方法", "何が変わったか",
-    "何が失敗したか", "証拠境界", "UNKNOWN", "反証条件", "再現",
-    "証拠 / Artifacts", "外部監査", "次の実験",
+    "何を調べたか", "なぜ重要か", "方法", "何が変わったか",
+    "何が失敗したか", "証拠の範囲", "まだ分からないこと", "この結論が崩れるとき", "自分で確かめる",
+    "証拠とデータ", "外部からの検証", "次の実験",
 }
+ENTRY_SECTIONS = {
+    "Finding": (
+        {"Current finding", "Key figure", "What this research shows", "What this research does not show", "Results"},
+        {"現在わかっていること", "図で見る", "この研究が示すこと", "この研究が示さないこと", "結果"},
+    ),
+    "Method": (
+        {"What this method does", "Key figure", "What this method establishes", "What this method does not establish", "Results"},
+        {"この方法がすること", "図で見る", "この方法が保証すること", "この方法が保証しないこと", "結果"},
+    ),
+    "Protocol": (
+        {"What this design fixes", "Key figure", "What this protocol establishes", "What this protocol does not establish"},
+        {"この実験計画の要点", "図で見る", "この計画が決めていること", "この計画が決めていないこと"},
+    ),
+}
+BANNED_SECTIONS_JA = {"要約", "詳細を検証する", "発見", "研究質問", "証拠境界", "UNKNOWN", "反証条件", "再現", "証拠 / Artifacts", "外部監査", "Key figure"}
+BANNED_SECTIONS_EN = {"Summary", "Inspect the record", "The finding", "The method", "The question"}
+
 PAIR_FIELDS = ("research_id", "type", "source_episode", "source_episode_sha256")
 
 
@@ -71,29 +88,17 @@ def validate_note(path: Path) -> list[str]:
         errors.append("source_episode must be an opaque public identifier, not a local path")
     sections = set(re.findall(r"^##\s+(.+?)\s*$", body, flags=re.MULTILINE))
     language = str(meta.get("lang", "en")).lower()
-    required_sections = set(COMMON_SECTIONS_JA if language.startswith("ja") else COMMON_SECTIONS)
-    if meta.get("type") == "Finding":
-        required_sections.add("結果" if language.startswith("ja") else "Results")
-        required_sections.update(
-            {"発見", "Key figure", "この研究が示すこと", "この研究が示さないこと"}
-            if language.startswith("ja")
-            else {"The finding", "Key figure", "What this research shows", "What this research does not show"}
-        )
-    elif meta.get("type") == "Method":
-        required_sections.update(
-            {"Method", "Key figure", "このMethodが確立すること", "このMethodが確立しないこと"}
-            if language.startswith("ja")
-            else {"The method", "Key figure", "What this method establishes", "What this method does not establish"}
-        )
-    elif meta.get("type") == "Protocol":
-        required_sections.update(
-            {"問い", "Key figure", "このProtocolが確立すること", "このProtocolが確立しないこと"}
-            if language.startswith("ja")
-            else {"The question", "Key figure", "What this protocol establishes", "What this protocol does not establish"}
-        )
+    japanese = language.startswith("ja")
+    required_sections = set(COMMON_SECTIONS_JA if japanese else COMMON_SECTIONS)
+    entry = ENTRY_SECTIONS.get(str(meta.get("type")))
+    if entry:
+        required_sections.update(entry[1] if japanese else entry[0])
     missing_sections = sorted(required_sections - sections)
     if missing_sections:
         errors.append(f"missing sections: {', '.join(missing_sections)}")
+    retired = sorted(sections & (BANNED_SECTIONS_JA if japanese else BANNED_SECTIONS_EN))
+    if retired:
+        errors.append(f"retired section headings still present: {', '.join(retired)}")
     result_claim = r"\b(confirmatory result|we found|demonstrates an effect)\b|確証的な結果|効果を示した|効果を実証"
     if meta.get("type") == "Protocol" and re.search(result_claim, body, flags=re.IGNORECASE):
         errors.append("protocol contains result-like claim requiring manual review")
@@ -202,11 +207,17 @@ publication:
 
 # TODO
 
-## Summary
+## Current finding
 
-## Research question
+## Key figure
+
+## What this research shows
+
+## What this research does not show
 
 ## Why this matters
+
+## Research question
 
 ## Method
 

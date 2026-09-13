@@ -1,0 +1,155 @@
+{
+  "pred_id": "PRED-013",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0012",
+  "sealed_by": "claude",
+  "sealed_at": "2026-09-14",
+  "status": "sealed before running experiment E14",
+  "why": {
+    "trigger": "EP-0011 found that flow balance, the statistic every operational number in this domain rests on, is a right-censoring ratio: (1 - fb) tracks mean response time divided by the observation window with correlation 0.974 and a near-constant factor of 1.76. Both numerator and denominator scale with the horizon, so the statistic is blind to divergence - the largest class's mean JCT grew 3.9x over a 4x horizon while flow balance moved from 0.562 to 0.574. That analysis was exploratory and unsealed.",
+    "stake": "The domain's operational table is currently suspended. Nothing can be published until a boundary statistic is validated. This experiment seals alpha = dlog E[T of the largest class] / dlog horizon as the candidate replacement and asks the question that decides whether any finite-window boundary exists at all: does adding a fourth, longer horizon move the boundary alpha gives?"
+  },
+  "measurand_validity": "alpha is the elasticity of the largest class's mean response time with respect to the observation window, fitted by least squares on log E[T] against log n_jobs over the measured horizons. A converged (stable) class has E[T] approaching a constant, so alpha approaches 0; a class whose queue grows linearly has E[T] growing linearly with the window, so alpha approaches 1. Unlike flow balance, alpha is not normalised by the window, so divergence cannot cancel. Its known weakness is the opposite one: E[T] is averaged over COMPLETED jobs only, so a severely diverging class's mean is itself truncated, which biases alpha DOWNWARD at the divergent end. G5 checks that the r=1.0 corner still reads near 1. The second weakness is that alpha is an extrapolation from a finite set of horizons, which is exactly what G1 tests: if the boundary alpha reports keeps moving as horizons are added, then no finite-window statistic has a fixed point and the domain must move to a drift test instead.",
+  "experiment": {
+    "common": {
+      "n_servers": 256,
+      "rho": 0.85,
+      "c_pre": 0.0,
+      "dur_mean": 1.0,
+      "t_limit_factor": 2.0,
+      "backlog_cap": "2 * n_jobs",
+      "workload": "identical construction to E12 and E13"
+    },
+    "arm_A_alpha": {
+      "policy": "srpt",
+      "r": [0.5, 0.625, 0.6875, 0.75, 0.8125, 0.875, 1.0],
+      "E_targets": ["C10", "C15", "C28"],
+      "p": [0.002, 0.02],
+      "n_jobs": [30000, 60000, 120000, 240000],
+      "seeds": [901, 902, 903, 904, 905, 906, 907, 908],
+      "runs": 1344,
+      "note": "seeds 901-905 at 30000, 60000 and 120000 replay E13 exactly and serve as the drift gate. Seeds 906-908 and the 240000 horizon are new."
+    },
+    "arm_E_easy": {
+      "policy": "easy_backfill",
+      "r": [0.875, 1.0],
+      "E_targets": ["C10", "C15", "C28"],
+      "p": [0.002],
+      "n_jobs": [30000, 60000, 120000, 240000],
+      "seeds": [901, 902, 903, 904],
+      "runs": 96
+    }
+  },
+  "detector": {
+    "T(r, h)": "mean over the cell's seeds of jct_by_need[m] at horizon h",
+    "alpha(r)": "least-squares slope of log T(r, h) against log h over the horizon set",
+    "alpha4": "alpha fitted on all four horizons {30000, 60000, 120000, 240000}",
+    "alpha3": "alpha fitted on {30000, 60000, 120000} only, i.e. what EP-0011 could see",
+    "r_alpha(alpha_set)": "the ratio where alpha crosses 0.5, by linear interpolation between adjacent grid ratios, walking upward. If alpha(0.5) >= 0.5 return BELOW_GRID; if alpha(1.0) < 0.5 return 1.0.",
+    "r_star_fb": "the ratio where mean flow balance of the largest class crosses 0.9, interpolated the same way, at the 240000 horizon",
+    "censoring_ratio(r, h)": "(1 - fb(r, h)) * window(h) / T(r, h), where window(h) = 0.8 * h / lambda"
+  },
+  "predictions": [
+    {
+      "id": "G0",
+      "claim": "GATE. Seeds 901-905 at 30000, 60000 and 120000 reproduce results/E13.json exactly",
+      "metric": "mean_jct, utilization, rho_emp, mean_running, flow_balance_by_need[m], jct_by_need[m]",
+      "criterion": "maximum absolute difference over all 630 replay rows and all six metrics <= 1e-12, zero missing rows",
+      "falsified_if": "any difference. Stop and diagnose; do not grade G1..G10."
+    },
+    {
+      "id": "G1",
+      "claim": "DECIDING. alpha gives a horizon-stable boundary. Adding a fourth horizon four times longer than the shortest does not move it",
+      "metric": "r_alpha",
+      "criterion": "|r_alpha(alpha4) - r_alpha(alpha3)| <= 0.03 in all six (E_target, p) cells",
+      "falsified_if": "any cell moves by more than 0.03. Then alpha is itself window dependent and no finite-window statistic has a fixed point here."
+    },
+    {
+      "id": "G2",
+      "claim": "alpha behaves as a boundary statistic should: the larger the job relative to the pool, the closer its class is to linear divergence",
+      "metric": "alpha4",
+      "criterion": "in every (E_target, p) row, alpha4 is non-decreasing across the seven ratios allowing 0.05 slack per adjacent pair",
+      "falsified_if": "any adjacent pair falls by more than 0.05"
+    },
+    {
+      "id": "G3",
+      "claim": "the published detector was over-optimistic. The boundary alpha gives is materially below the one flow balance gives",
+      "metric": "r_star_fb minus r_alpha(alpha4)",
+      "criterion": "the gap is >= 0.04 in at least five of six cells, and the mean gap over the six cells is >= 0.06",
+      "falsified_if": "fewer than five cells, or a mean gap below 0.06. Then EP-0011's exploratory claim was an artifact of the three-horizon fit and must be corrected in the episode note."
+    },
+    {
+      "id": "G4",
+      "claim": "the qualitative axis survives the detector replacement, as it survived every other variation",
+      "metric": "r_alpha(alpha4)",
+      "criterion": "r_alpha(C10) > r_alpha(C15) > r_alpha(C28) at both p levels",
+      "falsified_if": "either p level is non-monotone. That would break EP-0006 and EP-0007's central finding, not just their numbers."
+    },
+    {
+      "id": "G5",
+      "claim": "the whole-pool class diverges linearly, and the truncation bias in E[T] does not hide it",
+      "metric": "alpha4 at r = 1.0",
+      "criterion": "alpha4 >= 0.85 in all six (E_target, p) cells",
+      "falsified_if": "any cell is below 0.85"
+    },
+    {
+      "id": "G6",
+      "claim": "the half-pool class has converged, so alpha reads near zero where the system is plainly stable",
+      "metric": "alpha4 at r = 0.5",
+      "criterion": "alpha4 <= 0.25 in all six cells",
+      "falsified_if": "any cell exceeds 0.25"
+    },
+    {
+      "id": "G7",
+      "claim": "the boundary can actually be quoted. Resampling seeds does not leave it too wide to publish",
+      "metric": "r_alpha(alpha4) recomputed on 2000 bootstrap resamples of the eight seeds",
+      "criterion": "the 5th-to-95th percentile half-width of r_alpha is <= 0.06 in all six cells",
+      "falsified_if": "any cell exceeds 0.06. Then the honest output is a flow-balance surface plus an interval, not a boundary number, and the operational table stays suspended."
+    },
+    {
+      "id": "G8",
+      "claim": "EASY backfill does not diverge even for a whole-pool class. Twelve episodes of class-health were not an artifact of the blind detector",
+      "metric": "alpha4",
+      "criterion": "alpha4 <= 0.25 in all six arm-E cells (r in {0.875, 1.0} at three concurrency levels)",
+      "falsified_if": "any cell exceeds 0.25. That would overturn the single most repeated finding in this domain."
+    },
+    {
+      "id": "G9",
+      "claim": "H43. The censoring identity found in EP-0011 holds on new seeds and a new horizon, with a stable coefficient",
+      "metric": "censoring_ratio",
+      "criterion": "the median censoring_ratio over all arm-A (r, horizon) cells is within [1.4, 2.1], and at least 80 percent of cells fall within [1.2, 2.5]",
+      "falsified_if": "the median leaves that band or fewer than 80 percent of cells fall in it. Then the identity was a coincidence of the E13 conditions and cannot be used to convert past flow-balance results into alpha."
+    },
+    {
+      "id": "G10",
+      "claim": "the one real-cluster claim survives the corrected detector. Philly 11cb48 sits at ratio 0.59 and concurrency 10.2",
+      "metric": "r_alpha(alpha4) at C10",
+      "criterion": "r_alpha(C10) > 0.59 at both p levels",
+      "falsified_if": "either is at or below 0.59. Then the only claim this domain has made about a real cluster is retracted, not merely narrowed."
+    }
+  ],
+  "pre_committed_consequence": {
+    "if_G1_and_G7_pass": "alpha is adopted as the domain's boundary statistic. Lift the suspension on the operational table and reissue it at the alpha basis, with the bootstrap interval printed next to every number and the horizon set stated. Close U-28.",
+    "if_G1_fails": "no finite-window statistic has a fixed point in this model. Keep the operational table suspended indefinitely and pivot to a drift test: measure whether the largest class's backlog has positive slope under saturation, which does not depend on a window at all. Record that two successive boundary statistics have now failed for the same underlying reason.",
+    "if_G7_fails_but_G1_passes": "alpha is the right statistic but eight seeds cannot pin it. Publish the flow-balance surface and an interval rather than a boundary number, and state the seed count needed to reach +-0.03 before quoting one.",
+    "if_G3_fails": "EP-0011's central exploratory claim - that the published table was over-optimistic - was an artifact of the three-horizon fit. Correct the EP-0011 episode note with an explicit correction band, restore the v10 numbers, and record that the suspension was called on evidence that did not survive.",
+    "if_G4_fails": "the concurrency axis itself is detector dependent. That invalidates the qualitative core of EP-0006 through EP-0011, not just their numbers. Halt all publication from this domain and re-derive the axis from the drift test.",
+    "if_G8_fails": "EASY backfill's class-health across eleven episodes was an artifact of a detector that could not see divergence. Retract it, and re-examine every policy comparison in the domain, because the same blindness applied to all of them.",
+    "if_G10_fails": "retract the Philly claim rather than narrowing it, and say so in the Research Home banner.",
+    "if_G9_fails": "C-032 is dead; past flow-balance results cannot be converted and must be re-run to be reinterpreted."
+  },
+  "declared_unknowns": [
+    "E[T] is averaged over completed jobs only. For a strongly diverging class the incomplete jobs are exactly the slow ones, so alpha is biased downward at the divergent end and the true divergence is at least what alpha reports. This makes G5 a weak-side test and makes the alpha boundary itself conservative in the direction of calling things stable.",
+    "alpha = 0.5 as the boundary is a convention, not a derived criterion. It is the midpoint between converged and linearly divergent. G1 tests the stability of the resulting boundary, not the correctness of the convention.",
+    "the four horizons span 8x. A class with a very long but finite relaxation time reads as diverging over any window shorter than that time, and no finite experiment can separate the two.",
+    "different horizons draw independent workload realisations. Eight seeds bound the sampling variation; G7 measures it directly.",
+    "single load rho=0.85, single pool N=256, exponential service, no preemption cost, one background family.",
+    "synthetic MSJ model throughout. real_prospective_cycle_count stays 0."
+  ],
+  "rules": [
+    "predictions/PRED-013.json, predictions/PRED-013.sha256, run_e14.py and analyze_e14.py are committed before results/E14.json exists.",
+    "The prediction text is not edited after sealing.",
+    "Failed predictions stay in the ledger as failed.",
+    "No operational number is published from this domain until G1 and G7 are graded."
+  ]
+}

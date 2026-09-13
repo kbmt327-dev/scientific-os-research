@@ -1,0 +1,42 @@
+{
+ "pred_id": "PRED-014",
+ "episode": "EP-0013",
+ "score": "4/6",
+ "verdicts": {
+  "K0": "PASS",
+  "K1": "PASS",
+  "K2": "FAIL",
+  "K3": "PASS",
+  "K4": "FAIL",
+  "K5": "PASS"
+ },
+ "notes": {
+  "K0": "concurrency 10.17 vs 10.2; ratio 0.5899 vs 0.59",
+  "K1": "freq(0.59)=0.000000 < 0.006. NOTE: the zero is a boundary artifact (0.59*217=128.03 > max job 128). The meaningful frequency is P(need>=0.5*cap)=0.000052 = 1 job of 19,100, which is 38x below the table's 0.002 row and still passes",
+  "K2": "criterion required freq(0.59) > 0 and it is exactly 0, by the same boundary artifact. With the threshold at 0.5 the ratio is 6.00 (>=5)",
+  "K3": "no VC has a job at or above its measured capacity. EP-0004's headline survives its own recount",
+  "K4": "Spearman(ratio_max, freq(0.40)) = 0.5000 (p=0.117), predicted <= 0. Only 11cb48 has any job at >=0.40 of capacity, so 10 of 11 VCs tie at zero and the statistic is uninformative rather than contrary",
+  "K5": "margin = 0.9182 - 0.5899 = 0.3283 >= 0.25. The measured frequency is BELOW the 0.002 row, and the boundary rises as frequency falls, so 0.328 is a lower bound"
+ },
+ "philly_11cb48": {
+  "mean_concurrent_jobs": 10.167208610411885,
+  "capacity_gpus": 217.0,
+  "max_k": 128,
+  "ratio_max": 0.5898617511520737,
+  "n_jobs": 19100,
+  "freq": {
+   "0.25": 0.00031413612565445024,
+   "0.4": 5.2356020942408376e-05,
+   "0.5": 5.2356020942408376e-05,
+   "0.59": 0.0,
+   "0.75": 0.0,
+   "1.0": 0.0
+  },
+  "n_at_059": 0
+ },
+ "spearman_ratio_vs_freq040": {
+  "rho": 0.5,
+  "p": 0.11730680301423817
+ },
+ "grading_script_not_sealed": true
+}

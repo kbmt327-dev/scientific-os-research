@@ -1,0 +1,89 @@
+{
+  "pred_id": "PRED-014",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0013",
+  "sealed_by": "claude",
+  "sealed_at": "2026-09-14",
+  "status": "sealed before running experiment E15",
+  "why": {
+    "trigger": "EP-0012 restored the operational table on a validated statistic, but the table has a frequency column and the domain's only real-cluster claim does not have a frequency measured. Philly virtual cluster 11cb48 sits at ratio 0.59 and concurrency 10.2; the alpha table gives a safe ratio of 0.72 at frequency 0.02 and 0.92 at frequency 0.002, so the margin is anywhere between 0.13 and 0.33.",
+    "stake": "This is the only claim this domain makes about a real cluster. Its width is currently a factor of 2.5 and the missing number is measurable from a trace that is already on disk. No simulation is required."
+  },
+  "measurand_validity": "The alpha table's frequency axis is P(need = m) for a single largest class in a synthetic mix. A real trace has a continuum of gang sizes, so the corresponding quantity is not unique. The sealed measurand is P(need >= r * capacity), the arrival share of jobs at least as large as the ratio in question, because those are the jobs that contend for the same scarce whole-pool capacity; a smaller job does not compete for it in the way the synthetic largest class does. This choice makes the measured frequency an UPPER bound on the synthetic p, so a low measured value is the conservative direction and a high one is not dismissible. Capacity is taken as peak concurrent GPUs, the same definition EP-0004 used, which is a lower bound on true capacity and therefore makes ratios an upper bound.",
+  "experiment": {
+    "E15_philly_frequency": {
+      "data": "data/trace-data/cluster_job_log (Philly), already used by measure_vc_concurrency.py and analyze_traces.py",
+      "design": "for each Philly virtual cluster with at least 500 jobs, recompute capacity (peak concurrent GPUs), mean concurrent running jobs, the maximum gang size and its ratio, and then the arrival share P(need >= q * capacity) at q in {0.25, 0.40, 0.50, 0.59, 0.75, 1.00}",
+      "no_simulation": true
+    }
+  },
+  "detector": {
+    "capacity(vc)": "peak concurrent GPUs over the trace, time-averaged event sweep (identical to measure_vc_concurrency.py)",
+    "ratio_max(vc)": "max gang size / capacity",
+    "freq(vc, q)": "number of jobs with need >= q * capacity, divided by the number of jobs counted for that vc",
+    "table_row(concurrency, frequency)": "the EP-0012 alpha table, r_alpha = 0.92 / 0.72 at concurrency 10 for frequency 0.002 / 0.02, 0.85 / 0.68 at 15, 0.73 / 0.66 at 30"
+  },
+  "predictions": [
+    {
+      "id": "K0",
+      "claim": "GATE. The recomputed per-VC capacity, concurrency and maximum ratio reproduce what EP-0006 and EP-0004 recorded",
+      "metric": "mean concurrent jobs and max_k/peak_gpus for 11cb48",
+      "criterion": "mean concurrent jobs within 5 percent of 10.2 and max ratio within 0.02 of 0.59",
+      "falsified_if": "either misses. Then the trace parse has drifted and nothing else is graded."
+    },
+    {
+      "id": "K1",
+      "claim": "DECIDING. Big-relative jobs are rare in 11cb48, so the cluster sits on the low-frequency row of the table and the margin is near the wide end",
+      "metric": "freq(11cb48, 0.59)",
+      "criterion": "freq < 0.006, i.e. closer to the table's 0.002 row than to its 0.02 row",
+      "falsified_if": "freq >= 0.006. Then the margin is at or below the narrow end and the operational claim must be restated at the smaller number, or the table must be interpolated in frequency before the claim is repeated."
+    },
+    {
+      "id": "K2",
+      "claim": "the frequency falls steeply with the ratio threshold: jobs near the pool size are much rarer than jobs at a quarter of it",
+      "metric": "freq(11cb48, q)",
+      "criterion": "freq(0.25) / freq(0.59) >= 5, with freq(0.59) > 0",
+      "falsified_if": "the ratio of the two is below 5, or no job reaches 0.59 in the recount"
+    },
+    {
+      "id": "K3",
+      "claim": "no Philly VC has any job that fills its pool, confirming EP-0004 on the recount",
+      "metric": "freq(vc, 1.00)",
+      "criterion": "freq(vc, 1.00) == 0 for all VCs with at least 500 jobs",
+      "falsified_if": "any VC has a job at or above its measured capacity"
+    },
+    {
+      "id": "K4",
+      "claim": "across VCs, being big relative to the pool and being frequent do not coincide. This is the trace-side analogue of EP-0006's finding that ratio and concurrency are negatively correlated",
+      "metric": "ratio_max and freq(vc, 0.40) across VCs",
+      "criterion": "the Spearman correlation between ratio_max and freq(vc, 0.40) over the qualifying VCs is <= 0",
+      "falsified_if": "the correlation is positive. Then the two risk factors can coincide in real clusters and the reassurance from EP-0006 narrows."
+    },
+    {
+      "id": "K5",
+      "claim": "with the measured frequency in hand, 11cb48's ratio of 0.59 is inside the stable region by a margin at the wide end of the current 0.13-0.33 range",
+      "metric": "r_alpha at concurrency 10 for the measured frequency, minus 0.59",
+      "criterion": "the margin is >= 0.25 when the measured frequency is placed on the nearer of the table's two frequency rows",
+      "falsified_if": "the margin is below 0.25"
+    }
+  ],
+  "pre_committed_consequence": {
+    "if_K1_and_K5_pass": "state the Philly margin as a single number at the low-frequency row instead of a 0.13-0.33 range, with the measured frequency printed beside it. Close U-30.",
+    "if_K1_fails": "the cluster sits nearer the high-frequency row. Restate the margin at the smaller value, and note that the earlier 0.285 figure was optimistic for a second reason beyond the detector. Open a candidate to measure the frequency axis on a finer grid so real clusters can be interpolated rather than rounded to one of two rows.",
+    "if_K3_fails": "EP-0004's headline trace result does not survive its own recount. That is a parse defect or a definition change; diagnose before anything else, because four episodes of practical scoping rest on it.",
+    "if_K4_fails": "the reassurance that the two risk factors do not coincide was specific to the concurrency axis and does not extend to frequency. Say so explicitly in Current Understanding; it weakens the practical scoping.",
+    "if_K2_fails": "the gang-size distribution near the pool size is flatter than assumed, which means the choice of q materially changes the answer. Report the whole freq(q) curve rather than a single frequency, and do not round to a table row."
+  },
+  "declared_unknowns": [
+    "P(need >= q * capacity) is one of several defensible mappings from a continuous trace distribution onto the synthetic table's single-class frequency. A different mapping (for example, the share of offered WORK carried by such jobs, which EP-0010 found to be the quantity with a U-shaped effect) could give a different row.",
+    "capacity as peak concurrent GPUs is a lower bound on the true pool, so ratios are upper bounds and frequencies at a fixed ratio threshold are upper bounds too. Both point the same way: the measured risk is not understated.",
+    "the alpha table has exactly two frequency levels, 0.002 and 0.02. A measured value between them is rounded to the nearer row, which is a real approximation; C-036 exists to make the axis interpolable.",
+    "the table was measured at N=256 and rho=0.85 with an exponential service distribution and one background family. Philly matches none of those exactly. This places the cluster on the model's axes; it is not evidence from running a policy on the trace.",
+    "real_prospective_cycle_count stays 0."
+  ],
+  "rules": [
+    "predictions/PRED-014.json, predictions/PRED-014.sha256 and run_e15.py are committed before results/E15.json exists.",
+    "The prediction text is not edited after sealing.",
+    "Failed predictions stay in the ledger as failed."
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "pred_id": "PRED-008",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0007",
+  "sealed_by": "claude-code",
+  "sealed_at": "2026-09-13",
+  "status": "sealed before running experiment E9",
+  "why": {
+    "gap": "EP-0006 established that r_safe is set by the number of concurrently running jobs competing for the pool, and measured it at concurrencies of 28.5, 54.2, 99.0 and 168.5 (r_safe 0.625, 0.5, 0.5, 0.5). Philly's 11cb48 -- the only real virtual cluster whose largest job is a large fraction of its pool (0.59) -- runs at a concurrency of 10.2, BELOW everything measured.",
+    "stake": "Current Understanding v6 says that VC is on the safe side. That statement is currently an EXTRAPOLATION off the bottom of the measured range, not a measurement. This experiment turns it into one, or overturns it."
+  },
+  "experiment": {
+    "E9": {
+      "design": "hold the pool at N=256 (a realistic virtual-cluster size) and sweep concurrency by changing the background's granularity. Background = {s, 2s, 4s, 8s} with theta=0.4 weights; larger s means coarser background jobs and therefore fewer of them running at once.",
+      "s_values": [1, 2, 4, 8, 12, 16],
+      "expected_concurrency": "approximately 120, 60, 30, 15, 10, 7.5 (rho*N / E[k_background]); the actual value is measured, not assumed",
+      "n_servers": 256,
+      "ratios": [0.5, 0.625, 0.6875, 0.75, 0.8125, 0.875, 1.0],
+      "p_m": 0.002,
+      "rho": 0.85,
+      "policy": "srpt",
+      "n_jobs": 30000,
+      "seeds": [601, 602, 603, 604]
+    }
+  },
+  "detector": "unchanged. r_safe = largest tested ratio at which the large class keeps flow balance >= 0.9.",
+  "predictions": [
+    {
+      "id": "W1",
+      "claim": "r_safe rises as concurrency falls below the range measured so far",
+      "criterion": "r_safe at the cell whose measured concurrency is closest to 10 exceeds 0.625",
+      "falsified_if": "it is 0.625 or lower, i.e. the curve is flat below 28.5 and the extrapolation in v6 was wrong"
+    },
+    {
+      "id": "W2",
+      "claim": "r_safe is monotone non-increasing in concurrency across the whole sweep",
+      "criterion": "ordering the six cells by measured concurrency, r_safe never rises as concurrency rises",
+      "falsified_if": "any inversion larger than one grid step"
+    },
+    {
+      "id": "W3",
+      "claim": "DECIDING. At Philly's actual operating point the margin is comfortable, not marginal: at the measured concurrency closest to 10.2, r_safe >= 0.75, so the VC's ratio of 0.59 has at least 0.16 of headroom",
+      "criterion": "r_safe >= 0.75 at that cell",
+      "falsified_if": "r_safe < 0.75, which would put Philly's 11cb48 within one grid step of the boundary and make v6's 'comfortably safe' reading wrong"
+    },
+    {
+      "id": "W4",
+      "claim": "the sweep reproduces EP-0006 where they overlap: at the cell whose measured concurrency is closest to 28.5, r_safe is within one grid step of 0.625",
+      "criterion": "|r_safe - 0.625| <= one grid step",
+      "falsified_if": "it differs by more, which would indicate the two constructions are not measuring the same thing"
+    },
+    {
+      "id": "W5",
+      "claim": "whole-pool jobs stay structurally starved regardless of how few competitors there are: at every s, m = N has flow balance < 0.5",
+      "criterion": "flow balance(ratio=1.0) < 0.5 at all six s values",
+      "falsified_if": "any s keeps the m=N class fed, which would mean even the structural case is a concurrency effect"
+    },
+    {
+      "id": "W6",
+      "claim": "the harm at Philly's operating point is mild: at the cell nearest concurrency 10 and ratio 0.625, the large class's mean JCT is less than 5x the smallest background class's",
+      "criterion": "jct_m / jct_smallest_background < 5",
+      "falsified_if": "the ratio is 5 or more"
+    }
+  ],
+  "pre_committed_consequence": {
+    "if_W3_passes": "v6's reading stands and is upgraded from extrapolation to measurement: Philly's riskiest virtual cluster has real headroom, and the domain's practical claim is that no examined production pool is near the boundary.",
+    "if_W3_fails": "v6 is wrong on the real cluster's position. Philly's 11cb48 is near the boundary after all, the EP-0004/EP-0005 demotions get partially reversed, and the headline returns to naming a real production configuration as at-risk."
+  },
+  "declared_unknowns": [
+    "changing s changes the background's absolute job sizes as well as their count, so 'concurrency' and 'background job size' move together here; EP-0006 arm C already showed concurrency is the operative variable across a different construction, but this sweep alone does not re-separate them",
+    "N is fixed at 256 and rho at 0.85"
+  ],
+  "rules": [
+    "Not edited after sealing. sha256 in predictions/PRED-008.sha256 before the runs.",
+    "Failed predictions stay in the ledger as failed."
+  ]
+}

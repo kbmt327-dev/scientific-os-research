@@ -1,0 +1,105 @@
+{
+  "pred_id": "PRED-010",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0009",
+  "sealed_by": "codex",
+  "sealed_at": "2026-09-13",
+  "status": "sealed before running experiment E11",
+  "why": {
+    "trigger": "EP-0008 showed that the headline conclusion of EP-0003 was conditioned on mean concurrent running jobs. EP-0002's 21-cell phase diagram changed theta at fixed offered load, which mechanically changes E[need], arrival rate, and therefore running-job concurrency.",
+    "stake": "The phase diagram is a headline result in the domain Research Home. It cannot remain interpreted as a theta or heterogeneity effect until the old cells are placed on the newly discovered concurrency axis and the sufficiency of that axis is challenged with controlled distributions."
+  },
+  "experiment": {
+    "E11_phase_remeasurement": {
+      "design": "rerun the srpt and sf_srpt half of E2 exactly: N=64, theta in {0.4,0.6,0.8,1.0,1.25,1.6,2.0}, rho in {0.7,0.85,0.95}, 30000 jobs, seeds 201..205; add mean_running to the retained metrics",
+      "acceptance": "mean_jct, utilization, rho_emp, min_flow_balance, and flow_balance_by_need must reproduce results/E2.json with maximum absolute difference <= 1e-12 before the new concurrency measurement is accepted",
+      "measured": "mean_running, mean_jct, utilization, flow_balance by need, and class-starvation markers"
+    },
+    "E11_equal_summary_controls": {
+      "design": "at N=64 and rho=0.85, construct two groups with E[need] exactly 4 or 16. Within a group, all three shapes use the same p(need=64), hence the same maximum-job ratio, E[need], offered load, arrival rate, expected running-job concurrency, and service distribution. Only the background need distribution changes.",
+      "mean4": {
+        "p64": 0.02,
+        "background_mean": 2.7755102040816326,
+        "shapes": ["narrow support {2,4}", "geometric support {1,2,4,8,16,32} fitted to the background mean", "wide support {1,8}"],
+        "expected_concurrency": 13.6
+      },
+      "mean16": {
+        "p64": 0.1,
+        "background_mean": 10.666666666666666,
+        "shapes": ["narrow support {8,16}", "geometric support {1,2,4,8,16,32} fitted to the background mean", "wide support {1,32}"],
+        "expected_concurrency": 3.4
+      },
+      "policies": ["srpt", "sf_srpt", "easy_backfill"],
+      "n_jobs": 30000,
+      "seeds": [801, 802, 803, 804, 805]
+    }
+  },
+  "detector": {
+    "class_starved": "mean flow_balance of need=64 across five seeds < 0.5",
+    "class_healthy": "mean flow_balance of need=64 across five seeds >= 0.5",
+    "same_classification": "all three shapes in one equal-summary group are either class_starved or all class_healthy",
+    "matched_concurrency": "(max mean_running - min mean_running) / group mean_running <= 0.10",
+    "invariant_flow": "max mean flow_balance(need=64) - min mean flow_balance(need=64) <= 0.15"
+  },
+  "predictions": [
+    {
+      "id": "Y1",
+      "claim": "the exact E2 rerun reproduces the old metrics before mean_running is accepted",
+      "criterion": "maximum absolute difference over the five acceptance metrics and all 210 rerun rows <= 1e-12",
+      "falsified_if": "the deterministic replay differs; stop and diagnose rather than interpret concurrency"
+    },
+    {
+      "id": "Y2",
+      "claim": "theta was strongly confounded with running-job concurrency in the old phase diagram",
+      "criterion": "under sf_srpt, mean_running decreases strictly with theta at each rho and the theta=0.4 value divided by the theta=2.0 value is >= 10 at all three rhos",
+      "falsified_if": "any rho is non-monotone or has an endpoint ratio below 10"
+    },
+    {
+      "id": "Y3",
+      "claim": "the old greedy-SRPT class-starvation cells occupy the high-concurrency side of the remeasured grid",
+      "criterion": "the minimum mean_running among class-starved phase cells is greater than the maximum mean_running among non-class-starved phase cells",
+      "falsified_if": "the two sets overlap on mean_running"
+    },
+    {
+      "id": "Y4",
+      "claim": "DECIDING. Maximum-job ratio plus running-job concurrency is sufficient for the need=64 starvation classification across background shapes",
+      "criterion": "both equal-summary groups pass matched_concurrency, same_classification, and invariant_flow",
+      "falsified_if": "either group changes starvation classification, has a flow-balance range above 0.15 despite matched concurrency, or fails the concurrency manipulation check"
+    },
+    {
+      "id": "Y5",
+      "claim": "with maximum-job ratio fixed at 1, the high-concurrency mean4 group starves need=64 under greedy SRPT, while the low-concurrency mean16 group does not",
+      "criterion": "all mean4 shapes have mean flow_balance(64) < 0.5 and all mean16 shapes have mean flow_balance(64) >= 0.5",
+      "falsified_if": "either group is not uniform or the direction is reversed"
+    },
+    {
+      "id": "Y6",
+      "claim": "the equal-summary construction actually matches observed running-job concurrency",
+      "criterion": "both groups satisfy matched_concurrency under srpt",
+      "falsified_if": "either group's relative range exceeds 10 percent"
+    },
+    {
+      "id": "Y7",
+      "claim": "EASY backfill remains class-healthy in every equal-summary control",
+      "criterion": "mean flow_balance(64) >= 0.9 in all six controls",
+      "falsified_if": "any control falls below 0.9"
+    }
+  ],
+  "pre_committed_consequence": {
+    "if_Y4_and_Y5_pass": "reinterpret EP-0002's stability portion on the concurrency axis. Retain theta or heterogeneity only for residual policy-ranking differences that remain inside an equal-summary group; do not call theta the cause of starvation.",
+    "if_Y4_fails": "weaken Current Understanding v8: maximum-job ratio and mean running-job count are not a sufficient state description. Promote background-shape or packing fragmentation to a third candidate variable and do not publish a two-number rule.",
+    "if_Y5_fails": "the E9 concurrency curve does not transport across need-distribution families. Restrict it to the family in which it was measured and design a new factorial experiment.",
+    "if_Y1_fails": "do not grade Y2 or Y3. Diagnose replay drift first. The controlled arm may be recorded but cannot be used to rewrite EP-0002."
+  },
+  "declared_unknowns": [
+    "mean_running is a time-average output and partly a consequence of flow balance; matching its expectation does not prove identical queue-state geometry",
+    "the equal-summary controls vary higher moments and packing structure together; a failure identifies insufficiency but not which descriptor is causal",
+    "E11 uses the synthetic MSJ model and does not add real-cluster evidence",
+    "aggregate mean-JCT policy ranking in the controls is exploratory; no directional prediction is sealed for it"
+  ],
+  "rules": [
+    "The prediction file and grading code are committed before results/E11.json exists.",
+    "The sha256 is stored in predictions/PRED-010.sha256 before the runs.",
+    "Failed predictions remain in the ledger as failed."
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "n_pass": 4,
+  "n_total": 6,
+  "concurrency": {
+    "1": 98.94320918383744,
+    "2": 54.15803328544069,
+    "4": 28.43927389280096,
+    "8": 14.59267854950781,
+    "12": 9.81430068480242,
+    "16": 7.394034314201152
+  },
+  "r_safe": {
+    "1": 0.5,
+    "2": 0.5,
+    "4": 0.625,
+    "8": 0.8125,
+    "12": 0.875,
+    "16": 0.875
+  },
+  "s_closest_to_philly": 12,
+  "w3_passed": true,
+  "results": [
+    {
+      "id": "W1",
+      "claim": "r_safe rises as concurrency falls below the previously measured range",
+      "pass": true,
+      "detail": "at concurrency 9.8: r_safe = 0.875 (EP-0006 measured 0.625 at 28.5)"
+    },
+    {
+      "id": "W2",
+      "claim": "r_safe is monotone non-increasing in concurrency",
+      "pass": true,
+      "detail": "by concurrency: 7.4:0.875  9.8:0.875  14.6:0.8125  28.4:0.625  54.2:0.5  98.9:0.5"
+    },
+    {
+      "id": "W3",
+      "claim": "DECIDING: at Philly's operating point r_safe >= 0.75, so its ratio of 0.59 has at least 0.16 of headroom",
+      "pass": true,
+      "detail": "concurrency 9.8 -> r_safe 0.875; headroom over Philly's 0.59 = 0.285"
+    },
+    {
+      "id": "W4",
+      "claim": "reproduces EP-0006 where they overlap (within one grid step of 0.625)",
+      "pass": true,
+      "detail": "at concurrency 28.4: r_safe = 0.625 vs EP-0006's 0.625 at 28.5; gap = 0 grid step(s)"
+    },
+    {
+      "id": "W5",
+      "claim": "whole-pool jobs stay starved at every concurrency",
+      "pass": false,
+      "detail": "flow balance at m=N: s=1:0.078  s=2:0.178  s=4:0.265  s=8:0.519  s=12:0.693  s=16:0.850"
+    },
+    {
+      "id": "W6",
+      "claim": "the harm at Philly's operating point is mild (large class < 5x the smallest background class)",
+      "pass": false,
+      "detail": "at concurrency 9.8, m/N=0.625: large class JCT 5.63 vs background 1.11 = 5.1x"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "pred_id": "PRED-007",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0006",
+  "sealed_by": "claude-code",
+  "sealed_at": "2026-09-13",
+  "status": "sealed before running experiment E8",
+  "why": {
+    "confound": "EP-0005 found r_safe falling with pool size (0.8125 -> 0.5 for N = 32 -> 512) and I recorded that in Current Understanding v5. But I declared at seal time that the mix family confounds pool size with two other things that grow with N: the NUMBER OF BACKGROUND CLASSES (the background is every power of two up to N/2, so it grows as log N) and the NUMBER OF CONCURRENTLY RUNNING SMALL JOBS (roughly N / E[k], so it grows as N). Nothing in E7 separates the three.",
+    "stake": "If the driver is the count of competing small jobs rather than pool size, then 'r_safe falls with pool size' is the wrong statement of the finding, and the practical rule in v5 ('use 0.8 for a 32-GPU pool and 0.5 for a 512-GPU pool') is keyed to the wrong variable. It would need restating in terms of how finely the pool is divided by the background workload."
+  },
+  "mechanism_reasoning_stated_before_measuring": "A job needing m servers starts when it is reached in priority order while at least m servers are still unclaimed. What competes for those servers is the set of higher-priority jobs, and what matters is how completely they can consume capacity. Many small jobs pack capacity tightly and leave little residue; few large-ish jobs leave coarser gaps. So I expect the driver to be the GRANULARITY of the background relative to the pool -- equivalently the number of concurrent background jobs -- and NOT the pool size in servers. If that is right, holding the background's relative size fixed while growing N should hold r_safe roughly constant.",
+  "experiment": {
+    "E8": {
+      "design": "three arms differing only in how the background job sizes are chosen, each with the same large class at need = m and the same p_m.",
+      "arm_A": "baseline, as in E7: background = every power of two from 1 to N/2. Class count = log2(N), concurrency grows ~N. (already measured in E7, reused)",
+      "arm_B": "background fixed at needs {1,2,4,8} for every N. Class count fixed at 4; background jobs get relatively SMALLER as N grows, so concurrency still grows ~N.",
+      "arm_C": "background scaled with the pool: needs {N/64, N/32, N/16, N/8}. Class count fixed at 4 AND relative size fixed, so the number of concurrent background jobs stays roughly CONSTANT as N grows.",
+      "note": "arm_B and arm_C coincide at N=64 by construction, which is a built-in consistency check",
+      "n_servers": [64, 128, 256, 512],
+      "ratios": [0.5, 0.625, 0.6875, 0.75, 0.8125, 0.875, 1.0],
+      "p_m": 0.002,
+      "rho": 0.85,
+      "policy": "srpt",
+      "n_jobs": 30000,
+      "seeds": "5 for N <= 128, 3 for N >= 256",
+      "extra_metric": "mean_running (time-average number of concurrently running jobs) is recorded so the proposed driver is measured, not assumed"
+    }
+  },
+  "detector": "unchanged. r_safe = largest tested ratio at which the large class keeps flow balance >= 0.9.",
+  "predictions": [
+    {
+      "id": "V1",
+      "claim": "class count is NOT the driver: in arm B, where the background is fixed at four classes for every N, r_safe still falls with N",
+      "criterion": "r_safe_B(512) < r_safe_B(64)",
+      "falsified_if": "r_safe is flat or rising in arm B",
+      "hypothesis": "H28 (class count) predicts flat here; I expect H28 to be refuted"
+    },
+    {
+      "id": "V2",
+      "claim": "DECIDING. concurrency is the driver: in arm C, where the background scales with the pool so the number of concurrent small jobs stays roughly constant, r_safe is roughly FLAT across N",
+      "criterion": "r_safe_C is within one grid step across N = 64..512, i.e. max(r_safe_C) / min(r_safe_C) spans at most one adjacent pair of the ratio grid",
+      "falsified_if": "r_safe_C falls by two or more grid steps, which would mean pool size matters in its own right",
+      "note": "this is the prediction that decides how v5's practical rule must be restated"
+    },
+    {
+      "id": "V3",
+      "claim": "the proposed driver is actually held fixed by arm C: mean_running in arm C varies by less than 2x across N = 64..512, while in arm B it grows by more than 4x",
+      "criterion": "both legs hold at ratio 0.75",
+      "falsified_if": "either leg fails, which would mean arm C does not do what it was built to do"
+    },
+    {
+      "id": "V4",
+      "claim": "at matched concurrency, r_safe matches: across all arms and all N, cells whose mean_running is within 20% of each other have r_safe within one grid step",
+      "criterion": "no pair of cells with mean_running ratio <= 1.2 differs in r_safe by more than one grid step",
+      "falsified_if": "matched-concurrency cells disagree by two or more steps"
+    },
+    {
+      "id": "V5",
+      "claim": "arm B and arm C agree at N=64, where they are the same workload by construction",
+      "criterion": "r_safe_B(64) == r_safe_C(64)",
+      "falsified_if": "they differ, which would indicate a bug or seed noise larger than the grid step"
+    },
+    {
+      "id": "V6",
+      "claim": "arm B is the harshest at large N: with the background fixed at tiny absolute sizes, a 512-server pool is divided most finely of all, so r_safe_B(512) <= r_safe_A(512)",
+      "criterion": "r_safe_B(512) <= 0.5",
+      "falsified_if": "arm B is more forgiving than the baseline at N=512"
+    }
+  ],
+  "pre_committed_consequence": {
+    "if_V2_passes": "The finding is misattributed in Current Understanding v5. Rewrite it: the safe ratio is set by how many background jobs compete for the pool, not by the pool's size in servers. The practical rule becomes a function of the background's granularity (large pools are only more dangerous because they are typically divided into more concurrent small jobs), and v5's table is relabelled accordingly rather than deleted.",
+    "if_V2_fails": "Pool size matters in its own right beyond concurrency. v5 stands as written, and H28/H29 are narrowed to the residual."
+  },
+  "declared_unknowns": [
+    "arm C changes the background's absolute sizes, so at N=512 the smallest background job is 8 servers; whether results transfer to a pool containing genuinely single-server jobs alongside is not tested here",
+    "rho is fixed at 0.85 throughout",
+    "only greedy SRPT is swept; EASY backfill was already flat in E7"
+  ],
+  "rules": [
+    "Not edited after sealing. sha256 in predictions/PRED-007.sha256 before the runs.",
+    "Failed predictions stay in the ledger as failed."
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "n_pass": 6,
+  "n_total": 6,
+  "r_safe": {
+    "A": {
+      "64": 0.75,
+      "128": 0.6875,
+      "256": 0.625,
+      "512": 0.5
+    },
+    "B": {
+      "64": 0.625,
+      "128": 0.5,
+      "256": 0.5,
+      "512": 0.5
+    },
+    "C": {
+      "64": 0.625,
+      "128": 0.625,
+      "256": 0.625,
+      "512": 0.625
+    }
+  },
+  "v2_passed": true,
+  "results": [
+    {
+      "id": "V1",
+      "claim": "class count is not the driver: arm B's r_safe still falls with N",
+      "pass": true,
+      "detail": "arm B r_safe: N=64:0.625  N=128:0.5  N=256:0.5  N=512:0.5"
+    },
+    {
+      "id": "V2",
+      "claim": "DECIDING: arm C (concurrency held ~constant) has a roughly FLAT r_safe across N",
+      "pass": true,
+      "detail": "arm C r_safe: N=64:0.625  N=128:0.625  N=256:0.625  N=512:0.625; spread = 0 grid step(s)"
+    },
+    {
+      "id": "V3",
+      "claim": "arm C really does hold concurrency fixed (<2x) while arm B lets it grow (>4x)",
+      "pass": true,
+      "detail": "mean_running spread: arm C 1.00x (28.5-28.5), arm B 5.91x (28.5-168.5)"
+    },
+    {
+      "id": "V4",
+      "claim": "at matched concurrency (within 20%), r_safe agrees within one grid step",
+      "pass": true,
+      "detail": "8 cells compared; disagreements: none"
+    },
+    {
+      "id": "V5",
+      "claim": "arms B and C agree at N=64 (same workload by construction)",
+      "pass": true,
+      "detail": "B:0.625  C:0.625"
+    },
+    {
+      "id": "V6",
+      "claim": "arm B is the harshest at N=512: r_safe_B(512) <= 0.5",
+      "pass": true,
+      "detail": "arm B 0.5 vs baseline arm A 0.5"
+    }
+  ]
+}

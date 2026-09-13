@@ -1,0 +1,172 @@
+{
+  "pred_id": "PRED-011",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0010",
+  "sealed_by": "claude",
+  "sealed_at": "2026-09-14",
+  "status": "sealed before running experiment E12",
+  "why": {
+    "trigger": "EP-0009 (E11) held the maximum-job ratio, p64, E[need] and rho fixed and varied only the background shape; the class-starvation classification was invariant. That supports the two-number working rule (maximum-job ratio r = m/N, and the number of jobs concurrently competing for the pool) but it fixed p inside each group, so the frequency of the largest class was never an independent factor. U-23 asks whether p is a third variable.",
+    "stake": "Current Understanding v9 states the class-starvation rule in two numbers and publishes an operational table (concurrency 10 -> r_safe 0.875, 30 -> 0.625, 50+ -> 0.5). If the frequency of the largest class shifts that boundary, the published table is wrong for clusters whose big jobs are common, and the rule must be stated in three numbers."
+  },
+  "measurand_validity": "The sealed measurand is r_safe = the largest ratio on a 7-point grid whose largest class has mean flow balance >= 0.9, the identical statistic EP-0007 used to publish the operational table. It is a coarse proxy for the continuous safe boundary: a p effect smaller than one grid step (0.0625 near the top) is invisible to it, which is why Z2b and Z8 grade the continuous flow-balance curve as well.",
+  "experiment": {
+    "common": {
+      "n_servers": 256,
+      "rho": 0.85,
+      "n_jobs": 30000,
+      "policy": "srpt (greedy SRPT priority + greedy packing)",
+      "c_pre": 0.0,
+      "dur_mean": 1.0,
+      "dur_cv": 1.0,
+      "t_limit_factor": 2.0,
+      "backlog_cap": 60000,
+      "seeds": [901, 902, 903, 904, 905]
+    },
+    "construction": "Each cell fixes three factors independently. (1) maximum-job ratio r: the largest class needs m = round(256*r) servers. (2) frequency p: P(need = m) = p. (3) target concurrency: E[need] is pinned to a target value E*, and since every job is in service for E[S] = 1, Little's law gives mean running jobs = rho*N/E[need] whenever all classes are served. The background is a geometric mix over {1,2,4,8,16,32,64} whose ratio theta is fitted by bisection so that the background mean is exactly (E* - p*m)/(1-p); the achieved E[need] equals E* to 1e-13. Hence r, p and target concurrency are set independently, while the background mean absorbs the difference.",
+    "E_targets": {
+      "C10": 21.812807881773399,
+      "C15": 14.541871921182266,
+      "C28": 7.270935960591133,
+      "note": "these are exactly the background means of E9's s=12, s=8 and s=4 rows, chosen so that the concurrency levels land on measured EP-0007 points (9.81, 14.59, 28.44)"
+    },
+    "arm_A_factorial": {
+      "r": [0.5, 0.625, 0.6875, 0.75, 0.8125, 0.875, 1.0],
+      "m": [128, 160, 176, 192, 208, 224, 256],
+      "E_targets": ["C10", "C15", "C28"],
+      "p": [0.002, 0.005, 0.02],
+      "runs": 315,
+      "note": "fully crossed 7 x 3 x 3, all cells feasible; p spans 10x and the maximum class's share of offered work spans 0.01 to 0.70"
+    },
+    "arm_B_p_extension": {
+      "E_targets": ["C10", "C15"],
+      "p": [0.05],
+      "r": [0.5, 0.625, 0.6875, 0.75, 0.8125, 0.875, 1.0],
+      "runs": 70,
+      "note": "p = 0.05 is 25x the E9 value 0.002. It is structurally infeasible at C28: p*m would exceed E[need], i.e. frequent whole-pool jobs cannot coexist with high concurrency at fixed load. That infeasibility is a property of the workload algebra, not a design omission."
+    },
+    "arm_R_replay_gate": {
+      "design": "replay E9 exactly: background {s,2s,4s,8s} with theta=0.4 weights, p_m=0.002, s in {12,8,4}, the same 7 ratios, seeds 601..604",
+      "runs": 84,
+      "purpose": "detect code drift before any new number is interpreted"
+    },
+    "arm_C_policy_reference": {
+      "policy": "easy_backfill",
+      "r": [0.5, 0.75, 1.0],
+      "E_targets": ["C10", "C15", "C28"],
+      "p": [0.005],
+      "seeds": [901, 902, 903],
+      "runs": 27
+    }
+  },
+  "detector": {
+    "fb_m": "mean over the cell's seeds of flow_balance_by_need[m]",
+    "class_healthy": "fb_m >= 0.9 (the identical threshold analyze_e9.py used to publish r_safe)",
+    "class_starved": "fb_m < 0.9",
+    "r_safe(E_target, p)": "max{ r in the 7-point grid : fb_m(E_target, p, r) >= 0.9 }, or the token BELOW_GRID if no r qualifies",
+    "grid_steps(a,b)": "absolute difference of the indices of a and b in [0.5, 0.625, 0.6875, 0.75, 0.8125, 0.875, 1.0]",
+    "conc": "mean over the cell's seeds of mean_running",
+    "rel_range(xs)": "(max(xs) - min(xs)) / mean(xs)"
+  },
+  "predictions": [
+    {
+      "id": "Z0",
+      "claim": "GATE. The E9 replay reproduces the published rows bit for bit",
+      "metric": "mean_jct, utilization, rho_emp, mean_running, flow_balance_by_need[m]",
+      "criterion": "maximum absolute difference over all 84 replay rows and all five metrics <= 1e-12, with zero missing rows",
+      "falsified_if": "any difference. Then stop and diagnose drift; do not grade Z1..Z9 and do not rewrite Current Understanding."
+    },
+    {
+      "id": "Z1",
+      "claim": "the construction actually holds concurrency fixed while p varies",
+      "metric": "mean_running",
+      "criterion": "for every (E_target, r) cell group, rel_range of conc across the three arm-A p levels <= 0.10; and for every E_target, the mean of conc over all arm-A cells is within 8 percent of rho*N/E_target",
+      "falsified_if": "any group exceeds 0.10, or any E_target's mean concurrency misses the Little's-law value by more than 8 percent"
+    },
+    {
+      "id": "Z2",
+      "claim": "DECIDING. The frequency of the largest class does not move the safe boundary. r_safe is a function of (concurrency) alone at fixed grid",
+      "metric": "r_safe, i.e. fb_m against the 0.9 threshold",
+      "criterion": "for each of the three E_targets, r_safe is identical across p in {0.002, 0.005, 0.02}: grid_steps = 0 for both comparisons against the p=0.002 value",
+      "falsified_if": "any E_target's r_safe differs by one or more grid steps across the arm-A p levels"
+    },
+    {
+      "id": "Z2b",
+      "claim": "the invariance also holds below the resolution of the r grid",
+      "metric": "fb_m (continuous)",
+      "criterion": "for every (E_target, r) cell group, max fb_m - min fb_m across the three arm-A p levels <= 0.15 (the same tolerance PRED-010 used)",
+      "falsified_if": "any group's flow-balance range exceeds 0.15"
+    },
+    {
+      "id": "Z3",
+      "claim": "the operational table reproduces under a different background family. The p=0.002 layer, whose background is a fitted geometric over {1..64} rather than E9's {s,2s,4s,8s}, returns E9's r_safe values",
+      "metric": "r_safe at p=0.002",
+      "criterion": "r_safe(C10)=0.875, r_safe(C15)=0.8125, r_safe(C28)=0.625, all exact grid equality",
+      "falsified_if": "any of the three differs by one or more grid steps"
+    },
+    {
+      "id": "Z4",
+      "claim": "the largest class degrades monotonically as it grows, at every frequency",
+      "metric": "fb_m",
+      "criterion": "in every arm-A and arm-B (E_target, p) row, fb_m is non-increasing across the r grid allowing 0.03 slack per adjacent pair",
+      "falsified_if": "any adjacent pair rises by more than 0.03"
+    },
+    {
+      "id": "Z5",
+      "claim": "r_safe falls as concurrency rises, at every frequency",
+      "metric": "r_safe",
+      "criterion": "for each arm-A p level, r_safe(C10) >= r_safe(C15) >= r_safe(C28)",
+      "falsified_if": "any p level is non-monotone"
+    },
+    {
+      "id": "Z6",
+      "claim": "the invariance survives a 25x frequency increase. At p=0.05 the largest class carries up to 88 percent of offered work, and the boundary still does not move",
+      "metric": "r_safe",
+      "criterion": "grid_steps(r_safe(C10, 0.05), r_safe(C10, 0.002)) = 0 and grid_steps(r_safe(C15, 0.05), r_safe(C15, 0.002)) = 0",
+      "falsified_if": "either differs by one or more grid steps"
+    },
+    {
+      "id": "Z7",
+      "claim": "EASY backfill remains class-healthy in every reference cell, a tenth consecutive episode",
+      "metric": "fb_m",
+      "criterion": "fb_m >= 0.9 in all nine arm-C cells",
+      "falsified_if": "any cell falls below 0.9"
+    },
+    {
+      "id": "Z8",
+      "claim": "on the observed axis rather than the designed one: given r, observed concurrency orders the flow balance without help from p",
+      "metric": "fb_m against conc",
+      "criterion": "for each r, take all arm-A and arm-B cells (11 at r fixed: 9 from arm A, 2 from arm B), sort by conc ascending, and require fb_m to be non-increasing allowing 0.05 slack per adjacent pair",
+      "falsified_if": "any r has an adjacent pair that rises by more than 0.05 once sorted by concurrency. That would mean two cells at nearly the same concurrency and the same r have materially different flow balance, which only p or the background mean could explain."
+    },
+    {
+      "id": "Z9",
+      "claim": "frequency is not inert for everything: inside the healthy region, making the large class more frequent slows it down even though it never starves",
+      "metric": "jct_by_need[m]",
+      "criterion": "among (E_target, r) groups that are class_healthy at all three arm-A p levels, jct_m(p=0.02) > jct_m(p=0.002) in at least two thirds of the groups",
+      "falsified_if": "fewer than two thirds. This prediction is about mean JCT, not about starvation, and cannot be satisfied by the same fact that satisfies Z2."
+    }
+  ],
+  "pre_committed_consequence": {
+    "if_Z2_and_Z6_and_Z8_pass": "promote the two-number rule for class-starvation from working hypothesis to OBSERVED with explicit scope: within the synthetic MSJ family, at rho=0.85 and N=256, the safe ratio is set by concurrency alone and is invariant to the frequency of the largest class over a 25x range spanning 1 percent to 88 percent of offered work. Close U-23. Keep the published operational table as is and attach the scope sentence.",
+    "if_Z2_fails": "the two-number rule is insufficient. Delete the phrase 'this problem is decided by two numbers' from Current Understanding, restate the rule with the frequency (or the maximum class's work share) as a third number, and record which direction the boundary moved. Do not publish the operational table without a frequency column. Open C-027 to separate frequency from work share, which this design deliberately confounds.",
+    "if_Z2_passes_but_Z8_fails": "sufficiency holds for the designed E[need] but not on the observed concurrency axis. Restate the rule in terms of the design quantity rho*N/E[need] rather than measured running-job count, and say so explicitly, because operators can measure the latter but not the former.",
+    "if_Z3_fails": "r_safe as published is background-family dependent at the one-grid-step level. The operational table in Current Understanding must be reissued with a family caveat and a stated resolution, and EP-0007's claim of cross-construction reproduction must be narrowed.",
+    "if_Z1_fails": "the construction did not hold concurrency fixed. Grade Z2 as a designed-factor result only, report Z8 as the primary evidence instead, and rebuild the design with an observed-concurrency calibration loop before claiming sufficiency.",
+    "if_Z9_fails": "frequency is inert for the large class's mean JCT as well as for starvation, which is stronger than expected and should be recorded as such rather than quietly dropped."
+  },
+  "declared_unknowns": [
+    "p and the maximum class's share of offered work w = p*m/E[need] move together by construction: at fixed r and E[need] they are proportional. A pass says both are inert; a failure does not say which one acted. C-027 would need to vary them separately, which requires moving E[need] and therefore concurrency, so the separation is not free.",
+    "holding E[need] fixed while raising p forces the background mean down (at C15, r=1.0 it falls from 14.06 to 1.83). The background shape is therefore not held fixed across p. This design leans on EP-0009's finding that background shape does not change the classification at fixed (r, concurrency); if Z2 fails, that leaning is one of the candidate explanations.",
+    "r_safe is a 7-point grid statistic with resolution 0.0625 near the top. Movement below one grid step is only visible through Z2b and Z8.",
+    "the 0.9 flow-balance threshold is inherited from analyze_e9.py so that the numbers stay comparable. It was never derived from a stability criterion.",
+    "mean_running is an output, not a control. When a class starves its jobs stop running, so concurrency is partly a consequence of the very thing being classified. The Little's-law identity makes the designed and observed values agree to O(p) in both the fully served and fully starved limits, which is why Z1 is expected to pass, but the two are not the same quantity.",
+    "single load rho=0.85, single pool N=256, exponential service, no preemption cost. Nothing here transports to other rho or to heavy-tailed service without measurement.",
+    "synthetic MSJ model throughout. real_prospective_cycle_count stays 0."
+  ],
+  "rules": [
+    "predictions/PRED-011.json, predictions/PRED-011.sha256, run_e12.py and analyze_e12.py are committed before results/E12.json exists.",
+    "The prediction text is not edited after sealing.",
+    "Failed predictions stay in the ledger as failed."
+  ]
+}

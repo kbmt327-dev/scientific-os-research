@@ -1,0 +1,62 @@
+{
+  "n_pass": 6,
+  "n_total": 8,
+  "r_safe": {
+    "32": 0.8125,
+    "64": 0.75,
+    "128": 0.6875,
+    "256": 0.625,
+    "512": 0.5
+  },
+  "u3_passed": true,
+  "results": [
+    {
+      "id": "U1",
+      "claim": "r_safe falls monotonically with pool size",
+      "pass": true,
+      "detail": "N=32:0.8125  N=64:0.75  N=128:0.6875  N=256:0.625  N=512:0.5"
+    },
+    {
+      "id": "U2",
+      "claim": "r_safe(512) <= 0.6875 (at least one grid step below the N=64 value)",
+      "pass": true,
+      "detail": "r_safe(512) = 0.5, r_safe(64) = 0.75"
+    },
+    {
+      "id": "U3",
+      "claim": "DECIDING: at N=256 and m/N=0.625 (just above Philly's real 0.59) greedy SRPT keeps the class fed",
+      "pass": true,
+      "detail": "flow balance = 0.911, class JCT 17.2 vs need=1 1.05 (16.3x)"
+    },
+    {
+      "id": "U4",
+      "claim": "at m = N the whole-pool class gets worse with pool size",
+      "pass": true,
+      "detail": "N=64:0.390  N=128:0.231  N=256:0.155"
+    },
+    {
+      "id": "U5",
+      "claim": "EASY backfill stays >= 0.99 at every N and ratio",
+      "pass": false,
+      "detail": "cells below 0.99: [(128, 1.0, 0.989), (256, 0.875, 0.986), (256, 1.0, 0.986), (512, 0.8125, 0.986), (512, 0.875, 0.986), (512, 1.0, 0.925)]"
+    },
+    {
+      "id": "U6",
+      "claim": "at a fixed ratio the large class's mean JCT grows with N",
+      "pass": false,
+      "detail": "N=64: 49.2  ->  N=256: 45.8"
+    },
+    {
+      "id": "U7",
+      "claim": "the ratio still dominates the pool size",
+      "pass": true,
+      "detail": "largest ratio effect 0.872 vs largest size effect 0.475"
+    },
+    {
+      "id": "U8",
+      "claim": "small pools are more forgiving: r_safe(32) > 0.75",
+      "pass": true,
+      "detail": "r_safe(32) = 0.8125"
+    }
+  ]
+}

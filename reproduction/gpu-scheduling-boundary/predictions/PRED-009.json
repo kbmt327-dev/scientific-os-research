@@ -1,0 +1,70 @@
+{
+  "pred_id": "PRED-009",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0008",
+  "sealed_by": "claude-code",
+  "sealed_at": "2026-09-13",
+  "status": "sealed before running experiment E10",
+  "why": {
+    "trigger": "EP-0007 showed that whole-pool starvation is not structural: the m=N class's flow balance runs from 0.078 at a concurrency of 98.9 up to 0.850 at 7.4. EP-0003's headline -- 'a need distribution whose support contains N starves that class, at rates as low as p=0.0005, even at rho=0.7' -- was written under the assumption that this was a structural trap independent of everything else.",
+    "stake": "EP-0003 is the episode this domain's mechanism story rests on, and it was measured at a single background granularity. If that setting simply sits in the high-concurrency part of the E9 curve, then its conclusion needs the same conditioning every other result now carries, and the domain's central claim has to be restated one more time."
+  },
+  "experiment": {
+    "E10": {
+      "design": "hold EP-0003's configuration fixed except for the background granularity, and re-measure. N=64, rho=0.85, p64=0.002 on need=64, theta=0.4 weights on the background.",
+      "backgrounds": {
+        "fine": "[1,2,4,8,16,32] -- EP-0003's original",
+        "mid": "[4,8,16,32]",
+        "coarse": "[8,16,32]"
+      },
+      "policies": ["srpt", "easy_backfill"],
+      "n_jobs": 30000,
+      "seeds": [701, 702, 703, 704, 705],
+      "measured": "mean_running (concurrency), flow balance of the need=64 class, its JCT, aggregate mean JCT"
+    }
+  },
+  "predictions": [
+    {
+      "id": "X1",
+      "claim": "EP-0003's original setting sits in the high-concurrency part of the E9 curve",
+      "criterion": "mean_running >= 20 for the fine background",
+      "falsified_if": "below 20, which would mean EP-0003's starvation was NOT a high-concurrency case and the mechanism correction does not explain it"
+    },
+    {
+      "id": "X2",
+      "claim": "DECIDING. EP-0003's central result reverses when only the background granularity is coarsened: with the coarse background the need=64 class is no longer starved",
+      "criterion": "flow balance of the need=64 class >= 0.5 under greedy SRPT with the coarse background",
+      "falsified_if": "still below 0.5, which would mean EP-0003's result survives independently of concurrency and the 'structural' language was closer to right than EP-0007 suggested"
+    },
+    {
+      "id": "X3",
+      "claim": "the reversal is monotone in granularity: flow balance of need=64 rises from fine to mid to coarse",
+      "criterion": "fb(fine) < fb(mid) < fb(coarse)",
+      "falsified_if": "any step does not rise"
+    },
+    {
+      "id": "X4",
+      "claim": "EASY backfill is unaffected by the granularity change, as it has been on every other axis",
+      "criterion": "flow balance of need=64 under easy_backfill >= 0.9 for all three backgrounds",
+      "falsified_if": "any background drops it below 0.9"
+    },
+    {
+      "id": "X5",
+      "claim": "the concurrency values land where the E9 curve predicts: the fine and coarse backgrounds differ in concurrency by at least 3x",
+      "criterion": "mean_running(fine) / mean_running(coarse) >= 3",
+      "falsified_if": "the ratio is below 3, meaning the manipulation was too weak to test the claim"
+    }
+  ],
+  "pre_committed_consequence": {
+    "if_X2_passes": "EP-0003's headline gets the same conditioning as everything else: a need distribution containing N starves that class ONLY when enough jobs compete for the pool. The domain's central claim is restated as a statement about concurrency, and EP-0003's episode note gets a correction banner pointing at EP-0007/EP-0008.",
+    "if_X2_fails": "EP-0003's result is robust to concurrency in a way EP-0007's m=N sweep was not, which would itself be a finding worth chasing -- the two experiments would disagree and something in the construction differs beyond granularity."
+  },
+  "declared_unknowns": [
+    "coarsening the background also raises E[k] of the background, which changes the arrival rate at fixed rho; concurrency and background job size move together here, as in E9",
+    "p64 is held at 0.002 rather than EP-0003's full sweep down to 0.0005"
+  ],
+  "rules": [
+    "Not edited after sealing. sha256 in predictions/PRED-009.sha256 before the runs.",
+    "Failed predictions stay in the ledger as failed."
+  ]
+}

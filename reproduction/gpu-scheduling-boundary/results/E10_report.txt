@@ -1,0 +1,28 @@
+EP-0003 の設定（N=64, rho=0.85, p64=0.002）を背景の粒度だけ変えて再測
+
+      背景                 needs      同時本数    need=64 流量  need=64 JCT   最小class JCT     全体平均JCT
+    fine  [1, 2, 4, 8, 16, 32]      23.2         0.307        400.9          1.05        1.82
+     mid        [4, 8, 16, 32]       7.4         0.868        264.4          1.12        1.76
+  coarse           [8, 16, 32]       4.3         0.997         39.9          1.21        1.53
+
+      背景      EASY backfill の need=64 流量      その JCT
+    fine                           1.000        6.40
+     mid                           1.000        4.98
+  coarse                           1.000        4.70
+
+
+=== PRED-009 grading ===
+ X1  PASS  EP-0003の原設定は高同時本数側にいる（mean_running >= 20）
+      fine の同時本数 = 23.2
+ X2  PASS  決定予測: 背景を粗くするだけで need=64 は飢餓しなくなる（流量 >= 0.5）
+      coarse: 流量 0.997（同時本数 4.3）。fine は 0.307（同時本数 23.2）
+ X3  PASS  流量は fine < mid < coarse と単調に上がる
+      0.307 -> 0.868 -> 0.997
+ X4  PASS  EASY backfill は粒度に影響されない（全背景で流量 >= 0.9）
+      fine:1.000  mid:1.000  coarse:1.000
+ X5  PASS  fine と coarse の同時本数は3倍以上違う
+      23.2 / 4.3 = 5.37x
+
+5/5 sealed predictions passed
+
+pre-committed consequence: X2 PASSED -- EP-0003 の看板結論は 「十分な数の job が pool を取り合っているときに限り」という条件付きになる。episode note に訂正の帯を付ける。

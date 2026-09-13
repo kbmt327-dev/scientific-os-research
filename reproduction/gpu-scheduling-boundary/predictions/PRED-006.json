@@ -1,0 +1,91 @@
+{
+  "pred_id": "PRED-006",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0005",
+  "sealed_by": "claude-code",
+  "sealed_at": "2026-09-13",
+  "status": "sealed before running experiment E7",
+  "why": {
+    "trigger": "T6 was the only prediction PRED-005 got wrong, and it failed in a direction that matters. I predicted the onset of large-job harm is a pure function of m/N. It is not: at every matched ratio, N=128 had a LOWER flow balance than N=64, and the gap widened with the ratio (0.011 at m/N=0.5, 0.154 at m/N=1.0).",
+    "stake": "E6 measured r_safe = 0.75 at N=64. Philly's worst real virtual cluster sits at m/N = 0.59 with a pool of 217 GPUs -- more than three times larger than the N I measured at. If r_safe falls with N, the 0.59 that looked comfortably safe at N=64 may not be safe at N=217. This decides whether EP-0004's demotion was correctly calibrated or too generous to the real trace."
+  },
+  "experiment": {
+    "E7": {
+      "design": "same as E6: small-job background (theta=0.4 geometric shape over needs 1..N/2) plus one large class at need = m arriving with probability p_m. Sweep m/N and N jointly.",
+      "n_servers": [32, 64, 128, 256, 512],
+      "ratios": [0.5, 0.625, 0.6875, 0.75, 0.8125, 0.875, 1.0],
+      "p_m": 0.002,
+      "rho": 0.85,
+      "policies": ["srpt", "easy_backfill"],
+      "n_jobs": 30000,
+      "seeds": "5 seeds for N <= 128, 3 seeds for N >= 256 (cost)",
+      "r_safe_definition": "the largest tested ratio at which the m class keeps flow balance >= 0.9, same definition as E6"
+    }
+  },
+  "detector": "unchanged from PRED-003/PRED-005: unusable / class-starved (spread > 0.30) / stable (min flow balance >= 0.995) / otherwise the 30k-vs-120k horizon test. r_safe uses the m class's own flow-balance threshold of 0.9, as in E6.",
+  "predictions": [
+    {
+      "id": "U1",
+      "claim": "r_safe falls monotonically with pool size",
+      "criterion": "r_safe(32) >= r_safe(64) >= r_safe(128) >= r_safe(256) >= r_safe(512), allowing equality",
+      "falsified_if": "r_safe rises at any step",
+      "hypothesis": "H25"
+    },
+    {
+      "id": "U2",
+      "claim": "the fall is material, not marginal: at N=512 the safe ratio is at least one grid step below the N=64 value",
+      "criterion": "r_safe(512) <= 0.6875",
+      "falsified_if": "r_safe(512) > 0.6875"
+    },
+    {
+      "id": "U3",
+      "claim": "DECIDING. At Philly's real ratio and a realistic pool size the class is still fed: at N=256, m/N = 0.625 (the grid point just above Philly's 0.59), greedy SRPT keeps flow balance >= 0.9",
+      "criterion": "flow balance(N=256, ratio=0.625, srpt) >= 0.9",
+      "falsified_if": "below 0.9, which would mean EP-0004's demotion was too generous and Philly's 11cb48 VC is in fact inside the harmful region",
+      "note": "I expect this to pass, which again is the outcome unfavourable to my own earlier claim's practical relevance"
+    },
+    {
+      "id": "U4",
+      "claim": "at m = N the whole-pool class gets worse with pool size",
+      "criterion": "flow balance(m=N) decreases monotonically in N over {64, 128, 256}",
+      "falsified_if": "it rises at any step"
+    },
+    {
+      "id": "U5",
+      "claim": "EASY backfill is insensitive to pool size as well as to ratio",
+      "criterion": "flow balance(easy_backfill) >= 0.99 at every N and every ratio",
+      "falsified_if": "any cell falls below 0.99"
+    },
+    {
+      "id": "U6",
+      "claim": "at a fixed ratio the large class's mean JCT grows with N",
+      "criterion": "jct_m(N=256, r=0.75) > jct_m(N=64, r=0.75)",
+      "falsified_if": "it does not grow"
+    },
+    {
+      "id": "U7",
+      "claim": "the ratio still dominates the pool size: across the tested box, moving the ratio from 0.5 to 1.0 at fixed N changes flow balance more than moving N from 32 to 512 at fixed ratio",
+      "criterion": "max over N of [fb(r=0.5) - fb(r=1.0)] > max over r of [fb(N=32) - fb(N=512)]",
+      "falsified_if": "the pool-size effect is the larger one"
+    },
+    {
+      "id": "U8",
+      "claim": "small pools are more forgiving: at N=32 the class survives a ratio that N=64 does not",
+      "criterion": "r_safe(32) > 0.75",
+      "falsified_if": "r_safe(32) <= 0.75"
+    }
+  ],
+  "pre_committed_consequence": {
+    "if_U3_passes": "EP-0004's demotion stands as written. Current Understanding replaces the single number 0.75 with a pool-size-dependent band, and the practical guidance becomes 'compare your largest job to your pool capacity, and use a stricter ratio for larger pools'.",
+    "if_U3_fails": "The demotion in EP-0004 was too generous. Philly's 11cb48 virtual cluster is inside the harmful region at its real scale, the practical claim is reinstated for pools of a few hundred GPUs, and the headline goes back to naming a real production configuration."
+  },
+  "declared_unknowns": [
+    "whether the N-dependence saturates or keeps falling beyond 512",
+    "whether it is really pool size or the number of background job classes (which grows with log N in this mix family) that drives the effect -- these are confounded by construction here and separating them needs a fixed-class-count control",
+    "whether the effect survives a non-exponential service distribution"
+  ],
+  "rules": [
+    "Not edited after sealing. sha256 in predictions/PRED-006.sha256 before the runs.",
+    "Failed predictions stay in the ledger as failed."
+  ]
+}

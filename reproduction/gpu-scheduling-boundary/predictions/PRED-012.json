@@ -1,0 +1,157 @@
+{
+  "pred_id": "PRED-012",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0011",
+  "sealed_by": "claude",
+  "sealed_at": "2026-09-14",
+  "status": "sealed before running experiment E13",
+  "why": {
+    "trigger": "EP-0010 found that the domain's published safe-ratio table rests on a detector that was never validated: flow balance of the largest class, measured at a single 30000-job horizon, thresholded at 0.9. The threshold was placed in analyze_e6.py during EP-0004 and carried unchanged through six episodes. Two of the published rows sat +0.0006 and +0.0064 above the line while the same statistic has a seed standard deviation of 0.012 to 0.105.",
+    "stake": "Every operational number this domain has produced since EP-0004 - r_safe, the concurrency curve, the Philly margin, the harm multiplier - is a function of that line. EP-0002 established for this same domain that flow-balance LEVELS are horizon dependent and that stability must be adjudicated across two horizons; the r_safe pipeline never received that calibration. If the boundary moves with horizon, every published number is a horizon artifact. If it does not, the EP-0002 lesson does not transfer to this statistic and that should be recorded rather than assumed."
+  },
+  "measurand_validity": "r_star(threshold) is the ratio at which the largest class's mean flow balance crosses the threshold, obtained by linear interpolation between adjacent points of the 7-point ratio grid. It replaces r_safe (the largest grid point still above the line), which EP-0010 showed rounds systematically toward the conservative side by up to 0.14. r_star is still a function of the threshold and of the horizon; this experiment measures that dependence rather than assuming it away. It is not a stability proof: a class can have flow balance above any fixed threshold in a finite window and still be unbounded, which is exactly why D1 tests horizon dependence and D2 tests convergence.",
+  "experiment": {
+    "common": {
+      "n_servers": 256,
+      "rho": 0.85,
+      "policy": "srpt",
+      "c_pre": 0.0,
+      "dur_mean": 1.0,
+      "t_limit_factor": 2.0,
+      "backlog_cap": "2 * n_jobs (equals E12's 60000 at n_jobs=30000, so the replay is exact)",
+      "workload": "identical construction to E12: geometric background over {1,2,4,8,16,32,64} fitted so that E[need] hits the target exactly, plus the largest class at need m = round(256*r) with probability p",
+      "seeds": [901, 902, 903, 904, 905]
+    },
+    "arm_H_horizon": {
+      "r": [0.5, 0.625, 0.6875, 0.75, 0.8125, 0.875, 1.0],
+      "E_targets": ["C10", "C15", "C28"],
+      "p": [0.002, 0.02],
+      "n_jobs": [30000, 60000, 120000],
+      "runs": 630,
+      "note": "the 30000 rows are a replay gate against results/E12.json. Longer horizons draw an independent workload realisation, not a superset of the short one, because the arrival gaps are drawn first and their count changes; five seeds carry that variation."
+    },
+    "arm_E_easy": {
+      "policy": "easy_backfill",
+      "r": [0.5, 1.0],
+      "E_targets": ["C10", "C15", "C28"],
+      "p": [0.002],
+      "n_jobs": [120000],
+      "seeds": [901, 902, 903],
+      "runs": 18
+    },
+    "arm_T_threshold": {
+      "design": "no new runs. r_star is recomputed at thresholds 0.8, 0.9 and 0.95 from arm H and from results/E12.json",
+      "purpose": "does the placement of the line change the ORDER of conditions, or only the absolute numbers"
+    },
+    "arm_P_past": {
+      "design": "no new runs. r_star at threshold 0.9 is recomputed for results/E7.json (pool-size sweep, EP-0005), results/E8.json (confound separation, EP-0006) and results/E9.json (concurrency curve, EP-0007)",
+      "purpose": "C-030. How much of each past conclusion was grid rounding"
+    }
+  },
+  "detector": {
+    "fb(r)": "mean over the cell's seeds of flow_balance_by_need[m]",
+    "r_star(threshold)": "walk the 7-point ratio grid upward; at the first adjacent pair with fb(r_i) >= threshold > fb(r_i+1), return r_i + (fb(r_i) - threshold)/(fb(r_i) - fb(r_i+1)) * (r_i+1 - r_i). If fb(1.0) >= threshold return 1.0. If fb(0.5) < threshold return the token BELOW_GRID and exclude the row from ordering tests, naming it in the notes.",
+    "r_safe(threshold)": "max{ r in the grid : fb(r) >= threshold }, the statistic EP-0004..EP-0009 published",
+    "delta_horizon": "r_star at 120000 jobs minus r_star at 30000 jobs, same threshold, same cell"
+  },
+  "predictions": [
+    {
+      "id": "D0",
+      "claim": "GATE. The 30000-job rows of arm H reproduce results/E12.json exactly",
+      "metric": "mean_jct, utilization, rho_emp, mean_running, flow_balance_by_need[m]",
+      "criterion": "maximum absolute difference over all 210 replay rows and all five metrics <= 1e-12, zero missing rows",
+      "falsified_if": "any difference. Stop and diagnose; do not grade D1..D10."
+    },
+    {
+      "id": "D1",
+      "claim": "DECIDING. The boundary is horizon dependent, and the single-horizon detector understates it. A class sitting just past the published boundary is mostly in a long transient, not diverging, so a four times longer window lets it catch up",
+      "metric": "r_star at threshold 0.9",
+      "criterion": "delta_horizon >= +0.02 in all four combinations of E_target in {C15, C28} and p in {0.002, 0.02}",
+      "falsified_if": "any of the four has delta_horizon below +0.02, including negative values"
+    },
+    {
+      "id": "D2",
+      "claim": "the horizon dependence converges rather than drifting without limit",
+      "metric": "r_star at threshold 0.9",
+      "criterion": "|r_star(120000) - r_star(60000)| < |r_star(60000) - r_star(30000)| in at least two thirds of the six (E_target, p) combinations",
+      "falsified_if": "fewer than two thirds. Then the boundary has no horizon-independent value and must be reported as a function of the observation window."
+    },
+    {
+      "id": "D3",
+      "claim": "the qualitative science survives the detector audit: more concurrency means a lower safe ratio, at every horizon",
+      "metric": "r_star at threshold 0.9",
+      "criterion": "r_star(C10) > r_star(C15) > r_star(C28) in all six combinations of horizon in {30000, 60000, 120000} and p in {0.002, 0.02}",
+      "falsified_if": "any combination is non-monotone"
+    },
+    {
+      "id": "D4",
+      "claim": "the ordering also survives moving the line itself",
+      "metric": "r_star at thresholds 0.8, 0.9, 0.95",
+      "criterion": "r_star(C10) > r_star(C15) > r_star(C28) at all three thresholds, at both 30000 and 120000 jobs, at p=0.002 (rows returning BELOW_GRID are reported and excluded)",
+      "falsified_if": "any threshold at any horizon reverses the order of two concurrency levels"
+    },
+    {
+      "id": "D5",
+      "claim": "EP-0010's frequency effect is not a short-horizon artifact",
+      "metric": "r_star at threshold 0.9",
+      "criterion": "at C15 and at C28, r_star(p=0.02) differs from r_star(p=0.002) by at least 0.02 at the 120000-job horizon, and at C15 the sign is the same as it was at 30000 jobs (p=0.02 lower)",
+      "falsified_if": "the difference vanishes at long horizon, i.e. the frequency effect was the short window"
+    },
+    {
+      "id": "D6",
+      "claim": "where the line is placed matters as much as the physics",
+      "metric": "r_star at thresholds 0.8 and 0.95",
+      "criterion": "r_star(0.8) - r_star(0.95) >= 0.05 in every (E_target, horizon) cell at p=0.002 where both are on-grid",
+      "falsified_if": "any cell has a spread below 0.05, which would mean the flow-balance curve is steep enough that the threshold choice is immaterial"
+    },
+    {
+      "id": "D7",
+      "claim": "C-030. The published grid statistic understates the boundary across the domain's whole history",
+      "metric": "r_star minus r_safe at threshold 0.9 on results/E9.json",
+      "criterion": "r_star > r_safe in at least five of E9's six concurrency rows, and the mean gap over the six rows is >= 0.03",
+      "falsified_if": "fewer than five rows, or a mean gap below 0.03"
+    },
+    {
+      "id": "D8",
+      "claim": "EP-0007's concurrency curve keeps its shape when re-measured continuously",
+      "metric": "r_star at threshold 0.9 on results/E9.json",
+      "criterion": "r_star is non-increasing across E9's s = 16, 12, 8, 4, 2, 1 (concurrency 7.4 to 98.9), allowing 0.01 slack per adjacent pair",
+      "falsified_if": "any adjacent pair rises by more than 0.01. Then the headline curve was a product of grid rounding."
+    },
+    {
+      "id": "D9",
+      "claim": "EP-0005's pool-size observation stands as an observation, even though EP-0006 corrected its cause",
+      "metric": "r_star at threshold 0.9 on results/E7.json",
+      "criterion": "r_star is non-increasing across E7's pool sizes N = 32, 64, 128, 256, 512, allowing 0.01 slack per adjacent pair",
+      "falsified_if": "any adjacent pair rises by more than 0.01"
+    },
+    {
+      "id": "D10",
+      "claim": "EASY backfill is class-healthy at four times the horizon too",
+      "metric": "flow_balance_by_need[m]",
+      "criterion": "fb >= 0.9 in all six arm-E cells at 120000 jobs",
+      "falsified_if": "any cell falls below 0.9"
+    }
+  ],
+  "pre_committed_consequence": {
+    "if_D1_passes": "every boundary number this domain has published is conditioned on a 30000-job window and is biased low. Reissue the operational table at the longest measured horizon, state the horizon next to every number, and record the 30000-job values as superseded. Re-open whether the Philly margin 0.29 was understated as well.",
+    "if_D1_fails_with_small_delta": "the single-horizon detector is adequate for the BOUNDARY even though EP-0002 showed flow-balance LEVELS are horizon dependent. Record explicitly that the EP-0002 lesson does not transfer to this statistic, keep the v10 table, and stop treating the horizon as an open risk. This is a real result, not a null: it retires U-26.",
+    "if_D1_fails_with_negative_delta": "worse than expected. Classes called healthy at 30000 jobs are still falling behind at 120000, meaning the domain has been systematically over-optimistic about which ratios are safe. Every 'safe' claim since EP-0004 must be re-examined at long horizon before any of it is repeated, and the Philly margin must be recomputed before being quoted again.",
+    "if_D3_fails": "the concurrency ordering itself is horizon dependent. That would invalidate not just the numbers but the qualitative finding of EP-0006 and EP-0007. Halt publication of the concurrency axis and design a stability adjudication that does not use flow balance at all.",
+    "if_D4_fails": "the order of conditions depends on where the line is drawn, so there is no threshold-free statement to make. Report the whole flow-balance surface and stop quoting a boundary.",
+    "if_D5_fails": "EP-0010's F42 was a short-horizon artifact. Restore the two-number rule with a horizon caveat and correct the EP-0010 episode note with a correction band rather than silently.",
+    "if_D7_fails": "grid rounding was not the systematic bias EP-0010 claimed. Correct F46 explicitly."
+  },
+  "declared_unknowns": [
+    "longer horizons draw independent workload realisations rather than extending one, so delta_horizon carries sampling variation as well as window length. Five seeds bound it; EP-0010 measured the per-seed standard error of r_star at 0.001 to 0.024, so a 0.02 effect is at the edge of resolution for the noisiest cells and the notes must report the per-seed spread alongside the verdict.",
+    "flow balance above a fixed threshold in a finite window is not a proof of stability at any horizon. This experiment measures the sensitivity of the boundary to the window, not the true stability boundary, which would need a saturation or drift test.",
+    "the threshold arm reuses E12 data, so its conditions inherit E12's single background family and single load.",
+    "arm P re-measures past results with a statistic those experiments were not designed for; E7 and E9 used four seeds, not five, and E7's cross-N comparison has the measurement-window problem EP-0005 already flagged.",
+    "synthetic MSJ model throughout. real_prospective_cycle_count stays 0."
+  ],
+  "rules": [
+    "predictions/PRED-012.json, predictions/PRED-012.sha256, run_e13.py and analyze_e13.py are committed before results/E13.json exists.",
+    "The prediction text is not edited after sealing.",
+    "Failed predictions stay in the ledger as failed."
+  ]
+}

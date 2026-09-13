@@ -1,0 +1,101 @@
+[
+ {
+  "vc": "6214e9",
+  "n_jobs": 51378,
+  "mean_concurrent_jobs": 81.08277259511111,
+  "peak_concurrent_jobs": 572.0,
+  "peak_gpus": 603.0,
+  "max_k": 16,
+  "max_k_over_peak": 0.026533996683250415
+ },
+ {
+  "vc": "11cb48",
+  "n_jobs": 19100,
+  "mean_concurrent_jobs": 10.167208610411885,
+  "peak_concurrent_jobs": 58.0,
+  "peak_gpus": 217.0,
+  "max_k": 128,
+  "max_k_over_peak": 0.5898617511520737
+ },
+ {
+  "vc": "6c71a0",
+  "n_jobs": 14833,
+  "mean_concurrent_jobs": 46.24463891903512,
+  "peak_concurrent_jobs": 283.0,
+  "peak_gpus": 290.0,
+  "max_k": 48,
+  "max_k_over_peak": 0.16551724137931034
+ },
+ {
+  "vc": "b436b2",
+  "n_jobs": 9159,
+  "mean_concurrent_jobs": 22.76347662865733,
+  "peak_concurrent_jobs": 167.0,
+  "peak_gpus": 340.0,
+  "max_k": 32,
+  "max_k_over_peak": 0.09411764705882353
+ },
+ {
+  "vc": "ee9e8c",
+  "n_jobs": 5602,
+  "mean_concurrent_jobs": 38.93578663485796,
+  "peak_concurrent_jobs": 127.0,
+  "peak_gpus": 532.0,
+  "max_k": 128,
+  "max_k_over_peak": 0.24060150375939848
+ },
+ {
+  "vc": "103959",
+  "n_jobs": 2701,
+  "mean_concurrent_jobs": 5.831241995612715,
+  "peak_concurrent_jobs": 26.0,
+  "peak_gpus": 76.0,
+  "max_k": 4,
+  "max_k_over_peak": 0.05263157894736842
+ },
+ {
+  "vc": "0e4a51",
+  "n_jobs": 2503,
+  "mean_concurrent_jobs": 27.63265433324759,
+  "peak_concurrent_jobs": 147.0,
+  "peak_gpus": 284.0,
+  "max_k": 8,
+  "max_k_over_peak": 0.028169014084507043
+ },
+ {
+  "vc": "7f04ca",
+  "n_jobs": 1465,
+  "mean_concurrent_jobs": 24.647280571806967,
+  "peak_concurrent_jobs": 69.0,
+  "peak_gpus": 252.0,
+  "max_k": 32,
+  "max_k_over_peak": 0.12698412698412698
+ },
+ {
+  "vc": "ed69ec",
+  "n_jobs": 1403,
+  "mean_concurrent_jobs": 16.649089477980333,
+  "peak_concurrent_jobs": 66.0,
+  "peak_gpus": 66.0,
+  "max_k": 1,
+  "max_k_over_peak": 0.015151515151515152
+ },
+ {
+  "vc": "2869ce",
+  "n_jobs": 969,
+  "mean_concurrent_jobs": 4.880230256572329,
+  "peak_concurrent_jobs": 25.0,
+  "peak_gpus": 360.0,
+  "max_k": 32,
+  "max_k_over_peak": 0.08888888888888889
+ },
+ {
+  "vc": "e13805",
+  "n_jobs": 942,
+  "mean_concurrent_jobs": 7.807120976351345,
+  "peak_concurrent_jobs": 22.0,
+  "peak_gpus": 130.0,
+  "max_k": 32,
+  "max_k_over_peak": 0.24615384615384617
+ }
+]

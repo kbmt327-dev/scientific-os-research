@@ -1,0 +1,432 @@
+{
+  "detector": {
+    "n_servers": 64,
+    "n_jobs": 30000,
+    "phase_thetas": [
+      0.4,
+      0.6,
+      0.8,
+      1.0,
+      1.25,
+      1.6,
+      2.0
+    ],
+    "phase_rhos": [
+      0.7,
+      0.85,
+      0.95
+    ],
+    "phase_policies": [
+      "srpt",
+      "sf_srpt"
+    ],
+    "phase_seeds": [
+      201,
+      202,
+      203,
+      204,
+      205
+    ],
+    "control_rho": 0.85,
+    "control_policies": [
+      "srpt",
+      "sf_srpt",
+      "easy_backfill"
+    ],
+    "control_seeds": [
+      801,
+      802,
+      803,
+      804,
+      805
+    ],
+    "control_groups": {
+      "mean4": {
+        "narrow": {
+          "needs": [
+            2,
+            4,
+            64
+          ],
+          "probs": [
+            0.6,
+            0.38,
+            0.02
+          ],
+          "background_mean": 2.7755102040816326,
+          "fitted_theta": null
+        },
+        "geometric": {
+          "needs": [
+            1,
+            2,
+            4,
+            8,
+            16,
+            32,
+            64
+          ],
+          "probs": [
+            0.5244188308077234,
+            0.2468431898010092,
+            0.11618873459842904,
+            0.05468987035237621,
+            0.025742443357328358,
+            0.012116931083133692,
+            0.02
+          ],
+          "background_mean": 2.7755102040816326,
+          "fitted_theta": 0.470698562484522
+        },
+        "wide": {
+          "needs": [
+            1,
+            8,
+            64
+          ],
+          "probs": [
+            0.7314285714285714,
+            0.24857142857142858,
+            0.02
+          ],
+          "background_mean": 2.7755102040816326,
+          "fitted_theta": null
+        }
+      },
+      "mean16": {
+        "narrow": {
+          "needs": [
+            8,
+            16,
+            64
+          ],
+          "probs": [
+            0.6000000000000001,
+            0.29999999999999993,
+            0.1
+          ],
+          "background_mean": 10.666666666666666,
+          "fitted_theta": null
+        },
+        "geometric": {
+          "needs": [
+            1,
+            2,
+            4,
+            8,
+            16,
+            32,
+            64
+          ],
+          "probs": [
+            0.14630530313668014,
+            0.14776365421426943,
+            0.14923654193420804,
+            0.15072411119574147,
+            0.15222650834245086,
+            0.15374388117665003,
+            0.1
+          ],
+          "background_mean": 10.666666666666666,
+          "fitted_theta": 1.0099678620413841
+        },
+        "wide": {
+          "needs": [
+            1,
+            32,
+            64
+          ],
+          "probs": [
+            0.6193548387096774,
+            0.2806451612903226,
+            0.1
+          ],
+          "background_mean": 10.666666666666666,
+          "fitted_theta": null
+        }
+      }
+    },
+    "pred_sha256": "c68cbf56b09da9dfe5a6c1493836979bda716c642dab8788834cbc54d7a741ea"
+  },
+  "n_pass": 7,
+  "n_total": 7,
+  "results": [
+    {
+      "id": "Y1",
+      "claim": "exact E2 replay reproduces the old metrics",
+      "pass": true,
+      "detail": "max scalar diff=0; max flow diff=0; missing=0"
+    },
+    {
+      "id": "Y2",
+      "claim": "theta was strongly confounded with running-job concurrency",
+      "pass": true,
+      "detail": "per-rho checks=[True, True, True]"
+    },
+    {
+      "id": "Y3",
+      "claim": "old greedy-SRPT class-starvation cells occupy the high-concurrency side",
+      "pass": true,
+      "detail": "starved concurrency range=18.95..25.71; healthy range=1.05..11.33"
+    },
+    {
+      "id": "Y4",
+      "claim": "two-number summary is sufficient across controlled background shapes",
+      "pass": true,
+      "detail": "mean4: conc_range=0.000, flow_range=0.001, same_class=True; mean16: conc_range=0.014, flow_range=0.040, same_class=True"
+    },
+    {
+      "id": "Y5",
+      "claim": "high-concurrency mean4 starves while low-concurrency mean16 does not",
+      "pass": true,
+      "detail": "mean4 starved=[True, True, True]; mean16 starved=[False, False, False]"
+    },
+    {
+      "id": "Y6",
+      "claim": "equal-summary controls match observed running-job concurrency",
+      "pass": true,
+      "detail": "mean4 relative range=0.000; mean16 relative range=0.014"
+    },
+    {
+      "id": "Y7",
+      "claim": "EASY backfill remains class-healthy in every control",
+      "pass": true,
+      "detail": "mean4|narrow=0.997, mean4|geometric=0.997, mean4|wide=0.997, mean16|narrow=0.999, mean16|geometric=0.999, mean16|wide=0.998"
+    }
+  ],
+  "phase_cells": [
+    {
+      "theta": 0.4,
+      "rho": 0.7,
+      "mean_running": 18.945729644809354,
+      "fb64": 0.3929058977822523,
+      "class_starved": true
+    },
+    {
+      "theta": 0.6,
+      "rho": 0.7,
+      "mean_running": 8.367675040400504,
+      "fb64": 0.6348472609588474,
+      "class_starved": false
+    },
+    {
+      "theta": 0.8,
+      "rho": 0.7,
+      "mean_running": 4.011902051286105,
+      "fb64": 0.8320188652198028,
+      "class_starved": false
+    },
+    {
+      "theta": 1.0,
+      "rho": 0.7,
+      "mean_running": 2.4079779650175857,
+      "fb64": 0.9401952116604798,
+      "class_starved": false
+    },
+    {
+      "theta": 1.25,
+      "rho": 0.7,
+      "mean_running": 1.6647045639058322,
+      "fb64": 0.9954280880607174,
+      "class_starved": false
+    },
+    {
+      "theta": 1.6,
+      "rho": 0.7,
+      "mean_running": 1.2443290498706312,
+      "fb64": 0.9996344809849103,
+      "class_starved": false
+    },
+    {
+      "theta": 2.0,
+      "rho": 0.7,
+      "mean_running": 1.0490082141906476,
+      "fb64": 0.9997350972715798,
+      "class_starved": false
+    },
+    {
+      "theta": 0.4,
+      "rho": 0.85,
+      "mean_running": 23.00429451429849,
+      "fb64": 0.33465205181654195,
+      "class_starved": true
+    },
+    {
+      "theta": 0.6,
+      "rho": 0.85,
+      "mean_running": 10.144010986001463,
+      "fb64": 0.5488804535263432,
+      "class_starved": false
+    },
+    {
+      "theta": 0.8,
+      "rho": 0.85,
+      "mean_running": 4.823574035008289,
+      "fb64": 0.7410951351998748,
+      "class_starved": false
+    },
+    {
+      "theta": 1.0,
+      "rho": 0.85,
+      "mean_running": 2.8412800447525703,
+      "fb64": 0.8595800819672235,
+      "class_starved": false
+    },
+    {
+      "theta": 1.25,
+      "rho": 0.85,
+      "mean_running": 1.906570973574529,
+      "fb64": 0.9323742816878753,
+      "class_starved": false
+    },
+    {
+      "theta": 1.6,
+      "rho": 0.85,
+      "mean_running": 1.4435424542512698,
+      "fb64": 0.9744948921138736,
+      "class_starved": false
+    },
+    {
+      "theta": 2.0,
+      "rho": 0.85,
+      "mean_running": 1.251891971307743,
+      "fb64": 0.9932058931659455,
+      "class_starved": false
+    },
+    {
+      "theta": 0.4,
+      "rho": 0.95,
+      "mean_running": 25.711812566339574,
+      "fb64": 0.3120395897208901,
+      "class_starved": true
+    },
+    {
+      "theta": 0.6,
+      "rho": 0.95,
+      "mean_running": 11.32942295426319,
+      "fb64": 0.5033691027304438,
+      "class_starved": false
+    },
+    {
+      "theta": 0.8,
+      "rho": 0.95,
+      "mean_running": 5.367695708790697,
+      "fb64": 0.6910102144726322,
+      "class_starved": false
+    },
+    {
+      "theta": 1.0,
+      "rho": 0.95,
+      "mean_running": 3.132583022687351,
+      "fb64": 0.8116831552513901,
+      "class_starved": false
+    },
+    {
+      "theta": 1.25,
+      "rho": 0.95,
+      "mean_running": 2.0686409014396454,
+      "fb64": 0.8890949671170885,
+      "class_starved": false
+    },
+    {
+      "theta": 1.6,
+      "rho": 0.95,
+      "mean_running": 1.5366138613283464,
+      "fb64": 0.9375765799420261,
+      "class_starved": false
+    },
+    {
+      "theta": 2.0,
+      "rho": 0.95,
+      "mean_running": 1.3113175178785192,
+      "fb64": 0.9621796516835351,
+      "class_starved": false
+    }
+  ],
+  "control_summary": {
+    "mean4|narrow|srpt": {
+      "mean_running": 13.366225596045709,
+      "fb64": 0.4598684075049631,
+      "mean_jct": 12.403107424709582
+    },
+    "mean4|geometric|srpt": {
+      "mean_running": 13.366473421960048,
+      "fb64": 0.4597503814863034,
+      "mean_jct": 12.427858019066656
+    },
+    "mean4|wide|srpt": {
+      "mean_running": 13.366663130641546,
+      "fb64": 0.4584623112554471,
+      "mean_jct": 12.439414838784257
+    },
+    "mean16|narrow|srpt": {
+      "mean_running": 3.267703781387889,
+      "fb64": 0.8703761809616261,
+      "mean_jct": 55.10306912585575
+    },
+    "mean16|geometric|srpt": {
+      "mean_running": 3.2594410977900323,
+      "fb64": 0.8579288031313597,
+      "mean_jct": 60.37838087438583
+    },
+    "mean16|wide|srpt": {
+      "mean_running": 3.2219904867187195,
+      "fb64": 0.8308358478768068,
+      "mean_jct": 79.67165961464958
+    }
+  },
+  "group_checks": {
+    "mean4": {
+      "relative_concurrency_range": 3.2733782214466844e-05,
+      "flow_range": 0.0014060962495159868,
+      "matched": true,
+      "same_classification": true,
+      "invariant_flow": true,
+      "starved": [
+        true,
+        true,
+        true
+      ],
+      "flows": [
+        0.4598684075049631,
+        0.4597503814863034,
+        0.4584623112554471
+      ],
+      "concurrencies": [
+        13.366225596045709,
+        13.366473421960048,
+        13.366663130641546
+      ]
+    },
+    "mean16": {
+      "relative_concurrency_range": 0.01406687658551102,
+      "flow_range": 0.0395403330848193,
+      "matched": true,
+      "same_classification": true,
+      "invariant_flow": true,
+      "starved": [
+        false,
+        false,
+        false
+      ],
+      "flows": [
+        0.8703761809616261,
+        0.8579288031313597,
+        0.8308358478768068
+      ],
+      "concurrencies": [
+        3.267703781387889,
+        3.2594410977900323,
+        3.2219904867187195
+      ]
+    }
+  },
+  "easy_backfill_flows": {
+    "mean4|narrow": 0.9969751154067179,
+    "mean4|geometric": 0.9969751154067179,
+    "mean4|wide": 0.9969751154067179,
+    "mean16|narrow": 0.9993239712630105,
+    "mean16|geometric": 0.9990663475966599,
+    "mean16|wide": 0.9982140799547421
+  }
+}

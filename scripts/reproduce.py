@@ -76,6 +76,57 @@ def gpu_phase() -> None:
           "no whole-pool job in any measured virtual cluster")
 
 
+def gpu_boundary() -> None:
+    """EP-0005..EP-0013. The arc in which the project's own boundary statistic
+    was found to be measuring the wrong thing, and was replaced."""
+    root = ROOT / "reproduction" / "gpu-scheduling-boundary"
+    # Digests are verified against the committed .sha256 files, each written
+    # before its sweep ran.
+    for name in [f"PRED-{n:03d}" for n in range(6, 15)]:
+        text = (root / "predictions" / f"{name}.json").read_text(encoding="utf-8")
+        got = hashlib.sha256(text.encode("utf-8")).hexdigest()
+        # some .sha256 files are in sha256sum format ("<hash>  <file>")
+        want = (root / "predictions" / f"{name}.sha256").read_text(
+            encoding="utf-8").split()[0]
+        assert got == want, (name, got, want)
+
+    # EP-0011: flow balance is a censoring ratio, so it cannot see divergence.
+    # The largest class's mean response time grows 3.9x over a 4x horizon while
+    # flow balance moves from 0.562 to 0.574.
+    e13 = json.loads((root / "results" / "E13.json").read_text(encoding="utf-8"))
+    cells = [r for r in e13["rows"] if r["arm"] == "H" and r["e_label"] == "C10"
+             and abs(r["ratio"] - 1.0) < 1e-9 and abs(r["p"] - 0.02) < 1e-12]
+    by_h = {}
+    for r in cells:
+        by_h.setdefault(r["n_jobs"], []).append(r)
+    jct = {h: sum(x["jct_m"] for x in v) / len(v) for h, v in by_h.items()}
+    fb = {h: sum(x["fb_m"] for x in v) / len(v) for h, v in by_h.items()}
+    assert jct[120_000] / jct[30_000] > 3.5, jct
+    assert abs(fb[120_000] - fb[30_000]) < 0.05, fb
+
+    # EP-0012: alpha reads ~0 where the system is stable and ~1 where it is not,
+    # and its boundary does not move when the horizon is multiplied by eight.
+    g14 = json.loads((root / "results" / "E14_grading.json").read_text(encoding="utf-8"))
+    assert g14["verdicts"]["G1"] == "PASS", g14["verdicts"]
+    assert g14["verdicts"]["G5"] == "PASS" and g14["verdicts"]["G6"] == "PASS"
+    assert g14["verdicts"]["G7"] == "PASS"
+    for key, a in g14["alpha4"].items():
+        assert a[0] <= 0.25, (key, a[0])      # r = 0.5, converged
+        assert a[-1] >= 0.85, (key, a[-1])    # r = 1.0, linear divergence
+    # EASY backfill does not diverge even for a whole-pool class
+    assert all(e["alpha"] <= 0.25 for e in g14["easy_alpha"]), g14["easy_alpha"]
+
+    # EP-0013: the project's only real-cluster claim rests on one job.
+    e15 = json.loads((root / "results" / "E15.json").read_text(encoding="utf-8"))
+    target = next(r for r in e15["rows"] if r["vc"] == "11cb48")
+    assert target["max_k"] == 128 and round(target["capacity_gpus"]) == 217
+    assert round(target["freq"]["0.5"] * target["n_jobs"]) == 1, target["freq"]
+    assert all(r["freq"]["1.0"] == 0.0 for r in e15["rows"])
+    print("gpu-boundary: PRED-006..014 digests verified; flow balance shown "
+          "blind to a 3.9x divergence; alpha 0-at-stable, 1-at-divergent and "
+          "horizon-stable; one job in 19,100 carries the real-cluster claim")
+
+
 def queue() -> None:
     root = ROOT / "reproduction" / "simulation-worlds"
     output = run([sys.executable, "analysis/a11_verify_against_truth.py"], root)
@@ -102,7 +153,8 @@ def iaa() -> None:
     print("iaa: 168-scenario bounded power sensitivity rerun verified")
 
 
-CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase, "queue": queue,
+CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase,
+          "gpu-boundary": gpu_boundary, "queue": queue,
           "human": human, "iaa": iaa}
 
 

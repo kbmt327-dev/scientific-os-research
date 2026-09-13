@@ -13,6 +13,9 @@ MARKDOWN = re.compile(r"(?<!!)\[[^\]]*\]\(([^)]+)\)")
 
 
 def candidates(content: Path, source: Path, target: str) -> list[Path]:
+    # Markdown tables require the wikilink alias separator to be escaped.
+    # Normalize it before parsing so behavior is identical on Windows and POSIX.
+    target = target.replace(r"\|", "|")
     target = target.split("#", 1)[0].split("|", 1)[0].strip()
     if not target:
         return []
@@ -50,4 +53,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

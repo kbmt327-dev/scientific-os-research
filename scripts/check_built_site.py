@@ -36,16 +36,21 @@ def main() -> int:
     if missing:
         print("Missing built routes: " + ", ".join(missing))
         return 1
-    for lang in ("en", "ja"):
-        page = (public / lang / "research/gpu-scheduling/index.html").read_text(encoding="utf-8")
-        if "mermaid" not in page.lower():
+    for lang, other_lang in (("en", "ja"), ("ja", "en")):
+        for path in (f"{lang}/index.html", f"{lang}/research/gpu-scheduling/index.html"):
+            page = (public / path).read_text(encoding="utf-8")
+            if f'<html lang="{lang}"' not in page:
+                print(f"Incorrect or missing html lang on {path}")
+                return 1
+            for hreflang in (lang, other_lang):
+                if f'hreflang="{hreflang}"' not in page:
+                    print(f"Missing {hreflang} hreflang view on {path}")
+                    return 1
+        note_page = (public / lang / "research/gpu-scheduling/index.html").read_text(
+            encoding="utf-8"
+        )
+        if "mermaid" not in note_page.lower():
             print(f"Mermaid payload not found in built {lang} Research Note")
-            return 1
-        if f'<html lang="{lang}"' not in page:
-            print(f"Incorrect or missing html lang on {lang} Research Note")
-            return 1
-        if 'rel="alternate"' not in page or "hreflang" not in page:
-            print(f"Missing hreflang alternate on {lang} Research Note")
             return 1
     for slug in slugs:
         legacy = public / "research" / slug / "index.html"

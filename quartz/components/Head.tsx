@@ -36,11 +36,15 @@ export default (() => {
         : canonicalSlug
           ? joinSegments(url.toString(), canonicalSlug as FullSlug)
           : url.toString()
-    const alternateSlug = canonicalSlug.startsWith("en/")
-      ? `ja/${canonicalSlug.slice(3)}`
-      : canonicalSlug.startsWith("ja/")
-        ? `en/${canonicalSlug.slice(3)}`
-        : undefined
+    const alternateSlug = canonicalSlug === "en"
+      ? "ja"
+      : canonicalSlug === "ja"
+        ? "en"
+        : canonicalSlug.startsWith("en/")
+          ? `ja/${canonicalSlug.slice(3)}`
+          : canonicalSlug.startsWith("ja/")
+            ? `en/${canonicalSlug.slice(3)}`
+            : undefined
     const currentLang = String(fileData.frontmatter?.lang ?? "")
     const alternateLang = currentLang === "en" ? "ja" : currentLang === "ja" ? "en" : undefined
     const alternateUrl = alternateSlug
@@ -109,6 +113,9 @@ export default (() => {
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
         {fileData.slug !== "404" && <link rel="canonical" href={socialUrl} />}
+        {alternateUrl && currentLang && (
+          <link rel="alternate" hrefLang={currentLang} href={socialUrl} />
+        )}
         {alternateUrl && alternateLang && (
           <link rel="alternate" hrefLang={alternateLang} href={alternateUrl} />
         )}

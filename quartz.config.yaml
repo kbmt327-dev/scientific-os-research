@@ -4,7 +4,11 @@ configuration:
   pageTitleSuffix: " · Scientific OS"
   enableSPA: true
   enablePopovers: true
-  analytics: null
+  # Cookieless, no personal data stored; keeps the site free of a consent
+  # banner. websiteId is the goatcounter.com account code.
+  analytics:
+    provider: goatcounter
+    websiteId: scientific-os-research
   locale: en-US
   baseUrl: kbmt327-dev.github.io/scientific-os-research
   ignorePatterns:

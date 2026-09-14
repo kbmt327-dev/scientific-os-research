@@ -40,11 +40,13 @@ lang: ja
 
 ## 人体運動モデルのデータ接続
 
-**テーマ：** 計測した人体の動きをモデルへ渡すとき、座標の取り違えや答えの漏れを、文章の注意書きではなく機械が止められるか。
+**テーマ：** 計測した人体の動きをmodelへ渡す前に、座標の取り違え、答えの漏れ、見かけだけの外部検証を、明示的な契約とdataset境界で止められるか。
 
-**現在の結論：** 止められます。正しい一式は9種類の検査に合格し、意図的に壊した7つの変種はすべて拒否されました。ただしこれは接続の前提が守られることの証拠であって、数値変換の正しさや予測性能の証拠ではありません。公開している例の接続部は、座標の食い違いが未解決なので停止中です。
+**現在地：** 接続契約は意図的に壊した7つの変種を拒否します。さらに最初のdataset gateを固定しました。Carterをdevelopment 30人、validation 10人、test 10人へ分け、OpenCapの実験室dataは外部検証、Knee Grand Challengeは内部荷重のstress testにだけ使います。B3Dはsource adapter形式で、Nimbleは必須ではありません。model fittingもholdout読込もまだ実施していません。
 
-**[この研究を読む →](/ja/research/human-model/)** — Method
+**[現在のdataset判断を読む（EP-0005）→](/ja/research/human-model-dataset-portfolio/)** — Dataset
+
+以前の方法：**[曖昧な接続を止める契約（EP-0004）→](/ja/research/human-model/)**
 
 ## バドミントンのバイオメカニクス
 

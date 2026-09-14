@@ -144,6 +144,14 @@ def human() -> None:
     print("human: contract checks and seven negative controls verified")
 
 
+def human_dataset() -> None:
+    root = ROOT / "reproduction" / "human-model-dataset-portfolio"
+    output = run([sys.executable, "tests/validate_dataset_portfolio.py"], root)
+    assert "human_dataset_portfolio: PASS" in output
+    assert "development=30 validation=10 test=10" in output
+    print("human-dataset: portfolio roles, fixed split, hashes, leakage guards, and non-execution boundary verified")
+
+
 def iaa() -> None:
     root = ROOT / "reproduction" / "badminton-biomechanics"
     output = run([sys.executable, "analysis/ep0008_power_simulation.py", "--iterations", "1000", "--seed", "20260913"], root)
@@ -155,7 +163,7 @@ def iaa() -> None:
 
 CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase,
           "gpu-boundary": gpu_boundary, "queue": queue,
-          "human": human, "iaa": iaa}
+          "human": human, "human-dataset": human_dataset, "iaa": iaa}
 
 
 def main() -> int:

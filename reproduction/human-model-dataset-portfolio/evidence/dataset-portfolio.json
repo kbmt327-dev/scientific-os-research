@@ -1,0 +1,96 @@
+{
+  "schema_version": "human-model-dataset-decision.v1",
+  "evidence_id": "HUMAN-MODEL-EP-0005",
+  "as_of": "2026-09-14",
+  "evaluation_mode": "source-backed dataset selection and preregistration draft",
+  "promotion_eligible": false,
+  "prediction_registered": false,
+  "decision": {
+    "development_dataset": "Carter et al. 2024 via AddBiomechanics Core",
+    "external_validation_dataset": "OpenCap laboratory validation",
+    "internal_load_stress_test": "Grand Challenge Competition to Predict In Vivo Knee Loads",
+    "kinematic_coverage_only": "AMASS",
+    "emg_diagnostic_only": "HuMoD",
+    "first_quantity_of_interest": "force-plate-measured 3D ground reaction force normalized by body weight and contact state",
+    "canonical_representation": "NumPy arrays plus coordinate, unit, frame, processing, missingness and provenance metadata",
+    "b3d_role": "source adapter format, not a Human Model dependency"
+  },
+  "sources": [
+    {
+      "id": "addbiomechanics-core",
+      "url": "https://addbiomechanics.org/download_data.html",
+      "license": "CC BY 4.0"
+    },
+    {
+      "id": "carter-2024",
+      "url": "https://doi.org/10.15125/BATH-01341",
+      "license": "CC BY 4.0",
+      "participants": 50
+    },
+    {
+      "id": "opencap-laboratory-validation",
+      "url": "https://doi.org/10.1371/journal.pcbi.1011462",
+      "participants": 10
+    },
+    {
+      "id": "knee-load-grand-challenge",
+      "url": "https://doi.org/10.1002/jor.22023",
+      "direct_target": "instrumented tibial implant contact force"
+    },
+    {
+      "id": "amass",
+      "url": "https://arxiv.org/abs/1904.03278",
+      "role_limit": "kinematic and shape coverage; not force validation"
+    },
+    {
+      "id": "humod",
+      "url": "https://www.informatik.tu-darmstadt.de/sim/forschung_sim/datensaetze_sim/humod_sim/index.en.jsp",
+      "role_limit": "diagnostic only; insufficient participant count for generalization"
+    }
+  ],
+  "participant_manifest": {
+    "source_url": "https://researchdata.bath.ac.uk/1341/65/Participant_Info.csv",
+    "source_size_bytes": 1554,
+    "source_sha256": "abd51cdb938e3fa8278617026f210819aa85f5a079c3eac3ed621f9e437b8a76",
+    "split_rule": "within each source sex label, sort by age ascending then participant ID; zero-based index modulo 5: 0=test, 3=validation, otherwise development",
+    "development": ["P002", "P006", "P008", "P011", "P013", "P014", "P017", "P018", "P019", "P020", "P021", "P022", "P023", "P025", "P026", "P030", "P031", "P032", "P033", "P035", "P038", "P039", "P040", "P041", "P043", "P046", "P047", "P048", "P049", "P051"],
+    "validation": ["P003", "P004", "P012", "P015", "P027", "P028", "P037", "P044", "P045", "P052"],
+    "test": ["P007", "P009", "P010", "P016", "P024", "P029", "P034", "P036", "P042", "P050"],
+    "source_label_counts_per_split": {
+      "development": {"female": 15, "male": 15},
+      "validation": {"female": 5, "male": 5},
+      "test": {"female": 5, "male": 5}
+    },
+    "upstream_test_participant_preserved": "P010"
+  },
+  "bounded_archive_inspection": {
+    "full_archive_downloaded": false,
+    "reused_tail_size_bytes": 1048576,
+    "reused_tail_sha256": "b1b11cad0188937c8ac9808f92697480aa71db1ca67a91668ac1b75f63556faa",
+    "nonempty_carter_b3d_files": 610,
+    "archive_train_participants": 49,
+    "archive_test_participants": ["P010"],
+    "development_seed_candidate": {
+      "member": "train/With_Arm/Carter2023_Formatted_With_Arm/P008_split2/P008_split2.b3d",
+      "compressed_size_bytes": 127046045,
+      "uncompressed_size_bytes": 168791572,
+      "crc32": "05975b58",
+      "downloaded": false
+    }
+  },
+  "leakage_rules": [
+    "exclude dynamics-pass features that were optimized against force-plate data",
+    "exclude validation and test participants from normalization, fitting, feature selection and threshold selection",
+    "exclude the OpenCap/Uhlrich raw source from development when used as external validation",
+    "do not count reprocessing of the same raw source as independent validation",
+    "aggregate primary evaluation by participant, not by frame"
+  ],
+  "not_executed": [
+    "Carter B3D or raw participant archive download",
+    "NumPy array extraction",
+    "model fitting",
+    "metric threshold selection",
+    "prospective prediction registration or sealing",
+    "internal or external holdout evaluation"
+  ]
+}

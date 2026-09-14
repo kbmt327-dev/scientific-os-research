@@ -34,11 +34,11 @@ lang: ja
   <article class="program-row">
     <div>
       <h3>人体運動モデルのデータ接続</h3>
-      <p>計測データとモデルを接続するときの座標の取り違えや答えの漏れを、機械的に防ぐ方法を研究しています。</p>
+      <p>計測データをmodelへ渡す前に、座標の取り違え、答えの漏れ、見かけだけの外部検証を止める方法を研究しています。</p>
     </div>
     <nav aria-label="人体運動モデルのデータ接続">
       <a href="/ja/programs/human-model-interface/">研究概要</a>
-      <a href="/ja/research/human-model/">最新Note</a>
+      <a href="/ja/research/human-model-dataset-portfolio/">最新Note</a>
     </nav>
   </article>
   <article class="program-row">

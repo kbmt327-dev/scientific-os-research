@@ -34,11 +34,11 @@ lang: en
   <article class="program-row">
     <div>
       <h3>Human movement model interfaces</h3>
-      <p>How can coordinate errors and target leakage be blocked when measured motion data reaches a model?</p>
+      <p>How can coordinate errors, target leakage, and false external validation be blocked before measured motion reaches a model?</p>
     </div>
     <nav aria-label="Human movement model interfaces">
       <a href="/en/programs/human-model-interface/">Research overview</a>
-      <a href="/en/research/human-model/">Latest Note</a>
+      <a href="/en/research/human-model-dataset-portfolio/">Latest Note</a>
     </nav>
   </article>
   <article class="program-row">

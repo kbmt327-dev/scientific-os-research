@@ -33,6 +33,9 @@ tags: [method, human-model, contract, fail-closed]
 
 <div class="evidence-strip"><span>Method</span><span>Contract validation</span><span>Adapter blocked</span><span>Not predictive evidence</span><span>0 external replications</span></div>
 
+> [!note] A later note fixes the dataset boundary
+> [[en/research/human-model-dataset-portfolio/index|EP-0005]] separates development, external validation, and internal-load testing. It also makes B3D a source-adapter format and removes Nimble parity from the mandatory next gate. The contract result below is unchanged.
+
 ## What this method does
 
 Human Model Contract v0.2 makes ambiguous coordinates, unresolved mappings, broken references, and target leakage block a validation case instead of surviving as prose warnings. One valid bundle passed; seven intentionally invalid variants were rejected.

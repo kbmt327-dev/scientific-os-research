@@ -8,10 +8,10 @@ lang: ja
 
 ## 問い
 
-どの入力契約と失敗条件を固定すれば、座標の取り違え、対象変数の漏えい、不完全な変換をモデル実行前に止められるのか。
+どの入力契約、dataset境界、失敗条件を固定すれば、座標の取り違え、対象変数の漏えい、見かけだけの外部検証をmodel実行前に止められるのか。
 
 ## 現在の公開範囲
 
-正しい接続bundleは九つの検査群を通過し、意図的に壊した七つのvariantはすべて拒否されました。これは接続契約の検証であり、数値変換の正しさやモデルの予測性能を示すものではありません。座標不一致が残るため、公開adapterは停止中です。
+正しい接続bundleは九つの検査群を通過し、意図的に壊した七つのvariantはすべて拒否されました。次のdataset gateも固定しました。Carter 30人で開発し、validationとtestに各10人を未使用で残し、OpenCapの実験室dataは外部検証だけ、Knee Grand Challengeは内部荷重のstress testだけに使います。B3Dはsource adapter形式で、内部表現はNumPy配列と明示的な意味情報です。NimbleはHuman Modelの必須依存ではありません。model fittingもholdoutの読込もまだ実施していません。
 
-**[[ja/research/human-model/index|最新のResearch Noteを読む →]]**
+**[[ja/research/human-model-dataset-portfolio/index|最新のResearch Noteを読む →]]**

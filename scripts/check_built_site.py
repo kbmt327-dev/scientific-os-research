@@ -59,6 +59,7 @@ def main() -> int:
         "gpu-scheduling-real-traces",
         "simulation-worlds",
         "human-model",
+        "human-model-dataset-portfolio",
         "badminton-biomechanics",
     ]
     required = [

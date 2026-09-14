@@ -8,10 +8,10 @@ When measured human motion reaches a model, mismatched coordinates, units, or ti
 
 ## The question
 
-Which input contracts and failure conditions can stop coordinate mix-ups, target leakage, and incomplete conversions before a model runs?
+Which input contracts, dataset boundaries, and failure conditions can stop coordinate mix-ups, target leakage, and false external validation before a model runs?
 
 ## Current public boundary
 
-A correct bundle passes nine check groups, and all seven deliberately broken variants are rejected. This validates the interface contract, not the numerical conversion or predictive performance of a model. The public adapter remains blocked because a coordinate mismatch is unresolved.
+A correct contract bundle passes nine check groups, and all seven deliberately broken variants are rejected. The next dataset gate is now fixed: develop on a 30-participant Carter split, reserve 10 participants each for validation and test, use OpenCap laboratory data only for external validation, and reserve Knee Grand Challenge for internal-load stress testing. B3D is a source-adapter format; NumPy plus explicit semantics is the internal representation, and Nimble is not a mandatory Human Model dependency. No model has been fitted and no holdout has been read.
 
-**[[en/research/human-model/index|Read the latest Research Note →]]**
+**[[en/research/human-model-dataset-portfolio/index|Read the latest Research Note →]]**

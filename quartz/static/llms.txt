@@ -103,11 +103,14 @@ Program overview:
 - English: https://kbmt327-dev.github.io/scientific-os-research/en/programs/human-model-interface/
 - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/programs/human-model-interface/
 
-Can coordinate mix-ups and target leakage be blocked by machine when measured human motion reaches a model? A correct bundle passes nine check groups and seven deliberately broken variants are all rejected. This is evidence about the connection assumptions, not about numerical conversion or predictive performance. The public adapter stays blocked because a coordinate mismatch is unresolved.
+Can coordinate mix-ups, target leakage, and false external validation be blocked before measured human motion reaches a model? The contract rejects seven deliberately broken variants. The current dataset decision uses Carter for development and internal holdout, OpenCap laboratory measurements for external validation, and Knee Grand Challenge for internal-load stress testing. The Carter split is fixed at 30 development, 10 validation, and 10 test participants. B3D is a source-adapter format; NumPy plus explicit semantics is the internal representation, and Nimble is not mandatory. No model has been fitted and no holdout has been read.
 
 - HUMAN-MODEL-EP-0004 — contract validation.
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/human-model/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/human-model/
+- HUMAN-MODEL-EP-0005 — CURRENT DATASET DECISION; development, external validation, and internal-load testing are separated before any model fitting.
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/human-model-dataset-portfolio/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/human-model-dataset-portfolio/
 
 ### Badminton biomechanics
 

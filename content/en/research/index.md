@@ -41,11 +41,13 @@ Read backward from EP-0004 when you want the claim history. This is the publishe
 
 ## Human movement model interfaces
 
-**Question:** when measured human motion reaches a model, can coordinate mix-ups and target leakage be blocked by machine rather than by a note in the prose?
+**Question:** before measured human motion reaches a model, can coordinate mix-ups, target leakage, and false external validation be blocked by explicit contracts and dataset boundaries?
 
-**Current claim:** they can. A correct bundle passes nine check groups and seven deliberately broken variants are all rejected. This is evidence that the connection assumptions hold, not that the numerical conversion or the predictive performance is right. The public example's adapter stays blocked because a coordinate mismatch is unresolved.
+**Current state:** the contract stops seven deliberately broken variants, and the first dataset gate is now fixed. Carter is split into 30 development, 10 validation, and 10 test participants; OpenCap laboratory data is reserved for external validation; Knee Grand Challenge is reserved for internal-load stress testing. B3D is only a source-adapter format, and Nimble is not mandatory. No model has been fitted and no holdout has been read.
 
-**[Read this study →](/en/research/human-model/)** — Method
+**[Read the current dataset decision (EP-0005) →](/en/research/human-model-dataset-portfolio/)** — Dataset
+
+Earlier method: **[the fail-closed interface contract (EP-0004) →](/en/research/human-model/)**
 
 ## Badminton biomechanics
 

@@ -133,6 +133,15 @@ notes:
       ja: content/ja/research/human-model/index.md
     type: Method
     publication: { status: publishable }
+  - research_id: HUMAN-MODEL-EP-0005
+    source_episode: HUMAN-MODEL/EP-0005
+    source_episode_sha256: d4e7e6e2a2cc0a98f789e396483b5d8c043fd8f6d8a2d2fd1bc6744b63d5f6d3
+    source_revision: 80bb28b582cec5588e68aaa38d4e71d1aff1b466
+    views:
+      en: content/en/research/human-model-dataset-portfolio/index.md
+      ja: content/ja/research/human-model-dataset-portfolio/index.md
+    type: Dataset
+    publication: { status: publishable }
   - research_id: IAA-EP-0008
     source_episode: IAA/EP-0008
     source_episode_sha256: 6c12a0f9f82a62cac5b36509d4901d10cb9ffec458bcd873cb801fe54a5f9308

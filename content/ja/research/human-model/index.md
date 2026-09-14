@@ -32,6 +32,9 @@ tags: [method, human-model, contract, fail-closed, japanese]
 
 <div class="evidence-strip"><span>Method</span><span>仕様適合の検証</span><span>接続部は停止中</span><span>予測性能の証拠ではない</span><span>外部再現 0</span></div>
 
+> [!note] 後続Noteでdataset境界を固定しました
+> [[ja/research/human-model-dataset-portfolio/index|EP-0005]]では、開発、外部検証、内部荷重の検査を分離しました。B3Dをsource adapter形式とし、Nimble parityを次の必須gateから外しています。以下の接続契約の結果は変わりません。
+
 ## この方法がすること
 
 計測した人体の動きをモデルへ渡すとき、座標系の取り違え、対応づけの未解決、参照先の欠落、答えを入力に混ぜてしまう漏れ（リーク）が起きます。従来これらは文章上の注意書きで扱われ、読み飛ばされれば通ってしまいました。

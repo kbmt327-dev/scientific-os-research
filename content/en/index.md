@@ -52,6 +52,26 @@ lang: en
       <a href="/en/research/badminton-biomechanics/">Current Note</a>
     </nav>
   </article>
+  <article class="program-row">
+    <div>
+      <h3>The instrument in domains that require acting</h3>
+      <p>What a seal-and-score apparatus can measure when the predictor is also the one who acts.</p>
+    </div>
+    <nav aria-label="The instrument in domains that require acting">
+      <a href="/en/programs/intervention-instrument/">Program overview</a>
+      <a href="/en/research/intervention-grammar/">Current Note</a>
+    </nav>
+  </article>
+  <article class="program-row">
+    <div>
+      <h3>What a measurement design sees, and what it does not</h3>
+      <p>How to doubt a measurement-design result that came out of a world you built yourself.</p>
+    </div>
+    <nav aria-label="What a measurement design sees, and what it does not">
+      <a href="/en/programs/measurement-design/">Program overview</a>
+      <a href="/en/research/retracted-frontier-metrics/">Current Note</a>
+    </nav>
+  </article>
 </div>
 <!-- GENERATED: program-cards:END -->
 

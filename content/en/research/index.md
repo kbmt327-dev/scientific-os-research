@@ -60,6 +60,36 @@ In a new cluster, inspect whether mean response time grows with the observation 
 
 [See the current state and revision history →](/en/programs/badminton-biomechanics/)
 
+## The instrument in domains that require acting
+
+**Question:** What can a seal-and-score apparatus measure when the predictor is also the actor, and where does the observational contract break?
+
+**Current state:** The observational prediction contract breaks in five places: a miss cannot be split into a wrong model and nobody acting, the predictor can go and make its own prediction false, the scoring date is not theirs to choose, waiting becomes a stall, and success moves the distribution being measured.
+
+Each breach is answered by **an invariant that refuses the record**. Scoring runs only through a four-point joint — threshold, decision, execution, result — and a prediction whose decision never opened can be neither supported nor refuted. Self-interference is settled by a stance declared at seal time; counting an intervention as its own success was declined, because it would stop the ledger separating a good model from a good operator.
+
+**Evidence boundary:** Contract validation only. No prediction sealed in this grammar has reached a scoring date, and there is no guarantee that five is the complete set of breaches.
+
+**[Read the current Research Note (EP-0001) →](/en/research/intervention-grammar/)** — Method
+
+[See the current state and revision history →](/en/programs/intervention-instrument/)
+
+## What a measurement design sees, and what it does not
+
+**Question:** Where does a measurement-design result obtained on a world of your own making give way under a sweep?
+
+**Current state:** **Both headline results are currently withdrawn.** A synthetic world flatters its author, and the flattery turned out to have forms.
+
+The first was fixing the only thing that drives the quantity being measured. That constant moves the metric by 0.209; the thing we claimed to measure moves it by at most 0.027, with an unstable sign — **a factor of 7.9**. The second was pinning an unobservable nuisance at one value and publishing a decision line as a function of sample size. Sweep the nuisance and a frontier that fully closes clears the published line.
+
+Only the weaker form survives: **reuse and the settling rate are different quantities, and only reuse responds.** That one is not an artifact of a constant.
+
+**Evidence boundary:** Synthetic, and the mechanism family is ours. No real data of any kind was used and no claim about any application field is made. This is a self-review, so an attack we did not think of is by construction not in it.
+
+**[Read the current Research Note (FRONTIER-METRICS-REVIEW-0001) →](/en/research/retracted-frontier-metrics/)** — Negative Result
+
+[See the current state and revision history →](/en/programs/measurement-design/)
+
 [Browse all published Research Notes by date →](/en/research-notes/)
 <!-- GENERATED: research-current:END -->
 

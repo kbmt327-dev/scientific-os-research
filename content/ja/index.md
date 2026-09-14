@@ -52,6 +52,26 @@ lang: ja
       <a href="/ja/research/badminton-biomechanics/">最新Note</a>
     </nav>
   </article>
+  <article class="program-row">
+    <div>
+      <h3>介入する領域の研究装置</h3>
+      <p>予測した人が自分で手を打つ領域で、封印して採点する装置が何を測れるのかを調べています。</p>
+    </div>
+    <nav aria-label="介入する領域の研究装置">
+      <a href="/ja/programs/intervention-instrument/">研究概要</a>
+      <a href="/ja/research/intervention-grammar/">最新Note</a>
+    </nav>
+  </article>
+  <article class="program-row">
+    <div>
+      <h3>測定設計が見るもの、見ないもの</h3>
+      <p>自分で作った世界から出た測定設計上の結論を、どう疑えば落とせるのかを調べています。</p>
+    </div>
+    <nav aria-label="測定設計が見るもの、見ないもの">
+      <a href="/ja/programs/measurement-design/">研究概要</a>
+      <a href="/ja/research/retracted-frontier-metrics/">最新Note</a>
+    </nav>
+  </article>
 </div>
 <!-- GENERATED: program-cards:END -->
 

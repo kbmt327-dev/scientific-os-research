@@ -6,6 +6,9 @@ lang: ja
 
 ここは履歴の入口です。現在の結論を知りたい場合は、先に[研究分野ごとの現在地](/ja/research/)を読んでください。
 
+## 2026-09-15
+
+- **FRONTIER-METRICS-REVIEW-0001** · Negative Result — [合成世界が作者に媚びる二つの形。看板結論を二本とも撤回した](/ja/research/retracted-frontier-metrics/)
 ## 2026-09-14
 
 - **INTERVENTION-EP-0001** · Method — [予測した人が動いてしまう領域では、観測用の予測契約が5か所で破れる](/ja/research/intervention-grammar/)

@@ -150,6 +150,9 @@ Published Research Notes:
 - INTERVENTION-EP-0001 — When the predictor also acts, the observational prediction contract breaks in five places (Method)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/intervention-grammar/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/intervention-grammar/
+- FRONTIER-METRICS-REVIEW-0001 — Two ways a synthetic world flatters its author, and both headline results withdrawn (Negative Result)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/retracted-frontier-metrics/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/retracted-frontier-metrics/
 <!-- GENERATED: research-current:END -->
 
 ### Measurement design

@@ -150,3 +150,11 @@ notes:
       ja: content/ja/research/badminton-biomechanics/index.md
     type: Protocol
     publication: { status: publishable }
+  - research_id: INTERVENTION-EP-0001
+    source_episode: INTERVENTION-GRAMMAR/EP-0001
+    source_episode_sha256: 3b18a130f97481ccdd02226609c7d20a5a46a8397acb9a8771dfbff555496880
+    views:
+      en: content/en/research/intervention-grammar/index.md
+      ja: content/ja/research/intervention-grammar/index.md
+    type: Method
+    publication: { status: publishable }

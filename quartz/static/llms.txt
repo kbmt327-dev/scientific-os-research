@@ -124,6 +124,14 @@ Can the effect of short preparation time be separated from the effect of backwar
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/badminton-biomechanics/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/badminton-biomechanics/
 
+### The research instrument itself
+
+Sealing a prediction and scoring it later assumes the observer does not move what is observed. When the predictor is also the actor, that assumption breaks in five places: attribution of a miss, going and making your own prediction false, a scoring date you do not own, waiting that becomes a stall, and success that moves the distribution being measured. The contract answers each with a field and an invariant that refuses the record. Contract validation only; no prediction sealed in this grammar has reached a scoring date.
+
+- INTERVENTION-EP-0001 — method; intervention prediction grammar, nine refused counter-examples, zero scored predictions.
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/intervention-grammar/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/intervention-grammar/
+
 ## Guides and participation
 
 - How to read a Research Note, English: https://kbmt327-dev.github.io/scientific-os-research/en/how-to-read/

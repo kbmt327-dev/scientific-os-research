@@ -161,9 +161,21 @@ def iaa() -> None:
     print("iaa: 168-scenario bounded power sensitivity rerun verified")
 
 
+def intervention() -> None:
+    root = ROOT / "reproduction" / "intervention-grammar"
+    output = run([sys.executable, "tests/validate_intervention_grammar.py"], root)
+    result = json.loads(output)
+    assert result["all_passed"] is True
+    assert len(result["negative_controls"]) == 9
+    assert result["breaches_covered"] == ["B1", "B2", "B3", "B4", "B5"]
+    assert all(row["refused"] for row in result["negative_controls"])
+    print("intervention: nine negative controls refused across the five breaches of the observational contract")
+
+
 CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase,
           "gpu-boundary": gpu_boundary, "queue": queue,
-          "human": human, "human-dataset": human_dataset, "iaa": iaa}
+          "human": human, "human-dataset": human_dataset, "iaa": iaa,
+          "intervention": intervention}
 
 
 def main() -> int:

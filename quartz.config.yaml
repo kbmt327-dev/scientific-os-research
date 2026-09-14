@@ -8,7 +8,7 @@ configuration:
   # banner. websiteId is the goatcounter.com account code.
   analytics:
     provider: goatcounter
-    websiteId: scientific-os-research
+    websiteId: kbmt327-dev
   locale: en-US
   baseUrl: kbmt327-dev.github.io/scientific-os-research
   ignorePatterns:

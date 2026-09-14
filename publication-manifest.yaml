@@ -158,3 +158,11 @@ notes:
       ja: content/ja/research/intervention-grammar/index.md
     type: Method
     publication: { status: publishable }
+  - research_id: FRONTIER-METRICS-REVIEW-0001
+    source_episode: FRONTIER-METRICS/REVIEW-0001
+    source_episode_sha256: f92531bdfbd2e510a7f401ea3b57860164ba84e344bb324baf6bbf79ef4ad4c4
+    views:
+      en: content/en/research/retracted-frontier-metrics/index.md
+      ja: content/ja/research/retracted-frontier-metrics/index.md
+    type: Negative Result
+    publication: { status: publishable }

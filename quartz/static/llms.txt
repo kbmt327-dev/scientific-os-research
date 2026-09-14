@@ -152,6 +152,14 @@ Published Research Notes:
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/intervention-grammar/
 <!-- GENERATED: research-current:END -->
 
+### Measurement design
+
+A synthetic world flatters its author, and the flattery has forms. Two headline results from a generative world were withdrawn after adversarial sweeps: the settling rate was pinned by a constant we had fixed ourselves, moving 7.9 times further under that constant than under the thing we claimed to measure; and a published decision line belonged to an unobservable nuisance parameter rather than to sample size, so a frontier that fully closes clears the line once that parameter is large. What survives is the weaker form: reuse and the settling rate are different quantities and only the former responds. The withdrawn claims, the sweeps, and the surviving result are all published.
+
+- FRONTIER-METRICS-REVIEW-0001 — negative result; both headline results withdrawn, retractions reproducible.
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/retracted-frontier-metrics/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/retracted-frontier-metrics/
+
 ## Guides and participation
 
 - How to read a Research Note, English: https://kbmt327-dev.github.io/scientific-os-research/en/how-to-read/

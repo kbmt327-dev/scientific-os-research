@@ -172,10 +172,23 @@ def intervention() -> None:
     print("intervention: nine negative controls refused across the five breaches of the observational contract")
 
 
+def frontier() -> None:
+    root = ROOT / "reproduction" / "frontier-metrics"
+    output = run([sys.executable, "tests/reproduce_retractions.py"], root)
+    result = json.loads(output)
+    assert result["both_headline_results_retracted"] is True
+    assert result["attack_1_settling_rate_pinned_by_a_constant"]["ratio"] > 5
+    assert result["attack_2_decision_line_depends_on_an_unobservable"]["closing_frontier_clears_the_line_at"]
+    assert result["survivor_reuse_responds_to_the_frontier"]["verdict"] == "survives"
+    print("frontier: both retractions reproduced; the constant moves the metric "
+          f"{result['attack_1_settling_rate_pinned_by_a_constant']['ratio']}x further than the frontier does")
+
+
 CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase,
           "gpu-boundary": gpu_boundary, "queue": queue,
           "human": human, "human-dataset": human_dataset, "iaa": iaa,
-          "intervention": intervention}
+          "intervention": intervention,
+          "frontier": frontier}
 
 
 def main() -> int:

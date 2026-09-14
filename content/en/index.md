@@ -18,7 +18,7 @@ lang: en
     </div>
     <nav aria-label="GPU cluster scheduling">
       <a href="/en/programs/gpu-scheduling/">Research overview</a>
-      <a href="/en/research/gpu-scheduling-real-traces/">Latest Note</a>
+      <a href="/en/research/gpu-scheduling-one-job/">Latest Note</a>
     </nav>
   </article>
   <article class="program-row">

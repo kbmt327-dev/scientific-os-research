@@ -36,6 +36,87 @@ notes:
       ja: content/ja/research/gpu-scheduling-real-traces/index.md
     type: Finding
     publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0005
+    source_episode: GPU-SCHEDULING/EP-0005
+    source_episode_sha256: 3e72377d2a441966354b8c935104108933c5db8f863c2f22d3c9596edc87a680
+    source_revision: af53fd36d47cb08e47fe9fad6f7bdb9bc1394a67
+    views:
+      en: content/en/research/gpu-scheduling-pool-size/index.md
+      ja: content/ja/research/gpu-scheduling-pool-size/index.md
+    type: Finding
+    publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0006
+    source_episode: GPU-SCHEDULING/EP-0006
+    source_episode_sha256: a6dc66607f3e9141bf2a29ed13dde581fc62e65dff31f010ed2909243928cf49
+    source_revision: af53fd36d47cb08e47fe9fad6f7bdb9bc1394a67
+    views:
+      en: content/en/research/gpu-scheduling-concurrency/index.md
+      ja: content/ja/research/gpu-scheduling-concurrency/index.md
+    type: Finding
+    publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0007
+    source_episode: GPU-SCHEDULING/EP-0007
+    source_episode_sha256: b821fb81d95ecfca2fef66f048b85812d98e15ddf39672b666170522b001d27f
+    source_revision: af53fd36d47cb08e47fe9fad6f7bdb9bc1394a67
+    views:
+      en: content/en/research/gpu-scheduling-real-cluster-position/index.md
+      ja: content/ja/research/gpu-scheduling-real-cluster-position/index.md
+    type: Finding
+    publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0008
+    source_episode: GPU-SCHEDULING/EP-0008
+    source_episode_sha256: 5b305fc7b433ae222efcd035c2760a6f5640d24b4f7497097729b9b65a0c93d7
+    source_revision: af53fd36d47cb08e47fe9fad6f7bdb9bc1394a67
+    views:
+      en: content/en/research/gpu-scheduling-headline-broken/index.md
+      ja: content/ja/research/gpu-scheduling-headline-broken/index.md
+    type: Finding
+    publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0009
+    source_episode: GPU-SCHEDULING/EP-0009
+    source_episode_sha256: a2c4be8afc557a71ba447773163d0fcf512d15181a8b235720fc3048b629c6d2
+    source_revision: af53fd36d47cb08e47fe9fad6f7bdb9bc1394a67
+    views:
+      en: content/en/research/gpu-scheduling-phase-reaxis/index.md
+      ja: content/ja/research/gpu-scheduling-phase-reaxis/index.md
+    type: Finding
+    publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0010
+    source_episode: GPU-SCHEDULING/EP-0010
+    source_episode_sha256: f23d5954db2632ef6d7c385817ebc06c44389bd1bd1e0c4f95a0cd478be8d17b
+    source_revision: af53fd36d47cb08e47fe9fad6f7bdb9bc1394a67
+    views:
+      en: content/en/research/gpu-scheduling-third-variable/index.md
+      ja: content/ja/research/gpu-scheduling-third-variable/index.md
+    type: Finding
+    publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0011
+    source_episode: GPU-SCHEDULING/EP-0011
+    source_episode_sha256: ce69ff0e09f54ff06c694be8bab700ee9faaedbe553ff53e3ff6a04facd944ca
+    source_revision: af53fd36d47cb08e47fe9fad6f7bdb9bc1394a67
+    views:
+      en: content/en/research/gpu-scheduling-blind-detector/index.md
+      ja: content/ja/research/gpu-scheduling-blind-detector/index.md
+    type: Finding
+    publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0012
+    source_episode: GPU-SCHEDULING/EP-0012
+    source_episode_sha256: 9f33d6cf645c7273f53984f13ce51ae2bc3b87aaba50ae1df822ed1756755ce6
+    source_revision: af53fd36d47cb08e47fe9fad6f7bdb9bc1394a67
+    views:
+      en: content/en/research/gpu-scheduling-alpha-boundary/index.md
+      ja: content/ja/research/gpu-scheduling-alpha-boundary/index.md
+    type: Finding
+    publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0013
+    source_episode: GPU-SCHEDULING/EP-0013
+    source_episode_sha256: 990cbc3e360d78ce5f7cd1cde10e7550a97c79bbd88d8cedf3e5417d5f4a32ea
+    source_revision: af53fd36d47cb08e47fe9fad6f7bdb9bc1394a67
+    views:
+      en: content/en/research/gpu-scheduling-one-job/index.md
+      ja: content/ja/research/gpu-scheduling-one-job/index.md
+    type: Finding
+    publication: { status: publishable }
   - research_id: SIM-WORLD-EP-0001
     source_episode: SIM-WORLD/EP-0001
     source_episode_sha256: 0c632eb5cad1431953bcbfbe3a067925fea3d7caac6bb21547ce53cb03a7931f

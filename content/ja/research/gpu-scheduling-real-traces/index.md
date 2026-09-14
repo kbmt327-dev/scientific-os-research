@@ -32,6 +32,10 @@ tags: [finding, scheduling, simulation, falsification, traces, retraction, japan
 
 <div class="evidence-strip"><span>Finding</span><span>公開トレースの測定＋合成シミュレーション</span><span>探索的</span><span>査読なし</span><span>外部再現 0</span></div>
 
+> [!warning] ここで出した数値は撤回済みです
+> 「0.75は暫定的な安全境界」と「実測比0.59では1GPUジョブの7.4倍」は、どちらも**引用できません**。害の倍率は軸の訂正に伴い7.4倍→16.3倍→5.1倍と2度書き換えられ、境界はプール規模ではなく**同時実行ジョブ数**で決まると[[ja/research/gpu-scheduling-concurrency/index|EP-0006]]が示しました。そして境界の判定器自体が[[ja/research/gpu-scheduling-blind-detector/index|EP-0011]]で無効と判明しています。現在の数値は[[ja/research/gpu-scheduling-alpha-boundary/index|EP-0012]]（頻度の列を含む運用表）と[[ja/research/gpu-scheduling-one-job/index|EP-0013]]（Phillyの余裕0.33）にあります。
+> **実トレースの測定——11個の仮想クラスタのどれにもプール全体ジョブが来ていない——はEP-0013の再計数で生き残っています。**
+
 ## 現在わかっていること
 
 GPUクラスタでは、短いジョブを先に通す「サイズ優先」のスケジューリングが平均待ち時間を下げます。ただし前の研究で、クラスタ全体を占有するような巨大ジョブが混じると、そのジョブだけが永久に順番を取れなくなる（飢餓）ことが分かっていました。その比率は30,000本中15本（0.0005）で十分でした。そこで前の研究は「まずクラスタ全体を要するジョブが来るか確認せよ」という運用上の規則を出しました。
@@ -211,4 +215,13 @@ python analyze_e6.py
   <a href="/ja/research/gpu-scheduling-phase-diagram/"><b>EP-0002</b><span>平均は良いのに、一部のジョブクラスが終わらない。安定性の判定器も3回壊れた。</span></a>
   <a href="/ja/research/gpu-scheduling-starvation-mechanism/"><b>EP-0003</b><span>飢餓を決めるのは平均ジョブ幅ではなく、クラスタ全体を要するジョブの有無。</span></a>
   <a class="current" href="/ja/research/gpu-scheduling-real-traces/"><b>EP-0004 · 現在地</b><span>実測したプールにその条件はなく、害は飢餓ではなく数倍の遅れだった。</span></a>
+  <a href="/ja/research/gpu-scheduling-pool-size/"><b>EP-0005</b><span>安全境界はプールが大きいほど下がる。実規模の害は2倍過小評価だった。</span></a>
+  <a href="/ja/research/gpu-scheduling-concurrency/"><b>EP-0006</b><span>効いていたのはプールの大きさではなく、同時に取り合うジョブの本数だった。</span></a>
+  <a href="/ja/research/gpu-scheduling-real-cluster-position/"><b>EP-0007</b><span>実クラスタの位置で測り、4本ぶん載せてきた機構説明を訂正した。</span></a>
+  <a href="/ja/research/gpu-scheduling-headline-broken/"><b>EP-0008</b><span>背景の粒度を変えるだけで、この研究の看板結論が消えた。</span></a>
+  <a href="/ja/research/gpu-scheduling-phase-reaxis/"><b>EP-0009</b><span>代表成果だった相図の軸そのものが、18倍交絡していた。</span></a>
+  <a href="/ja/research/gpu-scheduling-third-variable/"><b>EP-0010</b><span>「2つの数で決まる」を撤回した。頻度が第三の変数だった。</span></a>
+  <a href="/ja/research/gpu-scheduling-blind-detector/"><b>EP-0011</b><span>判定器が発散を測っていなかった。窓で割っていたので、値が動かなかった。</span></a>
+  <a href="/ja/research/gpu-scheduling-alpha-boundary/"><b>EP-0012</b><span>動かない境界を持つ統計量へ置き換え、運用数値を戻した。</span></a>
+  <a href="/ja/research/gpu-scheduling-one-job/"><b>EP-0013</b><span>実クラスタについての主張は、19,100本中1本のジョブに乗っていた。</span></a>
 </div>

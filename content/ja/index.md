@@ -18,7 +18,7 @@ lang: ja
     </div>
     <nav aria-label="GPUクラスタのスケジューリング">
       <a href="/ja/programs/gpu-scheduling/">研究概要</a>
-      <a href="/ja/research/gpu-scheduling-real-traces/">最新Note</a>
+      <a href="/ja/research/gpu-scheduling-one-job/">最新Note</a>
     </nav>
   </article>
   <article class="program-row">

@@ -54,9 +54,36 @@ Current claim: the breaking mechanism is real inside synthetic simulation, and o
 - GPU-SCHED-EP-0003 — synthetic simulation; a mean-matched control isolated the cause. The practical rule stated here was later withdrawn.
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-starvation-mechanism/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-starvation-mechanism/
-- GPU-SCHED-EP-0004 — CURRENT CLAIM; public-trace demand measurement plus a synthetic ratio sweep.
+- GPU-SCHED-EP-0004 — public-trace demand measurement plus a synthetic ratio sweep. The numbers stated here were later retracted; the trace measurement survives.
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-real-traces/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-real-traces/
+- GPU-SCHED-EP-0005 — the safe ratio falls with pool size. The next study showed this named the wrong variable.
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-pool-size/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-pool-size/
+- GPU-SCHED-EP-0006 — the driver is concurrency, not pool size. The axis survives; the numbers were later remeasured.
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-concurrency/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-concurrency/
+- GPU-SCHED-EP-0007 — measured at the real cluster's concurrency, and withdrew a mechanism claim carried for four studies.
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-real-cluster-position/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-real-cluster-position/
+- GPU-SCHED-EP-0008 — changing only the background granularity made this project's headline result disappear.
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-headline-broken/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-headline-broken/
+- GPU-SCHED-EP-0009 — the flagship phase diagram's axis was confounded with concurrency by a factor of 18.
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-phase-reaxis/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-phase-reaxis/
+- GPU-SCHED-EP-0010 — retracted "decided by two numbers"; frequency is a third variable and the background family a fourth.
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-third-variable/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-third-variable/
+- GPU-SCHED-EP-0011 — the boundary detector was a censoring ratio and could not see divergence. Mean response time grew 3.9x while it moved 0.562 to 0.574.
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-blind-detector/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-blind-detector/
+- GPU-SCHED-EP-0012 — replaced the detector with alpha, the elasticity of mean response time to the observation window, and restored the operational table with a frequency column.
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-alpha-boundary/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-alpha-boundary/
+- GPU-SCHED-EP-0013 — CURRENT CLAIM; public-trace frequency measurement. The real-cluster claim rests on one job out of 19,100.
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-one-job/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-one-job/
 
 ### Queueing system identification
 

@@ -32,6 +32,9 @@ tags: [finding, scheduling, simulation, falsification, starvation, japanese]
 
 <div class="evidence-strip"><span>Finding</span><span>合成シミュレーション</span><span>探索的</span><span>査読なし</span><span>外部再現 0</span></div>
 
+> [!warning] この結論は後の研究で条件付きになり、判定器も置き換わりました
+> 「需要分布のsupportがクラスタ全体を含むと飢餓する」は、[[ja/research/gpu-scheduling-headline-broken/index|EP-0008]]で**同時実行ジョブ数に条件付けられた主張**に書き換えられました。同じ確率・同じプール・同じ負荷のまま背景の粒度だけを変えると、飢餓は流量0.307から0.997へ消えます。supportは原因ではなく代理変数でした。さらに飢餓の判定に使っていた統計量そのものが[[ja/research/gpu-scheduling-blind-detector/index|EP-0011]]で無効と判明し、[[ja/research/gpu-scheduling-alpha-boundary/index|EP-0012]]で置き換えられています。**機構の2×2分離（サイズ優先＋貪欲な詰め込みの組み合わせだけが壊れる）は有効です。**
+
 > **この記事が出した運用規則は、後に取り下げました。** [[ja/research/gpu-scheduling-real-traces/index|EP-0004]]が2つの公開トレースの需要分布を測り、Phillyのどの仮想クラスタにもプールを占め切るジョブが来ていないことを示したためです。この記事が要求する前提は、実測データでは満たされていません。「クラスタ全体を要するジョブが来るか確認せよ」という規則は取り下げ、プール容量に対する比の判定に置き換えました。EP-0004は、この記事が自分で挙げた反証条件も満たしています。**下に書いた仕組みそのものはモデルの中では変わらず成立します。狭まったのは、それが届く範囲です。** この記事は2026-09-13時点で何を主張したかの記録として、書き換えずに残します。
 
 ## 現在わかっていること
@@ -204,3 +207,21 @@ python analyze_e4.py
 公開されている運用トレースで、クラスタ全体ジョブの比率を測ります。Blox経由のPhilly、Kubernetesスケジューラシミュレータ経由のAlibaba PAIで、0.0005という閾値と比較します。それが済むまで、この発見はモデルを記述しているのであって、実在のクラスタを記述してはいません。副次的な実験として、2のべき乗の制約を外し、クラスタの半分と全体の間のどこに飢餓の境界があるかを特定します。
 
 （この実験は[[ja/research/gpu-scheduling-real-traces/index|EP-0004]]として実施され、上の運用規則を取り下げる結果になりました。）
+
+## ここに至るまで
+
+<div class="revision-chain vertical" aria-label="GPUクラスタのスケジューリング研究の更新履歴">
+  <a href="/ja/research/gpu-scheduling/"><b>EP-0001</b><span>推定誤差と再実行コストで、最良の方式が入れ替わる。</span></a>
+  <a href="/ja/research/gpu-scheduling-phase-diagram/"><b>EP-0002</b><span>平均は良いのに、一部のジョブクラスが終わらない。安定性の判定器も3回壊れた。</span></a>
+  <a class="current" href="/ja/research/gpu-scheduling-starvation-mechanism/"><b>EP-0003 · 現在地</b><span>飢餓を決めるのは平均ジョブ幅ではなく、クラスタ全体を要するジョブの有無。</span></a>
+  <a href="/ja/research/gpu-scheduling-real-traces/"><b>EP-0004</b><span>実測したプールにその条件はなく、害は飢餓ではなく数倍の遅れだった。</span></a>
+  <a href="/ja/research/gpu-scheduling-pool-size/"><b>EP-0005</b><span>安全境界はプールが大きいほど下がる。実規模の害は2倍過小評価だった。</span></a>
+  <a href="/ja/research/gpu-scheduling-concurrency/"><b>EP-0006</b><span>効いていたのはプールの大きさではなく、同時に取り合うジョブの本数だった。</span></a>
+  <a href="/ja/research/gpu-scheduling-real-cluster-position/"><b>EP-0007</b><span>実クラスタの位置で測り、4本ぶん載せてきた機構説明を訂正した。</span></a>
+  <a href="/ja/research/gpu-scheduling-headline-broken/"><b>EP-0008</b><span>背景の粒度を変えるだけで、この研究の看板結論が消えた。</span></a>
+  <a href="/ja/research/gpu-scheduling-phase-reaxis/"><b>EP-0009</b><span>代表成果だった相図の軸そのものが、18倍交絡していた。</span></a>
+  <a href="/ja/research/gpu-scheduling-third-variable/"><b>EP-0010</b><span>「2つの数で決まる」を撤回した。頻度が第三の変数だった。</span></a>
+  <a href="/ja/research/gpu-scheduling-blind-detector/"><b>EP-0011</b><span>判定器が発散を測っていなかった。窓で割っていたので、値が動かなかった。</span></a>
+  <a href="/ja/research/gpu-scheduling-alpha-boundary/"><b>EP-0012</b><span>動かない境界を持つ統計量へ置き換え、運用数値を戻した。</span></a>
+  <a href="/ja/research/gpu-scheduling-one-job/"><b>EP-0013</b><span>実クラスタについての主張は、19,100本中1本のジョブに乗っていた。</span></a>
+</div>

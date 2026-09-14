@@ -33,6 +33,10 @@ tags: [finding, scheduling, simulation, falsification, traces, retraction]
 
 <div class="evidence-strip"><span>Finding</span><span>Public trace + synthetic</span><span>Exploratory</span><span>Not peer reviewed</span><span>0 external replications</span></div>
 
+> [!warning] The numbers published here have been retracted
+> Neither "0.75 as a provisional safe boundary" nor "7.4× a one-GPU job at the measured ratio of 0.59" **can be quoted**. The harm multiplier was rewritten twice as the axis was corrected — 7.4× → 16.3× → 5.1× — and [[en/research/gpu-scheduling-concurrency/index|EP-0006]] showed the boundary is set by **concurrency**, not pool size. The boundary detector itself was then invalidated in [[en/research/gpu-scheduling-blind-detector/index|EP-0011]]. Current values are in [[en/research/gpu-scheduling-alpha-boundary/index|EP-0012]] (the operational table, now with a frequency column) and [[en/research/gpu-scheduling-one-job/index|EP-0013]] (Philly's margin of 0.33).
+> **The trace measurement — no whole-pool job in any of the 11 virtual clusters — survives EP-0013's recount.**
+
 Follows [[en/research/gpu-scheduling-starvation-mechanism/index|Whole-cluster jobs, not mean gang size, decide when size-based scheduling breaks]], whose practical claim this study demotes.
 
 ## Current finding
@@ -201,9 +205,18 @@ Measure `r_safe` at 64, 128, 256 and 512 servers. The one failed prediction of t
 
 ## How this claim got here
 
-<div class="revision-chain vertical" aria-label="How the GPU scheduling claim changed">
-  <a href="/en/research/gpu-scheduling/"><b>EP-0001</b><span>Estimation error and restart cost reverse which scheduler wins.</span></a>
-  <a href="/en/research/gpu-scheduling-phase-diagram/"><b>EP-0002</b><span>A good average hides a job class that never finishes; three stability detectors failed.</span></a>
-  <a href="/en/research/gpu-scheduling-starvation-mechanism/"><b>EP-0003</b><span>Whole-cluster jobs, not mean gang size, decide when size-based scheduling breaks.</span></a>
-  <a class="current" href="/en/research/gpu-scheduling-real-traces/"><b>EP-0004 &middot; current</b><span>Measured pools never met that condition; the harm is a several-fold delay, not starvation.</span></a>
+<div class="revision-chain vertical" aria-label="revision history of the GPU cluster scheduling research">
+  <a href="/en/research/gpu-scheduling/"><b>EP-0001</b><span>Estimate error and restart cost swap which policy is best.</span></a>
+  <a href="/en/research/gpu-scheduling-phase-diagram/"><b>EP-0002</b><span>Good averages hide a job class that never finishes. Three stability detectors broke.</span></a>
+  <a href="/en/research/gpu-scheduling-starvation-mechanism/"><b>EP-0003</b><span>Starvation is set by whether whole-cluster jobs exist, not by mean gang size.</span></a>
+  <a class="current" href="/en/research/gpu-scheduling-real-traces/"><b>EP-0004 · current</b><span>Measured pools never meet that condition; the harm is a multiple, not starvation.</span></a>
+  <a href="/en/research/gpu-scheduling-pool-size/"><b>EP-0005</b><span>The safe ratio falls as the pool grows; the harm at real scale was underestimated.</span></a>
+  <a href="/en/research/gpu-scheduling-concurrency/"><b>EP-0006</b><span>The driver was never pool size. It is how many jobs compete at once.</span></a>
+  <a href="/en/research/gpu-scheduling-real-cluster-position/"><b>EP-0007</b><span>Measured at the real cluster's position, and corrected a mechanism claim carried for four studies.</span></a>
+  <a href="/en/research/gpu-scheduling-headline-broken/"><b>EP-0008</b><span>Changing only the granularity of the background made the headline result disappear.</span></a>
+  <a href="/en/research/gpu-scheduling-phase-reaxis/"><b>EP-0009</b><span>The axis of the flagship phase diagram was confounded by a factor of 18.</span></a>
+  <a href="/en/research/gpu-scheduling-third-variable/"><b>EP-0010</b><span>Retracted \"two numbers decide this\". Frequency is a third variable.</span></a>
+  <a href="/en/research/gpu-scheduling-blind-detector/"><b>EP-0011</b><span>The detector was not measuring divergence. It divided by the window, so it never moved.</span></a>
+  <a href="/en/research/gpu-scheduling-alpha-boundary/"><b>EP-0012</b><span>Replaced it with a statistic whose boundary stays put, and restored the numbers.</span></a>
+  <a href="/en/research/gpu-scheduling-one-job/"><b>EP-0013</b><span>The real-cluster claim rests on one job out of 19,100.</span></a>
 </div>

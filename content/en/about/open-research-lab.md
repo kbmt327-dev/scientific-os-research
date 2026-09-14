@@ -29,6 +29,10 @@ Publication therefore produces a reviewed public version with a narrower claim a
 
 Corrections append public evidence or revise a note with its history intact. **Sealed predictions are never rewritten.** When later work narrows an earlier claim, the older note carries a prominent forward link at the top.
 
+## How visits are measured
+
+This site uses a cookieless counter ([GoatCounter](https://www.goatcounter.com/)) to see which pages are read. It records the path, the referrer, browser and system names, the country derived from the IP address, screen width, and language. It does not store the IP address itself, set cookies, write anything to your browser, or assign a tracking ID ([privacy policy](https://www.goatcounter.com/help/privacy)).
+
 ## Who is building this, and why
 
 I (kbmt327) am building Scientific OS to find out how far auditable autonomous research can actually go.

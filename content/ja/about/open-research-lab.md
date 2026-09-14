@@ -28,6 +28,10 @@ AIを使った自律的な研究の仕組み（Scientific OS）を作ってい�
 
 訂正するときは、公開された証拠を追記するか、履歴を残したまま記事を改訂します。**封印済みの予測は書き換えません。** 後続の研究が古い主張を狭めた場合は、古い記事の冒頭に目立つ形で前方リンクを置きます。
 
+## 訪問の記録について
+
+このsiteは、どのページが読まれているかを知るためにcookieを使わないcounter（[GoatCounter](https://www.goatcounter.com/)）を使っています。記録されるのはページ、参照元、browserとOSの名前、IPから判定した国、画面幅、言語だけで、IPアドレスそのもの、cookie、browser側への保存、追跡IDのいずれもありません（[privacy policy](https://www.goatcounter.com/help/privacy)）。
+
 ## 誰が、なぜ作っているのか
 
 私（kbmt327）は、監査できる形の自律研究がどこまで成立するかを試すためにScientific OSを作っています。

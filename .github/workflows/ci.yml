@@ -31,6 +31,8 @@ jobs:
       - run: npx quartz plugin install
       - name: Validate publication contract
         run: python scripts/publish_episode.py validate content
+      - name: Check generated current-state views
+        run: python scripts/sync_current_state.py --check
       - name: Check internal links
         run: python scripts/check_links.py content
       - name: Check bilingual llms.txt index

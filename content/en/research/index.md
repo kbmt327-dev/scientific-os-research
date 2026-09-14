@@ -9,53 +9,59 @@ aliases: [/research/index]
 
 Notes are grouped by what they contribute, not by how confident they sound. A **Finding** reports an observed result, a **Method** defines a research interface, and a **Protocol** freezes a future test before confirmatory data exists.
 
+<!-- GENERATED: research-current:START -->
 ## GPU cluster scheduling
 
-**Question:** under what conditions does size-based scheduling — run the shortest job first — break?
+**Question:** Under what conditions does size-based scheduling — running the shortest job first — break?
 
-**Current claim:** the breaking mechanism is real inside synthetic simulation. A single job that needs the entire cluster is enough: size priority combined with greedy packing leaves it waiting indefinitely. But measuring two public traces showed no such job in any pool actually in production. The quantity to watch is the largest job as a fraction of pool capacity; the safe boundary is 0.75 and the worst measured ratio is 0.59. The harm is a several-fold delay, not starvation.
+**Current state:** The three quantities to watch are **largest-job share of pool capacity × concurrent job count × large-job frequency**. In the 256-server, rho 0.85 synthetic model, the rule-of-thumb ratios are 0.92 (frequency 0.002) or 0.72 (frequency 0.02) at concurrency 10, and 0.73 or 0.66 at concurrency 30. Dropping frequency makes the number conservative for rare large jobs and dangerous for frequent ones.
 
-**[Read the current claim (EP-0004) →](/en/research/gpu-scheduling-real-traces/)**
+In a new cluster, inspect whether mean response time grows with the observation window rather than using completion rate. If doubling the window raises the mean by at least 1.4×, that class is diverging. The real-cluster reach is extremely narrow: ten of Philly's 11 virtual clusters contain no job above a quarter of capacity, and the sole exception has exactly one job out of 19,100 above half of capacity.
 
-<details class="series-history" id="gpu-scheduling-program">
-<summary>The four studies that led here</summary>
+**Evidence boundary:** This is not a scheduler comparison on a real arrival sequence, and there are no independent external replications.
 
-<div class="revision-chain vertical" aria-label="How the GPU scheduling claim changed">
-  <a href="/en/research/gpu-scheduling/"><b>EP-0001 · synthetic</b><span>Estimation error and restart cost reverse which scheduler wins. Two claims were later made conditional.</span></a>
-  <a href="/en/research/gpu-scheduling-phase-diagram/"><b>EP-0002 · synthetic</b><span>A good average hides a job class that never finishes; three stability detectors failed.</span></a>
-  <a href="/en/research/gpu-scheduling-starvation-mechanism/"><b>EP-0003 · mechanism</b><span>A mean-matched control isolated the cause — but the practical rule stated here was later withdrawn.</span></a>
-  <a class="current" href="/en/research/gpu-scheduling-real-traces/"><b>EP-0004 · trace measurement + synthetic · current</b><span>No measured pool met the condition; degradation is continuous, with a provisional 0.75 boundary in the model.</span></a>
-</div>
+**[Read the current Research Note (EP-0013) →](/en/research/gpu-scheduling-one-job/)** — Finding
 
-Read backward from EP-0004 when you want the claim history. This is the published revision sequence; it does not imply that every internal update is published.
-
-</details>
+[See the current state and revision history →](/en/programs/gpu-scheduling/)
 
 ## Queueing system identification
 
-**Question:** given a queueing world whose mechanism is hidden, how much of that mechanism can external records alone recover?
+**Question:** Given a queueing world whose mechanism is hidden, how much of it can external records alone recover?
 
-**Current claim:** inside a disclosed family of candidate mechanisms, one hidden instance was identified correctly — all five structural components matched the withheld truth. This tests selection from given options, not discovery from an unknown hypothesis space.
+**Current state:** Within a disclosed family of candidate mechanisms, one hidden instance was identified correctly and all five structural components matched the withheld truth.
 
-**[Read this study →](/en/research/simulation-worlds/)** — Finding
+**Evidence boundary:** This tests selection from given options, not discovery from an open hypothesis space, and transfer to a real system has not been tested.
+
+**[Read the current Research Note (EP-0001) →](/en/research/simulation-worlds/)** — Finding
+
+[See the current state and revision history →](/en/programs/queueing-system-identification/)
 
 ## Human movement model interfaces
 
-**Question:** before measured human motion reaches a model, can coordinate mix-ups, target leakage, and false external validation be blocked by explicit contracts and dataset boundaries?
+**Question:** Before measured human motion reaches a model, can explicit contracts and dataset boundaries stop coordinate mix-ups, target leakage, and false external validation?
 
-**Current state:** the contract stops seven deliberately broken variants, and the first dataset gate is now fixed. Carter is split into 30 development, 10 validation, and 10 test participants; OpenCap laboratory data is reserved for external validation; Knee Grand Challenge is reserved for internal-load stress testing. B3D is only a source-adapter format, and Nimble is not mandatory. No model has been fitted and no holdout has been read.
+**Current state:** The interface contract rejects seven deliberately broken variants. The dataset gate splits Carter into 30 development, 10 validation, and 10 test participants; reserves OpenCap laboratory data for external validation; and reserves Knee Grand Challenge for internal-load stress testing. B3D is a source-adapter format, the internal representation is NumPy plus explicit semantics, and Nimble is not mandatory.
 
-**[Read the current dataset decision (EP-0005) →](/en/research/human-model-dataset-portfolio/)** — Dataset
+**Evidence boundary:** No model has been fitted and no holdout has been read.
 
-Earlier method: **[the fail-closed interface contract (EP-0004) →](/en/research/human-model/)**
+**[Read the current Research Note (EP-0005) →](/en/research/human-model-dataset-portfolio/)** — Dataset
+
+[See the current state and revision history →](/en/programs/human-model-interface/)
 
 ## Badminton biomechanics
 
-**Question:** in the smash, can the effect of short preparation time be separated from the effect of backward centre of mass?
+**Question:** In the smash, can the effect of short preparation time be separated from the effect of backward centre of mass?
 
-**Current state:** design and power sensitivity only. **No observations yet.** Detecting the interaction needs far more participants than the main effects, so the sample size is undecided. Instrument feasibility and ethics are unresolved, so the protocol is not sealed and data collection is not authorized.
+**Current state:** Only the experimental design and power sensitivity are public; no observations exist. Detecting the interaction requires substantially more participants than detecting the main effects, so the sample size remains undecided.
 
-**[Read this protocol →](/en/research/badminton-biomechanics/)** — Protocol
+**Evidence boundary:** Instrument feasibility and ethics remain unresolved, so the protocol is not sealed and data collection is not authorized.
+
+**[Read the current Research Note (EP-0008) →](/en/research/badminton-biomechanics/)** — Protocol
+
+[See the current state and revision history →](/en/programs/badminton-biomechanics/)
+
+[Browse all published Research Notes by date →](/en/research-notes/)
+<!-- GENERATED: research-current:END -->
 
 ---
 

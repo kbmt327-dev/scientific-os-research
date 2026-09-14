@@ -1,0 +1,72 @@
+schema_version: open-research-lab.program-current.v1
+site_url: https://kbmt327-dev.github.io/scientific-os-research
+programs:
+  - id: gpu-scheduling
+    research_id_prefix: GPU-SCHED-
+    current_research_id: GPU-SCHED-EP-0013
+    ja:
+      title: GPUクラスタのスケジューリング
+      home_summary: 短いジョブを優先する方式が、どの条件で有効になり、どこで破綻するのかを調べています。
+      question: 短いジョブを先に通す「サイズ優先」のスケジューリングは、どの条件で壊れるか。
+      claim: |-
+        現在見る量は、**最大ジョブがプール容量に占める割合 × 同時実行ジョブ数 × 大ジョブの頻度**の3つです。256サーバ、rho 0.85の合成モデルでは、同時10本なら比率0.92（頻度0.002）／0.72（頻度0.02）、同時30本なら0.73／0.66が目安です。頻度を落とすと、希少な大ジョブには保守側、頻繁な大ジョブには危険側の数字になります。
+
+        自分のクラスタでは完了率ではなく、平均待ち時間が観測窓とともに伸びるかを見ます。窓を2倍にして平均が1.4倍以上になるなら、そのクラスは発散しています。実クラスタについて言える範囲は極端に狭く、Phillyの11仮想クラスタ中10個には容量の4分の1を超えるジョブがなく、唯一の例外でも容量の半分超は19,100本中1本でした。
+      evidence_boundary: 実際の到着列を使ったスケジューラ比較ではなく、外部からの独立再現もまだありません。
+    en:
+      title: GPU cluster scheduling
+      home_summary: We study when running shorter jobs first helps, when it breaks, and which conditions decide the difference.
+      question: Under what conditions does size-based scheduling — running the shortest job first — break?
+      claim: |-
+        The three quantities to watch are **largest-job share of pool capacity × concurrent job count × large-job frequency**. In the 256-server, rho 0.85 synthetic model, the rule-of-thumb ratios are 0.92 (frequency 0.002) or 0.72 (frequency 0.02) at concurrency 10, and 0.73 or 0.66 at concurrency 30. Dropping frequency makes the number conservative for rare large jobs and dangerous for frequent ones.
+
+        In a new cluster, inspect whether mean response time grows with the observation window rather than using completion rate. If doubling the window raises the mean by at least 1.4×, that class is diverging. The real-cluster reach is extremely narrow: ten of Philly's 11 virtual clusters contain no job above a quarter of capacity, and the sole exception has exactly one job out of 19,100 above half of capacity.
+      evidence_boundary: This is not a scheduler comparison on a real arrival sequence, and there are no independent external replications.
+
+  - id: queueing-system-identification
+    research_id_prefix: SIM-WORLD-
+    current_research_id: SIM-WORLD-EP-0001
+    ja:
+      title: 待ち行列のシステム同定
+      home_summary: 外から観測できる記録だけで、内部の待ち行列機構をどこまで特定できるかを検査しています。
+      question: 中身を隠した待ち行列の世界に対し、外から見える記録だけでどこまで仕組みを言い当てられるか。
+      claim: あらかじめ開示された候補集合の中で、隠された1事例を正しく同定でき、5つの構造要素すべてが保留した正解と一致しました。
+      evidence_boundary: これは与えられた選択肢から選ぶ検査であり、未知の仮説空間からの発見でも、実システムへの適用検証でもありません。
+    en:
+      title: Queueing system identification
+      home_summary: We test how much of a hidden queueing mechanism can be recovered from externally visible records alone.
+      question: Given a queueing world whose mechanism is hidden, how much of it can external records alone recover?
+      claim: Within a disclosed family of candidate mechanisms, one hidden instance was identified correctly and all five structural components matched the withheld truth.
+      evidence_boundary: This tests selection from given options, not discovery from an open hypothesis space, and transfer to a real system has not been tested.
+
+  - id: human-model-interface
+    research_id_prefix: HUMAN-MODEL-
+    current_research_id: HUMAN-MODEL-EP-0005
+    ja:
+      title: 人体運動モデルのデータ接続
+      home_summary: 計測データをmodelへ渡す前に、座標の取り違え、答えの漏れ、見かけだけの外部検証を止める方法を研究しています。
+      question: 計測した人体の動きをmodelへ渡す前に、座標の取り違え、答えの漏れ、見かけだけの外部検証を止められるか。
+      claim: 接続契約は意図的に壊した7つの変種を拒否します。dataset gateはCarterをdevelopment 30人、validation 10人、test 10人に分け、OpenCapの実験室dataを外部検証、Knee Grand Challengeを内部荷重のstress testに限定しました。B3Dはsource adapter形式で、内部表現はNumPy配列と明示的な意味情報です。Nimbleは必須ではありません。
+      evidence_boundary: model fittingもholdout読込もまだ実施していません。
+    en:
+      title: Human movement model interfaces
+      home_summary: We study how to stop coordinate mix-ups, target leakage, and false external validation before measured motion reaches a model.
+      question: Before measured human motion reaches a model, can explicit contracts and dataset boundaries stop coordinate mix-ups, target leakage, and false external validation?
+      claim: The interface contract rejects seven deliberately broken variants. The dataset gate splits Carter into 30 development, 10 validation, and 10 test participants; reserves OpenCap laboratory data for external validation; and reserves Knee Grand Challenge for internal-load stress testing. B3D is a source-adapter format, the internal representation is NumPy plus explicit semantics, and Nimble is not mandatory.
+      evidence_boundary: No model has been fitted and no holdout has been read.
+
+  - id: badminton-biomechanics
+    research_id_prefix: IAA-
+    current_research_id: IAA-EP-0008
+    ja:
+      title: バドミントンのバイオメカニクス
+      home_summary: スマッシュの準備時間と身体重心が動作に与える影響を、切り分けて測る実験を設計しています。
+      question: スマッシュで、準備時間の短さと後方重心の効果を切り分けられるか。
+      claim: 公開済みなのは実験計画と検出力の感度解析までで、観測はまだありません。交互作用の検出には主効果より多い参加者が必要と分かり、人数を決められていません。
+      evidence_boundary: 機器の実行可能性と倫理審査が未解決なので、計画は封印されておらず、データ取得も承認されていません。
+    en:
+      title: Badminton biomechanics
+      home_summary: We are designing an experiment that separates the effects of preparation time and centre of mass on the badminton smash.
+      question: In the smash, can the effect of short preparation time be separated from the effect of backward centre of mass?
+      claim: Only the experimental design and power sensitivity are public; no observations exist. Detecting the interaction requires substantially more participants than detecting the main effects, so the sample size remains undecided.
+      evidence_boundary: Instrument feasibility and ethics remain unresolved, so the protocol is not sealed and data collection is not authorized.

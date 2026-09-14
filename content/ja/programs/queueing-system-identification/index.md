@@ -10,8 +10,18 @@ lang: ja
 
 サービス時間、優先規則、容量制約など複数の仕組みが似た記録を生むとき、どの観測と比較があれば候補を区別できるのか。
 
-## 現在の公開範囲
+<!-- GENERATED: program-current:START -->
+## 現在の公開結論
 
-正解を隠した合成世界一つに対し、あらかじめ開示した候補集合から正しい機構を選べました。五つの構造要素は保留した正解と一致しました。ただし未知の仮説空間から仕組みを発見した証拠ではなく、実システムへの適用もまだ検証していません。
+あらかじめ開示された候補集合の中で、隠された1事例を正しく同定でき、5つの構造要素すべてが保留した正解と一致しました。
 
-**[[ja/research/simulation-worlds/index|最新のResearch Noteを読む →]]**
+**証拠の境界：** これは与えられた選択肢から選ぶ検査であり、未知の仮説空間からの発見でも、実システムへの適用検証でもありません。
+
+**[現在のResearch Note（EP-0001）を読む →](/ja/research/simulation-worlds/)**
+<!-- GENERATED: program-current:END -->
+
+<!-- GENERATED: program-history:START -->
+## 公開中のResearch Note
+
+1. **[[ja/research/simulation-worlds/index|EP-0001 — 待ち行列の外側だけを見て、隠された仕組みをどこまで言い当てられるか]]（最新）**
+<!-- GENERATED: program-history:END -->

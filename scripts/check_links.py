@@ -55,6 +55,18 @@ def main() -> int:
                     "(drop the base path; write it as a content-root link)"
                 )
                 continue
+            clean_target = target.split("#", 1)[0].split("|", 1)[0].strip()
+            if clean_target.endswith("/"):
+                relative = clean_target.lstrip("/").rstrip("/")
+                direct_candidates = [source.parent / relative, content / relative]
+                direct_page = any(path.with_suffix(".md").exists() for path in direct_candidates)
+                folder_index = any((path / "index.md").exists() for path in direct_candidates)
+                if direct_page and not folder_index:
+                    failures.append(
+                        f"{source.relative_to(content)} -> {target} "
+                        "(leaf Markdown pages must not use a trailing slash)"
+                    )
+                    continue
             target = target.lstrip("/")
             if not any(path.exists() for path in candidates(content, source, target)):
                 failures.append(f"{source.relative_to(content)} -> {target}")

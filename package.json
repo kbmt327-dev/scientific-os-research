@@ -17,6 +17,8 @@
     "check": "tsc --noEmit && npx prettier . --check",
     "format": "npx prettier . --write",
     "test": "tsx --test",
+    "sync-current": "python scripts/sync_current_state.py",
+    "check-current": "python scripts/sync_current_state.py --check",
     "profile": "0x -D prof ./quartz/bootstrap-cli.mjs build --concurrency=1",
     "install-plugins": "npx tsx ./quartz/plugins/loader/install-plugins.ts",
     "prebuild": "npm run install-plugins"
@@ -86,6 +88,7 @@
     "@quartz-community/tag-page": "^0.1.0",
     "@quartz-community/unlisted-pages": "^0.1.0",
     "@quartz-themes/core": "^1.0.0",
+    "@open-research-lab/curated-folder-page": "file:plugins/curated-folder-page",
     "ansi-truncate": "^1.4.0",
     "async-mutex": "^0.5.0",
     "chokidar": "^5.0.0",

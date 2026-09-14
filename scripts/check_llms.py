@@ -19,8 +19,10 @@ def main() -> int:
     text = llms_path.read_text(encoding="utf-8-sig")
     errors: list[str] = []
 
-    if "The Markdown Research Notes are the canonical public representation" not in text:
-        errors.append("llms.txt must say that Markdown Research Notes are canonical")
+    if "Program current-state pages are canonical for current claims" not in text:
+        errors.append("llms.txt must identify Program pages as the current-claim authority")
+    if "Markdown Research Notes are canonical for their dated records" not in text:
+        errors.append("llms.txt must preserve Research Notes as canonical dated records")
     if f"{SITE}/research/" in text:
         errors.append("llms.txt contains a legacy unscoped English research URL")
 

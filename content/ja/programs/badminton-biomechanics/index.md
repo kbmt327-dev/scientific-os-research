@@ -10,8 +10,18 @@ lang: ja
 
 短い準備時間と後方重心は、スマッシュ動作と結果にそれぞれどのような影響を与えるのか。2×2の割付で両者を切り分けます。
 
-## 現在の公開範囲
+<!-- GENERATED: program-current:START -->
+## 現在の公開結論
 
-公開済みなのはプロトコルと検出力感度です。観測データはまだなく、計画は封印されていません。データ取得も未承認なので、結果を示す研究ではありません。
+公開済みなのは実験計画と検出力の感度解析までで、観測はまだありません。交互作用の検出には主効果より多い参加者が必要と分かり、人数を決められていません。
 
-**[[ja/research/badminton-biomechanics/index|最新のResearch Noteを読む →]]**
+**証拠の境界：** 機器の実行可能性と倫理審査が未解決なので、計画は封印されておらず、データ取得も承認されていません。
+
+**[現在のResearch Note（EP-0008）を読む →](/ja/research/badminton-biomechanics/)**
+<!-- GENERATED: program-current:END -->
+
+<!-- GENERATED: program-history:START -->
+## 公開中のResearch Note
+
+1. **[[ja/research/badminton-biomechanics/index|EP-0008 — バドミントンのスマッシュで、準備時間と後方重心を切り分ける2×2実験の設計]]（最新）**
+<!-- GENERATED: program-history:END -->

@@ -10,8 +10,19 @@ When measured human motion reaches a model, mismatched coordinates, units, or ti
 
 Which input contracts, dataset boundaries, and failure conditions can stop coordinate mix-ups, target leakage, and false external validation before a model runs?
 
-## Current public boundary
+<!-- GENERATED: program-current:START -->
+## Current public state
 
-A correct contract bundle passes nine check groups, and all seven deliberately broken variants are rejected. The next dataset gate is now fixed: develop on a 30-participant Carter split, reserve 10 participants each for validation and test, use OpenCap laboratory data only for external validation, and reserve Knee Grand Challenge for internal-load stress testing. B3D is a source-adapter format; NumPy plus explicit semantics is the internal representation, and Nimble is not a mandatory Human Model dependency. No model has been fitted and no holdout has been read.
+The interface contract rejects seven deliberately broken variants. The dataset gate splits Carter into 30 development, 10 validation, and 10 test participants; reserves OpenCap laboratory data for external validation; and reserves Knee Grand Challenge for internal-load stress testing. B3D is a source-adapter format, the internal representation is NumPy plus explicit semantics, and Nimble is not mandatory.
 
-**[[en/research/human-model-dataset-portfolio/index|Read the latest Research Note →]]**
+**Evidence boundary:** No model has been fitted and no holdout has been read.
+
+**[Read the current Research Note (EP-0005) →](/en/research/human-model-dataset-portfolio/)**
+<!-- GENERATED: program-current:END -->
+
+<!-- GENERATED: program-history:START -->
+## Published Research Notes
+
+1. [[en/research/human-model/index|EP-0004 — A contract that stops human data reaching a model on ambiguous terms]]
+2. **[[en/research/human-model-dataset-portfolio/index|EP-0005 — A dataset portfolio that keeps development, external validation, and internal-load testing separate]] (latest)**
+<!-- GENERATED: program-history:END -->

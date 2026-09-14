@@ -20,28 +20,32 @@ GPUクラスタでは、多数のジョブが限られたGPUを取り合いま�
 
 置き換えた統計量 **α**（平均待ち時間の観測窓に対する弾性）は、安定な条件で0を、線形発散で1を読み、観測窓を8倍にしても境界を0.02しか動かしません（EP-0012）。運用数値は**頻度の列を足した形で**戻っています。
 
+<!-- GENERATED: program-current:START -->
 ## 現在の公開結論
 
-- **見る量は3つ。**最大ジョブがプール容量に占める割合、そのプールで同時に走っているジョブの本数、その大ジョブの頻度。
-- 目安（256サーバ、rho 0.85、合成モデル、90%ブートストラップ区間つき）：同時10本なら比率0.92（頻度0.002）／0.72（頻度0.02）、同時30本なら0.73／0.66。
-- **頻度の列を落とさないこと。**旧表にこの列がなかったため、希少な大ジョブには保守側、頻繁な大ジョブには危険側の数字を出していました。
-- 自分のクラスタで判定するなら、完了率や達成率ではなく**平均待ち時間が観測窓とともに伸びるか**を見ます。窓を2倍にして平均が1.4倍以上になるなら、そのクラスは発散しています。
-- **実クラスタについての射程は極端に狭い。**Philly 11仮想クラスタのうち10個には、容量の4分の1を超えるジョブが1本も来ていません。唯一の例外でも、容量の半分超は19,100本中**1本**です。
+現在見る量は、**最大ジョブがプール容量に占める割合 × 同時実行ジョブ数 × 大ジョブの頻度**の3つです。256サーバ、rho 0.85の合成モデルでは、同時10本なら比率0.92（頻度0.002）／0.72（頻度0.02）、同時30本なら0.73／0.66が目安です。頻度を落とすと、希少な大ジョブには保守側、頻繁な大ジョブには危険側の数字になります。
 
-実際の到着列でスケジューラを比較した結果ではなく、外部再現もまだありません。
+自分のクラスタでは完了率ではなく、平均待ち時間が観測窓とともに伸びるかを見ます。窓を2倍にして平均が1.4倍以上になるなら、そのクラスは発散しています。実クラスタについて言える範囲は極端に狭く、Phillyの11仮想クラスタ中10個には容量の4分の1を超えるジョブがなく、唯一の例外でも容量の半分超は19,100本中1本でした。
 
+**証拠の境界：** 実際の到着列を使ったスケジューラ比較ではなく、外部からの独立再現もまだありません。
+
+**[現在のResearch Note（EP-0013）を読む →](/ja/research/gpu-scheduling-one-job/)**
+<!-- GENERATED: program-current:END -->
+
+<!-- GENERATED: program-history:START -->
 ## 公開中のResearch Note
 
-1. [[ja/research/gpu-scheduling/index|EP-0001 — 初期比較]]
-2. [[ja/research/gpu-scheduling-phase-diagram/index|EP-0002 — 飢餓領域の発見]]
-3. [[ja/research/gpu-scheduling-starvation-mechanism/index|EP-0003 — 機構の切り分け]]
-4. [[ja/research/gpu-scheduling-real-traces/index|EP-0004 — 公開トレースでの前提検査]]
-5. [[ja/research/gpu-scheduling-pool-size/index|EP-0005 — プール規模への依存]]
-6. [[ja/research/gpu-scheduling-concurrency/index|EP-0006 — 駆動変数の訂正]]
-7. [[ja/research/gpu-scheduling-real-cluster-position/index|EP-0007 — 実クラスタ位置での測定と機構の取り下げ]]
-8. [[ja/research/gpu-scheduling-headline-broken/index|EP-0008 — 看板結論を自分で壊す]]
-9. [[ja/research/gpu-scheduling-phase-reaxis/index|EP-0009 — 相図の軸の交絡]]
-10. [[ja/research/gpu-scheduling-third-variable/index|EP-0010 — 「2つの数」の撤回]]
-11. [[ja/research/gpu-scheduling-blind-detector/index|EP-0011 — 判定器が発散を測っていなかった]]
-12. [[ja/research/gpu-scheduling-alpha-boundary/index|EP-0012 — 動かない境界への置き換え]]
-13. **[[ja/research/gpu-scheduling-one-job/index|EP-0013 — 実クラスタの主張は1本のジョブに乗っている（最新）]]**
+1. [[ja/research/gpu-scheduling/index|EP-0001 — 推定誤差と再実行コストで、GPUスケジューリングの優劣が入れ替わる]]
+2. [[ja/research/gpu-scheduling-phase-diagram/index|EP-0002 — 平均は良いのに一部のジョブだけが終わらない。安定性の判定器も3回壊れた]]
+3. [[ja/research/gpu-scheduling-starvation-mechanism/index|EP-0003 — 飢餓を決めるのは平均ジョブ幅ではなく、クラスタ全体を要するジョブが1本でもあるかどうか]]
+4. [[ja/research/gpu-scheduling-real-traces/index|EP-0004 — 実際のGPUクラスタには、プール全体を占めるジョブが来ていなかった]]
+5. [[ja/research/gpu-scheduling-pool-size/index|EP-0005 — 安全境界はプールが大きいほど下がる]]
+6. [[ja/research/gpu-scheduling-concurrency/index|EP-0006 — 効いていたのはプールの大きさではなく、同時に取り合うジョブの本数だった]]
+7. [[ja/research/gpu-scheduling-real-cluster-position/index|EP-0007 — 実クラスタの位置で測り、4本ぶん載せてきた説明を取り下げた]]
+8. [[ja/research/gpu-scheduling-headline-broken/index|EP-0008 — 背景の粒度を変えるだけで、この研究の看板結論が消えた]]
+9. [[ja/research/gpu-scheduling-phase-reaxis/index|EP-0009 — 代表成果だった相図の軸そのものが、18倍交絡していた]]
+10. [[ja/research/gpu-scheduling-third-variable/index|EP-0010 — 「2つの数で決まる」を撤回した]]
+11. [[ja/research/gpu-scheduling-blind-detector/index|EP-0011 — 判定器が発散を測っていなかった。窓で割っていたので、値が動かなかった]]
+12. [[ja/research/gpu-scheduling-alpha-boundary/index|EP-0012 — 動かない境界を持つ統計量へ置き換え、運用数値を戻した]]
+13. **[[ja/research/gpu-scheduling-one-job/index|EP-0013 — 実クラスタについての主張は、19,100本中1本のジョブに乗っていた]]（最新）**
+<!-- GENERATED: program-history:END -->

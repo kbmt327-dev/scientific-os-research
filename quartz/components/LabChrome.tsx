@@ -7,8 +7,11 @@ function pageBase({ cfg, ctx }: QuartzComponentProps): string {
   return new URL(`https://${cfg.baseUrl}`).pathname.replace(/\/$/, "")
 }
 
-function route(base: string, slug: string): string {
-  return `${base}/${slug.replace(/^\//, "").replace(/\/$/, "")}/`
+function route(base: string, slug: string, directory = false): string {
+  const clean = slug.replace(/^\//, "").replace(/\/$/, "")
+  const indexRoute = clean === "index" || clean.endsWith("/index")
+  const target = indexRoute ? clean.replace(/(^|\/)index$/, "").replace(/\/$/, "") : clean
+  return `${base}/${target}${directory || indexRoute ? "/" : ""}`
 }
 
 function languageFor({ fileData }: QuartzComponentProps): "ja" | "en" {
@@ -16,10 +19,9 @@ function languageFor({ fileData }: QuartzComponentProps): "ja" | "en" {
 }
 
 function counterpartSlug(slug: string, target: "ja" | "en"): string {
-  const canonical = slug === "index" ? "" : slug.endsWith("/index") ? slug.slice(0, -6) : slug
-  if (!canonical || canonical === "ja" || canonical === "en") return target
-  if (canonical.startsWith("ja/") || canonical.startsWith("en/")) {
-    return `${target}/${canonical.slice(3)}`
+  if (slug === "index" || slug === "ja" || slug === "en") return `${target}/index`
+  if (slug.startsWith("ja/") || slug.startsWith("en/")) {
+    return `${target}/${slug.slice(3)}`
   }
   return target
 }
@@ -34,7 +36,7 @@ export function LabHeader(props: QuartzComponentProps) {
       <a class="lab-skip-link" href="#lab-main-content">
         {lang === "ja" ? "本文へ移動" : "Skip to content"}
       </a>
-      <a class="lab-brand" href={route(base, lang)}>
+      <a class="lab-brand" href={route(base, lang, true)}>
         Open Research Lab
       </a>
       <nav class="lab-language" aria-label={lang === "ja" ? "言語" : "Language"}>
@@ -70,12 +72,13 @@ export function LabSidebar(props: QuartzComponentProps) {
     if (segment === "") return canonical === lang
     return canonical === `${lang}/${segment}` || canonical.startsWith(`${lang}/${segment}/`)
   }
-  const items = [
-    ["", ja ? "トップ" : "Home"],
-    ["research", ja ? "研究一覧" : "Research"],
-    ["how-to-read", ja ? "Research Noteの読み方" : "How to read a Research Note"],
-    ["about/open-research-lab", ja ? "このLabと運営者" : "About the lab and its builder"],
-    ["contribute", ja ? "再現・反証・共同研究" : "Reproduce, challenge, collaborate"],
+  const items: Array<[string, string, boolean]> = [
+    ["", ja ? "トップ" : "Home", true],
+    ["research", ja ? "研究一覧" : "Research", true],
+    ["research-notes", ja ? "研究ログ" : "Research log", true],
+    ["how-to-read", ja ? "Research Noteの読み方" : "How to read a Research Note", true],
+    ["about/open-research-lab", ja ? "このLabと運営者" : "About the lab and its builder", false],
+    ["contribute", ja ? "再現・反証・共同研究" : "Reproduce, challenge, collaborate", true],
   ]
 
   return (
@@ -95,9 +98,9 @@ export function LabSidebar(props: QuartzComponentProps) {
       </button>
       <div id="lab-sidebar-panel" class="lab-sidebar-panel">
         <nav class="lab-primary-nav" aria-label={ja ? "メインメニュー" : "Main menu"}>
-          {items.map(([path, label]) => (
+          {items.map(([path, label, directory]) => (
             <a
-              href={route(base, path ? `${lang}/${path}` : lang)}
+              href={route(base, path ? `${lang}/${path}` : lang, directory)}
               aria-current={current(path) ? "page" : undefined}
             >
               {label}

@@ -4,12 +4,13 @@ description: Scientific OSを用いた研究を、結果・根拠・限界・未
 lang: ja
 ---
 
-<p class="site-definition">Scientific OSを用いて研究上の問いについて、結果だけでなく、何を根拠にどこまで言えるのか、何がまだ分からないのかを公開する場所</p>
+<p class="site-definition">Scientific OSが進める研究を、結論だけでなく、その根拠・限界・未解決点まで含めて公開しています。</p>
 
 <p class="site-boundary">完成済みの成果一覧ではありません。研究は段階も証拠の種類も異なり、外部からの再現や反証によって更新されます。</p>
 
 ## いま取り組んでいる研究
 
+<!-- GENERATED: program-cards:START -->
 <div class="program-index">
   <article class="program-row">
     <div>
@@ -52,5 +53,6 @@ lang: ja
     </nav>
   </article>
 </div>
+<!-- GENERATED: program-cards:END -->
 
-<p class="program-index-more"><a href="/ja/research/">公開中のResearch Noteをすべて見る</a></p>
+<p class="program-index-more"><a href="/ja/research/">研究分野ごとの現在地を見る</a> · <a href="/ja/research-notes/">Research Noteを時系列で見る</a></p>

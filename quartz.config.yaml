@@ -137,7 +137,12 @@ plugins:
     enabled: true
   - source: "@quartz-community/content-page"
     enabled: true
+  - source: "@open-research-lab/curated-folder-page"
+    enabled: true
+    order: 45
   - source: "@quartz-community/folder-page"
+    # Still generates useful virtual indexes for folders without an authored
+    # index.md. Authored indexes are claimed by CuratedFolderPage first.
     enabled: true
   - source: "@quartz-community/tag-page"
     enabled: true

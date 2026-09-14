@@ -10,47 +10,49 @@ lang: en
 
 ## Research in progress
 
+<!-- GENERATED: program-cards:START -->
 <div class="program-index">
   <article class="program-row">
     <div>
       <h3>GPU cluster scheduling</h3>
-      <p>When does shortest-job-first scheduling help, and under what conditions does it break?</p>
+      <p>We study when running shorter jobs first helps, when it breaks, and which conditions decide the difference.</p>
     </div>
     <nav aria-label="GPU cluster scheduling">
-      <a href="/en/programs/gpu-scheduling/">Research overview</a>
-      <a href="/en/research/gpu-scheduling-one-job/">Latest Note</a>
+      <a href="/en/programs/gpu-scheduling/">Program overview</a>
+      <a href="/en/research/gpu-scheduling-one-job/">Current Note</a>
     </nav>
   </article>
   <article class="program-row">
     <div>
       <h3>Queueing system identification</h3>
-      <p>How much of a hidden queueing mechanism can be identified from externally visible records alone?</p>
+      <p>We test how much of a hidden queueing mechanism can be recovered from externally visible records alone.</p>
     </div>
     <nav aria-label="Queueing system identification">
-      <a href="/en/programs/queueing-system-identification/">Research overview</a>
-      <a href="/en/research/simulation-worlds/">Latest Note</a>
+      <a href="/en/programs/queueing-system-identification/">Program overview</a>
+      <a href="/en/research/simulation-worlds/">Current Note</a>
     </nav>
   </article>
   <article class="program-row">
     <div>
       <h3>Human movement model interfaces</h3>
-      <p>How can coordinate errors, target leakage, and false external validation be blocked before measured motion reaches a model?</p>
+      <p>We study how to stop coordinate mix-ups, target leakage, and false external validation before measured motion reaches a model.</p>
     </div>
     <nav aria-label="Human movement model interfaces">
-      <a href="/en/programs/human-model-interface/">Research overview</a>
-      <a href="/en/research/human-model-dataset-portfolio/">Latest Note</a>
+      <a href="/en/programs/human-model-interface/">Program overview</a>
+      <a href="/en/research/human-model-dataset-portfolio/">Current Note</a>
     </nav>
   </article>
   <article class="program-row">
     <div>
       <h3>Badminton biomechanics</h3>
-      <p>Designing an experiment that separates the effects of preparation time and centre of mass in the smash.</p>
+      <p>We are designing an experiment that separates the effects of preparation time and centre of mass on the badminton smash.</p>
     </div>
     <nav aria-label="Badminton biomechanics">
-      <a href="/en/programs/badminton-biomechanics/">Research overview</a>
-      <a href="/en/research/badminton-biomechanics/">Latest Note</a>
+      <a href="/en/programs/badminton-biomechanics/">Program overview</a>
+      <a href="/en/research/badminton-biomechanics/">Current Note</a>
     </nav>
   </article>
 </div>
+<!-- GENERATED: program-cards:END -->
 
-<p class="program-index-more"><a href="/en/research/">See every published Research Note</a></p>
+<p class="program-index-more"><a href="/en/research/">See current state by research area</a> · <a href="/en/research-notes/">Browse Research Notes by date</a></p>

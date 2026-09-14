@@ -1,0 +1,24 @@
+{
+  "name": "@open-research-lab/curated-folder-page",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@quartz-community/content-page": "^0.1.0"
+  },
+  "quartz": {
+    "name": "curated-folder-page",
+    "displayName": "Curated Folder Page",
+    "description": "Renders authored folder indexes without an automatic file listing.",
+    "category": "pageType",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "defaultOrder": 45,
+    "defaultEnabled": true,
+    "defaultOptions": {}
+  }
+}

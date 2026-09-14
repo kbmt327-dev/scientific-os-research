@@ -6,7 +6,7 @@ Canonical site: https://kbmt327-dev.github.io/scientific-os-research/
 Japanese home: https://kbmt327-dev.github.io/scientific-os-research/ja/
 English home: https://kbmt327-dev.github.io/scientific-os-research/en/
 
-This file is a map and a reading guide. When this file and a Research Note disagree, the note wins.
+This file is a map and a reading guide. Program pages are canonical for the current claim; each Research Note is canonical for its dated record.
 
 ## How a Research Note is ordered
 
@@ -31,8 +31,9 @@ Method notes use `What this method does` / `What this method establishes` / `Wha
 - `UNKNOWN` is a stated evidence frontier, not missing text.
 - A quick reproduction run by the original repository is not an independent replication. Every independent replication count on this site is zero.
 - Japanese and English pages are parallel views of the same research object, written independently in each language rather than translated. Match them by `research_id`; the scientific content matches, the prose does not.
-- Later notes narrow earlier dated claims. Follow forward links. The newest published note is the current claim, which is not a claim that all internal work is published.
+- Later notes narrow earlier dated claims. Follow forward links, then use the Program current-state page to see which dated Note currently carries the claim. Publication does not imply that all internal work is public.
 
+<!-- GENERATED: research-current:START -->
 ## Research areas
 
 ### GPU cluster scheduling
@@ -41,47 +42,52 @@ Program overview:
 - English: https://kbmt327-dev.github.io/scientific-os-research/en/programs/gpu-scheduling/
 - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/programs/gpu-scheduling/
 
-Under what conditions does size-based scheduling — run the shortest job first — break? Four studies; EP-0004 carries the current claim.
+Question: Under what conditions does size-based scheduling — running the shortest job first — break?
 
-Current claim: the breaking mechanism is real inside synthetic simulation, and one job needing the entire cluster is enough to trigger it when size priority is combined with greedy packing. But two public traces contained no such job in any pool actually in production. The quantity to watch is the largest job as a fraction of pool capacity (safe boundary 0.75, worst measured 0.59), and the predicted harm is a several-fold delay rather than starvation.
+Current claim (EP-0013): The three quantities to watch are **largest-job share of pool capacity × concurrent job count × large-job frequency**. In the 256-server, rho 0.85 synthetic model, the rule-of-thumb ratios are 0.92 (frequency 0.002) or 0.72 (frequency 0.02) at concurrency 10, and 0.73 or 0.66 at concurrency 30. Dropping frequency makes the number conservative for rare large jobs and dangerous for frequent ones.
 
-- GPU-SCHED-EP-0001 — synthetic simulation; estimation error and restart cost reverse which scheduler wins. Two claims later made conditional.
+In a new cluster, inspect whether mean response time grows with the observation window rather than using completion rate. If doubling the window raises the mean by at least 1.4×, that class is diverging. The real-cluster reach is extremely narrow: ten of Philly's 11 virtual clusters contain no job above a quarter of capacity, and the sole exception has exactly one job out of 19,100 above half of capacity.
+
+Evidence boundary: This is not a scheduler comparison on a real arrival sequence, and there are no independent external replications.
+
+Published Research Notes:
+- GPU-SCHED-EP-0001 — Estimation error and restart cost reverse which GPU scheduler wins (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling/
-- GPU-SCHED-EP-0002 — synthetic simulation; a good average hides a job class that never finishes, and three stability detectors failed.
+- GPU-SCHED-EP-0002 — A good average, a job class that never finishes, and three broken stability detectors (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-phase-diagram/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-phase-diagram/
-- GPU-SCHED-EP-0003 — synthetic simulation; a mean-matched control isolated the cause. The practical rule stated here was later withdrawn.
+- GPU-SCHED-EP-0003 — Whole-cluster jobs, not mean gang size, decide when size-based scheduling breaks (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-starvation-mechanism/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-starvation-mechanism/
-- GPU-SCHED-EP-0004 — public-trace demand measurement plus a synthetic ratio sweep. The numbers stated here were later retracted; the trace measurement survives.
+- GPU-SCHED-EP-0004 — Real GPU clusters never received a job that filled the pool (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-real-traces/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-real-traces/
-- GPU-SCHED-EP-0005 — the safe ratio falls with pool size. The next study showed this named the wrong variable.
+- GPU-SCHED-EP-0005 — The safe ratio falls as the pool grows (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-pool-size/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-pool-size/
-- GPU-SCHED-EP-0006 — the driver is concurrency, not pool size. The axis survives; the numbers were later remeasured.
+- GPU-SCHED-EP-0006 — The driver was never pool size. It is how many jobs compete at once (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-concurrency/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-concurrency/
-- GPU-SCHED-EP-0007 — measured at the real cluster's concurrency, and withdrew a mechanism claim carried for four studies.
+- GPU-SCHED-EP-0007 — Measured at the real cluster's position, and withdrew an explanation carried for four studies (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-real-cluster-position/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-real-cluster-position/
-- GPU-SCHED-EP-0008 — changing only the background granularity made this project's headline result disappear.
+- GPU-SCHED-EP-0008 — Changing only the granularity of the background made the headline result disappear (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-headline-broken/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-headline-broken/
-- GPU-SCHED-EP-0009 — the flagship phase diagram's axis was confounded with concurrency by a factor of 18.
+- GPU-SCHED-EP-0009 — The axis of the flagship phase diagram was confounded by a factor of 18 (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-phase-reaxis/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-phase-reaxis/
-- GPU-SCHED-EP-0010 — retracted "decided by two numbers"; frequency is a third variable and the background family a fourth.
+- GPU-SCHED-EP-0010 — Retracting "this is decided by two numbers" (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-third-variable/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-third-variable/
-- GPU-SCHED-EP-0011 — the boundary detector was a censoring ratio and could not see divergence. Mean response time grew 3.9x while it moved 0.562 to 0.574.
+- GPU-SCHED-EP-0011 — The detector was not measuring divergence. It divided by the window, so it never moved (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-blind-detector/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-blind-detector/
-- GPU-SCHED-EP-0012 — replaced the detector with alpha, the elasticity of mean response time to the observation window, and restored the operational table with a frequency column.
+- GPU-SCHED-EP-0012 — Replaced it with a statistic whose boundary stays put, and restored the numbers (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-alpha-boundary/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-alpha-boundary/
-- GPU-SCHED-EP-0013 — CURRENT CLAIM; public-trace frequency measurement. The real-cluster claim rests on one job out of 19,100.
+- GPU-SCHED-EP-0013 — The real-cluster claim rests on one job out of 19,100 (Finding) — CURRENT
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-one-job/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-one-job/
 
@@ -91,9 +97,14 @@ Program overview:
 - English: https://kbmt327-dev.github.io/scientific-os-research/en/programs/queueing-system-identification/
 - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/programs/queueing-system-identification/
 
-Given a queueing world whose mechanism is hidden, how much can external records alone recover? One hidden instance was identified correctly inside a disclosed family of candidate mechanisms, and all five structural components matched the withheld truth. This tests selection from given options, not discovery from an unknown hypothesis space.
+Question: Given a queueing world whose mechanism is hidden, how much of it can external records alone recover?
 
-- SIM-WORLD-EP-0001 — synthetic blind benchmark.
+Current claim (EP-0001): Within a disclosed family of candidate mechanisms, one hidden instance was identified correctly and all five structural components matched the withheld truth.
+
+Evidence boundary: This tests selection from given options, not discovery from an open hypothesis space, and transfer to a real system has not been tested.
+
+Published Research Notes:
+- SIM-WORLD-EP-0001 — How much of a hidden queueing mechanism can observation alone recover? (Finding) — CURRENT
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/simulation-worlds/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/simulation-worlds/
 
@@ -103,12 +114,17 @@ Program overview:
 - English: https://kbmt327-dev.github.io/scientific-os-research/en/programs/human-model-interface/
 - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/programs/human-model-interface/
 
-Can coordinate mix-ups, target leakage, and false external validation be blocked before measured human motion reaches a model? The contract rejects seven deliberately broken variants. The current dataset decision uses Carter for development and internal holdout, OpenCap laboratory measurements for external validation, and Knee Grand Challenge for internal-load stress testing. The Carter split is fixed at 30 development, 10 validation, and 10 test participants. B3D is a source-adapter format; NumPy plus explicit semantics is the internal representation, and Nimble is not mandatory. No model has been fitted and no holdout has been read.
+Question: Before measured human motion reaches a model, can explicit contracts and dataset boundaries stop coordinate mix-ups, target leakage, and false external validation?
 
-- HUMAN-MODEL-EP-0004 — contract validation.
+Current claim (EP-0005): The interface contract rejects seven deliberately broken variants. The dataset gate splits Carter into 30 development, 10 validation, and 10 test participants; reserves OpenCap laboratory data for external validation; and reserves Knee Grand Challenge for internal-load stress testing. B3D is a source-adapter format, the internal representation is NumPy plus explicit semantics, and Nimble is not mandatory.
+
+Evidence boundary: No model has been fitted and no holdout has been read.
+
+Published Research Notes:
+- HUMAN-MODEL-EP-0004 — A contract that stops human data reaching a model on ambiguous terms (Method)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/human-model/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/human-model/
-- HUMAN-MODEL-EP-0005 — CURRENT DATASET DECISION; development, external validation, and internal-load testing are separated before any model fitting.
+- HUMAN-MODEL-EP-0005 — A dataset portfolio that keeps development, external validation, and internal-load testing separate (Dataset) — CURRENT
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/human-model-dataset-portfolio/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/human-model-dataset-portfolio/
 
@@ -118,19 +134,23 @@ Program overview:
 - English: https://kbmt327-dev.github.io/scientific-os-research/en/programs/badminton-biomechanics/
 - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/programs/badminton-biomechanics/
 
-Can the effect of short preparation time be separated from the effect of backward centre of mass in the smash? Design and power sensitivity only. No observations exist. Not sealed, and data collection is not authorized.
+Question: In the smash, can the effect of short preparation time be separated from the effect of backward centre of mass?
 
-- IAA-EP-0008 — protocol and power sensitivity.
+Current claim (EP-0008): Only the experimental design and power sensitivity are public; no observations exist. Detecting the interaction requires substantially more participants than detecting the main effects, so the sample size remains undecided.
+
+Evidence boundary: Instrument feasibility and ethics remain unresolved, so the protocol is not sealed and data collection is not authorized.
+
+Published Research Notes:
+- IAA-EP-0008 — A 2x2 design separating preparation time from backward CoM in the badminton smash (Protocol) — CURRENT
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/badminton-biomechanics/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/badminton-biomechanics/
 
-### The research instrument itself
+### Research instruments and other records
 
-Sealing a prediction and scoring it later assumes the observer does not move what is observed. When the predictor is also the actor, that assumption breaks in five places: attribution of a miss, going and making your own prediction false, a scoring date you do not own, waiting that becomes a stall, and success that moves the distribution being measured. The contract answers each with a field and an invariant that refuses the record. Contract validation only; no prediction sealed in this grammar has reached a scoring date.
-
-- INTERVENTION-EP-0001 — method; intervention prediction grammar, nine refused counter-examples, zero scored predictions.
+- INTERVENTION-EP-0001 — When the predictor also acts, the observational prediction contract breaks in five places (Method)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/intervention-grammar/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/intervention-grammar/
+<!-- GENERATED: research-current:END -->
 
 ## Guides and participation
 
@@ -141,4 +161,4 @@ Sealing a prediction and scoring it later assumes the observer does not move wha
 - Repository: https://github.com/kbmt327-dev/scientific-os-research
 - Discussions: https://github.com/kbmt327-dev/scientific-os-research/discussions
 
-The Markdown Research Notes are the canonical public representation. This file is a guide and index, not a second claim database.
+Program current-state pages are canonical for current claims. Markdown Research Notes are canonical for their dated records. This file is a guide and index, not a second claim database.

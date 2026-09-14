@@ -6,11 +6,12 @@ Source, validation, and bounded reproduction packages for the [Open Research Lab
 
 - `content/ja/` and `content/en/` — parallel human-readable Research Notes and guide pages.
 - `publication-manifest.yaml` — the source Episode digest and public language views for each research identity.
+- `program-current.yaml` — the single editable authority for each Program's current claim, evidence boundary, and current Note.
 - `reproduction/` — versioned public artifacts, sealed predictions, results, and rerun code.
 - `scripts/` — publication-contract, pair, link, privacy, built-site, and bounded-reproduction checks.
 - `docs/PUBLICATION_PIPELINE.md` — operator-facing publication flow.
 
-The site content is structured Markdown and remains the shared representation for people and language models. `llms.txt` is only a reading guide and index; it does not duplicate claims in a second data model.
+Program pages are authoritative for mutable current claims, while Research Notes are authoritative for their dated records. Home, Research, `llms.txt`, Program current-state blocks, and the research log are generated from `program-current.yaml` plus the publication manifest; they are not independent claim databases.
 
 ## Validate locally
 
@@ -19,6 +20,7 @@ python -m pip install -r requirements-reproduce.txt
 npm ci
 npx quartz plugin install
 python scripts/publish_episode.py validate content
+python scripts/sync_current_state.py --check
 python scripts/check_links.py content
 python scripts/check_llms.py quartz/static/llms.txt content
 python scripts/privacy_scan.py .

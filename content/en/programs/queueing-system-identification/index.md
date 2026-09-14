@@ -10,8 +10,18 @@ Queue logs expose arrivals, completions, and other externally visible events, wh
 
 When service times, priorities, and capacity constraints can produce similar records, which observations and comparisons distinguish the candidate mechanisms?
 
-## Current public boundary
+<!-- GENERATED: program-current:START -->
+## Current public state
 
-For one synthetic world with its truth withheld, the correct mechanism was selected from a disclosed candidate family. All five structural components matched the withheld truth. This is not evidence of discovering a mechanism from an open hypothesis space, and transfer to a real system has not been tested.
+Within a disclosed family of candidate mechanisms, one hidden instance was identified correctly and all five structural components matched the withheld truth.
 
-**[[en/research/simulation-worlds/index|Read the latest Research Note →]]**
+**Evidence boundary:** This tests selection from given options, not discovery from an open hypothesis space, and transfer to a real system has not been tested.
+
+**[Read the current Research Note (EP-0001) →](/en/research/simulation-worlds/)**
+<!-- GENERATED: program-current:END -->
+
+<!-- GENERATED: program-history:START -->
+## Published Research Notes
+
+1. **[[en/research/simulation-worlds/index|EP-0001 — How much of a hidden queueing mechanism can observation alone recover?]] (latest)**
+<!-- GENERATED: program-history:END -->

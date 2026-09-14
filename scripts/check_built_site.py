@@ -41,7 +41,9 @@ def broken_local_links(public: Path) -> list[tuple[str, str]]:
                 target = (public / path[len(BASE_PATH):]).resolve()
             else:
                 target = (page.parent / path).resolve()
-            if target.is_dir():
+            if path.endswith("/"):
+                target = target / "index.html"
+            elif target.is_dir():
                 target = target / "index.html"
             elif not target.suffix:
                 target = target.with_suffix(".html")
@@ -73,6 +75,10 @@ def main() -> int:
         "ja/how-to-read/index.html",
         "en/contribute/index.html",
         "ja/contribute/index.html",
+        "en/about/open-research-lab.html",
+        "ja/about/open-research-lab.html",
+        "en/research-notes/index.html",
+        "ja/research-notes/index.html",
         "en/programs/gpu-scheduling/index.html",
         "ja/programs/gpu-scheduling/index.html",
         "en/programs/queueing-system-identification/index.html",
@@ -101,6 +107,15 @@ def main() -> int:
         if "Powered by" not in home or "© 2026 kbmt327" not in home:
             print(f"Missing site-owner footer on {lang} home")
             return 1
+        about_href = f'/scientific-os-research/{lang}/about/open-research-lab'
+        if f'href="{about_href}"' not in home or f'href="{about_href}/"' in home:
+            print(f"About navigation has a non-deployable URL on {lang} home")
+            return 1
+        research = (public / lang / "research" / "index.html").read_text(encoding="utf-8")
+        for page_name, page in (("home", home), ("research", research)):
+            if "items under this folder" in page:
+                print(f"Automatic folder listing leaked into curated {lang} {page_name}")
+                return 1
     for lang, other_lang in (("en", "ja"), ("ja", "en")):
         for path in (f"{lang}/index.html", f"{lang}/research/gpu-scheduling/index.html"):
             page = (public / path).read_text(encoding="utf-8")
@@ -129,8 +144,8 @@ def main() -> int:
             print(f"- {where} -> {href}")
         return 1
     llms = (public / "llms.txt").read_text(encoding="utf-8")
-    if "The Markdown Research Notes are the canonical public representation" not in llms:
-        print("Built llms.txt is missing its canonical-representation boundary")
+    if "Program current-state pages are canonical for current claims" not in llms:
+        print("Built llms.txt is missing its current-claim authority boundary")
         return 1
     print(f"Built-site check passed: {len(required)} canonical routes, {len(slugs)} redirects, language routing, lab chrome, bilingual Mermaid and hreflang")
     return 0

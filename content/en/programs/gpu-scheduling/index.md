@@ -20,28 +20,32 @@ Then **the detector itself turned out to be broken** (EP-0011). The flow balance
 
 The replacement, **alpha** (the elasticity of mean response time with respect to the observation window), reads 0 where the system is stable and 1 at linear divergence, and moves the boundary by at most 0.02 when the window is multiplied by eight (EP-0012). The operational numbers are back, **now with a frequency column**.
 
-## Current public claims
+<!-- GENERATED: program-current:START -->
+## Current public state
 
-- **Three quantities to watch:** the largest job as a fraction of pool capacity, how many jobs run on that pool at once, and how often such a large job arrives.
-- Rules of thumb (256 servers, rho 0.85, synthetic model, with 90% bootstrap intervals): at concurrency 10, ratio 0.92 (frequency 0.002) or 0.72 (frequency 0.02); at concurrency 30, 0.73 or 0.66.
-- **Do not drop the frequency column.** Without it, the old table handed a conservative number to clusters where big jobs are rare and a dangerous one to clusters where they are common.
-- To judge your own cluster, do not use a completion or attainment rate. Ask whether **mean response time grows with the observation window**: double the window, and if the mean rises by 1.4× or more, that class is diverging.
-- **The real-cluster scope is extremely narrow.** Ten of Philly's 11 virtual clusters contain no job above a quarter of capacity. In the one exception, exactly **one job out of 19,100** exceeds half of capacity.
+The three quantities to watch are **largest-job share of pool capacity × concurrent job count × large-job frequency**. In the 256-server, rho 0.85 synthetic model, the rule-of-thumb ratios are 0.92 (frequency 0.002) or 0.72 (frequency 0.02) at concurrency 10, and 0.73 or 0.66 at concurrency 30. Dropping frequency makes the number conservative for rare large jobs and dangerous for frequent ones.
 
-This is not yet a policy comparison on a real arrival sequence, and there are no external replications.
+In a new cluster, inspect whether mean response time grows with the observation window rather than using completion rate. If doubling the window raises the mean by at least 1.4×, that class is diverging. The real-cluster reach is extremely narrow: ten of Philly's 11 virtual clusters contain no job above a quarter of capacity, and the sole exception has exactly one job out of 19,100 above half of capacity.
 
+**Evidence boundary:** This is not a scheduler comparison on a real arrival sequence, and there are no independent external replications.
+
+**[Read the current Research Note (EP-0013) →](/en/research/gpu-scheduling-one-job/)**
+<!-- GENERATED: program-current:END -->
+
+<!-- GENERATED: program-history:START -->
 ## Published Research Notes
 
-1. [[en/research/gpu-scheduling/index|EP-0001 — initial comparison]]
-2. [[en/research/gpu-scheduling-phase-diagram/index|EP-0002 — the starvation region]]
-3. [[en/research/gpu-scheduling-starvation-mechanism/index|EP-0003 — isolating the mechanism]]
-4. [[en/research/gpu-scheduling-real-traces/index|EP-0004 — checking the precondition in public traces]]
-5. [[en/research/gpu-scheduling-pool-size/index|EP-0005 — dependence on pool size]]
-6. [[en/research/gpu-scheduling-concurrency/index|EP-0006 — correcting the driver]]
-7. [[en/research/gpu-scheduling-real-cluster-position/index|EP-0007 — measuring at the real cluster, and withdrawing a mechanism]]
-8. [[en/research/gpu-scheduling-headline-broken/index|EP-0008 — breaking our own headline]]
-9. [[en/research/gpu-scheduling-phase-reaxis/index|EP-0009 — the phase diagram's confounded axis]]
-10. [[en/research/gpu-scheduling-third-variable/index|EP-0010 — retracting "two numbers"]]
-11. [[en/research/gpu-scheduling-blind-detector/index|EP-0011 — the detector was not measuring divergence]]
-12. [[en/research/gpu-scheduling-alpha-boundary/index|EP-0012 — a boundary that stays put]]
-13. **[[en/research/gpu-scheduling-one-job/index|EP-0013 — the real-cluster claim rests on one job (latest)]]**
+1. [[en/research/gpu-scheduling/index|EP-0001 — Estimation error and restart cost reverse which GPU scheduler wins]]
+2. [[en/research/gpu-scheduling-phase-diagram/index|EP-0002 — A good average, a job class that never finishes, and three broken stability detectors]]
+3. [[en/research/gpu-scheduling-starvation-mechanism/index|EP-0003 — Whole-cluster jobs, not mean gang size, decide when size-based scheduling breaks]]
+4. [[en/research/gpu-scheduling-real-traces/index|EP-0004 — Real GPU clusters never received a job that filled the pool]]
+5. [[en/research/gpu-scheduling-pool-size/index|EP-0005 — The safe ratio falls as the pool grows]]
+6. [[en/research/gpu-scheduling-concurrency/index|EP-0006 — The driver was never pool size. It is how many jobs compete at once]]
+7. [[en/research/gpu-scheduling-real-cluster-position/index|EP-0007 — Measured at the real cluster's position, and withdrew an explanation carried for four studies]]
+8. [[en/research/gpu-scheduling-headline-broken/index|EP-0008 — Changing only the granularity of the background made the headline result disappear]]
+9. [[en/research/gpu-scheduling-phase-reaxis/index|EP-0009 — The axis of the flagship phase diagram was confounded by a factor of 18]]
+10. [[en/research/gpu-scheduling-third-variable/index|EP-0010 — Retracting "this is decided by two numbers"]]
+11. [[en/research/gpu-scheduling-blind-detector/index|EP-0011 — The detector was not measuring divergence. It divided by the window, so it never moved]]
+12. [[en/research/gpu-scheduling-alpha-boundary/index|EP-0012 — Replaced it with a statistic whose boundary stays put, and restored the numbers]]
+13. **[[en/research/gpu-scheduling-one-job/index|EP-0013 — The real-cluster claim rests on one job out of 19,100]] (latest)**
+<!-- GENERATED: program-history:END -->

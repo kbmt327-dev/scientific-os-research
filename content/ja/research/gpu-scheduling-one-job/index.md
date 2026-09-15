@@ -32,6 +32,9 @@ tags: [finding, scheduling, traces, scope, japanese]
 
 <div class="evidence-strip"><span>Finding</span><span>公開トレースの測定</span><span>探索的</span><span>査読なし</span><span>外部再現 0</span></div>
 
+> [!warning] 2026-09-16以降の検証
+> [[ja/research/gpu-scheduling-u31-calibration/index|EP-0017]]でalpha=0.5と別のbacklog判定器が局所的に不一致となりました。このNoteの境界・余裕は合成モデルの未監査閾値に条件付けられます。容量保証として使わないでください。
+
 ## 現在わかっていること
 
 前の研究で運用表が戻りましたが、表には頻度の列があります。この分野が実在のクラスタについて唯一している主張——Philly仮想クラスタ11cb48は安全側にいる——には、その頻度が測られていませんでした。表の頻度0.002の行なら安全比率0.92（余裕0.33）、0.02の行なら0.72（余裕0.13）。**2.5倍の幅があります。**

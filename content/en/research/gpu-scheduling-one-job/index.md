@@ -32,6 +32,9 @@ tags: [finding, scheduling, traces, scope]
 
 <div class="evidence-strip"><span>Finding</span><span>Public-trace measurement</span><span>Exploratory</span><span>Not peer reviewed</span><span>0 external replications</span></div>
 
+> [!warning] Later audit, 2026-09-16
+> [[en/research/gpu-scheduling-u31-calibration/index|EP-0017]] found a local disagreement between alpha=0.5 and a separate backlog detector. Boundaries and margins in this dated Note depend on an unaudited threshold in the synthetic model; do not treat them as capacity guarantees.
+
 ## Current finding
 
 The previous study restored the operational table, but the table has a frequency column — and the one claim this domain makes about a real cluster, that Philly's virtual cluster 11cb48 is on the safe side, had no measured frequency. On the table's 0.002 row the safe ratio is 0.92 (margin 0.33); on the 0.02 row it is 0.72 (margin 0.13). **A factor of 2.5.**

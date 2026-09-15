@@ -14,13 +14,15 @@ Notes are grouped by what they contribute, not by how confident they sound. A **
 
 **Question:** Under what conditions does size-based scheduling — running the shortest job first — break?
 
-**Current state:** The three quantities to watch are **largest-job share of pool capacity × concurrent job count × large-job frequency**. In the 256-server, rho 0.85 synthetic model, the rule-of-thumb ratios are 0.92 (frequency 0.002) or 0.72 (frequency 0.02) at concurrency 10, and 0.73 or 0.66 at concurrency 30. Dropping frequency makes the number conservative for rare large jobs and dangerous for frequent ones.
+**Current state:** In a synthetic MSJ model, largest-job share of capacity, concurrent job count, and large-job frequency affect policy rankings and class starvation. Earlier boundary values are conditional on the alpha=0.5 decision line, whose meaning has not passed independent calibration.
 
-In a new cluster, inspect whether mean response time grows with the observation window rather than using completion rate. If doubling the window raises the mean by at least 1.4×, that class is diverging. The real-cluster reach is extremely narrow: ten of Philly's 11 virtual clusters contain no job above a quarter of capacity, and the sole exception has exactly one job out of 19,100 above half of capacity.
+Saturated throughput was withdrawn as a capacity measure because of truncation and unlimited packing choices when all jobs are offered at once. The stored open-arrival bisection values are also not validated. The local EP-0016 audit and the new fixed-grid EP-0017 calibration observed disagreements with separate backlog labels. EP-0017 stopped at the first disagreement. **The capacity value, physical threshold of the detector, and transfer to a real cluster remain UNKNOWN.**
 
-**Evidence boundary:** This is not a scheduler comparison on a real arrival sequence, and there are no independent external replications.
+The public Philly trace count of one job above half of capacity in 19,100 arrivals survives as a measurement of frequency. Numerical margins derived from it remain conditional on the synthetic model and its unaudited threshold; no scheduler was run on that real trace.
 
-**[Read the current Research Note (EP-0013) →](/en/research/gpu-scheduling-one-job/)** — Finding
+**Evidence boundary:** Scope is synthetic simulations and arrival counts in the public Philly trace. The EP-0017 public artifact checks aggregate arithmetic and the stop branch only; raw runs, simulator source, external independent replication, and prospective real-cluster operation are absent.
+
+**[Read the current Research Note (EP-0017) →](/en/research/gpu-scheduling-u31-calibration/)** — Negative Result
 
 [See the current state and revision history →](/en/programs/gpu-scheduling/)
 

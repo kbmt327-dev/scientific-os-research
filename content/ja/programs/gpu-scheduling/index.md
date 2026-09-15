@@ -23,13 +23,15 @@ GPUクラスタでは、多数のジョブが限られたGPUを取り合いま�
 <!-- GENERATED: program-current:START -->
 ## 現在の公開結論
 
-現在見る量は、**最大ジョブがプール容量に占める割合 × 同時実行ジョブ数 × 大ジョブの頻度**の3つです。256サーバ、rho 0.85の合成モデルでは、同時10本なら比率0.92（頻度0.002）／0.72（頻度0.02）、同時30本なら0.73／0.66が目安です。頻度を落とすと、希少な大ジョブには保守側、頻繁な大ジョブには危険側の数字になります。
+合成MSJモデルでは、最大ジョブの容量比、同時本数、大ジョブ頻度がpolicy間の順位とクラス飢餓を左右します。以前の境界値はalpha=0.5の判定線に条件付けられ、その閾値の意味はまだ独立較正できていません。
 
-自分のクラスタでは完了率ではなく、平均待ち時間が観測窓とともに伸びるかを見ます。窓を2倍にして平均が1.4倍以上になるなら、そのクラスは発散しています。実クラスタについて言える範囲は極端に狭く、Phillyの11仮想クラスタ中10個には容量の4分の1を超えるジョブがなく、唯一の例外でも容量の半分超は19,100本中1本でした。
+飽和throughputは打ち切りと全ジョブ同時投入による無制限のpacking選択があり、容量measureとして停止しました。開放到着の二分法へ移した保存値も未validatedです。EP-0016の局所監査とEP-0017の独立grid較正は別のbacklog判定との不一致を観測しました。EP-0017は最初の不一致で停止しています。**容量値、判定器の物理的な閾値、実クラスタへの一般化はUNKNOWN**です。
 
-**証拠の境界：** 実際の到着列を使ったスケジューラ比較ではなく、外部からの独立再現もまだありません。
+Philly公開トレースで容量の半分超を要求したジョブが19,100本中1本だったという到着頻度の実測は残ります。そこからの余裕の数値は合成モデルの未監査閾値に条件付けられ、実トレース上のscheduler性能ではありません。
 
-**[現在のResearch Note（EP-0013）を読む →](/ja/research/gpu-scheduling-one-job/)**
+**証拠の境界：** 合成モデルとPhilly公開トレースの到着数に限る。EP-0017の公開再現物は集計の算術と停止分岐の検算のみで、raw runやsimulation source、外部独立再現、実クラスタの前向き運用検証はない。
+
+**[現在のResearch Note（EP-0017）を読む →](/ja/research/gpu-scheduling-u31-calibration/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -47,5 +49,6 @@ GPUクラスタでは、多数のジョブが限られたGPUを取り合いま�
 10. [[ja/research/gpu-scheduling-third-variable/index|EP-0010 — 「2つの数で決まる」を撤回した]]
 11. [[ja/research/gpu-scheduling-blind-detector/index|EP-0011 — 判定器が発散を測っていなかった。窓で割っていたので、値が動かなかった]]
 12. [[ja/research/gpu-scheduling-alpha-boundary/index|EP-0012 — 動かない境界を持つ統計量へ置き換え、運用数値を戻した]]
-13. **[[ja/research/gpu-scheduling-one-job/index|EP-0013 — 実クラスタについての主張は、19,100本中1本のジョブに乗っていた]]（最新）**
+13. [[ja/research/gpu-scheduling-one-job/index|EP-0013 — 実クラスタについての主張は、19,100本中1本のジョブに乗っていた]]
+14. **[[ja/research/gpu-scheduling-u31-calibration/index|EP-0017 — 独立した較正でも、容量を決める二つの判定器は一致しなかった]]（最新）**
 <!-- GENERATED: program-history:END -->

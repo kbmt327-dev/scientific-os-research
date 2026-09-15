@@ -44,11 +44,13 @@ Program overview:
 
 Question: Under what conditions does size-based scheduling — running the shortest job first — break?
 
-Current claim (EP-0013): The three quantities to watch are **largest-job share of pool capacity × concurrent job count × large-job frequency**. In the 256-server, rho 0.85 synthetic model, the rule-of-thumb ratios are 0.92 (frequency 0.002) or 0.72 (frequency 0.02) at concurrency 10, and 0.73 or 0.66 at concurrency 30. Dropping frequency makes the number conservative for rare large jobs and dangerous for frequent ones.
+Current claim (EP-0017): In a synthetic MSJ model, largest-job share of capacity, concurrent job count, and large-job frequency affect policy rankings and class starvation. Earlier boundary values are conditional on the alpha=0.5 decision line, whose meaning has not passed independent calibration.
 
-In a new cluster, inspect whether mean response time grows with the observation window rather than using completion rate. If doubling the window raises the mean by at least 1.4×, that class is diverging. The real-cluster reach is extremely narrow: ten of Philly's 11 virtual clusters contain no job above a quarter of capacity, and the sole exception has exactly one job out of 19,100 above half of capacity.
+Saturated throughput was withdrawn as a capacity measure because of truncation and unlimited packing choices when all jobs are offered at once. The stored open-arrival bisection values are also not validated. The local EP-0016 audit and the new fixed-grid EP-0017 calibration observed disagreements with separate backlog labels. EP-0017 stopped at the first disagreement. **The capacity value, physical threshold of the detector, and transfer to a real cluster remain UNKNOWN.**
 
-Evidence boundary: This is not a scheduler comparison on a real arrival sequence, and there are no independent external replications.
+The public Philly trace count of one job above half of capacity in 19,100 arrivals survives as a measurement of frequency. Numerical margins derived from it remain conditional on the synthetic model and its unaudited threshold; no scheduler was run on that real trace.
+
+Evidence boundary: Scope is synthetic simulations and arrival counts in the public Philly trace. The EP-0017 public artifact checks aggregate arithmetic and the stop branch only; raw runs, simulator source, external independent replication, and prospective real-cluster operation are absent.
 
 Published Research Notes:
 - GPU-SCHED-EP-0001 — Estimation error and restart cost reverse which GPU scheduler wins (Finding)
@@ -87,9 +89,12 @@ Published Research Notes:
 - GPU-SCHED-EP-0012 — Replaced it with a statistic whose boundary stays put, and restored the numbers (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-alpha-boundary/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-alpha-boundary/
-- GPU-SCHED-EP-0013 — The real-cluster claim rests on one job out of 19,100 (Finding) — CURRENT
+- GPU-SCHED-EP-0013 — The real-cluster claim rests on one job out of 19,100 (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-one-job/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-one-job/
+- GPU-SCHED-EP-0017 — Independent calibration still left two capacity detectors in disagreement (Negative Result) — CURRENT
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-u31-calibration/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-u31-calibration/
 
 ### Queueing system identification
 

@@ -32,6 +32,9 @@ tags: [finding, scheduling, simulation, instrument, japanese]
 
 <div class="evidence-strip"><span>Finding</span><span>合成シミュレーション</span><span>探索的</span><span>査読なし</span><span>外部再現 0</span></div>
 
+> [!warning] 2026-09-16以降の検証
+> [[ja/research/gpu-scheduling-u31-calibration/index|EP-0017]]でalpha=0.5と別のbacklog判定器が局所的に不一致となりました。このNoteの境界・余裕は合成モデルの未監査閾値に条件付けられます。容量保証として使わないでください。
+
 ## 現在わかっていること
 
 前の研究が判定器を降ろし、この分野の運用数値を停止しました。置き換え候補は **α——平均待ち時間の観測窓に対する弾性**です。

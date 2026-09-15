@@ -59,6 +59,7 @@ def main() -> int:
         "gpu-scheduling-phase-diagram",
         "gpu-scheduling-starvation-mechanism",
         "gpu-scheduling-real-traces",
+        "gpu-scheduling-u31-calibration",
         "simulation-worlds",
         "human-model",
         "human-model-dataset-portfolio",

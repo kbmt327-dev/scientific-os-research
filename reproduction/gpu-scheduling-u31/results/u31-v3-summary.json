@@ -1,0 +1,27 @@
+{
+  "schema_version": "gpu-scheduling-u31-public-summary.v1",
+  "research_id": "GPU-SCHED-EP-0017",
+  "source_episode_sha256": "5fed9bdcc75af4d353f8bdc34180b6bda087b9fe1ca016208e58a413daa2a213",
+  "private_result_sha256": "34eb036dbb66c0988d9e176cb64d9ce06da2f8ee3741023c366bd6db8643e0a9",
+  "protocol_sha256": "666b47cf867cd7036cc6a2fdae5b372dd787e2a0882bdacf254077c12067fb6f",
+  "scope": {"model": "synthetic MSJ", "mix": "balanced", "policy": "fcfs", "n_servers": 64, "horizons": [20000, 40000], "seeds": [111, 222]},
+  "fixed_controls": [{"rho": 0.4, "expected": "low-load"}, {"rho": 1.2, "expected": "overload"}],
+  "fixed_grid": [0.7, 0.85, 1.0],
+  "threshold_rule": "midpoint of control queue scores if low < high, low <= 0.01, high >= 0.05",
+  "queue_score_rule": "mean across two seeds of (last backlog decile mean - first backlog decile mean) / 40000 at the longer horizon",
+  "alpha_line": 0.5,
+  "cells": [
+    {"role": "control-low-load", "rho": 0.4, "alpha": -0.05900758353158955, "queue_score": -0.00000403682399105329, "simulations": 4},
+    {"role": "control-overload", "rho": 1.2, "alpha": 0.9266964660999683, "queue_score": 0.23744738060853096, "simulations": 4},
+    {"role": "grid", "rho": 0.7, "alpha": -0.22910338810592706, "queue_score": 0.000003017461511409826, "simulations": 4},
+    {"role": "grid", "rho": 0.85, "alpha": 0.7621888019139743, "queue_score": 0.038522922298322285, "simulations": 4}
+  ],
+  "calibrated_threshold": 0.11872167189227,
+  "verdict": "R2 local-disagreement",
+  "stop_at_rho": 0.85,
+  "executed_simulations": 16,
+  "unexecuted_grid": [1.0],
+  "claim_status": "UNKNOWN",
+  "independent_replications": 0,
+  "reproduction_limit": "This public artifact supports arithmetic and stop-rule checks only; simulation sources and raw runs are not published here."
+}

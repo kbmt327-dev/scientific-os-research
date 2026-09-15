@@ -6,6 +6,9 @@ lang: en
 
 This is the historical log. For current claims, start with the [research-area index](/en/research/).
 
+## 2026-09-16
+
+- **GPU-SCHED-EP-0017** · Negative Result — [Independent calibration still left two capacity detectors in disagreement](/en/research/gpu-scheduling-u31-calibration/)
 ## 2026-09-15
 
 - **FRONTIER-METRICS-REVIEW-0001** · Negative Result — [Two ways a synthetic world flatters its author, and both headline results withdrawn](/en/research/retracted-frontier-metrics/)

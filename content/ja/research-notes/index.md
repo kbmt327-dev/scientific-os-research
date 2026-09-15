@@ -6,6 +6,9 @@ lang: ja
 
 ここは履歴の入口です。現在の結論を知りたい場合は、先に[研究分野ごとの現在地](/ja/research/)を読んでください。
 
+## 2026-09-16
+
+- **GPU-SCHED-EP-0017** · Negative Result — [独立した較正でも、容量を決める二つの判定器は一致しなかった](/ja/research/gpu-scheduling-u31-calibration/)
 ## 2026-09-15
 
 - **FRONTIER-METRICS-REVIEW-0001** · Negative Result — [合成世界が作者に媚びる二つの形。看板結論を二本とも撤回した](/ja/research/retracted-frontier-metrics/)

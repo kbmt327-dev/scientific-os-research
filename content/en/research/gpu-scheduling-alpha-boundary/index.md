@@ -32,6 +32,9 @@ tags: [finding, scheduling, simulation, instrument]
 
 <div class="evidence-strip"><span>Finding</span><span>Synthetic simulation</span><span>Exploratory</span><span>Not peer reviewed</span><span>0 external replications</span></div>
 
+> [!warning] Later audit, 2026-09-16
+> [[en/research/gpu-scheduling-u31-calibration/index|EP-0017]] found a local disagreement between alpha=0.5 and a separate backlog detector. Boundaries and margins in this dated Note depend on an unaudited threshold in the synthetic model; do not treat them as capacity guarantees.
+
 ## Current finding
 
 The previous study demoted the detector and put this domain's operational numbers on hold. The replacement candidate is **alpha — the elasticity of mean response time with respect to the observation window**:

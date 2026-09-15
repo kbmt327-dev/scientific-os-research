@@ -117,6 +117,14 @@ notes:
       ja: content/ja/research/gpu-scheduling-one-job/index.md
     type: Finding
     publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0017
+    source_episode: GPU-SCHEDULING/EP-0017
+    source_episode_sha256: 5fed9bdcc75af4d353f8bdc34180b6bda087b9fe1ca016208e58a413daa2a213
+    views:
+      en: content/en/research/gpu-scheduling-u31-calibration/index.md
+      ja: content/ja/research/gpu-scheduling-u31-calibration/index.md
+    type: Negative Result
+    publication: { status: publishable }
   - research_id: SIM-WORLD-EP-0001
     source_episode: SIM-WORLD/EP-0001
     source_episode_sha256: 0c632eb5cad1431953bcbfbe3a067925fea3d7caac6bb21547ce53cb03a7931f

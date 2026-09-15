@@ -15,11 +15,11 @@ lang: en
   <article class="program-row">
     <div>
       <h3>GPU cluster scheduling</h3>
-      <p>We study when running shorter jobs first helps, when it breaks, and which conditions decide the difference.</p>
+      <p>We study when size-first scheduling helps or breaks and whether the capacity detector can be trusted.</p>
     </div>
     <nav aria-label="GPU cluster scheduling">
       <a href="/en/programs/gpu-scheduling/">Program overview</a>
-      <a href="/en/research/gpu-scheduling-one-job/">Current Note</a>
+      <a href="/en/research/gpu-scheduling-u31-calibration/">Current Note</a>
     </nav>
   </article>
   <article class="program-row">

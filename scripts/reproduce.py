@@ -132,6 +132,13 @@ def gpu_u31() -> None:
     assert 'arithmetic and stop branch OK' in output
     print('gpu-u31: public aggregate arithmetic and stop branch verified; simulation not reproduced')
 
+
+def gpu_u31_controls() -> None:
+    output = run([sys.executable, 'verify_summary.py'], ROOT / 'reproduction' / 'gpu-scheduling-u31-controls')
+    assert 'CI arithmetic and stop branches OK' in output
+    print('gpu-u31-controls: sufficient-statistic CI and stop branches verified; simulation not reproduced')
+
+
 def queue() -> None:
     root = ROOT / "reproduction" / "simulation-worlds"
     output = run([sys.executable, "analysis/a11_verify_against_truth.py"], root)
@@ -190,7 +197,7 @@ def frontier() -> None:
 
 
 CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase,
-          "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "queue": queue,
+          "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "gpu-u31-controls": gpu_u31_controls, "queue": queue,
           "human": human, "human-dataset": human_dataset, "iaa": iaa,
           "intervention": intervention,
           "frontier": frontier}

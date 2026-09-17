@@ -23,15 +23,15 @@ GPUクラスタでは、多数のジョブが限られたGPUを取り合いま�
 <!-- GENERATED: program-current:START -->
 ## 現在の公開結論
 
-合成MSJモデルでは、最大ジョブの容量比、同時本数、大ジョブ頻度がpolicy間の順位とクラス飢餓を左右します。以前の境界値はalpha=0.5の判定線に条件付けられ、その閾値の意味はまだ独立較正できていません。
+合成MSJモデルでは最大job比率、同時本数、大job頻度がpolicy順位とclass飢餓を左右します。旧境界の値は未監査alpha=0.5に条件付けられ、飽和throughputと保存二分法の容量は未validatedです。
 
-飽和throughputは打ち切りと全ジョブ同時投入による無制限のpacking選択があり、容量measureとして停止しました。開放到着の二分法へ移した保存値も未validatedです。EP-0016の局所監査とEP-0017の独立grid較正は別のbacklog判定との不一致を観測しました。EP-0017は最初の不一致で停止しています。**容量値、判定器の物理的な閾値、実クラスタへの一般化はUNKNOWN**です。
+EP-0017のalpha/queue不一致に対し、EP-0018の全gang M/M/1既知対照で中点queue閾値がrho=1.05の過負荷を見逃すと特定しました。EP-0019は指数入力・全入力work・既知容量1を使うCIへ進み、holdout0.99/1.01/0.995を確定しましたが、1.005は最大320kでもUNKNOWNでした。最初の最大窓UNKNOWNで停止しています。これはknown-model条件付きの入力判定で、一般MSJ detectorのvalidationではありません。**U-31、mixed-need容量、実クラスタへの一般化はUNKNOWN、validated general detectorは0件**です。
 
-Philly公開トレースで容量の半分超を要求したジョブが19,100本中1本だったという到着頻度の実測は残ります。そこからの余裕の数値は合成モデルの未監査閾値に条件付けられ、実トレース上のscheduler性能ではありません。
+Philly traceの19,100到着中1本が容量の半分超だった頻度実測は残ります。そこからの余裕は未監査閾値を使う合成モデル値で、実trace上のscheduler性能ではありません。
 
-**証拠の境界：** 合成モデルとPhilly公開トレースの到着数に限る。EP-0017の公開再現物は集計の算術と停止分岐の検算のみで、raw runやsimulation source、外部独立再現、実クラスタの前向き運用検証はない。
+**証拠の境界：** 合成known-model対照とPhilly公開traceの到着数に限定。公開再現物は集計・十分統計・F quantile・CI・停止分岐の検算。指数/独立性とtrue required work観測は仮定で、raw job列、simulator source、外部独立再現、実クラスタの前向き検証はない。
 
-**[現在のResearch Note（EP-0017）を読む →](/ja/research/gpu-scheduling-u31-calibration/)**
+**[現在のResearch Note（EP-0019）を読む →](/ja/research/gpu-scheduling-drift-uncertainty/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -50,5 +50,7 @@ Philly公開トレースで容量の半分超を要求したジョブが19,100�
 11. [[ja/research/gpu-scheduling-blind-detector/index|EP-0011 — 判定器が発散を測っていなかった。窓で割っていたので、値が動かなかった]]
 12. [[ja/research/gpu-scheduling-alpha-boundary/index|EP-0012 — 動かない境界を持つ統計量へ置き換え、運用数値を戻した]]
 13. [[ja/research/gpu-scheduling-one-job/index|EP-0013 — 実クラスタについての主張は、19,100本中1本のジョブに乗っていた]]
-14. **[[ja/research/gpu-scheduling-u31-calibration/index|EP-0017 — 独立した較正でも、容量を決める二つの判定器は一致しなかった]]（最新）**
+14. [[ja/research/gpu-scheduling-u31-calibration/index|EP-0017 — 独立した較正でも、容量を決める二つの判定器は一致しなかった]]
+15. [[ja/research/gpu-scheduling-known-controls/index|EP-0018 — 既知の過負荷を、中点のqueue閾値が見逃した]]
+16. **[[ja/research/gpu-scheduling-drift-uncertainty/index|EP-0019 — 小さな過負荷を、有限窓では確定できなかった]]（最新）**
 <!-- GENERATED: program-history:END -->

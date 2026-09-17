@@ -6,6 +6,10 @@ lang: ja
 
 ここは履歴の入口です。現在の結論を知りたい場合は、先に[研究分野ごとの現在地](/ja/research/)を読んでください。
 
+## 2026-09-17
+
+- **GPU-SCHED-EP-0019** · Negative Result — [小さな過負荷を、有限窓では確定できなかった](/ja/research/gpu-scheduling-drift-uncertainty/)
+- **GPU-SCHED-EP-0018** · Negative Result — [既知の過負荷を、中点のqueue閾値が見逃した](/ja/research/gpu-scheduling-known-controls/)
 ## 2026-09-16
 
 - **GPU-SCHED-EP-0017** · Negative Result — [独立した較正でも、容量を決める二つの判定器は一致しなかった](/ja/research/gpu-scheduling-u31-calibration/)

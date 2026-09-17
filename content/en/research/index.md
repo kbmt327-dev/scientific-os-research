@@ -12,17 +12,17 @@ Notes are grouped by what they contribute, not by how confident they sound. A **
 <!-- GENERATED: research-current:START -->
 ## GPU cluster scheduling
 
-**Question:** Under what conditions does size-based scheduling — running the shortest job first — break?
+**Question:** When does size-first scheduling break, and how far can its capacity boundary be resolved?
 
-**Current state:** In a synthetic MSJ model, largest-job share of capacity, concurrent job count, and large-job frequency affect policy rankings and class starvation. Earlier boundary values are conditional on the alpha=0.5 decision line, whose meaning has not passed independent calibration.
+**Current state:** In a synthetic MSJ model, largest-job share, concurrency and large-job frequency affect policy rankings and class starvation. Earlier boundary values remain conditional on unaudited alpha=0.5. Saturated throughput and stored bisection capacity are not validated.
 
-Saturated throughput was withdrawn as a capacity measure because of truncation and unlimited packing choices when all jobs are offered at once. The stored open-arrival bisection values are also not validated. The local EP-0016 audit and the new fixed-grid EP-0017 calibration observed disagreements with separate backlog labels. EP-0017 stopped at the first disagreement. **The capacity value, physical threshold of the detector, and transfer to a real cluster remain UNKNOWN.**
+Following the EP-0017 alpha/queue disagreement, EP-0018 identified a midpoint queue miss at known overload rho=1.05 in a full-gang M/M/1 control. EP-0019 used independent exponential inputs, all input work and known unit capacity to form a load CI. It resolved holdout0.99/1.01/0.995, but 1.005 remained UNKNOWN at the maximum 320k window; execution stopped there. This is known-model input classification, not validation of a general MSJ detector. **U-31, mixed-need capacity and real-cluster transfer remain UNKNOWN; validated general detectors remain zero.**
 
-The public Philly trace count of one job above half of capacity in 19,100 arrivals survives as a measurement of frequency. Numerical margins derived from it remain conditional on the synthetic model and its unaudited threshold; no scheduler was run on that real trace.
+The public Philly count of one job above half-capacity in 19,100 arrivals survives as a frequency measurement. Derived margins use a synthetic model and unaudited threshold; no scheduler was run on the real trace.
 
-**Evidence boundary:** Scope is synthetic simulations and arrival counts in the public Philly trace. The EP-0017 public artifact checks aggregate arithmetic and the stop branch only; raw runs, simulator source, external independent replication, and prospective real-cluster operation are absent.
+**Evidence boundary:** Limited to synthetic known-model controls and public Philly arrival counts. Public artifacts check aggregates, sufficient statistics, F quantiles, CI arithmetic and stopping. Exponentiality/independence and true-work observability are assumptions; raw job sequences, simulator source, external independent replication and prospective real-cluster validation are absent.
 
-**[Read the current Research Note (EP-0017) →](/en/research/gpu-scheduling-u31-calibration/)** — Negative Result
+**[Read the current Research Note (EP-0019) →](/en/research/gpu-scheduling-drift-uncertainty/)** — Negative Result
 
 [See the current state and revision history →](/en/programs/gpu-scheduling/)
 

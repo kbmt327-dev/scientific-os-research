@@ -60,6 +60,8 @@ def main() -> int:
         "gpu-scheduling-starvation-mechanism",
         "gpu-scheduling-real-traces",
         "gpu-scheduling-u31-calibration",
+        "gpu-scheduling-known-controls",
+        "gpu-scheduling-drift-uncertainty",
         "simulation-worlds",
         "human-model",
         "human-model-dataset-portfolio",

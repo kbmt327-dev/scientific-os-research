@@ -125,6 +125,22 @@ notes:
       ja: content/ja/research/gpu-scheduling-u31-calibration/index.md
     type: Negative Result
     publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0018
+    source_episode: GPU-SCHEDULING/EP-0018
+    source_episode_sha256: 766e176d6e0254b00e3494ecc8a8dff44deadb39b5a7d8795607f6f65c8846c0
+    views:
+      en: content/en/research/gpu-scheduling-known-controls/index.md
+      ja: content/ja/research/gpu-scheduling-known-controls/index.md
+    type: Negative Result
+    publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0019
+    source_episode: GPU-SCHEDULING/EP-0019
+    source_episode_sha256: 772e57cdb1532f4aa047b32cda13fb04fe9e7d36d3272360ddd1106f34daf320
+    views:
+      en: content/en/research/gpu-scheduling-drift-uncertainty/index.md
+      ja: content/ja/research/gpu-scheduling-drift-uncertainty/index.md
+    type: Negative Result
+    publication: { status: publishable }
   - research_id: SIM-WORLD-EP-0001
     source_episode: SIM-WORLD/EP-0001
     source_episode_sha256: 0c632eb5cad1431953bcbfbe3a067925fea3d7caac6bb21547ce53cb03a7931f

@@ -3,29 +3,31 @@ site_url: https://kbmt327-dev.github.io/scientific-os-research
 programs:
   - id: gpu-scheduling
     research_id_prefix: GPU-SCHED-
-    current_research_id: GPU-SCHED-EP-0017
+    current_research_id: GPU-SCHED-EP-0019
     ja:
       title: GPUクラスタのスケジューリング
-      home_summary: サイズ優先方式の条件と、容量境界を測る判定器の信頼性を調べています。
-      question: 短いジョブを先に通す「サイズ優先」のスケジューリングは、どの条件で壊れるか。
-      claim: |-
-        合成MSJモデルでは、最大ジョブの容量比、同時本数、大ジョブ頻度がpolicy間の順位とクラス飢餓を左右します。以前の境界値はalpha=0.5の判定線に条件付けられ、その閾値の意味はまだ独立較正できていません。
+      home_summary: サイズ優先の条件と、容量判定器の見逃し・有限窓の不確かさを調べています。
+      question: 短いジョブを先に通すサイズ優先は、どの条件で壊れ、容量境界をどこまで確定できるか。
+      claim: '合成MSJモデルでは最大job比率、同時本数、大job頻度がpolicy順位とclass飢餓を左右します。旧境界の値は未監査alpha=0.5に条件付けられ、飽和throughputと保存二分法の容量は未validatedです。
 
-        飽和throughputは打ち切りと全ジョブ同時投入による無制限のpacking選択があり、容量measureとして停止しました。開放到着の二分法へ移した保存値も未validatedです。EP-0016の局所監査とEP-0017の独立grid較正は別のbacklog判定との不一致を観測しました。EP-0017は最初の不一致で停止しています。**容量値、判定器の物理的な閾値、実クラスタへの一般化はUNKNOWN**です。
 
-        Philly公開トレースで容量の半分超を要求したジョブが19,100本中1本だったという到着頻度の実測は残ります。そこからの余裕の数値は合成モデルの未監査閾値に条件付けられ、実トレース上のscheduler性能ではありません。
-      evidence_boundary: 合成モデルとPhilly公開トレースの到着数に限る。EP-0017の公開再現物は集計の算術と停止分岐の検算のみで、raw runやsimulation source、外部独立再現、実クラスタの前向き運用検証はない。
+        EP-0017のalpha/queue不一致に対し、EP-0018の全gang M/M/1既知対照で中点queue閾値がrho=1.05の過負荷を見逃すと特定しました。EP-0019は指数入力・全入力work・既知容量1を使うCIへ進み、holdout0.99/1.01/0.995を確定しましたが、1.005は最大320kでもUNKNOWNでした。最初の最大窓UNKNOWNで停止しています。これはknown-model条件付きの入力判定で、一般MSJ detectorのvalidationではありません。**U-31、mixed-need容量、実クラスタへの一般化はUNKNOWN、validated general detectorは0件**です。
+
+
+        Philly traceの19,100到着中1本が容量の半分超だった頻度実測は残ります。そこからの余裕は未監査閾値を使う合成モデル値で、実trace上のscheduler性能ではありません。'
+      evidence_boundary: 合成known-model対照とPhilly公開traceの到着数に限定。公開再現物は集計・十分統計・F quantile・CI・停止分岐の検算。指数/独立性とtrue required work観測は仮定で、raw job列、simulator source、外部独立再現、実クラスタの前向き検証はない。
     en:
       title: GPU cluster scheduling
-      home_summary: We study when size-first scheduling helps or breaks and whether the capacity detector can be trusted.
-      question: Under what conditions does size-based scheduling — running the shortest job first — break?
-      claim: |-
-        In a synthetic MSJ model, largest-job share of capacity, concurrent job count, and large-job frequency affect policy rankings and class starvation. Earlier boundary values are conditional on the alpha=0.5 decision line, whose meaning has not passed independent calibration.
+      home_summary: We study size-first scheduling, detector misses and finite-window uncertainty in capacity claims.
+      question: When does size-first scheduling break, and how far can its capacity boundary be resolved?
+      claim: 'In a synthetic MSJ model, largest-job share, concurrency and large-job frequency affect policy rankings and class starvation. Earlier boundary values remain conditional on unaudited alpha=0.5. Saturated throughput and stored bisection capacity are not validated.
 
-        Saturated throughput was withdrawn as a capacity measure because of truncation and unlimited packing choices when all jobs are offered at once. The stored open-arrival bisection values are also not validated. The local EP-0016 audit and the new fixed-grid EP-0017 calibration observed disagreements with separate backlog labels. EP-0017 stopped at the first disagreement. **The capacity value, physical threshold of the detector, and transfer to a real cluster remain UNKNOWN.**
 
-        The public Philly trace count of one job above half of capacity in 19,100 arrivals survives as a measurement of frequency. Numerical margins derived from it remain conditional on the synthetic model and its unaudited threshold; no scheduler was run on that real trace.
-      evidence_boundary: Scope is synthetic simulations and arrival counts in the public Philly trace. The EP-0017 public artifact checks aggregate arithmetic and the stop branch only; raw runs, simulator source, external independent replication, and prospective real-cluster operation are absent.
+        Following the EP-0017 alpha/queue disagreement, EP-0018 identified a midpoint queue miss at known overload rho=1.05 in a full-gang M/M/1 control. EP-0019 used independent exponential inputs, all input work and known unit capacity to form a load CI. It resolved holdout0.99/1.01/0.995, but 1.005 remained UNKNOWN at the maximum 320k window; execution stopped there. This is known-model input classification, not validation of a general MSJ detector. **U-31, mixed-need capacity and real-cluster transfer remain UNKNOWN; validated general detectors remain zero.**
+
+
+        The public Philly count of one job above half-capacity in 19,100 arrivals survives as a frequency measurement. Derived margins use a synthetic model and unaudited threshold; no scheduler was run on the real trace.'
+      evidence_boundary: Limited to synthetic known-model controls and public Philly arrival counts. Public artifacts check aggregates, sufficient statistics, F quantiles, CI arithmetic and stopping. Exponentiality/independence and true-work observability are assumptions; raw job sequences, simulator source, external independent replication and prospective real-cluster validation are absent.
 
   - id: queueing-system-identification
     research_id_prefix: SIM-WORLD-

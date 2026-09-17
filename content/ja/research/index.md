@@ -11,17 +11,17 @@ lang: ja
 <!-- GENERATED: research-current:START -->
 ## GPUクラスタのスケジューリング
 
-**テーマ：** 短いジョブを先に通す「サイズ優先」のスケジューリングは、どの条件で壊れるか。
+**テーマ：** 短いジョブを先に通すサイズ優先は、どの条件で壊れ、容量境界をどこまで確定できるか。
 
-**現在地：** 合成MSJモデルでは、最大ジョブの容量比、同時本数、大ジョブ頻度がpolicy間の順位とクラス飢餓を左右します。以前の境界値はalpha=0.5の判定線に条件付けられ、その閾値の意味はまだ独立較正できていません。
+**現在地：** 合成MSJモデルでは最大job比率、同時本数、大job頻度がpolicy順位とclass飢餓を左右します。旧境界の値は未監査alpha=0.5に条件付けられ、飽和throughputと保存二分法の容量は未validatedです。
 
-飽和throughputは打ち切りと全ジョブ同時投入による無制限のpacking選択があり、容量measureとして停止しました。開放到着の二分法へ移した保存値も未validatedです。EP-0016の局所監査とEP-0017の独立grid較正は別のbacklog判定との不一致を観測しました。EP-0017は最初の不一致で停止しています。**容量値、判定器の物理的な閾値、実クラスタへの一般化はUNKNOWN**です。
+EP-0017のalpha/queue不一致に対し、EP-0018の全gang M/M/1既知対照で中点queue閾値がrho=1.05の過負荷を見逃すと特定しました。EP-0019は指数入力・全入力work・既知容量1を使うCIへ進み、holdout0.99/1.01/0.995を確定しましたが、1.005は最大320kでもUNKNOWNでした。最初の最大窓UNKNOWNで停止しています。これはknown-model条件付きの入力判定で、一般MSJ detectorのvalidationではありません。**U-31、mixed-need容量、実クラスタへの一般化はUNKNOWN、validated general detectorは0件**です。
 
-Philly公開トレースで容量の半分超を要求したジョブが19,100本中1本だったという到着頻度の実測は残ります。そこからの余裕の数値は合成モデルの未監査閾値に条件付けられ、実トレース上のscheduler性能ではありません。
+Philly traceの19,100到着中1本が容量の半分超だった頻度実測は残ります。そこからの余裕は未監査閾値を使う合成モデル値で、実trace上のscheduler性能ではありません。
 
-**証拠の境界：** 合成モデルとPhilly公開トレースの到着数に限る。EP-0017の公開再現物は集計の算術と停止分岐の検算のみで、raw runやsimulation source、外部独立再現、実クラスタの前向き運用検証はない。
+**証拠の境界：** 合成known-model対照とPhilly公開traceの到着数に限定。公開再現物は集計・十分統計・F quantile・CI・停止分岐の検算。指数/独立性とtrue required work観測は仮定で、raw job列、simulator source、外部独立再現、実クラスタの前向き検証はない。
 
-**[現在のResearch Note（EP-0017）→](/ja/research/gpu-scheduling-u31-calibration/)** — Negative Result
+**[現在のResearch Note（EP-0019）→](/ja/research/gpu-scheduling-drift-uncertainty/)** — Negative Result
 
 [研究の現在地と更新履歴を見る →](/ja/programs/gpu-scheduling/)
 

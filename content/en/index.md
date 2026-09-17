@@ -15,11 +15,11 @@ lang: en
   <article class="program-row">
     <div>
       <h3>GPU cluster scheduling</h3>
-      <p>We study when size-first scheduling helps or breaks and whether the capacity detector can be trusted.</p>
+      <p>We study size-first scheduling, detector misses and finite-window uncertainty in capacity claims.</p>
     </div>
     <nav aria-label="GPU cluster scheduling">
       <a href="/en/programs/gpu-scheduling/">Program overview</a>
-      <a href="/en/research/gpu-scheduling-u31-calibration/">Current Note</a>
+      <a href="/en/research/gpu-scheduling-drift-uncertainty/">Current Note</a>
     </nav>
   </article>
   <article class="program-row">

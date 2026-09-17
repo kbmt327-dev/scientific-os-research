@@ -6,6 +6,10 @@ lang: en
 
 This is the historical log. For current claims, start with the [research-area index](/en/research/).
 
+## 2026-09-17
+
+- **GPU-SCHED-EP-0019** · Negative Result — [A small overload remained unresolved within a finite window](/en/research/gpu-scheduling-drift-uncertainty/)
+- **GPU-SCHED-EP-0018** · Negative Result — [A midpoint queue threshold missed a known overload](/en/research/gpu-scheduling-known-controls/)
 ## 2026-09-16
 
 - **GPU-SCHED-EP-0017** · Negative Result — [Independent calibration still left two capacity detectors in disagreement](/en/research/gpu-scheduling-u31-calibration/)

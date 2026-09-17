@@ -15,11 +15,11 @@ lang: ja
   <article class="program-row">
     <div>
       <h3>GPUクラスタのスケジューリング</h3>
-      <p>サイズ優先方式の条件と、容量境界を測る判定器の信頼性を調べています。</p>
+      <p>サイズ優先の条件と、容量判定器の見逃し・有限窓の不確かさを調べています。</p>
     </div>
     <nav aria-label="GPUクラスタのスケジューリング">
       <a href="/ja/programs/gpu-scheduling/">研究概要</a>
-      <a href="/ja/research/gpu-scheduling-u31-calibration/">最新Note</a>
+      <a href="/ja/research/gpu-scheduling-drift-uncertainty/">最新Note</a>
     </nav>
   </article>
   <article class="program-row">

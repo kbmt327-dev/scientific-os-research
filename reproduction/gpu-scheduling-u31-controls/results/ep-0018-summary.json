@@ -1,0 +1,121 @@
+{
+  "scope": "synthetic full-gang M/M/1; homogeneous FCFS; each job requires all 64 servers; iid independent exponential arrival gaps and service sizes",
+  "claim_status": "UNKNOWN",
+  "independent_replications": 0,
+  "simulation_source_included": false,
+  "raw_job_traces_included": false,
+  "research_id": "GPU-SCHED-EP-0018",
+  "source_episode_sha256": "766e176d6e0254b00e3494ecc8a8dff44deadb39b5a7d8795607f6f65c8846c0",
+  "source_result_sha256": "268395af971ae0fa993937ab2222d8086f62a14f26e749d576af4648a1c13ce3",
+  "horizons": [
+    20000,
+    40000,
+    80000
+  ],
+  "calibration_rhos": [
+    0.4,
+    1.2
+  ],
+  "holdout_rhos": [
+    0.95,
+    1.05,
+    0.99,
+    1.01
+  ],
+  "calibration_seeds": [
+    301,
+    302,
+    303
+  ],
+  "holdout_seeds": [
+    401,
+    402,
+    403
+  ],
+  "calibrated_queue_threshold": 0.05941155892531441,
+  "alpha_line": 0.5,
+  "executed_oracle_workloads": 36,
+  "engine_fixture_runs": 4,
+  "max_oracle_workloads": 54,
+  "engine_fixture_max_error": 0.0,
+  "verdict": "R2 known-control-disagreement",
+  "stop_at_rho": 1.05,
+  "unexecuted_holdout_rhos": [
+    0.99,
+    1.01
+  ],
+  "cells": [
+    {
+      "role": "calibration",
+      "rho": 0.4,
+      "truth": "stable",
+      "alpha": -0.006955913522046801,
+      "alpha_pairs": {
+        "20000/40000": 0.0026291101445777426,
+        "40000/80000": -0.006955913522046801
+      },
+      "alpha_sensitivity": {
+        "0.3": false,
+        "0.5": false,
+        "0.7": false
+      },
+      "queue_score": -5.107537087858428e-07,
+      "time_queue_score": -3.437949535545867e-07,
+      "workload_drift": 2.5234599976214076e-06
+    },
+    {
+      "role": "calibration",
+      "rho": 1.2,
+      "truth": "overloaded",
+      "alpha": 1.0089422810557418,
+      "alpha_pairs": {
+        "20000/40000": 0.9718633431876862,
+        "40000/80000": 1.0089422810557418
+      },
+      "alpha_sensitivity": {
+        "0.3": true,
+        "0.5": true,
+        "0.7": true
+      },
+      "queue_score": 0.11882362860433761,
+      "time_queue_score": 0.11884087940444181,
+      "workload_drift": 0.20029675483401674
+    },
+    {
+      "role": "holdout",
+      "rho": 0.95,
+      "truth": "stable",
+      "alpha": -0.22962827928132193,
+      "alpha_pairs": {
+        "20000/40000": -0.01033433420582334,
+        "40000/80000": -0.22962827928132193
+      },
+      "alpha_sensitivity": {
+        "0.3": false,
+        "0.5": false,
+        "0.7": false
+      },
+      "queue_score": -2.2947430788863714e-05,
+      "time_queue_score": -2.4880993444791887e-05,
+      "workload_drift": 4.9226162472415376e-05
+    },
+    {
+      "role": "holdout",
+      "rho": 1.05,
+      "truth": "overloaded",
+      "alpha": 0.9765045642734737,
+      "alpha_pairs": {
+        "20000/40000": 0.9881143531715184,
+        "40000/80000": 0.9765045642734737
+      },
+      "alpha_sensitivity": {
+        "0.3": true,
+        "0.5": true,
+        "0.7": true
+      },
+      "queue_score": 0.03357118841344831,
+      "time_queue_score": 0.033578036150458505,
+      "workload_drift": 0.05070839764790134
+    }
+  ]
+}

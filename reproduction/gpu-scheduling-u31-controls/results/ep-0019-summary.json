@@ -1,0 +1,373 @@
+{
+  "scope": "synthetic full-gang M/M/1; homogeneous FCFS; each job requires all 64 servers; iid independent exponential arrival gaps and service sizes",
+  "claim_status": "UNKNOWN",
+  "independent_replications": 0,
+  "simulation_source_included": false,
+  "raw_job_traces_included": false,
+  "research_id": "GPU-SCHED-EP-0019",
+  "source_episode_sha256": "772e57cdb1532f4aa047b32cda13fb04fe9e7d36d3272360ddd1106f34daf320",
+  "source_result_sha256": "d6970009863c15f6a301cbeb15edfb115d072e52b7a772fccb2ad3623a756f1d",
+  "horizons": [
+    20000,
+    40000,
+    80000,
+    160000,
+    320000
+  ],
+  "calibration_rhos": [
+    0.97,
+    1.03
+  ],
+  "holdout_rhos": [
+    0.99,
+    1.01,
+    0.995,
+    1.005,
+    0.999,
+    1.001
+  ],
+  "calibration_seeds": [
+    601,
+    602,
+    603
+  ],
+  "holdout_seeds": [
+    701,
+    702,
+    703
+  ],
+  "family_error": 0.05,
+  "max_comparisons": 40,
+  "executed_comparisons": 17,
+  "executed_workloads": 51,
+  "verdict": "R3 finite-window-unresolved",
+  "stop_at_rho": 1.005,
+  "unexecuted_holdout_rhos": [
+    0.999,
+    1.001
+  ],
+  "true_required_work_accessible": true,
+  "distribution_assumptions": "iid exponential gaps and iid exponential sizes, mutually independent; known full-gang unit capacity",
+  "cells": [
+    {
+      "role": "calibration",
+      "rho": 0.97,
+      "truth": "subcritical",
+      "status": "resolved",
+      "looks": [
+        {
+          "horizon": 20000,
+          "input_work": 60323.0710602085,
+          "input_time": 61875.552032480016,
+          "input_count": 60000,
+          "comparison_error": 0.00125,
+          "load_estimate": 0.9749096222776876,
+          "load_ci_low": 0.9569127756266903,
+          "load_ci_high": 0.9932449391609037,
+          "net_input_drift_estimate": -0.025090377722312374,
+          "net_input_drift_ci_low": -0.043087224373309696,
+          "net_input_drift_ci_high": -0.006755060839096272,
+          "quantile_low": 0.981539984589596,
+          "quantile_high": 1.0188071965485161,
+          "label": "subcritical"
+        }
+      ]
+    },
+    {
+      "role": "calibration",
+      "rho": 1.03,
+      "truth": "overloaded",
+      "status": "resolved",
+      "looks": [
+        {
+          "horizon": 20000,
+          "input_work": 60323.0710602085,
+          "input_time": 58271.1509432094,
+          "input_count": 60000,
+          "comparison_error": 0.00125,
+          "load_estimate": 1.0352133102536258,
+          "load_ci_low": 1.0161032565932886,
+          "load_ci_high": 1.0546827704492057,
+          "net_input_drift_estimate": 0.03521331025362584,
+          "net_input_drift_ci_low": 0.016103256593288595,
+          "net_input_drift_ci_high": 0.054682770449205664,
+          "quantile_low": 0.981539984589596,
+          "quantile_high": 1.0188071965485161,
+          "label": "overloaded"
+        }
+      ]
+    },
+    {
+      "role": "holdout",
+      "rho": 0.99,
+      "truth": "subcritical",
+      "status": "resolved",
+      "looks": [
+        {
+          "horizon": 20000,
+          "input_work": 60325.50569508366,
+          "input_time": 60535.9650203686,
+          "input_count": 60000,
+          "comparison_error": 0.00125,
+          "load_estimate": 0.9965234001768348,
+          "load_ci_low": 0.9781275628527423,
+          "load_ci_high": 1.015265211629156,
+          "net_input_drift_estimate": -0.003476599823165172,
+          "net_input_drift_ci_low": -0.02187243714725773,
+          "net_input_drift_ci_high": 0.015265211629156061,
+          "quantile_low": 0.981539984589596,
+          "quantile_high": 1.0188071965485161,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 40000,
+          "input_work": 119567.7968624054,
+          "input_time": 121309.01759096215,
+          "input_count": 120000,
+          "comparison_error": 0.00125,
+          "load_estimate": 0.9856464031847335,
+          "load_ci_low": 0.9727455599287291,
+          "load_ci_high": 0.998718341291819,
+          "net_input_drift_estimate": -0.01435359681526649,
+          "net_input_drift_ci_low": -0.02725444007127087,
+          "net_input_drift_ci_high": -0.0012816587081809772,
+          "quantile_low": 0.9869112866294443,
+          "quantile_high": 1.013262299811422,
+          "label": "subcritical"
+        }
+      ]
+    },
+    {
+      "role": "holdout",
+      "rho": 1.01,
+      "truth": "overloaded",
+      "status": "resolved",
+      "looks": [
+        {
+          "horizon": 20000,
+          "input_work": 60325.50569508366,
+          "input_time": 59337.23303976734,
+          "input_count": 60000,
+          "comparison_error": 0.00125,
+          "load_estimate": 1.0166551860389914,
+          "load_ci_low": 0.9978877156376444,
+          "load_ci_high": 1.0357756199448949,
+          "net_input_drift_estimate": 0.01665518603899141,
+          "net_input_drift_ci_low": -0.0021122843623555543,
+          "net_input_drift_ci_high": 0.035775619944894865,
+          "quantile_low": 0.981539984589596,
+          "quantile_high": 1.0188071965485161,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 40000,
+          "input_work": 119567.7968624054,
+          "input_time": 118906.85882678526,
+          "input_count": 120000,
+          "comparison_error": 0.00125,
+          "load_estimate": 1.0055584517339151,
+          "load_ci_low": 0.9923969853818299,
+          "load_ci_high": 1.0188944693987194,
+          "net_input_drift_estimate": 0.005558451733915115,
+          "net_input_drift_ci_low": -0.007603014618170145,
+          "net_input_drift_ci_high": 0.018894469398719416,
+          "quantile_low": 0.9869112866294443,
+          "quantile_high": 1.013262299811422,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 80000,
+          "input_work": 240052.81154885615,
+          "input_time": 238016.17771777057,
+          "input_count": 240000,
+          "comparison_error": 0.00125,
+          "load_estimate": 1.008556703374594,
+          "load_ci_low": 0.9992044200993212,
+          "load_ci_high": 1.0179965214932896,
+          "net_input_drift_estimate": 0.00855670337459391,
+          "net_input_drift_ci_low": -0.0007955799006788,
+          "net_input_drift_ci_high": 0.017996521493289563,
+          "quantile_low": 0.9907270625003232,
+          "quantile_high": 1.0093597296880883,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 160000,
+          "input_work": 479923.94250792253,
+          "input_time": 476277.32436492585,
+          "input_count": 480000,
+          "comparison_error": 0.00125,
+          "load_estimate": 1.0076565016985832,
+          "load_ci_low": 1.0010403405300266,
+          "load_ci_high": 1.0143163909636372,
+          "net_input_drift_estimate": 0.007656501698583229,
+          "net_input_drift_ci_low": 0.0010403405300265511,
+          "net_input_drift_ci_high": 0.014316390963637238,
+          "quantile_low": 0.9934341105749785,
+          "quantile_high": 1.006609285261225,
+          "label": "overloaded"
+        }
+      ]
+    },
+    {
+      "role": "holdout",
+      "rho": 0.995,
+      "truth": "subcritical",
+      "status": "resolved",
+      "looks": [
+        {
+          "horizon": 20000,
+          "input_work": 60325.50569508366,
+          "input_time": 60231.76419112082,
+          "input_count": 60000,
+          "comparison_error": 0.00125,
+          "load_estimate": 1.0015563466423694,
+          "load_ci_low": 0.9830676010489633,
+          "load_ci_high": 1.0203928137080862,
+          "net_input_drift_estimate": 0.0015563466423693662,
+          "net_input_drift_ci_low": -0.01693239895103671,
+          "net_input_drift_ci_high": 0.02039281370808621,
+          "quantile_low": 0.981539984589596,
+          "quantile_high": 1.0188071965485161,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 40000,
+          "input_work": 119567.7968624054,
+          "input_time": 120699.42453774213,
+          "input_count": 120000,
+          "comparison_error": 0.00125,
+          "load_estimate": 0.9906244153220227,
+          "load_ci_low": 0.9776584162919982,
+          "load_ci_high": 1.003762373318538,
+          "net_input_drift_estimate": -0.009375584677977278,
+          "net_input_drift_ci_low": -0.022341583708001767,
+          "net_input_drift_ci_high": 0.003762373318537904,
+          "quantile_low": 0.9869112866294443,
+          "quantile_high": 1.013262299811422,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 80000,
+          "input_work": 240052.81154885615,
+          "input_time": 241604.36130145402,
+          "input_count": 240000,
+          "comparison_error": 0.00125,
+          "load_estimate": 0.9935781384729973,
+          "load_ci_low": 0.9843647504938919,
+          "load_ci_high": 1.0028777612730986,
+          "net_input_drift_estimate": -0.006421861527002748,
+          "net_input_drift_ci_low": -0.015635249506108062,
+          "net_input_drift_ci_high": 0.002877761273098578,
+          "quantile_low": 0.9907270625003232,
+          "quantile_high": 1.0093597296880883,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 160000,
+          "input_work": 479923.94250792253,
+          "input_time": 483457.3845312266,
+          "input_count": 480000,
+          "comparison_error": 0.00125,
+          "load_estimate": 0.9926913061288117,
+          "load_ci_low": 0.9861734047795899,
+          "load_ci_high": 0.9992522861473552,
+          "net_input_drift_estimate": -0.007308693871188265,
+          "net_input_drift_ci_low": -0.013826595220410076,
+          "net_input_drift_ci_high": -0.0007477138526448268,
+          "quantile_low": 0.9934341105749785,
+          "quantile_high": 1.006609285261225,
+          "label": "subcritical"
+        }
+      ]
+    },
+    {
+      "role": "holdout",
+      "rho": 1.005,
+      "truth": "overloaded",
+      "status": "UNKNOWN",
+      "looks": [
+        {
+          "horizon": 20000,
+          "input_work": 60325.50569508366,
+          "input_time": 59632.443154393346,
+          "input_count": 60000,
+          "comparison_error": 0.00125,
+          "load_estimate": 1.0116222395734469,
+          "load_ci_low": 0.9929476774414137,
+          "load_ci_high": 1.0306480178659547,
+          "net_input_drift_estimate": 0.01162223957344688,
+          "net_input_drift_ci_low": -0.007052322558586344,
+          "net_input_drift_ci_high": 0.030648017865954724,
+          "quantile_low": 0.981539984589596,
+          "quantile_high": 1.0188071965485161,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 40000,
+          "input_work": 119567.7968624054,
+          "input_time": 119498.4352388587,
+          "input_count": 120000,
+          "comparison_error": 0.00125,
+          "load_estimate": 1.0005804395966196,
+          "load_ci_low": 0.9874841290185545,
+          "load_ci_high": 1.013850437371994,
+          "net_input_drift_estimate": 0.0005804395966195752,
+          "net_input_drift_ci_low": -0.012515870981445465,
+          "net_input_drift_ci_high": 0.013850437371994095,
+          "quantile_low": 0.9869112866294443,
+          "quantile_high": 1.013262299811422,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 80000,
+          "input_work": 240052.81154885615,
+          "input_time": 239200.33780591877,
+          "input_count": 240000,
+          "comparison_error": 0.00125,
+          "load_estimate": 1.0035638484073925,
+          "load_ci_low": 0.9942578635641757,
+          "load_ci_high": 1.0129569347532235,
+          "net_input_drift_estimate": 0.0035638484073925447,
+          "net_input_drift_ci_low": -0.00574213643582433,
+          "net_input_drift_ci_high": 0.012956934753223459,
+          "quantile_low": 0.9907270625003232,
+          "quantile_high": 1.0093597296880883,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 160000,
+          "input_work": 479923.94250792253,
+          "input_time": 478646.8632921145,
+          "input_count": 480000,
+          "comparison_error": 0.00125,
+          "load_estimate": 1.0026681031753228,
+          "load_ci_low": 0.9960846952798778,
+          "load_ci_high": 1.00929502269154,
+          "net_input_drift_estimate": 0.0026681031753228446,
+          "net_input_drift_ci_low": -0.003915304720122248,
+          "net_input_drift_ci_high": 0.009295022691540034,
+          "quantile_low": 0.9934341105749785,
+          "quantile_high": 1.006609285261225,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 320000,
+          "input_work": 959390.0381940862,
+          "input_time": 956001.9771147319,
+          "input_count": 960000,
+          "comparison_error": 0.00125,
+          "load_estimate": 1.0035439896155651,
+          "load_ci_low": 0.9988802605793817,
+          "load_ci_high": 1.0082294934023177,
+          "net_input_drift_estimate": 0.003543989615565124,
+          "net_input_drift_ci_low": -0.001119739420618271,
+          "net_input_drift_ci_high": 0.008229493402317711,
+          "quantile_low": 0.995352740802155,
+          "quantile_high": 1.004668957051447,
+          "label": "UNKNOWN"
+        }
+      ]
+    }
+  ]
+}

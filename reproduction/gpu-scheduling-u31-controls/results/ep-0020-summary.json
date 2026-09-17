@@ -1,0 +1,283 @@
+{
+  "research_id": "GPU-SCHED-EP-0020",
+  "source_episode_sha256": "b5ebff918c1d35c67298f7c8ef2c649a7227389dc4f7d89f0c5f0b1f5128209f",
+  "source_result_sha256": "fbbce301d7837b631fb0b50cb07a58199ac90f730d7ca8dca54f44f570c102e6",
+  "scope": "Synthetic homogeneous 64-server FCFS; every job requires 16 servers; four fungible slots; independent iid exponential gaps and true service work",
+  "claim_status": "UNKNOWN",
+  "bounded_transfer_status": "PASS",
+  "validated_general_detector": false,
+  "independent_replications": 0,
+  "raw_job_traces_included": false,
+  "simulation_source_included": false,
+  "n_servers": 64,
+  "need": 16,
+  "slots": 4,
+  "horizons": [
+    20000,
+    40000,
+    80000,
+    160000
+  ],
+  "calibration_rhos": [
+    0.8,
+    1.2
+  ],
+  "holdout_rhos": [
+    0.95,
+    1.05,
+    0.99,
+    1.01
+  ],
+  "calibration_seeds": [
+    901,
+    902,
+    903
+  ],
+  "holdout_seeds": [
+    1001,
+    1002,
+    1003
+  ],
+  "family_error": 0.05,
+  "max_comparisons": 24,
+  "executed_comparisons": 10,
+  "executed_workloads": 30,
+  "verdict": "PASS bounded-transfer",
+  "engine_fixtures": [
+    {
+      "rho": 0.8,
+      "seed": 801,
+      "departure_max_abs_error": 0.0,
+      "mean_jct_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "rho": 0.8,
+      "seed": 802,
+      "departure_max_abs_error": 4.440892098500626e-16,
+      "mean_jct_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "rho": 1.1,
+      "seed": 801,
+      "departure_max_abs_error": 8.881784197001252e-16,
+      "mean_jct_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "rho": 1.1,
+      "seed": 802,
+      "departure_max_abs_error": 8.881784197001252e-16,
+      "mean_jct_abs_error": 0.0,
+      "passed": true
+    }
+  ],
+  "recovery": {
+    "initial_attempt": "snapshot persistence failure during controls",
+    "initial_workloads": 6,
+    "initial_looks": 2,
+    "initial_holdouts_executed": false,
+    "changed": "bounded persistence retry only",
+    "grid_and_error_budget_unchanged": true,
+    "controls_previously_observed": true,
+    "independent_replication": false
+  },
+  "observation_tiers": {
+    "O": "arrivals, departures and system count available by a fixed time cutoff",
+    "W": "all offered true service work, full arrival gaps and known mechanism capacity",
+    "D": "arrival-cohort JCT after future draining; later observation end time"
+  },
+  "cells": [
+    {
+      "role": "calibration",
+      "rho": 0.8,
+      "truth": "subcritical",
+      "status": "resolved",
+      "resolved_horizon": 20000,
+      "label": "subcritical",
+      "looks": [
+        {
+          "horizon": 20000,
+          "input_work": 60079.02220472804,
+          "input_time": 18821.802291819105,
+          "input_count": 60000,
+          "comparison_error": 0.0020833333333333333,
+          "load_estimate": 0.7979977325396912,
+          "ci_low": 0.7839413840316267,
+          "ci_high": 0.8123061163879033,
+          "quantile_low": 0.9823854781349703,
+          "quantile_high": 1.0179303565220348,
+          "label": "subcritical"
+        }
+      ]
+    },
+    {
+      "role": "calibration",
+      "rho": 1.2,
+      "truth": "overloaded",
+      "status": "resolved",
+      "resolved_horizon": 20000,
+      "label": "overloaded",
+      "looks": [
+        {
+          "horizon": 20000,
+          "input_work": 60079.02220472804,
+          "input_time": 12547.868194546067,
+          "input_count": 60000,
+          "comparison_error": 0.0020833333333333333,
+          "load_estimate": 1.1969965988095372,
+          "ci_low": 1.1759120760474406,
+          "ci_high": 1.2184591745818554,
+          "quantile_low": 0.9823854781349703,
+          "quantile_high": 1.0179303565220348,
+          "label": "overloaded"
+        }
+      ]
+    },
+    {
+      "role": "holdout",
+      "rho": 0.95,
+      "truth": "subcritical",
+      "status": "resolved",
+      "resolved_horizon": 20000,
+      "label": "subcritical",
+      "looks": [
+        {
+          "horizon": 20000,
+          "input_work": 60208.72967568628,
+          "input_time": 15844.546551474501,
+          "input_count": 60000,
+          "comparison_error": 0.0020833333333333333,
+          "load_estimate": 0.9499913658002921,
+          "ci_low": 0.9332577221158135,
+          "ci_high": 0.9670250496819461,
+          "quantile_low": 0.9823854781349703,
+          "quantile_high": 1.0179303565220348,
+          "label": "subcritical"
+        }
+      ]
+    },
+    {
+      "role": "holdout",
+      "rho": 1.05,
+      "truth": "overloaded",
+      "status": "resolved",
+      "resolved_horizon": 20000,
+      "label": "overloaded",
+      "looks": [
+        {
+          "horizon": 20000,
+          "input_work": 60208.72967568628,
+          "input_time": 14335.54211800075,
+          "input_count": 60000,
+          "comparison_error": 0.0020833333333333333,
+          "load_estimate": 1.049990456937164,
+          "ci_low": 1.0314953770753719,
+          "ci_high": 1.0688171601747818,
+          "quantile_low": 0.9823854781349703,
+          "quantile_high": 1.0179303565220348,
+          "label": "overloaded"
+        }
+      ]
+    },
+    {
+      "role": "holdout",
+      "rho": 0.99,
+      "truth": "subcritical",
+      "status": "resolved",
+      "resolved_horizon": 40000,
+      "label": "subcritical",
+      "looks": [
+        {
+          "horizon": 20000,
+          "input_work": 60208.72967568628,
+          "input_time": 15204.362852424994,
+          "input_count": 60000,
+          "comparison_error": 0.0020833333333333333,
+          "load_estimate": 0.9899910022550433,
+          "ci_low": 0.9725527840996393,
+          "ci_high": 1.0077418938790828,
+          "quantile_low": 0.9823854781349703,
+          "quantile_high": 1.0179303565220348,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 40000,
+          "input_work": 119434.22885446937,
+          "input_time": 30244.972771691184,
+          "input_count": 120000,
+          "comparison_error": 0.0020833333333333333,
+          "load_estimate": 0.987223808697374,
+          "ci_low": 0.9748956834042914,
+          "ci_high": 0.9997078303348853,
+          "quantile_low": 0.9875123298440812,
+          "quantile_high": 1.0126455840383182,
+          "label": "subcritical"
+        }
+      ]
+    },
+    {
+      "role": "holdout",
+      "rho": 1.01,
+      "truth": "overloaded",
+      "status": "resolved",
+      "resolved_horizon": 160000,
+      "label": "overloaded",
+      "looks": [
+        {
+          "horizon": 20000,
+          "input_work": 60208.72967568628,
+          "input_time": 14903.286360297803,
+          "input_count": 60000,
+          "comparison_error": 0.0020833333333333333,
+          "load_estimate": 1.0099908204824155,
+          "ci_low": 0.9922003150915488,
+          "ci_high": 1.0281003159776476,
+          "quantile_low": 0.9823854781349703,
+          "quantile_high": 1.0179303565220348,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 40000,
+          "input_work": 119434.22885446937,
+          "input_time": 29646.06241977682,
+          "input_count": 120000,
+          "comparison_error": 0.0020833333333333333,
+          "load_estimate": 1.007167724024583,
+          "ci_low": 0.9945905456952767,
+          "ci_high": 1.0199039481194176,
+          "quantile_low": 0.9875123298440812,
+          "quantile_high": 1.0126455840383182,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 80000,
+          "input_work": 239330.69687134767,
+          "input_time": 59383.32683569913,
+          "input_count": 240000,
+          "comparison_error": 0.0020833333333333333,
+          "load_estimate": 1.007566894717452,
+          "ci_low": 0.9986536224258189,
+          "ci_high": 1.0165597205411216,
+          "quantile_low": 0.9911536669789723,
+          "quantile_high": 1.0089252891007214,
+          "label": "UNKNOWN"
+        },
+        {
+          "horizon": 160000,
+          "input_work": 479827.47887329734,
+          "input_time": 118540.7469787774,
+          "input_count": 480000,
+          "comparison_error": 0.0020833333333333333,
+          "load_estimate": 1.0119462950558298,
+          "ci_low": 1.00560804007022,
+          "ci_high": 1.0183244994796516,
+          "quantile_low": 0.9937365697996257,
+          "quantile_high": 1.0063029080248473,
+          "label": "overloaded"
+        }
+      ]
+    }
+  ]
+}

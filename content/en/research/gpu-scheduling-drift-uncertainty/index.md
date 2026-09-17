@@ -117,3 +117,6 @@ Zero independent replications and no peer review. Internal checks covered seal o
 ## Next experiment
 
 Fix mechanism, input-work observability, exponentiality/independence and native-engine alignment before transfer to fixed-need M/M/c controls whose need divides pool capacity. Seal new controls/holdout, horizon cap, error budget and first R2/R3 stopping. Do not apply the interval to mixed needs without independent known labels. Full reruns of the existing 18 bisection cells and real-cluster validation remain separate gates.
+
+
+Follow-up fixed-need M/M/4 check and manuscript preparation: [[en/research/gpu-scheduling-mmc-transfer/index|EP-0020]]。

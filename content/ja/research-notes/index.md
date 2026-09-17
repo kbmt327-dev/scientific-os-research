@@ -8,6 +8,7 @@ lang: ja
 
 ## 2026-09-17
 
+- **GPU-SCHED-EP-0020** · Finding — [固定needの4並列対照へ、入力CIを移せた](/ja/research/gpu-scheduling-mmc-transfer/)
 - **GPU-SCHED-EP-0019** · Negative Result — [小さな過負荷を、有限窓では確定できなかった](/ja/research/gpu-scheduling-drift-uncertainty/)
 - **GPU-SCHED-EP-0018** · Negative Result — [既知の過負荷を、中点のqueue閾値が見逃した](/ja/research/gpu-scheduling-known-controls/)
 ## 2026-09-16

@@ -11,17 +11,17 @@ lang: ja
 <!-- GENERATED: research-current:START -->
 ## GPUクラスタのスケジューリング
 
-**テーマ：** 短いジョブを先に通すサイズ優先は、どの条件で壊れ、容量境界をどこまで確定できるか。
+**テーマ：** サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
 
-**現在地：** 合成MSJモデルでは最大job比率、同時本数、大job頻度がpolicy順位とclass飢餓を左右します。旧境界の値は未監査alpha=0.5に条件付けられ、飽和throughputと保存二分法の容量は未validatedです。
+**現在地：** EP-0018で中点queue閾値が既知過負荷を見逃し、EP-0019ではM/M/1負荷1.005が320k×3 seedでもUNKNOWNでした。EP-0020は同質64資源・全need16・FCFSの既知M/M/4へ入力CIを移し、control2/holdout4を正しい側に確定しました。30 workload・10 look、負荷1.01は160k×3 seedが必要で、4 engine fixtureも整合しました。
 
-EP-0017のalpha/queue不一致に対し、EP-0018の全gang M/M/1既知対照で中点queue閾値がrho=1.05の過負荷を見逃すと特定しました。EP-0019は指数入力・全入力work・既知容量1を使うCIへ進み、holdout0.99/1.01/0.995を確定しましたが、1.005は最大320kでもUNKNOWNでした。最初の最大窓UNKNOWNで停止しています。これはknown-model条件付きの入力判定で、一般MSJ detectorのvalidationではありません。**U-31、mixed-need容量、実クラスタへの一般化はUNKNOWN、validated general detectorは0件**です。
+これは指数/独立入力・全offered true work・機構capacity4に条件付けられる限定transferです。保存失敗後の復旧rerunと既に観測したcontrolを開示しています。**U-31全体、mixed-need/c12容量、実クラスタへの一般化はUNKNOWN、validated general detectorは0件**です。
 
-Philly traceの19,100到着中1本が容量の半分超だった頻度実測は残ります。そこからの余裕は未監査閾値を使う合成モデル値で、実trace上のscheduler性能ではありません。
+技術報告草稿を作成しましたが、新規性は未確立です。次の比較は出力だけ・真のwork付き・drain後JCTの情報tierと実時間cutoffを揃えて設計します。旧境界は未監査alphaに条件付けられ、Phillyの頻度実測からの余裕は実trace上のscheduler性能ではありません。
 
-**証拠の境界：** 合成known-model対照とPhilly公開traceの到着数に限定。公開再現物は集計・十分統計・F quantile・CI・停止分岐の検算。指数/独立性とtrue required work観測は仮定で、raw job列、simulator source、外部独立再現、実クラスタの前向き検証はない。
+**証拠の境界：** 合成known-model対照とPhilly公開traceの到着数に限定。公開artifactは十分統計・F quantile・CI・停止/engine照合要約の算術検査。generator/simulator再実行、経験的coverage、外部独立再現、公開論文・査読、実クラスタの前向き検証は未完了。
 
-**[現在のResearch Note（EP-0019）→](/ja/research/gpu-scheduling-drift-uncertainty/)** — Negative Result
+**[現在のResearch Note（EP-0020）→](/ja/research/gpu-scheduling-mmc-transfer/)** — Finding
 
 [研究の現在地と更新履歴を見る →](/ja/programs/gpu-scheduling/)
 

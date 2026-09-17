@@ -8,6 +8,7 @@ This is the historical log. For current claims, start with the [research-area in
 
 ## 2026-09-17
 
+- **GPU-SCHED-EP-0020** · Finding — [Input confidence intervals transferred to a fixed-need four-slot control](/en/research/gpu-scheduling-mmc-transfer/)
 - **GPU-SCHED-EP-0019** · Negative Result — [A small overload remained unresolved within a finite window](/en/research/gpu-scheduling-drift-uncertainty/)
 - **GPU-SCHED-EP-0018** · Negative Result — [A midpoint queue threshold missed a known overload](/en/research/gpu-scheduling-known-controls/)
 ## 2026-09-16

@@ -25,7 +25,8 @@ def broken_local_links(public: Path) -> list[tuple[str, str]]:
     broken: list[tuple[str, str]] = []
     for page in sorted(public.rglob("*.html")):
         html = page.read_text(encoding="utf-8", errors="ignore")
-        for href in HREF.findall(html):
+        image_sources = re.findall(r'<img\b[^>]*\bsrc=["\']([^"\']+)["\']', html, flags=re.IGNORECASE)
+        for href in HREF.findall(html) + image_sources:
             if href.startswith(("http://", "https://", "mailto:", "#", "data:")):
                 continue
             path = unquote(href.split("#")[0].split("?")[0])
@@ -62,6 +63,7 @@ def main() -> int:
         "gpu-scheduling-u31-calibration",
         "gpu-scheduling-known-controls",
         "gpu-scheduling-drift-uncertainty",
+        "gpu-scheduling-mmc-transfer",
         "simulation-worlds",
         "human-model",
         "human-model-dataset-portfolio",

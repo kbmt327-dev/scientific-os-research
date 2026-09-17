@@ -136,6 +136,8 @@ def gpu_u31() -> None:
 def gpu_u31_controls() -> None:
     output = run([sys.executable, 'verify_summary.py'], ROOT / 'reproduction' / 'gpu-scheduling-u31-controls')
     assert 'CI arithmetic and stop branches OK' in output
+    mmc = run([sys.executable, 'verify_mmc_summary.py'], ROOT / 'reproduction' / 'gpu-scheduling-u31-controls')
+    assert 'M/M/4 CI arithmetic and stopping OK' in mmc
     print('gpu-u31-controls: sufficient-statistic CI and stop branches verified; simulation not reproduced')
 
 

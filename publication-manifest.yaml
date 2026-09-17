@@ -141,6 +141,14 @@ notes:
       ja: content/ja/research/gpu-scheduling-drift-uncertainty/index.md
     type: Negative Result
     publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0020
+    source_episode: GPU-SCHEDULING/EP-0020
+    source_episode_sha256: b5ebff918c1d35c67298f7c8ef2c649a7227389dc4f7d89f0c5f0b1f5128209f
+    views:
+      en: content/en/research/gpu-scheduling-mmc-transfer/index.md
+      ja: content/ja/research/gpu-scheduling-mmc-transfer/index.md
+    type: Finding
+    publication: { status: publishable }
   - research_id: SIM-WORLD-EP-0001
     source_episode: SIM-WORLD/EP-0001
     source_episode_sha256: 0c632eb5cad1431953bcbfbe3a067925fea3d7caac6bb21547ce53cb03a7931f

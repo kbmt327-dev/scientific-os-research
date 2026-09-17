@@ -115,3 +115,6 @@ SciPyが必要です。公開十分統計のCI算術を検査する限定的再�
 ## 次の実験
 
 fixed-needがpool容量を割り切る既知M/M/c対照へ移すための機構・入力work観測・指数/独立性・native engine整合を先に固定します。新しいcontrol/holdout、窓上限、誤りbudget、最初のR2/R3停止を封印し、独立known labelを得られないmixed-needには適用しません。既存18cell二分法の全rerunと実クラスタは別gateです。
+
+
+後続の固定need M/M/4検査と論文準備：[[ja/research/gpu-scheduling-mmc-transfer/index|EP-0020]]。

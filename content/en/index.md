@@ -15,11 +15,11 @@ lang: en
   <article class="program-row">
     <div>
       <h3>GPU cluster scheduling</h3>
-      <p>We study size-first scheduling, detector misses and finite-window uncertainty in capacity claims.</p>
+      <p>We audit finite-window capacity diagnostics with known controls and prepare comparisons and a technical report.</p>
     </div>
     <nav aria-label="GPU cluster scheduling">
       <a href="/en/programs/gpu-scheduling/">Program overview</a>
-      <a href="/en/research/gpu-scheduling-drift-uncertainty/">Current Note</a>
+      <a href="/en/research/gpu-scheduling-mmc-transfer/">Current Note</a>
     </nav>
   </article>
   <article class="program-row">

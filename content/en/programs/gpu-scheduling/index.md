@@ -23,15 +23,15 @@ The replacement, **alpha** (the elasticity of mean response time with respect to
 <!-- GENERATED: program-current:START -->
 ## Current public state
 
-In a synthetic MSJ model, largest-job share, concurrency and large-job frequency affect policy rankings and class starvation. Earlier boundary values remain conditional on unaudited alpha=0.5. Saturated throughput and stored bisection capacity are not validated.
+EP-0018 exposed a midpoint queue miss at known overload. In EP-0019, M/M/1 load 1.005 remained UNKNOWN at 320k arrivals per seed across three seeds. EP-0020 transferred input intervals to a known M/M/4 control with homogeneous 64 resources, fixed need16 and FCFS. Two controls and four holdouts resolved correctly over 30 workloads and 10 looks; load1.01 needed 160k per seed, and four engine fixtures aligned.
 
-Following the EP-0017 alpha/queue disagreement, EP-0018 identified a midpoint queue miss at known overload rho=1.05 in a full-gang M/M/1 control. EP-0019 used independent exponential inputs, all input work and known unit capacity to form a load CI. It resolved holdout0.99/1.01/0.995, but 1.005 remained UNKNOWN at the maximum 320k window; execution stopped there. This is known-model input classification, not validation of a general MSJ detector. **U-31, mixed-need capacity and real-cluster transfer remain UNKNOWN; validated general detectors remain zero.**
+This bounded transfer requires independent exponential inputs, all offered true work and mechanism capacity four. Recovery rerun and previously observed controls are disclosed. **U-31, mixed-need/c12 capacity and real-cluster generalization remain UNKNOWN; validated general detectors remain zero.**
 
-The public Philly count of one job above half-capacity in 19,100 arrivals survives as a frequency measurement. Derived margins use a synthetic model and unaudited threshold; no scheduler was run on the real trace.
+A technical-report draft exists, but novelty remains unestablished. Future comparisons align output-only, true-work and future-drained JCT information tiers and actual time cutoffs. Earlier boundaries depend on unaudited alpha; margins derived from Philly frequency counts are not scheduler performance on the real trace.
 
-**Evidence boundary:** Limited to synthetic known-model controls and public Philly arrival counts. Public artifacts check aggregates, sufficient statistics, F quantiles, CI arithmetic and stopping. Exponentiality/independence and true-work observability are assumptions; raw job sequences, simulator source, external independent replication and prospective real-cluster validation are absent.
+**Evidence boundary:** Limited to synthetic known-model controls and public Philly arrival counts. Public artifacts check sufficient statistics, F quantiles, intervals and recorded stopping/alignment arithmetic. Generator/simulator reproduction, empirical coverage, external independent replication, a public paper/peer review and prospective real-cluster validation remain incomplete.
 
-**[Read the current Research Note (EP-0019) →](/en/research/gpu-scheduling-drift-uncertainty/)**
+**[Read the current Research Note (EP-0020) →](/en/research/gpu-scheduling-mmc-transfer/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -52,5 +52,6 @@ The public Philly count of one job above half-capacity in 19,100 arrivals surviv
 13. [[en/research/gpu-scheduling-one-job/index|EP-0013 — The real-cluster claim rests on one job out of 19,100]]
 14. [[en/research/gpu-scheduling-u31-calibration/index|EP-0017 — Independent calibration still left two capacity detectors in disagreement]]
 15. [[en/research/gpu-scheduling-known-controls/index|EP-0018 — A midpoint queue threshold missed a known overload]]
-16. **[[en/research/gpu-scheduling-drift-uncertainty/index|EP-0019 — A small overload remained unresolved within a finite window]] (latest)**
+16. [[en/research/gpu-scheduling-drift-uncertainty/index|EP-0019 — A small overload remained unresolved within a finite window]]
+17. **[[en/research/gpu-scheduling-mmc-transfer/index|EP-0020 — Input confidence intervals transferred to a fixed-need four-slot control]] (latest)**
 <!-- GENERATED: program-history:END -->

@@ -23,15 +23,15 @@ GPUクラスタでは、多数のジョブが限られたGPUを取り合いま�
 <!-- GENERATED: program-current:START -->
 ## 現在の公開結論
 
-合成MSJモデルでは最大job比率、同時本数、大job頻度がpolicy順位とclass飢餓を左右します。旧境界の値は未監査alpha=0.5に条件付けられ、飽和throughputと保存二分法の容量は未validatedです。
+EP-0018で中点queue閾値が既知過負荷を見逃し、EP-0019ではM/M/1負荷1.005が320k×3 seedでもUNKNOWNでした。EP-0020は同質64資源・全need16・FCFSの既知M/M/4へ入力CIを移し、control2/holdout4を正しい側に確定しました。30 workload・10 look、負荷1.01は160k×3 seedが必要で、4 engine fixtureも整合しました。
 
-EP-0017のalpha/queue不一致に対し、EP-0018の全gang M/M/1既知対照で中点queue閾値がrho=1.05の過負荷を見逃すと特定しました。EP-0019は指数入力・全入力work・既知容量1を使うCIへ進み、holdout0.99/1.01/0.995を確定しましたが、1.005は最大320kでもUNKNOWNでした。最初の最大窓UNKNOWNで停止しています。これはknown-model条件付きの入力判定で、一般MSJ detectorのvalidationではありません。**U-31、mixed-need容量、実クラスタへの一般化はUNKNOWN、validated general detectorは0件**です。
+これは指数/独立入力・全offered true work・機構capacity4に条件付けられる限定transferです。保存失敗後の復旧rerunと既に観測したcontrolを開示しています。**U-31全体、mixed-need/c12容量、実クラスタへの一般化はUNKNOWN、validated general detectorは0件**です。
 
-Philly traceの19,100到着中1本が容量の半分超だった頻度実測は残ります。そこからの余裕は未監査閾値を使う合成モデル値で、実trace上のscheduler性能ではありません。
+技術報告草稿を作成しましたが、新規性は未確立です。次の比較は出力だけ・真のwork付き・drain後JCTの情報tierと実時間cutoffを揃えて設計します。旧境界は未監査alphaに条件付けられ、Phillyの頻度実測からの余裕は実trace上のscheduler性能ではありません。
 
-**証拠の境界：** 合成known-model対照とPhilly公開traceの到着数に限定。公開再現物は集計・十分統計・F quantile・CI・停止分岐の検算。指数/独立性とtrue required work観測は仮定で、raw job列、simulator source、外部独立再現、実クラスタの前向き検証はない。
+**証拠の境界：** 合成known-model対照とPhilly公開traceの到着数に限定。公開artifactは十分統計・F quantile・CI・停止/engine照合要約の算術検査。generator/simulator再実行、経験的coverage、外部独立再現、公開論文・査読、実クラスタの前向き検証は未完了。
 
-**[現在のResearch Note（EP-0019）を読む →](/ja/research/gpu-scheduling-drift-uncertainty/)**
+**[現在のResearch Note（EP-0020）を読む →](/ja/research/gpu-scheduling-mmc-transfer/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -52,5 +52,6 @@ Philly traceの19,100到着中1本が容量の半分超だった頻度実測は�
 13. [[ja/research/gpu-scheduling-one-job/index|EP-0013 — 実クラスタについての主張は、19,100本中1本のジョブに乗っていた]]
 14. [[ja/research/gpu-scheduling-u31-calibration/index|EP-0017 — 独立した較正でも、容量を決める二つの判定器は一致しなかった]]
 15. [[ja/research/gpu-scheduling-known-controls/index|EP-0018 — 既知の過負荷を、中点のqueue閾値が見逃した]]
-16. **[[ja/research/gpu-scheduling-drift-uncertainty/index|EP-0019 — 小さな過負荷を、有限窓では確定できなかった]]（最新）**
+16. [[ja/research/gpu-scheduling-drift-uncertainty/index|EP-0019 — 小さな過負荷を、有限窓では確定できなかった]]
+17. **[[ja/research/gpu-scheduling-mmc-transfer/index|EP-0020 — 固定needの4並列対照へ、入力CIを移せた]]（最新）**
 <!-- GENERATED: program-history:END -->

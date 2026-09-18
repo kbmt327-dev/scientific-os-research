@@ -38151,5 +38151,13 @@
    "future_work_median": 0.16565435420654562,
    "drain_extra_median": 0.19885218954630013
   }
- ]
+ ],
+ "prediction_text": {
+  "M0": "O and D at z.8/1.2,H80k each wrong<=10/100",
+  "M1": "Nominal work wrong>=95/100 at z1.05,both H; >=90/100 at z1.01,H80k",
+  "M2": "K wrong<=10/100 in every cell",
+  "M3": "K UNKNOWN>=40/100 at z.99/1.01,H20k",
+  "M4": "D wrong>=15/100 at z.99,H20k"
+ },
+ "stop_rule": "Full-grid benchmark, wrong labels/UNKNOWN are outcomes and do not stop. First native/hand alignment failure, missing/nonfinite, source/hash mismatch or failed analytic identity => R3 and stop. No grid/budget expansion."
 }

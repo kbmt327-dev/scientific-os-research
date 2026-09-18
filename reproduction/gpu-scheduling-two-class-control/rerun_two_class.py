@@ -63,6 +63,14 @@ def verify_recorded():
             assert np.allclose(m['wrong_ci'],clopper_pearson(e,100,.05/80))
             assert np.allclose(m['unknown_ci'],clopper_pearson(u,100,.05/80))
             assert all(math.isclose((e+float(a)*u)/100,v) for a,v in m['loss'].items())
+    def cell(z,h):return next(c for c in rec['cells'] if (c['load_factor'],c['horizon'])==(z,h))
+    grades={
+      'M0':all(cell(z,80000)['metrics'][m]['wrong']<=10 for z in (.8,1.2) for m in ('O_AB','D_ALPHA')),
+      'M1':all(cell(1.05,h)['metrics']['NOMINAL_WORK']['wrong']>=95 for h in rec['horizons']) and cell(1.01,80000)['metrics']['NOMINAL_WORK']['wrong']>=90,
+      'M2':all(c['metrics']['K_EXACT']['wrong']<=10 for c in rec['cells']),
+      'M3':all(cell(z,20000)['metrics']['K_EXACT']['unknown']>=40 for z in (.99,1.01)),
+      'M4':cell(.99,20000)['metrics']['D_ALPHA']['wrong']>=15}
+    assert grades==rec['prediction_grading']
     # Regenerate ten small runs, compare every diagnostic against the recorded
     # same-model results. This is executable parity, not external replication.
     out=rerun([8001,8002],[20000],rec['load_factors'])

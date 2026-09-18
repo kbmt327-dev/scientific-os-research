@@ -44,3 +44,8 @@ FCFS oracle, not the private native engine. It demonstrates same-code execution,
 not external independent replication, novel queueing theory, general mixed-need
 capacity, real GPU validation or operational benefit. No personal paths or
 private repository imports are required.
+
+The public summary also discloses the original M0-M4 prediction thresholds and
+stop rule; the verification command recalculates all five grades. The original
+private protocol digest is provenance only: this curated public summary is not
+the byte stream to which that digest was sealed.

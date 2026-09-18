@@ -135,10 +135,15 @@ def main():
         print('note: drawing %d arrivals per seed instead of the sealed 320000, so these numbers '
               'are a different sample, not a reproduction of the recorded run.\n' % generated)
     rows = []
+    critical_rows = []
     print('rho    look     truth        AB wrong  FCI wrong  FCI UNKNOWN  ALPHA wrong  future work share')
     for rho in args.rhos:
-        truth = 'subcritical' if rho < 1 else 'overloaded'
-        tally = {h: dict(AB=0, FCIw=0, FCIu=0, ALPHA=0, share=[]) for h in args.horizons}
+        critical = rho == 1.0
+        truth = 'critical' if critical else ('subcritical' if rho < 1 else 'overloaded')
+        tally = {h: dict(AB=0, FCIw=0, FCIu=0, ALPHA=0, share=[], mix={}, alphas=[]) for h in args.horizons}
+        for h in args.horizons:
+            tally[h]['mix'] = {n: dict(subcritical=0, overloaded=0, UNKNOWN=0)
+                               for n in ('AB', 'FCI', 'ALPHA')}
         for seed in seeds:
             arrival, size = generate(generated, rho, seed)
             dep = oracle(arrival, size)
@@ -149,18 +154,41 @@ def main():
                 el = window_elasticity(arrival, dep, h)
                 incomplete = dep[:h] > tau
                 share = float(size[:h][incomplete].sum() / size[:h].sum())
-                tally[h]['AB'] += ab['label'] != truth
-                tally[h]['FCIw'] += fci['label'] not in (truth, 'UNKNOWN')
+                for name, label in (('AB', ab['label']), ('FCI', fci['label']), ('ALPHA', el['label'])):
+                    tally[h]['mix'][name][label] += 1
+                if not critical:
+                    tally[h]['AB'] += ab['label'] != truth
+                    tally[h]['FCIw'] += fci['label'] not in (truth, 'UNKNOWN')
+                    tally[h]['ALPHA'] += el['label'] != truth
                 tally[h]['FCIu'] += fci['label'] == 'UNKNOWN'
-                tally[h]['ALPHA'] += el['label'] != truth
                 tally[h]['share'].append(share)
+                tally[h]['alphas'].append(el['alpha'])
                 rows.append(dict(rho=rho, horizon=h, seed=seed, truth=truth, tau=tau,
                                  future_work_share=share, ab=ab, fci=fci, alpha=el))
         for h in args.horizons:
             t = tally[h]
-            print('%-6s %-8d %-12s %-9d %-10d %-12d %-12d %.5f'
-                  % (rho, h, truth, t['AB'], t['FCIw'], t['FCIu'], t['ALPHA'],
-                     float(np.median(t['share']))))
+            if critical:
+                # No declaration is scored here: the published definition calls this load
+                # unstable, while the criterion the O-tier test uses is satisfied by it.
+                print('%-6s %-8d %-12s %-9s %-10s %-12d %-12s %.5f'
+                      % (rho, h, truth, '-', '-', t['FCIu'], '-', float(np.median(t['share']))))
+                critical_rows.append((h, t['mix'], float(np.median(t['alphas']))))
+            else:
+                print('%-6s %-8d %-12s %-9d %-10d %-12d %-12d %.5f'
+                      % (rho, h, truth, t['AB'], t['FCIw'], t['FCIu'], t['ALPHA'],
+                         float(np.median(t['share']))))
+
+    if critical_rows:
+        print('\ncritical load rho=1: declaration mix (no answer is scored correct here)')
+        print('look     method  subcritical  overloaded  UNKNOWN   median elasticity')
+        for h, mix, med in critical_rows:
+            for name in ('AB', 'FCI', 'ALPHA'):
+                print('%-8d %-7s %-12d %-11d %-9d %.4f'
+                      % (h, name, mix[name]['subcritical'], mix[name]['overloaded'],
+                         mix[name]['UNKNOWN'], med))
+        print('At this load the queue is null recurrent: the time-average expected number in the '
+              'network is infinite, so the model is unstable under the definition, while arrival '
+              'and departure rates are equal, so the growth slope the O-tier test checks is zero.')
 
     print('\nseeds per cell: %d (the unit of replication). Looks of one seed are nested prefixes'
           ' of one run and are not independent.' % len(seeds))

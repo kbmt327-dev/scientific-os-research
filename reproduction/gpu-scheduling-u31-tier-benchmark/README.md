@@ -45,6 +45,23 @@ Tier W is the input load confidence interval used by the earlier episodes in
 this project. Tier D is this project's own window-elasticity diagnostic at its
 historical threshold 0.5, which had never been scored against a known label.
 
+## The critical load
+
+Passing `--rhos 1.0` runs the load the benchmark otherwise excludes, and the script
+scores nothing there. At `rho = 1` the queue is null recurrent: the expected number
+in the network grows like the square root of time, so its time average is infinite
+and the model is unstable under the definition the primary source gives in its
+section 1.5. At the same time the arrival and departure rates are equal, so the
+asymptotic growth slope is exactly zero, which is the null hypothesis the O-tier
+test checks. The sentence in section 3.3 that an unstable network has a positive
+slope does not hold here. None of that is new queueing theory; the script just
+lets you watch the two readings disagree on one model.
+
+The same square-root growth puts the D-tier elasticity at exactly 0.5, which is the
+threshold this project has used since its first experiments. The script prints the
+declaration mix instead of a score, so you can see how each tier behaves when there
+is no side to be on.
+
 ## How to read the output
 
 The unit of replication is a seed. The three looks of one seed are nested

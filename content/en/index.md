@@ -15,11 +15,11 @@ lang: en
   <article class="program-row">
     <div>
       <h3>GPU cluster scheduling</h3>
-      <p>We learn population parameters and capacity intervals from past arrivals, needs and completions, measuring wrong-side decisions and abstention costs.</p>
+      <p>We compare fixed completion exposure and predeclared reporting looks, measuring abstention and guarantee scope.</p>
     </div>
     <nav aria-label="GPU cluster scheduling">
       <a href="/en/programs/gpu-scheduling/">Program overview</a>
-      <a href="/en/research/gpu-scheduling-past-only-learning/">Current Note</a>
+      <a href="/en/research/gpu-scheduling-exposure-checkpoints/">Current Note</a>
     </nav>
   </article>
   <article class="program-row">

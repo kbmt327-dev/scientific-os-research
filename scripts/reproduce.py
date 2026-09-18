@@ -208,8 +208,13 @@ def gpu_past_learning() -> None:
     print(run([sys.executable, 'rerun_past_learning.py', '--verify-recorded'], root).strip())
 
 
+def gpu_checkpoints() -> None:
+    root = ROOT / 'reproduction' / 'gpu-scheduling-exposure-checkpoints'
+    print(run([sys.executable, 'runner_checkpoint.py', '--verify-recorded'], root).strip())
+
+
 CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase,
-          "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "gpu-u31-controls": gpu_u31_controls, "gpu-two-class": gpu_two_class, "gpu-past-learning": gpu_past_learning, "queue": queue,
+          "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "gpu-u31-controls": gpu_u31_controls, "gpu-two-class": gpu_two_class, "gpu-past-learning": gpu_past_learning, "gpu-checkpoints": gpu_checkpoints, "queue": queue,
           "human": human, "human-dataset": human_dataset, "iaa": iaa,
           "intervention": intervention,
           "frontier": frontier}

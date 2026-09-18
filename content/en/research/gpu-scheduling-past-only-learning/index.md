@@ -141,3 +141,6 @@ External independent replications: zero. Scientific/domain/peer review has not b
 Audit a gate for model/log applicability. Do not silently apply exponential FCFS inference to an unconfirmed structure. Nonexponential/c12 accuracy claims require an independent known label and a separately sealed design.
 
 [[en/research/gpu-scheduling-two-class-control/index|EP-0023]] → EP-0024
+
+
+[[en/research/gpu-scheduling-exposure-checkpoints/index|EP-0025]]：Later fixed-count checkpoint/scheduled-look comparison.

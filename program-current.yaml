@@ -3,39 +3,37 @@ site_url: https://kbmt327-dev.github.io/scientific-os-research
 programs:
   - id: gpu-scheduling
     research_id_prefix: GPU-SCHED-
-    current_research_id: GPU-SCHED-EP-0024
+    current_research_id: GPU-SCHED-EP-0025
     ja:
       title: GPUクラスタのスケジューリング
-      home_summary: 過去の到着・need・完了から母パラメータと容量区間を学習し、誤側と棄権の費用を測定しました。
+      home_summary: 固定完了数のサービス露出と事前指定lookで、棄権と保証範囲を比較しました。
       question: サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
-      claim: 'EP-0024は母λ/p/μ・true service・未来完了を診断へ渡さず、既知指数FCFS構造内でpast-only CSを構成。400
-        workload・6000判定、封印4/4、学習区間法は0誤側。ただし±1%負荷は320k到着でも全50seedがUNKNOWN。既知容量対照との隔たりを誤差配分だけでは説明できません。
+      claim: 'EP-0025は母parameter/true service/futureなしで、固定class-completion exposureのχ²区間を事前指定lookへ適用。160workload/2400判定、封印4/4、scheduled誤側0件。128万到着の近傍棄権は随時有効法79/80対scheduled法22/80でした。
 
 
-        草稿v0.4と公開再実行artifactへ統合。一般U31/c12・非指数・実GPU・新規性・査読・外部独立再現はUNKNOWN、general detector0。点推定との損失順位は価格とベンチマークtruthに依存します。'
-      evidence_boundary: 既知2block指数strict FCFS、十分な到着/need/完了ログに限定。母パラメータoracleを外しても構造既知条件は残る。同じ設計/コードの再実行は独立外部replicationではなく、容量/CS理論も既存方法の再利用です。
+        草稿v0.5と公開再実行artifactへ統合。保証範囲を狭めた比較で普遍優越性なし。宣言gateはモデル仮定のデータ証明ではありません。一般U31/c12/非指数/実GPU、新規性・査読・独立外部replicationはUNKNOWN、general
+        detector0。'
+      evidence_boundary: 既知2block指数strict FCFS、十分な到着/need/完了ログ、事前指定H/Kに限定。既存time-change/Gamma/CP/Bonferroniの適用。n20の同時rate区間は広い。同設計実行は独立外部replicationではありません。
     en:
       title: GPU cluster scheduling
-      home_summary: We learn population parameters and capacity intervals from past
-        arrivals, needs and completions, measuring wrong-side decisions and abstention
-        costs.
+      home_summary: We compare fixed completion exposure and predeclared reporting looks,
+        measuring abstention and guarantee scope.
       question: Under which information and observation windows can size-first conditions
         and capacity boundaries be established?
-      claim: 'EP-0024 constructs past-only CS under known exponential FCFS structure
-        without population parameters, true service or future completions in learned
-        inference. 400 workloads, 6000 decisions, four/four sealed predictions and zero
-        observed learned wrong-side labels. All 50 seeds at +/-1% remain UNKNOWN even
-        at320k; error allocation alone does not explain the known-capacity gap.
+      claim: 'EP-0025 uses fixed-count exposure chi-square intervals without population
+        parameters, true service or future information.160workloads/2400decisions, 4/4sealed
+        predictions, 0scheduled wrong labels. Near-boundary1280k UNKNOWN: anytime79/80
+        versus scheduled22/80.
 
 
-        Draftv0.4 and public re-execution artifacts exist. General U31/c12, nonexponential
-        inputs, real GPU effects, novelty, peer review and external independent replication
-        remain UNKNOWN; general detectors zero. Point-loss rankings depend on prices
-        and benchmark truth.'
-      evidence_boundary: Known two-block exponential strict-FCFS structure with sufficient
-        arrival/need/completion logs only. Population-parameter privilege is removed,
-        known-structure assumptions remain. Same-design/code re-execution is not external
-        independent replication; capacity/CS theory is reused existing work.
+        Draftv0.5/public code integrate the narrower reporting contract. No universal
+        superiority; declaration gates do not prove assumptions in data. General U31/c12/nonexponential/real
+        GPU, novelty, peer review and external independent replication remain UNKNOWN;
+        general detectors0.'
+      evidence_boundary: Known two-block exponential strict-FCFS structure, complete
+        arrival/need/completion logs and predeclared H/K only. Existing time-change/Gamma/CP/Bonferroni
+        methods. n20simultaneous rate intervals are wide. Same-design execution is not
+        external independent replication.
 
   - id: queueing-system-identification
     research_id_prefix: SIM-WORLD-

@@ -13,13 +13,13 @@ lang: ja
 
 **テーマ：** サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
 
-**現在地：** EP-0024は母λ/p/μ・true service・未来完了を診断へ渡さず、既知指数FCFS構造内でpast-only CSを構成。400 workload・6000判定、封印4/4、学習区間法は0誤側。ただし±1%負荷は320k到着でも全50seedがUNKNOWN。既知容量対照との隔たりを誤差配分だけでは説明できません。
+**現在地：** EP-0025は母parameter/true service/futureなしで、固定class-completion exposureのχ²区間を事前指定lookへ適用。160workload/2400判定、封印4/4、scheduled誤側0件。128万到着の近傍棄権は随時有効法79/80対scheduled法22/80でした。
 
-草稿v0.4と公開再実行artifactへ統合。一般U31/c12・非指数・実GPU・新規性・査読・外部独立再現はUNKNOWN、general detector0。点推定との損失順位は価格とベンチマークtruthに依存します。
+草稿v0.5と公開再実行artifactへ統合。保証範囲を狭めた比較で普遍優越性なし。宣言gateはモデル仮定のデータ証明ではありません。一般U31/c12/非指数/実GPU、新規性・査読・独立外部replicationはUNKNOWN、general detector0。
 
-**証拠の境界：** 既知2block指数strict FCFS、十分な到着/need/完了ログに限定。母パラメータoracleを外しても構造既知条件は残る。同じ設計/コードの再実行は独立外部replicationではなく、容量/CS理論も既存方法の再利用です。
+**証拠の境界：** 既知2block指数strict FCFS、十分な到着/need/完了ログ、事前指定H/Kに限定。既存time-change/Gamma/CP/Bonferroniの適用。n20の同時rate区間は広い。同設計実行は独立外部replicationではありません。
 
-**[現在のResearch Note（EP-0024）→](/ja/research/gpu-scheduling-past-only-learning/)** — Finding
+**[現在のResearch Note（EP-0025）→](/ja/research/gpu-scheduling-exposure-checkpoints/)** — Finding
 
 [研究の現在地と更新履歴を見る →](/ja/programs/gpu-scheduling/)
 

@@ -15,11 +15,11 @@ lang: ja
   <article class="program-row">
     <div>
       <h3>GPUクラスタのスケジューリング</h3>
-      <p>過去の到着・need・完了から母パラメータと容量区間を学習し、誤側と棄権の費用を測定しました。</p>
+      <p>固定完了数のサービス露出と事前指定lookで、棄権と保証範囲を比較しました。</p>
     </div>
     <nav aria-label="GPUクラスタのスケジューリング">
       <a href="/ja/programs/gpu-scheduling/">研究概要</a>
-      <a href="/ja/research/gpu-scheduling-past-only-learning/">最新Note</a>
+      <a href="/ja/research/gpu-scheduling-exposure-checkpoints/">最新Note</a>
     </nav>
   </article>
   <article class="program-row">

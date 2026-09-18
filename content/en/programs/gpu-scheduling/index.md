@@ -23,13 +23,13 @@ The replacement, **alpha** (the elasticity of mean response time with respect to
 <!-- GENERATED: program-current:START -->
 ## Current public state
 
-EP-0024 constructs past-only CS under known exponential FCFS structure without population parameters, true service or future completions in learned inference. 400 workloads, 6000 decisions, four/four sealed predictions and zero observed learned wrong-side labels. All 50 seeds at +/-1% remain UNKNOWN even at320k; error allocation alone does not explain the known-capacity gap.
+EP-0025 uses fixed-count exposure chi-square intervals without population parameters, true service or future information.160workloads/2400decisions, 4/4sealed predictions, 0scheduled wrong labels. Near-boundary1280k UNKNOWN: anytime79/80 versus scheduled22/80.
 
-Draftv0.4 and public re-execution artifacts exist. General U31/c12, nonexponential inputs, real GPU effects, novelty, peer review and external independent replication remain UNKNOWN; general detectors zero. Point-loss rankings depend on prices and benchmark truth.
+Draftv0.5/public code integrate the narrower reporting contract. No universal superiority; declaration gates do not prove assumptions in data. General U31/c12/nonexponential/real GPU, novelty, peer review and external independent replication remain UNKNOWN; general detectors0.
 
-**Evidence boundary:** Known two-block exponential strict-FCFS structure with sufficient arrival/need/completion logs only. Population-parameter privilege is removed, known-structure assumptions remain. Same-design/code re-execution is not external independent replication; capacity/CS theory is reused existing work.
+**Evidence boundary:** Known two-block exponential strict-FCFS structure, complete arrival/need/completion logs and predeclared H/K only. Existing time-change/Gamma/CP/Bonferroni methods. n20simultaneous rate intervals are wide. Same-design execution is not external independent replication.
 
-**[Read the current Research Note (EP-0024) →](/en/research/gpu-scheduling-past-only-learning/)**
+**[Read the current Research Note (EP-0025) →](/en/research/gpu-scheduling-exposure-checkpoints/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -55,5 +55,6 @@ Draftv0.4 and public re-execution artifacts exist. General U31/c12, nonexponenti
 18. [[en/research/gpu-scheduling-information-tiers/index|EP-0021 — One window, different information, different errors]]
 19. [[en/research/gpu-scheduling-critical-loss/index|EP-0022 — The price of abstention and the critical-load definition]]
 20. [[en/research/gpu-scheduling-two-class-control/index|EP-0023 — Two-class FCFS overload below nominal resource load one]]
-21. **[[en/research/gpu-scheduling-past-only-learning/index|EP-0024 — Learning capacity from past completions without population parameters]] (latest)**
+21. [[en/research/gpu-scheduling-past-only-learning/index|EP-0024 — Learning capacity from past completions without population parameters]]
+22. **[[en/research/gpu-scheduling-exposure-checkpoints/index|EP-0025 — Fixed completion-exposure checkpoints: reporting scope and abstention]] (latest)**
 <!-- GENERATED: program-history:END -->

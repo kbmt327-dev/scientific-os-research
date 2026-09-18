@@ -14,13 +14,13 @@ Notes are grouped by what they contribute, not by how confident they sound. A **
 
 **Question:** Under which information and observation windows can size-first conditions and capacity boundaries be established?
 
-**Current state:** EP-0024 constructs past-only CS under known exponential FCFS structure without population parameters, true service or future completions in learned inference. 400 workloads, 6000 decisions, four/four sealed predictions and zero observed learned wrong-side labels. All 50 seeds at +/-1% remain UNKNOWN even at320k; error allocation alone does not explain the known-capacity gap.
+**Current state:** EP-0025 uses fixed-count exposure chi-square intervals without population parameters, true service or future information.160workloads/2400decisions, 4/4sealed predictions, 0scheduled wrong labels. Near-boundary1280k UNKNOWN: anytime79/80 versus scheduled22/80.
 
-Draftv0.4 and public re-execution artifacts exist. General U31/c12, nonexponential inputs, real GPU effects, novelty, peer review and external independent replication remain UNKNOWN; general detectors zero. Point-loss rankings depend on prices and benchmark truth.
+Draftv0.5/public code integrate the narrower reporting contract. No universal superiority; declaration gates do not prove assumptions in data. General U31/c12/nonexponential/real GPU, novelty, peer review and external independent replication remain UNKNOWN; general detectors0.
 
-**Evidence boundary:** Known two-block exponential strict-FCFS structure with sufficient arrival/need/completion logs only. Population-parameter privilege is removed, known-structure assumptions remain. Same-design/code re-execution is not external independent replication; capacity/CS theory is reused existing work.
+**Evidence boundary:** Known two-block exponential strict-FCFS structure, complete arrival/need/completion logs and predeclared H/K only. Existing time-change/Gamma/CP/Bonferroni methods. n20simultaneous rate intervals are wide. Same-design execution is not external independent replication.
 
-**[Read the current Research Note (EP-0024) →](/en/research/gpu-scheduling-past-only-learning/)** — Finding
+**[Read the current Research Note (EP-0025) →](/en/research/gpu-scheduling-exposure-checkpoints/)** — Finding
 
 [See the current state and revision history →](/en/programs/gpu-scheduling/)
 

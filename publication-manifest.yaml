@@ -234,3 +234,12 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: GPU-SCHED-EP-0025
+    source_episode: GPU-SCHEDULING/EP-0025
+    source_episode_sha256: eced65710973c1ca3517a81b333e680a10b9ab40f11b07884749240fed82bf8e
+    views:
+      en: content/en/research/gpu-scheduling-exposure-checkpoints/index.md
+      ja: content/ja/research/gpu-scheduling-exposure-checkpoints/index.md
+    type: Finding
+    publication:
+      status: publishable

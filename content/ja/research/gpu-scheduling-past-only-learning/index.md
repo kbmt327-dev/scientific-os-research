@@ -139,3 +139,6 @@ FCFSでない、need/完了ログ欠落、クラス内非指数、serviceに依�
 既知構造と観測記録の適合性を明示するgateを監査し、構造が未確認のrunに指数FCFS区間を黙って適用しない。非指数/c12へ精度主張を移す前に、独立known labelと別封印が必要です。
 
 [[ja/research/gpu-scheduling-two-class-control/index|EP-0023]] → EP-0024
+
+
+[[ja/research/gpu-scheduling-exposure-checkpoints/index|EP-0025]]：固定完了数checkpointと事前指定lookの次の比較。

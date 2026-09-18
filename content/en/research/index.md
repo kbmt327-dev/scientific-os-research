@@ -14,13 +14,13 @@ Notes are grouped by what they contribute, not by how confident they sound. A **
 
 **Question:** Under which information and observation windows can size-first conditions and capacity boundaries be established?
 
-**Current state:** EP-0021/0022 compared information tiers, critical load and abstention prices. EP-0023 maps a known theorem to exact capacity8/11 for mixed needs32/64 and measures500 workloads/4000 decisions. NOMINAL_WORK misses overload100/100 below nominal resource load one; K with known population parameters has zero wrong-side decisions but72/100 UNKNOWN near the boundary at20k.
+**Current state:** EP-0024 constructs past-only CS under known exponential FCFS structure without population parameters, true service or future completions in learned inference. 400 workloads, 6000 decisions, four/four sealed predictions and zero observed learned wrong-side labels. All 50 seeds at +/-1% remain UNKNOWN even at320k; error allocation alone does not explain the known-capacity gap.
 
-Draftv0.3 and executable public code exist. General U-31/c12, real clusters and novelty remain UNKNOWN; validated general detectors remain zero. Truth-conditioned crossover prices are not online recommendations; report prices, uncertainty and information costs together.
+Draftv0.4 and public re-execution artifacts exist. General U31/c12, nonexponential inputs, real GPU effects, novelty, peer review and external independent replication remain UNKNOWN; general detectors zero. Point-loss rankings depend on prices and benchmark truth.
 
-**Evidence boundary:** Known synthetic FCFS controls only. Public code regenerates inputs/FCFS from seeds and executes the same design. External independent replication, real GPU validation, general detectors, peer review, novelty and operational effect are unestablished. K has explicitly privileged known population parameters.
+**Evidence boundary:** Known two-block exponential strict-FCFS structure with sufficient arrival/need/completion logs only. Population-parameter privilege is removed, known-structure assumptions remain. Same-design/code re-execution is not external independent replication; capacity/CS theory is reused existing work.
 
-**[Read the current Research Note (EP-0023) →](/en/research/gpu-scheduling-two-class-control/)** — Finding
+**[Read the current Research Note (EP-0024) →](/en/research/gpu-scheduling-past-only-learning/)** — Finding
 
 [See the current state and revision history →](/en/programs/gpu-scheduling/)
 

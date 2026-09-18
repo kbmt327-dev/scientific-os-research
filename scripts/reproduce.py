@@ -203,8 +203,13 @@ def gpu_two_class() -> None:
     print(run([sys.executable, 'rerun_two_class.py', '--verify-recorded'], root).strip())
 
 
+def gpu_past_learning() -> None:
+    root = ROOT / 'reproduction' / 'gpu-scheduling-past-only-learning'
+    print(run([sys.executable, 'rerun_past_learning.py', '--verify-recorded'], root).strip())
+
+
 CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase,
-          "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "gpu-u31-controls": gpu_u31_controls, "gpu-two-class": gpu_two_class, "queue": queue,
+          "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "gpu-u31-controls": gpu_u31_controls, "gpu-two-class": gpu_two_class, "gpu-past-learning": gpu_past_learning, "queue": queue,
           "human": human, "human-dataset": human_dataset, "iaa": iaa,
           "intervention": intervention,
           "frontier": frontier}

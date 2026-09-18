@@ -8,6 +8,7 @@ lang: ja
 
 ## 2026-09-19
 
+- **GPU-SCHED-EP-0024** · Finding — [母パラメータを知らずに、過去の完了から容量を学習する](/ja/research/gpu-scheduling-past-only-learning/)
 - **GPU-SCHED-EP-0023** · Finding — [二クラスFCFSでは、名目負荷1未満でも過負荷を見逃す](/ja/research/gpu-scheduling-two-class-control/)
 ## 2026-09-18
 

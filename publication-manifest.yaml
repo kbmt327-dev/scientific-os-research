@@ -225,3 +225,12 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: GPU-SCHED-EP-0024
+    source_episode: GPU-SCHEDULING/EP-0024
+    source_episode_sha256: 0bfc36ace20590a5498f92698f439e4685053b53b9dded31c2762220f6f4b7cc
+    views:
+      en: content/en/research/gpu-scheduling-past-only-learning/index.md
+      ja: content/ja/research/gpu-scheduling-past-only-learning/index.md
+    type: Finding
+    publication:
+      status: publishable

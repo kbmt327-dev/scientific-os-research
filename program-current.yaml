@@ -3,38 +3,39 @@ site_url: https://kbmt327-dev.github.io/scientific-os-research
 programs:
   - id: gpu-scheduling
     research_id_prefix: GPU-SCHED-
-    current_research_id: GPU-SCHED-EP-0023
+    current_research_id: GPU-SCHED-EP-0024
     ja:
       title: GPUクラスタのスケジューリング
-      home_summary: 二クラスFCFSの独立容量を構成し、情報契約・誤側・棄権価格を技術報告草稿へ統合しました。
+      home_summary: 過去の到着・need・完了から母パラメータと容量区間を学習し、誤側と棄権の費用を測定しました。
       question: サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
-      claim: 'EP-0021/0022で情報tier・臨界負荷・棄権価格を比較。EP-0023ではneed32/64混在の二クラスFCFSに既知定理から厳密容量8/11を置き、500
-        workload・4000判定を測定しました。名目GPU負荷が1未満の過負荷を名目work対照は100/100件見逃し、既知母パラメータを使うKは0誤側ながら近傍20kで72/100件棄権しました。
+      claim: 'EP-0024は母λ/p/μ・true service・未来完了を診断へ渡さず、既知指数FCFS構造内でpast-only CSを構成。400
+        workload・6000判定、封印4/4、学習区間法は0誤側。ただし±1%負荷は320k到着でも全50seedがUNKNOWN。既知容量対照との隔たりを誤差配分だけでは説明できません。
 
 
-        草稿v0.3と公開再実行コードを作成。一般U-31/c12容量・実クラスタ・新規性はUNKNOWN、validated general detector=0です。truth別の交差価格はオンライン推薦ではなく、価格と不確実性・情報費用を併記します。'
-      evidence_boundary: 既知合成FCFS対照のみ。公開コードはseedから入力/FCFSを再生成し同じ設計を実行します。独立外部replication、実GPU検証、一般detector、査読・新規性、運用効果は未確立。母パラメータ既知Kの情報特権を明示。
+        草稿v0.4と公開再実行artifactへ統合。一般U31/c12・非指数・実GPU・新規性・査読・外部独立再現はUNKNOWN、general detector0。点推定との損失順位は価格とベンチマークtruthに依存します。'
+      evidence_boundary: 既知2block指数strict FCFS、十分な到着/need/完了ログに限定。母パラメータoracleを外しても構造既知条件は残る。同じ設計/コードの再実行は独立外部replicationではなく、容量/CS理論も既存方法の再利用です。
     en:
       title: GPU cluster scheduling
-      home_summary: We construct exact two-class FCFS capacity and integrate information
-        contracts, wrong-side rates and abstention prices into a technical-report draft.
+      home_summary: We learn population parameters and capacity intervals from past
+        arrivals, needs and completions, measuring wrong-side decisions and abstention
+        costs.
       question: Under which information and observation windows can size-first conditions
         and capacity boundaries be established?
-      claim: 'EP-0021/0022 compared information tiers, critical load and abstention
-        prices. EP-0023 maps a known theorem to exact capacity8/11 for mixed needs32/64
-        and measures500 workloads/4000 decisions. NOMINAL_WORK misses overload100/100
-        below nominal resource load one; K with known population parameters has zero
-        wrong-side decisions but72/100 UNKNOWN near the boundary at20k.
+      claim: 'EP-0024 constructs past-only CS under known exponential FCFS structure
+        without population parameters, true service or future completions in learned
+        inference. 400 workloads, 6000 decisions, four/four sealed predictions and zero
+        observed learned wrong-side labels. All 50 seeds at +/-1% remain UNKNOWN even
+        at320k; error allocation alone does not explain the known-capacity gap.
 
 
-        Draftv0.3 and executable public code exist. General U-31/c12, real clusters
-        and novelty remain UNKNOWN; validated general detectors remain zero. Truth-conditioned
-        crossover prices are not online recommendations; report prices, uncertainty
-        and information costs together.'
-      evidence_boundary: Known synthetic FCFS controls only. Public code regenerates
-        inputs/FCFS from seeds and executes the same design. External independent replication,
-        real GPU validation, general detectors, peer review, novelty and operational
-        effect are unestablished. K has explicitly privileged known population parameters.
+        Draftv0.4 and public re-execution artifacts exist. General U31/c12, nonexponential
+        inputs, real GPU effects, novelty, peer review and external independent replication
+        remain UNKNOWN; general detectors zero. Point-loss rankings depend on prices
+        and benchmark truth.'
+      evidence_boundary: Known two-block exponential strict-FCFS structure with sufficient
+        arrival/need/completion logs only. Population-parameter privilege is removed,
+        known-structure assumptions remain. Same-design/code re-execution is not external
+        independent replication; capacity/CS theory is reused existing work.
 
   - id: queueing-system-identification
     research_id_prefix: SIM-WORLD-

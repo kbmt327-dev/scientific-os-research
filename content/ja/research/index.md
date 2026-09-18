@@ -13,13 +13,13 @@ lang: ja
 
 **テーマ：** サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
 
-**現在地：** EP-0021/0022で情報tier・臨界負荷・棄権価格を比較。EP-0023ではneed32/64混在の二クラスFCFSに既知定理から厳密容量8/11を置き、500 workload・4000判定を測定しました。名目GPU負荷が1未満の過負荷を名目work対照は100/100件見逃し、既知母パラメータを使うKは0誤側ながら近傍20kで72/100件棄権しました。
+**現在地：** EP-0024は母λ/p/μ・true service・未来完了を診断へ渡さず、既知指数FCFS構造内でpast-only CSを構成。400 workload・6000判定、封印4/4、学習区間法は0誤側。ただし±1%負荷は320k到着でも全50seedがUNKNOWN。既知容量対照との隔たりを誤差配分だけでは説明できません。
 
-草稿v0.3と公開再実行コードを作成。一般U-31/c12容量・実クラスタ・新規性はUNKNOWN、validated general detector=0です。truth別の交差価格はオンライン推薦ではなく、価格と不確実性・情報費用を併記します。
+草稿v0.4と公開再実行artifactへ統合。一般U31/c12・非指数・実GPU・新規性・査読・外部独立再現はUNKNOWN、general detector0。点推定との損失順位は価格とベンチマークtruthに依存します。
 
-**証拠の境界：** 既知合成FCFS対照のみ。公開コードはseedから入力/FCFSを再生成し同じ設計を実行します。独立外部replication、実GPU検証、一般detector、査読・新規性、運用効果は未確立。母パラメータ既知Kの情報特権を明示。
+**証拠の境界：** 既知2block指数strict FCFS、十分な到着/need/完了ログに限定。母パラメータoracleを外しても構造既知条件は残る。同じ設計/コードの再実行は独立外部replicationではなく、容量/CS理論も既存方法の再利用です。
 
-**[現在のResearch Note（EP-0023）→](/ja/research/gpu-scheduling-two-class-control/)** — Finding
+**[現在のResearch Note（EP-0024）→](/ja/research/gpu-scheduling-past-only-learning/)** — Finding
 
 [研究の現在地と更新履歴を見る →](/ja/programs/gpu-scheduling/)
 

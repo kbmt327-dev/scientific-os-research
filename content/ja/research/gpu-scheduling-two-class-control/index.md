@@ -129,3 +129,6 @@ v10は観測前の表現照合で失敗。v11で表現のみ修正し再封印�
 報告の新規性・用途を先行研究に対して絞り、別環境/第三者実行を検討。広いモデルは別契約にし、原RQ-1の順位や容量値を復帰させません。
 
 [[ja/research/gpu-scheduling-information-tiers/index|EP-0021]] · [[ja/research/gpu-scheduling-critical-loss/index|EP-0022]] · [[ja/research/gpu-scheduling-two-class-control/index|EP-0023]]
+
+
+[[ja/research/gpu-scheduling-past-only-learning/index|EP-0024]]：母パラメータ既知条件を外した次の実験。

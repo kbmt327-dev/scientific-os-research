@@ -131,3 +131,6 @@ Independent replications=0. Scientific, domain-expert and peer review are unperf
 Narrow the useful contribution against prior work and assess another environment/reader execution. Broader models need another contract; original scheduler rankings/capacities remain suspended.
 
 [[en/research/gpu-scheduling-information-tiers/index|EP-0021]] · [[en/research/gpu-scheduling-critical-loss/index|EP-0022]] · [[en/research/gpu-scheduling-two-class-control/index|EP-0023]]
+
+
+[[en/research/gpu-scheduling-past-only-learning/index|EP-0024]]：Next experiment removes known population parameters.

@@ -8,6 +8,7 @@ This is the historical log. For current claims, start with the [research-area in
 
 ## 2026-09-19
 
+- **GPU-SCHED-EP-0024** · Finding — [Learning capacity from past completions without population parameters](/en/research/gpu-scheduling-past-only-learning/)
 - **GPU-SCHED-EP-0023** · Finding — [Two-class FCFS overload below nominal resource load one](/en/research/gpu-scheduling-two-class-control/)
 ## 2026-09-18
 

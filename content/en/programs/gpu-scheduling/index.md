@@ -23,13 +23,13 @@ The replacement, **alpha** (the elasticity of mean response time with respect to
 <!-- GENERATED: program-current:START -->
 ## Current public state
 
-EP-0021/0022 compared information tiers, critical load and abstention prices. EP-0023 maps a known theorem to exact capacity8/11 for mixed needs32/64 and measures500 workloads/4000 decisions. NOMINAL_WORK misses overload100/100 below nominal resource load one; K with known population parameters has zero wrong-side decisions but72/100 UNKNOWN near the boundary at20k.
+EP-0024 constructs past-only CS under known exponential FCFS structure without population parameters, true service or future completions in learned inference. 400 workloads, 6000 decisions, four/four sealed predictions and zero observed learned wrong-side labels. All 50 seeds at +/-1% remain UNKNOWN even at320k; error allocation alone does not explain the known-capacity gap.
 
-Draftv0.3 and executable public code exist. General U-31/c12, real clusters and novelty remain UNKNOWN; validated general detectors remain zero. Truth-conditioned crossover prices are not online recommendations; report prices, uncertainty and information costs together.
+Draftv0.4 and public re-execution artifacts exist. General U31/c12, nonexponential inputs, real GPU effects, novelty, peer review and external independent replication remain UNKNOWN; general detectors zero. Point-loss rankings depend on prices and benchmark truth.
 
-**Evidence boundary:** Known synthetic FCFS controls only. Public code regenerates inputs/FCFS from seeds and executes the same design. External independent replication, real GPU validation, general detectors, peer review, novelty and operational effect are unestablished. K has explicitly privileged known population parameters.
+**Evidence boundary:** Known two-block exponential strict-FCFS structure with sufficient arrival/need/completion logs only. Population-parameter privilege is removed, known-structure assumptions remain. Same-design/code re-execution is not external independent replication; capacity/CS theory is reused existing work.
 
-**[Read the current Research Note (EP-0023) →](/en/research/gpu-scheduling-two-class-control/)**
+**[Read the current Research Note (EP-0024) →](/en/research/gpu-scheduling-past-only-learning/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -54,5 +54,6 @@ Draftv0.3 and executable public code exist. General U-31/c12, real clusters and 
 17. [[en/research/gpu-scheduling-mmc-transfer/index|EP-0020 — Input confidence intervals transferred to a fixed-need four-slot control]]
 18. [[en/research/gpu-scheduling-information-tiers/index|EP-0021 — One window, different information, different errors]]
 19. [[en/research/gpu-scheduling-critical-loss/index|EP-0022 — The price of abstention and the critical-load definition]]
-20. **[[en/research/gpu-scheduling-two-class-control/index|EP-0023 — Two-class FCFS overload below nominal resource load one]] (latest)**
+20. [[en/research/gpu-scheduling-two-class-control/index|EP-0023 — Two-class FCFS overload below nominal resource load one]]
+21. **[[en/research/gpu-scheduling-past-only-learning/index|EP-0024 — Learning capacity from past completions without population parameters]] (latest)**
 <!-- GENERATED: program-history:END -->

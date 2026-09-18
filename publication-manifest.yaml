@@ -198,3 +198,30 @@ notes:
       ja: content/ja/research/retracted-frontier-metrics/index.md
     type: Negative Result
     publication: { status: publishable }
+  - research_id: GPU-SCHED-EP-0021
+    source_episode: GPU-SCHEDULING/EP-0021
+    source_episode_sha256: f69184188fbb7a793ffc81d9c1fb25a7c4e652c2585f9304923f72c22e0f5c4d
+    views:
+      en: content/en/research/gpu-scheduling-information-tiers/index.md
+      ja: content/ja/research/gpu-scheduling-information-tiers/index.md
+    type: Finding
+    publication:
+      status: publishable
+  - research_id: GPU-SCHED-EP-0022
+    source_episode: GPU-SCHEDULING/EP-0022
+    source_episode_sha256: f54e91a65b31f402c98be348e731ed115c1854b99da369a65092b66d60d3f5e4
+    views:
+      en: content/en/research/gpu-scheduling-critical-loss/index.md
+      ja: content/ja/research/gpu-scheduling-critical-loss/index.md
+    type: Finding
+    publication:
+      status: publishable
+  - research_id: GPU-SCHED-EP-0023
+    source_episode: GPU-SCHEDULING/EP-0023
+    source_episode_sha256: e22560bf6d10d8488984a3fb6bde48acf42e76df2975558f4745c4fb5cd3c218
+    views:
+      en: content/en/research/gpu-scheduling-two-class-control/index.md
+      ja: content/ja/research/gpu-scheduling-two-class-control/index.md
+    type: Finding
+    publication:
+      status: publishable

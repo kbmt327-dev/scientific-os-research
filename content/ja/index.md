@@ -15,11 +15,11 @@ lang: ja
   <article class="program-row">
     <div>
       <h3>GPUクラスタのスケジューリング</h3>
-      <p>既知対照で有限窓の容量判定を監査し、比較実験と技術報告の準備を進めています。</p>
+      <p>二クラスFCFSの独立容量を構成し、情報契約・誤側・棄権価格を技術報告草稿へ統合しました。</p>
     </div>
     <nav aria-label="GPUクラスタのスケジューリング">
       <a href="/ja/programs/gpu-scheduling/">研究概要</a>
-      <a href="/ja/research/gpu-scheduling-mmc-transfer/">最新Note</a>
+      <a href="/ja/research/gpu-scheduling-two-class-control/">最新Note</a>
     </nav>
   </article>
   <article class="program-row">

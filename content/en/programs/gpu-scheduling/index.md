@@ -23,15 +23,13 @@ The replacement, **alpha** (the elasticity of mean response time with respect to
 <!-- GENERATED: program-current:START -->
 ## Current public state
 
-EP-0018 exposed a midpoint queue miss at known overload. In EP-0019, M/M/1 load 1.005 remained UNKNOWN at 320k arrivals per seed across three seeds. EP-0020 transferred input intervals to a known M/M/4 control with homogeneous 64 resources, fixed need16 and FCFS. Two controls and four holdouts resolved correctly over 30 workloads and 10 looks; load1.01 needed 160k per seed, and four engine fixtures aligned.
+EP-0021/0022 compared information tiers, critical load and abstention prices. EP-0023 maps a known theorem to exact capacity8/11 for mixed needs32/64 and measures500 workloads/4000 decisions. NOMINAL_WORK misses overload100/100 below nominal resource load one; K with known population parameters has zero wrong-side decisions but72/100 UNKNOWN near the boundary at20k.
 
-This bounded transfer requires independent exponential inputs, all offered true work and mechanism capacity four. Recovery rerun and previously observed controls are disclosed. **U-31, mixed-need/c12 capacity and real-cluster generalization remain UNKNOWN; validated general detectors remain zero.**
+Draftv0.3 and executable public code exist. General U-31/c12, real clusters and novelty remain UNKNOWN; validated general detectors remain zero. Truth-conditioned crossover prices are not online recommendations; report prices, uncertainty and information costs together.
 
-A technical-report draft exists, but novelty remains unestablished. Future comparisons align output-only, true-work and future-drained JCT information tiers and actual time cutoffs. Earlier boundaries depend on unaudited alpha; margins derived from Philly frequency counts are not scheduler performance on the real trace.
+**Evidence boundary:** Known synthetic FCFS controls only. Public code regenerates inputs/FCFS from seeds and executes the same design. External independent replication, real GPU validation, general detectors, peer review, novelty and operational effect are unestablished. K has explicitly privileged known population parameters.
 
-**Evidence boundary:** Limited to synthetic known-model controls and public Philly arrival counts. Public artifacts check sufficient statistics, F quantiles, intervals and recorded stopping/alignment arithmetic. Generator/simulator reproduction, empirical coverage, external independent replication, a public paper/peer review and prospective real-cluster validation remain incomplete.
-
-**[Read the current Research Note (EP-0020) →](/en/research/gpu-scheduling-mmc-transfer/)**
+**[Read the current Research Note (EP-0023) →](/en/research/gpu-scheduling-two-class-control/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -53,5 +51,8 @@ A technical-report draft exists, but novelty remains unestablished. Future compa
 14. [[en/research/gpu-scheduling-u31-calibration/index|EP-0017 — Independent calibration still left two capacity detectors in disagreement]]
 15. [[en/research/gpu-scheduling-known-controls/index|EP-0018 — A midpoint queue threshold missed a known overload]]
 16. [[en/research/gpu-scheduling-drift-uncertainty/index|EP-0019 — A small overload remained unresolved within a finite window]]
-17. **[[en/research/gpu-scheduling-mmc-transfer/index|EP-0020 — Input confidence intervals transferred to a fixed-need four-slot control]] (latest)**
+17. [[en/research/gpu-scheduling-mmc-transfer/index|EP-0020 — Input confidence intervals transferred to a fixed-need four-slot control]]
+18. [[en/research/gpu-scheduling-information-tiers/index|EP-0021 — One window, different information, different errors]]
+19. [[en/research/gpu-scheduling-critical-loss/index|EP-0022 — The price of abstention and the critical-load definition]]
+20. **[[en/research/gpu-scheduling-two-class-control/index|EP-0023 — Two-class FCFS overload below nominal resource load one]] (latest)**
 <!-- GENERATED: program-history:END -->

@@ -6,6 +6,13 @@ lang: ja
 
 ここは履歴の入口です。現在の結論を知りたい場合は、先に[研究分野ごとの現在地](/ja/research/)を読んでください。
 
+## 2026-09-19
+
+- **GPU-SCHED-EP-0023** · Finding — [二クラスFCFSでは、名目負荷1未満でも過負荷を見逃す](/ja/research/gpu-scheduling-two-class-control/)
+## 2026-09-18
+
+- **GPU-SCHED-EP-0022** · Finding — [棄権の価格と、臨界負荷での定義](/ja/research/gpu-scheduling-critical-loss/)
+- **GPU-SCHED-EP-0021** · Finding — [同じ窓でも、情報が違えば誤り方が違う](/ja/research/gpu-scheduling-information-tiers/)
 ## 2026-09-17
 
 - **GPU-SCHED-EP-0020** · Finding — [固定needの4並列対照へ、入力CIを移せた](/ja/research/gpu-scheduling-mmc-transfer/)

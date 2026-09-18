@@ -23,15 +23,13 @@ GPUクラスタでは、多数のジョブが限られたGPUを取り合いま�
 <!-- GENERATED: program-current:START -->
 ## 現在の公開結論
 
-EP-0018で中点queue閾値が既知過負荷を見逃し、EP-0019ではM/M/1負荷1.005が320k×3 seedでもUNKNOWNでした。EP-0020は同質64資源・全need16・FCFSの既知M/M/4へ入力CIを移し、control2/holdout4を正しい側に確定しました。30 workload・10 look、負荷1.01は160k×3 seedが必要で、4 engine fixtureも整合しました。
+EP-0021/0022で情報tier・臨界負荷・棄権価格を比較。EP-0023ではneed32/64混在の二クラスFCFSに既知定理から厳密容量8/11を置き、500 workload・4000判定を測定しました。名目GPU負荷が1未満の過負荷を名目work対照は100/100件見逃し、既知母パラメータを使うKは0誤側ながら近傍20kで72/100件棄権しました。
 
-これは指数/独立入力・全offered true work・機構capacity4に条件付けられる限定transferです。保存失敗後の復旧rerunと既に観測したcontrolを開示しています。**U-31全体、mixed-need/c12容量、実クラスタへの一般化はUNKNOWN、validated general detectorは0件**です。
+草稿v0.3と公開再実行コードを作成。一般U-31/c12容量・実クラスタ・新規性はUNKNOWN、validated general detector=0です。truth別の交差価格はオンライン推薦ではなく、価格と不確実性・情報費用を併記します。
 
-技術報告草稿を作成しましたが、新規性は未確立です。次の比較は出力だけ・真のwork付き・drain後JCTの情報tierと実時間cutoffを揃えて設計します。旧境界は未監査alphaに条件付けられ、Phillyの頻度実測からの余裕は実trace上のscheduler性能ではありません。
+**証拠の境界：** 既知合成FCFS対照のみ。公開コードはseedから入力/FCFSを再生成し同じ設計を実行します。独立外部replication、実GPU検証、一般detector、査読・新規性、運用効果は未確立。母パラメータ既知Kの情報特権を明示。
 
-**証拠の境界：** 合成known-model対照とPhilly公開traceの到着数に限定。公開artifactは十分統計・F quantile・CI・停止/engine照合要約の算術検査。generator/simulator再実行、経験的coverage、外部独立再現、公開論文・査読、実クラスタの前向き検証は未完了。
-
-**[現在のResearch Note（EP-0020）を読む →](/ja/research/gpu-scheduling-mmc-transfer/)**
+**[現在のResearch Note（EP-0023）を読む →](/ja/research/gpu-scheduling-two-class-control/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -53,5 +51,8 @@ EP-0018で中点queue閾値が既知過負荷を見逃し、EP-0019ではM/M/1�
 14. [[ja/research/gpu-scheduling-u31-calibration/index|EP-0017 — 独立した較正でも、容量を決める二つの判定器は一致しなかった]]
 15. [[ja/research/gpu-scheduling-known-controls/index|EP-0018 — 既知の過負荷を、中点のqueue閾値が見逃した]]
 16. [[ja/research/gpu-scheduling-drift-uncertainty/index|EP-0019 — 小さな過負荷を、有限窓では確定できなかった]]
-17. **[[ja/research/gpu-scheduling-mmc-transfer/index|EP-0020 — 固定needの4並列対照へ、入力CIを移せた]]（最新）**
+17. [[ja/research/gpu-scheduling-mmc-transfer/index|EP-0020 — 固定needの4並列対照へ、入力CIを移せた]]
+18. [[ja/research/gpu-scheduling-information-tiers/index|EP-0021 — 同じ窓でも、情報が違えば誤り方が違う]]
+19. [[ja/research/gpu-scheduling-critical-loss/index|EP-0022 — 棄権の価格と、臨界負荷での定義]]
+20. **[[ja/research/gpu-scheduling-two-class-control/index|EP-0023 — 二クラスFCFSでは、名目負荷1未満でも過負荷を見逃す]]（最新）**
 <!-- GENERATED: program-history:END -->

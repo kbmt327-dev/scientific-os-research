@@ -6,6 +6,13 @@ lang: en
 
 This is the historical log. For current claims, start with the [research-area index](/en/research/).
 
+## 2026-09-19
+
+- **GPU-SCHED-EP-0023** · Finding — [Two-class FCFS overload below nominal resource load one](/en/research/gpu-scheduling-two-class-control/)
+## 2026-09-18
+
+- **GPU-SCHED-EP-0022** · Finding — [The price of abstention and the critical-load definition](/en/research/gpu-scheduling-critical-loss/)
+- **GPU-SCHED-EP-0021** · Finding — [One window, different information, different errors](/en/research/gpu-scheduling-information-tiers/)
 ## 2026-09-17
 
 - **GPU-SCHED-EP-0020** · Finding — [Input confidence intervals transferred to a fixed-need four-slot control](/en/research/gpu-scheduling-mmc-transfer/)

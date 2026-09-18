@@ -135,3 +135,6 @@ SciPyが必要です。公開集計の算術・記録された停止/照合要�
 ## 次の実験
 
 既存の安定性検査の一次algorithm仕様とO/W/D情報tier、共通実時間cutoff、独立known label、反復の誤確定/UNKNOWN/cost、公開実行artifactを先に固定して別封印します。仕様/label不足なら未実行・UNKNOWN。比較で新規性差分が得られなければ技術報告として区切り、校正だけを追加し続けません。
+
+
+次の比較と二クラス対照：[[ja/research/gpu-scheduling-two-class-control/index|EP-0023]]。

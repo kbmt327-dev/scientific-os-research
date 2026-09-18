@@ -13,15 +13,13 @@ lang: ja
 
 **テーマ：** サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
 
-**現在地：** EP-0018で中点queue閾値が既知過負荷を見逃し、EP-0019ではM/M/1負荷1.005が320k×3 seedでもUNKNOWNでした。EP-0020は同質64資源・全need16・FCFSの既知M/M/4へ入力CIを移し、control2/holdout4を正しい側に確定しました。30 workload・10 look、負荷1.01は160k×3 seedが必要で、4 engine fixtureも整合しました。
+**現在地：** EP-0021/0022で情報tier・臨界負荷・棄権価格を比較。EP-0023ではneed32/64混在の二クラスFCFSに既知定理から厳密容量8/11を置き、500 workload・4000判定を測定しました。名目GPU負荷が1未満の過負荷を名目work対照は100/100件見逃し、既知母パラメータを使うKは0誤側ながら近傍20kで72/100件棄権しました。
 
-これは指数/独立入力・全offered true work・機構capacity4に条件付けられる限定transferです。保存失敗後の復旧rerunと既に観測したcontrolを開示しています。**U-31全体、mixed-need/c12容量、実クラスタへの一般化はUNKNOWN、validated general detectorは0件**です。
+草稿v0.3と公開再実行コードを作成。一般U-31/c12容量・実クラスタ・新規性はUNKNOWN、validated general detector=0です。truth別の交差価格はオンライン推薦ではなく、価格と不確実性・情報費用を併記します。
 
-技術報告草稿を作成しましたが、新規性は未確立です。次の比較は出力だけ・真のwork付き・drain後JCTの情報tierと実時間cutoffを揃えて設計します。旧境界は未監査alphaに条件付けられ、Phillyの頻度実測からの余裕は実trace上のscheduler性能ではありません。
+**証拠の境界：** 既知合成FCFS対照のみ。公開コードはseedから入力/FCFSを再生成し同じ設計を実行します。独立外部replication、実GPU検証、一般detector、査読・新規性、運用効果は未確立。母パラメータ既知Kの情報特権を明示。
 
-**証拠の境界：** 合成known-model対照とPhilly公開traceの到着数に限定。公開artifactは十分統計・F quantile・CI・停止/engine照合要約の算術検査。generator/simulator再実行、経験的coverage、外部独立再現、公開論文・査読、実クラスタの前向き検証は未完了。
-
-**[現在のResearch Note（EP-0020）→](/ja/research/gpu-scheduling-mmc-transfer/)** — Finding
+**[現在のResearch Note（EP-0023）→](/ja/research/gpu-scheduling-two-class-control/)** — Finding
 
 [研究の現在地と更新履歴を見る →](/ja/programs/gpu-scheduling/)
 

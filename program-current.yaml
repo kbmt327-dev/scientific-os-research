@@ -3,29 +3,38 @@ site_url: https://kbmt327-dev.github.io/scientific-os-research
 programs:
   - id: gpu-scheduling
     research_id_prefix: GPU-SCHED-
-    current_research_id: GPU-SCHED-EP-0020
+    current_research_id: GPU-SCHED-EP-0023
     ja:
       title: GPUクラスタのスケジューリング
-      home_summary: 既知対照で有限窓の容量判定を監査し、比較実験と技術報告の準備を進めています。
+      home_summary: 二クラスFCFSの独立容量を構成し、情報契約・誤側・棄権価格を技術報告草稿へ統合しました。
       question: サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
-      claim: |-
-        EP-0018で中点queue閾値が既知過負荷を見逃し、EP-0019ではM/M/1負荷1.005が320k×3 seedでもUNKNOWNでした。EP-0020は同質64資源・全need16・FCFSの既知M/M/4へ入力CIを移し、control2/holdout4を正しい側に確定しました。30 workload・10 look、負荷1.01は160k×3 seedが必要で、4 engine fixtureも整合しました。
+      claim: 'EP-0021/0022で情報tier・臨界負荷・棄権価格を比較。EP-0023ではneed32/64混在の二クラスFCFSに既知定理から厳密容量8/11を置き、500
+        workload・4000判定を測定しました。名目GPU負荷が1未満の過負荷を名目work対照は100/100件見逃し、既知母パラメータを使うKは0誤側ながら近傍20kで72/100件棄権しました。
 
-        これは指数/独立入力・全offered true work・機構capacity4に条件付けられる限定transferです。保存失敗後の復旧rerunと既に観測したcontrolを開示しています。**U-31全体、mixed-need/c12容量、実クラスタへの一般化はUNKNOWN、validated general detectorは0件**です。
 
-        技術報告草稿を作成しましたが、新規性は未確立です。次の比較は出力だけ・真のwork付き・drain後JCTの情報tierと実時間cutoffを揃えて設計します。旧境界は未監査alphaに条件付けられ、Phillyの頻度実測からの余裕は実trace上のscheduler性能ではありません。
-      evidence_boundary: 合成known-model対照とPhilly公開traceの到着数に限定。公開artifactは十分統計・F quantile・CI・停止/engine照合要約の算術検査。generator/simulator再実行、経験的coverage、外部独立再現、公開論文・査読、実クラスタの前向き検証は未完了。
+        草稿v0.3と公開再実行コードを作成。一般U-31/c12容量・実クラスタ・新規性はUNKNOWN、validated general detector=0です。truth別の交差価格はオンライン推薦ではなく、価格と不確実性・情報費用を併記します。'
+      evidence_boundary: 既知合成FCFS対照のみ。公開コードはseedから入力/FCFSを再生成し同じ設計を実行します。独立外部replication、実GPU検証、一般detector、査読・新規性、運用効果は未確立。母パラメータ既知Kの情報特権を明示。
     en:
       title: GPU cluster scheduling
-      home_summary: We audit finite-window capacity diagnostics with known controls and prepare comparisons and a technical report.
-      question: Under which information and observation windows can size-first conditions and capacity boundaries be established?
-      claim: |-
-        EP-0018 exposed a midpoint queue miss at known overload. In EP-0019, M/M/1 load 1.005 remained UNKNOWN at 320k arrivals per seed across three seeds. EP-0020 transferred input intervals to a known M/M/4 control with homogeneous 64 resources, fixed need16 and FCFS. Two controls and four holdouts resolved correctly over 30 workloads and 10 looks; load1.01 needed 160k per seed, and four engine fixtures aligned.
+      home_summary: We construct exact two-class FCFS capacity and integrate information
+        contracts, wrong-side rates and abstention prices into a technical-report draft.
+      question: Under which information and observation windows can size-first conditions
+        and capacity boundaries be established?
+      claim: 'EP-0021/0022 compared information tiers, critical load and abstention
+        prices. EP-0023 maps a known theorem to exact capacity8/11 for mixed needs32/64
+        and measures500 workloads/4000 decisions. NOMINAL_WORK misses overload100/100
+        below nominal resource load one; K with known population parameters has zero
+        wrong-side decisions but72/100 UNKNOWN near the boundary at20k.
 
-        This bounded transfer requires independent exponential inputs, all offered true work and mechanism capacity four. Recovery rerun and previously observed controls are disclosed. **U-31, mixed-need/c12 capacity and real-cluster generalization remain UNKNOWN; validated general detectors remain zero.**
 
-        A technical-report draft exists, but novelty remains unestablished. Future comparisons align output-only, true-work and future-drained JCT information tiers and actual time cutoffs. Earlier boundaries depend on unaudited alpha; margins derived from Philly frequency counts are not scheduler performance on the real trace.
-      evidence_boundary: Limited to synthetic known-model controls and public Philly arrival counts. Public artifacts check sufficient statistics, F quantiles, intervals and recorded stopping/alignment arithmetic. Generator/simulator reproduction, empirical coverage, external independent replication, a public paper/peer review and prospective real-cluster validation remain incomplete.
+        Draftv0.3 and executable public code exist. General U-31/c12, real clusters
+        and novelty remain UNKNOWN; validated general detectors remain zero. Truth-conditioned
+        crossover prices are not online recommendations; report prices, uncertainty
+        and information costs together.'
+      evidence_boundary: Known synthetic FCFS controls only. Public code regenerates
+        inputs/FCFS from seeds and executes the same design. External independent replication,
+        real GPU validation, general detectors, peer review, novelty and operational
+        effect are unestablished. K has explicitly privileged known population parameters.
 
   - id: queueing-system-identification
     research_id_prefix: SIM-WORLD-

@@ -137,3 +137,6 @@ Independent replications zero; peer reviews zero. Internal checks covered source
 ## Next experiment
 
 Fix primary-source algorithm specifications, O/W/D information tiers, a common actual time cutoff, independent known labels, repeated wrong-declaration/UNKNOWN/cost evaluation and an executable public artifact before a separate seal. Missing specifications or labels mean unexecuted/UNKNOWN. If comparisons provide no novelty gap, complete a technical report rather than continuing calibration indefinitely.
+
+
+Later comparisons and the two-class control: [[en/research/gpu-scheduling-two-class-control/index|EP-0023]]。

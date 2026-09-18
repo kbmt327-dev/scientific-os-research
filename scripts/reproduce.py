@@ -198,8 +198,13 @@ def frontier() -> None:
           f"{result['attack_1_settling_rate_pinned_by_a_constant']['ratio']}x further than the frontier does")
 
 
+def gpu_two_class() -> None:
+    root = ROOT / 'reproduction' / 'gpu-scheduling-two-class-control'
+    print(run([sys.executable, 'rerun_two_class.py', '--verify-recorded'], root).strip())
+
+
 CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase,
-          "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "gpu-u31-controls": gpu_u31_controls, "queue": queue,
+          "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "gpu-u31-controls": gpu_u31_controls, "gpu-two-class": gpu_two_class, "queue": queue,
           "human": human, "human-dataset": human_dataset, "iaa": iaa,
           "intervention": intervention,
           "frontier": frontier}

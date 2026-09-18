@@ -65,3 +65,10 @@ public runner executes the same generator and causal FCFS oracle. No private
 paths/imports are required. Same-design re-execution and OS portability are
 not third-party independent replication. General U31/c12/nonexponential models,
 real GPU effects, novel theory, peer review and manuscript novelty remain UNKNOWN.
+
+Portability correction: the first public CI required exact dictionary equality
+of floating-point roots and failed across Windows/Linux. Only the verifier was
+changed to relative tolerance1e-9 and absolute tolerance1e-10 for continuous
+values; labels, integer counts, booleans and null remain exact. The verifier
+prints observed maximum numerical differences. The sealed experiment, priors,
+inference implementation, decision thresholds and recorded results are unchanged.

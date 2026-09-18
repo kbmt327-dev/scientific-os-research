@@ -12,6 +12,28 @@ from observation_capacity import past_summary,diagnose,rate_cs,capacity,capacity
 from diagnostics import algorithm_ab,clopper_pearson
 
 METHODS=['PAST_AB','KNOWN_CS','ALLOCATED_CS','LEARNED_CS','PLUGIN_MLE']
+# Public portability verification only; inference and recorded values are unchanged.
+# libm lgamma, root finding and reductions can differ across OS/Python versions.
+MAX_RELATIVE_NUMERIC_DIFFERENCE=0.
+MAX_ABSOLUTE_NUMERIC_DIFFERENCE=0.
+def assert_equivalent(a,b,path='root'):
+    global MAX_RELATIVE_NUMERIC_DIFFERENCE,MAX_ABSOLUTE_NUMERIC_DIFFERENCE
+    if isinstance(a,dict):
+        assert isinstance(b,dict) and set(a)==set(b),path
+        for key in a:assert_equivalent(a[key],b[key],path+'.'+key)
+    elif isinstance(a,list):
+        assert isinstance(b,list) and len(a)==len(b),path
+        for i,(x,y) in enumerate(zip(a,b)):assert_equivalent(x,y,path+'.'+str(i))
+    elif isinstance(a,float):
+        assert isinstance(b,(int,float)) and math.isfinite(a) and math.isfinite(b),path
+        delta=abs(a-b);relative=delta/max(abs(a),abs(b),1e-300)
+        MAX_RELATIVE_NUMERIC_DIFFERENCE=max(MAX_RELATIVE_NUMERIC_DIFFERENCE,relative)
+        MAX_ABSOLUTE_NUMERIC_DIFFERENCE=max(MAX_ABSOLUTE_NUMERIC_DIFFERENCE,delta)
+        assert math.isclose(a,b,rel_tol=1e-9,abs_tol=1e-10),(path,a,b,delta)
+    else:
+        # labels, integer counts, booleans and null remain exact.
+        assert a==b,(path,a,b)
+
 def side(ci,x):return 'overloaded' if ci[0]>x else ('subcritical' if ci[1] is not None and ci[1]<x else 'UNKNOWN')
 def rerun(contract,seeds,horizons):
     rows=[]
@@ -62,7 +84,7 @@ def verify_recorded():
     except ValueError:pass
     else:raise AssertionError('future completion accepted')
     for row in rec['decisions']:
-        assert diagnose(row['observed'],c['alpha'])==row['learned']
+        assert_equivalent(diagnose(row['observed'],c['alpha']),row['learned'],'recorded.learned')
         assert row['learned']['label']==row['labels']['LEARNED_CS'] and row['learned']['plugin_label']==row['labels']['PLUGIN_MLE']
     for cell in rec['cells']:
         rows=[r for r in rec['decisions'] if (r['model'],r['load_factor'],r['horizon'])==(cell['model'],cell['load_factor'],cell['horizon'])]
@@ -88,8 +110,9 @@ def verify_recorded():
     out=rerun(c,[9101,9102],[20000])
     for row in out['decisions']:
         old=next(r for r in rec['decisions'] if (r['model'],r['load_factor'],r['seed'],r['horizon'])==(row['model'],row['load_factor'],row['seed'],row['horizon']))
-        assert row['labels']==old['labels'] and row['learned']==old['learned'] and row['observed']==old['observed']
+        assert row['labels']==old['labels'];assert_equivalent(row['learned'],old['learned'],'rerun.learned');assert_equivalent(row['observed'],old['observed'],'rerun.observed')
     print('Verified 6000 recorded decisions, capacity extrema, past telemetry, CP/anylook arithmetic and 16 regenerated runs; independent replication=false')
+    print(json.dumps(dict(numeric_relative_tolerance=1e-9,numeric_absolute_tolerance=1e-10,max_relative_difference=MAX_RELATIVE_NUMERIC_DIFFERENCE,max_absolute_difference=MAX_ABSOLUTE_NUMERIC_DIFFERENCE,labels_and_counts_exact=True)))
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--verify-recorded',action='store_true');ap.add_argument('--seeds',type=int,default=2)

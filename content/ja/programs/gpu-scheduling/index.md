@@ -23,13 +23,11 @@ GPUクラスタでは、多数のジョブが限られたGPUを取り合いま�
 <!-- GENERATED: program-current:START -->
 ## 現在の公開結論
 
-EP-0025は母parameter/true service/futureなしで、固定class-completion exposureのχ²区間を事前指定lookへ適用。160workload/2400判定、封印4/4、scheduled誤側0件。128万到着の近傍棄権は随時有効法79/80対scheduled法22/80でした。
+EP-0026は一回の永久parameter遷移を監査。truthful manifestは240/240遷移lookを推論前に拒否。定常と偽ると100kで80/80誤側、service improveは320kでもscheduled20/20誤側でした。gateは未申告driftをデータ検知しません。一般U31/実GPU/時変理論・新規性・査読はUNKNOWN、general detector0。
 
-草稿v0.5と公開再実行artifactへ統合。保証範囲を狭めた比較で普遍優越性なし。宣言gateはモデル仮定のデータ証明ではありません。一般U31/c12/非指数/実GPU、新規性・査読・独立外部replicationはUNKNOWN、general detector0。
+**証拠の境界：** 既知2block指数strict FCFS、一回の永久切替、eventual-tail label、正しいprovenance manifestに限定。同設計実行は独立外部replicationではありません。
 
-**証拠の境界：** 既知2block指数strict FCFS、十分な到着/need/完了ログ、事前指定H/Kに限定。既存time-change/Gamma/CP/Bonferroniの適用。n20の同時rate区間は広い。同設計実行は独立外部replicationではありません。
-
-**[現在のResearch Note（EP-0025）を読む →](/ja/research/gpu-scheduling-exposure-checkpoints/)**
+**[現在のResearch Note（EP-0026）を読む →](/ja/research/gpu-scheduling-transition-refusal/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -56,5 +54,6 @@ EP-0025は母parameter/true service/futureなしで、固定class-completion exp
 19. [[ja/research/gpu-scheduling-critical-loss/index|EP-0022 — 棄権の価格と、臨界負荷での定義]]
 20. [[ja/research/gpu-scheduling-two-class-control/index|EP-0023 — 二クラスFCFSでは、名目負荷1未満でも過負荷を見逃す]]
 21. [[ja/research/gpu-scheduling-past-only-learning/index|EP-0024 — 母パラメータを知らずに、過去の完了から容量を学習する]]
-22. **[[ja/research/gpu-scheduling-exposure-checkpoints/index|EP-0025 — 固定完了数の露出checkpointで、判定時点と棄権を比較する]]（最新）**
+22. [[ja/research/gpu-scheduling-exposure-checkpoints/index|EP-0025 — 固定完了数の露出checkpointで、判定時点と棄権を比較する]]
+23. **[[ja/research/gpu-scheduling-transition-refusal/index|EP-0026 — 永久parameter遷移を、定常診断はいつ拒否すべきか]]（最新）**
 <!-- GENERATED: program-history:END -->

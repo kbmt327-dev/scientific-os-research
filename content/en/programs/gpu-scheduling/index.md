@@ -23,13 +23,11 @@ The replacement, **alpha** (the elasticity of mean response time with respect to
 <!-- GENERATED: program-current:START -->
 ## Current public state
 
-EP-0025 uses fixed-count exposure chi-square intervals without population parameters, true service or future information.160workloads/2400decisions, 4/4sealed predictions, 0scheduled wrong labels. Near-boundary1280k UNKNOWN: anytime79/80 versus scheduled22/80.
+EP-0026 audits one permanent parameter transition. A truthful manifest refuses240/240 transition looks before inference. A false stationary declaration yields80/80 wrong at100k; service improvement remains scheduled20/20 wrong at320k. The gate does not detect undeclared drift from data. General U31/real-GPU/time-varying theory, novelty and peer review remain UNKNOWN; general detectors0.
 
-Draftv0.5/public code integrate the narrower reporting contract. No universal superiority; declaration gates do not prove assumptions in data. General U31/c12/nonexponential/real GPU, novelty, peer review and external independent replication remain UNKNOWN; general detectors0.
+**Evidence boundary:** Known two-block exponential strict-FCFS, one permanent change, eventual-tail label and truthful provenance manifest only. Same-design execution is not external independent replication.
 
-**Evidence boundary:** Known two-block exponential strict-FCFS structure, complete arrival/need/completion logs and predeclared H/K only. Existing time-change/Gamma/CP/Bonferroni methods. n20simultaneous rate intervals are wide. Same-design execution is not external independent replication.
-
-**[Read the current Research Note (EP-0025) →](/en/research/gpu-scheduling-exposure-checkpoints/)**
+**[Read the current Research Note (EP-0026) →](/en/research/gpu-scheduling-transition-refusal/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -56,5 +54,6 @@ Draftv0.5/public code integrate the narrower reporting contract. No universal su
 19. [[en/research/gpu-scheduling-critical-loss/index|EP-0022 — The price of abstention and the critical-load definition]]
 20. [[en/research/gpu-scheduling-two-class-control/index|EP-0023 — Two-class FCFS overload below nominal resource load one]]
 21. [[en/research/gpu-scheduling-past-only-learning/index|EP-0024 — Learning capacity from past completions without population parameters]]
-22. **[[en/research/gpu-scheduling-exposure-checkpoints/index|EP-0025 — Fixed completion-exposure checkpoints: reporting scope and abstention]] (latest)**
+22. [[en/research/gpu-scheduling-exposure-checkpoints/index|EP-0025 — Fixed completion-exposure checkpoints: reporting scope and abstention]]
+23. **[[en/research/gpu-scheduling-transition-refusal/index|EP-0026 — When should a stationary diagnostic refuse a permanent parameter transition?]] (latest)**
 <!-- GENERATED: program-history:END -->

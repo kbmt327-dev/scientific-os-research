@@ -13,13 +13,11 @@ lang: ja
 
 **テーマ：** サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
 
-**現在地：** EP-0025は母parameter/true service/futureなしで、固定class-completion exposureのχ²区間を事前指定lookへ適用。160workload/2400判定、封印4/4、scheduled誤側0件。128万到着の近傍棄権は随時有効法79/80対scheduled法22/80でした。
+**現在地：** EP-0026は一回の永久parameter遷移を監査。truthful manifestは240/240遷移lookを推論前に拒否。定常と偽ると100kで80/80誤側、service improveは320kでもscheduled20/20誤側でした。gateは未申告driftをデータ検知しません。一般U31/実GPU/時変理論・新規性・査読はUNKNOWN、general detector0。
 
-草稿v0.5と公開再実行artifactへ統合。保証範囲を狭めた比較で普遍優越性なし。宣言gateはモデル仮定のデータ証明ではありません。一般U31/c12/非指数/実GPU、新規性・査読・独立外部replicationはUNKNOWN、general detector0。
+**証拠の境界：** 既知2block指数strict FCFS、一回の永久切替、eventual-tail label、正しいprovenance manifestに限定。同設計実行は独立外部replicationではありません。
 
-**証拠の境界：** 既知2block指数strict FCFS、十分な到着/need/完了ログ、事前指定H/Kに限定。既存time-change/Gamma/CP/Bonferroniの適用。n20の同時rate区間は広い。同設計実行は独立外部replicationではありません。
-
-**[現在のResearch Note（EP-0025）→](/ja/research/gpu-scheduling-exposure-checkpoints/)** — Finding
+**[現在のResearch Note（EP-0026）→](/ja/research/gpu-scheduling-transition-refusal/)** — Finding
 
 [研究の現在地と更新履歴を見る →](/ja/programs/gpu-scheduling/)
 

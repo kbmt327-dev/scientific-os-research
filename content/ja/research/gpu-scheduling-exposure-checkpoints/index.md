@@ -137,3 +137,6 @@ native4fixtureで24checkpoint露出を照合、最大差4.55e-13。並行実行h
 時変parameter/構造の適用拒否と独立known labelを別契約で監査。構造未確認runを指数FCFSとみなさず、一般C042とscheduler順位を復帰させません。
 
 [[ja/research/gpu-scheduling-past-only-learning/index|EP-0024]] → EP-0025
+
+
+[[ja/research/gpu-scheduling-transition-refusal/index|EP-0026]]：永久遷移と適用拒否の次の監査。

@@ -15,11 +15,11 @@ lang: en
   <article class="program-row">
     <div>
       <h3>GPU cluster scheduling</h3>
-      <p>We compare fixed completion exposure and predeclared reporting looks, measuring abstention and guarantee scope.</p>
+      <p>We audit applicability refusal for a permanent parameter transition and wrong-side decisions under a false stationary declaration.</p>
     </div>
     <nav aria-label="GPU cluster scheduling">
       <a href="/en/programs/gpu-scheduling/">Program overview</a>
-      <a href="/en/research/gpu-scheduling-exposure-checkpoints/">Current Note</a>
+      <a href="/en/research/gpu-scheduling-transition-refusal/">Current Note</a>
     </nav>
   </article>
   <article class="program-row">

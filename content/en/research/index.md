@@ -14,13 +14,11 @@ Notes are grouped by what they contribute, not by how confident they sound. A **
 
 **Question:** Under which information and observation windows can size-first conditions and capacity boundaries be established?
 
-**Current state:** EP-0025 uses fixed-count exposure chi-square intervals without population parameters, true service or future information.160workloads/2400decisions, 4/4sealed predictions, 0scheduled wrong labels. Near-boundary1280k UNKNOWN: anytime79/80 versus scheduled22/80.
+**Current state:** EP-0026 audits one permanent parameter transition. A truthful manifest refuses240/240 transition looks before inference. A false stationary declaration yields80/80 wrong at100k; service improvement remains scheduled20/20 wrong at320k. The gate does not detect undeclared drift from data. General U31/real-GPU/time-varying theory, novelty and peer review remain UNKNOWN; general detectors0.
 
-Draftv0.5/public code integrate the narrower reporting contract. No universal superiority; declaration gates do not prove assumptions in data. General U31/c12/nonexponential/real GPU, novelty, peer review and external independent replication remain UNKNOWN; general detectors0.
+**Evidence boundary:** Known two-block exponential strict-FCFS, one permanent change, eventual-tail label and truthful provenance manifest only. Same-design execution is not external independent replication.
 
-**Evidence boundary:** Known two-block exponential strict-FCFS structure, complete arrival/need/completion logs and predeclared H/K only. Existing time-change/Gamma/CP/Bonferroni methods. n20simultaneous rate intervals are wide. Same-design execution is not external independent replication.
-
-**[Read the current Research Note (EP-0025) →](/en/research/gpu-scheduling-exposure-checkpoints/)** — Finding
+**[Read the current Research Note (EP-0026) →](/en/research/gpu-scheduling-transition-refusal/)** — Finding
 
 [See the current state and revision history →](/en/programs/gpu-scheduling/)
 

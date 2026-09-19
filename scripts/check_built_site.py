@@ -69,6 +69,7 @@ def main() -> int:
         "gpu-scheduling-two-class-control",
         "gpu-scheduling-past-only-learning",
         "gpu-scheduling-exposure-checkpoints",
+        "gpu-scheduling-transition-refusal",
         "simulation-worlds",
         "human-model",
         "human-model-dataset-portfolio",

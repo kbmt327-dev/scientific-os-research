@@ -243,3 +243,12 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: GPU-SCHED-EP-0026
+    source_episode: GPU-SCHEDULING/EP-0026
+    source_episode_sha256: 2485e3ee2146b9c93df5594c0d1dd5cd8ce0e2bb3dd0570777f20cfea02dcc1f
+    views:
+      en: content/en/research/gpu-scheduling-transition-refusal/index.md
+      ja: content/ja/research/gpu-scheduling-transition-refusal/index.md
+    type: Finding
+    publication:
+      status: publishable

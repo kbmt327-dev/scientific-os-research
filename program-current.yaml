@@ -3,37 +3,30 @@ site_url: https://kbmt327-dev.github.io/scientific-os-research
 programs:
   - id: gpu-scheduling
     research_id_prefix: GPU-SCHED-
-    current_research_id: GPU-SCHED-EP-0025
+    current_research_id: GPU-SCHED-EP-0026
     ja:
       title: GPUクラスタのスケジューリング
-      home_summary: 固定完了数のサービス露出と事前指定lookで、棄権と保証範囲を比較しました。
+      home_summary: 永久parameter遷移を正しく申告したときの適用拒否と、虚偽定常宣言の誤側を監査しました。
       question: サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
-      claim: 'EP-0025は母parameter/true service/futureなしで、固定class-completion exposureのχ²区間を事前指定lookへ適用。160workload/2400判定、封印4/4、scheduled誤側0件。128万到着の近傍棄権は随時有効法79/80対scheduled法22/80でした。
-
-
-        草稿v0.5と公開再実行artifactへ統合。保証範囲を狭めた比較で普遍優越性なし。宣言gateはモデル仮定のデータ証明ではありません。一般U31/c12/非指数/実GPU、新規性・査読・独立外部replicationはUNKNOWN、general
-        detector0。'
-      evidence_boundary: 既知2block指数strict FCFS、十分な到着/need/完了ログ、事前指定H/Kに限定。既存time-change/Gamma/CP/Bonferroniの適用。n20の同時rate区間は広い。同設計実行は独立外部replicationではありません。
+      claim: EP-0026は一回の永久parameter遷移を監査。truthful manifestは240/240遷移lookを推論前に拒否。定常と偽ると100kで80/80誤側、service
+        improveは320kでもscheduled20/20誤側でした。gateは未申告driftをデータ検知しません。一般U31/実GPU/時変理論・新規性・査読はUNKNOWN、general
+        detector0。
+      evidence_boundary: 既知2block指数strict FCFS、一回の永久切替、eventual-tail label、正しいprovenance
+        manifestに限定。同設計実行は独立外部replicationではありません。
     en:
       title: GPU cluster scheduling
-      home_summary: We compare fixed completion exposure and predeclared reporting looks,
-        measuring abstention and guarantee scope.
+      home_summary: We audit applicability refusal for a permanent parameter transition
+        and wrong-side decisions under a false stationary declaration.
       question: Under which information and observation windows can size-first conditions
         and capacity boundaries be established?
-      claim: 'EP-0025 uses fixed-count exposure chi-square intervals without population
-        parameters, true service or future information.160workloads/2400decisions, 4/4sealed
-        predictions, 0scheduled wrong labels. Near-boundary1280k UNKNOWN: anytime79/80
-        versus scheduled22/80.
-
-
-        Draftv0.5/public code integrate the narrower reporting contract. No universal
-        superiority; declaration gates do not prove assumptions in data. General U31/c12/nonexponential/real
-        GPU, novelty, peer review and external independent replication remain UNKNOWN;
-        general detectors0.'
-      evidence_boundary: Known two-block exponential strict-FCFS structure, complete
-        arrival/need/completion logs and predeclared H/K only. Existing time-change/Gamma/CP/Bonferroni
-        methods. n20simultaneous rate intervals are wide. Same-design execution is not
-        external independent replication.
+      claim: EP-0026 audits one permanent parameter transition. A truthful manifest
+        refuses240/240 transition looks before inference. A false stationary declaration
+        yields80/80 wrong at100k; service improvement remains scheduled20/20 wrong at320k.
+        The gate does not detect undeclared drift from data. General U31/real-GPU/time-varying
+        theory, novelty and peer review remain UNKNOWN; general detectors0.
+      evidence_boundary: Known two-block exponential strict-FCFS, one permanent change,
+        eventual-tail label and truthful provenance manifest only. Same-design execution
+        is not external independent replication.
 
   - id: queueing-system-identification
     research_id_prefix: SIM-WORLD-

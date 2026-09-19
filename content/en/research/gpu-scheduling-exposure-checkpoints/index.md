@@ -139,3 +139,6 @@ External independent replications: zero; scientific/domain/peer review not perfo
 Separately seal an audit of applicability rejection and independent labels for time-varying parameters/structure. Do not silently treat an unconfirmed system as exponential FCFS or restore general C 042/scheduler rankings.
 
 [[en/research/gpu-scheduling-past-only-learning/index|EP-0024]] → EP-0025
+
+
+[[en/research/gpu-scheduling-transition-refusal/index|EP-0026]]：Later permanent-transition applicability audit.

@@ -8,6 +8,7 @@ lang: ja
 
 ## 2026-09-19
 
+- **GPU-SCHED-EP-0026** · Finding — [永久parameter遷移を、定常診断はいつ拒否すべきか](/ja/research/gpu-scheduling-transition-refusal/)
 - **GPU-SCHED-EP-0025** · Finding — [固定完了数の露出checkpointで、判定時点と棄権を比較する](/ja/research/gpu-scheduling-exposure-checkpoints/)
 - **GPU-SCHED-EP-0024** · Finding — [母パラメータを知らずに、過去の完了から容量を学習する](/ja/research/gpu-scheduling-past-only-learning/)
 - **GPU-SCHED-EP-0023** · Finding — [二クラスFCFSでは、名目負荷1未満でも過負荷を見逃す](/ja/research/gpu-scheduling-two-class-control/)

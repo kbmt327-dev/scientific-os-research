@@ -1,0 +1,222 @@
+{
+  "ciphertext_length": 97,
+  "crib_letters": 24,
+  "forced_by_primer": {
+    "00403": {
+      "n": 5,
+      "skeleton": ".....................eastnortheast.I.INS.......................berlinclock......................T"
+    },
+    "13579": {
+      "n": 4,
+      "skeleton": ".....................eastnortheast............L................berlinclock...A..N............A..."
+    },
+    "15390": {
+      "n": 5,
+      "skeleton": "........O............eastnortheast........S....................berlinclock......I....O.......K..."
+    },
+    "19932": {
+      "n": 8,
+      "skeleton": "...S.........L.......eastnortheast........T....L..N.........HO.berlinclock.E....................."
+    },
+    "26093": {
+      "n": 4,
+      "skeleton": "..A..................eastnortheast............L................berlinclock...A........A.........."
+    },
+    "37796": {
+      "n": 8,
+      "skeleton": "...S.........L.......eastnortheast........T....L..N.........HO.berlinclock.E....................."
+    },
+    "42031": {
+      "n": 4,
+      "skeleton": "..A..................eastnortheast............L................berlinclock...A........A.........."
+    },
+    "42285": {
+      "n": 6,
+      "skeleton": "...........A.....E...eastnortheast..................AA.........berlinclock............K.........S"
+    },
+    "51316": {
+      "n": 6,
+      "skeleton": "........I............eastnortheast....N...T....L...............berlinclock...........I.......K..."
+    },
+    "57928": {
+      "n": 13,
+      "skeleton": "...T....E....S.......eastnortheast.N.EN..NLT................B..berlinclock...AL.I................"
+    },
+    "57973": {
+      "n": 13,
+      "skeleton": "........E......A.E...eastnortheast....N......KST............B..berlinclock.E.AL.I....I..........."
+    },
+    "59346": {
+      "n": 13,
+      "skeleton": "...T....E....S.......eastnortheast.N..N..NLT..S.............B..berlinclock...AL.I................"
+    },
+    "59391": {
+      "n": 12,
+      "skeleton": "........E......A.E...eastnortheast....N......KST............B..berlinclock.E.AL.I................"
+    },
+    "59794": {
+      "n": 5,
+      "skeleton": ".............L.......eastnortheast....N...T....L...............berlinclock...................K..."
+    },
+    "68079": {
+      "n": 5,
+      "skeleton": "..A..................eastnortheast...E........L................berlinclock...A........A.........."
+    },
+    "68223": {
+      "n": 5,
+      "skeleton": "..K..................eastnortheast.........S...................berlinclock.E.........E.......K..."
+    },
+    "68825": {
+      "n": 6,
+      "skeleton": "...........A.....E...eastnortheast..................AA.........berlinclock............K.........S"
+    },
+    "77354": {
+      "n": 5,
+      "skeleton": ".................E...eastnortheast.E.........................O.berlinclock......O....O..........."
+    },
+    "84017": {
+      "n": 4,
+      "skeleton": "..A..................eastnortheast............L................berlinclock...A........A.........."
+    },
+    "93148": {
+      "n": 6,
+      "skeleton": "...T.................eastnortheast.N......LS........A........O.berlinclock......................."
+    },
+    "93193": {
+      "n": 7,
+      "skeleton": "...............A.....eastnortheast....I........T....A........O.berlinclock......N............K..."
+    },
+    "95710": {
+      "n": 3,
+      "skeleton": ".....................eastnortheast........S....................berlinclock......I............K..."
+    },
+    "97531": {
+      "n": 6,
+      "skeleton": ".....................eastnortheast...E........L..............N.berlinclock...A..N............A..."
+    }
+  },
+  "forward_compatible": {
+    "count": 39,
+    "primers": [
+      "10319",
+      "12042",
+      "16795",
+      "16953",
+      "20173",
+      "20707",
+      "22856",
+      "26717",
+      "30016",
+      "30640",
+      "30690",
+      "30987",
+      "36650",
+      "38175",
+      "38254",
+      "38888",
+      "40909",
+      "44157",
+      "52654",
+      "54258",
+      "56852",
+      "58456",
+      "60101",
+      "60319",
+      "62389",
+      "66953",
+      "70094",
+      "70173",
+      "70410",
+      "70460",
+      "72856",
+      "80303",
+      "84393",
+      "84501",
+      "84551",
+      "88254",
+      "94157",
+      "98800",
+      "98850"
+    ]
+  },
+  "generated_at": "2026-09-18T15:00:52Z",
+  "mask_variant_match_out_of_13": {
+    "forward": 2,
+    "negated_forward": 1,
+    "negated_reversed": 3,
+    "primer_reversed_forward": 2,
+    "sequence_reversed": 13
+  },
+  "max_forced": 13,
+  "null_random_mask": {
+    "compatible": 813,
+    "rate": 0.0004065,
+    "trials": 2000000
+  },
+  "null_random_primer_admits_route": {
+    "admitting": 40,
+    "primers": 40
+  },
+  "p57973_components": 5,
+  "p57973_config_count": 29120,
+  "p57973_forced": {
+    "15": "A",
+    "17": "E",
+    "38": "N",
+    "45": "K",
+    "46": "S",
+    "47": "T",
+    "60": "B",
+    "75": "E",
+    "77": "A",
+    "78": "L",
+    "8": "E",
+    "80": "I",
+    "85": "I"
+  },
+  "p57973_forward_sat": false,
+  "p57973_reverse_sat": true,
+  "p57973_skeleton": "........E......A.E...eastnortheast....N......KST............B..berlinclock.E.AL.I....I...........",
+  "primers_at_max": [
+    "57928",
+    "57973",
+    "59346"
+  ],
+  "reverse_compatible": {
+    "count": 23,
+    "primers": [
+      "00403",
+      "13579",
+      "15390",
+      "19932",
+      "26093",
+      "37796",
+      "42031",
+      "42285",
+      "51316",
+      "57928",
+      "57973",
+      "59346",
+      "59391",
+      "59794",
+      "68079",
+      "68223",
+      "68825",
+      "77354",
+      "84017",
+      "93148",
+      "93193",
+      "95710",
+      "97531"
+    ]
+  },
+  "route_family_size": 284,
+  "route_sweep_57973": {
+    "combinations_tried": 55096,
+    "max_forced_at": "reverse shift=50 col28",
+    "max_forced_direct_identity_shift0": 13,
+    "max_forced_skeleton": "......RR.AC..R.KLA..Teastnortheast......C....E.........N.O.SE..berlinclockI.K....I..T.K.....S....",
+    "max_forced_under_route_freedom": 21,
+    "sat": 482
+  }
+}

@@ -232,6 +232,12 @@ Current claim (EP-0057): No decryption and no new plaintext letter. EP-0057 repr
 Evidence boundary: Exploratory computation on the public ciphertext and 24 crib letters. Not preregistered; no external independent replication and no review by a cryptographer. The ground truth exists but is withheld.
 
 Published Research Notes:
+- KRYPTOS-K4-EP-0001 — Does primer 57973 stand out once the model's freedom is counted? (Finding)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-57973-audit/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-57973-audit/
+- KRYPTOS-K4-EP-0011 — How much is the TOKIO reading of K4's Ws worth? (Finding)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-tokio-price/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-tokio-price/
 - KRYPTOS-K4-EP-0057 — Do the Ws that bracket both K4 cribs carry structure? (Finding) — CURRENT
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-w-brackets/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-w-brackets/

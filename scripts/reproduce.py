@@ -228,6 +228,16 @@ def gpu_cold_reader() -> None:
     print(run([sys.executable, 'verify_cold_reader.py'], root).strip())
 
 
+def kryptos_k4_57973_audit() -> None:
+    root = ROOT / 'reproduction' / 'kryptos-k4-57973-audit'
+    print(run([sys.executable, 'verify_57973_audit.py'], root).strip())
+
+
+def kryptos_k4_tokio_null() -> None:
+    root = ROOT / 'reproduction' / 'kryptos-k4-tokio-null'
+    print(run([sys.executable, 'verify_tokio_null.py'], root).strip())
+
+
 def kryptos_k4_w_brackets() -> None:
     root = ROOT / 'reproduction' / 'kryptos-k4-w-brackets'
     print(run([sys.executable, 'verify_w_brackets.py'], root).strip())
@@ -237,7 +247,7 @@ CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase,
           "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "gpu-u31-controls": gpu_u31_controls, "gpu-two-class": gpu_two_class, "gpu-past-learning": gpu_past_learning, "gpu-checkpoints": gpu_checkpoints, "gpu-transition-refusal": gpu_transition_refusal, "gpu-self-containment": gpu_self_containment, "gpu-cold-reader": gpu_cold_reader, "queue": queue,
           "human": human, "human-dataset": human_dataset, "iaa": iaa,
           "intervention": intervention,
-          "frontier": frontier, "kryptos-k4-w-brackets": kryptos_k4_w_brackets}
+          "frontier": frontier, "kryptos-k4-57973-audit": kryptos_k4_57973_audit, "kryptos-k4-tokio-null": kryptos_k4_tokio_null, "kryptos-k4-w-brackets": kryptos_k4_w_brackets}
 
 
 def main() -> int:

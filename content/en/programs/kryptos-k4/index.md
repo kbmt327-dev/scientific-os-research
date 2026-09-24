@@ -34,7 +34,9 @@ This table summarizes the internal record. Only the rows marked with a public No
 | Ws as nulls, key restarting at W, W-gaps as blocks, W pass-through with 25 letters | No candidate ([Note](/en/research/kryptos-k4-w-brackets/)) |
 | Row transposition with a periodic key | Not distinguishable from shuffled controls |
 
-The reading of the W gaps as `TOKIO` (the German spelling of Tokyo, which appears on Berlin's World Clock) remains the one pattern that passed a frozen external target list, at p ≤ 1.5 × 10⁻³. It is provisional and gives no plaintext.
+The reading of the W gaps as `TOKIO` (the German spelling of Tokyo, which appears on Berlin's World Clock) remains the one pattern that passed a frozen external target list, at p ≤ 1.5 × 10⁻³ ([Note](/en/research/kryptos-k4-tokio-price/)). It is provisional and gives no plaintext.
+
+The program began by auditing a claim that K4 is a reversed Gromark cipher with primer 57973. Its numbers reproduce, but the public cribs cannot tell it from chance ([Note](/en/research/kryptos-k4-57973-audit/)).
 
 <!-- GENERATED: program-current:START -->
 ## Current public state
@@ -49,7 +51,9 @@ No decryption and no new plaintext letter. EP-0057 reproduced the observation th
 <!-- GENERATED: program-history:START -->
 ## Published Research Notes
 
-1. **[[en/research/kryptos-k4-w-brackets/index|EP-0057 — Do the Ws that bracket both K4 cribs carry structure?]] (latest)**
+1. [[en/research/kryptos-k4-57973-audit/index|EP-0001 — Does primer 57973 stand out once the model's freedom is counted?]]
+2. [[en/research/kryptos-k4-tokio-price/index|EP-0011 — How much is the TOKIO reading of K4's Ws worth?]]
+3. **[[en/research/kryptos-k4-w-brackets/index|EP-0057 — Do the Ws that bracket both K4 cribs carry structure?]] (latest)**
 <!-- GENERATED: program-history:END -->
 
 ## Sources

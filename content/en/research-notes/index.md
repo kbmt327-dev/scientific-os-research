@@ -13,6 +13,8 @@ This is the historical log. For current claims, start with the [research-area in
 - **GPU-SCHED-EP-0027** · Finding — [Did the public article carry the facts needed not to misread its own claim?](/en/research/gpu-scheduling-self-containment/)
 ## 2026-09-19
 
+- **KRYPTOS-K4-EP-0011** · Finding — [How much is the TOKIO reading of K4's Ws worth?](/en/research/kryptos-k4-tokio-price/)
+- **KRYPTOS-K4-EP-0001** · Finding — [Does primer 57973 stand out once the model's freedom is counted?](/en/research/kryptos-k4-57973-audit/)
 - **GPU-SCHED-EP-0026** · Finding — [When should a stationary diagnostic refuse a permanent parameter transition?](/en/research/gpu-scheduling-transition-refusal/)
 - **GPU-SCHED-EP-0025** · Finding — [Fixed completion-exposure checkpoints: reporting scope and abstention](/en/research/gpu-scheduling-exposure-checkpoints/)
 - **GPU-SCHED-EP-0024** · Finding — [Learning capacity from past completions without population parameters](/en/research/gpu-scheduling-past-only-learning/)

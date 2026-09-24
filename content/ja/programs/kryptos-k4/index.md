@@ -34,7 +34,9 @@ K4は、Jim Sanbornが1990年にCIA本部へ設置した彫刻 *Kryptos* の第4
 | Wを空文字・鍵の再始動点・ブロック境界・25文字暗号の素通り記号とみなす読み | 候補なし（[Note](/ja/research/kryptos-k4-w-brackets/)） |
 | 行転置と周期鍵 | シャッフル対照と区別できない |
 
-W区間を `TOKIO`（Tokyoのドイツ語綴りで、ベルリンの世界時計に刻まれている）と読むのは、凍結した外部の標的リストに対して通った唯一のパターンです（p ≤ 1.5×10⁻³）。暫定であり、平文は1文字も出ていません。
+W区間を `TOKIO`（Tokyoのドイツ語綴りで、ベルリンの世界時計に刻まれている）と読むのは、凍結した外部の標的リストに対して通った唯一のパターンです（p ≤ 1.5×10⁻³、[Note](/ja/research/kryptos-k4-tokio-price/)）。暫定であり、平文は1文字も出ていません。
+
+この研究は、K4はprimer 57973の反転Gromark暗号だという主張の監査から始まりました。数値は再現しますが、公開cribではそれを偶然と区別できません（[Note](/ja/research/kryptos-k4-57973-audit/)）。
 
 <!-- GENERATED: program-current:START -->
 ## 現在の公開結論
@@ -49,7 +51,9 @@ W区間を `TOKIO`（Tokyoのドイツ語綴りで、ベルリンの世界時計
 <!-- GENERATED: program-history:START -->
 ## 公開中のResearch Note
 
-1. **[[ja/research/kryptos-k4-w-brackets/index|EP-0057 — K4の2つのcribを挟むWは、構造を持っているか]]（最新）**
+1. [[ja/research/kryptos-k4-57973-audit/index|EP-0001 — modelの自由度を数えても、primer 57973は際立つか]]
+2. [[ja/research/kryptos-k4-tokio-price/index|EP-0011 — K4のWをTOKIOと読むことには、どれだけの価値があるか]]
+3. **[[ja/research/kryptos-k4-w-brackets/index|EP-0057 — K4の2つのcribを挟むWは、構造を持っているか]]（最新）**
 <!-- GENERATED: program-history:END -->
 
 ## 出典

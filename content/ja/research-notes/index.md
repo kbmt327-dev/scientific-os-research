@@ -13,6 +13,8 @@ lang: ja
 - **GPU-SCHED-EP-0027** · Finding — [公開記事は、自分の主張を読み違えないための事実を載せていたか](/ja/research/gpu-scheduling-self-containment/)
 ## 2026-09-19
 
+- **KRYPTOS-K4-EP-0011** · Finding — [K4のWをTOKIOと読むことには、どれだけの価値があるか](/ja/research/kryptos-k4-tokio-price/)
+- **KRYPTOS-K4-EP-0001** · Finding — [modelの自由度を数えても、primer 57973は際立つか](/ja/research/kryptos-k4-57973-audit/)
 - **GPU-SCHED-EP-0026** · Finding — [永久parameter遷移を、定常診断はいつ拒否すべきか](/ja/research/gpu-scheduling-transition-refusal/)
 - **GPU-SCHED-EP-0025** · Finding — [固定完了数の露出checkpointで、判定時点と棄権を比較する](/ja/research/gpu-scheduling-exposure-checkpoints/)
 - **GPU-SCHED-EP-0024** · Finding — [母パラメータを知らずに、過去の完了から容量を学習する](/ja/research/gpu-scheduling-past-only-learning/)

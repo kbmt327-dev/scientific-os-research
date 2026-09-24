@@ -297,3 +297,12 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: GPU-SCHED-EP-0029
+    source_episode: GPU-SCHEDULING/EP-0029
+    source_episode_sha256: 88e85fe7c39894030467205bc28b547382a841a13153f050bc477821522dc8cd
+    views:
+      en: content/en/research/gpu-scheduling-locality/index.md
+      ja: content/ja/research/gpu-scheduling-locality/index.md
+    type: Finding
+    publication:
+      status: publishable

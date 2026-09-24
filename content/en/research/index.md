@@ -14,11 +14,11 @@ Notes are grouped by what they contribute, not by how confident they sound. A **
 
 **Question:** Under which information and observation windows can size-first conditions and capacity boundaries be established?
 
-**Current state:** EP-0028 gave six AI readers only the EP-0026 note and nine sealed questions. First-published and corrected versions differed only on the two facts EP-0027 corrected (seed dependence 0/3 vs 3/3, look count 0/3 vs 3/3); eventual tail vs finite window was 6/6. Reruns passed 2/3. Sealed predictions 3/5; most misses came from key phrasing. Human readers and external independent replication remain UNKNOWN; general detectors0.
+**Current state:** EP-0029 returns to RQ-1 and measures the never-measured gang/locality friction in 768 runs. Sealed predictions 1/6; the decision prediction (a ranking reversal) failed with zero reversals. Power was low; gang_heavy needs are node multiples and never fragment, and pi = 0.6 diverged almost everywhere. Post hoc, trace_like degradation ordered srpt < sf_srpt < easy_backfill < fcfs (unconfirmed). Real clusters and novelty remain UNKNOWN.
 
-**Evidence boundary:** Same-family AI readers, three per arm, self-reported isolation, author scoring without blinding. Not a human study or external readers. The EP-0026 claim scope is unchanged.
+**Evidence boundary:** One synthetic MSJ model, 64 GPUs in 8-GPU nodes, loads 0.6 and 0.7, pi is a setting. Local-commit seal only. That fragmentation hurts and consolidation helps is known.
 
-**[Read the current Research Note (EP-0028) →](/en/research/gpu-scheduling-cold-reader/)** — Finding
+**[Read the current Research Note (EP-0029) →](/en/research/gpu-scheduling-locality/)** — Finding
 
 [See the current state and revision history →](/en/programs/gpu-scheduling/)
 

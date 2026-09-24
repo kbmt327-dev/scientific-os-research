@@ -15,11 +15,11 @@ lang: ja
   <article class="program-row">
     <div>
       <h3>GPUクラスタのスケジューリング</h3>
-      <p>作者を知らないAI読者が遷移拒否の記事を正しく読めるかを、封印した設問で試しました。</p>
+      <p>nodeの断片化がサイズ優先とFCFS・backfillの順位を入れ替えるかを、封印した予測で試しました。</p>
     </div>
     <nav aria-label="GPUクラスタのスケジューリング">
       <a href="/ja/programs/gpu-scheduling/">研究概要</a>
-      <a href="/ja/research/gpu-scheduling-cold-reader/">最新Note</a>
+      <a href="/ja/research/gpu-scheduling-locality/">最新Note</a>
     </nav>
   </article>
   <article class="program-row">

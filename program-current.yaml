@@ -3,29 +3,29 @@ site_url: https://kbmt327-dev.github.io/scientific-os-research
 programs:
   - id: gpu-scheduling
     research_id_prefix: GPU-SCHED-
-    current_research_id: GPU-SCHED-EP-0028
+    current_research_id: GPU-SCHED-EP-0029
     ja:
       title: GPUクラスタのスケジューリング
-      home_summary: 作者を知らないAI読者が遷移拒否の記事を正しく読めるかを、封印した設問で試しました。
+      home_summary: nodeの断片化がサイズ優先とFCFS・backfillの順位を入れ替えるかを、封印した予測で試しました。
       question: サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
-      claim: EP-0028はAI読者6名にEP-0026記事だけを渡し封印9問に答えさせた。公開当初版と訂正版の差はEP-0027で訂正した2事実（seed従属0/3対3/3、look数0/3対3/3）だけで、eventual-tailと有限窓の区別は6/6。再実行は2/3がPASS。封印予測3/5で、誤答の過半はkeyの言い回し依存。人間の読者・独立外部replicationはUNKNOWN、general
-        detector0。
-      evidence_boundary: 作者と同系統のAI読者各arm3名、隔離は自己申告、作者が非盲検で採点。人間研究でも外部読者でもありません。EP-0026の主張範囲は変わりません。
+      claim: EP-0029は当初の問いRQ-1に戻り、未測だったgang/localityを768 runで測定。封印予測1/6で、決定予測（順位の逆転）は外れ、逆転0件。gang_heavyはneedがnodeの倍数で断片化が起きず、π=0.6はほぼ全cell発散と、検出力はほぼなかった。事後の観察ではtrace_likeの劣化がsrpt
+        < sf_srpt < easy_backfill < fcfsの順（未確認）。実クラスタ・新規性はUNKNOWN。
+      evidence_boundary: 合成MSJ model1つ、64 GPU・8-GPU node、負荷0.6/0.7、πは設定値。封印はlocal commitのみ。断片化の害と集約配置の効果は既知です。
     en:
       title: GPU cluster scheduling
-      home_summary: We test, with sealed questions, whether fresh AI readers read the
-        transition-refusal note correctly.
+      home_summary: We test, with sealed predictions, whether node fragmentation reorders
+        size-first policies against FCFS and backfill.
       question: Under which information and observation windows can size-first conditions
         and capacity boundaries be established?
-      claim: EP-0028 gave six AI readers only the EP-0026 note and nine sealed questions.
-        First-published and corrected versions differed only on the two facts EP-0027
-        corrected (seed dependence 0/3 vs 3/3, look count 0/3 vs 3/3); eventual tail
-        vs finite window was 6/6. Reruns passed 2/3. Sealed predictions 3/5; most misses
-        came from key phrasing. Human readers and external independent replication
-        remain UNKNOWN; general detectors0.
-      evidence_boundary: Same-family AI readers, three per arm, self-reported isolation,
-        author scoring without blinding. Not a human study or external readers. The
-        EP-0026 claim scope is unchanged.
+      claim: EP-0029 returns to RQ-1 and measures the never-measured gang/locality friction
+        in 768 runs. Sealed predictions 1/6; the decision prediction (a ranking reversal)
+        failed with zero reversals. Power was low; gang_heavy needs are node multiples
+        and never fragment, and pi = 0.6 diverged almost everywhere. Post hoc, trace_like
+        degradation ordered srpt < sf_srpt < easy_backfill < fcfs (unconfirmed). Real
+        clusters and novelty remain UNKNOWN.
+      evidence_boundary: One synthetic MSJ model, 64 GPUs in 8-GPU nodes, loads 0.6 and
+        0.7, pi is a setting. Local-commit seal only. That fragmentation hurts and
+        consolidation helps is known.
 
   - id: queueing-system-identification
     research_id_prefix: SIM-WORLD-

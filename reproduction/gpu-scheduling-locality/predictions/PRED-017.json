@@ -1,0 +1,72 @@
+{
+  "pred_id": "PRED-017",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0029",
+  "sealed_by": "claude-code (opus)",
+  "sealed_at": "2026-09-24",
+  "status": "sealed",
+  "why": "Return to RQ-1 after EP-0016..EP-0028 drifted into detector, publication and reader audits. RQ-1 names four frictions; gang/locality (H10, C-009) is the only one never measured. E18 asks whether node fragmentation reverses the ranking of size-first policies against FCFS + EASY backfill, and whether locality-aware placement removes that effect.",
+  "prior_art": {
+    "why_this_block_exists": "Required since PRED-016: this domain rediscovered two known results before checking the literature.",
+    "already_known": [
+      "Locality and consolidation matter for distributed training throughput; Tiresias (Gu et al., NSDI 2019) finds placement sensitivity depends on the model and relaxes consolidation for insensitive jobs.",
+      "Analysis of Microsoft's Philly cluster (Jeon et al., USENIX ATC 2019) reports that gang scheduling with locality constraints increases queueing delay and lowers utilization.",
+      "Gandiva (Xiao et al., OSDI 2018) uses packing and migration to reduce fragmentation.",
+      "Topology-aware GPU placement (e.g., Amaral et al., SC 2017) improves job performance on multi-GPU nodes."
+    ],
+    "what_is_not_claimed_new": "That fragmentation hurts, and that consolidated placement helps, are known.",
+    "candidate_contribution": "Within the MSJ model: whether fragmentation acts as a ranking friction between size-first ordering (greedy SRPT, ServerFilling-SRPT) and FCFS/EASY backfill, and whether a simple best-fit compact placement neutralises it. Not checked against the literature systematically; novelty UNKNOWN.",
+    "search_done": "Recall only; no systematic search before sealing."
+  },
+  "seal_integrity": {
+    "problem": "What was seen before sealing.",
+    "seen": [
+      "c12 capacities at pi=0 (used to choose loads 0.6/0.7 below every capacity lower bound).",
+      "E1 rankings at rho=0.85 without locality.",
+      "Runtime of one 20k-job pilot per mix x policy at pi=0.3 first_fit; timings were printed, metrics were not.",
+      "The penalty_mode='excess' change was made because under the existing 'all' mode a 64-GPU gang pays for 7 unavoidable nodes, which would drive every gang_heavy cell over capacity regardless of placement. This was reasoned from the formula, not from runs."
+    ],
+    "not_seen": "No E18 metric at any pi > 0 before sealing.",
+    "timestamp": "Local git commit only; no external timestamp."
+  },
+  "measurand_validity": {
+    "model": "8-GPU nodes; rate = 1 / (1 + pi * excess_nodes), excess = nodes spanned beyond ceil(need/8). Sticky placement, no migration. Placement never blocks admission. Real cross-node slowdown depends on model and interconnect; pi is a knob, not a measured value.",
+    "loads": "rho 0.6 and 0.7 are nominal loads under ideal placement; fragmentation raises effective load and may push a cell over. That is an outcome, labelled three-way.",
+    "not_modelled": "Locality-aware admission (delaying a job to wait for a compact slot), migration, network topology beyond nodes."
+  },
+  "experiment": {
+    "runner": "run_e18.py",
+    "analysis": "analyze_e18.py (written and sealed with this file)",
+    "grid": "2 mixes (trace_like, gang_heavy) x 4 policies (fcfs, easy_backfill, srpt, sf_srpt) x rho {0.6, 0.7} x pi {0, 0.1, 0.3, 0.6} x placement {first_fit, compact} x seeds {1801, 1802, 1803} x horizons {40k, 80k} = 768 runs",
+    "fixed": "N=64, node 8, sigma 0, c_pre 0, exponential sizes mean 1, backlog cap 6000, t_limit_factor 2.0"
+  },
+  "detector": {
+    "statistic": "alpha on the 40k/80k pair",
+    "label": "DIVERGING if aborted/time limit or alpha >= 0.8; STABLE if alpha <= 0.2; else UNKNOWN. Cell label requires all three seeds to agree.",
+    "status": "alpha is unaudited near a boundary (U-31: threshold 0.5 misclassifies within about 1% of capacity). The 0.2/0.8 band leaves the ambiguous middle as UNKNOWN instead of forcing a verdict. UNKNOWN cells are excluded from comparisons and counted."
+  },
+  "predictions": {
+    "P0": "Control (instrument check, forced by the model): at pi = 0, first_fit and compact give exactly equal mean JCT in every run. Failure stops the episode as R3.",
+    "P1": "At pi = 0.3, compact spans fewer excess nodes per placement than first_fit in every mix x policy x rho, and at most 0.05 on gang_heavy.",
+    "P2": "first_fit, rho 0.7, pi 0 -> 0.3: mean-JCT degradation factor is larger on gang_heavy than trace_like for every policy that is STABLE in all four cells.",
+    "P3": "DECISION. Pair reversal between pi 0 and 0.6 (strict: ratio < 0.95 vs > 1.05 with both STABLE, or STABLE vs DIVERGING): at least one reversal under first_fit across mix x rho, and none under compact.",
+    "P4": "trace_like, first_fit, pi 0 -> 0.6: easy_backfill has the smallest degradation factor among policies STABLE at both ends, at both rho.",
+    "P5": "gang_heavy, first_fit, rho 0.7, pi 0.6: sf_srpt degrades by a larger factor than easy_backfill (sf_srpt DIVERGING with easy_backfill STABLE counts as larger)."
+  },
+  "pre_committed_consequence": {
+    "P3_pass": "Report locality as a ranking friction under naive placement that compact placement neutralises, within this model.",
+    "P3_fail_no_first_fit_reversal": "Report that fragmentation does not reorder these policies at these loads; locality is then a level effect, not a ranking friction. Do not search other loads or penalties for a reversal in this episode.",
+    "P3_fail_compact_reversal": "Report that best-fit compact placement does not remove the ranking effect."
+  },
+  "declared_unknowns": [
+    "Loads above 0.7, where capacity differences start to dominate.",
+    "Other penalty shapes (additive, per-link, topology).",
+    "Locality-aware admission policies.",
+    "Real cluster placement data."
+  ],
+  "rules": [
+    "No edits to this file, run_e18.py or analyze_e18.py after the sealing commit.",
+    "If more than one third of cells are UNKNOWN, report that before any grade interpretation.",
+    "Keep failed predictions; do not re-grade with new thresholds."
+  ]
+}

@@ -72,6 +72,7 @@ def main() -> int:
         "gpu-scheduling-transition-refusal",
         "gpu-scheduling-self-containment",
         "gpu-scheduling-cold-reader",
+        "gpu-scheduling-locality",
         "simulation-worlds",
         "human-model",
         "human-model-dataset-portfolio",

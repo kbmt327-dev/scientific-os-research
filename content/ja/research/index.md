@@ -13,11 +13,11 @@ lang: ja
 
 **テーマ：** サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
 
-**現在地：** EP-0028はAI読者6名にEP-0026記事だけを渡し封印9問に答えさせた。公開当初版と訂正版の差はEP-0027で訂正した2事実（seed従属0/3対3/3、look数0/3対3/3）だけで、eventual-tailと有限窓の区別は6/6。再実行は2/3がPASS。封印予測3/5で、誤答の過半はkeyの言い回し依存。人間の読者・独立外部replicationはUNKNOWN、general detector0。
+**現在地：** EP-0029は当初の問いRQ-1に戻り、未測だったgang/localityを768 runで測定。封印予測1/6で、決定予測（順位の逆転）は外れ、逆転0件。gang_heavyはneedがnodeの倍数で断片化が起きず、π=0.6はほぼ全cell発散と、検出力はほぼなかった。事後の観察ではtrace_likeの劣化がsrpt < sf_srpt < easy_backfill < fcfsの順（未確認）。実クラスタ・新規性はUNKNOWN。
 
-**証拠の境界：** 作者と同系統のAI読者各arm3名、隔離は自己申告、作者が非盲検で採点。人間研究でも外部読者でもありません。EP-0026の主張範囲は変わりません。
+**証拠の境界：** 合成MSJ model1つ、64 GPU・8-GPU node、負荷0.6/0.7、πは設定値。封印はlocal commitのみ。断片化の害と集約配置の効果は既知です。
 
-**[現在のResearch Note（EP-0028）→](/ja/research/gpu-scheduling-cold-reader/)** — Finding
+**[現在のResearch Note（EP-0029）→](/ja/research/gpu-scheduling-locality/)** — Finding
 
 [研究の現在地と更新履歴を見る →](/ja/programs/gpu-scheduling/)
 

@@ -23,11 +23,11 @@ GPUクラスタでは、多数のジョブが限られたGPUを取り合いま�
 <!-- GENERATED: program-current:START -->
 ## 現在の公開結論
 
-EP-0028はAI読者6名にEP-0026記事だけを渡し封印9問に答えさせた。公開当初版と訂正版の差はEP-0027で訂正した2事実（seed従属0/3対3/3、look数0/3対3/3）だけで、eventual-tailと有限窓の区別は6/6。再実行は2/3がPASS。封印予測3/5で、誤答の過半はkeyの言い回し依存。人間の読者・独立外部replicationはUNKNOWN、general detector0。
+EP-0029は当初の問いRQ-1に戻り、未測だったgang/localityを768 runで測定。封印予測1/6で、決定予測（順位の逆転）は外れ、逆転0件。gang_heavyはneedがnodeの倍数で断片化が起きず、π=0.6はほぼ全cell発散と、検出力はほぼなかった。事後の観察ではtrace_likeの劣化がsrpt < sf_srpt < easy_backfill < fcfsの順（未確認）。実クラスタ・新規性はUNKNOWN。
 
-**証拠の境界：** 作者と同系統のAI読者各arm3名、隔離は自己申告、作者が非盲検で採点。人間研究でも外部読者でもありません。EP-0026の主張範囲は変わりません。
+**証拠の境界：** 合成MSJ model1つ、64 GPU・8-GPU node、負荷0.6/0.7、πは設定値。封印はlocal commitのみ。断片化の害と集約配置の効果は既知です。
 
-**[現在のResearch Note（EP-0028）を読む →](/ja/research/gpu-scheduling-cold-reader/)**
+**[現在のResearch Note（EP-0029）を読む →](/ja/research/gpu-scheduling-locality/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -57,5 +57,6 @@ EP-0028はAI読者6名にEP-0026記事だけを渡し封印9問に答えさせ�
 22. [[ja/research/gpu-scheduling-exposure-checkpoints/index|EP-0025 — 固定完了数の露出checkpointで、判定時点と棄権を比較する]]
 23. [[ja/research/gpu-scheduling-transition-refusal/index|EP-0026 — 永久parameter遷移を、定常診断はいつ拒否すべきか]]
 24. [[ja/research/gpu-scheduling-self-containment/index|EP-0027 — 公開記事は、自分の主張を読み違えないための事実を載せていたか]]
-25. **[[ja/research/gpu-scheduling-cold-reader/index|EP-0028 — 作者を知らないAI読者は、遷移拒否の記事を正しく読めたか]]（最新）**
+25. [[ja/research/gpu-scheduling-cold-reader/index|EP-0028 — 作者を知らないAI読者は、遷移拒否の記事を正しく読めたか]]
+26. **[[ja/research/gpu-scheduling-locality/index|EP-0029 — nodeの断片化は、サイズ優先とFCFS・backfillの順位を入れ替えるか]]（最新）**
 <!-- GENERATED: program-history:END -->

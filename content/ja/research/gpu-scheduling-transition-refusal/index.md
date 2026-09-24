@@ -63,7 +63,7 @@ tags:
 
 ## 方法
 
-64同質資源、need32/64、strict nonpreemptive FCFS、二つの母モデル、seed9301–9310。有限回切替後に永久継続する定常尾部を既存二クラス容量定理で採点し、等号を除外。truthful gateはtransition manifestを受け取り、misuse armだけが虚偽のstationary attestationを受け取ります。
+64同質資源、need32/64、strict nonpreemptive FCFS、二つの母モデル、seed9301–9310。有限回切替後に永久継続する定常尾部を既存二クラス容量定理（[Grosof et al.](https://www.cs.cmu.edu/~harchol/Papers/twoclassstability.pdf)）で採点し、等号を除外。共通seedを全cellで使うため、cell間の結果は独立ではありません（独立120seedではなく2モデル×10seed）。truthful gateはtransition manifestを受け取り、misuse armだけが虚偽のstationary attestationを受け取ります。
 
 ## 結果
 
@@ -82,7 +82,7 @@ tags:
 | service_improve | subcritical | 160k | 20/0/0 | 20/0/0 |
 | service_improve | subcritical | 320k | 20/0/0 | 0/20/0 |
 
-定常対照120 lookはtruthful gateで全件正解。遷移240 lookは全件inferenceなし。100kの遷移80件はfalse scheduled/anytimeとも全件誤側。320kではservice improveのみscheduled20/20誤側、anytime20/20 UNKNOWN。
+定常対照120 lookはtruthful gateで全件正解。遷移240 lookは全件inferenceなし。100kの遷移80件はfalse scheduled/anytimeとも全件誤側。service improveだけは320kでもscheduled20/20誤側、anytime20/20 UNKNOWNでした。他の遷移は320kで全件正解です。
 
 ## 何が変わったか
 
@@ -106,7 +106,7 @@ manifestが真でないと拒否は働きません。eventual-tail labelは有�
 
 ## 自分で確かめる
 
-[公開コード](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/gpu-scheduling-transition-refusal)で`python runner_transition.py --verify-recorded --seeds 2`。記録360 lookを再集計し、24 small lookを再生成します。
+[公開コード](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/gpu-scheduling-transition-refusal)で`python runner_transition.py --verify-recorded --seeds 2`。記録360 lookを再集計し、72 look（2seed×2モデル×6scenario×3look）を再生成します。
 
 ## 証拠とデータ
 

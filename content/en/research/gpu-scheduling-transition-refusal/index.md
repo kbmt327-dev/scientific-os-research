@@ -65,7 +65,7 @@ Cumulative full-history statistics mix pre- and post-change regimes. Narrow stat
 
 ## Method
 
-64 fungible resources, needs32/64, strict nonpreemptive FCFS, two parent models and seeds9301–9310. Existing exact two-class capacity labels the stationary regime that persists forever after the finite change; equality is excluded. The truthful gate sees a transition manifest. Only the misuse arm receives a false stationary attestation.
+64 fungible resources, needs32/64, strict nonpreemptive FCFS, two parent models and seeds9301–9310. Existing exact two-class capacity ([Grosof et al.](https://www.cs.cmu.edu/~harchol/Papers/twoclassstability.pdf)) labels the stationary regime that persists forever after the finite change; equality is excluded. The same common seeds are used across cells, so cell results are dependent, not 120 independent seeds. The truthful gate sees a transition manifest. Only the misuse arm receives a false stationary attestation.
 
 ## Results
 
@@ -84,7 +84,7 @@ Cumulative full-history statistics mix pre- and post-change regimes. Narrow stat
 | service_improve | subcritical | 160k | 20/0/0 | 20/0/0 |
 | service_improve | subcritical | 320k | 20/0/0 | 0/20/0 |
 
-All120 stationary control looks were correct under the truthful gate. All240 transition looks were refused without inference. At100k, all80 drift records were wrong for both false-declaration methods. At320k, only service improvement remained: scheduled20/20 wrong, anytime20/20 UNKNOWN.
+All120 stationary control looks were correct under the truthful gate. All240 transition looks were refused without inference. At100k, all80 drift records were wrong for both false-declaration methods. Only service improvement still failed at320k: scheduled20/20 wrong, anytime20/20 UNKNOWN. Every other transition was correct at320k.
 
 ## What changed
 
@@ -108,7 +108,7 @@ Refusal depends on truthful provenance. Eventual-tail stability is not finite-wi
 
 ## Reproduce
 
-[Public code](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/gpu-scheduling-transition-refusal): `python runner_transition.py --verify-recorded --seeds 2` recomputes360 recorded looks and regenerates24 small looks.
+[Public code](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/gpu-scheduling-transition-refusal): `python runner_transition.py --verify-recorded --seeds 2` recomputes360 recorded looks and regenerates72 looks (2 seeds x 2 models x 6 scenarios x 3 looks).
 
 ## Evidence / Artifacts
 

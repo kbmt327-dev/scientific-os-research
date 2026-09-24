@@ -72,6 +72,16 @@ lang: ja
       <a href="/ja/research/retracted-frontier-metrics/">最新Note</a>
     </nav>
   </article>
+  <article class="program-row">
+    <div>
+      <h3>Kryptos K4</h3>
+      <p>未解読の暗号K4について、公開cribでどの方式を否定できるか、見つかったパターンが自由度を払った後にいくら残るかを記録しています。</p>
+    </div>
+    <nav aria-label="Kryptos K4">
+      <a href="/ja/programs/kryptos-k4/">研究概要</a>
+      <a href="/ja/research/kryptos-k4-w-brackets/">最新Note</a>
+    </nav>
+  </article>
 </div>
 <!-- GENERATED: program-cards:END -->
 

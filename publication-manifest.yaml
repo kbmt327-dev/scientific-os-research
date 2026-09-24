@@ -270,3 +270,12 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: KRYPTOS-K4-EP-0057
+    source_episode: KRYPTOS-K4/EP-0057
+    source_episode_sha256: 0b4f31e6f22ce59f2d590e59e5bf5b5033808acd5df70a98b9fba8382bcfb09a
+    views:
+      en: content/en/research/kryptos-k4-w-brackets/index.md
+      ja: content/ja/research/kryptos-k4-w-brackets/index.md
+    type: Finding
+    publication:
+      status: publishable

@@ -1,0 +1,66 @@
+{
+ "vig-AZ-W dropW(92)": {
+  "periodic": [],
+  "progressive": [],
+  "ct-autokey": []
+ },
+ "vig-AZ-W keepW(97)": {
+  "periodic": [],
+  "progressive": [
+   [
+    26,
+    12
+   ]
+  ],
+  "ct-autokey": []
+ },
+ "beau-AZ-W dropW(92)": {
+  "periodic": [],
+  "progressive": [],
+  "ct-autokey": []
+ },
+ "beau-AZ-W keepW(97)": {
+  "periodic": [],
+  "progressive": [
+   [
+    26,
+    18
+   ]
+  ],
+  "ct-autokey": []
+ },
+ "vig-KA-W dropW(92)": {
+  "periodic": [],
+  "progressive": [],
+  "ct-autokey": []
+ },
+ "vig-KA-W keepW(97)": {
+  "periodic": [],
+  "progressive": [
+   [
+    26,
+    12
+   ]
+  ],
+  "ct-autokey": []
+ },
+ "beau-KA-W dropW(92)": {
+  "periodic": [],
+  "progressive": [],
+  "ct-autokey": []
+ },
+ "beau-KA-W keepW(97)": {
+  "periodic": [],
+  "progressive": [
+   [
+    26,
+    1
+   ]
+  ],
+  "ct-autokey": []
+ },
+ "playfair_self_encryption_positions": [
+  32,
+  73
+ ]
+}

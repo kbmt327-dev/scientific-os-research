@@ -218,6 +218,23 @@ Published Research Notes:
 - FRONTIER-METRICS-REVIEW-0001 — Two ways a synthetic world flatters its author, and both headline results withdrawn (Negative Result) — CURRENT
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/retracted-frontier-metrics/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/retracted-frontier-metrics/
+
+### Kryptos K4
+
+Program overview:
+- English: https://kbmt327-dev.github.io/scientific-os-research/en/programs/kryptos-k4/
+- Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/programs/kryptos-k4/
+
+Question: Which mechanisms can the 97 ciphertext letters and 24 crib letters rule out, and which apparent patterns survive once the freedom used to find them is counted?
+
+Current claim (EP-0057): No decryption and no new plaintext letter. EP-0057 reproduced the observation that two of the five Ws bracket the public cribs from outside, but without choosing the letter W the chance is 0.036, and it is not independent of the TOKIO reading of the W gaps. Reading the Ws as nulls, key restarts, block boundaries or pass-through symbols of a 25-letter cipher produced no candidate.
+
+Evidence boundary: Exploratory computation on the public ciphertext and 24 crib letters. Not preregistered; no external independent replication and no review by a cryptographer. The ground truth exists but is withheld.
+
+Published Research Notes:
+- KRYPTOS-K4-EP-0057 — Do the Ws that bracket both K4 cribs carry structure? (Finding) — CURRENT
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-w-brackets/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-w-brackets/
 <!-- GENERATED: research-current:END -->
 
 ### Measurement design

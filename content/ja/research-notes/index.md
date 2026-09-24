@@ -8,6 +8,7 @@ lang: ja
 
 ## 2026-09-24
 
+- **KRYPTOS-K4-EP-0057** · Finding — [K4の2つのcribを挟むWは、構造を持っているか](/ja/research/kryptos-k4-w-brackets/)
 - **GPU-SCHED-EP-0028** · Finding — [作者を知らないAI読者は、遷移拒否の記事を正しく読めたか](/ja/research/gpu-scheduling-cold-reader/)
 - **GPU-SCHED-EP-0027** · Finding — [公開記事は、自分の主張を読み違えないための事実を載せていたか](/ja/research/gpu-scheduling-self-containment/)
 ## 2026-09-19

@@ -72,6 +72,16 @@ lang: en
       <a href="/en/research/retracted-frontier-metrics/">Current Note</a>
     </nav>
   </article>
+  <article class="program-row">
+    <div>
+      <h3>Kryptos K4</h3>
+      <p>For the unsolved K4 cipher we record which mechanisms the public cribs rule out and how much each found pattern is worth once the search's own freedom is paid for.</p>
+    </div>
+    <nav aria-label="Kryptos K4">
+      <a href="/en/programs/kryptos-k4/">Program overview</a>
+      <a href="/en/research/kryptos-k4-w-brackets/">Current Note</a>
+    </nav>
+  </article>
 </div>
 <!-- GENERATED: program-cards:END -->
 

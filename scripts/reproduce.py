@@ -228,11 +228,16 @@ def gpu_cold_reader() -> None:
     print(run([sys.executable, 'verify_cold_reader.py'], root).strip())
 
 
+def kryptos_k4_w_brackets() -> None:
+    root = ROOT / 'reproduction' / 'kryptos-k4-w-brackets'
+    print(run([sys.executable, 'verify_w_brackets.py'], root).strip())
+
+
 CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase,
           "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "gpu-u31-controls": gpu_u31_controls, "gpu-two-class": gpu_two_class, "gpu-past-learning": gpu_past_learning, "gpu-checkpoints": gpu_checkpoints, "gpu-transition-refusal": gpu_transition_refusal, "gpu-self-containment": gpu_self_containment, "gpu-cold-reader": gpu_cold_reader, "queue": queue,
           "human": human, "human-dataset": human_dataset, "iaa": iaa,
           "intervention": intervention,
-          "frontier": frontier}
+          "frontier": frontier, "kryptos-k4-w-brackets": kryptos_k4_w_brackets}
 
 
 def main() -> int:

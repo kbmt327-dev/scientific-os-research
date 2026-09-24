@@ -1,0 +1,419 @@
+{
+ "A": {
+  "W": [
+   20,
+   36,
+   48,
+   58,
+   74
+  ],
+  "gaps": [
+   20,
+   15,
+   11,
+   9,
+   15,
+   22
+  ],
+  "P_W_at_20_and_74": 0.002147766323024055,
+  "P_W_at_20_74_or_34_62": 0.004294089577969931,
+  "P_ge2_of_4_boundary_cells_W": 0.012348333544983318,
+  "P_same_letter_20_74_any_letter": 0.03608247422680412,
+  "P_same_letter_outer_or_inner_pair": 0.07086791886494037,
+  "boundary_letters": {
+   "20": "W",
+   "34": "O",
+   "62": "B",
+   "74": "W"
+  }
+ },
+ "B": {
+  "with_W_97": {
+   "len": 97,
+   "crib_index_range": [
+    21,
+    73
+   ],
+   "trivial_periods": [
+    27,
+    28,
+    29
+   ],
+   "periodic vig-AZ": [],
+   "progressive vig-AZ": [],
+   "ct-autokey vig-AZ": [],
+   "pt-autokey vig-AZ": [
+    27,
+    28,
+    29
+   ],
+   "periodic beau-AZ": [],
+   "progressive beau-AZ": [],
+   "ct-autokey beau-AZ": [],
+   "pt-autokey beau-AZ": [
+    27,
+    28,
+    29
+   ],
+   "periodic vbeau-AZ": [],
+   "progressive vbeau-AZ": [],
+   "ct-autokey vbeau-AZ": [],
+   "pt-autokey vbeau-AZ": [
+    27,
+    28,
+    29
+   ],
+   "periodic vig-KA": [],
+   "progressive vig-KA": [],
+   "ct-autokey vig-KA": [],
+   "pt-autokey vig-KA": [
+    27,
+    28,
+    29
+   ],
+   "periodic beau-KA": [],
+   "progressive beau-KA": [],
+   "ct-autokey beau-KA": [],
+   "pt-autokey beau-KA": [
+    27,
+    28,
+    29
+   ],
+   "periodic vbeau-KA": [],
+   "progressive vbeau-KA": [],
+   "ct-autokey vbeau-KA": [],
+   "pt-autokey vbeau-KA": [
+    27,
+    28,
+    29
+   ],
+   "general periodic (any alphabet per residue), nontrivial p": [
+    8,
+    11,
+    12,
+    13,
+    16,
+    18,
+    19,
+    20,
+    22,
+    23,
+    24,
+    26,
+    30,
+    31,
+    32,
+    33,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    44,
+    46,
+    47,
+    48
+   ]
+  },
+  "drop_W_92": {
+   "len": 92,
+   "crib_index_range": [
+    20,
+    69
+   ],
+   "trivial_periods": [
+    25,
+    26
+   ],
+   "periodic vig-AZ": [],
+   "progressive vig-AZ": [],
+   "ct-autokey vig-AZ": [],
+   "pt-autokey vig-AZ": [
+    25,
+    26
+   ],
+   "periodic beau-AZ": [],
+   "progressive beau-AZ": [],
+   "ct-autokey beau-AZ": [],
+   "pt-autokey beau-AZ": [
+    25,
+    26
+   ],
+   "periodic vbeau-AZ": [],
+   "progressive vbeau-AZ": [],
+   "ct-autokey vbeau-AZ": [],
+   "pt-autokey vbeau-AZ": [
+    25,
+    26
+   ],
+   "periodic vig-KA": [],
+   "progressive vig-KA": [],
+   "ct-autokey vig-KA": [],
+   "pt-autokey vig-KA": [
+    25,
+    26
+   ],
+   "periodic beau-KA": [],
+   "progressive beau-KA": [],
+   "ct-autokey beau-KA": [],
+   "pt-autokey beau-KA": [
+    25,
+    26
+   ],
+   "periodic vbeau-KA": [],
+   "progressive vbeau-KA": [],
+   "ct-autokey vbeau-KA": [],
+   "pt-autokey vbeau-KA": [
+    25,
+    26
+   ],
+   "general periodic (any alphabet per residue), nontrivial p": [
+    11,
+    12,
+    15,
+    16,
+    17,
+    18,
+    19,
+    22,
+    23,
+    24,
+    27,
+    28,
+    29,
+    30,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    41,
+    43,
+    44,
+    45,
+    46
+   ]
+  }
+ },
+ "C": {
+  "from_start": {
+   "shared_offsets": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "vig-AZ": "2/9",
+   "beau-AZ": "2/9",
+   "vbeau-AZ": "2/9",
+   "vig-KA": "1/9",
+   "beau-KA": "1/9",
+   "vbeau-KA": "1/9",
+   "arbitrary-per-offset violations": [],
+   "arbitrary-per-offset informative offsets": [
+    6
+   ]
+  },
+  "from_start incl_W": {
+   "shared_offsets": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+   ],
+   "vig-AZ": "2/9",
+   "beau-AZ": "2/9",
+   "vbeau-AZ": "2/9",
+   "vig-KA": "1/9",
+   "beau-KA": "1/9",
+   "vbeau-KA": "1/9",
+   "arbitrary-per-offset violations": [],
+   "arbitrary-per-offset informative offsets": [
+    7
+   ]
+  },
+  "from_end": {
+   "shared_offsets": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "vig-AZ": "2/9",
+   "beau-AZ": "2/9",
+   "vbeau-AZ": "2/9",
+   "vig-KA": "1/9",
+   "beau-KA": "1/9",
+   "vbeau-KA": "1/9",
+   "arbitrary-per-offset violations": [],
+   "arbitrary-per-offset informative offsets": [
+    8
+   ]
+  }
+ },
+ "plants": [
+  [
+   "segment-key",
+   "vig-AZ",
+   "9/9",
+   []
+  ],
+  [
+   "W-null periodic P=7",
+   "vig-AZ",
+   true,
+   null
+  ],
+  [
+   "W-null ct-autokey P=5",
+   "vig-AZ",
+   true,
+   null
+  ],
+  [
+   "W-null pt-autokey P=9",
+   "vig-AZ",
+   true,
+   null
+  ],
+  [
+   "segment-key",
+   "beau-AZ",
+   "9/9",
+   []
+  ],
+  [
+   "W-null periodic P=7",
+   "beau-AZ",
+   true,
+   null
+  ],
+  [
+   "W-null ct-autokey P=5",
+   "beau-AZ",
+   true,
+   null
+  ],
+  [
+   "W-null pt-autokey P=9",
+   "beau-AZ",
+   true,
+   null
+  ],
+  [
+   "segment-key",
+   "vbeau-AZ",
+   "9/9",
+   []
+  ],
+  [
+   "W-null periodic P=7",
+   "vbeau-AZ",
+   true,
+   null
+  ],
+  [
+   "W-null ct-autokey P=5",
+   "vbeau-AZ",
+   true,
+   null
+  ],
+  [
+   "W-null pt-autokey P=9",
+   "vbeau-AZ",
+   true,
+   null
+  ],
+  [
+   "segment-key",
+   "vig-KA",
+   "9/9",
+   []
+  ],
+  [
+   "W-null periodic P=7",
+   "vig-KA",
+   true,
+   null
+  ],
+  [
+   "W-null ct-autokey P=5",
+   "vig-KA",
+   true,
+   null
+  ],
+  [
+   "W-null pt-autokey P=9",
+   "vig-KA",
+   true,
+   null
+  ],
+  [
+   "segment-key",
+   "beau-KA",
+   "9/9",
+   []
+  ],
+  [
+   "W-null periodic P=7",
+   "beau-KA",
+   true,
+   null
+  ],
+  [
+   "W-null ct-autokey P=5",
+   "beau-KA",
+   true,
+   null
+  ],
+  [
+   "W-null pt-autokey P=9",
+   "beau-KA",
+   true,
+   null
+  ],
+  [
+   "segment-key",
+   "vbeau-KA",
+   "9/9",
+   []
+  ],
+  [
+   "W-null periodic P=7",
+   "vbeau-KA",
+   true,
+   null
+  ],
+  [
+   "W-null ct-autokey P=5",
+   "vbeau-KA",
+   true,
+   null
+  ],
+  [
+   "W-null pt-autokey P=9",
+   "vbeau-KA",
+   true,
+   null
+  ]
+ ]
+}

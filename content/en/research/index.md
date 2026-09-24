@@ -88,6 +88,18 @@ Only the weaker form survives: **reuse and the settling rate are different quant
 
 [See the current state and revision history →](/en/programs/measurement-design/)
 
+## Kryptos K4
+
+**Question:** Which mechanisms can the 97 ciphertext letters and 24 crib letters rule out, and which apparent patterns survive once the freedom used to find them is counted?
+
+**Current state:** No decryption and no new plaintext letter. EP-0057 reproduced the observation that two of the five Ws bracket the public cribs from outside, but without choosing the letter W the chance is 0.036, and it is not independent of the TOKIO reading of the W gaps. Reading the Ws as nulls, key restarts, block boundaries or pass-through symbols of a 25-letter cipher produced no candidate.
+
+**Evidence boundary:** Exploratory computation on the public ciphertext and 24 crib letters. Not preregistered; no external independent replication and no review by a cryptographer. The ground truth exists but is withheld.
+
+**[Read the current Research Note (EP-0057) →](/en/research/kryptos-k4-w-brackets/)** — Finding
+
+[See the current state and revision history →](/en/programs/kryptos-k4/)
+
 [Browse all published Research Notes by date →](/en/research-notes/)
 <!-- GENERATED: research-current:END -->
 

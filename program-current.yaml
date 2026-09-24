@@ -122,3 +122,19 @@ programs:
 
         Only the weaker form survives: **reuse and the settling rate are different quantities, and only reuse responds.** That one is not an artifact of a constant.
       evidence_boundary: Synthetic, and the mechanism family is ours. No real data of any kind was used and no claim about any application field is made. This is a self-review, so an attack we did not think of is by construction not in it.
+
+  - id: kryptos-k4
+    research_id_prefix: KRYPTOS-K4-
+    current_research_id: KRYPTOS-K4-EP-0057
+    ja:
+      title: Kryptos K4
+      home_summary: 未解読の暗号K4について、公開cribでどの方式を否定できるか、見つかったパターンが自由度を払った後にいくら残るかを記録しています。
+      question: 97文字の暗号文と24文字のcribで、どの仕組みを否定できるか。見つけるのに使った自由度を数えた後で、生き残るパターンはどれか。
+      claim: 復号はしていません。新しい平文文字は0です。EP-0057は「5つのWのうち2つが公開cribを外側から挟む」という観察を再現しましたが、Wという文字を選ばなければ確率は0.036で、W区間のTOKIO読みとも独立ではありません。Wを空文字・鍵の再始動点・ブロック境界・25文字暗号の素通り記号とみなす読みは、どれも候補を出しませんでした。
+      evidence_boundary: 公開暗号文と24文字のcribだけを使った探索的な計算です。事前登録はなく、外部の独立replicationも暗号専門家のレビューもありません。正解は存在しますが公開されていません。
+    en:
+      title: Kryptos K4
+      home_summary: For the unsolved K4 cipher we record which mechanisms the public cribs rule out and how much each found pattern is worth once the search's own freedom is paid for.
+      question: Which mechanisms can the 97 ciphertext letters and 24 crib letters rule out, and which apparent patterns survive once the freedom used to find them is counted?
+      claim: No decryption and no new plaintext letter. EP-0057 reproduced the observation that two of the five Ws bracket the public cribs from outside, but without choosing the letter W the chance is 0.036, and it is not independent of the TOKIO reading of the W gaps. Reading the Ws as nulls, key restarts, block boundaries or pass-through symbols of a 25-letter cipher produced no candidate.
+      evidence_boundary: Exploratory computation on the public ciphertext and 24 crib letters. Not preregistered; no external independent replication and no review by a cryptographer. The ground truth exists but is withheld.

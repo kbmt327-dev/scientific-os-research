@@ -1,0 +1,52 @@
+{
+  "schema": "cold-reader-pilot.v1",
+  "protocol_id": "AWOS-C042-U31-20260924-v16",
+  "research_request_id": "RR-C042-COLD-READER",
+  "candidate_id": "C-042",
+  "experiment_candidate_id": "C-055",
+  "public_commit": "fa6b0a0",
+  "question": "Can a reader with no author context, given only the EP-0026 public note, answer presealed questions on its claim boundary correctly and rerun its reproduction command; and do the EP-0027 corrections change answers relative to the pre-correction text?",
+  "arms": {
+    "BASE": {
+      "material": "reproduction/gpu-scheduling-self-containment/baseline-snapshot/en.md",
+      "description": "English EP-0026 article as published before EP-0027 correction"
+    },
+    "CURR": {
+      "material": "content/en/research/gpu-scheduling-transition-refusal/index.md",
+      "description": "English EP-0026 article after EP-0027 correction"
+    }
+  },
+  "material_preparation": "YAML frontmatter removed; the frontmatter title is prepended as '# <title>'; CRLF normalized to LF; the figure is present only as its markdown image line and alt text. Identical treatment in both arms.",
+  "readers": {
+    "per_arm": 3,
+    "kind": "Fresh Claude Code subagent sessions (model: sonnet; author is opus). No conversation history is passed. Readers are the same model family as the author and are not human or external readers.",
+    "isolation": "Prompt forbids tools during Part A and forbids reading the local Vault, local repositories other than a fresh clone, or any page other than the given material. Compliance is self-reported and not enforced; project-level instruction files may still be loaded by the harness."
+  },
+  "reader_prompt": "You are reviewing a public research note written by someone else. You have no other context about the project.\n\nPART A. Answer questions Q1-Q9 using ONLY the note text below. Do not use any tools during Part A, and do not guess from outside knowledge; if the note does not say, answer 'not stated'. Keep each answer to 1-3 sentences.\n\nQ1. What does the truthful gate do with the transition looks, and how many are affected?\nQ2. What happens at the 100k look when the same transition data is falsely declared stationary?\nQ3. What does the 'Tail truth' label describe? Is it the queue state within the observed window?\nQ4. Can this gate detect an undeclared parameter change from the data alone?\nQ5. At the 320k look, which scenario still fails under the false declaration, for which method, and what does the other method output?\nQ6. Are the 120 workloads 120 independent replications? Explain.\nQ7. Where does the correct 'Tail truth' label come from?\nQ8. Does the note claim any of: (a) a new time-varying stability theorem, (b) validity on real GPU clusters, (c) established novelty, (d) independent external replication? Answer for each.\nQ9. According to the note, how many looks does the reproduction command regenerate?\n\nPART B. Only after writing your Part A answers: follow the note's reproduction instructions. Clone https://github.com/kbmt327-dev/scientific-os-research into the directory {workdir}, install numpy and scipy if missing, and run the stated command from the stated package directory. Report the command you ran and its final output line verbatim. Do not read anything else in the repository except files needed to run the command. Do not read any local files outside {workdir}.\n\nPART C. List every URL and file path you accessed.\n\nReturn: Part A answers labelled Q1-Q9, Part B command and output line, Part C list.\n\n=== NOTE ===\n{material}\n=== END NOTE ===",
+  "answer_key": {
+    "Q1": "Must state: refuses/declares UNKNOWN before inference (no inference run) AND 240 (240/240 or all 240).",
+    "Q2": "Must state: all wrong-side, 80/80, for both scheduled and anytime (or 'both false-declaration methods').",
+    "Q3": "Must state: long-run/eventual stability of the stationary regime that persists after the change, AND that it is not the finite-window queue state.",
+    "Q4": "Must state: no; it depends on a truthful manifest/provenance.",
+    "Q5": "Must state: service improvement; scheduled 20/20 wrong; anytime 20/20 UNKNOWN.",
+    "Q6": "Must state: no, not independent, because common seeds are shared across cells (or equivalent statement of dependence). 'Not stated' is scored wrong.",
+    "Q7": "Must state: an existing exact two-class (FCFS) stability/capacity theorem applied to the post-change regime (a named source is not required); not estimated from the observed data. Saying only 'the generator manifest' without the theorem is wrong.",
+    "Q8": "Must state no for all four of (a)-(d).",
+    "Q9": "Must state 72. Truth is 72 per the EP-0026 runner; an answer faithful to a note that says 24 is still scored wrong against the truth."
+  },
+  "scoring": "The author scores each Q binary against the key. Arm labels are visible to the scorer (not blinded); to limit bias, all six raw answer sets are stored verbatim and published so they can be rescored. Ambiguous answers are scored wrong and flagged. Part B passes only if the reported final line contains 'PASS', '360 recorded looks' and '72 regenerated looks'. Part B is run only in CURR to avoid exposing BASE readers to the corrected repository before Part A; BASE readers receive the same prompt with PART B replaced by 'PART B. Skip.'",
+  "predictions": {
+    "P1": "CURR: each of the 3 readers scores >= 8/9 on Part A.",
+    "P2": "Q9 (manipulation check, largely forced by the text): BASE 0/3 correct, CURR 3/3 correct.",
+    "P3": "Q6: BASE <= 1/3 correct, CURR 3/3 correct.",
+    "P4": "Q3 (hardest concept): CURR >= 2/3 correct.",
+    "P5": "Part B: CURR 3/3 readers report the PASS line with 360 recorded and 72 regenerated looks."
+  },
+  "stop_rule": "No changes to questions, key, material or predictions after the first reader starts. A reader reporting access to the Vault or local author files is excluded and replaced once; the exclusion is recorded. Any tool/harness failure is recorded, not silently rerun.",
+  "claim_boundary": "AI-reader pilot, n=3 per arm, same model family as the author, self-reported isolation, author-scored. Not a human study, not external readers, not independent replication. It can reveal statements that fresh readers misread; it cannot show that humans understand the note. Q9 in BASE is forced by the text and is a manipulation check, not a finding.",
+  "prior_art": [
+    "Reproducibility checklists (e.g. NeurIPS/ACM artifact badging) assess artifact availability and rerun, not claim-boundary comprehension.",
+    "No systematic literature search for LLM-reader comprehension audits of research notes was done; novelty UNKNOWN."
+  ],
+  "development": "Written 2026-09-24 after EP-0027 publication, before any reader run. Local hash and clock only; no external timestamp. The author wrote both the note and the key, so the key may share the author's framing."
+}

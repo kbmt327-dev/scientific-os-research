@@ -261,3 +261,12 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: GPU-SCHED-EP-0028
+    source_episode: GPU-SCHEDULING/EP-0028
+    source_episode_sha256: 51a1db0ed4244ecfba421ae58ee5daaa30d83f4b560edc857e7582ced3dc5a2f
+    views:
+      en: content/en/research/gpu-scheduling-cold-reader/index.md
+      ja: content/ja/research/gpu-scheduling-cold-reader/index.md
+    type: Finding
+    publication:
+      status: publishable

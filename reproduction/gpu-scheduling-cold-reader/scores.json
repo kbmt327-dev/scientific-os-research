@@ -1,0 +1,42 @@
+{
+  "protocol_id": "AWOS-C042-U31-20260924-v16",
+  "scored_at": "2026-09-24",
+  "scorer": "author (not blinded to arm)",
+  "rule": "Sealed key applied literally; ambiguous answers scored wrong and flagged. A post-hoc substance column is reported separately and is not the sealed result.",
+  "readers_excluded": [],
+  "isolation_self_report": "All six readers reported accessing only their prompt file; CURR readers additionally the public GitHub clone in their own workdir. No Vault access reported.",
+  "harness_events": [
+    "CURR-1 final report omitted Part A; Part A recovered by one follow-up message requesting the original answers verbatim without tools. Fidelity unverifiable.",
+    "CURR-1 Part B: execution of cloned code blocked by the Claude Code auto-mode permission classifier ('Code from External'). Not rerun, per stop rule."
+  ],
+  "sealed": {
+    "BASE-1": {"Q1":1,"Q2":1,"Q3":1,"Q4":0,"Q5":1,"Q6":0,"Q7":1,"Q8":1,"Q9":0,"total":6},
+    "BASE-2": {"Q1":1,"Q2":1,"Q3":1,"Q4":0,"Q5":1,"Q6":0,"Q7":1,"Q8":1,"Q9":0,"total":6},
+    "BASE-3": {"Q1":1,"Q2":1,"Q3":1,"Q4":0,"Q5":1,"Q6":0,"Q7":0,"Q8":1,"Q9":0,"total":5},
+    "CURR-1": {"Q1":1,"Q2":0,"Q3":1,"Q4":0,"Q5":1,"Q6":1,"Q7":0,"Q8":1,"Q9":1,"total":6,"partB":"blocked"},
+    "CURR-2": {"Q1":1,"Q2":1,"Q3":1,"Q4":0,"Q5":1,"Q6":1,"Q7":0,"Q8":1,"Q9":1,"total":7,"partB":"pass"},
+    "CURR-3": {"Q1":1,"Q2":1,"Q3":1,"Q4":1,"Q5":1,"Q6":1,"Q7":0,"Q8":1,"Q9":1,"total":8,"partB":"pass"}
+  },
+  "flags": {
+    "Q4": "Key requires stating dependence on truthful provenance. Five readers answered 'No' and quoted 'cannot detect a lying or missing manifest from data' without stating the dependence; scored 0. Only CURR-3 stated it.",
+    "Q7": "Key requires the existing exact two-class theorem AND 'not estimated from observed data'. BASE-1/2 stated both. BASE-3 and CURR-3 said 'not derived from the diagnostic' (flagged, 0). CURR-1/2 cited the theorem/Grosof et al. only (0). Neither note version states 'not estimated from data' explicitly.",
+    "Q2": "CURR-1 said all 80 drift records wrong without naming both methods; scored 0.",
+    "Q6": "BASE-1 noticed 'shared/reused seed sets across models and scenarios' but concluded only 'not stated as independent replications'; scored 0."
+  },
+  "post_hoc_substance": {
+    "note": "Post hoc, not sealed: Q4 counted correct for 'No, cannot detect from data'; Q7 counted correct for citing the existing exact two-class result for the post-change regime. Q2/Q6 strict scores kept.",
+    "BASE-1": 7, "BASE-2": 7, "BASE-3": 7, "CURR-1": 8, "CURR-2": 9, "CURR-3": 9
+  },
+  "per_question_sealed": {
+    "BASE": {"Q1":3,"Q2":3,"Q3":3,"Q4":0,"Q5":3,"Q6":0,"Q7":2,"Q8":3,"Q9":0},
+    "CURR": {"Q1":3,"Q2":2,"Q3":3,"Q4":1,"Q5":3,"Q6":3,"Q7":0,"Q8":3,"Q9":3}
+  },
+  "predictions": {
+    "P1": {"result":"FAIL","observed":"CURR sealed scores 6, 7, 8; only CURR-3 >= 8"},
+    "P2": {"result":"PASS","observed":"Q9 BASE 0/3, CURR 3/3 (forced by text; manipulation check)"},
+    "P3": {"result":"PASS","observed":"Q6 BASE 0/3, CURR 3/3"},
+    "P4": {"result":"PASS","observed":"Q3 CURR 3/3 (BASE also 3/3)"},
+    "P5": {"result":"FAIL","observed":"Part B 2/3 PASS lines; CURR-1 blocked by harness permission classifier, not by the artifact"}
+  },
+  "sealed_prediction_score": "3/5"
+}

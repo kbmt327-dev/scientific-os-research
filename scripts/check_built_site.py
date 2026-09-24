@@ -71,6 +71,7 @@ def main() -> int:
         "gpu-scheduling-exposure-checkpoints",
         "gpu-scheduling-transition-refusal",
         "gpu-scheduling-self-containment",
+        "gpu-scheduling-cold-reader",
         "simulation-worlds",
         "human-model",
         "human-model-dataset-portfolio",

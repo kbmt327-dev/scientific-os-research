@@ -8,6 +8,7 @@ This is the historical log. For current claims, start with the [research-area in
 
 ## 2026-09-24
 
+- **GPU-SCHED-EP-0028** · Finding — [Do fresh AI readers read the transition-refusal note correctly?](/en/research/gpu-scheduling-cold-reader/)
 - **GPU-SCHED-EP-0027** · Finding — [Did the public article carry the facts needed not to misread its own claim?](/en/research/gpu-scheduling-self-containment/)
 ## 2026-09-19
 

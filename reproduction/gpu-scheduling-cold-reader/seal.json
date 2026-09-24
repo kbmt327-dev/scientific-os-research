@@ -1,0 +1,18 @@
+{
+  "protocol_id": "AWOS-C042-U31-20260924-v16",
+  "protocol_sha256": "2fc75c021d47c591a181e7469ece4ccda9cbadb8ed3ee63f1370e9d964220582",
+  "materials": {
+    "BASE": {
+      "source": "reproduction/gpu-scheduling-self-containment/baseline-snapshot/en.md",
+      "source_sha256": "248bb80b1f2c7781223ccfeff3eda0777b6e1fe8d5dae28a56f153d27cb82755",
+      "prepared_sha256": "3c0cac12a04bc8cad72a4ac86eae9615d4a9071d33d3028feef3a2122ae2ddd6"
+    },
+    "CURR": {
+      "source": "content/en/research/gpu-scheduling-transition-refusal/index.md",
+      "source_sha256": "9a315fce69b495c760bee8ee539d1ba0967e63ca0d9c5a6374b99afa85a40dd6",
+      "prepared_sha256": "953043fb46eb518ce09e8144015d51d7fa53a0ca9a175b0f48edef0655bb0935"
+    }
+  },
+  "sealed_at": "2026-09-24T05:24:00.270218+00:00",
+  "external_timestamp": false
+}

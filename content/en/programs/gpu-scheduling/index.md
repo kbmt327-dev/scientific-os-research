@@ -23,11 +23,11 @@ The replacement, **alpha** (the elasticity of mean response time with respect to
 <!-- GENERATED: program-current:START -->
 ## Current public state
 
-EP-0027 scores the EP-0026 public articles against a sealed 12-item lexical rubric. Baseline was 8/12 in both languages; the reproduction step claimed 24 regenerated looks (correct is 72), and common-seed dependence and the label's primary source were missing. Articles were corrected under the frozen rubric to 12/12. Sealed predictions 2/3. Reader comprehension, novelty and external independent replication remain UNKNOWN; general detectors0.
+EP-0028 gave six AI readers only the EP-0026 note and nine sealed questions. First-published and corrected versions differed only on the two facts EP-0027 corrected (seed dependence 0/3 vs 3/3, look count 0/3 vs 3/3); eventual tail vs finite window was 6/6. Reruns passed 2/3. Sealed predictions 3/5; most misses came from key phrasing. Human readers and external independent replication remain UNKNOWN; general detectors0.
 
-**Evidence boundary:** Lexical matching over two articles x 12 criteria only. Zero readers; the corrected 12/12 was written against the rubric and is not evidence of comprehension. The EP-0026 claim scope (known two-block exponential strict FCFS, one permanent change, truthful provenance manifest) is unchanged.
+**Evidence boundary:** Same-family AI readers, three per arm, self-reported isolation, author scoring without blinding. Not a human study or external readers. The EP-0026 claim scope is unchanged.
 
-**[Read the current Research Note (EP-0027) →](/en/research/gpu-scheduling-self-containment/)**
+**[Read the current Research Note (EP-0028) →](/en/research/gpu-scheduling-cold-reader/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -56,5 +56,6 @@ EP-0027 scores the EP-0026 public articles against a sealed 12-item lexical rubr
 21. [[en/research/gpu-scheduling-past-only-learning/index|EP-0024 — Learning capacity from past completions without population parameters]]
 22. [[en/research/gpu-scheduling-exposure-checkpoints/index|EP-0025 — Fixed completion-exposure checkpoints: reporting scope and abstention]]
 23. [[en/research/gpu-scheduling-transition-refusal/index|EP-0026 — When should a stationary diagnostic refuse a permanent parameter transition?]]
-24. **[[en/research/gpu-scheduling-self-containment/index|EP-0027 — Did the public article carry the facts needed not to misread its own claim?]] (latest)**
+24. [[en/research/gpu-scheduling-self-containment/index|EP-0027 — Did the public article carry the facts needed not to misread its own claim?]]
+25. **[[en/research/gpu-scheduling-cold-reader/index|EP-0028 — Do fresh AI readers read the transition-refusal note correctly?]] (latest)**
 <!-- GENERATED: program-history:END -->

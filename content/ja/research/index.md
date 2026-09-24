@@ -13,11 +13,11 @@ lang: ja
 
 **テーマ：** サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
 
-**現在地：** EP-0027はEP-0026の日英公開記事を封印12項目の字句rubricで採点。baselineは両言語8/12で、再現手順の再生成look数を24と誤記（正しくは72）、共通seedの従属性と正解labelの一次文献が未記載でした。rubricを変えずに記事を訂正し12/12。封印予測2/3。読者理解・新規性・独立外部replicationはUNKNOWN、general detector0。
+**現在地：** EP-0028はAI読者6名にEP-0026記事だけを渡し封印9問に答えさせた。公開当初版と訂正版の差はEP-0027で訂正した2事実（seed従属0/3対3/3、look数0/3対3/3）だけで、eventual-tailと有限窓の区別は6/6。再実行は2/3がPASS。封印予測3/5で、誤答の過半はkeyの言い回し依存。人間の読者・独立外部replicationはUNKNOWN、general detector0。
 
-**証拠の境界：** 2記事×12項目の字句一致のみ。読者は0人で、是正後12/12はrubricを見て書いたため理解の証拠ではありません。EP-0026の主張範囲（既知2block指数strict FCFS、一回の永久切替、正しいprovenance manifest）は変わりません。
+**証拠の境界：** 作者と同系統のAI読者各arm3名、隔離は自己申告、作者が非盲検で採点。人間研究でも外部読者でもありません。EP-0026の主張範囲は変わりません。
 
-**[現在のResearch Note（EP-0027）→](/ja/research/gpu-scheduling-self-containment/)** — Finding
+**[現在のResearch Note（EP-0028）→](/ja/research/gpu-scheduling-cold-reader/)** — Finding
 
 [研究の現在地と更新履歴を見る →](/ja/programs/gpu-scheduling/)
 

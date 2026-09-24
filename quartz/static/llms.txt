@@ -44,9 +44,9 @@ Program overview:
 
 Question: Under which information and observation windows can size-first conditions and capacity boundaries be established?
 
-Current claim (EP-0027): EP-0027 scores the EP-0026 public articles against a sealed 12-item lexical rubric. Baseline was 8/12 in both languages; the reproduction step claimed 24 regenerated looks (correct is 72), and common-seed dependence and the label's primary source were missing. Articles were corrected under the frozen rubric to 12/12. Sealed predictions 2/3. Reader comprehension, novelty and external independent replication remain UNKNOWN; general detectors0.
+Current claim (EP-0028): EP-0028 gave six AI readers only the EP-0026 note and nine sealed questions. First-published and corrected versions differed only on the two facts EP-0027 corrected (seed dependence 0/3 vs 3/3, look count 0/3 vs 3/3); eventual tail vs finite window was 6/6. Reruns passed 2/3. Sealed predictions 3/5; most misses came from key phrasing. Human readers and external independent replication remain UNKNOWN; general detectors0.
 
-Evidence boundary: Lexical matching over two articles x 12 criteria only. Zero readers; the corrected 12/12 was written against the rubric and is not evidence of comprehension. The EP-0026 claim scope (known two-block exponential strict FCFS, one permanent change, truthful provenance manifest) is unchanged.
+Evidence boundary: Same-family AI readers, three per arm, self-reported isolation, author scoring without blinding. Not a human study or external readers. The EP-0026 claim scope is unchanged.
 
 Published Research Notes:
 - GPU-SCHED-EP-0001 — Estimation error and restart cost reverse which GPU scheduler wins (Finding)
@@ -118,9 +118,12 @@ Published Research Notes:
 - GPU-SCHED-EP-0026 — When should a stationary diagnostic refuse a permanent parameter transition? (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-transition-refusal/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-transition-refusal/
-- GPU-SCHED-EP-0027 — Did the public article carry the facts needed not to misread its own claim? (Finding) — CURRENT
+- GPU-SCHED-EP-0027 — Did the public article carry the facts needed not to misread its own claim? (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-self-containment/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-self-containment/
+- GPU-SCHED-EP-0028 — Do fresh AI readers read the transition-refusal note correctly? (Finding) — CURRENT
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-cold-reader/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-cold-reader/
 
 ### Queueing system identification
 

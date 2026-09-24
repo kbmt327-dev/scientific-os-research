@@ -252,3 +252,12 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: GPU-SCHED-EP-0027
+    source_episode: GPU-SCHEDULING/EP-0027
+    source_episode_sha256: f2942bad6a89de109b28064272123d1ad31416785fecdcf901340b62d2699af0
+    views:
+      en: content/en/research/gpu-scheduling-self-containment/index.md
+      ja: content/ja/research/gpu-scheduling-self-containment/index.md
+    type: Finding
+    publication:
+      status: publishable

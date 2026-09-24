@@ -1,0 +1,194 @@
+{
+  "schema": "public-self-containment.v1",
+  "protocol_id": "AWOS-C042-U31-20260920-v15",
+  "research_request_id": "RR-C042-PUBLIC-SELF-CONTAINMENT",
+  "candidate_id": "C-042",
+  "experiment_candidate_id": "C-054",
+  "source_commit": "740eea8b182197f63d7b804ab40bb2ffb67981f4",
+  "public_baseline_commit": "7467d3a7f7ef9825042dbd1e08b4bcade7c0d828",
+  "articles": {
+    "ja": "content/ja/research/gpu-scheduling-transition-refusal/index.md",
+    "en": "content/en/research/gpu-scheduling-transition-refusal/index.md"
+  },
+  "baseline_sha256": {
+    "ja": "4f7a8bdde2668809406b7047ff39e7250377eb7bb1091c6c570ddcf9b51ed01b",
+    "en": "248bb80b1f2c7781223ccfeff3eda0777b6e1fe8d5dae28a56f153d27cb82755"
+  },
+  "criteria": [
+    {
+      "id": "C01",
+      "name": "eventual-tail estimand versus finite-window state",
+      "patterns": {
+        "ja": [
+          "定常尾部",
+          "有限窓queue状態"
+        ],
+        "en": [
+          "eventual-tail",
+          "finite-window queue state"
+        ]
+      }
+    },
+    {
+      "id": "C02",
+      "name": "truthful provenance prerequisite",
+      "patterns": {
+        "ja": [
+          "正しいprovenance manifest"
+        ],
+        "en": [
+          "truthful.*manifest"
+        ]
+      }
+    },
+    {
+      "id": "C03",
+      "name": "no undeclared-drift detection",
+      "patterns": {
+        "ja": [
+          "未申告drift.{0,40}(データ検知|検出)"
+        ],
+        "en": [
+          "(No data-driven detection of undeclared drift|does not detect undeclared drift)"
+        ]
+      }
+    },
+    {
+      "id": "C04",
+      "name": "truthful refusal count",
+      "patterns": {
+        "ja": [
+          "240/240"
+        ],
+        "en": [
+          "(240/240|all\\s*240)"
+        ]
+      }
+    },
+    {
+      "id": "C05",
+      "name": "false-declaration wrong count",
+      "patterns": {
+        "ja": [
+          "80/80"
+        ],
+        "en": [
+          "80/80"
+        ]
+      }
+    },
+    {
+      "id": "C06",
+      "name": "persistent service-improvement result",
+      "patterns": {
+        "ja": [
+          "service improve.{0,400}320k.{0,120}20/20"
+        ],
+        "en": [
+          "service improvement.{0,400}320k.{0,120}20/20"
+        ]
+      }
+    },
+    {
+      "id": "C07",
+      "name": "repetition unit and cross-cell dependence",
+      "patterns": {
+        "ja": [
+          "(共通seed|common seed)",
+          "(独立では|dependent)"
+        ],
+        "en": [
+          "common.{0,20}seed",
+          "(dependent|not independent)"
+        ]
+      }
+    },
+    {
+      "id": "C08",
+      "name": "model structure",
+      "patterns": {
+        "ja": [
+          "need32/64",
+          "strict nonpreemptive FCFS"
+        ],
+        "en": [
+          "needs32/64",
+          "strict nonpreemptive FCFS"
+        ]
+      }
+    },
+    {
+      "id": "C09",
+      "name": "independent replication count",
+      "patterns": {
+        "ja": [
+          "独立外部replication0"
+        ],
+        "en": [
+          "External independent replications:\\s*zero"
+        ]
+      }
+    },
+    {
+      "id": "C10",
+      "name": "general detector count",
+      "patterns": {
+        "ja": [
+          "general detector0"
+        ],
+        "en": [
+          "General detectors:\\s*zero"
+        ]
+      }
+    },
+    {
+      "id": "C11",
+      "name": "exact-label primary source",
+      "patterns": {
+        "ja": [
+          "https://www.cs.cmu.edu/~harchol/Papers/twoclassstability.pdf"
+        ],
+        "en": [
+          "https://www.cs.cmu.edu/~harchol/Papers/twoclassstability.pdf"
+        ]
+      }
+    },
+    {
+      "id": "C12",
+      "name": "reproduction command and correct two-seed look count",
+      "patterns": {
+        "ja": [
+          "runner_transition.py --verify-recorded --seeds 2",
+          "72.{0,20}look"
+        ],
+        "en": [
+          "runner_transition.py --verify-recorded --seeds 2",
+          "72.{0,20}look"
+        ]
+      }
+    }
+  ],
+  "question": "Do both public EP26 articles explicitly expose the minimum facts needed to distinguish the estimand, applicability boundary, measured outcomes, dependence and reproduction procedure?",
+  "unit": "12 fixed lexical criteria per language; 24 criterion-language records",
+  "acceptance": "Baseline is recorded without edits. Remediation may only add or correct text required by the same frozen rubric. Passing shows lexical self-containment, not human understanding.",
+  "predictions": {
+    "P1": "Baseline will pass 9/12 in each language, failing dependence, primary-source link and correct two-seed look count.",
+    "P2": "After rubric-preserving remediation, both languages will pass12/12.",
+    "P3": "The numeric correction is24 to72 regenerated looks; recorded360 looks remain unchanged."
+  },
+  "stop_rule": "No rubric/pattern changes after baseline. Stop R3 on page/hash/source mismatch. Keep any unexpected baseline failure and do not weaken criteria.",
+  "claim_boundary": "Document-content audit only. No reader was recruited; comprehension, usability, novelty, demand and independent replication remain UNKNOWN. Regex presence does not prove that a reader interprets a claim correctly.",
+  "literature_positioning": {
+    "steady_state_output": "Existing work constructs confidence intervals for steady-state means and sequential run lengths under steady-state assumptions.",
+    "change_detection": "E-detectors provide sequential changepoint detection with false-alarm/delay guarantees, but do not by themselves label post-change multiserver queue stability.",
+    "msj_stability": "Existing two-class FCFS work derives exact analytical stability regions, not finite-window claim-audit interfaces.",
+    "candidate_contribution": "A benchmark/audit artifact joining known stability labels, observation contracts, abstention and applicability refusal; novelty still unestablished."
+  },
+  "prior_art": [
+    "https://doi.org/10.1287/moor.15.1.1",
+    "https://doi.org/10.1287/mnsc.28.5.550",
+    "https://doi.org/10.51387/23-NEJSDS51",
+    "https://arxiv.org/abs/2010.00631"
+  ],
+  "development": "Rubric written after EP26 publication but before baseline execution. Local hash/clock only; no external timestamp. Current page was read to design a claim-completeness rubric, so this is not a blinded test."
+}

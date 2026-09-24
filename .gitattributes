@@ -1,1 +1,2 @@
 * text=auto eol=lf
+reproduction/gpu-scheduling-self-containment/baseline-snapshot/*.md -text

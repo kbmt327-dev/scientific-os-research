@@ -14,11 +14,11 @@ Notes are grouped by what they contribute, not by how confident they sound. A **
 
 **Question:** Under which information and observation windows can size-first conditions and capacity boundaries be established?
 
-**Current state:** EP-0026 audits one permanent parameter transition. A truthful manifest refuses240/240 transition looks before inference. A false stationary declaration yields80/80 wrong at100k; service improvement remains scheduled20/20 wrong at320k. The gate does not detect undeclared drift from data. General U31/real-GPU/time-varying theory, novelty and peer review remain UNKNOWN; general detectors0.
+**Current state:** EP-0027 scores the EP-0026 public articles against a sealed 12-item lexical rubric. Baseline was 8/12 in both languages; the reproduction step claimed 24 regenerated looks (correct is 72), and common-seed dependence and the label's primary source were missing. Articles were corrected under the frozen rubric to 12/12. Sealed predictions 2/3. Reader comprehension, novelty and external independent replication remain UNKNOWN; general detectors0.
 
-**Evidence boundary:** Known two-block exponential strict-FCFS, one permanent change, eventual-tail label and truthful provenance manifest only. Same-design execution is not external independent replication.
+**Evidence boundary:** Lexical matching over two articles x 12 criteria only. Zero readers; the corrected 12/12 was written against the rubric and is not evidence of comprehension. The EP-0026 claim scope (known two-block exponential strict FCFS, one permanent change, truthful provenance manifest) is unchanged.
 
-**[Read the current Research Note (EP-0026) →](/en/research/gpu-scheduling-transition-refusal/)** — Finding
+**[Read the current Research Note (EP-0027) →](/en/research/gpu-scheduling-self-containment/)** — Finding
 
 [See the current state and revision history →](/en/programs/gpu-scheduling/)
 

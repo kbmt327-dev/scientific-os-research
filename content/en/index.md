@@ -15,11 +15,11 @@ lang: en
   <article class="program-row">
     <div>
       <h3>GPU cluster scheduling</h3>
-      <p>We audit applicability refusal for a permanent parameter transition and wrong-side decisions under a false stationary declaration.</p>
+      <p>We audit, with a sealed rubric, whether the public article carried the facts needed to read its own claim boundary.</p>
     </div>
     <nav aria-label="GPU cluster scheduling">
       <a href="/en/programs/gpu-scheduling/">Program overview</a>
-      <a href="/en/research/gpu-scheduling-transition-refusal/">Current Note</a>
+      <a href="/en/research/gpu-scheduling-self-containment/">Current Note</a>
     </nav>
   </article>
   <article class="program-row">

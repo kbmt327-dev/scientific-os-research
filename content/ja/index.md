@@ -15,11 +15,11 @@ lang: ja
   <article class="program-row">
     <div>
       <h3>GPUクラスタのスケジューリング</h3>
-      <p>永久parameter遷移を正しく申告したときの適用拒否と、虚偽定常宣言の誤側を監査しました。</p>
+      <p>公開記事が自分の主張の境界を読むための事実を載せていたかを、封印rubricで監査しました。</p>
     </div>
     <nav aria-label="GPUクラスタのスケジューリング">
       <a href="/ja/programs/gpu-scheduling/">研究概要</a>
-      <a href="/ja/research/gpu-scheduling-transition-refusal/">最新Note</a>
+      <a href="/ja/research/gpu-scheduling-self-containment/">最新Note</a>
     </nav>
   </article>
   <article class="program-row">

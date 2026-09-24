@@ -6,6 +6,9 @@ lang: ja
 
 ここは履歴の入口です。現在の結論を知りたい場合は、先に[研究分野ごとの現在地](/ja/research/)を読んでください。
 
+## 2026-09-24
+
+- **GPU-SCHED-EP-0027** · Finding — [公開記事は、自分の主張を読み違えないための事実を載せていたか](/ja/research/gpu-scheduling-self-containment/)
 ## 2026-09-19
 
 - **GPU-SCHED-EP-0026** · Finding — [永久parameter遷移を、定常診断はいつ拒否すべきか](/ja/research/gpu-scheduling-transition-refusal/)

@@ -6,6 +6,9 @@ lang: en
 
 This is the historical log. For current claims, start with the [research-area index](/en/research/).
 
+## 2026-09-24
+
+- **GPU-SCHED-EP-0027** · Finding — [Did the public article carry the facts needed not to misread its own claim?](/en/research/gpu-scheduling-self-containment/)
 ## 2026-09-19
 
 - **GPU-SCHED-EP-0026** · Finding — [When should a stationary diagnostic refuse a permanent parameter transition?](/en/research/gpu-scheduling-transition-refusal/)

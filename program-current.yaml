@@ -3,30 +3,31 @@ site_url: https://kbmt327-dev.github.io/scientific-os-research
 programs:
   - id: gpu-scheduling
     research_id_prefix: GPU-SCHED-
-    current_research_id: GPU-SCHED-EP-0026
+    current_research_id: GPU-SCHED-EP-0027
     ja:
       title: GPUクラスタのスケジューリング
-      home_summary: 永久parameter遷移を正しく申告したときの適用拒否と、虚偽定常宣言の誤側を監査しました。
+      home_summary: 公開記事が自分の主張の境界を読むための事実を載せていたかを、封印rubricで監査しました。
       question: サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
-      claim: EP-0026は一回の永久parameter遷移を監査。truthful manifestは240/240遷移lookを推論前に拒否。定常と偽ると100kで80/80誤側、service
-        improveは320kでもscheduled20/20誤側でした。gateは未申告driftをデータ検知しません。一般U31/実GPU/時変理論・新規性・査読はUNKNOWN、general
+      claim: EP-0027はEP-0026の日英公開記事を封印12項目の字句rubricで採点。baselineは両言語8/12で、再現手順の再生成look数を24と誤記（正しくは72）、共通seedの従属性と正解labelの一次文献が未記載でした。rubricを変えずに記事を訂正し12/12。封印予測2/3。読者理解・新規性・独立外部replicationはUNKNOWN、general
         detector0。
-      evidence_boundary: 既知2block指数strict FCFS、一回の永久切替、eventual-tail label、正しいprovenance
-        manifestに限定。同設計実行は独立外部replicationではありません。
+      evidence_boundary: 2記事×12項目の字句一致のみ。読者は0人で、是正後12/12はrubricを見て書いたため理解の証拠ではありません。EP-0026の主張範囲（既知2block指数strict
+        FCFS、一回の永久切替、正しいprovenance manifest）は変わりません。
     en:
       title: GPU cluster scheduling
-      home_summary: We audit applicability refusal for a permanent parameter transition
-        and wrong-side decisions under a false stationary declaration.
+      home_summary: We audit, with a sealed rubric, whether the public article carried
+        the facts needed to read its own claim boundary.
       question: Under which information and observation windows can size-first conditions
         and capacity boundaries be established?
-      claim: EP-0026 audits one permanent parameter transition. A truthful manifest
-        refuses240/240 transition looks before inference. A false stationary declaration
-        yields80/80 wrong at100k; service improvement remains scheduled20/20 wrong at320k.
-        The gate does not detect undeclared drift from data. General U31/real-GPU/time-varying
-        theory, novelty and peer review remain UNKNOWN; general detectors0.
-      evidence_boundary: Known two-block exponential strict-FCFS, one permanent change,
-        eventual-tail label and truthful provenance manifest only. Same-design execution
-        is not external independent replication.
+      claim: EP-0027 scores the EP-0026 public articles against a sealed 12-item lexical
+        rubric. Baseline was 8/12 in both languages; the reproduction step claimed 24
+        regenerated looks (correct is 72), and common-seed dependence and the label's
+        primary source were missing. Articles were corrected under the frozen rubric
+        to 12/12. Sealed predictions 2/3. Reader comprehension, novelty and external
+        independent replication remain UNKNOWN; general detectors0.
+      evidence_boundary: Lexical matching over two articles x 12 criteria only. Zero
+        readers; the corrected 12/12 was written against the rubric and is not evidence
+        of comprehension. The EP-0026 claim scope (known two-block exponential strict
+        FCFS, one permanent change, truthful provenance manifest) is unchanged.
 
   - id: queueing-system-identification
     research_id_prefix: SIM-WORLD-

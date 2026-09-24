@@ -1,0 +1,233 @@
+{
+  "scored_at": "2026-09-24T00:17:15.854155+00:00",
+  "languages": {
+    "ja": {
+      "passed": 12,
+      "total": 12,
+      "criteria": [
+        {
+          "id": "C01",
+          "name": "eventual-tail estimand versus finite-window state",
+          "passed": true,
+          "pattern_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "C02",
+          "name": "truthful provenance prerequisite",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C03",
+          "name": "no undeclared-drift detection",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C04",
+          "name": "truthful refusal count",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C05",
+          "name": "false-declaration wrong count",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C06",
+          "name": "persistent service-improvement result",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C07",
+          "name": "repetition unit and cross-cell dependence",
+          "passed": true,
+          "pattern_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "C08",
+          "name": "model structure",
+          "passed": true,
+          "pattern_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "C09",
+          "name": "independent replication count",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C10",
+          "name": "general detector count",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C11",
+          "name": "exact-label primary source",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C12",
+          "name": "reproduction command and correct two-seed look count",
+          "passed": true,
+          "pattern_matches": [
+            true,
+            true
+          ]
+        }
+      ],
+      "sha256": "0eb6060ec75fe3529b3b33807f529a6f95852da00059a898852310874a9306ad"
+    },
+    "en": {
+      "passed": 12,
+      "total": 12,
+      "criteria": [
+        {
+          "id": "C01",
+          "name": "eventual-tail estimand versus finite-window state",
+          "passed": true,
+          "pattern_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "C02",
+          "name": "truthful provenance prerequisite",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C03",
+          "name": "no undeclared-drift detection",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C04",
+          "name": "truthful refusal count",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C05",
+          "name": "false-declaration wrong count",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C06",
+          "name": "persistent service-improvement result",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C07",
+          "name": "repetition unit and cross-cell dependence",
+          "passed": true,
+          "pattern_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "C08",
+          "name": "model structure",
+          "passed": true,
+          "pattern_matches": [
+            true,
+            true
+          ]
+        },
+        {
+          "id": "C09",
+          "name": "independent replication count",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C10",
+          "name": "general detector count",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C11",
+          "name": "exact-label primary source",
+          "passed": true,
+          "pattern_matches": [
+            true
+          ]
+        },
+        {
+          "id": "C12",
+          "name": "reproduction command and correct two-seed look count",
+          "passed": true,
+          "pattern_matches": [
+            true,
+            true
+          ]
+        }
+      ],
+      "sha256": "9a315fce69b495c760bee8ee539d1ba0967e63ca0d9c5a6374b99afa85a40dd6"
+    }
+  },
+  "passed": 24,
+  "total": 24,
+  "all_passed": true,
+  "human_comprehension_tested": false,
+  "independent_reader_count": 0,
+  "protocol_id": "AWOS-C042-U31-20260920-v15",
+  "stage": "remediation",
+  "seal": {
+    "protocol_id": "AWOS-C042-U31-20260920-v15",
+    "protocol_sha256": "f0884f2fcbb8603956381f3f8137f5d814d0970f17104f98096c652e69ed6100",
+    "runner_sha256": "6f3219b676414d3f1c78c6b28e1354a78dafe0edd54b28097f4f0dcb35a51840",
+    "sealed_at": "2026-09-20T02:02:24.560264+00:00",
+    "external_timestamp": false
+  }
+}

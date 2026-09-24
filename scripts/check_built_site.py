@@ -70,6 +70,7 @@ def main() -> int:
         "gpu-scheduling-past-only-learning",
         "gpu-scheduling-exposure-checkpoints",
         "gpu-scheduling-transition-refusal",
+        "gpu-scheduling-self-containment",
         "simulation-worlds",
         "human-model",
         "human-model-dataset-portfolio",

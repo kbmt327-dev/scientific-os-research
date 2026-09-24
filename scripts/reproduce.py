@@ -218,8 +218,13 @@ def gpu_transition_refusal() -> None:
     print(run([sys.executable, 'runner_transition.py', '--verify-recorded', '--seeds', '2'], root).strip())
 
 
+def gpu_self_containment() -> None:
+    root = ROOT / 'reproduction' / 'gpu-scheduling-self-containment'
+    print(run([sys.executable, 'verify_self_containment.py'], root).strip())
+
+
 CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase,
-          "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "gpu-u31-controls": gpu_u31_controls, "gpu-two-class": gpu_two_class, "gpu-past-learning": gpu_past_learning, "gpu-checkpoints": gpu_checkpoints, "gpu-transition-refusal": gpu_transition_refusal, "queue": queue,
+          "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "gpu-u31-controls": gpu_u31_controls, "gpu-two-class": gpu_two_class, "gpu-past-learning": gpu_past_learning, "gpu-checkpoints": gpu_checkpoints, "gpu-transition-refusal": gpu_transition_refusal, "gpu-self-containment": gpu_self_containment, "queue": queue,
           "human": human, "human-dataset": human_dataset, "iaa": iaa,
           "intervention": intervention,
           "frontier": frontier}

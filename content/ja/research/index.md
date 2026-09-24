@@ -13,11 +13,11 @@ lang: ja
 
 **テーマ：** サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
 
-**現在地：** EP-0026は一回の永久parameter遷移を監査。truthful manifestは240/240遷移lookを推論前に拒否。定常と偽ると100kで80/80誤側、service improveは320kでもscheduled20/20誤側でした。gateは未申告driftをデータ検知しません。一般U31/実GPU/時変理論・新規性・査読はUNKNOWN、general detector0。
+**現在地：** EP-0027はEP-0026の日英公開記事を封印12項目の字句rubricで採点。baselineは両言語8/12で、再現手順の再生成look数を24と誤記（正しくは72）、共通seedの従属性と正解labelの一次文献が未記載でした。rubricを変えずに記事を訂正し12/12。封印予測2/3。読者理解・新規性・独立外部replicationはUNKNOWN、general detector0。
 
-**証拠の境界：** 既知2block指数strict FCFS、一回の永久切替、eventual-tail label、正しいprovenance manifestに限定。同設計実行は独立外部replicationではありません。
+**証拠の境界：** 2記事×12項目の字句一致のみ。読者は0人で、是正後12/12はrubricを見て書いたため理解の証拠ではありません。EP-0026の主張範囲（既知2block指数strict FCFS、一回の永久切替、正しいprovenance manifest）は変わりません。
 
-**[現在のResearch Note（EP-0026）→](/ja/research/gpu-scheduling-transition-refusal/)** — Finding
+**[現在のResearch Note（EP-0027）→](/ja/research/gpu-scheduling-self-containment/)** — Finding
 
 [研究の現在地と更新履歴を見る →](/ja/programs/gpu-scheduling/)
 

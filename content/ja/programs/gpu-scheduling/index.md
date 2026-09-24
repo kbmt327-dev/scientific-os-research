@@ -23,11 +23,11 @@ GPUクラスタでは、多数のジョブが限られたGPUを取り合いま�
 <!-- GENERATED: program-current:START -->
 ## 現在の公開結論
 
-EP-0026は一回の永久parameter遷移を監査。truthful manifestは240/240遷移lookを推論前に拒否。定常と偽ると100kで80/80誤側、service improveは320kでもscheduled20/20誤側でした。gateは未申告driftをデータ検知しません。一般U31/実GPU/時変理論・新規性・査読はUNKNOWN、general detector0。
+EP-0027はEP-0026の日英公開記事を封印12項目の字句rubricで採点。baselineは両言語8/12で、再現手順の再生成look数を24と誤記（正しくは72）、共通seedの従属性と正解labelの一次文献が未記載でした。rubricを変えずに記事を訂正し12/12。封印予測2/3。読者理解・新規性・独立外部replicationはUNKNOWN、general detector0。
 
-**証拠の境界：** 既知2block指数strict FCFS、一回の永久切替、eventual-tail label、正しいprovenance manifestに限定。同設計実行は独立外部replicationではありません。
+**証拠の境界：** 2記事×12項目の字句一致のみ。読者は0人で、是正後12/12はrubricを見て書いたため理解の証拠ではありません。EP-0026の主張範囲（既知2block指数strict FCFS、一回の永久切替、正しいprovenance manifest）は変わりません。
 
-**[現在のResearch Note（EP-0026）を読む →](/ja/research/gpu-scheduling-transition-refusal/)**
+**[現在のResearch Note（EP-0027）を読む →](/ja/research/gpu-scheduling-self-containment/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -55,5 +55,6 @@ EP-0026は一回の永久parameter遷移を監査。truthful manifestは240/240�
 20. [[ja/research/gpu-scheduling-two-class-control/index|EP-0023 — 二クラスFCFSでは、名目負荷1未満でも過負荷を見逃す]]
 21. [[ja/research/gpu-scheduling-past-only-learning/index|EP-0024 — 母パラメータを知らずに、過去の完了から容量を学習する]]
 22. [[ja/research/gpu-scheduling-exposure-checkpoints/index|EP-0025 — 固定完了数の露出checkpointで、判定時点と棄権を比較する]]
-23. **[[ja/research/gpu-scheduling-transition-refusal/index|EP-0026 — 永久parameter遷移を、定常診断はいつ拒否すべきか]]（最新）**
+23. [[ja/research/gpu-scheduling-transition-refusal/index|EP-0026 — 永久parameter遷移を、定常診断はいつ拒否すべきか]]
+24. **[[ja/research/gpu-scheduling-self-containment/index|EP-0027 — 公開記事は、自分の主張を読み違えないための事実を載せていたか]]（最新）**
 <!-- GENERATED: program-history:END -->

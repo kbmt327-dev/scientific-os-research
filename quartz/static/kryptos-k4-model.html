@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Kryptosの銅板・珪化木・入口のMorse（K0）を公開写真と航空写真から推定した3D模型（Open Research Lab、Kryptos K4 Program）">
+<title>Kryptos 銅板模型</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&family=IBM+Plex+Sans+JP:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#EDF0EC; --surface:#F8FAF7; --ink:#1D2926; --muted:#5E6D68; --line:#CBD4CF;
+  --verdigris:#2E7A69; --copper:#B35F33; --crib:#8A5A00; --water:#3F6E86;
+  --scene-bg:#D6DED9; --scene-floor:#C4CAC4; --copper-face:#5E8F80; --paper:#F4EEDC;
+  --serif:"Old Standard TT", "Times New Roman", Georgia, serif;
+  --sans:"IBM Plex Sans JP", "Hiragino Sans", "Yu Gothic UI", "Noto Sans JP", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0F1513; --surface:#161E1B; --ink:#E1EAE6; --muted:#93A39D; --line:#2A3632;
+    --verdigris:#62BBA6; --copper:#DE8C5E; --crib:#E0B24C; --water:#5C95B0;
+    --scene-bg:#121A17; --scene-floor:#262F2C; --copper-face:#4A7D6F; --paper:#EFE6CE;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0F1513; --surface:#161E1B; --ink:#E1EAE6; --muted:#93A39D; --line:#2A3632;
+  --verdigris:#62BBA6; --copper:#DE8C5E; --crib:#E0B24C; --water:#5C95B0;
+  --scene-bg:#121A17; --scene-floor:#262F2C; --copper-face:#4A7D6F; --paper:#EFE6CE;
+}
+html,body{height:auto}
+body{background:var(--ground); color:var(--ink); font-family:var(--sans); font-size:14px; line-height:1.6;
+  padding-inline:16px; padding-block:20px 40px}
+.wrap{max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:18px}
+header{display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:6px 18px}
+h1{font-family:var(--serif); font-weight:700; font-size:clamp(26px,4vw,36px); letter-spacing:.06em; margin:0; text-wrap:balance}
+h1 small{font-family:var(--sans); font-weight:500; font-size:13px; letter-spacing:.02em; color:var(--muted); margin-left:.6em}
+.draft{font-family:var(--mono); font-size:12px; color:var(--copper); border:1px solid var(--copper); padding:1px 8px; border-radius:3px; white-space:nowrap}
+.lede{max-width:70ch; margin:0; color:var(--muted)}
+.stage{display:grid; grid-template-columns:minmax(0,1fr) 310px; gap:16px; align-items:start}
+@media (max-width:880px){ .stage{grid-template-columns:1fr} }
+.view{position:relative; background:var(--scene-bg); border:1px solid var(--line); border-radius:6px; overflow:hidden;
+  height:min(70vh,640px); min-height:380px}
+.view canvas{display:block; width:100%; height:100%; touch-action:none}
+.hint{position:absolute; left:12px; bottom:10px; font-size:12px; color:var(--muted); pointer-events:none}
+.sunbadge{position:absolute; right:12px; bottom:10px; font:500 12px/1.3 var(--mono); color:var(--ink); background:var(--surface);
+  border:1px solid var(--line); border-radius:4px; padding:4px 8px; font-variant-numeric:tabular-nums; pointer-events:none}
+.presets{position:absolute; top:10px; left:10px; right:10px; display:flex; flex-wrap:wrap; gap:6px}
+button.pill{font:500 12px/1 var(--sans); color:var(--ink); background:var(--surface); border:1px solid var(--line);
+  border-radius:999px; padding:7px 11px; cursor:pointer}
+button.pill:hover{border-color:var(--verdigris)}
+button.pill[aria-pressed="true"]{border-color:var(--verdigris); color:var(--verdigris)}
+button:focus-visible, input:focus-visible{outline:2px solid var(--verdigris); outline-offset:2px}
+aside{display:flex; flex-direction:column; gap:14px}
+.panel{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:14px}
+.panel h2{font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin:0 0 10px}
+.toggle{display:flex; align-items:center; gap:9px; padding:3px 0; cursor:pointer}
+.toggle input{accent-color:var(--verdigris); width:16px; height:16px}
+.sw{display:inline-block; width:10px; height:10px; border-radius:2px; margin-left:auto; flex:none}
+.slider{display:grid; grid-template-columns:auto 1fr; gap:4px 10px; align-items:center; font-size:13px}
+.slider input[type=range]{width:100%; accent-color:var(--verdigris)}
+.slider output{grid-column:2; font-family:var(--mono); font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums}
+.row-btns{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
+.readout{display:grid; grid-template-columns:auto 1fr; gap:3px 12px; font-size:13px}
+.readout dt{color:var(--muted)}
+.readout dd{margin:0; font-family:var(--mono); font-variant-numeric:tabular-nums; overflow-wrap:anywhere}
+.glyph{font-family:var(--serif); font-size:44px; line-height:1; font-weight:700; color:var(--verdigris); min-height:44px}
+.glyph.small{font-size:20px; line-height:1.3; min-height:0}
+.empty{color:var(--muted); font-size:13px; margin:0}
+.params{width:100%; border-collapse:collapse; font-size:13px}
+.params td{padding:5px 0; border-bottom:1px solid var(--line); vertical-align:top}
+.params td:last-child{text-align:right; font-family:var(--mono); font-variant-numeric:tabular-nums; padding-left:12px}
+.params tr:last-child td{border-bottom:0}
+.grade{font-family:var(--mono); font-size:11px; color:var(--muted); margin-left:4px}
+.notes{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px}
+.notes p{margin:0; max-width:65ch}
+.notes p + p{margin-top:8px}
+.k0list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px; font-size:13px}
+.k0list li{display:grid; grid-template-columns:1.6em 1fr; gap:2px 8px}
+.k0list .n{font-family:var(--mono); color:var(--muted)}
+.k0list .t{font-family:var(--mono); overflow-wrap:anywhere}
+.k0list .m{grid-column:2; font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:.02em; overflow-wrap:anywhere}
+.src{font-size:12px; color:var(--muted)}
+@media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto} }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>KRYPTOS <small>S字銅板とK0の3D草稿</small></h1>
+    <span class="draft">v0.4 · 確度C（推定）</span>
+  </header>
+  <p class="lede">暗号文とtableauの1,736文字を、写真どおり銅板から切り抜いた穴として配置した模型です。ラングレーの日付と時刻を選ぶと、太陽の位置が計算され、文字の形の光が床に落ちます。入口のMorse（K0）とコンパス図は、航空写真で測った通路の上に置きました。形は写真と航空写真だけから決めており、cribは使っていません。</p>
+
+  <div class="stage">
+    <div class="view" id="view">
+      <div class="presets" role="group" aria-label="視点">
+        <button class="pill" id="v-front" type="button">暗号文側（南）</button>
+        <button class="pill" id="v-back" type="button">tableau側（北）</button>
+        <button class="pill" id="v-inside" type="button">裏の囲いの中</button>
+        <button class="pill" id="v-top" type="button">真上</button>
+        <button class="pill" id="v-k0" type="button">入口（K0）</button>
+        <button class="pill" id="v-site" type="button">敷地全体</button>
+      </div>
+      <div class="hint">ドラッグで回転 · ホイール／ピンチで拡大</div>
+      <div class="sunbadge" id="sunbadge">太陽 —</div>
+    </div>
+
+    <aside>
+      <div class="panel" aria-live="polite">
+        <h2>選んだもの</h2>
+        <div id="readout"><p class="empty">銅板の文字や入口のMorseにカーソルを合わせてください（タップでも可）。</p></div>
+      </div>
+      <div class="panel">
+        <h2>光（ラングレー）</h2>
+        <div class="slider">
+          <label for="s-day">日付</label><input type="range" id="s-day" min="1" max="365" step="1" value="307">
+          <output id="o-day" for="s-day"></output>
+          <label for="s-time">時刻</label><input type="range" id="s-time" min="5" max="20.5" step="0.25" value="13">
+          <output id="o-time" for="s-time"></output>
+        </div>
+        <div class="row-btns">
+          <button class="pill" id="b-dedic" type="button">献呈日 11月3日 正午</button>
+          <button class="pill" id="b-summer" type="button">夏至 正午</button>
+          <button class="pill" id="b-play" type="button" aria-pressed="false">1日を再生</button>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>表示</h2>
+        <label class="toggle"><input type="checkbox" id="t-holes" checked> 文字を穴として抜く</label>
+        <label class="toggle"><input type="checkbox" id="t-k4" checked> K4（97字）を強調 <span class="sw" style="background:var(--copper)"></span></label>
+        <label class="toggle"><input type="checkbox" id="t-crib"> crib位置（21–33, 63–73）<span class="sw" style="background:var(--crib)"></span></label>
+        <label class="toggle"><input type="checkbox" id="t-seam" checked> 板の継ぎ目</label>
+        <label class="toggle"><input type="checkbox" id="t-site" checked> 池・珪化木・石</label>
+        <label class="toggle"><input type="checkbox" id="t-k0" checked> 入口（K0・コンパス・lodestone）</label>
+      </div>
+    </aside>
+  </div>
+
+  <p class="lede" id="pubnote" hidden>公開版：K4の97文字とMorseの7句のほかは、彫刻の文字を載せていません（切り抜きの位置だけを示します）。本文・図はCC BY 4.0、コードはMIT。K4の暗号文とMorseの句は、Jim Sanborn『Kryptos』（1990）からの研究目的の引用で、ライセンスの対象外です。3D表示にthree.js（MIT）を使っています。</p>
+  <section class="notes">
+    <div class="panel">
+      <h2>模型のパラメータ（v0.4）</h2>
+      <table class="params" id="params"></table>
+    </div>
+    <div class="panel">
+      <h2>K0：入口のMorse（7句）</h2>
+      <ul class="k0list" id="k0list"></ul>
+      <p class="src" style="margin-top:10px" id="k0note"></p>
+    </div>
+    <div class="panel">
+      <h2>何が確かで、何が推定か</h2>
+      <p><b>写真で確認（A）</b>：銅板は4枚で2×2に組まれ、横の継ぎ目は行13と14の間（K2とK3の境）。暗号文の半分は珪化木の側で暗号文側に凸、tableauの半分は円い池を囲んで暗号文側に凹。tableauは裏から切り抜かれている。各行は両端揃え。</p>
+      <p><b>推定（C）</b>：半径、文字の間隔、全体の方位、珪化木の太さ（写真の行間隔で約0.8 m）、石の位置。暗号文側がおおむね南を向くことは、航空写真と、日光が文字を通って裏の床に落ちている写真2枚から推定した。そのため床に落ちる光の模様は目安にすぎない。</p>
+      <p><b>入口（K0）</b>：石は3つ。通路の北に「Morseの石」（SOS・RQ・LUCID MEMORY・SHADOW FORCES・VIRTUALLY INVISIBLE）、南に「コンパスの石」（コンパス図、T IS YOUR POSITION、DIGETAL INTERPRETATIT、銅板の上のlodestone）、入口寄りに小さな「矢じりの石」。句の割り振りと銅板の走り方はMonet Friedrichの図（2007年、写真から作図）による（C）。位置は古い航空写真を通路に合わせて測った（C）。写真では、低く積んだ12インチの花崗岩の層の間に銅板が挟まり、1枚に2行ずつ穴が並ぶ（A）。Morseは南を向いて読む向きで刻まれている（B）。</p>
+      <p><b>未確定（?）</b>：石の正確な位置と大きさ（±数m）、各銅板の正確な長さと位置、コンパス図の「北」の向き（Elonkaは約220°、Monetはほぼ180°）。Morseは転記された文字から符号化し直したもので、刻まれた点と線の実物の並びではない。</p>
+      <p class="src">出典：CIA・GSA・Wikipedia・Elonka Dunin、Jim Gillogly写真、Carol M. Highsmith写真（LOC、パブリックドメイン）、Esri World Imagery、Monet Friedrich「Monet's Kryptos Observations」（2007）、rumkin.com「K0 - Morse Code」。画像は転載していない。太陽位置はNOAAの近似式。</p>
+    </div>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+const DATA = {"params": {"version": "v0.4", "r_cipher_m": 1.4, "r_tableau_m": 1.4, "col_pitch_m": 0.115, "row_pitch_m": 0.12, "top_row_z_m": 3.5, "rotation_deg": 6.0, "cipher_arc_cols": 33, "tableau_arc_cols": 32}, "site": {"trunk_diameter_m": 0.8, "trunk_height_m": 4.4, "pool_radius_m": 0.85, "latitude_deg": 38.9522, "longitude_deg": -77.1458, "red_slab": {"offset_from_pool_m": [0.2, -1.35], "size_m": [1.9, 0.9, 0.32]}, "quartz": {"offset_from_origin_m": [0.15, -0.75], "size_m": [0.75, 0.55, 0.5]}, "marker_in_model_m": [-2.3, -0.85], "entrance_walk_from_marker_m": [[-172.2, -68.7], [-69.0, -46.6]], "entrance_walk_width_m": 3.7, "ns_path_junction_from_marker_m": [-124.6, -61.7], "strata": [{"kind": "morse", "center_from_marker_m": [-114.6, -54.6], "size_m": [7.2, 3.2], "axis_bearing_deg": 68, "copper": [{"unit": 5, "edge": "west", "along_m": -0.7, "length_m": 0.9}, {"unit": 6, "edge": "west", "along_m": 0.5, "length_m": 0.8}, {"unit": 3, "edge": "south", "along_m": -2.3, "length_m": 2.1}, {"unit": 2, "edge": "south", "along_m": 0.0, "length_m": 2.2}, {"unit": 0, "edge": "south", "along_m": 2.35, "length_m": 2.2}]}, {"kind": "compass", "center_from_marker_m": [-106.3, -64.9], "size_m": [7.2, 4.8], "axis_bearing_deg": 70, "copper": [{"unit": 4, "edge": "west", "along_m": 0.4, "length_m": 2.2}, {"unit": 1, "edge": "south", "along_m": 0.8, "length_m": 3.0}], "lodestone_along_m": -1.3}, {"kind": "arrowhead", "center_from_marker_m": [-80.5, -59.9], "size_m": [2.0, 1.4], "axis_bearing_deg": 70, "copper": []}], "compass_north_bearing_deg": 220}, "k0": [{"text": "E E VIRTUALLY E | E E E E E E INVISIBLE", "pieces": ["E E VIRTUALLY E", "E E E E E E INVISIBLE"], "morse": [". / . / ...- .. .-. - ..- .- .-.. .-.. -.-- / .", ". / . / . / . / . / . / .. -. ...- .. ... .. -... .-.. ."], "marks": 60}, {"text": "DIGETAL E E E | INTERPRETATIT", "pieces": ["DIGETAL E E E", "INTERPRETATIT"], "morse": ["-.. .. --. . - .- .-.. / . / . / .", ".. -. - . .-. .--. .-. . - .- - .. -"], "marks": 43}, {"text": "E E SHADOW E E | FORCES E E E E E", "pieces": ["E E SHADOW E E", "FORCES E E E E E"], "morse": [". / . / ... .... .- -.. --- .-- / . / .", "..-. --- .-. -.-. . ... / . / . / . / . / ."], "marks": 45}, {"text": "LUCID E E E | MEMORY E", "pieces": ["LUCID E E E", "MEMORY E"], "morse": [".-.. ..- -.-. .. -.. / . / . / .", "-- . -- --- .-. -.-- / ."], "marks": 35}, {"text": "T IS YOUR | POSITION E", "pieces": ["T IS YOUR", "POSITION E"], "morse": ["- / .. ... / -.-- --- ..- .-.", ".--. --- ... .. - .. --- -. / ."], "marks": 40}, {"text": "SOS", "pieces": ["SOS"], "morse": ["... --- ..."], "marks": 9}, {"text": "RQ", "pieces": ["RQ"], "morse": [".-. --.-"], "marks": 7}], "k0_total_marks": 239, "cipher": ["································", "·······························", "·······························", "······························", "·······························", "································", "·······························", "·······························", "································", "·······························", "······························", "·······························", "·······························", "·······························", "································", "······························", "·······························", "······························", "································", "······························", "································", "·······························", "·································", "·····························", "···························OBKR", "UOXOGHULBSOLIFBBWFLRVQQPRNGKSSO", "TWTQSJQSSEKZZWATJKLUDIAWINFBNYP", "VTTMZFPKWGDKZXTJCDIGKUHUAUEKCAR"], "tableau": [" ······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "································", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", "·······························", " ······························"], "end_to_end_m": 5.442510724734043, "redacted": true};
+const P = DATA.params, S = DATA.site, CIPHER = DATA.cipher, TABLEAU = DATA.tableau, K0 = DATA.k0;
+const CRIB = new Set([...Array(13).keys()].map(i=>21+i).concat([...Array(11).keys()].map(i=>63+i)));
+const MORSE = {A:'.-',B:'-...',C:'-.-.',D:'-..',E:'.',F:'..-.',G:'--.',H:'....',I:'..',J:'.---',K:'-.-',L:'.-..',M:'--',N:'-.',O:'---',P:'.--.',Q:'--.-',R:'.-.',S:'...',T:'-',U:'..-',V:'...-',W:'.--',X:'-..-',Y:'-.--',Z:'--..'};
+
+function k4Index(row,col){
+  if(row===24 && col>=27) return col-27;
+  if(row>=25) return 4+(row-25)*31+col;
+  return -1;
+}
+function rot(x,y,deg){const a=deg*Math.PI/180;return [x*Math.cos(a)-y*Math.sin(a), x*Math.sin(a)+y*Math.cos(a)];}
+function arcPoint(half,s){
+  let x,y,nx,ny,r,th,phi;
+  if(half==="cipher"){ r=P.r_cipher_m; th=P.cipher_arc_cols*P.col_pitch_m/r; phi=-th+s/r;
+    x=-r+r*Math.cos(phi); y=r*Math.sin(phi); nx=Math.cos(phi); ny=Math.sin(phi);}
+  else { r=P.r_tableau_m; th=P.tableau_arc_cols*P.col_pitch_m/r; phi=Math.PI-th+s/r;
+    x=r+r*Math.cos(phi); y=r*Math.sin(phi); nx=-Math.cos(phi); ny=-Math.sin(phi);}
+  [x,y]=rot(x,y,P.rotation_deg); [nx,ny]=rot(nx,ny,P.rotation_deg);
+  return {x,y,nx,ny};
+}
+const bearing=(nx,ny)=>((Math.atan2(nx,ny)*180/Math.PI)+360)%360;
+const compass16=b=>["N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW"][Math.round(b/22.5)%16];
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const colorOf=(n,fb)=>new THREE.Color(css(n)||fb);
+
+const TOP = P.top_row_z_m + P.row_pitch_m/2 + 0.08;   // plate top edge
+const ROWS = 28;
+// world: three.js x = east, y = up, z = south (= -north)
+const W=(x,y,z)=>new THREE.Vector3(x,z,-y);
+
+const view=document.getElementById('view');
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFShadowMap;
+view.appendChild(renderer.domElement);
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(40,1,0.05,900);
+const controls=new THREE.OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true; controls.maxPolarAngle=Math.PI*0.495; controls.maxDistance=260;
+const hemi=new THREE.HemisphereLight(0xffffff,0x5d6a63,0.55); scene.add(hemi);
+const sun=new THREE.DirectionalLight(0xfff4e0,1.0);
+sun.castShadow=true;
+const bigShadow=(renderer.capabilities.maxTextureSize>=8192 && window.innerWidth>900);
+sun.shadow.mapSize.set(bigShadow?4096:2048,bigShadow?4096:2048);
+Object.assign(sun.shadow.camera,{left:-5.5,right:5.5,top:5.5,bottom:-5.5,near:1,far:60});
+sun.shadow.bias=-0.0004; sun.shadow.normalBias=0.015;
+scene.add(sun); scene.add(sun.target); sun.target.position.set(0,1.2,0);
+
+const opts={holes:true,k4:true,crib:false,seam:true};
+const CELL_W=56, CELL_H=Math.round(56*P.row_pitch_m/P.col_pitch_m);
+const halves={};
+
+// ---------- the copper screen ----------
+function letterX(half,row,c){
+  const ncols = half==="cipher"?P.cipher_arc_cols:P.tableau_arc_cols, n=row.length;
+  return CELL_W/2+(c+0.5)/n*(ncols-1)*CELL_W;
+}
+function drawGlyph(g,m){
+  if(m.ch!=='·'){ g.fillText(m.ch,m.cx,m.cy); return; }
+  // public build: the letter is withheld and a plain slot marks where it is cut
+  const w=CELL_W*0.46, h=CELL_H*0.56, r=w*0.35;
+  g.beginPath(); g.moveTo(m.cx-w/2+r,m.cy-h/2);
+  g.arcTo(m.cx+w/2,m.cy-h/2,m.cx+w/2,m.cy+h/2,r); g.arcTo(m.cx+w/2,m.cy+h/2,m.cx-w/2,m.cy+h/2,r);
+  g.arcTo(m.cx-w/2,m.cy+h/2,m.cx-w/2,m.cy-h/2,r); g.arcTo(m.cx-w/2,m.cy-h/2,m.cx+w/2,m.cy-h/2,r);
+  g.closePath(); g.fill();
+}
+function drawTexture(half){
+  const rows = half==="cipher"?CIPHER:TABLEAU;
+  const cv=halves[half].canvas, g=cv.getContext('2d');
+  const hPx=cv.height, rowPx=P.row_pitch_m/TOP*hPx, textTopPx=(TOP-(P.top_row_z_m+P.row_pitch_m/2))/TOP*hPx;
+  g.globalCompositeOperation='source-over';
+  g.clearRect(0,0,cv.width,cv.height);
+  g.fillStyle=css('--copper-face')||'#5E8F80'; g.fillRect(0,0,cv.width,cv.height);
+  // faint patina streaks
+  g.globalAlpha=0.07; g.fillStyle='#1d3a33';
+  for(let i=0;i<cv.width;i+=9){ const h=(Math.sin(i*12.9898)*43758.5453)%1; g.fillRect(i,0,3,Math.abs(h)*hPx); }
+  g.globalAlpha=1;
+  if(opts.seam){ const y=textTopPx+14*rowPx; g.fillStyle='rgba(10,20,18,.75)'; g.fillRect(0,y-2,cv.width,4); }
+  const font=`700 ${Math.round(CELL_H*0.74)}px "Old Standard TT", Georgia, serif`;
+  g.font=font; g.textAlign='center'; g.textBaseline='middle';
+  const marks=[];
+  rows.forEach((row,r)=>{
+    [...row].forEach((ch,c)=>{
+      if(ch===' ') return;
+      const cx=letterX(half,row,c), cy=textTopPx+(r+0.5)*rowPx;
+      const k=half==="cipher"?k4Index(r,c):-1;
+      if(k>=0 && opts.crib && CRIB.has(k)){ g.fillStyle=css('--crib')||'#8A5A00'; g.fillRect(cx-CELL_W/2+3,cy-rowPx/2+3,CELL_W-6,rowPx-6); }
+      marks.push({ch,cx,cy,k4:k>=0});
+    });
+  });
+  if(opts.holes){
+    if(opts.k4){ g.strokeStyle=css('--copper')||'#B35F33'; g.lineWidth=7; g.lineJoin='round';
+      for(const m of marks) if(m.k4 && m.ch!=='·') g.strokeText(m.ch,m.cx,m.cy); }
+    g.globalCompositeOperation='destination-out'; g.fillStyle='#000';
+    for(const m of marks) drawGlyph(g,m);
+    g.globalCompositeOperation='source-over';
+  } else {
+    for(const m of marks){ g.fillStyle=(m.k4&&opts.k4)?(css('--copper')||'#B35F33'):(css('--paper')||'#F4EEDC'); drawGlyph(g,m); }
+  }
+  halves[half].tex.needsUpdate=true;
+}
+function buildHalf(half){
+  const ncols = half==="cipher"?P.cipher_arc_cols:P.tableau_arc_cols;
+  const L=ncols*P.col_pitch_m, N=96;
+  const pos=[],uv=[],idx=[];
+  for(let i=0;i<=N;i++){
+    const p=arcPoint(half,L*i/N), a=W(p.x,p.y,0), b=W(p.x,p.y,TOP);
+    pos.push(a.x,a.y,a.z,b.x,b.y,b.z); uv.push(i/N,0,i/N,1);
+    if(i<N){const k=2*i; idx.push(k,k+2,k+1,k+1,k+2,k+3);}
+  }
+  const geo=new THREE.BufferGeometry();
+  geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));
+  geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));
+  geo.setIndex(idx); geo.computeVertexNormals();
+  const cv=document.createElement('canvas'); cv.width=ncols*CELL_W; cv.height=Math.round(TOP/P.row_pitch_m*CELL_H);
+  const tex=new THREE.CanvasTexture(cv); tex.anisotropy=renderer.capabilities.getMaxAnisotropy();
+  const mat=new THREE.MeshStandardMaterial({map:tex,side:THREE.DoubleSide,metalness:0.45,roughness:0.55,alphaTest:0.5});
+  mat.shadowSide=THREE.DoubleSide;
+  const mesh=new THREE.Mesh(geo,mat); mesh.userData.half=half; mesh.castShadow=true;
+  mesh.customDepthMaterial=new THREE.MeshDepthMaterial({depthPacking:THREE.RGBADepthPacking,map:tex,alphaTest:0.5,side:THREE.DoubleSide});
+  scene.add(mesh);
+  halves[half]={canvas:cv,tex,mesh,L};
+}
+
+// ---------- ground ----------
+function paverTexture(){
+  const cv=document.createElement('canvas'); cv.width=cv.height=256; const g=cv.getContext('2d');
+  g.fillStyle='#ffffff'; g.fillRect(0,0,256,256);
+  for(let i=0;i<900;i++){ g.fillStyle=`rgba(0,0,0,${Math.random()*0.06})`; g.fillRect(Math.random()*256,Math.random()*256,2,2); }
+  g.strokeStyle='rgba(0,0,0,.22)'; g.lineWidth=3; g.strokeRect(0,0,256,256);
+  const t=new THREE.CanvasTexture(cv); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.repeat.set(60/0.6,60/0.6); t.anisotropy=8; return t;
+}
+const floorMat=new THREE.MeshStandardMaterial({color:0xbbbbbb,roughness:0.95,map:paverTexture()});
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(60,60),floorMat); floor.rotation.x=-Math.PI/2; floor.receiveShadow=true; scene.add(floor);
+
+// ---------- courtyard surroundings ----------
+const site=new THREE.Group(); scene.add(site);
+const stone=(color,rough=0.9)=>new THREE.MeshStandardMaterial({color,roughness:rough});
+const poolC=rot(P.r_tableau_m,0,P.rotation_deg);
+const pc=W(poolC[0],poolC[1],0);
+{
+  const water=new THREE.Mesh(new THREE.CircleGeometry(S.pool_radius_m,56),new THREE.MeshStandardMaterial({color:0x2d5566,roughness:0.15,metalness:0.2}));
+  water.rotation.x=-Math.PI/2; water.position.set(pc.x,0.03,pc.z); water.receiveShadow=true; site.add(water);
+  const rim=new THREE.Mesh(new THREE.RingGeometry(S.pool_radius_m,S.pool_radius_m+0.12,56),stone(0x7d8580));
+  rim.rotation.x=-Math.PI/2; rim.position.set(pc.x,0.04,pc.z); rim.receiveShadow=true; site.add(rim);
+}
+{ // petrified wood: irregular, slightly tapering trunk just beyond the cipher outer end
+  const e=arcPoint("cipher",0), e2=arcPoint("cipher",0.05);
+  const tx=e.x-e2.x, ty=e.y-e2.y, n=Math.hypot(tx,ty), R=S.trunk_diameter_m/2;
+  const geo=new THREE.CylinderGeometry(R*0.86,R*1.08,S.trunk_height_m,22,8);
+  const pos=geo.attributes.position;
+  for(let i=0;i<pos.count;i++){
+    const x=pos.getX(i), y=pos.getY(i), z=pos.getZ(i), a=Math.atan2(z,x);
+    const j=1+0.07*Math.sin(3*a+y*1.3)+0.05*Math.sin(7*a-y*2.1);
+    pos.setXYZ(i,x*j,y,z*j);
+    if(y>S.trunk_height_m/2-0.01) pos.setY(i,y+0.12*Math.sin(5*a));
+  }
+  geo.computeVertexNormals();
+  const wood=new THREE.Mesh(geo,stone(0x8a4f34,0.95));
+  const c=W(e.x+tx/n*(R+0.02), e.y+ty/n*(R+0.02), S.trunk_height_m/2);
+  wood.position.copy(c); wood.castShadow=true; wood.receiveShadow=true; wood.userData.info='trunk'; site.add(wood);
+}
+{ // red granite slab and white quartz in front (schematic positions)
+  const rs=S.red_slab, q=S.quartz;
+  const [ox,oy]=rot(rs.offset_from_pool_m[0],rs.offset_from_pool_m[1],P.rotation_deg);
+  const slab=new THREE.Mesh(new THREE.BoxGeometry(rs.size_m[0],rs.size_m[2],rs.size_m[1]),stone(0x8e3b2c,0.8));
+  const sp=W(poolC[0]+ox,poolC[1]+oy,rs.size_m[2]/2); slab.position.copy(sp); slab.rotation.y=0.2;
+  slab.castShadow=slab.receiveShadow=true; site.add(slab);
+  const [qx,qy]=rot(q.offset_from_origin_m[0],q.offset_from_origin_m[1],P.rotation_deg);
+  const qz=new THREE.Mesh(new THREE.DodecahedronGeometry(0.4,0),stone(0xcfd9d2,0.6));
+  qz.scale.set(q.size_m[0]/0.8,q.size_m[2]/0.8,q.size_m[1]/0.8); qz.position.copy(W(qx,qy,q.size_m[2]/2-0.05)); qz.rotation.y=0.6;
+  qz.castShadow=qz.receiveShadow=true; site.add(qz);
+}
+function groundLabel(text,x,y,size=0.7,color='#2E7A69',group=site){
+  const cv=document.createElement('canvas'); cv.width=cv.height=128; const g=cv.getContext('2d');
+  g.font='700 86px "Old Standard TT", Georgia, serif'; g.fillStyle=color; g.textAlign='center'; g.textBaseline='middle'; g.fillText(text,64,68);
+  const m=new THREE.Mesh(new THREE.PlaneGeometry(size,size),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(cv),transparent:true,depthWrite:false}));
+  m.rotation.x=-Math.PI/2; m.position.copy(W(x,y,0.02)); group.add(m); return m;
+}
+const compassMarks=new THREE.Group(); scene.add(compassMarks);
+groundLabel('N',0,5.4,0.7,'#2E7A69',compassMarks); groundLabel('S',0,-5.4,0.7,'#2E7A69',compassMarks);
+groundLabel('E',5.4,0,0.7,'#2E7A69',compassMarks); groundLabel('W',-5.4,0,0.7,'#2E7A69',compassMarks);
+
+// ---------- entrance (K0) ----------
+// Walkway: Esri z20 (C).  Three strata placed from Elonka's older aerial registered on the walkway (C);
+// copper runs and phrase placement follow Monet Friedrich's diagrams (2007, drawn from photos) (C).
+const k0=new THREE.Group(); scene.add(k0);
+const k0Strips=[];
+const MK=S.marker_in_model_m;
+const fromMarker=([e,n])=>[MK[0]+e, MK[1]+n];
+const [WA,WB]=S.entrance_walk_from_marker_m.map(fromMarker);
+let EX, EY;   // look-at point for the K0 view
+function morseCanvas(rows){
+  const cv=document.createElement('canvas'); cv.width=1400; cv.height=rows.length>1?220:130; const g=cv.getContext('2d');
+  g.fillStyle='#5c8b7d'; g.fillRect(0,0,cv.width,cv.height);
+  g.fillStyle='#16221f';
+  rows.forEach((pc,ri)=>{
+    const y=rows.length>1?(70+ri*80):65; let x=40;
+    for(const w of pc.split(' ')){
+      for(const ch of w){
+        for(const s of MORSE[ch]){
+          if(s==='.'){ g.beginPath(); g.arc(x+7,y,8,0,Math.PI*2); g.fill(); x+=26; }
+          else { g.fillRect(x,y-7,36,14); x+=48; }
+        }
+        x+=18;
+      }
+      x+=20;
+    }
+  });
+  return cv;
+}
+{
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(420,260),new THREE.MeshStandardMaterial({color:0x7f8f6f,roughness:1}));
+  ground.rotation.x=-Math.PI/2; ground.position.copy(W((WA[0]+WB[0])/2,(WA[1]+WB[1])/2,-0.01)); k0.add(ground);
+  const dx=WB[0]-WA[0], dy=WB[1]-WA[1], L=Math.hypot(dx,dy), ux=dx/L, uy=dy/L;
+  const walk=new THREE.Mesh(new THREE.PlaneGeometry(L,S.entrance_walk_width_m),new THREE.MeshStandardMaterial({color:0xb9b3a8,roughness:0.95}));
+  walk.rotation.x=-Math.PI/2; walk.rotation.z=Math.atan2(dy,dx);
+  walk.position.copy(W((WA[0]+WB[0])/2,(WA[1]+WB[1])/2,0.02)); k0.add(walk);
+  // north-south sidewalk crossing the walkway
+  const [jx,jy]=fromMarker(S.ns_path_junction_from_marker_m);
+  const ns=new THREE.Mesh(new THREE.PlaneGeometry(2.4,70),new THREE.MeshStandardMaterial({color:0xb9b3a8,roughness:0.95}));
+  ns.rotation.x=-Math.PI/2; ns.position.copy(W(jx,jy,0.015)); k0.add(ns);
+
+  for(const st of S.strata){
+    const [cx,cy]=fromMarker(st.center_from_marker_m);
+    const grp=new THREE.Group(); grp.position.copy(W(cx,cy,0));
+    const ab=st.axis_bearing_deg*Math.PI/180;                 // long axis (east-ish)
+    grp.rotation.y=Math.atan2(Math.cos(ab),Math.sin(ab));     // local +x along the axis; local +z = south side
+    const [Ls,Ws]=st.size_m;
+    if(st.kind==='arrowhead'){
+      const sh=new THREE.Shape(); sh.moveTo(-Ls/2,-Ws/2); sh.lineTo(Ls/2,0); sh.lineTo(-Ls/2,Ws/2); sh.lineTo(-Ls/2,-Ws/2);
+      const m=new THREE.Mesh(new THREE.ExtrudeGeometry(sh,{depth:0.45,bevelEnabled:false}),stone(0x8e3b2c,0.8));
+      m.rotation.x=-Math.PI/2; m.castShadow=m.receiveShadow=true; grp.add(m); k0.add(grp); continue;
+    }
+    // stepped red granite layers ("pages"), 12-inch slabs; upper layers set back toward the north
+    const layers=[{h:0.32,w:Ws,off:0,l:Ls},{h:0.30,w:Ws*0.7,off:-Ws*0.15,l:Ls*0.85},{h:0.30,w:Ws*0.42,off:-Ws*0.29,l:Ls*0.6}];
+    let base=0;
+    for(const ly of layers){
+      const slab=new THREE.Mesh(new THREE.BoxGeometry(ly.l,ly.h,ly.w),stone(0x92503f,0.8));
+      slab.position.set(0,base+ly.h/2,ly.off); slab.castShadow=slab.receiveShadow=true; grp.add(slab);
+      base+=ly.h;
+    }
+    const topY=layers[0].h+0.01;
+    // copper runs: along the south edge (read facing south) and at the west end
+    for(const run of st.copper){
+      const u=run.unit, rows=K0[u].pieces, cv=morseCanvas(rows);
+      const tex=new THREE.CanvasTexture(cv); tex.anisotropy=8;
+      const len=run.length_m, wid=rows.length>1?0.36:0.22;
+      const sheet=new THREE.Mesh(new THREE.PlaneGeometry(len,wid),new THREE.MeshStandardMaterial({map:tex,metalness:0.4,roughness:0.5,side:THREE.DoubleSide}));
+      // text up = south (+z), reading east->west (-x): readable to someone facing south
+      sheet.rotation.set(-Math.PI/2,0,Math.PI);
+      if(run.edge==='south') sheet.position.set(run.along_m, topY, Ws/2-0.22);
+      else { sheet.position.set(-Ls/2+0.25, topY, run.along_m); sheet.rotation.set(-Math.PI/2,0,Math.PI/2); }
+      sheet.userData={k0units:[u]}; grp.add(sheet); k0Strips.push(sheet);
+    }
+    if(st.kind==='compass'){
+      const cv=document.createElement('canvas'); cv.width=cv.height=512; const g=cv.getContext('2d');
+      g.fillStyle='#8c5245'; g.fillRect(0,0,512,512);
+      g.strokeStyle='#efe3d6'; g.lineWidth=3; g.beginPath(); g.arc(256,256,190,0,Math.PI*2); g.stroke();
+      g.font='700 58px "Old Standard TT", Georgia, serif'; g.fillStyle='#f3e9dc'; g.textAlign='center'; g.textBaseline='middle';
+      g.fillText('N',256,40); g.fillText('S',256,472); g.fillText('E',472,256); g.fillText('W',40,256);
+      g.beginPath(); g.moveTo(256,80); g.lineTo(270,256); g.lineTo(256,432); g.lineTo(242,256); g.closePath(); g.lineWidth=3; g.stroke();
+      const rose=new THREE.Mesh(new THREE.PlaneGeometry(1.5,1.5),new THREE.MeshStandardMaterial({map:new THREE.CanvasTexture(cv),roughness:0.8,transparent:false}));
+      rose.rotation.x=-Math.PI/2;
+      const holder=new THREE.Group(); holder.add(rose);
+      // top of the middle layer; the engraved 'north' points to compass_north_bearing_deg in world terms
+      holder.position.set(0.3,layers[0].h+layers[1].h+0.011,layers[1].off);
+      holder.rotation.y=-S.compass_north_bearing_deg*Math.PI/180-grp.rotation.y;
+      grp.add(holder);
+      const lode=new THREE.Mesh(new THREE.DodecahedronGeometry(0.3,0),stone(0x2b2b2e,0.7));
+      lode.position.set(-Ls/2+0.35,topY+0.22,st.lodestone_along_m); lode.castShadow=true; grp.add(lode);
+    }
+    k0.add(grp);
+    if(st.kind==='morse'){ EX=cx; EY=cy; }
+  }
+  groundLabel('NHB',WB[0]+ux*4,WB[1]+uy*4,3,'#2E7A69',k0);
+  groundLabel('K0',WA[0]+ux*55,WA[1]+uy*55+8,2.2,'#B35F33',k0);
+}
+
+// ---------- sun ----------
+function sunPosition(dayOfYear,localHour){
+  const lat=S.latitude_deg*Math.PI/180, lon=S.longitude_deg;
+  const dst=(dayOfYear>=70 && dayOfYear<=307);           // US daylight time, approx. 2nd Sun Mar - 1st Sun Nov
+  const tz=dst?-4:-5;
+  const gam=2*Math.PI/365*(dayOfYear-1+(localHour-12)/24);
+  const eqt=229.18*(0.000075+0.001868*Math.cos(gam)-0.032077*Math.sin(gam)-0.014615*Math.cos(2*gam)-0.040849*Math.sin(2*gam));
+  const decl=0.006918-0.399912*Math.cos(gam)+0.070257*Math.sin(gam)-0.006758*Math.cos(2*gam)+0.000907*Math.sin(2*gam)-0.002697*Math.cos(3*gam)+0.00148*Math.sin(3*gam);
+  const tst=localHour*60+eqt+4*lon-60*tz;
+  const ha=(tst/4-180)*Math.PI/180;
+  const cz=Math.sin(lat)*Math.sin(decl)+Math.cos(lat)*Math.cos(decl)*Math.cos(ha);
+  const el=Math.asin(Math.max(-1,Math.min(1,cz)));
+  const az=(Math.atan2(Math.sin(ha),Math.cos(ha)*Math.sin(lat)-Math.tan(decl)*Math.cos(lat))+Math.PI)%(2*Math.PI);
+  return {az,el,dst};
+}
+const MONTHS=[31,28,31,30,31,30,31,31,30,31,30,31];
+function dayLabel(d){ let m=0; while(d>MONTHS[m]){d-=MONTHS[m];m++;} return `${m+1}月${d}日`; }
+const sDay=document.getElementById('s-day'), sTime=document.getElementById('s-time');
+function updateSun(){
+  const d=+sDay.value, h=+sTime.value, {az,el,dst}=sunPosition(d,h);
+  document.getElementById('o-day').textContent=dayLabel(d);
+  const hh=Math.floor(h), mm=Math.round((h-hh)*60);
+  document.getElementById('o-time').textContent=`${hh}:${String(mm).padStart(2,'0')}（${dst?'夏時間 EDT':'EST'}）`;
+  const dir=new THREE.Vector3(Math.sin(az)*Math.cos(el), Math.sin(el), -Math.cos(az)*Math.cos(el));
+  sun.position.copy(sun.target.position).addScaledVector(dir,30);
+  const up=Math.max(0,Math.sin(el));
+  sun.intensity=el>0?0.35+1.1*Math.min(1,up*2.2):0;
+  hemi.intensity=el>0?0.45+0.25*up:0.18;
+  const azd=az*180/Math.PI, eld=el*180/Math.PI;
+  document.getElementById('sunbadge').textContent=el>0?`太陽 方位 ${azd.toFixed(0)}° ${compass16(azd)} · 高度 ${eld.toFixed(0)}°`:'太陽 地平線の下';
+}
+sDay.addEventListener('input',updateSun); sTime.addEventListener('input',updateSun);
+document.getElementById('b-dedic').onclick=()=>{sDay.value=307; sTime.value=12; updateSun();};
+document.getElementById('b-summer').onclick=()=>{sDay.value=172; sTime.value=13; updateSun();};
+let playing=false, lastT=0;
+const bPlay=document.getElementById('b-play');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+bPlay.onclick=()=>{ playing=!playing; bPlay.setAttribute('aria-pressed',String(playing)); bPlay.textContent=playing?'停止':'1日を再生'; };
+
+// ---------- picking ----------
+const ray=new THREE.Raycaster(), mouse=new THREE.Vector2();
+const readout=document.getElementById('readout');
+function show(glyph,rows,small){
+  readout.innerHTML=`<div class="glyph${small?' small':''}">${glyph}</div><dl class="readout">${rows.map(([a,v])=>`<dt>${a}</dt><dd>${v}</dd>`).join('')}</dl>`;
+}
+function pick(ev){
+  const r=renderer.domElement.getBoundingClientRect();
+  mouse.set(((ev.clientX-r.left)/r.width)*2-1, -((ev.clientY-r.top)/r.height)*2+1);
+  ray.setFromCamera(mouse,camera);
+  const targets=[halves.cipher.mesh,halves.tableau.mesh];
+  if(k0.visible) targets.push(...k0Strips);
+  const hit=ray.intersectObjects(targets)[0];
+  if(!hit||!hit.uv) return;
+  if(hit.object.userData.k0units){
+    const units=hit.object.userData.k0units;
+    const v=hit.uv.y;
+    const i=Math.min(units.length-1,Math.max(0,Math.floor((1-v)*units.length)));
+    const u=K0[units[i]];
+    show(u.pieces.join(' | '),[['K0',`句 ${units[i]+1} / 7`],['Morse',u.morse.join(' ‖ ')],['点と線の数',`${u.marks}`],['注','刻まれた並びではなく、転記した文字から符号化']],true);
+    return;
+  }
+  const half=hit.object.userData.half, ncols=half==="cipher"?P.cipher_arc_cols:P.tableau_arc_cols;
+  const rows=half==="cipher"?CIPHER:TABLEAU;
+  const zTop=P.top_row_z_m+P.row_pitch_m/2, z=hit.uv.y*TOP;
+  const row=Math.floor((zTop-z)/P.row_pitch_m);
+  if(row<0||row>=ROWS) return;
+  const nn=rows[row].length, col=Math.floor((hit.uv.x*ncols-0.5)/(ncols-1)*nn);
+  if(col<0||col>=nn||rows[row][col]===' ') return;
+  const p=arcPoint(half,0.5*P.col_pitch_m+(col+0.5)/nn*(ncols-1)*P.col_pitch_m), b=bearing(p.nx,p.ny);
+  const k=half==="cipher"?k4Index(row,col):-1;
+  const chShown=rows[row][col]==='·'?'—':rows[row][col];
+  show(chShown,[
+    ['面', half==="cipher"?'暗号文':'tableau'],
+    ['板', row<14?'上':'下'],
+    ['行・列', `${row} · ${col}（この行 ${nn} 字）`+(rows[row][col]==='·'?'・公開版では文字を省略':'')],
+    ['K4位置', k>=0?`${k}${CRIB.has(k)?'（crib）':''}`:'—'],
+    ['平面 x, y', `${p.x.toFixed(2)}, ${p.y.toFixed(2)} m`],
+    ['高さ', `${(P.top_row_z_m-row*P.row_pitch_m).toFixed(2)} m`],
+    ['表面の向き', `${b.toFixed(1)}° ${compass16(b)}`],
+  ]);
+}
+renderer.domElement.addEventListener('pointermove',pick);
+renderer.domElement.addEventListener('pointerdown',pick);
+
+// ---------- views ----------
+const viewBtns=['v-front','v-back','v-inside','v-top','v-k0','v-site'].map(id=>document.getElementById(id));
+function setView(which){
+  const t=new THREE.Vector3(0,1.6,0);
+  if(which==='front') camera.position.set(0.8,2.2,8.5);
+  if(which==='back') camera.position.set(-0.8,2.2,-8.5);
+  if(which==='inside'){ const [ix,iy]=rot(-P.r_cipher_m*0.8,0.35,P.rotation_deg), [jx,jy]=rot(-P.r_cipher_m,-1.3,P.rotation_deg); camera.position.copy(W(ix,iy,1.5)); t.copy(W(jx,jy,1.3)); }
+  if(which==='top'){ camera.position.set(0,12,0.01); t.set(0,0,0); }
+  if(which==='k0'){ camera.position.copy(W(EX-6,EY-22,11)); t.copy(W(EX+4,EY-5,0.4)); k0.visible=true; document.getElementById('t-k0').checked=true; }
+  if(which==='site'){ camera.position.copy(W(-60,-150,120)); t.copy(W(-60,-30,0)); k0.visible=true; document.getElementById('t-k0').checked=true; }
+  controls.target.copy(t); controls.update();
+  viewBtns.forEach(b=>b.setAttribute('aria-pressed',String(b.id==='v-'+which)));
+}
+viewBtns.forEach(b=>b.onclick=()=>setView(b.id.slice(2)));
+for(const [id,key] of [['t-holes','holes'],['t-k4','k4'],['t-crib','crib'],['t-seam','seam']]){
+  document.getElementById(id).addEventListener('change',e=>{opts[key]=e.target.checked; drawTexture('cipher'); drawTexture('tableau');});
+}
+document.getElementById('t-site').addEventListener('change',e=>{site.visible=e.target.checked;});
+document.getElementById('t-k0').addEventListener('change',e=>{k0.visible=e.target.checked;});
+
+// ---------- side panels ----------
+const g_=v=>`<span class="grade">${v}</span>`;
+document.getElementById('params').innerHTML=[
+  ['弧の半径（暗号文／tableau）', `${P.r_cipher_m} / ${P.r_tableau_m} m${g_('C')}`],
+  ['列・行の間隔', `${P.col_pitch_m} / ${P.row_pitch_m} m${g_('C')}`],
+  ['中心角（暗号文／tableau）', `${Math.round(P.cipher_arc_cols*P.col_pitch_m/P.r_cipher_m*180/Math.PI)}° / ${Math.round(P.tableau_arc_cols*P.col_pitch_m/P.r_tableau_m*180/Math.PI)}°${g_('C')}`],
+  ['端から端', `${DATA.end_to_end_m.toFixed(2)} m（公表 約6.1 m）${g_('C')}`],
+  ['全体の回転（暗号文側≈南）', `${P.rotation_deg}°${g_('C')}`],
+  ['珪化木 直径・高さ', `${S.trunk_diameter_m} / ${S.trunk_height_m} m${g_('C')}`],
+  ['池の半径', `${S.pool_radius_m} m${g_('C')}`],
+  ['コンパス図の「北」', `${S.compass_north_bearing_deg}°${g_('B')}`],
+  ['入口の通路（駐車場→NHB西口）', `方位 ${Math.round((Math.atan2(WB[0]-WA[0],WB[1]-WA[1])*180/Math.PI+360)%360)}° · ${Math.hypot(WB[0]-WA[0],WB[1]-WA[1]).toFixed(0)} m${g_('C')}`],
+  ['入口の石', `北＝Morse・南＝コンパス・東＝矢じり${g_('C')}`],
+].map(([a,b])=>`<tr><td>${a}</td><td>${b}</td></tr>`).join('');
+document.getElementById('k0list').innerHTML=K0.map((u,i)=>`<li><span class="n">${i+1}</span><span class="t">${u.pieces.join(' <span style="color:var(--muted)">|</span> ')}</span><span class="m">${u.marks} marks</span></li>`).join('');
+document.getElementById('k0note').textContent=`合計 ${DATA.k0_total_marks} 個の点と線（vaultの「約240個」と一致）。「|」は同じ銅板の2行目（写真では1枚に2行）。DIGETALは刻まれたとおり。INTERPRETATITは末尾が切れていて、IU・IO(N)の読みもある。句は南を向いて読むとされる。`;
+
+// ---------- theme, size, loop ----------
+function applyTheme(){
+  scene.background=colorOf('--scene-bg','#D6DED9');
+  floorMat.color=colorOf('--scene-floor','#C4CAC4');
+  drawTexture('cipher'); drawTexture('tableau');
+}
+function resize(){ const w=view.clientWidth,h=view.clientHeight; renderer.setSize(w,h,false); camera.aspect=w/h; camera.updateProjectionMatrix(); }
+new ResizeObserver(resize).observe(view);
+
+if(DATA.redacted) document.getElementById('pubnote').hidden=false;
+buildHalf('cipher'); buildHalf('tableau');
+setView('front'); resize(); updateSun();
+(document.fonts&&document.fonts.load ? Promise.all([document.fonts.load('700 40px "Old Standard TT"'),document.fonts.ready]).catch(()=>{}) : Promise.resolve()).then(applyTheme);
+applyTheme();
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',applyTheme);
+new MutationObserver(applyTheme).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+(function loop(t){
+  if(playing && !reduce && t-lastT>60){ let h=+sTime.value+0.05; if(h>20.5) h=5; sTime.value=h; updateSun(); lastT=t; }
+  controls.update(); renderer.render(scene,camera); requestAnimationFrame(loop);
+})(0);
+</script>
+</body>
+</html>

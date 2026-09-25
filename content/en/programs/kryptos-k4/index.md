@@ -16,7 +16,7 @@ Which mechanisms can the 97 ciphertext letters and 24 crib letters rule out, and
 
 Public ciphertext and cribs only. Every test is exploratory unless a Note says it was sealed in advance. A rejected family means that no member within the stated range reproduces the cribs, with planted positive controls showing that the test would have found one. A "not distinguishable" family has more freedom than 24 letters can constrain; it is not rejected.
 
-## Families examined so far (as of 2026-09-24)
+## Families examined so far (as of 2026-09-25)
 
 This table summarizes the internal record. Only the rows marked with a public Note currently have a public rerun.
 
@@ -33,10 +33,25 @@ This table summarizes the internal record. Only the rows marked with a public No
 | Two stacked keyword layers | No candidate in 1.4 × 10¹⁰ settings |
 | Ws as nulls, key restarting at W, W-gaps as blocks, W pass-through with 25 letters | No candidate ([Note](/en/research/kryptos-k4-w-brackets/)) |
 | Row transposition with a periodic key | Not distinguishable from shuffled controls |
+| Periodic key followed by two 7 × 7 turning grilles | No candidate in 2.09 × 10¹⁰ settings |
+| Reading along the bands of a wave; the intensity of a sine wave as the key | No candidate |
+| Devices with no fixed points (Enigma with a reflector, M-94 and M-138-A disks and strips, HC-9) | Impossible if plaintext and ciphertext positions coincide: the cribs contain the self-encryptions S→S and K→K |
+| Hagelin M-209 (lug cage without overlaps, standard constant) | Fits the cribs, but the other 73 letters never become English; the number of crib-fitting cages is not distinguishable from shuffled controls (p ≈ 0.06) |
+| Hagelin CX-52 (regular stepping) | Not distinguishable by the cribs in the sampled range |
+| Winding the copper screen around the petrified-wood trunk and keying each letter by the layer it overlaps | No candidate (circumference measured from photos as 19–25 columns) |
+| Physical keys that do not depend on height (surface direction, distance along the arc, and similar) | Rejected without measuring the shape: two crib pairs share a column (positions 32 and 63, 33 and 64) and would need equal keys, which fails under every convention |
 
 The reading of the W gaps as `TOKIO` (the German spelling of Tokyo, which appears on Berlin's World Clock) remains the one pattern that passed a frozen external target list, at p ≤ 1.5 × 10⁻³ ([Note](/en/research/kryptos-k4-tokio-price/)). It is provisional and gives no plaintext.
 
 The program began by auditing a claim that K4 is a reversed Gromark cipher with primer 57973. Its numbers reproduce, but the public cribs cannot tell it from chance ([Note](/en/research/kryptos-k4-57973-audit/)).
+
+## Physical record and 3D model of the sculpture (2026-09-25)
+
+To test whether the key might come from the sculpture's physical form rather than from letters, we estimated the sculpture's physical layout from public photographs and aerial imagery and built a 3D model. It includes how the copper is assembled (four plates in a 2 × 2 arrangement, with the horizontal seam falling exactly at the K2/K3 boundary), the S-shaped plan, its orientation (the cipher side faces roughly south), the thickness of the petrified-wood trunk, and the layout of the three stones at the entrance that carry the Morse code (K0). Choosing a date and time at Langley places the sun and shows the light cast through the cut-out letters.
+
+Most dimensions and bearings are estimates (grade C) and should be read as approximate. The shape was fixed from photographs alone, without looking at the cribs. The public version withholds every carved letter except the 97 letters of K4 and the seven Morse phrases, showing only where each letter is cut.
+
+**[Open the 3D model →](https://kbmt327-dev.github.io/scientific-os-research/static/kryptos-k4-model.html)** (the interface is in Japanese)
 
 <!-- GENERATED: program-current:START -->
 ## Current public state

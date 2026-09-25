@@ -40,6 +40,9 @@ This table summarizes the internal record. Only the rows marked with a public No
 | Hagelin CX-52 (regular stepping) | Not distinguishable by the cribs in the sampled range |
 | Winding the copper screen around the petrified-wood trunk and keying each letter by the layer it overlaps | No candidate (circumference measured from photos as 19–25 columns) |
 | Physical keys that do not depend on height (surface direction, distance along the arc, and similar) | Rejected without measuring the shape: two crib pairs share a column (positions 32 and 63, 33 and 64) and would need equal keys, which fails under every convention |
+| Fractionated Morse; a Berlin Clock advanced one step per letter with its lit-lamp counts as the key; overlays by folding at the seam or mirroring; reading from the back | No candidate |
+| The time a shadow edge crosses each letter; the tableau seen behind the screen from a standing point (judged by whether the key is smooth between neighbouring letters) | The crib keys are as rough as random keys and do not fit such smooth keys |
+| Over the whole plausible range of the 3D model's shape: the letter seen behind each hole, the minute sunlight starts or stops on each letter, the distance from a fixed point | No setting fits the cribs; the best scores are indistinguishable from shuffled controls |
 
 The reading of the W gaps as `TOKIO` (the German spelling of Tokyo, which appears on Berlin's World Clock) remains the one pattern that passed a frozen external target list, at p ≤ 1.5 × 10⁻³ ([Note](/en/research/kryptos-k4-tokio-price/)). It is provisional and gives no plaintext.
 
@@ -47,11 +50,13 @@ The program began by auditing a claim that K4 is a reversed Gromark cipher with 
 
 ## Physical record and 3D model of the sculpture (2026-09-25)
 
-To test whether the key might come from the sculpture's physical form rather than from letters, we estimated the sculpture's physical layout from public photographs and aerial imagery and built a 3D model. It includes how the copper is assembled (four plates in a 2 × 2 arrangement, with the horizontal seam falling exactly at the K2/K3 boundary), the S-shaped plan, its orientation (the cipher side faces roughly south), the thickness of the petrified-wood trunk, and the layout of the three stones at the entrance that carry the Morse code (K0). Choosing a date and time at Langley places the sun and shows the light cast through the cut-out letters.
+To test whether the key might come from the sculpture's physical form rather than from letters, we estimated the sculpture's physical layout from public photographs and aerial imagery and built a 3D model (v0.5). It includes how the copper is assembled (four plates in a 2 × 2 arrangement, with the horizontal seam falling exactly at the K2/K3 boundary), the S-shaped plan, its orientation (the cipher side faces roughly south), the thickness of the petrified-wood trunk, and the layout of the three stones at the entrance that carry the Morse code (K0). Choosing a date and time at Langley places the sun and shows the light cast through the cut-out letters.
 
-Most dimensions and bearings are estimates (grade C) and should be read as approximate. The shape was fixed from photographs alone, without looking at the cribs. The public version withholds every carved letter except the 97 letters of K4 and the seven Morse phrases, showing only where each letter is cut.
+In v0.5 the column pitch was re-measured by fitting a camera and a cylinder to letters in a photograph, and the radius set so the two ends are 20 ft (6.1 m) apart, the published width. The entrance Morse holes follow proportions measured in photographs, and the compass rose's bearing was re-measured. The interface switches between Japanese and English, and the model can be saved as glTF (.glb) and the physical features of the 97 K4 letters as CSV.
 
-**[Open the 3D model →](https://kbmt327-dev.github.io/scientific-os-research/static/kryptos-k4-model.html)** (the interface is in Japanese)
+Most dimensions and bearings are estimates (grade C) and should be read as approximate. The shape was fixed from photographs alone, without looking at the cribs. Research computations run over the whole plausible range of the shape (radius 1.4–2.4 m and so on). The public version withholds every carved letter except the 97 letters of K4 and the seven Morse phrases, showing only where each letter is cut.
+
+**[Open the 3D model →](https://kbmt327-dev.github.io/scientific-os-research/static/kryptos-k4-model.html)** (Japanese / English)
 
 <!-- GENERATED: program-current:START -->
 ## Current public state

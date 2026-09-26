@@ -16,7 +16,7 @@ K4は、Jim Sanbornが1990年にCIA本部へ設置した彫刻 *Kryptos* の第4
 
 使うのは公開された暗号文とcribだけです。Noteで事前封印を明記していない検定は、すべて探索的です。「否定」は、述べた範囲のどの設定もcribを再現せず、しかも陽性対照（既知の鍵で作った暗号文）で検定が当たりを見つけられることを確かめた、という意味です。「区別できない」は、族の自由度が24文字で拘束できる量を超えているという意味で、否定ではありません。
 
-## これまでに調べた族（2026-09-25時点）
+## これまでに調べた族（2026-09-26時点）
 
 内部記録の要約です。現在、公開の再実行があるのはNoteへのリンクがある行だけです。
 
@@ -43,10 +43,29 @@ K4は、Jim Sanbornが1990年にCIA本部へ設置した彫刻 *Kryptos* の第4
 | 平文をMorseにして3記号ずつ文字にする形、Berlin Clockを1文字ずつ進めて点灯数を鍵にする形、継ぎ目で折る・鏡に映す重ね方、裏から読む順 | 候補なし |
 | 影の縁が文字を横切る時刻、立ち位置から見たtableauとの重なり（隣り合う文字で鍵が滑らかになるかで判定） | K4のcrib上の鍵は無作為な鍵と同じくらい粗く、こうした滑らかな鍵とは合わない |
 | 3D模型の形の範囲全体で：穴越しに見える奥の文字、日が当たり始める／終わる時刻、決まった点からの距離 | cribに合う設定なし。最高点はシャッフル対照と区別できない |
+| 彫り間違いを1〜5文字許す（上の主な反証を検算し直す） | 1文字では主な反証は保たれ、新しく開く族はない。5文字まで許すと、制約の多い族（周期鍵 p≤16・18〜22、Trifid、Hill n＝2など）は閉じたまま、制約の少ない族（任意alphabetの周期鍵 p≥10、Hill n＝3、英語のrunning keyなど）はcribでは判定できなくなる |
+| 英語を隠す固定の換字（mask）が暗号化の前か後にある場合：Kryptos文・World Clockの歩幅鍵、距離の鍵、M-94（円盤の順序12通り）、自動鍵、位置の一次式の鍵 | 候補なし（陽性対照は回収）。M-94で円盤の順序が自由な場合は、cribでは判定できない |
+| maskが前後の両方にあり、歩幅つきのrunning key（1,541万設定） | cribを通る設定の数も、英語らしさの最高点も、シャッフル対照と区別できない |
+| 二重字が i ≡ 4 (mod 7) にそろう観察の事前登録つき追試 | 偶然と区別できない |
+| 区間ごとに方式が切り替わる（cribを1つずつ判定）：単語鍵、周期鍵、歩幅鍵 | どの区間でも候補なし |
+| ロータ1枚（配線は自由）、1つの置換の累乗でつくる表 | cribと両立しない（陽性対照200/200） |
+| Carter & Mace *The Tomb of Tut.ankh.Amen* 第1巻（1923）の本文を鍵にするrunning key（本文と前処理は回す前に固定） | maskなし・片側maskで反証（誤り2文字まで、陽性対照60/60）。両側maskでは英語にならない |
+| maskのかかったHagelin機（M-209、CX-52） | 自由度が英語で拘束できる量を数十〜200 bit上回り、K4だけでは判別できない |
+| `ROLL` を表を回す鍵とする3通り、切り抜きの穴を窓として鍵を読む族（読み方96通り、鍵4,081本、回す前に列挙） | maskなし・片側maskで反証、両側maskでは英語にならない |
+| 鍵の文も英語（手で選ぶrunning key）＋片側mask | 今の探索では判別できない（置換が未知のとき、陽性対照を回収できない）。反証ではない |
+| 彫刻自身の文字列を表（chart）にする（18,624設定、回す前に固定） | 反証：K4の最高は6/24で、シャッフル1,000本はすべて6以上。陽性対照12/12 |
+| 位置によらない写像（4文字以下の窓、語単位のalphabet、固定の同音換字） | crib `EASTNORTHEAST` の中で2回出る `EAST` が別の暗号文になるので、誤りがなければ不可能 |
 
 W区間を `TOKIO`（Tokyoのドイツ語綴りで、ベルリンの世界時計に刻まれている）と読むのは、凍結した外部の標的リストに対して通った唯一のパターンです（p ≤ 1.5×10⁻³、[Note](/ja/research/kryptos-k4-tokio-price/)）。暫定であり、平文は1文字も出ていません。
 
 この研究は、K4はprimer 57973の反転Gromark暗号だという主張の監査から始まりました。数値は再現しますが、公開cribではそれを偶然と区別できません（[Note](/ja/research/kryptos-k4-57973-audit/)）。
+
+## 2026-09-26時点の整理
+
+- **鍵の大きさの下限**：K4の文字頻度は平らで、1位置あたり3 bit以上の鍵が要ります。これは英語の冗長度（約2.86 bit）より大きいので、1文字ずつ自由に選んだ鍵はK4だけでは決まりません。K4が解ける形は「短い技法」と「短く書ける鍵の出どころ」の組に限られます。これは、技法が分かれば残りはpuzzleだ、というScheidtの発言とも同じ向きです。
+- **判定できる別方式は、今はない**：K1〜K3と同じ「1枚の表のずらし」を外した方式のうち、K4だけで判定できるもの（彫刻の文字列をchartにする族）は反証されました。手製のchartは、行の作り方を外から固定する手がかりが公開資料に見つからず、K4だけからは判定できません。
+- **次の計画**：鍵の出どころ（どの物の、どの位置が鍵になるか）と組み合わせ方（表）を分け、表の中身を仮定しない検定で出どころを落とします。ただしこの検定は、表の行が任意なら誤った出どころでも26〜42%が通るので、表に構造（ラテン方格など、通過率1.7〜1.9%）を仮定できるときにだけ効きます。
+- 新しい平文文字は0です。
 
 ## 彫刻の物理記録と3D模型（2026-09-25）
 
@@ -78,4 +97,4 @@ v0.5では、写真の文字にカメラと円筒を当てはめて列の間隔�
 
 ## 出典
 
-Jim Sanborn, *Kryptos*（1990）。暗号文は[Wikipedia](https://en.wikipedia.org/wiki/Kryptos)と[Elonka Dunin](https://elonka.com/kryptos/)の転記による。cribの公開：[WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/)、[WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/)、NPR 2020（[transcript](https://www.kunc.org/2020-01-30/a-new-and-final-clue-to-kryptos-a-long-standing-puzzle)）、`EAST` は[Elonka Duninのarchive](https://elonka.com/kryptos/)。Sanbornの2025年のヒント：[Scientific American](https://www.scientificamerican.com/article/cia-kryptos-puzzle-creator-releases-final-clues/)。2025年の資料での発見：[RR Auction](https://content.rrauction.com/kryptos-k4-discovered-not-solved-heres-what-actually-happened/)。暗号文とcribは研究と論評のための引用であり、このサイトのライセンスの対象外です。
+Jim Sanborn, *Kryptos*（1990）。暗号文は[Wikipedia](https://en.wikipedia.org/wiki/Kryptos)と[Elonka Dunin](https://elonka.com/kryptos/)の転記による。cribの公開：[WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/)、[WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/)、NPR 2020（[transcript](https://www.kunc.org/2020-01-30/a-new-and-final-clue-to-kryptos-a-long-standing-puzzle)）、`EAST` は[Elonka Duninのarchive](https://elonka.com/kryptos/)。Scheidtの発言（英語をmaskした、まず技法を解く）：[WIRED 2005](https://www.wired.com/2005/01/inside-info-on-kryptos-codes/)。Sanbornの2025年のヒント：[Scientific American](https://www.scientificamerican.com/article/cia-kryptos-puzzle-creator-releases-final-clues/)。2025年の資料での発見：[RR Auction](https://content.rrauction.com/kryptos-k4-discovered-not-solved-heres-what-actually-happened/)。暗号文とcribは研究と論評のための引用であり、このサイトのライセンスの対象外です。

@@ -130,11 +130,11 @@ programs:
       title: Kryptos K4
       home_summary: 未解読の暗号K4について、公開cribでどの方式を否定できるか、見つかったパターンが自由度を払った後にいくら残るかを記録しています。
       question: 97文字の暗号文と24文字のcribで、どの仕組みを否定できるか。見つけるのに使った自由度を数えた後で、生き残るパターンはどれか。
-      claim: 復号はしていません。新しい平文文字は0です。EP-0057は「5つのWのうち2つが公開cribを外側から挟む」という観察を再現しましたが、Wという文字を選ばなければ確率は0.036で、W区間のTOKIO読みとも独立ではありません。Wを空文字・鍵の再始動点・ブロック境界・25文字暗号の素通り記号とみなす読みは、どれも候補を出しませんでした。
+      claim: 復号はしていません。新しい平文文字は0です（2026-09-26時点）。K1〜K3と同じ「1枚の表のずらし」の形では、英語を隠す段を前後に置いても、彫り間違いを許しても、判定できる族はすべて候補なしか、cribでは判定できないかのどちらかでした。K4の文字頻度は平らなので鍵は1位置あたり3 bit以上が要り、解ける形は「短い技法」と「短く書ける鍵の出どころ」の組に限られます。その形を外した方式のうち、K4だけで判定できるもの（彫刻の文字列を表にする族）は反証され、判定できる別方式は今はありません。最新のResearch NoteはEP-0057で、「5つのWのうち2つが公開cribを外側から挟む」という観察は、Wという文字を選ばなければ確率0.036で、TOKIO読みとも独立ではありません。
       evidence_boundary: 公開暗号文と24文字のcribだけを使った探索的な計算です。事前登録はなく、外部の独立replicationも暗号専門家のレビューもありません。正解は存在しますが公開されていません。
     en:
       title: Kryptos K4
       home_summary: For the unsolved K4 cipher we record which mechanisms the public cribs rule out and how much each found pattern is worth once the search's own freedom is paid for.
       question: Which mechanisms can the 97 ciphertext letters and 24 crib letters rule out, and which apparent patterns survive once the freedom used to find them is counted?
-      claim: No decryption and no new plaintext letter. EP-0057 reproduced the observation that two of the five Ws bracket the public cribs from outside, but without choosing the letter W the chance is 0.036, and it is not independent of the TOKIO reading of the W gaps. Reading the Ws as nulls, key restarts, block boundaries or pass-through symbols of a 25-letter cipher produced no candidate.
+      claim: No decryption and no new plaintext letter (as of 2026-09-26). Within the K1–K3 form (one chart, shifted), every decidable family, with a mask before or after encryption or with carving errors allowed, either gave no candidate or cannot be decided by the cribs. K4's flat letter frequencies need at least 3 bits of key per position, so a solvable K4 pairs a short technique with a key source that has a short description. Among methods outside that form, the one decidable from K4 alone (the sculpture's text as the chart) was rejected; no decidable different method remains at present. The latest Research Note is EP-0057. Two of the five Ws bracket the public cribs, but without choosing the letter W the chance is 0.036, and it is not independent of the TOKIO reading.
       evidence_boundary: Exploratory computation on the public ciphertext and 24 crib letters. Not preregistered; no external independent replication and no review by a cryptographer. The ground truth exists but is withheld.

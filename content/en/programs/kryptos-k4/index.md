@@ -80,7 +80,7 @@ Most dimensions and bearings are estimates (grade C) and should be read as appro
 <!-- GENERATED: program-current:START -->
 ## Current public state
 
-No decryption and no new plaintext letter. EP-0057 reproduced the observation that two of the five Ws bracket the public cribs from outside, but without choosing the letter W the chance is 0.036, and it is not independent of the TOKIO reading of the W gaps. Reading the Ws as nulls, key restarts, block boundaries or pass-through symbols of a 25-letter cipher produced no candidate.
+No decryption and no new plaintext letter (as of 2026-09-26). Within the K1–K3 form (one chart, shifted), every decidable family, with a mask before or after encryption or with carving errors allowed, either gave no candidate or cannot be decided by the cribs. K4's flat letter frequencies need at least 3 bits of key per position, so a solvable K4 pairs a short technique with a key source that has a short description. Among methods outside that form, the one decidable from K4 alone (the sculpture's text as the chart) was rejected; no decidable different method remains at present. The latest Research Note is EP-0057. Two of the five Ws bracket the public cribs, but without choosing the letter W the chance is 0.036, and it is not independent of the TOKIO reading.
 
 **Evidence boundary:** Exploratory computation on the public ciphertext and 24 crib letters. Not preregistered; no external independent replication and no review by a cryptographer. The ground truth exists but is withheld.
 

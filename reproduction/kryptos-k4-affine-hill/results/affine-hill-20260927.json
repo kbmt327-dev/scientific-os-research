@@ -1,0 +1,51 @@
+{
+ "source": "rechecked 2026-09-27 for the Note; internal records EP-0117, EP-0122 (2026-09-27)",
+ "affine": {
+  "a_polys_invertible_everywhere": 1896,
+  "K4_fits": {
+   "A-Z/enc": 0,
+   "A-Z/dec": 0,
+   "KRYPTOS/enc": 0,
+   "KRYPTOS/dec": 0
+  },
+  "planted_found": 20,
+  "planted": 20,
+  "shuffles_with_a_fit": 0,
+  "shuffles": 5
+ },
+ "hill_2x2_no_vector": {
+  "settings": 32,
+  "K4_consistent": [],
+  "planted_consistent": 40,
+  "planted": 40,
+  "shuffles": 100,
+  "max_shuffles_consistent_per_setting": 1
+ },
+ "recorded_not_rerun": {
+  "EP-0117 exponential multipliers a0*g^i": {
+   "K4": 0,
+   "shuffles": "0/20",
+   "controls": "20/20"
+  },
+  "EP-0117 constant multiplier, running-key shift (K1-K3 variant)": {
+   "K4_best": "9/24",
+   "shuffles_best": "9-10/24"
+  },
+  "EP-0117 periodic Hill, all 160 settings (n = 2, 3; with and without vector; p = 1-8)": {
+   "decidable": 91,
+   "K4_inconsistent_in_decidable": 91,
+   "undecidable": 69,
+   "plants": "40/40"
+  },
+  "EP-0122 Hill with matrices from listed texts (160 settings)": {
+   "settings_x_starts": 2378384,
+   "K4": 0,
+   "expected": 8e-21,
+   "plants": "30/30",
+   "shuffles": "0/0/0"
+  },
+  "EP-0117 carved tableau with its defect": {
+   "note": "the extra L lies outside the 30 lookup columns; 0 cells differ"
+  }
+ }
+}

@@ -54,7 +54,7 @@ lang: ja
 | Wを区切りにした25文字の方陣：Four-square、Two-square、Bifid（鍵語の方陣と自由な方陣）、CM-Bifid、前後にずらしのmaskを重ねた形、Playfairの後にずらしのmask | 候補なし：鍵語の方陣は925,600設定で0、自由な方陣はcribと論理的に矛盾（[Note](/ja/research/kryptos-k4-w-squares/)） |
 | 5×5格子の上の2次元のずらし・回転・鏡映 | 判定できる所で候補なし。自由な方陣で周期が長い場合は判定できない（[Note](/ja/research/kryptos-k4-w-squares/)） |
 | Slidefair、Portax、Doppelkasten | SlidefairとPortaxは文字を自分に暗号化しないのでS→S・K→Kで除外。1回がけのDoppelkastenは96設定すべてで矛盾。2回がけは判定できない（[Note](/ja/research/kryptos-k4-consistency/)） |
-| 位置で変わるアフィン、周期で変わるHill（行列を文章から作る形も） | 判定できる所で候補なし（文章の行列は238万設定で0）。行列が自由で周期が長い場合は判定できない |
+| 位置で変わるアフィン、周期で変わるHill（行列を文章から作る形も） | 判定できる所で候補なし（文章の行列は238万設定で0）。行列が自由で周期が長い場合は判定できない（[Note](/ja/research/kryptos-k4-affine-hill/)） |
 | ロータ機：入口・出口のalphabetつきの自由配線1枚、位置の鍵で進む1枚、動く2枚＋自由な遅い1枚（7.9×10¹⁰）、反射板つきの機械（商用Enigmaなど、plugboardなし）の前に自由な置換（1.11×10¹⁰） | 候補なし（[Note](/ja/research/kryptos-k4-rotors/)） |
 | 手順の列挙器：alphabet 274種×行の選び方1,663万通り×表10形の4.7×10¹⁵手順。ずらしのmaskを重ねた形、cribごと、cribの誤り3文字までも | K4に合う手順は0（[Note](/ja/research/kryptos-k4-procedure-enumerator/)） |
 | 彫り間違いと、閉じた別方式 | 1〜2文字の誤りでいくつかの族は戻るが、でたらめな暗号文でも同じ割合で戻る。誤りから族は選べない |

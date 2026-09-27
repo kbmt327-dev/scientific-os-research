@@ -11,6 +11,7 @@ lang: ja
 - **KRYPTOS-K4-EP-0135** · Finding — [標的リストを選ぶ自由まで払うと、TOKIOの読みはいくらか](/ja/research/kryptos-k4-list-price/)
 - **KRYPTOS-K4-EP-0121** · Negative Result — [配線が自由なロータ機で、K4のcribを作れるか](/ja/research/kryptos-k4-rotors/)
 - **KRYPTOS-K4-EP-0119** · Negative Result — [部品の文法から作った手順のうち、K4に合うものはあるか](/ja/research/kryptos-k4-procedure-enumerator/)
+- **KRYPTOS-K4-EP-0117** · Negative Result — [文に沿って変わるアフィンやHillの行列は、K4に合うか](/ja/research/kryptos-k4-affine-hill/)
 - **KRYPTOS-K4-EP-0113** · Negative Result — [鍵を探さずに、cribとの整合だけで否定できる暗号はどれか](/ja/research/kryptos-k4-consistency/)
 - **KRYPTOS-K4-EP-0110** · Negative Result — [Wを区切りとみれば、5×5の方陣の暗号でK4を作れるか](/ja/research/kryptos-k4-w-squares/)
 ## 2026-09-26

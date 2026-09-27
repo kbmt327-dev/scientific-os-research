@@ -11,6 +11,7 @@ This is the historical log. For current claims, start with the [research-area in
 - **KRYPTOS-K4-EP-0135** · Finding — [What is the TOKIO reading worth once the choice of target list is paid?](/en/research/kryptos-k4-list-price/)
 - **KRYPTOS-K4-EP-0121** · Negative Result — [Can a rotor machine with a free wiring produce K4's cribs?](/en/research/kryptos-k4-rotors/)
 - **KRYPTOS-K4-EP-0119** · Negative Result — [Does any fully specified procedure built from a grammar of parts fit K4?](/en/research/kryptos-k4-procedure-enumerator/)
+- **KRYPTOS-K4-EP-0117** · Negative Result — [Do affine maps or Hill matrices that change along the text fit K4?](/en/research/kryptos-k4-affine-hill/)
 - **KRYPTOS-K4-EP-0113** · Negative Result — [Which ciphers do K4's cribs refute by consistency alone?](/en/research/kryptos-k4-consistency/)
 - **KRYPTOS-K4-EP-0110** · Negative Result — [If the Ws are separators, can a 5×5 square cipher produce K4?](/en/research/kryptos-k4-w-squares/)
 ## 2026-09-26

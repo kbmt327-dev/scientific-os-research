@@ -1,0 +1,81 @@
+{
+ "source": "rechecked 2026-09-27 for the Note; internal records EP-0098 (2026-09-26), EP-0099 (2026-09-26), EP-0114 (2026-09-27)",
+ "cover": {
+  "keywords": {
+   "rows": 40,
+   "cover_m1_m4": [
+    14,
+    11,
+    10,
+    15
+   ],
+   "best_cover": 18,
+   "best_convention": "m5g13",
+   "null": {
+    "k4_best": 18,
+    "null_median": 19,
+    "share_ge_k4": 0.89
+   }
+  },
+  "John832": {
+   "rows": 9,
+   "cover_m1_m4": [
+    8,
+    4,
+    3,
+    4
+   ],
+   "best_cover": 8,
+   "best_convention": "m1",
+   "null": {
+    "k4_best": 8,
+    "null_median": 9,
+    "share_ge_k4": 0.85
+   }
+  },
+  "worldclock": {
+   "rows": 146,
+   "cover_m1_m4": [
+    16,
+    11,
+    13,
+    16
+   ],
+   "best_cover": 20,
+   "best_convention": "m5g9",
+   "null": {
+    "k4_best": 20,
+    "null_median": 22,
+    "share_ge_k4": 0.98
+   }
+  }
+ },
+ "recorded_not_rerun": {
+  "EP-0098 rows keyed by successive words (K1-K3, World Clock places, hint keywords; 386,048 settings)": {
+   "K4": 0,
+   "best": "5-7/24 per list, at shuffle level"
+  },
+  "EP-0099 M-94 cylinder, 25 published disks, any disk order (1,065,625 phase/read-off settings x every order)": {
+   "K4": 0,
+   "controls": "20/20",
+   "shuffles": "0/10"
+  },
+  "EP-0099 rows keyed by carved panel lines (60,320 settings)": {
+   "K4": 0,
+   "best": "6/24 = null median"
+  },
+  "EP-0114 matrix-mixed rows chosen by position (190,282,456 sequential settings)": {
+   "K4_reaching_19": 0,
+   "best": "5-10/24, shuffle level",
+   "controls": "30/30"
+  },
+  "EP-0114 selection-free cover, 44 lists with <= 64 rows (incl. K1-K3 words, K3 grids)": {
+   "lists_reaching_24": 0
+  },
+  "EP-0114 text lines as chart rows": {
+   "forward": "IC <= K4 in 0.2% (fails the flat-IC constraint)",
+   "inverse": "cannot encipher English (0/2,000)",
+   "crib_best": "10/24 = shuffle max"
+  }
+ }
+}

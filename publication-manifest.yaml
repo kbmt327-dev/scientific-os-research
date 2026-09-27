@@ -342,6 +342,15 @@ notes:
     type: Negative Result
     publication:
       status: publishable
+  - research_id: KRYPTOS-K4-EP-0114
+    source_episode: KRYPTOS-K4/EP-0114
+    source_episode_sha256: 9dfefe285696135fa41f132c422bfd723302390a1417eda94622a109baa21ec2
+    views:
+      en: content/en/research/kryptos-k4-chosen-rows/index.md
+      ja: content/ja/research/kryptos-k4-chosen-rows/index.md
+    type: Negative Result
+    publication:
+      status: publishable
   - research_id: KRYPTOS-K4-EP-0117
     source_episode: KRYPTOS-K4/EP-0117
     source_episode_sha256: a144b37aabc5f6703259d27b056e2365f74b91003c8daffcc10d87273192f622

@@ -1,0 +1,78 @@
+{
+ "source": "rechecked 2026-09-27 for the Note; internal records EP-0089, EP-0090, EP-0091 (2026-09-26), EP-0109",
+ "k4_ic": 0.03608247422680412,
+ "trials_per_m": 4000,
+ "share_ic_at_or_below_k4": {
+  "2": 0.0,
+  "3": 0.00125,
+  "4": 0.00825,
+  "6": 0.02575,
+  "8": 0.04575,
+  "12": 0.07525,
+  "16": 0.10075,
+  "26": 0.1295
+ },
+ "english_redundancy_bits": 2.86,
+ "english_redundancy_source": "4.70 - 1.84 bits per letter (character model, EP-0088)",
+ "window_conflicts": {
+  "0+1+0": [
+   21,
+   30
+  ],
+  "0+1+1": [
+   21,
+   30
+  ],
+  "1+1+0": [
+   22,
+   31
+  ],
+  "0+1+2": [
+   21,
+   30
+  ],
+  "1+1+1": [
+   22,
+   31
+  ],
+  "2+1+0": [
+   23,
+   32
+  ],
+  "0+1+3": [
+   21,
+   30
+  ],
+  "1+1+2": [
+   22,
+   31
+  ],
+  "2+1+1": [
+   23,
+   32
+  ],
+  "3+1+0": [
+   24,
+   33
+  ]
+ },
+ "recorded_not_rerun": {
+  "EP-0089 the sculpture's own text as the coding chart (18,624 settings, 14.2 bits, fixed before running)": {
+   "K4_best": "6/24",
+   "shuffles": "all 1,000 score 6 or more (median 7)",
+   "controls": "12/12 at 24/24"
+  },
+  "EP-0089 word-by-word Trifid": {
+   "note": "disfavoured: IC <= K4 in 3.7% of simulations, 27th symbol absent in 7.2%"
+  },
+  "EP-0090 published K1 and K3 worksheets": {
+   "note": "nothing fixes how a K4 chart's rows would be made"
+  },
+  "EP-0091 fixed digraph chart": {
+   "note": "open: aligned repeats 4 (English P 0.13, uniform P 0.09)"
+  },
+  "EP-0109 hypothesis: key or chart chosen by hand per position": {
+   "note": "A-Z closeness of the crib saves at most 0.93 bit per position; 1.84 would be needed"
+  }
+ }
+}

@@ -17,6 +17,7 @@ lang: ja
 ## 2026-09-26
 
 - **KRYPTOS-K4-EP-0101** · Finding — [鍵を選ばずに、cribの文字のつながりだけで除外できる暗号はどれか](/ja/research/kryptos-k4-letter-graph/)
+- **KRYPTOS-K4-EP-0091** · Finding — [K4にはどれだけの鍵が要り、それで何が判定できるものとして残るか](/ja/research/kryptos-k4-key-bound/)
 ## 2026-09-25
 
 - **GPU-SCHED-EP-0029** · Finding — [nodeの断片化は、サイズ優先とFCFS・backfillの順位を入れ替えるか](/ja/research/gpu-scheduling-locality/)

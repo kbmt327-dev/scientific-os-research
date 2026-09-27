@@ -29,7 +29,7 @@ K4は、Jim Sanbornが1990年にCIA本部へ設置した彫刻 *Kryptos* の第4
 ## 2026-09-27時点の整理
 
 - **検証できたこと**：短く書ける手順がcrib 24文字と両立するか、だけです。答えはこれまですべて「両立しない」でした。どれも論理的な反証で、K4がでたらめより起きにくいと示したものはありません。新しい平文文字は0です。
-- **鍵の大きさの下限**：K4の文字頻度は平らで、1位置あたり3 bit以上の鍵が要ります。これは英語の冗長度（約2.86 bit）より大きいので、1文字ずつ自由に選んだ鍵はK4だけでは決まりません。K4が解ける形は「短い技法」と「短く書ける鍵の出どころ」の組に限られます。これは、技法が分かれば残りはpuzzleだ、というScheidtの発言とも同じ向きです。
+- **鍵の大きさの下限**：K4の文字頻度は平らで、1位置あたり3 bit以上の鍵が要ります（[EP-0091](/ja/research/kryptos-k4-key-bound/)）。これは英語の冗長度（約2.86 bit）より大きいので、1文字ずつ自由に選んだ鍵はK4だけでは決まりません。K4が解ける形は「短い技法」と「短く書ける鍵の出どころ」の組に限られます。これは、技法が分かれば残りはpuzzleだ、というScheidtの発言とも同じ向きです。
 - **判定できないもの**：手製の表、同音換字、2文字の表、符号帳、配線が自由な複数ロータは、cribで拘束できる量より自由度が大きく、判定には表・装置・K5の出どころが外から要ります。「鍵や表が位置ごとに手で選ばれた」という仮説は、観察されたすべての特徴を説明でき、公開データではK4を決められないと予測します。これは仮説で、結論ではありません。
 - **鍵の出どころ**：2026-09-26に計画した「鍵の出どころと表を分ける」検定では、ラテン方格の表について、支持される出どころはありませんでした。
 - **進行中**：研究の担当者との検討で立てた新しい案（語の中の並べ替え、2文字の組、cribの誤りを4〜7文字許す列挙器）を計算しています。
@@ -59,13 +59,14 @@ v0.5では、写真の文字にカメラと円筒を当てはめて列の間隔�
 1. [[ja/research/kryptos-k4-57973-audit/index|EP-0001 — modelの自由度を数えても、primer 57973は際立つか]]
 2. [[ja/research/kryptos-k4-tokio-price/index|EP-0011 — K4のWをTOKIOと読むことには、どれだけの価値があるか]]
 3. [[ja/research/kryptos-k4-w-brackets/index|EP-0057 — K4の2つのcribを挟むWは、構造を持っているか]]
-4. [[ja/research/kryptos-k4-letter-graph/index|EP-0101 — 鍵を選ばずに、cribの文字のつながりだけで除外できる暗号はどれか]]
-5. [[ja/research/kryptos-k4-w-squares/index|EP-0110 — Wを区切りとみれば、5×5の方陣の暗号でK4を作れるか]]
-6. [[ja/research/kryptos-k4-consistency/index|EP-0113 — 鍵を探さずに、cribとの整合だけで否定できる暗号はどれか]]
-7. [[ja/research/kryptos-k4-affine-hill/index|EP-0117 — 文に沿って変わるアフィンやHillの行列は、K4に合うか]]
-8. [[ja/research/kryptos-k4-procedure-enumerator/index|EP-0119 — 部品の文法から作った手順のうち、K4に合うものはあるか]]
-9. [[ja/research/kryptos-k4-rotors/index|EP-0121 — 配線が自由なロータ機で、K4のcribを作れるか]]
-10. **[[ja/research/kryptos-k4-list-price/index|EP-0135 — 標的リストを選ぶ自由まで払うと、TOKIOの読みはいくらか]]（最新）**
+4. [[ja/research/kryptos-k4-key-bound/index|EP-0091 — K4にはどれだけの鍵が要り、それで何が判定できるものとして残るか]]
+5. [[ja/research/kryptos-k4-letter-graph/index|EP-0101 — 鍵を選ばずに、cribの文字のつながりだけで除外できる暗号はどれか]]
+6. [[ja/research/kryptos-k4-w-squares/index|EP-0110 — Wを区切りとみれば、5×5の方陣の暗号でK4を作れるか]]
+7. [[ja/research/kryptos-k4-consistency/index|EP-0113 — 鍵を探さずに、cribとの整合だけで否定できる暗号はどれか]]
+8. [[ja/research/kryptos-k4-affine-hill/index|EP-0117 — 文に沿って変わるアフィンやHillの行列は、K4に合うか]]
+9. [[ja/research/kryptos-k4-procedure-enumerator/index|EP-0119 — 部品の文法から作った手順のうち、K4に合うものはあるか]]
+10. [[ja/research/kryptos-k4-rotors/index|EP-0121 — 配線が自由なロータ機で、K4のcribを作れるか]]
+11. **[[ja/research/kryptos-k4-list-price/index|EP-0135 — 標的リストを選ぶ自由まで払うと、TOKIOの読みはいくらか]]（最新）**
 <!-- GENERATED: program-history:END -->
 
 ## 出典

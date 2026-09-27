@@ -29,7 +29,7 @@ Family-by-family results are in **[Families examined](/en/programs/kryptos-k4/fa
 ## Where things stand (2026-09-27)
 
 - **What has been tested**: only whether a procedure short enough to write down is compatible with the 24 crib letters. Every answer so far is no. These are logical refutations; none shows K4 to be rarer than random. No new plaintext letters.
-- **A lower bound on the key**: K4's letter frequencies are flat, which needs at least 3 bits of key per position. That is more than the redundancy of English (about 2.86 bits), so a key chosen freely letter by letter cannot be determined from K4 alone. A solvable K4 must pair a short technique with a key source that has a short description. This points the same way as Scheidt's remark that once the technique is known the rest is a puzzle.
+- **A lower bound on the key**: K4's letter frequencies are flat, which needs at least 3 bits of key per position ([EP-0091](/en/research/kryptos-k4-key-bound/)). That is more than the redundancy of English (about 2.86 bits), so a key chosen freely letter by letter cannot be determined from K4 alone. A solvable K4 must pair a short technique with a key source that has a short description. This points the same way as Scheidt's remark that once the technique is known the rest is a puzzle.
 - **What cannot be decided**: hand-made charts, homophones, digraph charts, codebooks and multi-rotor machines with free wiring have more freedom than the cribs constrain. Deciding them needs an outside source for the chart, the device or K5. One hypothesis is that the key or chart was chosen by hand position by position; it would account for every observed feature and predicts that public data cannot decide K4. It is a hypothesis, not a conclusion.
 - **Key sources**: the test that separates the key source from the chart (planned on 2026-09-26) found no supported source for a Latin-square chart.
 - **In progress**: further hypotheses developed with the program's owner (within-word reordering, digraphs, an enumerator allowing four to seven crib errors) are being computed.
@@ -59,13 +59,14 @@ No decryption and no new plaintext letter (as of 2026-09-27). What has been test
 1. [[en/research/kryptos-k4-57973-audit/index|EP-0001 — Does primer 57973 stand out once the model's freedom is counted?]]
 2. [[en/research/kryptos-k4-tokio-price/index|EP-0011 — How much is the TOKIO reading of K4's Ws worth?]]
 3. [[en/research/kryptos-k4-w-brackets/index|EP-0057 — Do the Ws that bracket both K4 cribs carry structure?]]
-4. [[en/research/kryptos-k4-letter-graph/index|EP-0101 — Which ciphers does the crib's letter graph rule out without choosing a key?]]
-5. [[en/research/kryptos-k4-w-squares/index|EP-0110 — If the Ws are separators, can a 5×5 square cipher produce K4?]]
-6. [[en/research/kryptos-k4-consistency/index|EP-0113 — Which ciphers do K4's cribs refute by consistency alone?]]
-7. [[en/research/kryptos-k4-affine-hill/index|EP-0117 — Do affine maps or Hill matrices that change along the text fit K4?]]
-8. [[en/research/kryptos-k4-procedure-enumerator/index|EP-0119 — Does any fully specified procedure built from a grammar of parts fit K4?]]
-9. [[en/research/kryptos-k4-rotors/index|EP-0121 — Can a rotor machine with a free wiring produce K4's cribs?]]
-10. **[[en/research/kryptos-k4-list-price/index|EP-0135 — What is the TOKIO reading worth once the choice of target list is paid?]] (latest)**
+4. [[en/research/kryptos-k4-key-bound/index|EP-0091 — How much key does K4 need, and what does that leave decidable?]]
+5. [[en/research/kryptos-k4-letter-graph/index|EP-0101 — Which ciphers does the crib's letter graph rule out without choosing a key?]]
+6. [[en/research/kryptos-k4-w-squares/index|EP-0110 — If the Ws are separators, can a 5×5 square cipher produce K4?]]
+7. [[en/research/kryptos-k4-consistency/index|EP-0113 — Which ciphers do K4's cribs refute by consistency alone?]]
+8. [[en/research/kryptos-k4-affine-hill/index|EP-0117 — Do affine maps or Hill matrices that change along the text fit K4?]]
+9. [[en/research/kryptos-k4-procedure-enumerator/index|EP-0119 — Does any fully specified procedure built from a grammar of parts fit K4?]]
+10. [[en/research/kryptos-k4-rotors/index|EP-0121 — Can a rotor machine with a free wiring produce K4's cribs?]]
+11. **[[en/research/kryptos-k4-list-price/index|EP-0135 — What is the TOKIO reading worth once the choice of target list is paid?]] (latest)**
 <!-- GENERATED: program-history:END -->
 
 ## Sources

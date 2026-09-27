@@ -6,6 +6,9 @@ lang: en
 
 This is the historical log. For current claims, start with the [research-area index](/en/research/).
 
+## 2026-09-27
+
+- **KRYPTOS-K4-EP-0135** · Finding — [What is the TOKIO reading worth once the choice of target list is paid?](/en/research/kryptos-k4-list-price/)
 ## 2026-09-25
 
 - **GPU-SCHED-EP-0029** · Finding — [Does node fragmentation reorder size-first policies against FCFS and backfill?](/en/research/gpu-scheduling-locality/)

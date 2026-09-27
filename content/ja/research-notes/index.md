@@ -6,6 +6,9 @@ lang: ja
 
 ここは履歴の入口です。現在の結論を知りたい場合は、先に[研究分野ごとの現在地](/ja/research/)を読んでください。
 
+## 2026-09-27
+
+- **KRYPTOS-K4-EP-0135** · Finding — [標的リストを選ぶ自由まで払うと、TOKIOの読みはいくらか](/ja/research/kryptos-k4-list-price/)
 ## 2026-09-25
 
 - **GPU-SCHED-EP-0029** · Finding — [nodeの断片化は、サイズ優先とFCFS・backfillの順位を入れ替えるか](/ja/research/gpu-scheduling-locality/)

@@ -1,0 +1,107 @@
+{
+ "source": "author's run of 2026-09-27 (EP-0135), frozen inputs committed before any gap was read",
+ "Q1_K4_letters": {
+  "per_list": {
+   "capitals": 0.0007827216980490931,
+   "compass": 0.011138157224813233,
+   "english": 0.01763903018348827,
+   "k123": 0.020463959802905576,
+   "themes": 0.0031552213456731153,
+   "worldclock": 0.0020047796731380335
+  },
+  "union": 0.05387187214728519,
+  "worldclock_share": 0.03721384821483435,
+  "top_union": [
+   [
+    "ENE",
+    0.0017824776901675114
+   ],
+   [
+    "ESE",
+    0.0016901213331640135
+   ],
+   [
+    "SEE",
+    0.0016901213331640135
+   ],
+   [
+    "NNE",
+    0.001616236247561215
+   ],
+   [
+    "THE",
+    0.001616236247561215
+   ],
+   [
+    "HIS",
+    0.0015608224333591163
+   ],
+   [
+    "CIA",
+    0.001502522483000658
+   ],
+   [
+    "BUT",
+    0.0014315235335542191
+   ],
+   [
+    "HOT",
+    0.0014315235335542191
+   ],
+   [
+    "SSE",
+    0.0014315235335542191
+   ]
+  ]
+ },
+ "Q4_cipher_side": {
+  "hits": 1.0,
+  "expected": 0.21084431995283154,
+  "p_ge": 0.19009985764033221
+ },
+ "Q4_cipher_side_without_K4_letters": {
+  "hits": 0.0,
+  "expected": 0.15566045002476422
+ },
+ "Q4_plaintext_letters": {
+  "hits": 1.0,
+  "expected_english_windows": 0.045,
+  "p_ge": 0.04400251816690004
+ },
+ "Q2_recorded_not_rerun": {
+  "Q2a_enumerator_on_92_letters": {
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "controls": "6/6"
+  },
+  "Q2b_a_ciphertext_autokey": {
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "controls": "6/6"
+  },
+  "Q2b_b_chaocipher": {
+   "settings": 536138304,
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "controls": "2/2"
+  },
+  "Q2b_c_walking_cursor": {
+   "settings": 5832,
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "controls": "2/2"
+  }
+ }
+}

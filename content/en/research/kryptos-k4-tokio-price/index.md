@@ -35,7 +35,7 @@ tags:
 
 <p class="research-area"><b>Kryptos K4</b><a href="/ja/research/kryptos-k4-tokio-price/" hreflang="ja">日本語</a></p>
 
-> **Later check (2026-09-27).** This Note does not pay for choosing the World Clock as the target list. An internal follow-up did: against the union of six target lists frozen before looking at K4 (the World Clock, English words, words from K1–K3, compass points, capitals, theme words; 3,036 words), the expected number of chance hits for the same reading family is 0.054, of which the World Clock contributes 3.7%. Counting the other markers in K1–K4 as well, K4's one hit (`TOKIO`) stands against 0.211 expected (p = 0.19). The reading is compatible with chance. Mechanisms that treat the Ws as markers inserted or overwritten after encryption also gave no candidate. The follow-up is summarised on the [program page](/en/programs/kryptos-k4/); its code is not public.
+> **Later check (2026-09-27).** This Note does not pay for choosing the World Clock as the target list. An internal follow-up did: against the union of six target lists frozen before looking at K4 (the World Clock, English words, words from K1–K3, compass points, capitals, theme words; 3,036 words), the expected number of chance hits for the same reading family is 0.054, of which the World Clock contributes 3.7%. Counting the other markers in K1–K4 as well, K4's one hit (`TOKIO`) stands against 0.211 expected (p = 0.19). The reading is compatible with chance. Mechanisms that treat the Ws as markers inserted or overwritten after encryption also gave no candidate. Details are in the [EP-0135 Note](/en/research/kryptos-k4-list-price/).
 
 ## Current finding
 

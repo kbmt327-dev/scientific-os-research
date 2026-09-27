@@ -125,16 +125,16 @@ programs:
 
   - id: kryptos-k4
     research_id_prefix: KRYPTOS-K4-
-    current_research_id: KRYPTOS-K4-EP-0057
+    current_research_id: KRYPTOS-K4-EP-0135
     ja:
       title: Kryptos K4
       home_summary: 未解読の暗号K4について、公開cribでどの方式を否定できるか、見つかったパターンが自由度を払った後にいくら残るかを記録しています。
       question: 97文字の暗号文と24文字のcribで、どの仕組みを否定できるか。見つけるのに使った自由度を数えた後で、生き残るパターンはどれか。
-      claim: 復号はしていません。新しい平文文字は0です（2026-09-27時点）。検証できたのは「短く書ける手順がcrib 24文字と両立するか」だけで、答えはすべて「両立しない」でした。K1〜K3と同じ「1枚の表のずらし」の形に加え、それを外した別方式（2文字の方陣、Hill、Slidefair・Portax・Doppelkasten、ロータ機、Enigma型＋前段の置換）や、部品の文法から作った4.7×10¹⁵手順の列挙器も、判定できる範囲では候補なしでした。どれも論理的な反証で、でたらめより起きにくいとは言えません。K4の文字頻度は平らなので鍵は1位置あたり3 bit以上が要り、手製の表・同音・符号帳などは、表や装置、K5の出どころがなければ判定できません。W区間をTOKIOと読むパターンは、標的リストを選ぶ自由まで払うと偶然と両立します（期待0.054）。最新のResearch NoteはEP-0057です。
+      claim: 復号はしていません。新しい平文文字は0です（2026-09-27時点）。検証できたのは「短く書ける手順がcrib 24文字と両立するか」だけで、答えはすべて「両立しない」でした。K1〜K3と同じ「1枚の表のずらし」の形に加え、それを外した別方式（2文字の方陣、Hill、Slidefair・Portax・Doppelkasten、ロータ機、Enigma型＋前段の置換）や、部品の文法から作った4.7×10¹⁵手順の列挙器も、判定できる範囲では候補なしでした。どれも論理的な反証で、でたらめより起きにくいとは言えません。K4の文字頻度は平らなので鍵は1位置あたり3 bit以上が要り、手製の表・同音・符号帳などは、表や装置、K5の出どころがなければ判定できません。W区間をTOKIOと読むパターンは、標的リストを選ぶ自由まで払うと偶然と両立します（期待0.054、EP-0135）。
       evidence_boundary: 公開暗号文と24文字のcribだけを使った探索的な計算です。事前登録はなく、外部の独立replicationも暗号専門家のレビューもありません。正解は存在しますが公開されていません。
     en:
       title: Kryptos K4
       home_summary: For the unsolved K4 cipher we record which mechanisms the public cribs rule out and how much each found pattern is worth once the search's own freedom is paid for.
       question: Which mechanisms can the 97 ciphertext letters and 24 crib letters rule out, and which apparent patterns survive once the freedom used to find them is counted?
-      claim: "No decryption and no new plaintext letter (as of 2026-09-27). What has been tested is only whether a procedure short enough to write down is compatible with the 24 crib letters, and every answer is no. Besides the K1–K3 form (one chart, shifted), methods outside it (digraph squares, Hill, Slidefair, Portax and Doppelkasten, rotor machines, an Enigma-type machine behind a free substitution) and an enumerator of 4.7 × 10¹⁵ procedures built from a grammar of parts gave no candidate wherever the cribs decide. These are logical refutations; none shows K4 to be rarer than random. K4's flat letter frequencies need at least 3 bits of key per position, and hand-made charts, homophones and codebooks cannot be decided without an outside source for the chart, the device or K5. The TOKIO reading of the W gaps is compatible with chance once the choice of target list is paid (expected 0.054). The latest Research Note is EP-0057."
+      claim: "No decryption and no new plaintext letter (as of 2026-09-27). What has been tested is only whether a procedure short enough to write down is compatible with the 24 crib letters, and every answer is no. Besides the K1–K3 form (one chart, shifted), methods outside it (digraph squares, Hill, Slidefair, Portax and Doppelkasten, rotor machines, an Enigma-type machine behind a free substitution) and an enumerator of 4.7 × 10¹⁵ procedures built from a grammar of parts gave no candidate wherever the cribs decide. These are logical refutations; none shows K4 to be rarer than random. K4's flat letter frequencies need at least 3 bits of key per position, and hand-made charts, homophones and codebooks cannot be decided without an outside source for the chart, the device or K5. The TOKIO reading of the W gaps is compatible with chance once the choice of target list is paid (expected 0.054, EP-0135)."
       evidence_boundary: Exploratory computation on the public ciphertext and 24 crib letters. Not preregistered; no external independent replication and no review by a cryptographer. The ground truth exists but is withheld.

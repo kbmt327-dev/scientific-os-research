@@ -18,7 +18,7 @@ Public ciphertext and cribs only. Every test is exploratory unless a Note says i
 
 ## Progress so far
 
-The program began by pricing claims brought in from outside. The claim that K4 is a reversed Gromark cipher with primer 57973 reproduces numerically but cannot be told from chance with the public cribs (EP-0001). Reading the W gaps as `TOKIO` passed the World Clock place list at p ≤ 1.5 × 10⁻³ (EP-0011); once six target lists conceivable before looking at K4 were paid for, the expected number of chance hits became 0.054, compatible with chance.
+The program began by pricing claims brought in from outside. The claim that K4 is a reversed Gromark cipher with primer 57973 reproduces numerically but cannot be told from chance with the public cribs (EP-0001). Reading the W gaps as `TOKIO` passed the World Clock place list at p ≤ 1.5 × 10⁻³ (EP-0011); once six target lists conceivable before looking at K4 were paid for, the expected number of chance hits became 0.054, compatible with chance ([EP-0135](/en/research/kryptos-k4-list-price/)).
 
 It then examined the K1–K3 form (one chart, shifted) broadly: periodic and running keys, masks, carving errors, physical keys. Every decidable family either gave no candidate or cannot be decided by the cribs. K4's flat letter frequencies need at least 3 bits of key per position.
 
@@ -46,11 +46,11 @@ Most dimensions and bearings are estimates (grade C) and should be read as appro
 <!-- GENERATED: program-current:START -->
 ## Current public state
 
-No decryption and no new plaintext letter (as of 2026-09-27). What has been tested is only whether a procedure short enough to write down is compatible with the 24 crib letters, and every answer is no. Besides the K1–K3 form (one chart, shifted), methods outside it (digraph squares, Hill, Slidefair, Portax and Doppelkasten, rotor machines, an Enigma-type machine behind a free substitution) and an enumerator of 4.7 × 10¹⁵ procedures built from a grammar of parts gave no candidate wherever the cribs decide. These are logical refutations; none shows K4 to be rarer than random. K4's flat letter frequencies need at least 3 bits of key per position, and hand-made charts, homophones and codebooks cannot be decided without an outside source for the chart, the device or K5. The TOKIO reading of the W gaps is compatible with chance once the choice of target list is paid (expected 0.054). The latest Research Note is EP-0057.
+No decryption and no new plaintext letter (as of 2026-09-27). What has been tested is only whether a procedure short enough to write down is compatible with the 24 crib letters, and every answer is no. Besides the K1–K3 form (one chart, shifted), methods outside it (digraph squares, Hill, Slidefair, Portax and Doppelkasten, rotor machines, an Enigma-type machine behind a free substitution) and an enumerator of 4.7 × 10¹⁵ procedures built from a grammar of parts gave no candidate wherever the cribs decide. These are logical refutations; none shows K4 to be rarer than random. K4's flat letter frequencies need at least 3 bits of key per position, and hand-made charts, homophones and codebooks cannot be decided without an outside source for the chart, the device or K5. The TOKIO reading of the W gaps is compatible with chance once the choice of target list is paid (expected 0.054, EP-0135).
 
 **Evidence boundary:** Exploratory computation on the public ciphertext and 24 crib letters. Not preregistered; no external independent replication and no review by a cryptographer. The ground truth exists but is withheld.
 
-**[Read the current Research Note (EP-0057) →](/en/research/kryptos-k4-w-brackets/)**
+**[Read the current Research Note (EP-0135) →](/en/research/kryptos-k4-list-price/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -58,7 +58,8 @@ No decryption and no new plaintext letter (as of 2026-09-27). What has been test
 
 1. [[en/research/kryptos-k4-57973-audit/index|EP-0001 — Does primer 57973 stand out once the model's freedom is counted?]]
 2. [[en/research/kryptos-k4-tokio-price/index|EP-0011 — How much is the TOKIO reading of K4's Ws worth?]]
-3. **[[en/research/kryptos-k4-w-brackets/index|EP-0057 — Do the Ws that bracket both K4 cribs carry structure?]] (latest)**
+3. [[en/research/kryptos-k4-w-brackets/index|EP-0057 — Do the Ws that bracket both K4 cribs carry structure?]]
+4. **[[en/research/kryptos-k4-list-price/index|EP-0135 — What is the TOKIO reading worth once the choice of target list is paid?]] (latest)**
 <!-- GENERATED: program-history:END -->
 
 ## Sources

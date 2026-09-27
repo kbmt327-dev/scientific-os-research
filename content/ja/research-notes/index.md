@@ -25,6 +25,7 @@ lang: ja
 ## 2026-09-25
 
 - **GPU-SCHED-EP-0029** · Finding — [nodeの断片化は、サイズ優先とFCFS・backfillの順位を入れ替えるか](/ja/research/gpu-scheduling-locality/)
+- **KRYPTOS-K4-EP-0066** · Negative Result — [彫刻の物理的な形が、K4の鍵になりうるか](/ja/research/kryptos-k4-physical-keys/)
 ## 2026-09-24
 
 - **KRYPTOS-K4-EP-0057** · Finding — [K4の2つのcribを挟むWは、構造を持っているか](/ja/research/kryptos-k4-w-brackets/)

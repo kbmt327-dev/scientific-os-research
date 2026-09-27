@@ -306,6 +306,15 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: KRYPTOS-K4-EP-0066
+    source_episode: KRYPTOS-K4/EP-0066
+    source_episode_sha256: 2cbc0c7b6e99a063f64d791681977e3f0d3c0a2dab2610de7354116cd039606e
+    views:
+      en: content/en/research/kryptos-k4-physical-keys/index.md
+      ja: content/ja/research/kryptos-k4-physical-keys/index.md
+    type: Negative Result
+    publication:
+      status: publishable
   - research_id: KRYPTOS-K4-EP-0071
     source_episode: KRYPTOS-K4/EP-0071
     source_episode_sha256: be936dda3db3eaf7e377804574770f736fb55d789ceb29963f39737d09fae908

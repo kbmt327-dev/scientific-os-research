@@ -36,7 +36,7 @@ This table summarizes the internal record. Only the rows marked with a public No
 | Masks on both sides with a stride running key (15.41 million settings) | Neither the number of crib-passing settings nor the best English score is distinguishable from shuffled controls |
 | Preregistered follow-up of doubled letters lining up at i ≡ 4 (mod 7) | Indistinguishable from chance |
 | A method that switches between segments (each crib judged separately): keyword, periodic and stride keys | No candidate in any segment |
-| One rotor with free wiring; a chart built from powers of one permutation | Incompatible with the cribs (positive controls 200/200) |
+| One rotor with free wiring; a chart built from powers of one permutation | Incompatible with the cribs (positive controls 200/200; [Note](/en/research/kryptos-k4-rotors/)) |
 | A running key from the text of Carter & Mace, *The Tomb of Tut.ankh.Amen*, vol. 1 (1923), with text and preprocessing frozen before running | Rejected with no mask or a one-sided mask (up to two crib errors, positive controls 60/60); no English with masks on both sides |
 | Hagelin machines (M-209, CX-52) with a mask | Their freedom exceeds what English can constrain by tens to 200 bits; not decidable from K4 alone |
 | `ROLL` as a key that turns the chart (three readings); the cut-out holes read as windows onto a key (96 readings, 4,081 keys, listed before running) | Rejected with no mask or a one-sided mask; no English with masks on both sides |
@@ -55,7 +55,7 @@ This table summarizes the internal record. Only the rows marked with a public No
 | 2-D shifts, rotations and mirrors on a 5 × 5 grid | No candidate where decidable; long periods with free squares are not decidable ([Note](/en/research/kryptos-k4-w-squares/)) |
 | Slidefair, Portax, Doppelkasten | Slidefair and Portax never encipher a letter to itself, so S→S and K→K exclude them; single-pass Doppelkasten is inconsistent in all 96 settings; double-pass is not decidable ([Note](/en/research/kryptos-k4-consistency/)) |
 | Affine maps that change with position; Hill with periodically changing matrices, also with matrices taken from texts | No candidate where decidable (text matrices 0 of 2.38 million); long periods with free matrices are not decidable |
-| Rotor machines: one free rotor with entry and exit alphabets or stepped by position keys; two moving rotors with a free slow rotor (7.9 × 10¹⁰); reflector machines (commercial Enigma and others, no plugboard) behind a free substitution (1.11 × 10¹⁰) | No candidate |
+| Rotor machines: one free rotor with entry and exit alphabets or stepped by position keys; two moving rotors with a free slow rotor (7.9 × 10¹⁰); reflector machines (commercial Enigma and others, no plugboard) behind a free substitution (1.11 × 10¹⁰) | No candidate ([Note](/en/research/kryptos-k4-rotors/)) |
 | An enumerator of fully specified procedures (274 alphabets × 16.6 million row selections × 10 chart forms, 4.7 × 10¹⁵ procedures), also with a stacked shift mask, per crib, and with up to three crib errors | No procedure fits K4 ([Note](/en/research/kryptos-k4-procedure-enumerator/)) |
 | Carving errors against the closed different methods | One or two errors would reopen several closed families, but just as often for random ciphertext; the errors do not single out a family |
 

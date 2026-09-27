@@ -1,0 +1,54 @@
+{
+ "source": "rechecked 2026-09-27 for the Note; internal records EP-0083 (2026-09-26), EP-0121, EP-0132 (2026-09-27)",
+ "single_rotor_free_wiring": {
+  "settings": "d = 0..25 x (A-Z, KRYPTOS)",
+  "K4_passing": [],
+  "planted_found": 200,
+  "planted": 200,
+  "shuffles_with_a_pass": 0,
+  "shuffles": 2000
+ },
+ "recorded_not_rerun": {
+  "EP-0083 chart of powers of one permutation, e = a*i + b (676 settings)": {
+   "K4": 0,
+   "shuffles": "0/2,000",
+   "controls": "200/200"
+  },
+  "EP-0121 R-a one free rotor with entry and exit keyword alphabets (1,951,976)": {
+   "K4": 0,
+   "shuffles": "0/10",
+   "controls": "30/30",
+   "min_crib_errors": {
+    "K4": 4,
+    "shuffles": "3-4"
+   }
+  },
+  "EP-0121 R-b one free rotor stepped by position-only keys (90,246,284)": {
+   "K4": 0,
+   "shuffles": "0/10",
+   "controls": "30/30",
+   "min_crib_errors": {
+    "K4": 3,
+    "shuffles": "3-5"
+   }
+  },
+  "EP-0121 R-c odometer: two moving rotors from 274 alphabets and a free slow rotor anywhere (7.9e10, 36.2 bits)": {
+   "K4": 0,
+   "shuffles": "1/10",
+   "controls": "30/30"
+  },
+  "EP-0132 reflector machine (commercial Enigma D/K, Swiss-K, Railway; no plugboard) behind a free substitution (1.11e10)": {
+   "K4": 0,
+   "shuffles": "0/50",
+   "controls": "30/30",
+   "expected_false_passes": 7.9e-08
+  }
+ },
+ "log2_settings": {
+  "single rotor, free wiring (EP-0083)": 5.7,
+  "R-a entry/exit alphabets": 20.9,
+  "R-b position keys": 26.4,
+  "R-c odometer, free slow rotor": 36.2,
+  "reflector machine + free substitution": 33.4
+ }
+}

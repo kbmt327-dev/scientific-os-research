@@ -63,7 +63,8 @@ v0.5では、写真の文字にカメラと円筒を当てはめて列の間隔�
 5. [[ja/research/kryptos-k4-w-squares/index|EP-0110 — Wを区切りとみれば、5×5の方陣の暗号でK4を作れるか]]
 6. [[ja/research/kryptos-k4-consistency/index|EP-0113 — 鍵を探さずに、cribとの整合だけで否定できる暗号はどれか]]
 7. [[ja/research/kryptos-k4-procedure-enumerator/index|EP-0119 — 部品の文法から作った手順のうち、K4に合うものはあるか]]
-8. **[[ja/research/kryptos-k4-list-price/index|EP-0135 — 標的リストを選ぶ自由まで払うと、TOKIOの読みはいくらか]]（最新）**
+8. [[ja/research/kryptos-k4-rotors/index|EP-0121 — 配線が自由なロータ機で、K4のcribを作れるか]]
+9. **[[ja/research/kryptos-k4-list-price/index|EP-0135 — 標的リストを選ぶ自由まで払うと、TOKIOの読みはいくらか]]（最新）**
 <!-- GENERATED: program-history:END -->
 
 ## 出典

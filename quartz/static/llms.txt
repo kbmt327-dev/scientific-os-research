@@ -256,6 +256,9 @@ Published Research Notes:
 - KRYPTOS-K4-EP-0119 — Does any fully specified procedure built from a grammar of parts fit K4? (Negative Result)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-procedure-enumerator/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-procedure-enumerator/
+- KRYPTOS-K4-EP-0121 — Can a rotor machine with a free wiring produce K4's cribs? (Negative Result)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-rotors/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-rotors/
 - KRYPTOS-K4-EP-0135 — What is the TOKIO reading worth once the choice of target list is paid? (Finding) — CURRENT
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-list-price/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-list-price/

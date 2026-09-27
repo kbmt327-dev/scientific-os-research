@@ -333,6 +333,15 @@ notes:
     type: Negative Result
     publication:
       status: publishable
+  - research_id: KRYPTOS-K4-EP-0121
+    source_episode: KRYPTOS-K4/EP-0121
+    source_episode_sha256: ef45787aa9e0ecbea92f3db22340029ba4856590f7b2aad108d2cedcf3d3934c
+    views:
+      en: content/en/research/kryptos-k4-rotors/index.md
+      ja: content/ja/research/kryptos-k4-rotors/index.md
+    type: Negative Result
+    publication:
+      status: publishable
   - research_id: KRYPTOS-K4-EP-0135
     source_episode: KRYPTOS-K4/EP-0135
     source_episode_sha256: fb0f7a7b52033d795d3e06e98d302250e09179811e7edd71d682f3b396c0d3e6

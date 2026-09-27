@@ -20,6 +20,7 @@ lang: ja
 - **KRYPTOS-K4-EP-0101** · Finding — [鍵を選ばずに、cribの文字のつながりだけで除外できる暗号はどれか](/ja/research/kryptos-k4-letter-graph/)
 - **KRYPTOS-K4-EP-0093** · Negative Result — [鍵の出どころを、それが動かす表を知らずに検定できるか](/ja/research/kryptos-k4-key-sources/)
 - **KRYPTOS-K4-EP-0091** · Finding — [K4にはどれだけの鍵が要り、それで何が判定できるものとして残るか](/ja/research/kryptos-k4-key-bound/)
+- **KRYPTOS-K4-EP-0071** · Finding — [彫り間違いが数文字あれば、否定した暗号は開くか](/ja/research/kryptos-k4-carving-errors/)
 ## 2026-09-25
 
 - **GPU-SCHED-EP-0029** · Finding — [nodeの断片化は、サイズ優先とFCFS・backfillの順位を入れ替えるか](/ja/research/gpu-scheduling-locality/)

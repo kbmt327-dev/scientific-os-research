@@ -59,16 +59,17 @@ No decryption and no new plaintext letter (as of 2026-09-27). What has been test
 1. [[en/research/kryptos-k4-57973-audit/index|EP-0001 — Does primer 57973 stand out once the model's freedom is counted?]]
 2. [[en/research/kryptos-k4-tokio-price/index|EP-0011 — How much is the TOKIO reading of K4's Ws worth?]]
 3. [[en/research/kryptos-k4-w-brackets/index|EP-0057 — Do the Ws that bracket both K4 cribs carry structure?]]
-4. [[en/research/kryptos-k4-key-bound/index|EP-0091 — How much key does K4 need, and what does that leave decidable?]]
-5. [[en/research/kryptos-k4-key-sources/index|EP-0093 — Can a key source be tested without knowing the chart it drives?]]
-6. [[en/research/kryptos-k4-letter-graph/index|EP-0101 — Which ciphers does the crib's letter graph rule out without choosing a key?]]
-7. [[en/research/kryptos-k4-w-squares/index|EP-0110 — If the Ws are separators, can a 5×5 square cipher produce K4?]]
-8. [[en/research/kryptos-k4-consistency/index|EP-0113 — Which ciphers do K4's cribs refute by consistency alone?]]
-9. [[en/research/kryptos-k4-chosen-rows/index|EP-0114 — Can K4 come from a list of keyed rows chosen letter by letter?]]
-10. [[en/research/kryptos-k4-affine-hill/index|EP-0117 — Do affine maps or Hill matrices that change along the text fit K4?]]
-11. [[en/research/kryptos-k4-procedure-enumerator/index|EP-0119 — Does any fully specified procedure built from a grammar of parts fit K4?]]
-12. [[en/research/kryptos-k4-rotors/index|EP-0121 — Can a rotor machine with a free wiring produce K4's cribs?]]
-13. **[[en/research/kryptos-k4-list-price/index|EP-0135 — What is the TOKIO reading worth once the choice of target list is paid?]] (latest)**
+4. [[en/research/kryptos-k4-carving-errors/index|EP-0071 — Would a few carving errors reopen the ciphers already ruled out?]]
+5. [[en/research/kryptos-k4-key-bound/index|EP-0091 — How much key does K4 need, and what does that leave decidable?]]
+6. [[en/research/kryptos-k4-key-sources/index|EP-0093 — Can a key source be tested without knowing the chart it drives?]]
+7. [[en/research/kryptos-k4-letter-graph/index|EP-0101 — Which ciphers does the crib's letter graph rule out without choosing a key?]]
+8. [[en/research/kryptos-k4-w-squares/index|EP-0110 — If the Ws are separators, can a 5×5 square cipher produce K4?]]
+9. [[en/research/kryptos-k4-consistency/index|EP-0113 — Which ciphers do K4's cribs refute by consistency alone?]]
+10. [[en/research/kryptos-k4-chosen-rows/index|EP-0114 — Can K4 come from a list of keyed rows chosen letter by letter?]]
+11. [[en/research/kryptos-k4-affine-hill/index|EP-0117 — Do affine maps or Hill matrices that change along the text fit K4?]]
+12. [[en/research/kryptos-k4-procedure-enumerator/index|EP-0119 — Does any fully specified procedure built from a grammar of parts fit K4?]]
+13. [[en/research/kryptos-k4-rotors/index|EP-0121 — Can a rotor machine with a free wiring produce K4's cribs?]]
+14. **[[en/research/kryptos-k4-list-price/index|EP-0135 — What is the TOKIO reading worth once the choice of target list is paid?]] (latest)**
 <!-- GENERATED: program-history:END -->
 
 ## Sources

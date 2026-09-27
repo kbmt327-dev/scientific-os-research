@@ -244,6 +244,9 @@ Published Research Notes:
 - KRYPTOS-K4-EP-0057 — Do the Ws that bracket both K4 cribs carry structure? (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-w-brackets/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-w-brackets/
+- KRYPTOS-K4-EP-0071 — Would a few carving errors reopen the ciphers already ruled out? (Finding)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-carving-errors/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-carving-errors/
 - KRYPTOS-K4-EP-0091 — How much key does K4 need, and what does that leave decidable? (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-key-bound/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-key-bound/

@@ -297,6 +297,15 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: KRYPTOS-K4-EP-0071
+    source_episode: KRYPTOS-K4/EP-0071
+    source_episode_sha256: be936dda3db3eaf7e377804574770f736fb55d789ceb29963f39737d09fae908
+    views:
+      en: content/en/research/kryptos-k4-carving-errors/index.md
+      ja: content/ja/research/kryptos-k4-carving-errors/index.md
+    type: Finding
+    publication:
+      status: publishable
   - research_id: KRYPTOS-K4-EP-0091
     source_episode: KRYPTOS-K4/EP-0091
     source_episode_sha256: 5d9ff9c773580a0cfd5f0fcfbb3ad89101adc13e7881d34f342951f74ff6b2d4

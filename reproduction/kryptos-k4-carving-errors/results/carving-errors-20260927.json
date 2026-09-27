@@ -1,0 +1,318 @@
+{
+ "source": "rechecked 2026-09-27 for the Note; internal records EP-0070, EP-0071 (2026-09-26), EP-0123 (2026-09-27)",
+ "periodic_min_errors": {
+  "conventions": "Vigenere, Beaufort, variant x A-Z, KRYPTOS; best of the six; crib at its published position",
+  "shuffles": 100,
+  "by_period": {
+   "1": {
+    "K4": 19,
+    "shuffle_min": 18,
+    "shuffle_median": 20,
+    "shuffle_max": 21
+   },
+   "2": {
+    "K4": 18,
+    "shuffle_min": 16,
+    "shuffle_median": 19,
+    "shuffle_max": 20
+   },
+   "3": {
+    "K4": 16,
+    "shuffle_min": 15,
+    "shuffle_median": 18,
+    "shuffle_max": 20
+   },
+   "4": {
+    "K4": 17,
+    "shuffle_min": 15,
+    "shuffle_median": 17,
+    "shuffle_max": 19
+   },
+   "5": {
+    "K4": 16,
+    "shuffle_min": 14,
+    "shuffle_median": 16,
+    "shuffle_max": 18
+   },
+   "6": {
+    "K4": 16,
+    "shuffle_min": 13,
+    "shuffle_median": 16,
+    "shuffle_max": 18
+   },
+   "7": {
+    "K4": 16,
+    "shuffle_min": 12,
+    "shuffle_median": 15,
+    "shuffle_max": 17
+   },
+   "8": {
+    "K4": 13,
+    "shuffle_min": 12,
+    "shuffle_median": 14,
+    "shuffle_max": 15
+   },
+   "9": {
+    "K4": 14,
+    "shuffle_min": 11,
+    "shuffle_median": 14,
+    "shuffle_max": 15
+   },
+   "10": {
+    "K4": 13,
+    "shuffle_min": 11,
+    "shuffle_median": 13,
+    "shuffle_max": 14
+   },
+   "11": {
+    "K4": 11,
+    "shuffle_min": 9,
+    "shuffle_median": 12,
+    "shuffle_max": 13
+   },
+   "12": {
+    "K4": 12,
+    "shuffle_min": 8,
+    "shuffle_median": 11,
+    "shuffle_max": 12
+   },
+   "13": {
+    "K4": 8,
+    "shuffle_min": 8,
+    "shuffle_median": 10,
+    "shuffle_max": 11
+   },
+   "14": {
+    "K4": 10,
+    "shuffle_min": 8,
+    "shuffle_median": 10,
+    "shuffle_max": 11
+   },
+   "15": {
+    "K4": 8,
+    "shuffle_min": 6,
+    "shuffle_median": 8,
+    "shuffle_max": 9
+   },
+   "16": {
+    "K4": 7,
+    "shuffle_min": 5,
+    "shuffle_median": 7,
+    "shuffle_max": 8
+   },
+   "17": {
+    "K4": 7,
+    "shuffle_min": 5,
+    "shuffle_median": 6,
+    "shuffle_max": 7
+   },
+   "18": {
+    "K4": 7,
+    "shuffle_min": 4,
+    "shuffle_median": 6,
+    "shuffle_max": 7
+   },
+   "19": {
+    "K4": 7,
+    "shuffle_min": 7,
+    "shuffle_median": 8,
+    "shuffle_max": 9
+   },
+   "20": {
+    "K4": 10,
+    "shuffle_min": 8,
+    "shuffle_median": 10,
+    "shuffle_max": 11
+   },
+   "21": {
+    "K4": 10,
+    "shuffle_min": 8,
+    "shuffle_median": 10,
+    "shuffle_max": 11
+   },
+   "22": {
+    "K4": 8,
+    "shuffle_min": 7,
+    "shuffle_median": 8,
+    "shuffle_max": 9
+   },
+   "23": {
+    "K4": 7,
+    "shuffle_min": 5,
+    "shuffle_median": 6,
+    "shuffle_max": 7
+   },
+   "24": {
+    "K4": 5,
+    "shuffle_min": 2,
+    "shuffle_median": 5,
+    "shuffle_max": 5
+   },
+   "25": {
+    "K4": 3,
+    "shuffle_min": 1,
+    "shuffle_median": 3,
+    "shuffle_max": 3
+   },
+   "26": {
+    "K4": 1,
+    "shuffle_min": 0,
+    "shuffle_median": 1,
+    "shuffle_max": 1
+   },
+   "27": {
+    "K4": 0,
+    "shuffle_min": 0,
+    "shuffle_median": 0,
+    "shuffle_max": 0
+   },
+   "28": {
+    "K4": 0,
+    "shuffle_min": 0,
+    "shuffle_median": 0,
+    "shuffle_max": 0
+   },
+   "29": {
+    "K4": 0,
+    "shuffle_min": 0,
+    "shuffle_median": 0,
+    "shuffle_max": 0
+   },
+   "30": {
+    "K4": 1,
+    "shuffle_min": 0,
+    "shuffle_median": 1,
+    "shuffle_max": 1
+   },
+   "31": {
+    "K4": 2,
+    "shuffle_min": 1,
+    "shuffle_median": 2,
+    "shuffle_max": 2
+   },
+   "32": {
+    "K4": 2,
+    "shuffle_min": 1,
+    "shuffle_median": 3,
+    "shuffle_max": 3
+   },
+   "33": {
+    "K4": 4,
+    "shuffle_min": 2,
+    "shuffle_median": 4,
+    "shuffle_max": 4
+   },
+   "34": {
+    "K4": 5,
+    "shuffle_min": 3,
+    "shuffle_median": 5,
+    "shuffle_max": 5
+   },
+   "35": {
+    "K4": 5,
+    "shuffle_min": 4,
+    "shuffle_median": 5,
+    "shuffle_max": 6
+   },
+   "36": {
+    "K4": 7,
+    "shuffle_min": 4,
+    "shuffle_median": 6,
+    "shuffle_max": 7
+   },
+   "37": {
+    "K4": 7,
+    "shuffle_min": 6,
+    "shuffle_median": 7,
+    "shuffle_max": 8
+   },
+   "38": {
+    "K4": 7,
+    "shuffle_min": 7,
+    "shuffle_median": 8,
+    "shuffle_max": 9
+   },
+   "39": {
+    "K4": 7,
+    "shuffle_min": 8,
+    "shuffle_median": 9,
+    "shuffle_max": 10
+   },
+   "40": {
+    "K4": 10,
+    "shuffle_min": 8,
+    "shuffle_median": 10,
+    "shuffle_max": 11
+   },
+   "41": {
+    "K4": 9,
+    "shuffle_min": 8,
+    "shuffle_median": 10,
+    "shuffle_max": 11
+   },
+   "42": {
+    "K4": 10,
+    "shuffle_min": 8,
+    "shuffle_median": 10,
+    "shuffle_max": 11
+   },
+   "43": {
+    "K4": 10,
+    "shuffle_min": 7,
+    "shuffle_median": 9,
+    "shuffle_max": 10
+   },
+   "44": {
+    "K4": 8,
+    "shuffle_min": 7,
+    "shuffle_median": 8,
+    "shuffle_max": 9
+   },
+   "45": {
+    "K4": 7,
+    "shuffle_min": 5,
+    "shuffle_median": 7,
+    "shuffle_max": 8
+   },
+   "46": {
+    "K4": 7,
+    "shuffle_min": 5,
+    "shuffle_median": 6,
+    "shuffle_max": 7
+   },
+   "47": {
+    "K4": 5,
+    "shuffle_min": 3,
+    "shuffle_median": 5,
+    "shuffle_max": 6
+   },
+   "48": {
+    "K4": 5,
+    "shuffle_min": 2,
+    "shuffle_median": 5,
+    "shuffle_max": 5
+   }
+  }
+ },
+ "recorded_not_rerun": {
+  "EP-0070 one carving error": "periodic keys p 1-24 and 33-49, Kryptos-text stride, World Clock and English running keys stay refuted",
+  "EP-0071 up to five crib errors (8 conventions, 5 crib alignments)": {
+   "periodic_closed": "p <= 16 (>= 7 errors) and 18-22 (6-10)",
+   "periodic_open": "p = 17 and >= 23 (<= 5 errors; shuffles the same)",
+   "Trifid": "closed (>= 10 errors)",
+   "Hill n=2": "closed",
+   "Hill n=3": "not decidable",
+   "free-alphabet periodic p >= 10": "not decidable (shuffles pass 45-100%)",
+   "English running key": "loses power"
+  },
+  "EP-0123 error distance of different methods (fewest crib letters to drop)": {
+   "Two-square": "1 (shuffles <= 1 in 75/200)",
+   "Four-square": "2 (<= 2 in 26/200)",
+   "CM-Bifid": "1 (<= 1 in 50/50)",
+   "periodic Hill (powered settings)": "1 (<= 1 in 10/10)",
+   "single rotor": "7 (<= 7 in 159/200)",
+   "fixed homophones": "9 (<= 9 in 91.7%)",
+   "Playfair-like": ">= 2 (self-encryptions; shuffles have >= 2 in 27%)"
+  }
+ }
+}

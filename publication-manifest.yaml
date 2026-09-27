@@ -315,6 +315,15 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: KRYPTOS-K4-EP-0072
+    source_episode: KRYPTOS-K4/EP-0072
+    source_episode_sha256: bae495dc6bc7472dc504d81bc15f1e65ca8d3f3183938ad70a66f971694f035c
+    views:
+      en: content/en/research/kryptos-k4-masks/index.md
+      ja: content/ja/research/kryptos-k4-masks/index.md
+    type: Negative Result
+    publication:
+      status: publishable
   - research_id: KRYPTOS-K4-EP-0091
     source_episode: KRYPTOS-K4/EP-0091
     source_episode_sha256: 5d9ff9c773580a0cfd5f0fcfbb3ad89101adc13e7881d34f342951f74ff6b2d4

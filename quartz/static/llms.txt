@@ -250,6 +250,9 @@ Published Research Notes:
 - KRYPTOS-K4-EP-0071 — Would a few carving errors reopen the ciphers already ruled out? (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-carving-errors/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-carving-errors/
+- KRYPTOS-K4-EP-0072 — If a fixed substitution masks the English, which keys can still be tested? (Negative Result)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-masks/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-masks/
 - KRYPTOS-K4-EP-0091 — How much key does K4 need, and what does that leave decidable? (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-key-bound/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-key-bound/

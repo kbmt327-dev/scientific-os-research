@@ -20,6 +20,7 @@ This is the historical log. For current claims, start with the [research-area in
 - **KRYPTOS-K4-EP-0101** · Finding — [Which ciphers does the crib's letter graph rule out without choosing a key?](/en/research/kryptos-k4-letter-graph/)
 - **KRYPTOS-K4-EP-0093** · Negative Result — [Can a key source be tested without knowing the chart it drives?](/en/research/kryptos-k4-key-sources/)
 - **KRYPTOS-K4-EP-0091** · Finding — [How much key does K4 need, and what does that leave decidable?](/en/research/kryptos-k4-key-bound/)
+- **KRYPTOS-K4-EP-0072** · Negative Result — [If a fixed substitution masks the English, which keys can still be tested?](/en/research/kryptos-k4-masks/)
 - **KRYPTOS-K4-EP-0071** · Finding — [Would a few carving errors reopen the ciphers already ruled out?](/en/research/kryptos-k4-carving-errors/)
 ## 2026-09-25
 

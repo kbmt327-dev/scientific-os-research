@@ -61,16 +61,17 @@ v0.5では、写真の文字にカメラと円筒を当てはめて列の間隔�
 3. [[ja/research/kryptos-k4-classical/index|EP-0032 — K4のcribと文字数で、どの古典暗号を否定できるか]]
 4. [[ja/research/kryptos-k4-w-brackets/index|EP-0057 — K4の2つのcribを挟むWは、構造を持っているか]]
 5. [[ja/research/kryptos-k4-carving-errors/index|EP-0071 — 彫り間違いが数文字あれば、否定した暗号は開くか]]
-6. [[ja/research/kryptos-k4-key-bound/index|EP-0091 — K4にはどれだけの鍵が要り、それで何が判定できるものとして残るか]]
-7. [[ja/research/kryptos-k4-key-sources/index|EP-0093 — 鍵の出どころを、それが動かす表を知らずに検定できるか]]
-8. [[ja/research/kryptos-k4-letter-graph/index|EP-0101 — 鍵を選ばずに、cribの文字のつながりだけで除外できる暗号はどれか]]
-9. [[ja/research/kryptos-k4-w-squares/index|EP-0110 — Wを区切りとみれば、5×5の方陣の暗号でK4を作れるか]]
-10. [[ja/research/kryptos-k4-consistency/index|EP-0113 — 鍵を探さずに、cribとの整合だけで否定できる暗号はどれか]]
-11. [[ja/research/kryptos-k4-chosen-rows/index|EP-0114 — 鍵語の行の一覧から1文字ずつ選ぶ表で、K4を作れるか]]
-12. [[ja/research/kryptos-k4-affine-hill/index|EP-0117 — 文に沿って変わるアフィンやHillの行列は、K4に合うか]]
-13. [[ja/research/kryptos-k4-procedure-enumerator/index|EP-0119 — 部品の文法から作った手順のうち、K4に合うものはあるか]]
-14. [[ja/research/kryptos-k4-rotors/index|EP-0121 — 配線が自由なロータ機で、K4のcribを作れるか]]
-15. **[[ja/research/kryptos-k4-list-price/index|EP-0135 — 標的リストを選ぶ自由まで払うと、TOKIOの読みはいくらか]]（最新）**
+6. [[ja/research/kryptos-k4-masks/index|EP-0072 — 固定の換字が英語を隠しているとき、どの鍵がまだ検定できるか]]
+7. [[ja/research/kryptos-k4-key-bound/index|EP-0091 — K4にはどれだけの鍵が要り、それで何が判定できるものとして残るか]]
+8. [[ja/research/kryptos-k4-key-sources/index|EP-0093 — 鍵の出どころを、それが動かす表を知らずに検定できるか]]
+9. [[ja/research/kryptos-k4-letter-graph/index|EP-0101 — 鍵を選ばずに、cribの文字のつながりだけで除外できる暗号はどれか]]
+10. [[ja/research/kryptos-k4-w-squares/index|EP-0110 — Wを区切りとみれば、5×5の方陣の暗号でK4を作れるか]]
+11. [[ja/research/kryptos-k4-consistency/index|EP-0113 — 鍵を探さずに、cribとの整合だけで否定できる暗号はどれか]]
+12. [[ja/research/kryptos-k4-chosen-rows/index|EP-0114 — 鍵語の行の一覧から1文字ずつ選ぶ表で、K4を作れるか]]
+13. [[ja/research/kryptos-k4-affine-hill/index|EP-0117 — 文に沿って変わるアフィンやHillの行列は、K4に合うか]]
+14. [[ja/research/kryptos-k4-procedure-enumerator/index|EP-0119 — 部品の文法から作った手順のうち、K4に合うものはあるか]]
+15. [[ja/research/kryptos-k4-rotors/index|EP-0121 — 配線が自由なロータ機で、K4のcribを作れるか]]
+16. **[[ja/research/kryptos-k4-list-price/index|EP-0135 — 標的リストを選ぶ自由まで払うと、TOKIOの読みはいくらか]]（最新）**
 <!-- GENERATED: program-history:END -->
 
 ## 出典

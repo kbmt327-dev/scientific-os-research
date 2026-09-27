@@ -1,0 +1,136 @@
+{
+ "source": "author's runs of 2026-09-27 (EP-0119, EP-0127, EP-0131, EP-0134); each script committed before it was run on K4",
+ "crib_letters": 24,
+ "selector_families_M26": {
+  "lin": 676,
+  "feat": 77064,
+  "kw": 38192,
+  "cauto": 1092,
+  "text": 15387608,
+  "carter": 1122984
+ },
+ "shapes": [
+  {
+   "shape": "GATHER (KWROWS, TEXTROWS, POW)",
+   "label": "different method",
+   "tables": 307,
+   "procedures": 344000000.0
+  },
+  {
+   "shape": "VBEAU",
+   "label": "K1-K3 variant",
+   "tables": 274,
+   "procedures": 4560000000.0
+  },
+  {
+   "shape": "QUAG+lin",
+   "label": "K1-K3 variant",
+   "tables": 16,
+   "procedures": 180000000000.0
+  },
+  {
+   "shape": "QUAG",
+   "label": "K1-K3 variant",
+   "tables": 75076,
+   "procedures": 1250000000000.0
+  },
+  {
+   "shape": "QBEAU",
+   "label": "K1-K3 variant",
+   "tables": 75076,
+   "procedures": 1250000000000.0
+  },
+  {
+   "shape": "TWO-core",
+   "label": "different method",
+   "tables": 12,
+   "procedures": 23000000000000.0
+  },
+  {
+   "shape": "TWOB-core",
+   "label": "different method",
+   "tables": 12,
+   "procedures": 23000000000000.0
+  },
+  {
+   "shape": "AFF",
+   "label": "different method",
+   "tables": 274,
+   "procedures": 252000000000000.0
+  },
+  {
+   "shape": "TWO",
+   "label": "different method",
+   "tables": 74802,
+   "procedures": 2200000000000000.0
+  },
+  {
+   "shape": "TWOB",
+   "label": "different method",
+   "tables": 74802,
+   "procedures": 2200000000000000.0
+  }
+ ],
+ "recorded_total": 4700000000000000.0,
+ "recorded_log2": 52.1,
+ "recorded_expected_false_passes": 5.16e-19,
+ "runs": {
+  "EP-0119 whole crib": {
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "controls": "18/18"
+  },
+  "EP-0127 stacked shift mask (130 cells, log2 107.6)": {
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "controls": "32/32",
+   "expected_false_passes": 0.028
+  },
+  "EP-0131 up to 2 crib errors": {
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "controls_plaintext_side": "18/18",
+   "controls_carving": "14/18",
+   "expected": 9e-14
+  },
+  "EP-0131 up to 3 crib errors": {
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "controls_plaintext_side": "9/9",
+   "controls_carving": "9/9",
+   "expected": 1.6e-11
+  },
+  "EP-0134 crib 1 alone (13 letters)": {
+   "K4_hits": 8,
+   "K4_informative_hits": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "controls": "9/9",
+   "expected": 0.0019
+  },
+  "EP-0134 crib 2 alone (11 letters, auxiliary)": {
+   "K4_hits": 4,
+   "K4_informative_hits": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "controls": "7/9",
+   "expected": 1.3
+  }
+ }
+}

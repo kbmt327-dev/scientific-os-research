@@ -9,6 +9,7 @@ This is the historical log. For current claims, start with the [research-area in
 ## 2026-09-27
 
 - **KRYPTOS-K4-EP-0135** · Finding — [What is the TOKIO reading worth once the choice of target list is paid?](/en/research/kryptos-k4-list-price/)
+- **KRYPTOS-K4-EP-0119** · Negative Result — [Does any fully specified procedure built from a grammar of parts fit K4?](/en/research/kryptos-k4-procedure-enumerator/)
 ## 2026-09-25
 
 - **GPU-SCHED-EP-0029** · Finding — [Does node fragmentation reorder size-first policies against FCFS and backfill?](/en/research/gpu-scheduling-locality/)

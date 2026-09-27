@@ -22,7 +22,7 @@ The program began by pricing claims brought in from outside. The claim that K4 i
 
 It then examined the K1–K3 form (one chart, shifted) broadly: periodic and running keys, masks, carving errors, physical keys. Every decidable family either gave no candidate or cannot be decided by the cribs. K4's flat letter frequencies need at least 3 bits of key per position.
 
-From 2026-09-26 it turned to methods outside that form: digraph squares, Hill, Slidefair, Portax and Doppelkasten, rotor machines, Enigma-type machines, and, instead of choosing families by hand, an enumerator of 4.7 × 10¹⁵ procedures built from a grammar of parts. Wherever the cribs decide, none is compatible. Random ciphertext usually fails the same way, so K4 is not shown to be rarer than random.
+From 2026-09-26 it turned to methods outside that form: digraph squares, Hill, Slidefair, Portax and Doppelkasten, rotor machines, Enigma-type machines, and, instead of choosing families by hand, an enumerator of 4.7 × 10¹⁵ procedures built from a grammar of parts ([EP-0119](/en/research/kryptos-k4-procedure-enumerator/)). Wherever the cribs decide, none is compatible. Random ciphertext usually fails the same way, so K4 is not shown to be rarer than random.
 
 Family-by-family results are in **[Families examined](/en/programs/kryptos-k4/families)**.
 
@@ -59,7 +59,8 @@ No decryption and no new plaintext letter (as of 2026-09-27). What has been test
 1. [[en/research/kryptos-k4-57973-audit/index|EP-0001 — Does primer 57973 stand out once the model's freedom is counted?]]
 2. [[en/research/kryptos-k4-tokio-price/index|EP-0011 — How much is the TOKIO reading of K4's Ws worth?]]
 3. [[en/research/kryptos-k4-w-brackets/index|EP-0057 — Do the Ws that bracket both K4 cribs carry structure?]]
-4. **[[en/research/kryptos-k4-list-price/index|EP-0135 — What is the TOKIO reading worth once the choice of target list is paid?]] (latest)**
+4. [[en/research/kryptos-k4-procedure-enumerator/index|EP-0119 — Does any fully specified procedure built from a grammar of parts fit K4?]]
+5. **[[en/research/kryptos-k4-list-price/index|EP-0135 — What is the TOKIO reading worth once the choice of target list is paid?]] (latest)**
 <!-- GENERATED: program-history:END -->
 
 ## Sources

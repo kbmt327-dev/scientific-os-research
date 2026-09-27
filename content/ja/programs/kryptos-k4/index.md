@@ -22,7 +22,7 @@ K4は、Jim Sanbornが1990年にCIA本部へ設置した彫刻 *Kryptos* の第4
 
 そのあと、K1〜K3と同じ「1枚の表のずらし」の形（周期鍵、running key、mask、彫り間違い、物理的な鍵）を広く調べ、判定できる族はすべて候補なしか、cribでは判定できないかのどちらかでした。K4の文字頻度は平らで、鍵は1位置あたり3 bit以上が要ります。
 
-2026-09-26からは、その形を外した別方式を調べました。2文字の方陣、Hill、Slidefair・Portax・Doppelkasten、ロータ機、Enigma型の機械、そして族を人が1つずつ選ぶのをやめて部品の文法から作った4.7×10¹⁵手順の列挙器です。判定できる範囲では、どれもcribと両立しませんでした。ただし、でたらめな暗号文もたいてい同じく通らないので、K4がでたらめより起きにくいとは言えません。
+2026-09-26からは、その形を外した別方式を調べました。2文字の方陣、Hill、Slidefair・Portax・Doppelkasten、ロータ機、Enigma型の機械、そして族を人が1つずつ選ぶのをやめて部品の文法から作った4.7×10¹⁵手順の列挙器です（[EP-0119](/ja/research/kryptos-k4-procedure-enumerator/)）。判定できる範囲では、どれもcribと両立しませんでした。ただし、でたらめな暗号文もたいてい同じく通らないので、K4がでたらめより起きにくいとは言えません。
 
 族ごとの結果は **[調べた族の一覧](/ja/programs/kryptos-k4/families)** にまとめています。
 
@@ -59,7 +59,8 @@ v0.5では、写真の文字にカメラと円筒を当てはめて列の間隔�
 1. [[ja/research/kryptos-k4-57973-audit/index|EP-0001 — modelの自由度を数えても、primer 57973は際立つか]]
 2. [[ja/research/kryptos-k4-tokio-price/index|EP-0011 — K4のWをTOKIOと読むことには、どれだけの価値があるか]]
 3. [[ja/research/kryptos-k4-w-brackets/index|EP-0057 — K4の2つのcribを挟むWは、構造を持っているか]]
-4. **[[ja/research/kryptos-k4-list-price/index|EP-0135 — 標的リストを選ぶ自由まで払うと、TOKIOの読みはいくらか]]（最新）**
+4. [[ja/research/kryptos-k4-procedure-enumerator/index|EP-0119 — 部品の文法から作った手順のうち、K4に合うものはあるか]]
+5. **[[ja/research/kryptos-k4-list-price/index|EP-0135 — 標的リストを選ぶ自由まで払うと、TOKIOの読みはいくらか]]（最新）**
 <!-- GENERATED: program-history:END -->
 
 ## 出典

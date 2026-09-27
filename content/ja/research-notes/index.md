@@ -9,6 +9,7 @@ lang: ja
 ## 2026-09-27
 
 - **KRYPTOS-K4-EP-0135** · Finding — [標的リストを選ぶ自由まで払うと、TOKIOの読みはいくらか](/ja/research/kryptos-k4-list-price/)
+- **KRYPTOS-K4-EP-0119** · Negative Result — [部品の文法から作った手順のうち、K4に合うものはあるか](/ja/research/kryptos-k4-procedure-enumerator/)
 ## 2026-09-25
 
 - **GPU-SCHED-EP-0029** · Finding — [nodeの断片化は、サイズ優先とFCFS・backfillの順位を入れ替えるか](/ja/research/gpu-scheduling-locality/)

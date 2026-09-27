@@ -56,7 +56,7 @@ This table summarizes the internal record. Only the rows marked with a public No
 | Slidefair, Portax, Doppelkasten | Slidefair and Portax never encipher a letter to itself, so S→S and K→K exclude them; single-pass Doppelkasten is inconsistent in all 96 settings; double-pass is not decidable |
 | Affine maps that change with position; Hill with periodically changing matrices, also with matrices taken from texts | No candidate where decidable (text matrices 0 of 2.38 million); long periods with free matrices are not decidable |
 | Rotor machines: one free rotor with entry and exit alphabets or stepped by position keys; two moving rotors with a free slow rotor (7.9 × 10¹⁰); reflector machines (commercial Enigma and others, no plugboard) behind a free substitution (1.11 × 10¹⁰) | No candidate |
-| An enumerator of fully specified procedures (274 alphabets × 16.6 million row selections × 10 chart forms, 4.7 × 10¹⁵ procedures), also with a stacked shift mask, per crib, and with up to three crib errors | No procedure fits K4 |
+| An enumerator of fully specified procedures (274 alphabets × 16.6 million row selections × 10 chart forms, 4.7 × 10¹⁵ procedures), also with a stacked shift mask, per crib, and with up to three crib errors | No procedure fits K4 ([Note](/en/research/kryptos-k4-procedure-enumerator/)) |
 | Carving errors against the closed different methods | One or two errors would reopen several closed families, but just as often for random ciphertext; the errors do not single out a family |
 
 Every negative in the rows added on 2026-09-27 (from "Key sources named by the hints" down) is logical: the family cannot reproduce the cribs. In none of them is K4 rarer than random ciphertext, which usually fails too.

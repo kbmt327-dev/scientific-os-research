@@ -297,6 +297,15 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: KRYPTOS-K4-EP-0119
+    source_episode: KRYPTOS-K4/EP-0119
+    source_episode_sha256: 81166ee758586b16a5f398a5ed9d4651388195d69797e077147cc8bc48271163
+    views:
+      en: content/en/research/kryptos-k4-procedure-enumerator/index.md
+      ja: content/ja/research/kryptos-k4-procedure-enumerator/index.md
+    type: Negative Result
+    publication:
+      status: publishable
   - research_id: KRYPTOS-K4-EP-0135
     source_episode: KRYPTOS-K4/EP-0135
     source_episode_sha256: fb0f7a7b52033d795d3e06e98d302250e09179811e7edd71d682f3b396c0d3e6

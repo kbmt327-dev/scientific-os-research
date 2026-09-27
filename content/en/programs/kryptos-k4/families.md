@@ -10,11 +10,11 @@ This table summarizes the internal record. Only the rows marked with a public No
 
 | Family | Result |
 |---|---|
-| Any single-alphabet periodic key, periods 1–96 | Rejected at all 49 testable periods; the rest have no two crib letters sharing a residue |
+| Any single-alphabet periodic key, periods 1–96 | Rejected at all 49 testable periods; the rest have no two crib letters sharing a residue ([Note](/en/research/kryptos-k4-classical/)) |
 | Periodic key with a free alphabet per residue, period ≤ 24 | Rejected by the cribs or by column letter statistics |
-| Any English running key | Rejected as a class |
-| Progressive and Gromark-type difference keys | Rejected; Gromark with free alphabets is not distinguishable |
-| Any rearrangement alone (transposition, route, folding) | Rejected: K4's letter counts cannot be English |
+| A running key following English letter frequencies | Rejected ([Note](/en/research/kryptos-k4-classical/)); a hand-chosen English key with an extra substitution is not decidable |
+| Progressive and Gromark-type difference keys | Rejected; Gromark with free alphabets is not distinguishable ([Note](/en/research/kryptos-k4-classical/)) |
+| Any rearrangement alone (transposition, route, folding) | Rejected: K4's letter counts cannot be English ([Note](/en/research/kryptos-k4-classical/)) |
 | Keyed columnar transposition and K3-style rotation, each with a periodic key | No candidate |
 | Hill (n = 2–4) with transposition; Trifid with word cubes | No candidate |
 | Any cipher whose output uses 25 symbols or fewer | Impossible, since K4 uses all 26 letters. Playfair is also impossible if W passes through ([Note](/en/research/kryptos-k4-w-brackets/)) |

@@ -29,6 +29,9 @@ This is the historical log. For current claims, start with the [research-area in
 - **KRYPTOS-K4-EP-0057** · Finding — [Do the Ws that bracket both K4 cribs carry structure?](/en/research/kryptos-k4-w-brackets/)
 - **GPU-SCHED-EP-0028** · Finding — [Do fresh AI readers read the transition-refusal note correctly?](/en/research/gpu-scheduling-cold-reader/)
 - **GPU-SCHED-EP-0027** · Finding — [Did the public article carry the facts needed not to misread its own claim?](/en/research/gpu-scheduling-self-containment/)
+## 2026-09-20
+
+- **KRYPTOS-K4-EP-0032** · Negative Result — [Which classical ciphers do K4's crib and letter counts rule out?](/en/research/kryptos-k4-classical/)
 ## 2026-09-19
 
 - **KRYPTOS-K4-EP-0011** · Finding — [How much is the TOKIO reading of K4's Ws worth?](/en/research/kryptos-k4-tokio-price/)

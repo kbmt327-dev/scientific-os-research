@@ -10,11 +10,11 @@ lang: ja
 
 | 族 | 結果 |
 |---|---|
-| 単一alphabetの周期鍵（周期1–96） | 検定できる49周期すべてで否定。残りは、同じ剰余に入るcrib文字の組がない周期 |
+| 単一alphabetの周期鍵（周期1–96） | 検定できる49周期すべてで否定。残りは、同じ剰余に入るcrib文字の組がない周期（[Note](/ja/research/kryptos-k4-classical/)） |
 | 剰余ごとに任意alphabetの周期鍵（周期24以下） | cribまたは列の文字統計で否定 |
-| 英語のrunning key全般 | 族として否定 |
-| progressive鍵・Gromark型の差分鍵 | 否定。任意alphabetのGromarkは区別できない |
-| 並べ替えだけの方式（転置・経路・折り） | 否定。K4の文字数の分布は英語になりえない |
+| 英語の文字頻度に従うrunning key | 否定（[Note](/ja/research/kryptos-k4-classical/)）。手で選んだ英文に換字を1段足した形は判定できない |
+| progressive鍵・Gromark型の差分鍵 | 否定。任意alphabetのGromarkは区別できない（[Note](/ja/research/kryptos-k4-classical/)） |
+| 並べ替えだけの方式（転置・経路・折り） | 否定。K4の文字数の分布は英語になりえない（[Note](/ja/research/kryptos-k4-classical/)） |
 | 鍵付き列転置、K3型の回転（それぞれ周期鍵と組み合わせ） | 候補なし |
 | Hill（n=2–4）と転置、単語cubeのTrifid | 候補なし |
 | 出力が25記号以下の方式 | K4は26文字すべてを使うので不可能。Wが素通りでもPlayfairは不可能（[Note](/ja/research/kryptos-k4-w-brackets/)） |

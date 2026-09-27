@@ -17,6 +17,7 @@ This is the historical log. For current claims, start with the [research-area in
 ## 2026-09-26
 
 - **KRYPTOS-K4-EP-0101** · Finding — [Which ciphers does the crib's letter graph rule out without choosing a key?](/en/research/kryptos-k4-letter-graph/)
+- **KRYPTOS-K4-EP-0093** · Negative Result — [Can a key source be tested without knowing the chart it drives?](/en/research/kryptos-k4-key-sources/)
 - **KRYPTOS-K4-EP-0091** · Finding — [How much key does K4 need, and what does that leave decidable?](/en/research/kryptos-k4-key-bound/)
 ## 2026-09-25
 

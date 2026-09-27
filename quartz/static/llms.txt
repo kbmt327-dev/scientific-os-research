@@ -247,6 +247,9 @@ Published Research Notes:
 - KRYPTOS-K4-EP-0091 — How much key does K4 need, and what does that leave decidable? (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-key-bound/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-key-bound/
+- KRYPTOS-K4-EP-0093 — Can a key source be tested without knowing the chart it drives? (Negative Result)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-key-sources/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-key-sources/
 - KRYPTOS-K4-EP-0101 — Which ciphers does the crib's letter graph rule out without choosing a key? (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-letter-graph/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-letter-graph/

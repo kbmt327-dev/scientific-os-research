@@ -1,0 +1,62 @@
+{
+ "source": "rechecked 2026-09-27 for the Note; internal records EP-0092, EP-0093, EP-0100 (2026-09-26), EP-0124 (2026-09-27)",
+ "latin_chart_no_error": {
+  "keyword_phases": 390,
+  "keyword_passes": 0,
+  "digit_phases": 78,
+  "digit_passes": 0,
+  "periods_passing_2_48": [
+   19,
+   38
+  ],
+  "decoy_keyword_lists": {
+   "n": 200,
+   "median_passes": 1.0,
+   "share_with_0": 0.18
+  },
+  "decoy_digit_lists": {
+   "n": 200,
+   "median_passes": 0.0,
+   "share_with_0": 0.525
+  }
+ },
+ "width_scan": {
+  "permutations": 20000,
+  "k4_count_width21": 11,
+  "p_width21": 5e-05,
+  "p_scan_widths_2_48": 0.00105
+ },
+ "recorded_not_rerun": {
+  "EP-0093 K1-K3 plaintext positions as key (1,344)": {
+   "K4_passes": 25,
+   "decoy_median": 25,
+   "best_z_P": 0.53
+  },
+  "EP-0093 carved panel positions as key (1,538)": {
+   "K4_passes": 25,
+   "decoy_median": 29,
+   "best_z_P": 0.58
+  },
+  "EP-0093 tableau at K4's place (21) and carved column numbers (2)": {
+   "K4_passes": "0 and 0"
+  },
+  "EP-0093 power: a true text source ranks first": "47% (top 5: 72%) with a Latin chart",
+  "EP-0093 A-Z closeness of cipher letters for the same plaintext letter": {
+   "P_raw": 0.003,
+   "P_after_choices": "about 0.01-0.02"
+  },
+  "EP-0100 hand-made Latin chart, clock-hand sources": {
+   "K4_pass_rate": "1,352/144,527 = 0.009",
+   "shape_null": 0.014
+  },
+  "EP-0100 carved geometry sources": {
+   "K4_pass_rate": "6/390 = 0.015",
+   "shape_null": 0.012
+  },
+  "EP-0124 positions of T and short texts": {
+   "K4_pass_rates": "2/308, 0/266, 44/3,423",
+   "shape_null": "0.012-0.018"
+  },
+  "EP-0092 power of the chart-free test": "wrong sources pass 26-42% with arbitrary rows, 1.7-1.9% with a Latin chart"
+ }
+}

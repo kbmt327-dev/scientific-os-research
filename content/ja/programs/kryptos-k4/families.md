@@ -50,10 +50,10 @@ lang: ja
 | 位置で表の行を選ぶ：K1〜K3・世界時計の地名・ヒントの語を順に鍵語にした行、彫られた暗号面の行、円盤の順序が自由なM-94、行列で混ぜたalphabet | 候補なし（386,048設定で0、M-94はどの順序でも0、1.9億設定で0） |
 | alphabetを21文字未満の組に分けたまま保つ方式（立方体の位置、Morseの長さ、キーボードの段、半分ずつ、Polybiusの行） | 不可能：crib 21文字が、平文と暗号文をつないだグラフで1つにつながる（[Note](/ja/research/kryptos-k4-letter-graph/)） |
 | 2つの文章を合わせた鍵（K1〜K3の平文、彫られた暗号面） | 候補なし（6,640万通りで0） |
-| 出現回数で変わる暗号、Vigenère型とBeaufort型の切り替え | 不可能／候補なし（切り替えの型1,655万通りで0） |
+| 出現回数で変わる暗号、Vigenère型とBeaufort型の切り替え | 不可能／候補なし（切り替えの型1,655万通りで0、[Note](/ja/research/kryptos-k4-consistency/)） |
 | Wを区切りにした25文字の方陣：Four-square、Two-square、Bifid（鍵語の方陣と自由な方陣）、CM-Bifid、前後にずらしのmaskを重ねた形、Playfairの後にずらしのmask | 候補なし：鍵語の方陣は925,600設定で0、自由な方陣はcribと論理的に矛盾 |
 | 5×5格子の上の2次元のずらし・回転・鏡映 | 判定できる所で候補なし。自由な方陣で周期が長い場合は判定できない |
-| Slidefair、Portax、Doppelkasten | SlidefairとPortaxは文字を自分に暗号化しないのでS→S・K→Kで除外。1回がけのDoppelkastenは96設定すべてで矛盾。2回がけは判定できない |
+| Slidefair、Portax、Doppelkasten | SlidefairとPortaxは文字を自分に暗号化しないのでS→S・K→Kで除外。1回がけのDoppelkastenは96設定すべてで矛盾。2回がけは判定できない（[Note](/ja/research/kryptos-k4-consistency/)） |
 | 位置で変わるアフィン、周期で変わるHill（行列を文章から作る形も） | 判定できる所で候補なし（文章の行列は238万設定で0）。行列が自由で周期が長い場合は判定できない |
 | ロータ機：入口・出口のalphabetつきの自由配線1枚、位置の鍵で進む1枚、動く2枚＋自由な遅い1枚（7.9×10¹⁰）、反射板つきの機械（商用Enigmaなど、plugboardなし）の前に自由な置換（1.11×10¹⁰） | 候補なし |
 | 手順の列挙器：alphabet 274種×行の選び方1,663万通り×表10形の4.7×10¹⁵手順。ずらしのmaskを重ねた形、cribごと、cribの誤り3文字までも | K4に合う手順は0（[Note](/ja/research/kryptos-k4-procedure-enumerator/)） |

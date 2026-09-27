@@ -1,0 +1,219 @@
+{
+ "source": "rechecked 2026-09-27 for the Note; internal records EP-0112, EP-0113, EP-0116 (2026-09-27)",
+ "successive_occurrences": [
+  [
+   "T",
+   24,
+   28
+  ],
+  [
+   "E",
+   21,
+   30
+  ],
+  [
+   "A",
+   22,
+   31
+  ],
+  [
+   "S",
+   23,
+   32
+  ],
+  [
+   "T",
+   28,
+   33
+  ],
+  [
+   "L",
+   66,
+   70
+  ],
+  [
+   "C",
+   69,
+   72
+  ]
+ ],
+ "occurrence_shift_conflicts": {
+  "V->": [
+   "R",
+   "Z"
+  ]
+ },
+ "occurrence_shift_null_share_failing": 0.803,
+ "homophone_collisions": {
+  "F": "EO",
+  "K": "AK",
+  "N": "BH",
+  "P": "CR",
+  "Q": "NO",
+  "R": "ST",
+  "S": "ST",
+  "T": "IN",
+  "V": "LT"
+ },
+ "self_encryptions": [
+  [
+   32,
+   "S"
+  ],
+  [
+   73,
+   "K"
+  ]
+ ],
+ "switching_feasible_periods": {
+  "AZ": [
+   27,
+   28,
+   29
+  ],
+  "KRYPTOS": [
+   27,
+   28,
+   29
+  ],
+  "constrained": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14,
+   15,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22,
+   23,
+   24,
+   25,
+   26,
+   30,
+   31,
+   32,
+   33,
+   34,
+   35,
+   36,
+   37,
+   38,
+   39,
+   40,
+   41,
+   42,
+   43,
+   44,
+   45,
+   46,
+   47,
+   48,
+   49,
+   50,
+   51,
+   52
+  ]
+ },
+ "switching_shuffle_null": {
+  "n": 2000,
+  "share_passing_some_constrained_p_le_24": 0.0005,
+  "share_failing_every_constrained_p": 0.3265,
+  "per_period_share": {
+   "1": 0.0,
+   "2": 0.0,
+   "3": 0.0,
+   "4": 0.0,
+   "5": 0.0,
+   "6": 0.0,
+   "7": 0.0,
+   "8": 0.0,
+   "9": 0.0,
+   "10": 0.0,
+   "11": 0.0,
+   "12": 0.0,
+   "13": 0.0,
+   "14": 0.0,
+   "15": 0.0,
+   "16": 0.0,
+   "17": 0.0,
+   "18": 0.0,
+   "19": 0.0,
+   "20": 0.0,
+   "21": 0.0,
+   "22": 0.0,
+   "23": 0.0,
+   "24": 0.0005,
+   "25": 0.0135,
+   "26": 0.3335,
+   "27": 1.0,
+   "28": 1.0,
+   "29": 1.0,
+   "30": 0.3845,
+   "31": 0.11,
+   "32": 0.019,
+   "33": 0.002,
+   "34": 0.0005,
+   "35": 0.0,
+   "36": 0.0,
+   "37": 0.0,
+   "38": 0.0,
+   "39": 0.0,
+   "40": 0.0,
+   "41": 0.0,
+   "42": 0.0,
+   "43": 0.0,
+   "44": 0.0,
+   "45": 0.0,
+   "46": 0.0,
+   "47": 0.0,
+   "48": 0.0005,
+   "49": 0.004,
+   "50": 0.0135,
+   "51": 0.0635,
+   "52": 0.3335
+  }
+ },
+ "recorded_not_rerun": {
+  "EP-0113 stage 1 (position-determined keys incl. text running keys and Carter, 16,548,440 settings)": {
+   "K4": 0,
+   "shuffles": "0/10",
+   "expected": 0.011,
+   "controls": "20/20"
+  },
+  "EP-0113 stage 2 (short switching rules x periodic key, 3,189 type sequences, p 1-52)": {
+   "K4": "no p",
+   "controls": "20/20"
+  },
+  "EP-0116 Slidefair and Portax self-encryption count (all keys x 676 digraphs; 2,000 mixed rows)": {
+   "self_encryptions": 0
+  },
+  "EP-0116 Portax with a free substitution before": {
+   "K4_inconsistent_P": "1-22 and 34-48",
+   "unfinished_P": "23-33",
+   "shuffles": "0/200 per P",
+   "plants": "20/20"
+  },
+  "EP-0116 single-pass Doppelkasten, free squares, W as separator (96 settings)": {
+   "K4": "inconsistent in all 96",
+   "plants": "13/13 + 131/131",
+   "shuffles": "10/1,100"
+  },
+  "EP-0116 double-pass Doppelkasten": {
+   "status": "not decidable: annealing recovers planted English 27-34%"
+  }
+ }
+}

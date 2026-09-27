@@ -10,6 +10,7 @@ lang: ja
 
 - **KRYPTOS-K4-EP-0135** · Finding — [標的リストを選ぶ自由まで払うと、TOKIOの読みはいくらか](/ja/research/kryptos-k4-list-price/)
 - **KRYPTOS-K4-EP-0119** · Negative Result — [部品の文法から作った手順のうち、K4に合うものはあるか](/ja/research/kryptos-k4-procedure-enumerator/)
+- **KRYPTOS-K4-EP-0113** · Negative Result — [鍵を探さずに、cribとの整合だけで否定できる暗号はどれか](/ja/research/kryptos-k4-consistency/)
 ## 2026-09-26
 
 - **KRYPTOS-K4-EP-0101** · Finding — [鍵を選ばずに、cribの文字のつながりだけで除外できる暗号はどれか](/ja/research/kryptos-k4-letter-graph/)

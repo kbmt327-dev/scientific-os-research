@@ -306,6 +306,15 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: KRYPTOS-K4-EP-0113
+    source_episode: KRYPTOS-K4/EP-0113
+    source_episode_sha256: 89486e8a8e0fd05bc759a15136f5159e6170e843fd5ce644961c7842dda5d77c
+    views:
+      en: content/en/research/kryptos-k4-consistency/index.md
+      ja: content/ja/research/kryptos-k4-consistency/index.md
+    type: Negative Result
+    publication:
+      status: publishable
   - research_id: KRYPTOS-K4-EP-0119
     source_episode: KRYPTOS-K4/EP-0119
     source_episode_sha256: 81166ee758586b16a5f398a5ed9d4651388195d69797e077147cc8bc48271163

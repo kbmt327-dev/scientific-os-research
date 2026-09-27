@@ -10,6 +10,7 @@ This is the historical log. For current claims, start with the [research-area in
 
 - **KRYPTOS-K4-EP-0135** · Finding — [What is the TOKIO reading worth once the choice of target list is paid?](/en/research/kryptos-k4-list-price/)
 - **KRYPTOS-K4-EP-0119** · Negative Result — [Does any fully specified procedure built from a grammar of parts fit K4?](/en/research/kryptos-k4-procedure-enumerator/)
+- **KRYPTOS-K4-EP-0113** · Negative Result — [Which ciphers do K4's cribs refute by consistency alone?](/en/research/kryptos-k4-consistency/)
 ## 2026-09-26
 
 - **KRYPTOS-K4-EP-0101** · Finding — [Which ciphers does the crib's letter graph rule out without choosing a key?](/en/research/kryptos-k4-letter-graph/)

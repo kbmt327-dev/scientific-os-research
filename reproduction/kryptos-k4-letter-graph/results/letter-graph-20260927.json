@@ -1,0 +1,56 @@
+{
+ "source": "author's run of 2026-09-26 (EP-0101), rechecked 2026-09-27",
+ "component": "ABCEFGHIKLMNOPQRSTVYZ",
+ "n_components": 1,
+ "largest_after_dropping": {
+  "1": 12,
+  "2": 9,
+  "3": 7
+ },
+ "self_encryptions": [
+  [
+   "S",
+   "S"
+  ],
+  [
+   "K",
+   "K"
+  ]
+ ],
+ "crossing_pairs": {
+  "Morse length classes": 18,
+  "Vowels (AEIOUY) / consonants": 7,
+  "QWERTY rows": 12,
+  "A-Z halves": 8,
+  "A-Z parity": 8,
+  "KRYPTOS alphabet halves": 8,
+  "Rows of a 5x5 Polybius square (I=J)": 19
+ },
+ "word_restart_conflicts": {
+  "EAST|NORTHEAST + BERLIN|CLOCK": {
+   "from_start": 2,
+   "from_end": 4
+  },
+  "EAST|NORTHEAST + BERLINCLOCK": {
+   "from_start": 2,
+   "from_end": 4
+  },
+  "EASTNORTHEAST + BERLIN|CLOCK": {
+   "from_start": 1,
+   "from_end": 0
+  },
+  "EASTNORTHEAST + BERLINCLOCK": {
+   "from_start": 2,
+   "from_end": 0
+  },
+  "EAST|NORTH|EAST + BERLIN|CLOCK": {
+   "from_start": 6,
+   "from_end": 5
+  },
+  "EAST|NORTH|EAST + BERLINCLOCK": {
+   "from_start": 6,
+   "from_end": 5
+  }
+ },
+ "correction": "EP-0101 recorded that pure word-restart keying fails for every crib segmentation. Rechecked on 2026-09-27: counted from the end of the word it is compatible when EASTNORTHEAST is one word (2 of 6 segmentations); counted from the start it fails for all 6."
+}

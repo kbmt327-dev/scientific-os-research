@@ -253,6 +253,11 @@ def kryptos_k4_procedure_enumerator() -> None:
     print(run([sys.executable, 'verify_enumerator_counts.py'], root).strip().splitlines()[-1])
 
 
+def kryptos_k4_letter_graph() -> None:
+    root = ROOT / 'reproduction' / 'kryptos-k4-letter-graph'
+    print(run([sys.executable, 'verify_letter_graph.py'], root).strip().splitlines()[-1])
+
+
 def gpu_locality() -> None:
     root = ROOT / 'reproduction' / 'gpu-scheduling-locality'
     print(run([sys.executable, 'verify_locality.py'], root).strip())
@@ -262,7 +267,7 @@ CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase,
           "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "gpu-u31-controls": gpu_u31_controls, "gpu-two-class": gpu_two_class, "gpu-past-learning": gpu_past_learning, "gpu-checkpoints": gpu_checkpoints, "gpu-transition-refusal": gpu_transition_refusal, "gpu-self-containment": gpu_self_containment, "gpu-cold-reader": gpu_cold_reader, "gpu-locality": gpu_locality, "queue": queue,
           "human": human, "human-dataset": human_dataset, "iaa": iaa,
           "intervention": intervention,
-          "frontier": frontier, "kryptos-k4-57973-audit": kryptos_k4_57973_audit, "kryptos-k4-tokio-null": kryptos_k4_tokio_null, "kryptos-k4-w-brackets": kryptos_k4_w_brackets, "kryptos-k4-list-price": kryptos_k4_list_price, "kryptos-k4-procedure-enumerator": kryptos_k4_procedure_enumerator}
+          "frontier": frontier, "kryptos-k4-57973-audit": kryptos_k4_57973_audit, "kryptos-k4-tokio-null": kryptos_k4_tokio_null, "kryptos-k4-w-brackets": kryptos_k4_w_brackets, "kryptos-k4-list-price": kryptos_k4_list_price, "kryptos-k4-procedure-enumerator": kryptos_k4_procedure_enumerator, "kryptos-k4-letter-graph": kryptos_k4_letter_graph}
 
 
 def main() -> int:

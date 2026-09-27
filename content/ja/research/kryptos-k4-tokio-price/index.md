@@ -5,7 +5,7 @@ date: '2026-09-19'
 lang: ja
 domain: Kryptos K4
 type: Finding
-status: Passed an exact null at p ≤ 1.5e-3; exploratory; gives no plaintext
+status: Passed an exact null at p ≤ 1.5e-3 against the World Clock; compatible with chance once the choice of target list is paid (2026-09-27); gives no plaintext
 evidence_level: Exact closed-form null against a place list frozen before testing
 peer_reviewed: false
 independent_replications: 0
@@ -34,6 +34,8 @@ tags:
 ---
 
 <p class="research-area"><b>Kryptos K4</b><a href="/en/research/kryptos-k4-tokio-price/" hreflang="en">English</a></p>
+
+> **その後の点検（2026-09-27）。** このNoteは、標的リストに世界時計を選んだ自由を払っていません。内部の追試でそれを払いました。K4を見る前に凍結した6つのリスト（世界時計、英単語、K1〜K3の語、方角、首都、主題語。計3,036語）の和集合に対し、同じ読みの族が偶然に当たる期待値は0.054で、そのうち世界時計の分は3.7%です。K1〜K4のほかの目印まで数えると、K4の当たり1件（`TOKIO`）に対し期待0.211（p＝0.19）でした。この読みは偶然と両立します。Wを暗号化の後に入れた・上書きした目印とみる仕組みも、候補なしでした。追試の要約は[Programページ](/ja/programs/kryptos-k4/)にあり、コードは公開していません。
 
 ## 現在わかっていること
 

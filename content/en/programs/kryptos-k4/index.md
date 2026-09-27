@@ -16,7 +16,7 @@ Which mechanisms can the 97 ciphertext letters and 24 crib letters rule out, and
 
 Public ciphertext and cribs only. Every test is exploratory unless a Note says it was sealed in advance. A rejected family means that no member within the stated range reproduces the cribs, with planted positive controls showing that the test would have found one. A "not distinguishable" family has more freedom than 24 letters can constrain; it is not rejected.
 
-## Families examined so far (as of 2026-09-26)
+## Families examined so far (as of 2026-09-27)
 
 This table summarizes the internal record. Only the rows marked with a public Note currently have a public rerun.
 
@@ -55,18 +55,35 @@ This table summarizes the internal record. Only the rows marked with a public No
 | A hand-chosen English running key with a one-sided mask | Not decidable with the current search (with an unknown substitution it does not recover positive controls); not a rejection |
 | The sculpture's own text used as the coding chart (18,624 settings, fixed before running) | Rejected: K4 scores at most 6/24, and all 1,000 shuffles score 6 or more; positive controls 12/12 |
 | Maps that do not depend on position (windows of four letters or fewer, a word-level alphabet, fixed homophonic substitution) | Impossible without errors: `EAST` occurs twice in the crib `EASTNORTHEAST` and enciphers differently |
+| Key sources named by the hints, combined through a hand-made Latin-square chart: the tableau at K4's place, carved column numbers, keyword and digit-string phases, text offsets, clock hands, the carved geometry, positions of T, short texts | No source supported: pass rates at or below the chart-shape null |
+| Clock-type keys (linear in position, clock hands) and autokeys (plaintext lags 1–4, ciphertext lags 1–21) | Excluded wherever the cribs decide; the structures that stay feasible are feasible for random ciphertext just as often |
+| Chaocipher starting from hint and English-word alphabets; a cursor walking over the carved texts | No candidate (0 of 20.6 million and 0 of 5,832) |
+| Letters written in base 2 (Vernam type) or base 3 (arithmetic Trifid type) | Base 2 would print a non-letter somewhere with probability ≥ 1 − 2.3 × 10⁻⁷; base 3 gives key fragments that are not English |
+| Chart rows chosen by position: alphabets keyed by successive words (K1–K3, the World Clock places, the hint words), carved panel lines, the M-94 cylinder with any disk order, mixed alphabets from matrices | No candidate (0 of 386,048; 0 for every M-94 disk order; 0 of 190 million) |
+| Any system that keeps a fixed partition of the alphabet into blocks under 21 letters (cube positions, Morse-length classes, keyboard rows, halves, Polybius lines) | Impossible: all 21 crib letters form one connected component of the plaintext–ciphertext graph |
+| A key made of two texts (K1–K3 plaintexts, the carved panel) | No candidate (0 of 66.4 million) |
+| Occurrence-count ciphers; switching between Vigenère and Beaufort | Impossible / no candidate (0 of 16.5 million switching patterns) |
+| 25-letter squares with W as separator: Four-square, Two-square, Bifid (keyword and free squares), CM-Bifid, also with a shift mask before or after; Playfair followed by a shift mask | No candidate: keyword squares 0 of 925,600, free squares logically inconsistent with the cribs |
+| 2-D shifts, rotations and mirrors on a 5 × 5 grid | No candidate where decidable; long periods with free squares are not decidable |
+| Slidefair, Portax, Doppelkasten | Slidefair and Portax never encipher a letter to itself, so S→S and K→K exclude them; single-pass Doppelkasten is inconsistent in all 96 settings; double-pass is not decidable |
+| Affine maps that change with position; Hill with periodically changing matrices, also with matrices taken from texts | No candidate where decidable (text matrices 0 of 2.38 million); long periods with free matrices are not decidable |
+| Rotor machines: one free rotor with entry and exit alphabets or stepped by position keys; two moving rotors with a free slow rotor (7.9 × 10¹⁰); reflector machines (commercial Enigma and others, no plugboard) behind a free substitution (1.11 × 10¹⁰) | No candidate |
+| An enumerator of fully specified procedures (274 alphabets × 16.6 million row selections × 10 chart forms, 4.7 × 10¹⁵ procedures), also with a stacked shift mask, per crib, and with up to three crib errors | No procedure fits K4 |
+| Carving errors against the closed different methods | One or two errors would reopen several closed families, but just as often for random ciphertext; the errors do not single out a family |
 
-The reading of the W gaps as `TOKIO` (the German spelling of Tokyo, which appears on Berlin's World Clock) remains the one pattern that passed a frozen external target list, at p ≤ 1.5 × 10⁻³ ([Note](/en/research/kryptos-k4-tokio-price/)). It is provisional and gives no plaintext.
+Every negative in the rows added on 2026-09-27 (from "Key sources named by the hints" down) is logical: the family cannot reproduce the cribs. In none of them is K4 rarer than random ciphertext, which usually fails too.
+
+The reading of the W gaps as `TOKIO` (the German spelling of Tokyo, which appears on Berlin's World Clock) passed a frozen external target list at p ≤ 1.5 × 10⁻³ ([Note](/en/research/kryptos-k4-tokio-price/)). A later check (2026-09-27) also paid for choosing the list: against the union of six lists frozen before looking at K4 (3,036 words), the expected number of chance hits for K4's reading family is 0.054, of which the World Clock contributes 3.7%; counting the other markers in K1–K4 as well, there is one hit against 0.211 expected (p = 0.19). The reading is compatible with chance and is no longer a pattern that stands out. Mechanisms that treat the Ws as markers inserted or overwritten after encryption also gave no candidate.
 
 The program began by auditing a claim that K4 is a reversed Gromark cipher with primer 57973. Its numbers reproduce, but the public cribs cannot tell it from chance ([Note](/en/research/kryptos-k4-57973-audit/)).
 
-## Where things stand (2026-09-26)
+## Where things stand (2026-09-27)
 
+- **What has been tested**: only whether a procedure short enough to write down is compatible with the 24 crib letters. Every answer so far is no. These are logical refutations; none shows K4 to be rarer than random. No new plaintext letters.
 - **A lower bound on the key**: K4's letter frequencies are flat, which needs at least 3 bits of key per position. That is more than the redundancy of English (about 2.86 bits), so a key chosen freely letter by letter cannot be determined from K4 alone. A solvable K4 must pair a short technique with a key source that has a short description. This points the same way as Scheidt's remark that once the technique is known the rest is a puzzle.
-- **No decidable different method at present**: among methods that drop the K1–K3 form (one chart, shifted), the one decidable from K4 alone (the sculpture's text as the chart) has been rejected. For a hand-made chart, no public source fixes how its rows were made, so it cannot be decided from K4 alone.
-- **Next plan**: separate the key source (which object, which position) from the way it is combined (the chart), and eliminate key sources with a test that does not assume the chart's contents. The test only has power when the chart has structure: with arbitrary rows 26–42% of wrong sources pass, against 1.7–1.9% with a Latin-square chart.
-- No new plaintext letters.
-
+- **What cannot be decided**: hand-made charts, homophones, digraph charts, codebooks and multi-rotor machines with free wiring have more freedom than the cribs constrain. Deciding them needs an outside source for the chart, the device or K5. One hypothesis is that the key or chart was chosen by hand position by position; it would account for every observed feature and predicts that public data cannot decide K4. It is a hypothesis, not a conclusion.
+- **Key sources**: the test that separates the key source from the chart (planned on 2026-09-26) found no supported source for a Latin-square chart.
+- **In progress**: further hypotheses developed with the program's owner (within-word reordering, digraphs, an enumerator allowing four to seven crib errors) are being computed.
 ## Physical record and 3D model of the sculpture (2026-09-25)
 
 To test whether the key might come from the sculpture's physical form rather than from letters, we estimated the sculpture's physical layout from public photographs and aerial imagery and built a 3D model (v0.5). It includes how the copper is assembled (four plates in a 2 × 2 arrangement, with the horizontal seam falling exactly at the K2/K3 boundary), the S-shaped plan, its orientation (the cipher side faces roughly south), the thickness of the petrified-wood trunk, and the layout of the three stones at the entrance that carry the Morse code (K0). Choosing a date and time at Langley places the sun and shows the light cast through the cut-out letters.
@@ -80,7 +97,7 @@ Most dimensions and bearings are estimates (grade C) and should be read as appro
 <!-- GENERATED: program-current:START -->
 ## Current public state
 
-No decryption and no new plaintext letter (as of 2026-09-26). Within the K1–K3 form (one chart, shifted), every decidable family, with a mask before or after encryption or with carving errors allowed, either gave no candidate or cannot be decided by the cribs. K4's flat letter frequencies need at least 3 bits of key per position, so a solvable K4 pairs a short technique with a key source that has a short description. Among methods outside that form, the one decidable from K4 alone (the sculpture's text as the chart) was rejected; no decidable different method remains at present. The latest Research Note is EP-0057. Two of the five Ws bracket the public cribs, but without choosing the letter W the chance is 0.036, and it is not independent of the TOKIO reading.
+No decryption and no new plaintext letter (as of 2026-09-27). What has been tested is only whether a procedure short enough to write down is compatible with the 24 crib letters, and every answer is no. Besides the K1–K3 form (one chart, shifted), methods outside it (digraph squares, Hill, Slidefair, Portax and Doppelkasten, rotor machines, an Enigma-type machine behind a free substitution) and an enumerator of 4.7 × 10¹⁵ procedures built from a grammar of parts gave no candidate wherever the cribs decide. These are logical refutations; none shows K4 to be rarer than random. K4's flat letter frequencies need at least 3 bits of key per position, and hand-made charts, homophones and codebooks cannot be decided without an outside source for the chart, the device or K5. The TOKIO reading of the W gaps is compatible with chance once the choice of target list is paid (expected 0.054). The latest Research Note is EP-0057.
 
 **Evidence boundary:** Exploratory computation on the public ciphertext and 24 crib letters. Not preregistered; no external independent replication and no review by a cryptographer. The ground truth exists but is withheld.
 

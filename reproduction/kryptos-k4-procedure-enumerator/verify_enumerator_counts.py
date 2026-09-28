@@ -1,4 +1,4 @@
-"""Check the arithmetic behind the procedure-enumerator Note (EP-0119, 0127, 0131, 0134, 0136).
+"""Check the arithmetic behind the procedure-enumerator Note (EP-0119, 0127, 0131, 0134, 0136, 0143).
 
     python verify_enumerator_counts.py
 
@@ -7,7 +7,9 @@ not publish, so it is not rerun here.  What is checked is every number the Note 
 from the recorded counts: the total and its log2, the description length with the shape
 choice, the closed-form expected false passes for the whole crib, for up to two, three,
 four, seven and eight crib errors, and for each crib alone, the capacity margin against the
-crib, and how many scattered hand alterations an e-error run covers (hypergeometric).
+crib, how many scattered hand alterations an e-error run covers (hypergeometric), and for the
+fixed-origin features (EP-0143) the chance values, the 79 auxiliary origins, and the identity
+of (i + 337) div 31 with K4's carved row.
 Standard library only, well under a second.
 """
 import json
@@ -65,6 +67,32 @@ def main():
     var = n - diff
     print(f"  different-method part {diff:.2g} ({diff / n:.1%}), K1-K3-variant part {var:.2g}")
     check("K1-K3-variant part", var, 2.7e12, rel=0.02)
+    # EP-0143: fixed-origin features
+    o = rec["ep0143"]
+    r43 = r["EP-0143 fixed-origin features, whole crib"]
+    nn = r43["new_procedures"]
+    check("EP-0143 chance, whole crib", nn * 26.0 ** -24, r43["expected"], rel=0.1)
+    check("EP-0143 chance, crib 1 alone", nn * 26.0 ** -13, r["EP-0143 fixed-origin features, crib 1 alone"]["expected"],
+          rel=0.1)
+    check("EP-0143 chance, crib 2 alone", nn * 26.0 ** -11,
+          r["EP-0143 fixed-origin features, crib 2 alone (auxiliary)"]["expected"], rel=0.1)
+    check("grammar total after EP-0143", n + nn, o["grammar_total_after"], rel=0.01)
+    aux = sum(o["aux_moduli"])
+    print(f"  EP-0143 auxiliary origins: every o = 0..m-1 for m in {o['aux_moduli']} -> {aux} features")
+    if aux != o["aux_features"]:
+        fails.append("aux origins")
+    # (i + o) div m changes only by a constant when o moves by m, so o mod m covers every origin
+    for m in o["aux_moduli"]:
+        for oo in range(m):
+            dif = {(i + oo + m) // m - (i + oo) // m for i in range(97)}
+            if dif != {1}:
+                fails.append(f"origin shift m={m}")
+    # K4's carved row: positions 0-3 are row 24, then rows 25-27 of 31 letters
+    row = [24 if i < 4 else 25 + (i - 4) // 31 for i in range(97)]
+    diff = {(i + 337) // 31 - row[i] for i in range(97)}
+    print(f"  (i + 337) div 31 minus K4's carved row: {sorted(diff)} (a constant, so m = 31 from the K3 head is the carved row)")
+    if len(diff) != 1:
+        fails.append("carved row identity")
     zero = all(v.get("K4", 0) == 0 for k, v in r.items() if "K4" in v)
     if not zero:
         fails.append("recorded K4 counts")

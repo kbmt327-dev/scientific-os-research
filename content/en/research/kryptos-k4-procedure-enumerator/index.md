@@ -5,7 +5,7 @@ date: '2026-09-27'
 lang: en
 domain: Kryptos K4
 type: Negative Result
-status: 0 of 4.7e15 procedures fit K4, also with a stacked shift mask, per crib, and with up to seven (auxiliary eight) crib errors; logical refutation, not rarer than random
+status: 0 of 4.7e15 procedures fit K4, also with a stacked shift mask, per crib, with up to seven (auxiliary eight) crib errors, and with positions counted from the head of K3 or of the sculpture; logical refutation, not rarer than random
 evidence_level: Exhaustive exact test on public ciphertext and cribs; each script committed before it was run on K4
 peer_reviewed: false
 independent_replications: 0
@@ -49,7 +49,7 @@ Until this step each family was proposed by hand, so a negative result said as m
 - **Chart shapes.** Four K1–K3 variants (Quagmire-type shifts, Beaufort forms, keyword plus linear key) and six different methods: two stacked shifts on different alphabets (`TWO`, `TWOB`), affine rows whose multiplier changes with position (`AFF`), rows that are keyword alphabets of successive words, 26-letter slices of a text, or powers of one permutation. Transposition parts are left out, because the cribs are read at their carved positions.
 - **Test.** A procedure passes if it maps all 24 crib letters correctly. With bijective rows this becomes "is the required key sequence in the selector family", answered by hash lookup; any hit is rebuilt and checked.
 - **Controls.** Two planted procedures per shape, each found by searching its whole shape (18/18). Two shuffled K4s as nulls. The script was committed before it was run on K4.
-- **Follow-ups on the same grammar.** A K1–K3-type shift mask stacked before or after each different-method chart (EP-0127); each crib judged alone, with features counted from the start of its segment (EP-0134); up to two or three wrong crib letters (EP-0131); up to four and seven wrong crib letters, with eight as an auxiliary run (EP-0136, candidates checked on the GPU, pre-registered before any run on K4).
+- **Follow-ups on the same grammar.** A K1–K3-type shift mask stacked before or after each different-method chart (EP-0127); each crib judged alone, with features counted from the start of its segment (EP-0134); up to two or three wrong crib letters (EP-0131); up to four and seven wrong crib letters, with eight as an auxiliary run (EP-0136, candidates checked on the GPU, pre-registered before any run on K4); features (i + o) div m that count positions from the head of K3 (the head of the lower plate) or of the sculpture rather than from K4's first letter (EP-0143). K4 continues K3 on the same plate right after its question mark ([EP-0141](/en/research/kryptos-k4-production-traces/)), so these origins have a source. m is the plate width 31, the K3 grid widths and heights (24, 14, 8, 42) and the length of KRYPTOS, 7; as an auxiliary run, every origin for m = 5, 7, 12, 24, 31 (79 features).
 
 ## Results
 
@@ -62,6 +62,8 @@ Until this step each family was proposed by hand, so a negative result said as m
 | Up to 4 crib errors (EP-0136) | 4.7 × 10¹⁵ | **0** | 0, 0 | 9/9 and 8/9 | 2.2 × 10⁻⁹ |
 | Up to 7 crib errors (EP-0136) | 4.7 × 10¹⁵ | **0** | 0, 0 | 18/18 and 16/18 | 1.1 × 10⁻³ |
 | Up to 8 crib errors, auxiliary (EP-0136) | 4.7 × 10¹⁵ | **0** | 0, 0 | 9/9 and 8/9 | 0.059 |
+| Fixed-origin features, whole crib (EP-0143) | 1.06 × 10¹⁴ new | **0** | 0, 0 | 18/18 | 1.2 × 10⁻²⁰ |
+| Fixed-origin features, crib 1 alone (EP-0143) | 1.06 × 10¹⁴ | **0** | 0, 0 | 9/9 | 4.3 × 10⁻⁵ |
 | Crib 1 alone (EP-0134) | 4.7 × 10¹⁵ | 8 identities, 0 informative | 0, 0 | 9/9 | 0.0019 |
 | Crib 2 alone, auxiliary (EP-0134) | 4.7 × 10¹⁵ | 4 identities, 0 informative | 0, 0 | 7/9 | 1.3 |
 
@@ -70,6 +72,8 @@ In the error runs the first control count plants errors on the plaintext side, t
 ## Current finding
 
 No procedure in a grammar of 4.7 × 10¹⁵ fully specified procedures fits K4's cribs. Nearly all of them (99.9%) are different methods rather than one shifted chart. The result holds with a shift mask stacked on top, with each crib judged separately, and with up to seven wrong crib letters (eight as an auxiliary run).
+
+Counting positions from the head of K3 or of the sculpture gives no procedure using an added feature, jointly or per crib. Rows counted in 31s from the plate's head equal the carved rows up to a constant, so that part had already been tested.
 
 If hand alterations fall at scattered positions, the seven-error run covers 20 altered letters (about a fifth of K4) with probability 0.93, 28 with 0.62 and 35 with 0.29 (hypergeometric; 35 with 0.47 at eight errors).
 
@@ -111,7 +115,7 @@ A procedure inside this grammar that fits the 24 crib letters would overturn the
 
 ## Reproduce
 
-[Check package](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/kryptos-k4-procedure-enumerator): `python verify_enumerator_counts.py` recomputes the total (4.7 × 10¹⁵, log2 52.1), the description length with the shape choice (55.4 bits), the expected chance passes for each run (including up to four, seven and eight crib errors), the coverage of scattered alterations and the split into different-method and variant parts from the recorded counts, and prints `PASS`. It checks arithmetic; it does not rerun the search and is not an independent replication.
+[Check package](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/kryptos-k4-procedure-enumerator): `python verify_enumerator_counts.py` recomputes the total (4.7 × 10¹⁵, log2 52.1), the description length with the shape choice (55.4 bits), the expected chance passes for each run (including up to four, seven and eight crib errors), the coverage of scattered alterations, the chance values of the fixed-origin features and the identity of rows counted from K3's head with the carved rows, and the split into different-method and variant parts from the recorded counts, and prints `PASS`. It checks arithmetic; it does not rerun the search and is not an independent replication.
 
 ## Evidence / Artifacts
 
@@ -123,7 +127,7 @@ No external independent replication. No review by a cryptographer.
 
 ## Next experiment
 
-Allowing four to eight crib errors has been done (EP-0136, 0 hits). New parts are added only with their counts, committed before running.
+Allowing four to eight crib errors has been done (EP-0136, 0 hits). Combining the fixed-origin features with the error allowance is running. New parts are added only with their counts, committed before running.
 
 ## Sources
 

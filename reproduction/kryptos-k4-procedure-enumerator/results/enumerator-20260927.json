@@ -167,7 +167,66 @@
    "controls_carving": "8/9",
    "expected": 0.059,
    "candidate_pairs_checked": 22800000000000.0
+  },
+  "EP-0143 fixed-origin features, whole crib": {
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "controls": "18/18",
+   "new_procedures": 106000000000000.0,
+   "main_sourced_procedures": 34000000000000.0,
+   "expected": 1.2e-20
+  },
+  "EP-0143 fixed-origin features, crib 1 alone": {
+   "K4_new_hits": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "controls": "9/9",
+   "expected": 4.3e-05
+  },
+  "EP-0143 fixed-origin features, crib 2 alone (auxiliary)": {
+   "K4_new_hits": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "controls": "8/9",
+   "expected": 0.029
   }
  },
- "ep0136_note": "Carving-control misses (4 of 36) all use a ciphertext-autokey selector, where one carved error changes the selector value L letters later (error spreading, pre-registered). Shuffles use their own ciphertext as the running key 'K4_CT', so self-reference identities are matched."
+ "ep0136_note": "Carving-control misses (4 of 36) all use a ciphertext-autokey selector, where one carved error changes the selector value L letters later (error spreading, pre-registered). Shuffles use their own ciphertext as the running key 'K4_CT', so self-reference identities are matched.",
+ "ep0143": {
+  "origins": {
+   "337": "K3 head, counting '?'",
+   "336": "K3 head, letters only",
+   "772": "sculpture head, all carved characters",
+   "768": "sculpture head, letters only"
+  },
+  "main_moduli": {
+   "31": "plate, tableau and worksheet width",
+   "24": "K3 grid 14x24",
+   "14": "K3 grid 14x24",
+   "8": "K3 first grid 42x8",
+   "42": "K3 first grid 42x8",
+   "7": "length of KRYPTOS"
+  },
+  "aux_moduli": [
+   5,
+   7,
+   12,
+   24,
+   31
+  ],
+  "aux_features": 79,
+  "added_features": {
+   "main": 30,
+   "aux": 65
+  },
+  "grammar_total_after": 4810000000000000.0,
+  "note": "(i+337) div 31 equals the carved-row feature up to a constant, so the m = 31 main line was already tested in EP-0119. The per-crib re-run reproduced EP-0134's 12 identities, which use no added feature."
+ }
 }

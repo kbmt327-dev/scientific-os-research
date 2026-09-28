@@ -8,6 +8,7 @@ lang: ja
 
 ## 2026-09-28
 
+- **KRYPTOS-K4-EP-0142** · Finding — [これまでの検定は何を覆い、どこが空いているか](/ja/research/kryptos-k4-capability-matrix/)
 - **KRYPTOS-K4-EP-0141** · Finding — [K1〜K3の制作は、刻まれた配置に痕跡を残したか](/ja/research/kryptos-k4-production-traces/)
 - **KRYPTOS-K4-EP-0140** · Negative Result — [彫刻の制作・施工の事実は、K4の演算子をどこまで決めるか](/ja/research/kryptos-k4-construction-ledger/)
 - **KRYPTOS-K4-EP-0139** · Finding — [上がって見える3文字と余分なLは、意図した印か、施工のずれか](/ja/research/kryptos-k4-yar-photo/)

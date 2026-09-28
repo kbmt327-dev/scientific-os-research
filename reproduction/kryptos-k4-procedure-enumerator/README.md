@@ -1,4 +1,4 @@
-# Kryptos K4: the procedure enumerator (EP-0119, 0127, 0131, 0134, 0136)
+# Kryptos K4: the procedure enumerator (EP-0119, 0127, 0131, 0134, 0136, 0143)
 
 Check package for the Open Research Lab note
 *Does any fully specified procedure built from a grammar of parts fit K4?*
@@ -11,7 +11,7 @@ python make_figure.py out.svg        # redraws the Note's figure from results/
 | File | What it does |
 |---|---|
 | `results/enumerator-20260927.json` | The author's recorded counts: selector families, tables and procedures per shape, and the outcome of every run (K4, two shuffles, planted controls) |
-| `verify_enumerator_counts.py` | Recomputes the total, its log2, the description length with the shape choice, the closed-form expected false passes (whole crib, up to two, three, four, seven and eight crib errors, each crib alone), the coverage of scattered hand alterations and the split into different-method and K1–K3-variant parts |
+| `verify_enumerator_counts.py` | Recomputes the total, its log2, the description length with the shape choice, the closed-form expected false passes (whole crib, up to two, three, four, seven and eight crib errors, each crib alone), the coverage of scattered hand alterations, the fixed-origin features of EP-0143 (chance values, the 79 auxiliary origins, rows counted from K3's head equal to the carved rows) and the split into different-method and K1–K3-variant parts |
 | `make_figure.py` | The Note's figure |
 
 ## What is not rerun here

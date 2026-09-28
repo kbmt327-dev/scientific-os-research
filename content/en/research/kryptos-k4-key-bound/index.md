@@ -5,7 +5,7 @@ date: '2026-09-26'
 lang: en
 domain: Kryptos K4
 type: Finding
-status: A flat IC needs about 3 bits of key per position, more than English redundancy (2.86 bits); only keys with a short description can be decided from K4; position-independent maps are impossible
+status: In a model that picks chart rows uniformly, a flat IC needs a row spread of about 3 bits per position, more than English redundancy (2.86 bits) -- a model-internal quantity, not a general bound; only keys with a short description can be decided from K4; position-independent maps are impossible
 evidence_level: Simulation with fixed seeds and exact crib arguments on public ciphertext; not preregistered
 peer_reviewed: false
 independent_replications: 0
@@ -36,7 +36,7 @@ tags:
 
 ## Current finding
 
-K4's letters are almost as evenly spread as random letters (index of coincidence 0.036; English is about 0.066). Sending English through freely chosen substitution rows makes it that flat in about 5% of cases only when there are about 8 rows to choose from at each position, which is **3 bits of key per position**. English carries about **2.86 bits** of redundancy per letter. So if the key were chosen freely letter by letter, K4 alone could not determine it, however clever the search. A solvable K4 must pair a short technique with a key that has a short description: a rule, a known text, a physical layout.
+K4's letters are almost as evenly spread as random letters (index of coincidence 0.036; English is about 0.066). Sending English through freely chosen substitution rows makes it that flat in about 5% of cases only when there are about 8 rows to choose from at each position, which in this model is **a row spread of 3 bits per position**. English carries about **2.86 bits** of redundancy per letter. So if the key were chosen freely letter by letter, K4 alone could not determine it, however clever the search. A solvable K4 must pair a short technique with a key that has a short description: a rule, a known text, a physical layout.
 
 ## Key figure
 
@@ -44,14 +44,14 @@ K4's letters are almost as evenly spread as random letters (index of coincidence
 
 ## What this research shows
 
-- K4's flat letter counts are rare for English through few rows (0.8% with 4 rows) and become plausible at about 8 rows (4.6%): at least about 3 bits of key per position.
+- K4's flat letter counts are rare for English through few rows (0.8% with 4 rows) and become plausible at about 8 rows (4.6%): in the uniform-row model, a row spread of at least about 3 bits per position.
 - That exceeds English redundancy (2.86 bits per letter), so a freely chosen key sequence is past the point where the plaintext is determined; outside the cribs nothing could be read with confidence.
 - Any map that does not depend on position is impossible without crib errors: `EAST` occurs twice in `EASTNORTHEAST` and enciphers to `FLRV` and `GKSS`. This rules out windows of up to four plaintext letters, a word-level alphabet and a fixed homophonic code.
 - The one family that is a different method and decidable from K4 alone, the sculpture's own text used as the coding chart (18,624 settings), was refuted: K4 reaches at most 6 of 24 crib letters, while all 1,000 shuffles reach 6 or more.
 
 ## What this research does not show
 
-It does not say the key is random, only that it must look flat and be describable briefly to be recoverable. It does not rule out a hand-made chart; that family is simply not decidable from K4. The hypothesis that the key or chart was chosen by hand at each position would explain every observed feature and predicts that public data cannot decide K4; it is a hypothesis, not a finding.
+The "3 bits per position" is a quantity inside a model that picks among m rows uniformly (the spread of row use, the entropy of its marginal distribution); it is neither a lower bound on the key's description length nor a bound for every procedure. A rule-driven row choice, such as a periodic key, can have a 3-bit spread and still be short to describe (added 2026-09-28). It does not say the key is random, only that it must look flat and be describable briefly to be recoverable. It does not rule out a hand-made chart; that family is simply not decidable from K4. The hypothesis that the key or chart was chosen by hand at each position would explain every observed feature and predicts that public data cannot decide K4; it is a hypothesis, not a finding.
 
 ## Research question
 

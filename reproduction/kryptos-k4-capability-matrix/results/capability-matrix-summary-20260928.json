@@ -1,0 +1,12 @@
+{
+ "source": "EP-0142 (catalogue H06); audit repo k4_capability_matrix.py (206dcc5); rows transcribed from the catalogue and the EPs, no K4 computation",
+ "rows": 92,
+ "empty_letter_cells": [["位置", "2回以上"], ["平文履歴", "誤り"], ["平文履歴", "1回のずれ"], ["平文履歴", "cribごと"], ["平文履歴", "2回以上"], ["暗号文履歴", "2回以上"]],
+ "block_history_states_closed": 0,
+ "chronology": {"あり": 74, "計画値": 13, "施工後": 9},
+ "origin": {"なし": 64, "Sanborn": 14, "施工": 8, "Scheidt": 4, "復号後": 2},
+ "two_slips_inside_both_cribs": 0.026,
+ "gaps": ["G1 letter x position x two or more slips", "G2 letter x plaintext history x errors, slips, per crib", "G3 letter x ciphertext history x two or more slips", "G4 letter x machine with fixed points x errors, slips, per crib", "G5 block x none/position x slips, per crib", "G6 block x any history or machine state", "G7 word x position with errors or slips; word x history or machine", "G8 position-changing stage combined with history or machine", "G9 arbitrary two-sided alphabets with history or machine", "G10 three or more stages with a short description", "G11 features with a fixed counting origin"],
+ "gaps_with_a_source": ["G7 (weak)", "G10 (weak)", "G11 (EP-0141)"],
+ "note": "The episode text gives 72 rows for 'existed at encryption' and 62 for 'no source'; counting every value of the multi-valued cells in the CSV gives 74 and 64 (71 and 64 rows with that single value). The Note uses the CSV counts."
+}

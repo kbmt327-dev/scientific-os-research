@@ -230,7 +230,7 @@ Program overview:
 
 Question: Which mechanisms can the 97 ciphertext letters and 24 crib letters rule out, and which apparent patterns survive once the freedom used to find them is counted?
 
-Current claim (EP-0141): No decryption and no new plaintext letter (as of 2026-09-28). What has been tested is only whether a procedure short enough to write down is compatible with the 24 crib letters, and every answer is no. Besides the K1–K3 form (one chart, shifted), methods outside it (digraph squares, Hill, Slidefair, Portax and Doppelkasten, rotor machines, an Enigma-type machine behind a free substitution) and an enumerator of 4.7 × 10¹⁵ procedures built from a grammar of parts gave no candidate wherever the cribs decide; the enumerator still gives 0 with up to seven crib errors or with letters reordered inside words. These are logical refutations; none shows K4 to be rarer than random. K4's flat letter frequencies need at least 3 bits of key per position, and hand-made charts, homophones and codebooks cannot be decided without an outside source for the chart, the device or K5. The TOKIO reading of the W gaps is compatible with chance once the choice of target list is paid (expected 0.054, EP-0135). Operators fixed by the sculpture's production facts are either rejected or undecidable, and K1–K3's carved layout follows letter widths and shows no trace of their methods (EP-0140, EP-0141).
+Current claim (EP-0142): No decryption and no new plaintext letter (as of 2026-09-28). What has been tested is only whether a procedure short enough to write down is compatible with the 24 crib letters, and every answer is no. Besides the K1–K3 form (one chart, shifted), methods outside it (digraph squares, Hill, Slidefair, Portax and Doppelkasten, rotor machines, an Enigma-type machine behind a free substitution) and an enumerator of 4.7 × 10¹⁵ procedures built from a grammar of parts gave no candidate wherever the cribs decide; the enumerator still gives 0 with up to seven crib errors or with letters reordered inside words. These are logical refutations; none shows K4 to be rarer than random. K4's flat letter frequencies need a row spread of at least 3 bits per position in a model that picks rows uniformly (a model-internal quantity), and hand-made charts, homophones and codebooks cannot be decided without an outside source for the chart, the device or K5. The TOKIO reading of the W gaps is compatible with chance once the choice of target list is paid (expected 0.054, EP-0135). Operators fixed by the sculpture's production facts are either rejected or undecidable, and K1–K3's carved layout follows letter widths and shows no trace of their methods (EP-0140, EP-0141). A matrix of the capabilities covered so far leaves eleven gap groups, almost all without a source that would fix an operator; the one with a source, fixed counting origins, also gave 0 (EP-0142, EP-0143).
 
 Evidence boundary: Exploratory computation on the public ciphertext, the 24 crib letters and public photos of the sculpture. Most later tests were committed before running on K4, but none is externally preregistered; no external independent replication and no review by a cryptographer. The ground truth exists but is withheld.
 
@@ -298,9 +298,12 @@ Published Research Notes:
 - KRYPTOS-K4-EP-0140 — How far do the sculpture's production facts fix K4's operator? (Negative Result)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-construction-ledger/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-construction-ledger/
-- KRYPTOS-K4-EP-0141 — Did making K1-K3 leave traces in the carved layout? (Finding) — CURRENT
+- KRYPTOS-K4-EP-0141 — Did making K1-K3 leave traces in the carved layout? (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-production-traces/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-production-traces/
+- KRYPTOS-K4-EP-0142 — What have the tests covered, and where are the gaps? (Finding) — CURRENT
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-capability-matrix/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-capability-matrix/
 <!-- GENERATED: research-current:END -->
 
 ### Measurement design

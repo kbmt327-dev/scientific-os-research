@@ -6,6 +6,13 @@ lang: ja
 
 ここは履歴の入口です。現在の結論を知りたい場合は、先に[研究分野ごとの現在地](/ja/research/)を読んでください。
 
+## 2026-09-28
+
+- **KRYPTOS-K4-EP-0141** · Finding — [K1〜K3の制作は、刻まれた配置に痕跡を残したか](/ja/research/kryptos-k4-production-traces/)
+- **KRYPTOS-K4-EP-0140** · Negative Result — [彫刻の制作・施工の事実は、K4の演算子をどこまで決めるか](/ja/research/kryptos-k4-construction-ledger/)
+- **KRYPTOS-K4-EP-0139** · Finding — [上がって見える3文字と余分なLは、意図した印か、施工のずれか](/ja/research/kryptos-k4-yar-photo/)
+- **KRYPTOS-K4-EP-0138** · Negative Result — [TOKIOの2つのOの区間を対にした2文字暗号で、K4を作れるか](/ja/research/kryptos-k4-o-pairs/)
+- **KRYPTOS-K4-EP-0137** · Negative Result — [語の中で文字を並べ替えれば、K4に合う手順は現れるか](/ja/research/kryptos-k4-word-reordering/)
 ## 2026-09-27
 
 - **KRYPTOS-K4-EP-0135** · Finding — [標的リストを選ぶ自由まで払うと、TOKIOの読みはいくらか](/ja/research/kryptos-k4-list-price/)

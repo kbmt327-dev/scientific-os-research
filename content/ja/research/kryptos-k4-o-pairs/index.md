@@ -1,0 +1,126 @@
+---
+research_id: KRYPTOS-K4-EP-0138
+title: TOKIOの2つのOの区間を対にした2文字暗号で、K4を作れるか
+date: '2026-09-28'
+lang: ja
+domain: Kryptos K4
+type: Negative Result
+status: 自由な5×5の方陣（Four-square、Two-square、Doppelkasten）の56設定すべてでcribと矛盾、鍵語の方陣は1,238,220設定で0、2×2のHillも0。論理的な反証で、でたらめより起きにくいとは言えない。固定の任意の2文字表は判定できない
+evidence_level: 公開暗号文とcribでの厳密な整合判定（制約ソルバーの証明）。K4に回す前に事前登録。対の作り方はWの並びとcribを見た後に考えた（事後）
+peer_reviewed: false
+independent_replications: 0
+evidence:
+  class: exploratory-computation
+  source: 公開K4暗号文と公開crib 24文字。CP-SATによる自由な方陣の整合判定、鍵語の方陣、Wの位置を保って並べ替えた暗号文1,000本、植え込みの陽性対照
+review:
+  editorial_reviewed: true
+  scientific_reviewed: false
+  domain_expert_reviewed: false
+  peer_reviewed: false
+claim_scope: 位置21〜35と59〜73の同じ番目の文字を組にした対だけ。方陣の方式4つ（56設定）と2×2のHill（混合alphabetでない4通り）。復号はなく、新しい平文文字もない
+replication:
+  independent: 0
+  failed: 0
+source_episode: KRYPTOS-K4/EP-0138
+source_episode_sha256: 977ff42939472d9eb4b4f45abb1c4f5b554052e0f71a0999c794bb38bc9a2200
+publication:
+  status: publishable
+tags:
+- kryptos-k4
+- digraph
+- negative-result
+- ja
+---
+
+<p class="research-area"><b>Kryptos K4</b><a href="/en/research/kryptos-k4-o-pairs/" hreflang="en">English</a></p>
+
+## 何を調べたか
+
+K4をWで区切ると、区間の長さは20・15・11・9・15・22文字です。同じ長さなのは、TOKIOと読んだときの2つのOの区間（位置21〜35と59〜73）だけで、2つのcribはちょうどこの中にあります。またK4のW以外の文字はちょうど25種です。そこで、2つのOの区間で同じ番目の文字を組にし、Wを除いた5×5の方陣で2文字ずつ暗号化した、と読めるか。
+
+## なぜ重要か
+
+離れた2文字を組にする方式は、「1文字ずつ、1枚の表をずらす」K1〜K3の形から外れます。Wの区切りを方式の一部とみる読み方は、[EP-0110](/ja/research/kryptos-k4-w-squares/)の方陣とは組み方が違います。ただしこの対は、Wの並びとcribを見た後に考えたものです。両立しても、それだけでは証拠になりません。
+
+## 方法
+
+- **対。** 形は (P[21＋o], P[59＋o]) → (C[21＋o], C[59＋o])、o＝0〜14。両方の平文字がcribで分かる組が9、片方だけ分かる組が6です。
+- **方式。** Four-square（平文の方陣を標準にしたものと、4枚とも自由なもの）、Two-square（方陣1枚か2枚×長方形の規約4通り×透過なし・行・列）、1回がけのDoppelkasten（受け手が復号できる2通り）。向き2通りで、合わせて56設定です。
+- **厳密な判定。** 設定ごとに1つの制約モデル（CP-SAT）を作りました。文字ごとの方陣の行と列を変数にし、各組で長方形・同じ行・透過のどれか1つを選ばせます。「解なし」は証明です。片方だけ分かる6組も、未知の文字に自由な座標を与えて使いました。
+- **鍵語の方陣。** EP-0110の方陣の組（ヒントの語、英単語×基本の方陣）で1,238,220設定。
+- **対照とnull。** 英文にcribを書き込み、ランダムな方陣でこの対を暗号化した植え込み280本（鍵語は30本）。nullは、Wの位置と区間を保ってW以外の文字を並べ替えた1,000本です。
+
+## 結果
+
+| 方式 | 設定 | K4 | シャッフルの両立（1,000本） |
+|---|---|---|---|
+| Four-square、平文の方陣は標準 | 2 | 矛盾 | 0 |
+| Four-square、4枚とも自由 | 2 | 矛盾 | 371 |
+| Two-square、24通り | 48 | 矛盾 | どれも0 |
+| Doppelkasten、1回がけ | 4 | 矛盾 | 6 |
+| 鍵語の方陣 | 1,238,220 | 0件 | 3本とも0件 |
+| 2×2のHill（AZ・KA、それぞれWを除く版、線形・アフィン、向き2通り） | 32 | 解0 | — |
+
+時間切れは0で、植え込みは280/280と30/30が見つかりました。
+
+cribだけで分かることもあります。両方分かる9組には同じ入力の組がないので、固定の任意の2文字表はこの対では判定できません。入力に (R,R) があるので、Playfairはこの対では成り立ちません。逆向きに組む対（21＋o と 73−o）では、同じ (T,L) が (V,Z) と (R,V) になるので、固定の2文字表はどれも矛盾します。
+
+矛盾の核は小さな組です。Two-squareの18通りでは、(S,L)→(S,Z) の1組だけで矛盾します。1文字目が変わらないなら2文字目も変わらないはずなのに、Zになっています。4枚とも自由なFour-squareとDoppelkastenでは、(T,L)→(R,V)、(S,L)→(S,Z)、(T,O)→(S,F) の3組で矛盾します。
+
+## 現在わかっていること
+
+2つのOの区間を同じ番目どうし対にした2文字暗号は、調べた方陣の方式すべてでcribと両立しません。同じ対での2×2のHillも解がありません。ただし、でたらめな暗号文もほとんどが同じく矛盾するので、これは族の論理的な反証で、K4がこれらの方式からでたらめより遠いという証拠ではありません。
+
+## 図で見る
+
+![横棒グラフ：方陣の方式4つで、K4はすべて矛盾。灰色の棒は、並べ替えた暗号文1,000本のうち両立した割合で、4枚とも自由なFour-squareが37.1%、Doppelkastenが0.6%、ほかは0%](/assets/kryptos-k4-o-pairs.svg)
+
+## この研究が示すこと
+
+- 2つのOの区間の対に、5×5の方陣の2文字暗号（Four-square、Two-square、1回がけのDoppelkasten）を当てる読みは、自由な方陣でも鍵語の方陣でも成り立ちません。
+- 同じ対での2×2のHillは、混合alphabetでない4通りで解がありません。
+- どの矛盾も、数組のcribの対から来ています。
+
+## この研究が示さないこと
+
+でたらめより起きにくいとは言えません。4枚とも自由なFour-square以外は、並べ替えた暗号文もほぼ必ず矛盾します。固定の任意の2文字表は、この対では判定できません。混合alphabetのHill、2回がけのDoppelkasten、方陣の前後に段を足した形、2つのOの区間の中での別の組み方は調べていません。
+
+## 何が変わったか
+
+TOKIOの区切りを「方式の一部」とみる読み方の1つが、方陣の範囲で閉じました。向きを変えても方陣の名前が入れ替わるだけで、同じ族になることも分かりました（回した後に気づいたので、2本の独立な結果とは数えていません）。
+
+## 何が失敗したか
+
+合う設定はありませんでした。対の作り方が事後なので、仮に両立していても証拠としては弱かったはずです。
+
+## 証拠の範囲
+
+公開K4暗号文とcrib、作者のコードです。方陣の結果は制約ソルバーの証明として記録しており、公開パッケージでは再実行しません。公開の検算は、対の事実と2×2のHillを覆います。
+
+## まだ分からないこと
+
+混合alphabetのHillなど、方陣でない2文字の変換がこの対で成り立つか。TOKIOの区切りに意味があるのか（[EP-0135](/ja/research/kryptos-k4-list-price/)では、標的リストの値段を払うと偶然と両立）。外部の独立replicationは0件です。
+
+## この結論が崩れるとき
+
+述べた方式のどれかで、24のcrib文字と両立する方陣が見つかれば覆ります。制約モデルの書き方の誤りで両立する方陣を落としていても同じです（植え込み280本はすべて両立と判定されました）。
+
+## 自分で確かめる
+
+[検算パッケージ](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/kryptos-k4-o-pairs)：`python verify_o_pairs.py` は、15組の対と分かる文字、同じ入力の組がないこと、Playfairの (R,R)、逆向きの対での矛盾、4つのalphabetでの2×2のHill（植え込み10本つき）を計算し直し、`PASS` を出します。標準ライブラリだけで数秒です。作者のコードの再実行であり、独立replicationではありません。
+
+## 証拠とデータ
+
+[記録した結果、検算スクリプト、図のスクリプト](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/kryptos-k4-o-pairs)。MITライセンスです。
+
+## 外部からの検証
+
+外部の独立replicationは0件です。暗号の専門家によるレビューは受けていません。
+
+## 次の実験
+
+同じ対で、混合alphabetのHill（σ⁻¹(M·σ(P)＋b)、σは自由）。2つのOの区間の中での別の組み方（隣どうし、段ずらし）。
+
+## 出典
+
+- K4の暗号文とcrib：Jim Sanborn, *Kryptos*（1990）。[Wikipedia](https://en.wikipedia.org/wiki/Kryptos)、[Elonka Dunin](https://elonka.com/kryptos/)。cribの公開：[WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/)、[WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/)、NPR 2020。

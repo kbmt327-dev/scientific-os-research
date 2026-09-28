@@ -5,7 +5,7 @@ date: '2026-09-27'
 lang: en
 domain: Kryptos K4
 type: Negative Result
-status: 0 of 4.7e15 procedures fit K4, also with a stacked shift mask, per crib, and with up to three crib errors; logical refutation, not rarer than random
+status: 0 of 4.7e15 procedures fit K4, also with a stacked shift mask, per crib, and with up to seven (auxiliary eight) crib errors; logical refutation, not rarer than random
 evidence_level: Exhaustive exact test on public ciphertext and cribs; each script committed before it was run on K4
 peer_reviewed: false
 independent_replications: 0
@@ -49,7 +49,7 @@ Until this step each family was proposed by hand, so a negative result said as m
 - **Chart shapes.** Four K1–K3 variants (Quagmire-type shifts, Beaufort forms, keyword plus linear key) and six different methods: two stacked shifts on different alphabets (`TWO`, `TWOB`), affine rows whose multiplier changes with position (`AFF`), rows that are keyword alphabets of successive words, 26-letter slices of a text, or powers of one permutation. Transposition parts are left out, because the cribs are read at their carved positions.
 - **Test.** A procedure passes if it maps all 24 crib letters correctly. With bijective rows this becomes "is the required key sequence in the selector family", answered by hash lookup; any hit is rebuilt and checked.
 - **Controls.** Two planted procedures per shape, each found by searching its whole shape (18/18). Two shuffled K4s as nulls. The script was committed before it was run on K4.
-- **Follow-ups on the same grammar.** A K1–K3-type shift mask stacked before or after each different-method chart (EP-0127); each crib judged alone, with features counted from the start of its segment (EP-0134); up to two or three wrong crib letters (EP-0131).
+- **Follow-ups on the same grammar.** A K1–K3-type shift mask stacked before or after each different-method chart (EP-0127); each crib judged alone, with features counted from the start of its segment (EP-0134); up to two or three wrong crib letters (EP-0131); up to four and seven wrong crib letters, with eight as an auxiliary run (EP-0136, candidates checked on the GPU, pre-registered before any run on K4).
 
 ## Results
 
@@ -59,6 +59,9 @@ Until this step each family was proposed by hand, so a negative result said as m
 | Stacked shift mask, periods ≤ 12 (EP-0127) | 2.5 × 10³² incl. mask values | **0** | 0, 0 | 32/32 | 0.028 |
 | Up to 2 crib errors (EP-0131) | 4.7 × 10¹⁵ | **0** | 0, 0 | 18/18 and 14/18 | 9 × 10⁻¹⁴ |
 | Up to 3 crib errors (EP-0131) | 4.7 × 10¹⁵ | **0** | 0, 0 | 9/9 and 9/9 | 1.6 × 10⁻¹¹ |
+| Up to 4 crib errors (EP-0136) | 4.7 × 10¹⁵ | **0** | 0, 0 | 9/9 and 8/9 | 2.2 × 10⁻⁹ |
+| Up to 7 crib errors (EP-0136) | 4.7 × 10¹⁵ | **0** | 0, 0 | 18/18 and 16/18 | 1.1 × 10⁻³ |
+| Up to 8 crib errors, auxiliary (EP-0136) | 4.7 × 10¹⁵ | **0** | 0, 0 | 9/9 and 8/9 | 0.059 |
 | Crib 1 alone (EP-0134) | 4.7 × 10¹⁵ | 8 identities, 0 informative | 0, 0 | 9/9 | 0.0019 |
 | Crib 2 alone, auxiliary (EP-0134) | 4.7 × 10¹⁵ | 4 identities, 0 informative | 0, 0 | 7/9 | 1.3 |
 
@@ -66,7 +69,9 @@ In the error runs the first control count plants errors on the plaintext side, t
 
 ## Current finding
 
-No procedure in a grammar of 4.7 × 10¹⁵ fully specified procedures fits K4's cribs. Nearly all of them (99.9%) are different methods rather than one shifted chart. The result holds with a shift mask stacked on top, with each crib judged separately, and with up to three wrong crib letters.
+No procedure in a grammar of 4.7 × 10¹⁵ fully specified procedures fits K4's cribs. Nearly all of them (99.9%) are different methods rather than one shifted chart. The result holds with a shift mask stacked on top, with each crib judged separately, and with up to seven wrong crib letters (eight as an auxiliary run).
+
+If hand alterations fall at scattered positions, the seven-error run covers 20 altered letters (about a fifth of K4) with probability 0.93, 28 with 0.62 and 35 with 0.29 (hypergeometric; 35 with 0.47 at eight errors).
 
 ## Key figure
 
@@ -78,11 +83,11 @@ The crib carries about 113 bits. The whole grammar uses 52 bits, so a false pass
 
 - The grammar, as written before the run, contains no procedure that fits K4, including its K1–K3-variant part (2.7 × 10¹²), which reproduces earlier rejections.
 - "The Ws switch the procedure, so a whole-crib test missed it" does not hold inside the grammar: each crib alone gives no informative hit.
-- "A carving error hides the procedure" does not hold for up to three errors, except for selectors that read the ciphertext, where one carving error changes later selector values (4 of 18 carving controls missed at two errors).
+- "A sound method that the maker then altered by hand" (Sanborn's paraphrased 2025 remark) does not hold inside the grammar for up to seven altered crib letters, except for selectors that read the ciphertext, where one carving error changes later selector values (4 of 18 carving controls missed at two errors, 4 of 36 at four to eight, all ciphertext autokey).
 
 ## What this research does not show
 
-It does not show that K4 is rarer than random: shuffled ciphertexts also give 0, as the chance values predict. It says nothing about procedures outside the grammar: hand-made charts, homophones, codebooks, keys from sources not listed, three or more layers, or plaintext autokey.
+It does not show that K4 is rarer than random: shuffled ciphertexts also give 0, as the chance values predict. Alterations concentrated on the cribs, or more than about 35 scattered ones, are not covered. It says nothing about procedures outside the grammar: hand-made charts, homophones, codebooks, keys from sources not listed, three or more layers, or plaintext autokey.
 
 ## What changed
 
@@ -106,7 +111,7 @@ A procedure inside this grammar that fits the 24 crib letters would overturn the
 
 ## Reproduce
 
-[Check package](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/kryptos-k4-procedure-enumerator): `python verify_enumerator_counts.py` recomputes the total (4.7 × 10¹⁵, log2 52.1), the description length with the shape choice (55.4 bits), the expected chance passes for each run and the split into different-method and variant parts from the recorded counts, and prints `PASS`. It checks arithmetic; it does not rerun the search and is not an independent replication.
+[Check package](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/kryptos-k4-procedure-enumerator): `python verify_enumerator_counts.py` recomputes the total (4.7 × 10¹⁵, log2 52.1), the description length with the shape choice (55.4 bits), the expected chance passes for each run (including up to four, seven and eight crib errors), the coverage of scattered alterations and the split into different-method and variant parts from the recorded counts, and prints `PASS`. It checks arithmetic; it does not rerun the search and is not an independent replication.
 
 ## Evidence / Artifacts
 
@@ -118,7 +123,7 @@ No external independent replication. No review by a cryptographer.
 
 ## Next experiment
 
-Allow four to seven crib errors (running at the time of writing). New parts are added only with their counts, committed before running.
+Allowing four to eight crib errors has been done (EP-0136, 0 hits). New parts are added only with their counts, committed before running.
 
 ## Sources
 

@@ -1,0 +1,22 @@
+{
+ "source": "EP-0137 (catalog J01, J01'), audit repo k4_wordperm.py committed before any K4 run (1a3eb68; J01' b048818)",
+ "procedures_log2": 52.1,
+ "procedures": 4.7e15,
+ "arrangements": {"S1": 188116992000, "S2": 2985984000, "S3": 1294597624320000},
+ "arrangement_bits": {"S1": 37.5, "S2": 31.5, "S3": 50.2},
+ "fixed_rule_assignments": 21,
+ "expected_false_passes": {"fixed rules": 1.1e-17, "any reordering (sum over shapes)": 7e-6},
+ "runs": {
+  "J01 fixed rules": {"K4": 0, "shuffles": [0, 0], "controls": "16/16"},
+  "J01 any reordering (per-word multiset)": {"K4": 0, "shuffles": [0, 0], "controls": "22/22"},
+  "J01' fixed rules": {"K4": 0, "shuffles": [0, 0], "controls": "16/16"},
+  "J01' any reordering": {"K4": 0, "shuffles": [0, 0], "controls": "22/22"}
+ },
+ "not_covered": ["AFF under any reordering", "TWO and TWOB (full alphabets) under any reordering with S3", "ciphertext-reading selectors in J01'", "other segmentations or reorderings across words", "families outside the enumerator grammar"],
+ "near_keys_pm3": {"identity": 12, "S1": 5, "S2": 7, "S3": 6},
+ "word_restart_conflicts": {
+  "S1": [2, 4], "S2": [7, 5], "S3": [2, 0],
+  "EASTNORTHEAST+BERLIN|CLOCK": [1, 0], "EAST|NORTHEAST+BERLINCLOCK": [2, 4]
+ },
+ "word_restart_conflicts_columns": ["from word start", "from word end"]
+}

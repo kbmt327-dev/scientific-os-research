@@ -6,6 +6,13 @@ lang: en
 
 This is the historical log. For current claims, start with the [research-area index](/en/research/).
 
+## 2026-09-28
+
+- **KRYPTOS-K4-EP-0141** · Finding — [Did making K1-K3 leave traces in the carved layout?](/en/research/kryptos-k4-production-traces/)
+- **KRYPTOS-K4-EP-0140** · Negative Result — [How far do the sculpture's production facts fix K4's operator?](/en/research/kryptos-k4-construction-ledger/)
+- **KRYPTOS-K4-EP-0139** · Finding — [Are the raised letters and the extra L deliberate marks or construction offsets?](/en/research/kryptos-k4-yar-photo/)
+- **KRYPTOS-K4-EP-0138** · Negative Result — [Can the two O-segments of TOKIO, paired letter by letter, be a digraph cipher?](/en/research/kryptos-k4-o-pairs/)
+- **KRYPTOS-K4-EP-0137** · Negative Result — [Does reordering letters inside each word open a procedure that fits K4?](/en/research/kryptos-k4-word-reordering/)
 ## 2026-09-27
 
 - **KRYPTOS-K4-EP-0135** · Finding — [What is the TOKIO reading worth once the choice of target list is paid?](/en/research/kryptos-k4-list-price/)

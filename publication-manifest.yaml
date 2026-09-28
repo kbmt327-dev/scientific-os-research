@@ -423,6 +423,51 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: KRYPTOS-K4-EP-0137
+    source_episode: KRYPTOS-K4/EP-0137
+    source_episode_sha256: f40f91d61f9e2531d1892815157317269cd82294bc5d632bf9ea589bc3ed036e
+    views:
+      en: content/en/research/kryptos-k4-word-reordering/index.md
+      ja: content/ja/research/kryptos-k4-word-reordering/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+  - research_id: KRYPTOS-K4-EP-0138
+    source_episode: KRYPTOS-K4/EP-0138
+    source_episode_sha256: 977ff42939472d9eb4b4f45abb1c4f5b554052e0f71a0999c794bb38bc9a2200
+    views:
+      en: content/en/research/kryptos-k4-o-pairs/index.md
+      ja: content/ja/research/kryptos-k4-o-pairs/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+  - research_id: KRYPTOS-K4-EP-0139
+    source_episode: KRYPTOS-K4/EP-0139
+    source_episode_sha256: 977c4095f1d922a5da0ae96eb4370a754032c0308484e04d493044ee3fae9df0
+    views:
+      en: content/en/research/kryptos-k4-yar-photo/index.md
+      ja: content/ja/research/kryptos-k4-yar-photo/index.md
+    type: Finding
+    publication:
+      status: publishable
+  - research_id: KRYPTOS-K4-EP-0140
+    source_episode: KRYPTOS-K4/EP-0140
+    source_episode_sha256: 4293b03a646f94f71bda37bbd205de2d025b4b0c4426d15211d36e164539fed2
+    views:
+      en: content/en/research/kryptos-k4-construction-ledger/index.md
+      ja: content/ja/research/kryptos-k4-construction-ledger/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+  - research_id: KRYPTOS-K4-EP-0141
+    source_episode: KRYPTOS-K4/EP-0141
+    source_episode_sha256: f3419fdf329ede74c206c47d11302c83f3b10796044da969130981f11509c961
+    views:
+      en: content/en/research/kryptos-k4-production-traces/index.md
+      ja: content/ja/research/kryptos-k4-production-traces/index.md
+    type: Finding
+    publication:
+      status: publishable
   - research_id: GPU-SCHED-EP-0029
     source_episode: GPU-SCHEDULING/EP-0029
     source_episode_sha256: 88e85fe7c39894030467205bc28b547382a841a13153f050bc477821522dc8cd

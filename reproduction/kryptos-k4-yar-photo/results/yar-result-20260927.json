@@ -1,0 +1,52 @@
+{
+ "source": "EP-0139 (catalog J10); statistic and classes pre-registered in the audit repo before any letter was measured",
+ "photos": {
+  "gillogly-ciphermidleft": {
+   "side": "front",
+   "class": "row-offset",
+   "class_read_as": "none (the row-offset test is forced by the plate seam between rows 13 and 14, a pre-registration design error)",
+   "row14_resid_P": [
+    -0.0124,
+    0.0143,
+    -0.0149,
+    -0.0616,
+    -0.0594,
+    0.0588,
+    -0.0226,
+    0.0265,
+    0.0044,
+    -0.0188,
+    0.0125
+   ],
+   "T_P": 0.08,
+   "in_plate_pitch_px": 47
+  },
+  "highsmith-LOC-2011631531": {
+   "side": "back (mirrored)",
+   "class": "intended",
+   "row14_resid_P": [
+    0.0009,
+    -0.0012,
+    0.0041,
+    -0.1015,
+    -0.1289,
+    -0.0083,
+    -0.103,
+    -0.0106,
+    0.0037,
+    -0.0056,
+    0.0022
+   ],
+   "T_P": 0.08,
+   "in_plate_pitch_px": 100
+  }
+ },
+ "verdict_yar": "undecided (photos disagree)",
+ "verdict_extra_l": "undecided (no public photo shows the tableau row whole at usable resolution)",
+ "pitch_cm": 11.7,
+ "design_errors": [
+  "row-offset test compares gaps 13->14 and 14->15, but a plate seam lies between rows 13 and 14",
+  "pitch P is a median that includes the seam gap, 1.25-1.34 times the in-plate pitch, so residuals in P are understated"
+ ],
+ "pitch_cm_note": "11.7 cm is the in-plate row pitch; P (the pre-registered unit) includes the seam gap"
+}

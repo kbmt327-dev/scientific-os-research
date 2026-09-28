@@ -26,13 +26,15 @@ From 2026-09-26 it turned to methods outside that form: digraph squares, Hill, S
 
 Family-by-family results are in **[Families examined](/en/programs/kryptos-k4/families)**.
 
-## Where things stand (2026-09-27)
+## Where things stand (2026-09-28)
 
 - **What has been tested**: only whether a procedure short enough to write down is compatible with the 24 crib letters. Every answer so far is no. These are logical refutations; none shows K4 to be rarer than random. No new plaintext letters.
 - **A lower bound on the key**: K4's letter frequencies are flat, which needs at least 3 bits of key per position ([EP-0091](/en/research/kryptos-k4-key-bound/)). That is more than the redundancy of English (about 2.86 bits), so a key chosen freely letter by letter cannot be determined from K4 alone. A solvable K4 must pair a short technique with a key source that has a short description. This points the same way as Scheidt's remark that once the technique is known the rest is a puzzle.
 - **What cannot be decided**: hand-made charts, homophones, digraph charts, codebooks and multi-rotor machines with free wiring have more freedom than the cribs constrain. Deciding them needs an outside source for the chart, the device or K5. One hypothesis is that the key or chart was chosen by hand position by position; it would account for every observed feature and predicts that public data cannot decide K4. It is a hypothesis, not a conclusion.
 - **Key sources**: the test that separates the key source from the chart (planned on 2026-09-26) found no supported source for a Latin-square chart.
-- **In progress**: further hypotheses developed with the program's owner (within-word reordering, digraphs, an enumerator allowing four to seven crib errors) are being computed.
+- **Hypotheses developed with the program's owner (2026-09-27)**: letters reordered inside each word before or after the substitution ([EP-0137](/en/research/kryptos-k4-word-reordering/)), the two O-segments paired as digraphs ([EP-0138](/en/research/kryptos-k4-o-pairs/)), and the enumerator allowing up to seven wrong crib letters, as a sound method altered by hand would need ([EP-0119](/en/research/kryptos-k4-procedure-enumerator/)): all gave 0; logical refutations only.
+- **Three layers of "physical"**: installation physics (sun, shadow, orientation of the finished sculpture), production geometry (how K4 was made at the desk) and post-decryption physics (carrying out a plaintext instruction on site) are now kept apart. Earlier physical tests were almost all layer one. For layer two, the production facts fix only a few operators, one rejected and the rest undecidable ([EP-0140](/en/research/kryptos-k4-construction-ledger/)); K1–K3's carved layout follows letter widths and shows no trace of their known methods, so reading K4's layout as a clue has no positive control ([EP-0141](/en/research/kryptos-k4-production-traces/)). The raised letters in row 14 remain undecided between two photos ([EP-0139](/en/research/kryptos-k4-yar-photo/)).
+
 ## Physical record and 3D model of the sculpture (2026-09-25)
 
 To test whether the key might come from the sculpture's physical form rather than from letters, we estimated the sculpture's physical layout from public photographs and aerial imagery and built a 3D model (v0.5). It includes how the copper is assembled (four plates in a 2 × 2 arrangement, with the horizontal seam falling exactly at the K2/K3 boundary), the S-shaped plan, its orientation (the cipher side faces roughly south), the thickness of the petrified-wood trunk, and the layout of the three stones at the entrance that carry the Morse code (K0). Choosing a date and time at Langley places the sun and shows the light cast through the cut-out letters.
@@ -46,11 +48,11 @@ Most dimensions and bearings are estimates (grade C) and should be read as appro
 <!-- GENERATED: program-current:START -->
 ## Current public state
 
-No decryption and no new plaintext letter (as of 2026-09-27). What has been tested is only whether a procedure short enough to write down is compatible with the 24 crib letters, and every answer is no. Besides the K1–K3 form (one chart, shifted), methods outside it (digraph squares, Hill, Slidefair, Portax and Doppelkasten, rotor machines, an Enigma-type machine behind a free substitution) and an enumerator of 4.7 × 10¹⁵ procedures built from a grammar of parts gave no candidate wherever the cribs decide. These are logical refutations; none shows K4 to be rarer than random. K4's flat letter frequencies need at least 3 bits of key per position, and hand-made charts, homophones and codebooks cannot be decided without an outside source for the chart, the device or K5. The TOKIO reading of the W gaps is compatible with chance once the choice of target list is paid (expected 0.054, EP-0135).
+No decryption and no new plaintext letter (as of 2026-09-28). What has been tested is only whether a procedure short enough to write down is compatible with the 24 crib letters, and every answer is no. Besides the K1–K3 form (one chart, shifted), methods outside it (digraph squares, Hill, Slidefair, Portax and Doppelkasten, rotor machines, an Enigma-type machine behind a free substitution) and an enumerator of 4.7 × 10¹⁵ procedures built from a grammar of parts gave no candidate wherever the cribs decide; the enumerator still gives 0 with up to seven crib errors or with letters reordered inside words. These are logical refutations; none shows K4 to be rarer than random. K4's flat letter frequencies need at least 3 bits of key per position, and hand-made charts, homophones and codebooks cannot be decided without an outside source for the chart, the device or K5. The TOKIO reading of the W gaps is compatible with chance once the choice of target list is paid (expected 0.054, EP-0135). Operators fixed by the sculpture's production facts are either rejected or undecidable, and K1–K3's carved layout follows letter widths and shows no trace of their methods (EP-0140, EP-0141).
 
-**Evidence boundary:** Exploratory computation on the public ciphertext and 24 crib letters. Not preregistered; no external independent replication and no review by a cryptographer. The ground truth exists but is withheld.
+**Evidence boundary:** Exploratory computation on the public ciphertext, the 24 crib letters and public photos of the sculpture. Most later tests were committed before running on K4, but none is externally preregistered; no external independent replication and no review by a cryptographer. The ground truth exists but is withheld.
 
-**[Read the current Research Note (EP-0135) →](/en/research/kryptos-k4-list-price/)**
+**[Read the current Research Note (EP-0141) →](/en/research/kryptos-k4-production-traces/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -72,7 +74,12 @@ No decryption and no new plaintext letter (as of 2026-09-27). What has been test
 14. [[en/research/kryptos-k4-affine-hill/index|EP-0117 — Do affine maps or Hill matrices that change along the text fit K4?]]
 15. [[en/research/kryptos-k4-procedure-enumerator/index|EP-0119 — Does any fully specified procedure built from a grammar of parts fit K4?]]
 16. [[en/research/kryptos-k4-rotors/index|EP-0121 — Can a rotor machine with a free wiring produce K4's cribs?]]
-17. **[[en/research/kryptos-k4-list-price/index|EP-0135 — What is the TOKIO reading worth once the choice of target list is paid?]] (latest)**
+17. [[en/research/kryptos-k4-list-price/index|EP-0135 — What is the TOKIO reading worth once the choice of target list is paid?]]
+18. [[en/research/kryptos-k4-word-reordering/index|EP-0137 — Does reordering letters inside each word open a procedure that fits K4?]]
+19. [[en/research/kryptos-k4-o-pairs/index|EP-0138 — Can the two O-segments of TOKIO, paired letter by letter, be a digraph cipher?]]
+20. [[en/research/kryptos-k4-yar-photo/index|EP-0139 — Are the raised letters and the extra L deliberate marks or construction offsets?]]
+21. [[en/research/kryptos-k4-construction-ledger/index|EP-0140 — How far do the sculpture's production facts fix K4's operator?]]
+22. **[[en/research/kryptos-k4-production-traces/index|EP-0141 — Did making K1-K3 leave traces in the carved layout?]] (latest)**
 <!-- GENERATED: program-history:END -->
 
 ## Sources

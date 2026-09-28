@@ -1,12 +1,13 @@
-"""Check the arithmetic behind the procedure-enumerator Note (EP-0119, 0127, 0131, 0134).
+"""Check the arithmetic behind the procedure-enumerator Note (EP-0119, 0127, 0131, 0134, 0136).
 
     python verify_enumerator_counts.py
 
 The enumerator itself reads the K1-K3 texts and the carved tableau, which this site does
 not publish, so it is not rerun here.  What is checked is every number the Note derives
 from the recorded counts: the total and its log2, the description length with the shape
-choice, the closed-form expected false passes for the whole crib, for up to two and three
-crib errors, and for each crib alone, and the capacity margin against the crib.
+choice, the closed-form expected false passes for the whole crib, for up to two, three,
+four, seven and eight crib errors, and for each crib alone, the capacity margin against the
+crib, and how many scattered hand alterations an e-error run covers (hypergeometric).
 Standard library only, well under a second.
 """
 import json
@@ -40,6 +41,22 @@ def main():
         # the procedure must agree with at least 24 - e crib letters: choose the e letters, each wrong in 25 ways
         check(f"expected false passes, {e} crib errors", n * comb(24, e) * 25 ** e * 26.0 ** -24,
               r[key]["expected"], rel=0.1)
+    for e in (4, 7, 8):
+        key = next(k for k in r if k.startswith(f"EP-0136 up to {e} crib errors"))
+        # cumulative: agree with at least 24 - e crib letters
+        got = n * sum(comb(24, j) * 25 ** j for j in range(e + 1)) * 26.0 ** -24
+        check(f"expected false passes, <= {e} crib errors", got, r[key]["expected"], rel=0.1)
+
+    def cover(k, e):
+        # k altered letters scattered over 97 positions; P(at most e of them fall on the 24 crib positions)
+        return sum(comb(k, j) * comb(97 - k, 24 - j) for j in range(min(e, k) + 1)) / comb(97, 24)
+
+    ks = (10, 15, 20, 25, 28, 30, 35, 40)
+    print("  coverage of k scattered alterations:  k = " + ", ".join(map(str, ks)))
+    for e in (4, 7, 8):
+        print(f"    e = {e}: " + ", ".join(f"{cover(k, e):.3f}" for k in ks))
+    for (k, e), want in {(20, 7): 0.93, (28, 7): 0.62, (35, 7): 0.29, (35, 8): 0.47}.items():
+        check(f"coverage k = {k}, e = {e}", cover(k, e), want, rel=0.01)
     check("expected false passes, crib 1 alone", n * 26.0 ** -13, r["EP-0134 crib 1 alone (13 letters)"]["expected"],
           rel=0.1)
     check("expected false passes, crib 2 alone", n * 26.0 ** -11,

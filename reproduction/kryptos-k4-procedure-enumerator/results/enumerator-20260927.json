@@ -131,6 +131,43 @@
    ],
    "controls": "7/9",
    "expected": 1.3
+  },
+  "EP-0136 up to 4 crib errors": {
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "identities": 0,
+   "controls_plaintext_side": "9/9",
+   "controls_carving": "8/9",
+   "expected": 2.2e-09,
+   "candidate_pairs_checked": 11900000000.0
+  },
+  "EP-0136 up to 7 crib errors": {
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "identities": 0,
+   "controls_plaintext_side": "18/18",
+   "controls_carving": "16/18",
+   "expected": 0.0011,
+   "candidate_pairs_checked": 2140000000000.0
+  },
+  "EP-0136 up to 8 crib errors (auxiliary)": {
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "identities": 0,
+   "controls_plaintext_side": "9/9",
+   "controls_carving": "8/9",
+   "expected": 0.059,
+   "candidate_pairs_checked": 22800000000000.0
   }
- }
+ },
+ "ep0136_note": "Carving-control misses (4 of 36) all use a ciphertext-autokey selector, where one carved error changes the selector value L letters later (error spreading, pre-registered). Shuffles use their own ciphertext as the running key 'K4_CT', so self-reference identities are matched."
 }

@@ -1,0 +1,22 @@
+{
+ "source": "EP-0138 (catalog J02), audit repo k4_opairs.py, pre-registered before any K4 run; exact crib consistency by CP-SAT (OR-tools), one model per setting, INFEASIBLE is a proof",
+ "pairs_both_known": 9,
+ "pairs_one_known": 6,
+ "free_square_settings": {
+  "FSstd (Four-square, plaintext square standard)": {"settings": 2, "K4": "inconsistent", "shuffles_consistent": [0, 1000]},
+  "FSfree (Four-square, all four squares free)": {"settings": 2, "K4": "inconsistent", "shuffles_consistent": [371, 1000]},
+  "TS (Two-square, 24 variants)": {"settings": 48, "K4": "inconsistent", "shuffles_consistent": [0, 1000]},
+  "DK+/- (Doppelkasten, single pass)": {"settings": 4, "K4": "inconsistent", "shuffles_consistent": [6, 1000]}
+ },
+ "timeouts": 0,
+ "keyed_squares": {"settings": 1238220, "K4": 0, "shuffles": [0, 0, 0]},
+ "controls": {"free squares": "280/280", "keyed squares": "30/30"},
+ "cores": {
+  "TS 18 variants": ["(S,L)->(S,Z)"],
+  "TS conventions 1 and 3, two squares": ["(A,C)->(K,M)", "(S,L)->(S,Z)", "(T,O)->(S,F)", "(?,C)->(O,P)", "(?,K)->(T,K)"],
+  "FSstd": ["(S,L)->(S,Z)", "(T,O)->(S,F)"],
+  "FSfree, DK+/-": ["(T,L)->(R,V)", "(S,L)->(S,Z)", "(T,O)->(S,F)"]
+ },
+ "hill_2x2_solutions_per_row": 0,
+ "note": "fwd and rev give the same result in every square method: reversing only renames the squares. The pairing was thought of after seeing the W positions and the cribs (post hoc)."
+}

@@ -79,7 +79,7 @@ lang: ja
     </div>
     <nav aria-label="Kryptos K4">
       <a href="/ja/programs/kryptos-k4/">研究概要</a>
-      <a href="/ja/research/kryptos-k4-list-price/">最新Note</a>
+      <a href="/ja/research/kryptos-k4-production-traces/">最新Note</a>
     </nav>
   </article>
 </div>

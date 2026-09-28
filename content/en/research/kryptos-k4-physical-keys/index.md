@@ -78,6 +78,8 @@ Physical keys are hard to enumerate, because every one needs measurements the pu
 
 K4's key does not come from the sculpture's shape in any of the ways tested. Keys that depend only on horizontal position, or on a horizontal plus a vertical part, are ruled out without measuring anything: two pairs of crib letters share a column but need different keys in every convention. Keys read off a smooth physical map would change slowly along the carved rows, and K4's crib keys are exactly as rough as random ones. Every reading of the 3D model tried, over the whole plausible shape, gives no candidate.
 
+The physics tested here is that of the finished sculpture: light, shadow, orientation, distance (installation physics). How K4 was made at the desk (production geometry) and carrying out a plaintext instruction on site after decryption (post-decryption physics) are treated as separate layers (added 2026-09-28).
+
 ## Key figure
 
 ![Histogram of the roughness S of 2,000 random crib keys, peaking around 10, with K4's value 10 marked in red; a bar above marks that keys from the 3D model mostly have S of 4 or less](/assets/kryptos-k4-physical-keys.svg)
@@ -90,11 +92,11 @@ K4's key does not come from the sculpture's shape in any of the ways tested. Key
 
 ## What this research does not show
 
-The shape-free exclusion is logical but weak as evidence: a random key would pass "horizontal only" with probability 1/676 and "horizontal + vertical" with 1/26 per convention, so the family is small. Fast clocks (26 or more steps per letter) and smooth quantities looked up through a non-linear table are not decidable with a model of centimetre accuracy. All tests assume the chart is one shift of a standard or KRYPTOS alphabet.
+The shape-free exclusion is logical but weak as evidence: a random key would pass "horizontal only" with probability 1/676 and "horizontal + vertical" with 1/26 per convention, so the family is small. Fast clocks (26 or more steps per letter) and smooth quantities looked up through a non-linear table are not decidable with a model of centimetre accuracy. All tests assume the chart is one shift of a standard or KRYPTOS alphabet. For the seam folds, what was tested is using the overlapping **letters** as a key. Using the **shape** of the overlap (for instance the intersection of two holes) as a mask was checked later and separately: the overlap is letter-shaped at only 5–6 of 97 positions, the self-enciphered positions are not among the brightest, and switching charts by brightness level fails at 3–4 levels and cannot be decided at 5 or more (an internal check). For production geometry see [EP-0140](/en/research/kryptos-k4-construction-ledger/) and [EP-0141](/en/research/kryptos-k4-production-traces/).
 
 ## What changed
 
-Physical keys moved from "untested because they need measurements" to "closed where decidable", and the model's uncertainty is carried through by running every reading over the shape range.
+Keys from installation physics moved from "untested because they need measurements" to "closed where decidable"; this concerns only the first of three layers of "physical" (the earlier wording, "physical keys" in general, was too broad; corrected 2026-09-28), and the model's uncertainty is carried through by running every reading over the shape range.
 
 ## What failed
 

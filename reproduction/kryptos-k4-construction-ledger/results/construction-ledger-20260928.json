@@ -1,0 +1,31 @@
+{
+ "source": "EP-0140 (catalog J12); ledger, code and decision rules committed in the audit repo before running on K4",
+ "ledger": [
+  {"id": "F01", "fact": "cipher rows of 29-33 letters, all justified", "grade": "A", "fixes_operator": "L1 (row)"},
+  {"id": "F02", "fact": "four question marks and their places", "grade": "A", "fixes_operator": "STOP"},
+  {"id": "F03", "fact": "K3|K4 boundary inside row 24; K4 starts at column 27", "grade": "A", "fixes_operator": "coordinates for L1, L2, G1-G3"},
+  {"id": "F04", "fact": "K4's rows 24-27 are 31 letters; 15 of the 28 cipher rows are 31 (corrected from 14)", "grade": "A", "fixes_operator": "L2 (column), G1, G3"},
+  {"id": "F05", "fact": "row breaks at K4 positions 3|4, 34|35, 65|66; crib 1 inside one row, crib 2 split BER|LINCLOCK", "grade": "A", "fixes_operator": "L1"},
+  {"id": "F06", "fact": "top and bottom tableau rows are 31 cells with a leading blank", "grade": "A", "fixes_operator": "G1, G3"},
+  {"id": "F07", "fact": "one tableau row of 32 cells (extra L); Y, A, R of cipher row 14 reported shifted", "grade": "A (L) / B (YAR)", "fixes_operator": "STOP (reference only, EP-0139)"},
+  {"id": "F08", "fact": "horizontal seam between rows 13 and 14 on both halves; on the cipher side it coincides with K2|K3", "grade": "A", "fixes_operator": "G2, G3"},
+  {"id": "F09", "fact": "vertical seam between the cipher and tableau halves; every row's right end meets it", "grade": "A", "fixes_operator": "G1"},
+  {"id": "F10", "fact": "letters cut through the plate by hand, about 1,735, visible from both sides", "grade": "B", "fixes_operator": "STOP"},
+  {"id": "F11", "fact": "1988 prototype plate with three tableau-like rows at a different spacing", "grade": "A", "fixes_operator": "STOP"},
+  {"id": "F12", "fact": "entrance Morse: a half-hidden hole before one word", "grade": "C", "fixes_operator": "STOP (K0 only)"},
+  {"id": "F13", "fact": "production papers (worksheets, coding charts, paper layouts) are private and unpublished", "grade": "A", "fixes_operator": "STOP"}
+ ],
+ "operators": {
+  "L1 row": {"consistent": false, "first_conflict": [21, 30], "null_consistent_fraction": 0.0, "plants_consistent": "20/20", "within_class_crib_pairs": 109},
+  "L2 column": {"consistent": true, "first_conflict": null, "null_consistent_fraction": 0.93115, "plants_consistent": "20/20", "within_class_crib_pairs": 2},
+  "G1 vertical fold (tableau cell behind)": {"consistent": true, "null_consistent_fraction": 0.96265, "plants_consistent": "20/20", "within_class_crib_pairs": 1, "rerun_here": false},
+  "G2 horizontal fold (cipher letter behind, round)": {"consistent": true, "null_consistent_fraction": 0.74425, "plants_consistent": "20/20", "within_class_crib_pairs": 8, "rerun_here": false},
+  "G2 horizontal fold (floor)": {"consistent": true, "null_consistent_fraction": 0.74295, "plants_consistent": "20/20", "within_class_crib_pairs": 8, "rerun_here": false},
+  "G2 horizontal fold (ceil)": {"consistent": true, "null_consistent_fraction": 0.77025, "plants_consistent": "20/20", "within_class_crib_pairs": 7, "rerun_here": false},
+  "G3 both folds (tableau cell behind)": {"consistent": true, "null_consistent_fraction": 0.8969, "plants_consistent": "20/20", "within_class_crib_pairs": 3, "rerun_here": false}
+ },
+ "shuffles": 20000,
+ "seed": 140,
+ "last_four_rows_all_31_chance": 0.067,
+ "note": "Row letter counts follow letter widths (EP-0141), so a carved column is not a fixed horizontal position and L2 is a weak production unit; same-length rows with different letters also shift the fold correspondence. Verdicts unchanged."
+}

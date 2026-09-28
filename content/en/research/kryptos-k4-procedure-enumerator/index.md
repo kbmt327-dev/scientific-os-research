@@ -67,6 +67,7 @@ Until this step each family was proposed by hand, so a negative result said as m
 | Main fixed-origin features, up to 4 crib errors (EP-0143 addendum) | 3.35 × 10¹³ | **0** | 0, 0 | 9/9 and 8/9 | 1.5 × 10⁻¹¹ |
 | The same, up to 7 crib errors | 3.35 × 10¹³ | **0** | 0, 0 | 18/18 and 18/18 | 7.9 × 10⁻⁶ |
 | The same, up to 8 crib errors, auxiliary | 3.35 × 10¹³ | **0** | 0, 0 | — | 4.2 × 10⁻⁴ |
+| All 95 fixed-origin features, up to 7 crib errors, auxiliary | 1.06 × 10¹⁴ | **0** | 0, 0 | — | 2.5 × 10⁻⁵ |
 | Crib 1 alone (EP-0134) | 4.7 × 10¹⁵ | 8 identities, 0 informative | 0, 0 | 9/9 | 0.0019 |
 | Crib 2 alone, auxiliary (EP-0134) | 4.7 × 10¹⁵ | 4 identities, 0 informative | 0, 0 | 7/9 | 1.3 |
 

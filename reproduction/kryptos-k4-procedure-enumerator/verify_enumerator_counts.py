@@ -77,6 +77,11 @@ def main():
     check("EP-0143 chance, crib 2 alone", nn * 26.0 ** -11,
           r["EP-0143 fixed-origin features, crib 2 alone (auxiliary)"]["expected"], rel=0.1)
     check("grammar total after EP-0143", n + nn, o["grammar_total_after"], rel=0.01)
+    for e in (4, 7, 8):
+        key = next(k for k in r if k.startswith(f"EP-0143 fixed-origin main features, up to {e} crib errors"))
+        nm = r[key]["main_procedures"]
+        got = nm * sum(comb(24, j) * 25 ** j for j in range(e + 1)) * 26.0 ** -24
+        check(f"EP-0143 main, <= {e} crib errors", got, r[key]["expected"], rel=0.1)
     aux = sum(o["aux_moduli"])
     print(f"  EP-0143 auxiliary origins: every o = 0..m-1 for m in {o['aux_moduli']} -> {aux} features")
     if aux != o["aux_features"]:

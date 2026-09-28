@@ -80,7 +80,7 @@ Before searching further for an undiscovered key source, one should suspect the 
 
 Of the 92 rows, 64 are constructed operators (no source), 14 Sanborn's alterations, 8 installation, 4 Scheidt's design, 2 after decryption. By chronology, 74 use inputs that existed at encryption, 13 planned values, 9 quantities fixed only after installation (a row can carry several values).
 
-**Afterwards.** G11 was added to the [enumerator](/en/research/kryptos-k4-procedure-enumerator/) grammar and tested: 1.06 × 10¹⁴ new procedures, 0 jointly and 0 per crib (EP-0143). The evidence search (EP-0144) found K5's ciphertext still unpublished and only weak statements about the method since 2025 (method and key are separate; each section used a different method), none fixing an operator for any gap. It came across pages claiming a solution and images of handwritten notes about K4, and did not open them.
+**Afterwards.** G11 was added to the [enumerator](/en/research/kryptos-k4-procedure-enumerator/) grammar and tested: 1.06 × 10¹⁴ new procedures, 0 jointly, 0 per crib and 0 with up to seven crib errors (EP-0143). The evidence search (EP-0144) found K5's ciphertext still unpublished and only weak statements about the method since 2025 (method and key are separate; each section used a different method), none fixing an operator for any gap. It came across pages claiming a solution and images of handwritten notes about K4, and did not open them.
 
 ## Current finding
 

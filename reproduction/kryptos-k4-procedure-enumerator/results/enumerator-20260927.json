@@ -196,6 +196,40 @@
    ],
    "controls": "8/9",
    "expected": 0.029
+  },
+  "EP-0143 fixed-origin main features, up to 4 crib errors": {
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "identities": 0,
+   "main_procedures": 33500000000000.0,
+   "expected": 1.5e-11,
+   "controls_plaintext_side": "9/9",
+   "controls_carving": "8/9"
+  },
+  "EP-0143 fixed-origin main features, up to 7 crib errors": {
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "identities": 0,
+   "main_procedures": 33500000000000.0,
+   "expected": 7.9e-06,
+   "controls_plaintext_side": "18/18",
+   "controls_carving": "18/18"
+  },
+  "EP-0143 fixed-origin main features, up to 8 crib errors (auxiliary)": {
+   "K4": 0,
+   "shuffles": [
+    0,
+    0
+   ],
+   "identities": 0,
+   "main_procedures": 33500000000000.0,
+   "expected": 0.00042
   }
  },
  "ep0136_note": "Carving-control misses (4 of 36) all use a ciphertext-autokey selector, where one carved error changes the selector value L letters later (error spreading, pre-registered). Shuffles use their own ciphertext as the running key 'K4_CT', so self-reference identities are matched.",

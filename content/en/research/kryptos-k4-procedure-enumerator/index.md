@@ -64,6 +64,9 @@ Until this step each family was proposed by hand, so a negative result said as m
 | Up to 8 crib errors, auxiliary (EP-0136) | 4.7 × 10¹⁵ | **0** | 0, 0 | 9/9 and 8/9 | 0.059 |
 | Fixed-origin features, whole crib (EP-0143) | 1.06 × 10¹⁴ new | **0** | 0, 0 | 18/18 | 1.2 × 10⁻²⁰ |
 | Fixed-origin features, crib 1 alone (EP-0143) | 1.06 × 10¹⁴ | **0** | 0, 0 | 9/9 | 4.3 × 10⁻⁵ |
+| Main fixed-origin features, up to 4 crib errors (EP-0143 addendum) | 3.35 × 10¹³ | **0** | 0, 0 | 9/9 and 8/9 | 1.5 × 10⁻¹¹ |
+| The same, up to 7 crib errors | 3.35 × 10¹³ | **0** | 0, 0 | 18/18 and 18/18 | 7.9 × 10⁻⁶ |
+| The same, up to 8 crib errors, auxiliary | 3.35 × 10¹³ | **0** | 0, 0 | — | 4.2 × 10⁻⁴ |
 | Crib 1 alone (EP-0134) | 4.7 × 10¹⁵ | 8 identities, 0 informative | 0, 0 | 9/9 | 0.0019 |
 | Crib 2 alone, auxiliary (EP-0134) | 4.7 × 10¹⁵ | 4 identities, 0 informative | 0, 0 | 7/9 | 1.3 |
 
@@ -73,7 +76,7 @@ In the error runs the first control count plants errors on the plaintext side, t
 
 No procedure in a grammar of 4.7 × 10¹⁵ fully specified procedures fits K4's cribs. Nearly all of them (99.9%) are different methods rather than one shifted chart. The result holds with a shift mask stacked on top, with each crib judged separately, and with up to seven wrong crib letters (eight as an auxiliary run).
 
-Counting positions from the head of K3 or of the sculpture gives no procedure using an added feature, jointly or per crib. Rows counted in 31s from the plate's head equal the carved rows up to a constant, so that part had already been tested.
+Counting positions from the head of K3 or of the sculpture gives no procedure using an added feature, jointly or per crib, and none with up to seven (auxiliary eight) crib errors. Rows counted in 31s from the plate's head equal the carved rows up to a constant, so that part had already been tested.
 
 If hand alterations fall at scattered positions, the seven-error run covers 20 altered letters (about a fifth of K4) with probability 0.93, 28 with 0.62 and 35 with 0.29 (hypergeometric; 35 with 0.47 at eight errors).
 
@@ -127,7 +130,7 @@ No external independent replication. No review by a cryptographer.
 
 ## Next experiment
 
-Allowing four to eight crib errors has been done (EP-0136, 0 hits). Combining the fixed-origin features with the error allowance is running. New parts are added only with their counts, committed before running.
+Allowing four to eight crib errors has been done (EP-0136, 0 hits). Combining the fixed-origin features with the error allowance has been done too (EP-0143 addendum, 0 hits). New parts are added only with their counts, committed before running.
 
 ## Sources
 

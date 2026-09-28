@@ -477,6 +477,15 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: KRYPTOS-K4-EP-0146
+    source_episode: KRYPTOS-K4/EP-0146
+    source_episode_sha256: 420e42399f4361a96938d9d4968789d50a9c37219feb7859344b3bfe11bd1a79
+    views:
+      en: content/en/research/kryptos-k4-width21/index.md
+      ja: content/ja/research/kryptos-k4-width21/index.md
+    type: Finding
+    publication:
+      status: publishable
   - research_id: GPU-SCHED-EP-0029
     source_episode: GPU-SCHEDULING/EP-0029
     source_episode_sha256: 88e85fe7c39894030467205bc28b547382a841a13153f050bc477821522dc8cd

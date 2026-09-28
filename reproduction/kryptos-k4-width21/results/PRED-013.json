@@ -1,0 +1,30 @@
+{
+  "id": "PRED-013",
+  "episode": "EP-0146",
+  "sealed": "2026-09-28",
+  "hypothesis": "H-W21-S (analysis shared by the user, 2026-09-28): width 21 is a working-grid / state scaffold of the production method, not a key period. The operator F on that grid is not specified; no decryption is claimed or attempted.",
+  "state_at_sealing": "K5 ciphertext not public. K4 plaintext not public. In K4, Bean's count R_21 = 11 (permutation tail 5e-5 to 1.5e-4 at width 21 depending on the seed, i.e. 1-3 in 20,000; 0.001-0.003 after paying for widths 2-48). Statistics not implied by the lag-21 pair table are at chance (EP-0146: kappa_21, lags 42, 20, 22).",
+  "condition_A": "K5 97-letter ciphertext becomes public.",
+  "tests_A": {
+    "T21": "R_21(K5) = number of pair types (C_i, C_{i+21}) occurring at least twice (k4_phase0_bean.vert_counts). Tail = fraction of 20,000 permutations of K5's own letters (numpy default_rng(2109)) with R_21 >= R_21(K5).",
+    "T21_clean": "Same, with positions inside K4-K5 shared runs (PRED-007 T_run) removed from both K5 and its permutations' pair lists (pairs touching a removed position are dropped).",
+    "Tscan": "EP-0093 scan over widths 2-48 on K5 (best width and the paid P).",
+    "exploratory_only": "R_7 and kappa_7 of K5; residues mod 7 and mod 21 of K5's doubled letters. Reported, not used for decisions."
+  },
+  "predictions_A": {
+    "P1": "T21 tail <= 0.01 and T21_clean tail <= 0.01. Chance under no mechanism: about 0.01.",
+    "P1_strong": "Tscan best width is 21 with paid P <= 0.05.",
+    "P3_against": "T21 tail >= 0.20: width 21 is not a feature of the shared production method; H-W21-S weakened (K4's R_21 then reads as a chance kink or a K4-only feature). 0.01 < tail < 0.20, or T21 and T21_clean disagree: undecided.",
+    "scope": "Sanborn: K5 uses a similar, not identical, system and shares some coded words with K4 at the same positions (Scientific American 2025-11-12). If K5 is stated to use a different method, condition A does not test H-W21-S."
+  },
+  "excluded_as_forced": "The shared analysis's P2 ('shared coded words fall on the same 21-grid cells') follows from 'same positions' for any grid width, so it is not a prediction.",
+  "condition_B": "The full K4 plaintext becomes public.",
+  "tests_B": {
+    "T_rows": "Does a word (or an X separator) begin at 0-based position 42 and at 84, using the word division published with the plaintext; if none is published, standard English segmentation; an ambiguous division at the position counts as no."
+  },
+  "predictions_B": {
+    "P4": "A word begins at both 42 and 84. Chance about 0.04 (about 0.2 per position for English, mean word length about 4.7). Position 0 is excluded as forced; 21 and 63 are excluded because they were used to form the hypothesis.",
+    "P4_against": "Neither 42 nor 84 begins a word: the version 'grid rows are phrase units' is weakened (not H-W21-S as a whole, which does not require it)."
+  },
+  "not_predicted": "The operator F, any key, any plaintext letter."
+}

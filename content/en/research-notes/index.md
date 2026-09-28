@@ -8,6 +8,7 @@ This is the historical log. For current claims, start with the [research-area in
 
 ## 2026-09-28
 
+- **KRYPTOS-K4-EP-0146** · Finding — [Does anything besides one pair table point to width 21?](/en/research/kryptos-k4-width21/)
 - **KRYPTOS-K4-EP-0142** · Finding — [What have the tests covered, and where are the gaps?](/en/research/kryptos-k4-capability-matrix/)
 - **KRYPTOS-K4-EP-0141** · Finding — [Did making K1-K3 leave traces in the carved layout?](/en/research/kryptos-k4-production-traces/)
 - **KRYPTOS-K4-EP-0140** · Negative Result — [How far do the sculpture's production facts fix K4's operator?](/en/research/kryptos-k4-construction-ledger/)

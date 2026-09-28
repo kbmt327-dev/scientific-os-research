@@ -69,6 +69,7 @@ This table summarizes the internal record. Only the rows marked with a public No
 | Traces of K1–K3 production in the carved layout, as calibration for reading K4's layout | Row lengths follow letter widths, row breaks ignore words, K3's grid is invisible: no K4 operator can be fixed ([Note](/en/research/kryptos-k4-production-traces/)) |
 | The raised letters in cipher row 14 and the tableau's extra L: marks or construction offsets? | Undecided: the two photos give different classes; no public photo measures the extra L ([Note](/en/research/kryptos-k4-yar-photo/)) |
 | Positions counted from the head of K3 or of the sculpture (fixed origins; the K3 grid widths and heights, the plate width, the length of KRYPTOS), added to the enumerator | No procedure using an added feature fits K4, jointly or per crib (1.06 × 10¹⁴ new procedures) ([Note](/en/research/kryptos-k4-procedure-enumerator/)) |
+| Width 21 as a working grid (no operation on the grid specified) | Not testable inside K4: only the lag-21 pair table points to 21; the column period, pairs two rows apart and the diagonals are at chance. Predictions for K5 and the plaintext sealed ([Note](/en/research/kryptos-k4-width21/)) |
 
 Every negative in the rows added on 2026-09-27 and 2026-09-28 (from "Key sources named by the hints" down) is logical: the family cannot reproduce the cribs. In none of them is K4 rarer than random ciphertext, which usually fails too.
 

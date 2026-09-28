@@ -48,5 +48,57 @@
   "row-offset test compares gaps 13->14 and 14->15, but a plate seam lies between rows 13 and 14",
   "pitch P is a median that includes the seam gap, 1.25-1.34 times the in-plate pitch, so residuals in P are understated"
  ],
- "pitch_cm_note": "11.7 cm is the in-plate row pitch; P (the pre-registered unit) includes the seam gap"
+ "pitch_cm_note": "11.7 cm is the in-plate row pitch; P (the pre-registered unit) includes the seam gap",
+ "ep0145": {
+  "third_photo": {
+   "id": "elonka-ahrCloseup4-rule",
+   "side": "front",
+   "in_plate_pitch_px": 50,
+   "class": "row-offset",
+   "class_read_as": "none (as pre-registered)",
+   "row14_cols": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ],
+   "row14_resid_P": [
+    -0.023,
+    -0.004,
+    -0.044,
+    0.021,
+    -0.054,
+    0.026,
+    -0.004,
+    0.009,
+    -0.004
+   ],
+   "sensitivity": {
+    "elonka-ahrCloseup4-manual": "partial",
+    "elonka-ahrCloseup4-auto": "partial"
+   }
+  },
+  "combined_rule": "intended if an independent third photo X is 'intended' and no photo shows local construction; not intended if X is 'none' with in-plate pitch >= 100 px, taken from the front, and all of Y, A, R below T; otherwise undecided",
+  "verdict_yar": "undecided",
+  "rubbing_ndy": {
+   "Y_resid_P": -0.098,
+   "ctrl_resid_P": 0.014,
+   "note": "auxiliary only (paper distortion); direction up, about 1 cm"
+  },
+  "antipodes": {
+   "id": "kaszeta-2009-antipodes",
+   "class": "none",
+   "YAR_resid_P": [
+    0.007,
+    0.007,
+    0.003
+   ],
+   "note": "one-sided rule: no lift on Antipodes says nothing about Kryptos"
+  }
+ }
 }

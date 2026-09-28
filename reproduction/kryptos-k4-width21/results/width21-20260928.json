@@ -1,0 +1,21 @@
+{
+ "source": "EP-0146; audit repo k4_w21_recheck.py and w21-recheck-20260928.log (d27ce91); 20,000 permutations of K4's letters, numpy default_rng(2109)",
+ "repeated_types_w21": ["LS", "BS", "LW", "IT", "QZ", "KK", "WA", "SN", "ZT", "AZ", "PK"],
+ "double_induced_types": ["QZ", "ZT"],
+ "doubles": [18, 25, 32, 42, 46, 67],
+ "lags": {
+  "7": {"R": 9, "E_R": 4.9, "P_R": 0.0388, "kappa": 9, "E_kappa": 3.3, "P_kappa": 0.005},
+  "14": {"R": 7, "E_R": 4.1, "P_R": 0.098, "kappa": 2, "E_kappa": 3.0, "P_kappa": 0.808},
+  "20": {"R": 3, "E_R": 3.6, "P_R": 0.72735, "kappa": 4, "E_kappa": 2.8, "P_kappa": 0.302},
+  "21": {"R": 11, "E_R": 3.5, "P_R": 0.0001, "kappa": 3, "E_kappa": 2.7, "P_kappa": 0.521},
+  "22": {"R": 3, "E_R": 3.4, "P_R": 0.69465, "kappa": 2, "E_kappa": 2.7, "P_kappa": 0.761},
+  "28": {"R": 5, "E_R": 2.9, "P_R": 0.143, "kappa": 4, "E_kappa": 2.5, "P_kappa": 0.236},
+  "35": {"R": 4, "E_R": 2.3, "P_R": 0.18855, "kappa": 1, "E_kappa": 2.2, "P_kappa": 0.898},
+  "42": {"R": 3, "E_R": 1.8, "P_R": 0.27565, "kappa": 3, "E_kappa": 2.0, "P_kappa": 0.318},
+  "63": {"R": 0, "E_R": 0.7, "P_R": 1.0, "kappa": 0, "E_kappa": 1.2, "P_kappa": 1.0}
+ },
+ "forced": {"MI_lag21": {"K4": 2.989, "P": 0.015, "r_with_R21": 0.57}, "pair_pairs_lag21": {"K4": 11, "P": 0.0016, "r_with_R21": 0.94}},
+ "without_doubles": {"K4": 9, "mean": 3.41, "P": 0.0032},
+ "crib_start_widths": [3, 7, 21],
+ "pred013_sha256": "81adb6ec5420aa950f268f98846cf8d94280b2f31426b824d77eccfb811c98dc"
+}

@@ -1,4 +1,4 @@
-# Kryptos K4: the YAR shift and the extra L on public photos (EP-0139)
+# Kryptos K4: the YAR shift and the extra L on public photos (EP-0139, EP-0145)
 
 Rerun package for the Open Research Lab note
 *Are the raised letters and the extra L deliberate marks or construction offsets?*
@@ -13,6 +13,7 @@ python make_figure.py out.svg
 | `k4_yar.py` | The pre-registered statistic and classes for the YAR shift, ported from the author's audit script (committed there before any letter was measured) |
 | `results/yar-measurements-20260927.json` | Letter bounding boxes read from two public photos, rows 13-15, columns 0-10 (pixel numbers only; no image is stored) |
 | `results/yar-result-20260927.json` | The recorded residuals, classes and verdicts, with the two design errors found after measuring |
+| `results/yar-measurements-third-photo-20260928.json`, `results/yar-measurements-antipodes-20260928.json`, `results/yar-rubbing-ndy-20260928.json` | EP-0145: the independent third photo (Elonka's close-up, with two sensitivity readings), Antipodes (Rich Kaszeta, 2009) and the NDY rubbing (auxiliary); pixel numbers only |
 | `verify_yar_photo.py` | Recomputes residuals and classes from the measurements and prints `PASS` |
 | `make_figure.py` | The Note's figure |
 

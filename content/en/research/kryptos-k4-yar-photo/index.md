@@ -5,7 +5,7 @@ date: '2026-09-28'
 lang: en
 domain: Kryptos K4
 type: Finding
-status: Undecided. In the higher-resolution photo only Y, A and R are raised, by about 1.5-1.9 cm, with the H between them and the rows above and below unmoved (the pre-registered 'intended' pattern); the other photo shows the same direction below threshold, so the two photos disagree. No plate-bend or fitting pattern in either. The extra L cannot be measured on any public photo
+status: Undecided. In the higher-resolution photo only Y, A and R are raised, by about 1.5-1.9 cm, with the H between them and the rows above and below unmoved (the pre-registered 'intended' pattern); the other photo shows the same direction below threshold, so the two photos disagree. No plate-bend or fitting pattern in either. An independent third photo (a 2002 close-up) is too coarse to decide; the direction is up; Antipodes shows no lift. The extra L cannot be measured on any public photo
 evidence_level: Letter positions measured on two public photos; statistic and classes committed before measuring; two design errors in the pre-registration found after measuring and recorded
 peer_reviewed: false
 independent_replications: 0
@@ -62,15 +62,30 @@ If they are marks, they support the reading that the maker switched charts with 
 - **Combined verdict: undecided** (the classes disagree).
 - **Extra L: undecided.** No public photo shows all 32 cells of that row at usable resolution.
 
+**Third photo and Antipodes (EP-0145, added 2026-09-28)**
+
+The YAR lift was first reported by Elonka Dunin, from rubbings taken at the CIA in October 2002: "a couple centimeters out of alignment", direction not stated. A rule for combining three photos was fixed before measuring any new one: an independent third photo of the "intended" pattern gives "intended"; "not visible" on a frontal photo with an in-plate pitch of 100 px or more gives "not intended"; anything else stays undecided.
+
+| Photo | In-plate row pitch | Y, A, R residual (P) | Class |
+|---|---|---|---|
+| Close-up from Elonka's material (front, October 2002) | about 50 px | −0.004, −0.044, −0.054 | not visible (pitch below 100 px, so the verdict stays undecided) |
+| Elonka's rubbing (auxiliary; paper distortion) | about 199 px | Y only −0.098 (control +0.014) | direction only: up, about 1 cm |
+| Antipodes (Rich Kaszeta, 2009) | about 47 px | +0.007, +0.007, +0.003 | not visible |
+
+- Sensitivity of the close-up: reading every edge by eye, or taking every edge automatically, both give "partial"; at this resolution the measurement scatter is as large as the effect (about 0.1P).
+- Antipodes (a separate 1997 work) repeats the layout with K3 starting just below the horizontal seam, but its Y, A and R are not raised. By the one-sided rule fixed in advance, this says nothing about intent on Kryptos.
+- The close-up in an internal NSA slide deck (about 2014) is the same photograph as Elonka's, not an independent fourth.
+- The program's owner, looking at the photos, judged the letters raised and intentional-looking. That judgment is recorded as such; the pre-registered verdict (undecided) is unchanged.
+
 Two design errors in the pre-registration showed up after measuring. A plate seam lies between rows 13 and 14, so the row-offset test (the difference between the 13→14 and 14→15 gaps) is always large; Gillogly's "row offset" is forced by the seam and carries no information. And P became a median that includes the gap across the seam, 1.25–1.34 times the in-plate pitch, so residuals in P are understated. Neither changes the combined verdict.
 
 ## Current finding
 
-Under the pre-registered rules the YAR anomaly is undecided. The higher-resolution photo shows the "intended" pattern: only Y, A and R sit about 1.5–1.9 cm high, and neither the H between them nor the rows above and below move. The other photo points the same way but stays below threshold. Neither photo shows a plate-bend or fitting pattern. The extra L cannot be measured on any public photo.
+Under the pre-registered rules the YAR anomaly is undecided, also with an independent third photo; every source puts the lift upward. The higher-resolution photo shows the "intended" pattern: only Y, A and R sit about 1.5–1.9 cm high, and neither the H between them nor the rows above and below move. The other photo points the same way but stays below threshold. Neither photo shows a plate-bend or fitting pattern. The extra L cannot be measured on any public photo.
 
 ## Key figure
 
-![Dot plot of height residuals for the 11 letters of row 14 in two photos: in the Highsmith photo only Y, A and R cross the −0.08 threshold at −0.10 to −0.13; the Gillogly dots point the same way inside the threshold; the other letters sit near 0](/assets/kryptos-k4-yar-photo.svg)
+![Dot plot of height residuals for the letters of row 14 in three photos: in the Highsmith photo only Y, A and R cross the −0.08 threshold at −0.10 to −0.13; the Gillogly and Elonka close-up dots point the same way inside the threshold; the other letters sit near 0](/assets/kryptos-k4-yar-photo.svg)
 
 ## What this research shows
 
@@ -96,15 +111,15 @@ Two public photos and the pixel coordinates read from them; the images are neith
 
 ## UNKNOWN
 
-Whether a photo from another position, with a row pitch of 100 px or more, also shows the "intended" pattern. Whether the extra L was laid out as 32 cells from the start or added. External independent replications: zero.
+Whether an independent frontal photo with a row pitch of 100 px or more also shows the "intended" pattern (none was found among public photos in this search). Whether the extra L was laid out as 32 cells from the start or added. External independent replications: zero.
 
 ## Falsification targets
 
-One more photo from a different position at sufficient resolution, agreeing on "intended" or on a construction class under the pre-registered rules, would settle the question.
+An independent photo showing the "intended" pattern with no construction pattern elsewhere would settle it as intended; an independent frontal photo with an in-plate pitch of 100 px or more in which Y, A and R all stay below threshold would settle it as not intended (the rule fixed before EP-0145).
 
 ## Reproduce
 
-[Public code](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/kryptos-k4-yar-photo): `python verify_yar_photo.py` recomputes the row-14 residuals and each photo's class from the recorded pixel coordinates and prints `PASS`. Needs numpy; under a second. A rerun of the author's code, not an independent replication.
+[Public code](https://github.com/kbmt327-dev/scientific-os-research/tree/main/reproduction/kryptos-k4-yar-photo): `python verify_yar_photo.py` recomputes the row-14 residuals and each photo's class (including the third close-up and Antipodes) and the rubbing's Y residual from the recorded pixel coordinates and prints `PASS`. Needs numpy; under a second. A rerun of the author's code, not an independent replication.
 
 ## Evidence / Artifacts
 
@@ -121,5 +136,6 @@ The same measurement on a high-resolution photo from another position (row pitch
 ## Sources
 
 - Photos: Jim Gillogly, `ciphermidleft.jpg` (viewed only); Carol M. Highsmith, Library of Congress, [LOC 2011631531](https://www.loc.gov/pictures/item/2011631531/) (public domain).
-- Reports of the anomalies: [Elonka Dunin](https://elonka.com/kryptos/).
+- Reports of the anomalies, rubbings and the third close-up: [Elonka Dunin](https://elonka.com/kryptos/) (October 2002).
+- Antipodes: Rich Kaszeta (2009, Flickr, all rights reserved; viewed and measured in pixels only).
 - Jim Sanborn, *Kryptos* (1990).

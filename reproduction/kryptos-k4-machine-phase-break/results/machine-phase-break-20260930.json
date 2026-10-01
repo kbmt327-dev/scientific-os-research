@@ -1,0 +1,28 @@
+{
+ "source": "EP-0168 (audit repo k4_machines_phase_break.py; decision rule committed before any K4 run) and EP-0176 (k4_hagelin_phase_break.py; decision rule committed before the K4 English-stage run). Exact injectivity tests for the rotors and Enigma; kernels checked against brute force (0 mismatches of 3,000), an existing simulator (0 of 3,960 letters) and Enigma I test vectors.",
+ "break": {"b": "22..73", "t": "1..25", "splits": 23, "classes": 575, "bt": 1300, "bits": 10.3},
+ "EP-0168": {
+  "R-a (one free-wiring rotor, 274 alphabets each side, step d)": {"settings": 1951976, "bits_with_break": 31.2, "K4": 0, "shuffles": [0, 200], "controls": "100/100"},
+  "R-b (one free-wiring rotor, 274 alphabets x 329,366 position keys)": {"settings": 90246284, "bits_with_break": 36.8, "K4": 0, "shuffles": [0, 200], "controls": "100/100"},
+  "Enigma + free entry substitution (EP-0132 settings)": {"settings": 11120967936, "bits_with_break": 43.7, "K4": 0, "K4_no_break": 0, "shuffles": [0, 10], "controls": "20/20", "expected_false_passes": 4.5e-05, "minutes_per_ciphertext": "14-23"},
+  "Hagelin": "not run in EP-0168 (estimated 84 CPU h for the crib stage alone); run as EP-0176",
+  "Chaocipher": "out of scope: its state is two alphabets permuted by the letters, with no step counter, so a phase break is not defined",
+  "not run": "a slip of the fast Enigma rotor alone, without carries"
+ },
+ "EP-0176": {
+  "model": "M-209 type: six pinwheels 26/25/23/21/19/17, free pins, 1,107,567 no-overlap cages, C = 25 - P + k; one break (b, t) as above",
+  "crib_consistent_classes": 274604,
+  "climbs_b_weighted": 1020522169,
+  "log2_search_size": 52.64,
+  "wall": 72.64,
+  "threshold_E": 40.4,
+  "K4": {"E_max": 38.64, "n_E_ge_20": 29578, "n_E_ge_40.4": 0},
+  "shuffles": [
+   {"climbs": 1912894, "log2_search_size": 43.08, "E_max": 24.43, "n_E_ge_40.4": 0},
+   {"climbs": 1891980, "log2_search_size": 43.16, "E_max": 28.17, "n_E_ge_40.4": 0},
+   {"climbs": 2157995, "log2_search_size": 42.42, "E_max": 28.46, "n_E_ge_40.4": 0}
+  ],
+  "planted_controls": "not run (deferred by the researcher; a size-matched acceptance rule was prepared but not run)",
+  "verdict": "undecidable: no climb reached 40.4, but the power of the climb is unknown and the shuffles are about 500 times smaller than K4"
+ }
+}

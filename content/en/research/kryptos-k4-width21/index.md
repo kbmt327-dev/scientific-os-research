@@ -34,6 +34,15 @@ tags:
 
 <p class="research-area"><b>Kryptos K4</b><a href="/ja/research/kryptos-k4-width21/" hreflang="ja">日本語</a></p>
 
+## Later check (2026-09-30)
+
+A later test (EP-0185) took one concrete reading of width 21: a K3-type turn of K4's 3 × 31 carved shape (24 routes, "T1") followed by a periodic key. It predicts an excess of single-letter coincidences at lags 21, 42 and 63 together. The test and its decision rule were committed before it was run on K4. The κ values for K4 were, however, already in this Note's table below.
+
+- K4: κ = 3, 3 and 0 at lags 21, 42 and 63, against the closed-form expectation (97 − L)q = 2.74, 1.98 and 1.23 (q = 0.0361); shuffle p = 0.52, 0.32 and 1.0 (100,000 shuffles). The literal prediction is not met. But planted texts made this way meet it only 0.9% of the time (power 0.009), so the test cannot decide.
+- General form: undo each of the 24 routes and count coincidences within each phase of a period p = 2–48. Family-wise maximum z = 3.35, family-wise p = 0.667. Power is 0.86 or more only at p = 2–5 and 9, so only "T1 followed by a periodic key" with those five periods is removed. The other 41 periods stay open (power 0.69 at p = 7, about 0.5 or less beyond 13).
+- The excess this Note found is in R_21 (repeated pair types: 11 against 3.49 in 100,000 shuffles, p = 0.0002), not in κ. T1 with a period-7 key reaches R_21 ≥ 11 in only 1.5% of planted texts (mean 4.9), so this mechanism hardly reproduces the original observation.
+- The sealed prediction PRED-013 is unaffected, and the dated numbers below are unchanged. The check removed none of the 104 transpositions tested in the [layout-transposition Note](/en/research/kryptos-k4-layout-transposition/).
+
 ## Research question
 
 Written at width 21, K4 has 11 types of vertical letter pairs that occur twice or more, against about 3.5 by chance. An outside analysis shared by the program's owner read 21 not as a key period but as the working grid of the encryption (a scaffold for its state), and proposed checking whether several crib-free statistics also single out 21. Does anything besides this one table point to 21?

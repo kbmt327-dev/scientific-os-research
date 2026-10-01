@@ -34,6 +34,8 @@ tags:
 
 <p class="research-area"><b>Kryptos K4</b><a href="/ja/research/kryptos-k4-w-squares/" hreflang="ja">日本語</a></p>
 
+> **Later check (2026-09-30).** The closure of CM-Bifid (two free squares) in this Note holds only when the digraph grouping and the block alignment never shift. An internal follow-up (EP-0169) allowed one shift: 27 of 2,765 settings are then consistent with the cribs, so CM-Bifid is back to undecidable from the cribs alone. K4's 27 is not unusual among shuffled ciphertexts (post hoc null, P = 0.12). The other square families stayed closed with one shift. The text and numbers below are unchanged from 2026-09-27. Details are in the [EP-0169 Note](/en/research/kryptos-k4-block-phase-shift/).
+
 ## Research question
 
 K4 uses all 26 letters, which rules out any cipher with 25 output symbols. But if the five Ws are separators added after encryption, the other 92 letters use exactly 25 types, and square ciphers come back into play. With the Ws removed, can a 5×5 square cipher produce the cribs?

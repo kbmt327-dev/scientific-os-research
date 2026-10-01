@@ -1,0 +1,59 @@
+{
+ "source": "EP-0180, EP-0181, EP-0182, EP-0183 (2026-09-30); author's audit-repo runs, each with a decision rule committed before the K4 run; logs summarised here (no decryption formed or printed)",
+ "w_null_index": {
+  "w_positions": [20, 36, 48, 58, 74],
+  "crib_shift": {"21": -1, "63": -4},
+  "enumerator_e2": {
+   "configurations": 3,
+   "bits_per_configuration": 52.1,
+   "extra_bits_for_configurations": 1.6,
+   "chance_per_configuration": 8.93e-14,
+   "chance_total": 2.68e-13,
+   "K4_hits": 0,
+   "shuffle_hits": [0, 0],
+   "controls": {"slip only": "9/9", "slip and carving errors": "9/9"}
+  },
+  "text_keys": {
+   "texts": "K1-K3 cipher and plain text, K4, tableau rows and columns, World Clock name tapes, UTC-offset tape (not published here)",
+   "conventions": 8,
+   "baseline_reproduced": "index J = i reproduces the earlier counts of the text-key Notes (61.7 million, 15.4 million settings, 6,889 two-sided-mask passes)",
+   "gates": {
+    "none":   {"settings": 61719792, "chance": 6.78e-27, "K4": 0, "shuffles": [0, 0, 0]},
+    "sigma":  {"settings": 61719792, "chance": 4.39e-10, "K4": 0, "shuffles": [0, 0, 0]},
+    "tau":    {"settings": 61719792, "chance": 5.71e-09, "K4": 0, "shuffles": [0, 0, 0]},
+    "double": {"settings": 15408778, "chance_K4": 5390, "chance_band": "+-40%", "K4": 5970,
+               "K4_self_reference": 9, "shuffles": [1957862, 1845582, 5661],
+               "chance_shuffles": [3180000, 3290000, 5390],
+               "english_stage": "not run (needs a scorer that skips the five W, about 1.5 GPU hours)"}
+   },
+   "controls": "80/80 (5 index types x 4 gates x 4 plants)",
+   "non_identity_hits": 0
+  }
+ },
+ "reversed_direction": {
+  "index_types": ["rev", "revtext", "wskip_rev", "wskip_revtext"],
+  "identity_stated_before_running": true,
+  "double_mask_passes": {"rev": 6889, "revtext": 6889, "wskip_rev": 5970, "wskip_revtext": 5970,
+                         "forward id": 6889, "forward wskip": 5970},
+  "shuffle_3_double": {"rev": 5869, "revtext": 5869, "id": 5869, "wskip_rev": 5661, "wskip_revtext": 5661, "wskip": 5661},
+  "none_sigma_tau_K4": 0,
+  "none_sigma_tau_shuffles": 0
+ },
+ "morse_mask": {
+  "pure_form": "excluded by logic: 22 of 24 crib positions admit no operation (only 32 and 73, by identity or reverse)",
+  "sigma_variant": {"raw_settings": 22400800, "distinct_crib_vectors": 22369416, "bits": 24.42,
+                    "rules": "periodic p <= 12 (22,369,620), linear (16), (i + o) div m mod 4 (1,980), enumerator features x 4^4 tables (29,184)",
+                    "chance": 8.904e-11, "K4": 0, "shuffles": "0 of 200", "controls": "80/80"}
+ },
+ "digit_addition": {
+  "streams": "22 digit strings fixed before running, from public sources (not listed here)",
+  "raw_settings": 21472,
+  "distinct_on_crib": 5600,
+  "bits": 12.45,
+  "chance": 1.254e-30,
+  "K4": 0,
+  "identities": 0,
+  "shuffles": "0 of 1,000",
+  "controls": "60/60"
+ }
+}

@@ -1,0 +1,72 @@
+{
+ "source": "EP-0185 (author's run of 2026-09-30, k4_r41_t1_lags.py; test and decision rule committed before the K4 run). Planted texts use English windows, so the power values are recorded, not rerun.",
+ "q": 0.03608247422680412,
+ "lags": {
+  "7": {
+   "kappa": 9,
+   "E": 3.25,
+   "p": 0.00455
+  },
+  "21": {
+   "kappa": 3,
+   "E": 2.74,
+   "p": 0.52222
+  },
+  "42": {
+   "kappa": 3,
+   "E": 1.98,
+   "p": 0.31836
+  },
+  "63": {
+   "kappa": 0,
+   "E": 1.23,
+   "p": 1.0
+  }
+ },
+ "shuffles": 100000,
+ "min_p_lags_1_96": 0.00455,
+ "family_p_lags_1_96": 0.19872,
+ "sum_21_42_63": 6,
+ "sum_p": 0.54986,
+ "R": {
+  "21": 11,
+  "42": 3,
+  "63": 0
+ },
+ "R21_shuffle_mean": 3.49,
+ "R21_p": 0.0002,
+ "literal_prediction_met": false,
+ "power": {
+  "per_lag": {
+   "21": 0.1745,
+   "42": 0.3065,
+   "63": 0.182
+  },
+  "all_three": 0.0085,
+  "sum": 0.41,
+  "plants": 2000,
+  "R21_ge_11_under_T1_period7": 0.0145,
+  "R21_mean_under_T1_period7": 4.9055
+ },
+ "general_form": {
+  "T1_routes": 24,
+  "periods": [
+   2,
+   48
+  ],
+  "family_max_z": 3.35,
+  "family_p": 0.66725,
+  "dropped_periods": [
+   2,
+   3,
+   4,
+   5,
+   9
+  ],
+  "open_periods": 41,
+  "periods_p_below_005": [
+   22
+  ]
+ },
+ "pred013": "unaffected (concerns K5's ciphertext and K4's plaintext)"
+}

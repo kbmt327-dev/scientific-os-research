@@ -1,0 +1,14 @@
+{
+ "source": "EP-0147 (rule committed 2026-09-28, photos checked 2026-09-30); the per-letter record is in the author's audit repo; photos viewed in a browser only, not saved or published",
+ "reference": "the standard (Wikipedia) transcription used throughout the program, in rows of 4 (after '?'), 31, 31, 31 letters",
+ "photos": ["Carol M. Highsmith, Library of Congress item 2011631531 (back view, full resolution)",
+            "Jim Gillogly, three photographs of the lower right and lower left of the cipher side (1999-10-27)"],
+ "positions_read_clearly": 97,
+ "agree_with_reference": 97,
+ "discrepancies": 0,
+ "read_clearly_in_two_or_more_photos": 23,
+ "unclear_in_one_photo_read_in_another": [4, 36, 41],
+ "positions_are_1_based": true,
+ "line_breaks_confirmed": ["4|5", "35|36", "66|67"],
+ "limitation": "the reader knew the reference transcription while reading"
+}

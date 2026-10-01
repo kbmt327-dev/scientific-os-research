@@ -34,6 +34,16 @@ tags:
 
 <p class="research-area"><b>Kryptos K4</b><a href="/ja/research/kryptos-k4-o-pairs/" hreflang="ja">日本語</a></p>
 
+## Later check (2026-09-30)
+
+After this Note (EP-0157), four other pairings inside the two O-segments were tested: the mirror (21+o with 73−o), each segment folded on itself (21+o with 35−o, 59+o with 73−o), and neighbours inside each segment in two phases (from the even or the odd offset). All of them were thought of after seeing the W positions and the cribs (post hoc); the decision rules were fixed before any run on K4.
+
+- **Squares.** The same 28 families (two Four-square, 24 Two-square, two Doppelkasten) × four pairings × two orientations: 224 settings. K4 is inconsistent in 220 (constraint-solver proofs). Planted texts were consistent 5/5 in all 224 settings, with no timeouts.
+- **The four consistent settings** are all Four-square with four free squares, on the fold and on the odd-phase neighbours. In the same settings, 14–18 of 20 shuffled ciphertexts are consistent too, so these are undecidable (too much freedom), not candidates. The [EP-0169 Note](/en/research/kryptos-k4-block-phase-shift/) treats these four settings.
+- **Other settings.** Shuffles were consistent in 0–5 of 20 (12–14 for Four-square with free squares on the even-phase neighbours). K4's failures are logical refutations, not evidence of being rarer than random.
+- **Mixed-alphabet 2×2 Hill** (σ⁻¹(M·σ(P) + b), σ free). The mirror pairing is closed by the (T,L) contradiction in the Results below (logic). On the other pairings the cribs give fewer equations (22–24) than unknowns (27–32), so the Hill cannot be decided there; it was not run.
+- No square or plaintext was read further; no new plaintext letter. The check package recomputes the pair counts, the Hill equation and unknown counts, and the mirror contradiction; the 224 square settings are recorded results.
+
 ## Research question
 
 Split at its Ws, K4 has segments of 20, 15, 11, 9, 15 and 22 letters. The only two of equal length are the two O-segments of the TOKIO reading (positions 21–35 and 59–73), and both cribs lie exactly inside them; K4 also uses exactly 25 letters besides W. Could the letters at the same offset in the two O-segments be paired and enciphered two at a time in 5×5 squares without W?

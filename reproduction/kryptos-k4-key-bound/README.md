@@ -13,6 +13,7 @@ python make_figure.py out.svg   # redraws the Note's figure
 | `k4_key_bound.py` | K4's index of coincidence; English letters through m freely chosen rows (share of simulations as flat as K4); window maps of up to four plaintext letters against the crib |
 | `results/key-bound-20260927.json` | Recorded results, including the tests not rerun here |
 | `verify_key_bound.py` | Recomputes the simulation (fixed seeds) and the window conflicts, and prints `PASS` |
+| `results/ic-recheck-20260930.json` | Later check (EP-0152, 2026-09-30): K4's IC against uniform, English-frequency, English-text and periodic random keys |
 | `make_figure.py` | The Note's figure |
 
 The simulation draws plaintext letters independently from standard English letter frequencies;
@@ -21,6 +22,10 @@ English text and gave 0.009, 0.027, 0.050 and 0.107 for m = 4, 6, 8 and 16. A re
 author's code, not an independent replication.
 
 ## Not rerun here
+
+In the later IC check (EP-0152), the English-key and periodic-key models draw plaintext from an English
+corpus that is not published here; only the uniform model is rerun.
+
 
 The sculpture's own text as the coding chart (EP-0089) reads the carved panel, which this site
 does not publish. Its outcome is in `results/`.

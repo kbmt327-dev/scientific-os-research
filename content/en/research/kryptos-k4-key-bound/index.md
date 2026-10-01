@@ -38,6 +38,10 @@ tags:
 
 K4's letters are almost as evenly spread as random letters (index of coincidence 0.036; English is about 0.066). Sending English through freely chosen substitution rows makes it that flat in about 5% of cases only when there are about 8 rows to choose from at each position, which in this model is **a row spread of 3 bits per position**. English carries about **2.86 bits** of redundancy per letter. So if the key were chosen freely letter by letter, K4 alone could not determine it, however clever the search. A solvable K4 must pair a short technique with a key that has a short description: a rule, a known text, a physical layout.
 
+## Later check (2026-09-30)
+
+An IC recheck (EP-0152) asked what the flat IC excludes on its own. Plaintext was random 97-letter windows of an English text corpus, 20,000 simulations per key model. K4's IC 0.0361 does not separate a uniform key (mean 0.0385, SD 0.0028, P(IC ≤ K4) = 0.22) from a key with English letter frequencies (independent letters: mean 0.0400, SD 0.0032, P = 0.107; English text as key: P = 0.103). A random periodic key is rejected by the IC alone only for periods up to 4 at the 1% level and up to 8 at the 5% level (period 5: P = 0.015). So the IC can prune short random periods, not running keys. The dated numbers above are unchanged; the 3-bit quantity concerns freely chosen rows, not this test. The package reruns the uniform model only (20,000 draws gave 0.219); the English-key and periodic values need the corpus and are recorded in `results/ic-recheck-20260930.json`.
+
 ## Key figure
 
 ![Line chart of the share of simulated ciphertexts as flat as K4 against bits of key per position: 0 at 1 bit, 0.8% at 2 bits, 4.6% at 3 bits, 10% at 4 bits; a dashed red line marks English redundancy at 2.86 bits](/assets/kryptos-k4-key-bound.svg)

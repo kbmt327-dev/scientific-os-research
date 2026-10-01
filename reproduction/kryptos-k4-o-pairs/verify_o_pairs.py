@@ -7,7 +7,9 @@ The square-cipher results are exact CP-SAT proofs run with OR-tools; they are re
 results/ and not rerun here.  What is rerun: the 15 pairs and which letters are known, the
 absence of repeated input digraphs (so no fixed digraph table can be refuted), Playfair's
 repeated-letter input, the contradiction under the mirror pairing, and the 2x2 Hill search
-(linear and affine, four alphabets, both directions) with 10 planted controls.  Standard library only, a few seconds.
+(linear and affine, four alphabets, both directions) with 10 planted controls.  Later check (EP-0157): the pair
+counts, the equation count of the mixed-alphabet Hill and the mirror contradiction on the other pairings, and the
+recorded square results there.  Standard library only, a few seconds.
 A rerun of the author's code, not an independent replication.
 """
 import json
@@ -70,6 +72,19 @@ def main():
         bad.append("Hill")
     if any(v["K4"] != "inconsistent" for v in rec["free_square_settings"].values()) or rec["keyed_squares"]["K4"]:
         bad.append("recorded square results")
+    # later check (EP-0157): other pairings; the square results are recorded CP-SAT proofs
+    more = json.loads((HERE / "results" / "o-pairs-more-20260930.json").read_text(encoding="utf-8"))
+    cnt = more["mixed_alphabet_hill"]["count"]
+    for nm, pp in O.other_pairings().items():
+        full, half, eq, unk, clash = O.hill_count(pp)
+        print(f"  later check, {nm:<6}: pairs both/one known {full}/{half}, mixed-alphabet Hill equations {eq} "
+              f"vs unknowns {unk}; same input with two outputs: {[c[0] for c in clash]}")
+        if [full, half, eq, unk] != cnt[nm] or bool(clash) != (nm == "mirror"):
+            bad.append("later check " + nm)
+    print(f"  later check, recorded squares on the new pairings: K4 inconsistent in {more['K4_UNSAT']} of "
+          f"{more['square_settings']}; consistent in {more['K4_SAT_settings']}")
+    if more["K4_UNSAT"] + more["K4_SAT"] != 224 or             sum(v["K4"] == "UNSAT" for v in more["settings"].values()) != more["K4_UNSAT"]:
+        bad.append("later check record")
     if bad:
         print("FAIL:", ", ".join(bad))
         return 1

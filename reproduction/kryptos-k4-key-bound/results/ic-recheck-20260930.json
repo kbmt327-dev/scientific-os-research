@@ -1,0 +1,12 @@
+{
+ "source": "EP-0152 (2026-09-30), audit repo k4_ic_recheck.py; n = 20,000 per model, 97 letters, numpy seed 20260930; plaintext = random 97-letter windows of an English corpus (1.34 million letters, not published here)",
+ "k4_ic": 0.0361,
+ "models": {
+  "uniform letters (uniform key)": {"mean": 0.0385, "sd": 0.0028, "p_ic_le_k4": 0.2175},
+  "English + key of independent English-frequency letters": {"mean": 0.0400, "sd": 0.0032, "p_ic_le_k4": 0.1071},
+  "English + English text as key (running key)": {"mean": 0.0400, "sd": 0.0032, "p_ic_le_k4": 0.1027}
+ },
+ "periodic_random_key_p_ic_le_k4": {"1": 0.0, "2": 0.0001, "3": 0.0013, "4": 0.0066, "5": 0.0154, "6": 0.0231,
+                                    "7": 0.0338, "8": 0.0406, "9": 0.0512, "10": 0.0635, "11": 0.0697, "12": 0.0788},
+ "reading": "the IC separates neither a uniform key nor an English key (both P > 0.1); it rejects a random periodic key only for p <= 4 at 1% and p <= 8 at 5%"
+}

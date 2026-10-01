@@ -1,0 +1,1302 @@
+{
+ "source": "EP-0150 and EP-0179 (audit repo k4_ptautokey_lag.py, committed 3739a0a before running on K4; k4_plaintext_indexed_key.py, committed before running on K4). Values copied from the run logs of 2026-09-30.",
+ "ep0150_plaintext_autokey": {
+  "role": "K1-K3 variant, run as a check after the reading that had excluded plaintext-history keys lost its basis; not a main-line hypothesis",
+  "cells_L_le_20": 120,
+  "cells_total": 240,
+  "alphabets": [
+   "AZ",
+   "KA"
+  ],
+  "tables": [
+   "Vig",
+   "Beau",
+   "VBeau"
+  ],
+  "min_conflicts_L_le_20": 6,
+  "argmin_L_le_20": [
+   "AZ VBeau 17",
+   "KA Vig 16",
+   "KA Vig 17",
+   "KA Beau 18"
+  ],
+  "conflicts_L_le_12": [
+   10,
+   21
+  ],
+  "shuffles": 10000,
+  "shuffle_seed": 20260930,
+  "P_shuffle_min_le_K4_min": 0.9638,
+  "controls_planted_0_errors": "24/24 with 0 conflicts",
+  "controls_with_2_carving_errors": "0 to 7 conflicts (errors propagate along the chain)",
+  "cells": {
+   "AZ Beau 1": {
+    "conflicts": 21,
+    "checks": 23,
+    "P_shuffle_le_K4": 0.8881
+   },
+   "AZ VBeau 1": {
+    "conflicts": 21,
+    "checks": 23,
+    "P_shuffle_le_K4": 0.8945
+   },
+   "AZ Vig 1": {
+    "conflicts": 21,
+    "checks": 23,
+    "P_shuffle_le_K4": 0.8899
+   },
+   "KA Beau 1": {
+    "conflicts": 21,
+    "checks": 23,
+    "P_shuffle_le_K4": 0.8802
+   },
+   "KA VBeau 1": {
+    "conflicts": 21,
+    "checks": 23,
+    "P_shuffle_le_K4": 0.8856
+   },
+   "KA Vig 1": {
+    "conflicts": 20,
+    "checks": 23,
+    "P_shuffle_le_K4": 0.2869
+   },
+   "AZ Beau 2": {
+    "conflicts": 19,
+    "checks": 22,
+    "P_shuffle_le_K4": 0.3873
+   },
+   "AZ VBeau 2": {
+    "conflicts": 19,
+    "checks": 22,
+    "P_shuffle_le_K4": 0.4073
+   },
+   "AZ Vig 2": {
+    "conflicts": 21,
+    "checks": 22,
+    "P_shuffle_le_K4": 0.997
+   },
+   "KA Beau 2": {
+    "conflicts": 20,
+    "checks": 22,
+    "P_shuffle_le_K4": 0.9296
+   },
+   "KA VBeau 2": {
+    "conflicts": 20,
+    "checks": 22,
+    "P_shuffle_le_K4": 0.9204
+   },
+   "KA Vig 2": {
+    "conflicts": 19,
+    "checks": 22,
+    "P_shuffle_le_K4": 0.3825
+   },
+   "AZ Beau 3": {
+    "conflicts": 18,
+    "checks": 21,
+    "P_shuffle_le_K4": 0.4099
+   },
+   "AZ VBeau 3": {
+    "conflicts": 19,
+    "checks": 21,
+    "P_shuffle_le_K4": 0.806
+   },
+   "AZ Vig 3": {
+    "conflicts": 19,
+    "checks": 21,
+    "P_shuffle_le_K4": 0.7859
+   },
+   "KA Beau 3": {
+    "conflicts": 19,
+    "checks": 21,
+    "P_shuffle_le_K4": 0.794
+   },
+   "KA VBeau 3": {
+    "conflicts": 18,
+    "checks": 21,
+    "P_shuffle_le_K4": 0.3882
+   },
+   "KA Vig 3": {
+    "conflicts": 20,
+    "checks": 21,
+    "P_shuffle_le_K4": 0.9771
+   },
+   "AZ Beau 4": {
+    "conflicts": 16,
+    "checks": 20,
+    "P_shuffle_le_K4": 0.1012
+   },
+   "AZ VBeau 4": {
+    "conflicts": 18,
+    "checks": 20,
+    "P_shuffle_le_K4": 0.6471
+   },
+   "AZ Vig 4": {
+    "conflicts": 17,
+    "checks": 20,
+    "P_shuffle_le_K4": 0.3026
+   },
+   "KA Beau 4": {
+    "conflicts": 19,
+    "checks": 20,
+    "P_shuffle_le_K4": 0.9183
+   },
+   "KA VBeau 4": {
+    "conflicts": 17,
+    "checks": 20,
+    "P_shuffle_le_K4": 0.3447
+   },
+   "KA Vig 4": {
+    "conflicts": 19,
+    "checks": 20,
+    "P_shuffle_le_K4": 0.9175
+   },
+   "AZ Beau 5": {
+    "conflicts": 18,
+    "checks": 19,
+    "P_shuffle_le_K4": 0.8441
+   },
+   "AZ VBeau 5": {
+    "conflicts": 18,
+    "checks": 19,
+    "P_shuffle_le_K4": 0.86
+   },
+   "AZ Vig 5": {
+    "conflicts": 17,
+    "checks": 19,
+    "P_shuffle_le_K4": 0.5283
+   },
+   "KA Beau 5": {
+    "conflicts": 18,
+    "checks": 19,
+    "P_shuffle_le_K4": 0.8649
+   },
+   "KA VBeau 5": {
+    "conflicts": 17,
+    "checks": 19,
+    "P_shuffle_le_K4": 0.4918
+   },
+   "KA Vig 5": {
+    "conflicts": 17,
+    "checks": 19,
+    "P_shuffle_le_K4": 0.5024
+   },
+   "AZ Beau 6": {
+    "conflicts": 16,
+    "checks": 18,
+    "P_shuffle_le_K4": 0.3768
+   },
+   "AZ VBeau 6": {
+    "conflicts": 17,
+    "checks": 18,
+    "P_shuffle_le_K4": 0.768
+   },
+   "AZ Vig 6": {
+    "conflicts": 16,
+    "checks": 18,
+    "P_shuffle_le_K4": 0.4117
+   },
+   "KA Beau 6": {
+    "conflicts": 16,
+    "checks": 18,
+    "P_shuffle_le_K4": 0.3956
+   },
+   "KA VBeau 6": {
+    "conflicts": 18,
+    "checks": 18,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 6": {
+    "conflicts": 16,
+    "checks": 18,
+    "P_shuffle_le_K4": 0.4316
+   },
+   "AZ Beau 7": {
+    "conflicts": 16,
+    "checks": 17,
+    "P_shuffle_le_K4": 0.7221
+   },
+   "AZ VBeau 7": {
+    "conflicts": 16,
+    "checks": 17,
+    "P_shuffle_le_K4": 0.7238
+   },
+   "AZ Vig 7": {
+    "conflicts": 16,
+    "checks": 17,
+    "P_shuffle_le_K4": 0.7092
+   },
+   "KA Beau 7": {
+    "conflicts": 16,
+    "checks": 17,
+    "P_shuffle_le_K4": 0.7217
+   },
+   "KA VBeau 7": {
+    "conflicts": 17,
+    "checks": 17,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 7": {
+    "conflicts": 16,
+    "checks": 17,
+    "P_shuffle_le_K4": 0.7061
+   },
+   "AZ Beau 8": {
+    "conflicts": 13,
+    "checks": 16,
+    "P_shuffle_le_K4": 0.0693
+   },
+   "AZ VBeau 8": {
+    "conflicts": 15,
+    "checks": 16,
+    "P_shuffle_le_K4": 0.6577
+   },
+   "AZ Vig 8": {
+    "conflicts": 15,
+    "checks": 16,
+    "P_shuffle_le_K4": 0.6669
+   },
+   "KA Beau 8": {
+    "conflicts": 16,
+    "checks": 16,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 8": {
+    "conflicts": 16,
+    "checks": 16,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 8": {
+    "conflicts": 15,
+    "checks": 16,
+    "P_shuffle_le_K4": 0.6566
+   },
+   "AZ Beau 9": {
+    "conflicts": 15,
+    "checks": 15,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 9": {
+    "conflicts": 14,
+    "checks": 15,
+    "P_shuffle_le_K4": 0.5831
+   },
+   "AZ Vig 9": {
+    "conflicts": 15,
+    "checks": 15,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 9": {
+    "conflicts": 13,
+    "checks": 15,
+    "P_shuffle_le_K4": 0.2473
+   },
+   "KA VBeau 9": {
+    "conflicts": 12,
+    "checks": 15,
+    "P_shuffle_le_K4": 0.0631
+   },
+   "KA Vig 9": {
+    "conflicts": 14,
+    "checks": 15,
+    "P_shuffle_le_K4": 0.5535
+   },
+   "AZ Beau 10": {
+    "conflicts": 14,
+    "checks": 14,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 10": {
+    "conflicts": 12,
+    "checks": 14,
+    "P_shuffle_le_K4": 0.1666
+   },
+   "AZ Vig 10": {
+    "conflicts": 12,
+    "checks": 14,
+    "P_shuffle_le_K4": 0.1589
+   },
+   "KA Beau 10": {
+    "conflicts": 14,
+    "checks": 14,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 10": {
+    "conflicts": 13,
+    "checks": 14,
+    "P_shuffle_le_K4": 0.4941
+   },
+   "KA Vig 10": {
+    "conflicts": 13,
+    "checks": 14,
+    "P_shuffle_le_K4": 0.5275
+   },
+   "AZ Beau 11": {
+    "conflicts": 12,
+    "checks": 13,
+    "P_shuffle_le_K4": 0.4201
+   },
+   "AZ VBeau 11": {
+    "conflicts": 12,
+    "checks": 13,
+    "P_shuffle_le_K4": 0.4699
+   },
+   "AZ Vig 11": {
+    "conflicts": 13,
+    "checks": 13,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 11": {
+    "conflicts": 11,
+    "checks": 13,
+    "P_shuffle_le_K4": 0.1143
+   },
+   "KA VBeau 11": {
+    "conflicts": 13,
+    "checks": 13,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 11": {
+    "conflicts": 13,
+    "checks": 13,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 12": {
+    "conflicts": 10,
+    "checks": 12,
+    "P_shuffle_le_K4": 0.0881
+   },
+   "AZ VBeau 12": {
+    "conflicts": 11,
+    "checks": 12,
+    "P_shuffle_le_K4": 0.3988
+   },
+   "AZ Vig 12": {
+    "conflicts": 10,
+    "checks": 12,
+    "P_shuffle_le_K4": 0.0797
+   },
+   "KA Beau 12": {
+    "conflicts": 12,
+    "checks": 12,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 12": {
+    "conflicts": 12,
+    "checks": 12,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 12": {
+    "conflicts": 11,
+    "checks": 12,
+    "P_shuffle_le_K4": 0.4018
+   },
+   "AZ Beau 13": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 13": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 13": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 13": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 13": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 13": {
+    "conflicts": 10,
+    "checks": 11,
+    "P_shuffle_le_K4": 0.3393
+   },
+   "AZ Beau 14": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 14": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 14": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 14": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 14": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 14": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 15": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 15": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 15": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 15": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 15": {
+    "conflicts": 8,
+    "checks": 9,
+    "P_shuffle_le_K4": 0.289
+   },
+   "KA Vig 15": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 16": {
+    "conflicts": 8,
+    "checks": 8,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 16": {
+    "conflicts": 8,
+    "checks": 8,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 16": {
+    "conflicts": 8,
+    "checks": 8,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 16": {
+    "conflicts": 8,
+    "checks": 8,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 16": {
+    "conflicts": 8,
+    "checks": 8,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 16": {
+    "conflicts": 6,
+    "checks": 8,
+    "P_shuffle_le_K4": 0.0347
+   },
+   "AZ Beau 17": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 17": {
+    "conflicts": 6,
+    "checks": 7,
+    "P_shuffle_le_K4": 0.234
+   },
+   "AZ Vig 17": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 17": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 17": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 17": {
+    "conflicts": 6,
+    "checks": 7,
+    "P_shuffle_le_K4": 0.2386
+   },
+   "AZ Beau 18": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 18": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 18": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 18": {
+    "conflicts": 6,
+    "checks": 7,
+    "P_shuffle_le_K4": 0.24
+   },
+   "KA VBeau 18": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 18": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 19": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 19": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 19": {
+    "conflicts": 8,
+    "checks": 9,
+    "P_shuffle_le_K4": 0.3066
+   },
+   "KA Beau 19": {
+    "conflicts": 8,
+    "checks": 9,
+    "P_shuffle_le_K4": 0.3015
+   },
+   "KA VBeau 19": {
+    "conflicts": 8,
+    "checks": 9,
+    "P_shuffle_le_K4": 0.296
+   },
+   "KA Vig 19": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 20": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 20": {
+    "conflicts": 10,
+    "checks": 11,
+    "P_shuffle_le_K4": 0.3462
+   },
+   "AZ Vig 20": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 20": {
+    "conflicts": 10,
+    "checks": 11,
+    "P_shuffle_le_K4": 0.341
+   },
+   "KA VBeau 20": {
+    "conflicts": 10,
+    "checks": 11,
+    "P_shuffle_le_K4": 0.3471
+   },
+   "KA Vig 20": {
+    "conflicts": 10,
+    "checks": 11,
+    "P_shuffle_le_K4": 0.3459
+   },
+   "AZ Beau 21": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 21": {
+    "conflicts": 10,
+    "checks": 11,
+    "P_shuffle_le_K4": 0.3603
+   },
+   "AZ Vig 21": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 21": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 21": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 21": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 22": {
+    "conflicts": 8,
+    "checks": 9,
+    "P_shuffle_le_K4": 0.2933
+   },
+   "AZ VBeau 22": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 22": {
+    "conflicts": 8,
+    "checks": 9,
+    "P_shuffle_le_K4": 0.2981
+   },
+   "KA Beau 22": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 22": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 22": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 23": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 23": {
+    "conflicts": 6,
+    "checks": 7,
+    "P_shuffle_le_K4": 0.2427
+   },
+   "AZ Vig 23": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 23": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 23": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 23": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 24": {
+    "conflicts": 4,
+    "checks": 5,
+    "P_shuffle_le_K4": 0.1808
+   },
+   "AZ VBeau 24": {
+    "conflicts": 5,
+    "checks": 5,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 24": {
+    "conflicts": 5,
+    "checks": 5,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 24": {
+    "conflicts": 5,
+    "checks": 5,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 24": {
+    "conflicts": 4,
+    "checks": 5,
+    "P_shuffle_le_K4": 0.1861
+   },
+   "KA Vig 24": {
+    "conflicts": 5,
+    "checks": 5,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 25": {
+    "conflicts": 3,
+    "checks": 3,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 25": {
+    "conflicts": 3,
+    "checks": 3,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 25": {
+    "conflicts": 3,
+    "checks": 3,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 25": {
+    "conflicts": 3,
+    "checks": 3,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 25": {
+    "conflicts": 2,
+    "checks": 3,
+    "P_shuffle_le_K4": 0.1117
+   },
+   "KA Vig 25": {
+    "conflicts": 3,
+    "checks": 3,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 26": {
+    "conflicts": 1,
+    "checks": 1,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 26": {
+    "conflicts": 1,
+    "checks": 1,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 26": {
+    "conflicts": 1,
+    "checks": 1,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 26": {
+    "conflicts": 1,
+    "checks": 1,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 26": {
+    "conflicts": 1,
+    "checks": 1,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 26": {
+    "conflicts": 1,
+    "checks": 1,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 27": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 27": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 27": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 27": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 27": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 27": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 28": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 28": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 28": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 28": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 28": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 28": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 29": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 29": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 29": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 29": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 29": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 29": {
+    "conflicts": 0,
+    "checks": 0,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 30": {
+    "conflicts": 1,
+    "checks": 1,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 30": {
+    "conflicts": 1,
+    "checks": 1,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 30": {
+    "conflicts": 1,
+    "checks": 1,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 30": {
+    "conflicts": 1,
+    "checks": 1,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 30": {
+    "conflicts": 1,
+    "checks": 1,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 30": {
+    "conflicts": 1,
+    "checks": 1,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 31": {
+    "conflicts": 2,
+    "checks": 2,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 31": {
+    "conflicts": 2,
+    "checks": 2,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 31": {
+    "conflicts": 2,
+    "checks": 2,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 31": {
+    "conflicts": 2,
+    "checks": 2,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 31": {
+    "conflicts": 2,
+    "checks": 2,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 31": {
+    "conflicts": 2,
+    "checks": 2,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 32": {
+    "conflicts": 3,
+    "checks": 3,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 32": {
+    "conflicts": 3,
+    "checks": 3,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 32": {
+    "conflicts": 3,
+    "checks": 3,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 32": {
+    "conflicts": 2,
+    "checks": 3,
+    "P_shuffle_le_K4": 0.1355
+   },
+   "KA VBeau 32": {
+    "conflicts": 3,
+    "checks": 3,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 32": {
+    "conflicts": 3,
+    "checks": 3,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 33": {
+    "conflicts": 4,
+    "checks": 4,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 33": {
+    "conflicts": 4,
+    "checks": 4,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 33": {
+    "conflicts": 4,
+    "checks": 4,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 33": {
+    "conflicts": 4,
+    "checks": 4,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 33": {
+    "conflicts": 4,
+    "checks": 4,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 33": {
+    "conflicts": 3,
+    "checks": 4,
+    "P_shuffle_le_K4": 0.134
+   },
+   "AZ Beau 34": {
+    "conflicts": 5,
+    "checks": 5,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 34": {
+    "conflicts": 5,
+    "checks": 5,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 34": {
+    "conflicts": 5,
+    "checks": 5,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 34": {
+    "conflicts": 5,
+    "checks": 5,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 34": {
+    "conflicts": 5,
+    "checks": 5,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 34": {
+    "conflicts": 5,
+    "checks": 5,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 35": {
+    "conflicts": 6,
+    "checks": 6,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 35": {
+    "conflicts": 6,
+    "checks": 6,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 35": {
+    "conflicts": 6,
+    "checks": 6,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 35": {
+    "conflicts": 6,
+    "checks": 6,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 35": {
+    "conflicts": 6,
+    "checks": 6,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 35": {
+    "conflicts": 6,
+    "checks": 6,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 36": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 36": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 36": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 36": {
+    "conflicts": 6,
+    "checks": 7,
+    "P_shuffle_le_K4": 0.2276
+   },
+   "KA VBeau 36": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 36": {
+    "conflicts": 7,
+    "checks": 7,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 37": {
+    "conflicts": 7,
+    "checks": 8,
+    "P_shuffle_le_K4": 0.2684
+   },
+   "AZ VBeau 37": {
+    "conflicts": 7,
+    "checks": 8,
+    "P_shuffle_le_K4": 0.2583
+   },
+   "AZ Vig 37": {
+    "conflicts": 8,
+    "checks": 8,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 37": {
+    "conflicts": 7,
+    "checks": 8,
+    "P_shuffle_le_K4": 0.2636
+   },
+   "KA VBeau 37": {
+    "conflicts": 7,
+    "checks": 8,
+    "P_shuffle_le_K4": 0.2876
+   },
+   "KA Vig 37": {
+    "conflicts": 8,
+    "checks": 8,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 38": {
+    "conflicts": 8,
+    "checks": 9,
+    "P_shuffle_le_K4": 0.2821
+   },
+   "AZ VBeau 38": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 38": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 38": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 38": {
+    "conflicts": 9,
+    "checks": 9,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 38": {
+    "conflicts": 8,
+    "checks": 9,
+    "P_shuffle_le_K4": 0.2913
+   },
+   "AZ Beau 39": {
+    "conflicts": 10,
+    "checks": 10,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 39": {
+    "conflicts": 10,
+    "checks": 10,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 39": {
+    "conflicts": 10,
+    "checks": 10,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 39": {
+    "conflicts": 10,
+    "checks": 10,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 39": {
+    "conflicts": 10,
+    "checks": 10,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Vig 39": {
+    "conflicts": 10,
+    "checks": 10,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Beau 40": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ VBeau 40": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "AZ Vig 40": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA Beau 40": {
+    "conflicts": 11,
+    "checks": 11,
+    "P_shuffle_le_K4": 1.0
+   },
+   "KA VBeau 40": {
+    "conflicts": 10,
+    "checks": 11,
+    "P_shuffle_le_K4": 0.3361
+   },
+   "KA Vig 40": {
+    "conflicts": 9,
+    "checks": 11,
+    "P_shuffle_le_K4": 0.0606
+   }
+  }
+ },
+ "ep0179_plaintext_indexed_key": {
+  "role": "shift tables: K1-K3 variant (check); arbitrary rows: a different method",
+  "sets_V": 60,
+  "sets_V_note": "the code docstring says 64; the list has 60 (26 single letters, 4 vowel/consonant sets, 14 word letter sets and their 14 complements, A-M, N-Z)",
+  "periods": [
+   1,
+   24
+  ],
+  "cells": 1440,
+  "fixed_table_passes": 14,
+  "fixed_table_pass_cells": [
+   "D 24",
+   "F 24",
+   "G 24",
+   "J 24",
+   "K 24",
+   "M 24",
+   "P 24",
+   "Q 24",
+   "U 24",
+   "V 24",
+   "W 24",
+   "X 24",
+   "Y 24",
+   "Z 24"
+  ],
+  "fixed_table_shuffles": {
+   "n": 1000,
+   "mean_passes": 20.104,
+   "P_ge_K4": 1.0,
+   "share_with_0_passes": 0.0
+  },
+  "arbitrary_row_passes": 934,
+  "arbitrary_row_passes_p_le_12": 241,
+  "arbitrary_row_shuffles": {
+   "n": 1000,
+   "mean": 915.1,
+   "P_le_K4": 0.61,
+   "P_ge_K4": 0.405,
+   "p_le_12_mean": 232.14,
+   "p_le_12_P_ge_K4": 0.453
+  },
+  "controls": "40/40 planted ciphers pass at their (V, p) in both tests"
+ },
+ "all_V_check": {
+  "added": "2026-10-01, while writing the public Note; not part of the record and not committed before running on K4 (post hoc)",
+  "idea": "inside the cribs only V's intersection with the 12 index-moving crib letters ABCEHILNORST matters, so 4,096 classes x p 1..24 cover every possible V",
+  "cells": 98304,
+  "K4_pass_cells": [
+   "(none) 24",
+   "BCEHILNOT 23",
+   "ABCEILNORS 23",
+   "BCILNORST 24",
+   "BEHILNOST 24",
+   "BCEHILNORT 24"
+  ],
+  "K4_passes": 6,
+  "K4_passes_p_le_23": 2,
+  "shuffles": {
+   "n": 50,
+   "seed": 1790,
+   "mean_passes": 12.84,
+   "mean_passes_p_le_23": 3.6,
+   "P_le_K4_all": 0.24,
+   "P_le_K4_p_le_23": 0.5
+  }
+ }
+}

@@ -347,6 +347,45 @@ def kryptos_k4_width21() -> None:
     root = ROOT / 'reproduction' / 'kryptos-k4-width21'
     print(run([sys.executable, 'verify_width21.py'], root).strip().splitlines()[-1])
 
+def kryptos_k4_portax_playfair_mask() -> None:
+    root = ROOT / 'reproduction' / 'kryptos-k4-portax-playfair-mask'
+    print(run([sys.executable, 'verify_portax_playfair_mask.py'], root).strip().splitlines()[-1])
+
+
+def kryptos_k4_crib_shifts() -> None:
+    root = ROOT / 'reproduction' / 'kryptos-k4-crib-shifts'
+    print(run([sys.executable, 'verify_crib_shifts.py'], root).strip().splitlines()[-1])
+
+
+def kryptos_k4_chart3_folds() -> None:
+    root = ROOT / 'reproduction' / 'kryptos-k4-chart3-folds'
+    print(run([sys.executable, 'verify_chart3_folds.py'], root).strip().splitlines()[-1])
+
+
+def kryptos_k4_machine_phase_break() -> None:
+    root = ROOT / 'reproduction' / 'kryptos-k4-machine-phase-break'
+    print(run([sys.executable, 'verify_machine_phase_break.py'], root).strip().splitlines()[-1])
+
+
+def kryptos_k4_block_phase_shift() -> None:
+    root = ROOT / 'reproduction' / 'kryptos-k4-block-phase-shift'
+    print(run([sys.executable, 'verify_block_phase_shift.py'], root).strip().splitlines()[-1])
+
+
+def kryptos_k4_plaintext_keys() -> None:
+    root = ROOT / 'reproduction' / 'kryptos-k4-plaintext-keys'
+    print(run([sys.executable, 'verify_plaintext_keys.py'], root).strip().splitlines()[-1])
+
+
+def kryptos_k4_w_morse_digits() -> None:
+    root = ROOT / 'reproduction' / 'kryptos-k4-w-morse-digits'
+    print(run([sys.executable, 'verify_w_morse_digits.py'], root).strip().splitlines()[-1])
+
+
+def kryptos_k4_layout_transposition() -> None:
+    root = ROOT / 'reproduction' / 'kryptos-k4-layout-transposition'
+    print(run([sys.executable, 'verify_layout_transposition.py'], root).strip().splitlines()[-1])
+
 
 def gpu_locality() -> None:
     root = ROOT / 'reproduction' / 'gpu-scheduling-locality'
@@ -357,7 +396,7 @@ CHECKS = {"gpu": gpu, "gpu-phase": gpu_phase,
           "gpu-boundary": gpu_boundary, "gpu-u31": gpu_u31, "gpu-u31-controls": gpu_u31_controls, "gpu-two-class": gpu_two_class, "gpu-past-learning": gpu_past_learning, "gpu-checkpoints": gpu_checkpoints, "gpu-transition-refusal": gpu_transition_refusal, "gpu-self-containment": gpu_self_containment, "gpu-cold-reader": gpu_cold_reader, "gpu-locality": gpu_locality, "queue": queue,
           "human": human, "human-dataset": human_dataset, "iaa": iaa,
           "intervention": intervention,
-          "frontier": frontier, "kryptos-k4-57973-audit": kryptos_k4_57973_audit, "kryptos-k4-tokio-null": kryptos_k4_tokio_null, "kryptos-k4-w-brackets": kryptos_k4_w_brackets, "kryptos-k4-list-price": kryptos_k4_list_price, "kryptos-k4-procedure-enumerator": kryptos_k4_procedure_enumerator, "kryptos-k4-letter-graph": kryptos_k4_letter_graph, "kryptos-k4-consistency": kryptos_k4_consistency, "kryptos-k4-w-squares": kryptos_k4_w_squares, "kryptos-k4-rotors": kryptos_k4_rotors, "kryptos-k4-affine-hill": kryptos_k4_affine_hill, "kryptos-k4-key-bound": kryptos_k4_key_bound, "kryptos-k4-key-sources": kryptos_k4_key_sources, "kryptos-k4-chosen-rows": kryptos_k4_chosen_rows, "kryptos-k4-carving-errors": kryptos_k4_carving_errors, "kryptos-k4-classical": kryptos_k4_classical, "kryptos-k4-masks": kryptos_k4_masks, "kryptos-k4-physical-keys": kryptos_k4_physical_keys, "kryptos-k4-word-reordering": kryptos_k4_word_reordering, "kryptos-k4-o-pairs": kryptos_k4_o_pairs, "kryptos-k4-yar-photo": kryptos_k4_yar_photo, "kryptos-k4-construction-ledger": kryptos_k4_construction_ledger, "kryptos-k4-production-traces": kryptos_k4_production_traces, "kryptos-k4-capability-matrix": kryptos_k4_capability_matrix, "kryptos-k4-width21": kryptos_k4_width21}
+          "frontier": frontier, "kryptos-k4-57973-audit": kryptos_k4_57973_audit, "kryptos-k4-tokio-null": kryptos_k4_tokio_null, "kryptos-k4-w-brackets": kryptos_k4_w_brackets, "kryptos-k4-list-price": kryptos_k4_list_price, "kryptos-k4-procedure-enumerator": kryptos_k4_procedure_enumerator, "kryptos-k4-letter-graph": kryptos_k4_letter_graph, "kryptos-k4-consistency": kryptos_k4_consistency, "kryptos-k4-w-squares": kryptos_k4_w_squares, "kryptos-k4-rotors": kryptos_k4_rotors, "kryptos-k4-affine-hill": kryptos_k4_affine_hill, "kryptos-k4-key-bound": kryptos_k4_key_bound, "kryptos-k4-key-sources": kryptos_k4_key_sources, "kryptos-k4-chosen-rows": kryptos_k4_chosen_rows, "kryptos-k4-carving-errors": kryptos_k4_carving_errors, "kryptos-k4-classical": kryptos_k4_classical, "kryptos-k4-masks": kryptos_k4_masks, "kryptos-k4-physical-keys": kryptos_k4_physical_keys, "kryptos-k4-word-reordering": kryptos_k4_word_reordering, "kryptos-k4-o-pairs": kryptos_k4_o_pairs, "kryptos-k4-yar-photo": kryptos_k4_yar_photo, "kryptos-k4-construction-ledger": kryptos_k4_construction_ledger, "kryptos-k4-production-traces": kryptos_k4_production_traces, "kryptos-k4-capability-matrix": kryptos_k4_capability_matrix, "kryptos-k4-width21": kryptos_k4_width21, "kryptos-k4-portax-playfair-mask": kryptos_k4_portax_playfair_mask, "kryptos-k4-crib-shifts": kryptos_k4_crib_shifts, "kryptos-k4-chart3-folds": kryptos_k4_chart3_folds, "kryptos-k4-machine-phase-break": kryptos_k4_machine_phase_break, "kryptos-k4-block-phase-shift": kryptos_k4_block_phase_shift, "kryptos-k4-plaintext-keys": kryptos_k4_plaintext_keys, "kryptos-k4-w-morse-digits": kryptos_k4_w_morse_digits, "kryptos-k4-layout-transposition": kryptos_k4_layout_transposition}
 
 
 def main() -> int:

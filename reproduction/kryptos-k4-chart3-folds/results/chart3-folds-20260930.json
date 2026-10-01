@@ -1,0 +1,37 @@
+{
+ "source": "EP-0148 (mark inventory of the public chart #3 reconstruction), EP-0154 (2025 materials, form only), EP-0167 (restart at the fold lines; code committed before running, shuffle null 100,000, seed 20260930)",
+ "chart3_image": {
+  "page": "The Kryptos Project, K3 Method page (method.php, updated 2014-04-23)",
+  "kind": "typeset reconstruction, not a photograph; the original NOVA / NYT images are not shown or linked on the page",
+  "grid": "14 rows x 31 columns; K3 rows 1-10 and row 11 columns 1-26; '?' row 11 column 27; K4 row 11 columns 28-31 and rows 12-14",
+  "marks_inside_k4_cells": ["fold line, column 6, all 14 rows", "fold line, column 25, all 14 rows"],
+  "k4_positions_crossed": [9, 28, 40, 59, 71, 90],
+  "k3_cells_crossed": 22,
+  "other_marks": "labels, a marker scrawl, staple notes, margin marks and a corner dot: all outside the grid",
+  "layer_of_any_mark_decidable_from_reconstruction": false,
+  "computation": "none",
+  "outcome": "STOP: the public chart #3 gives no operator for K4"
+ },
+ "materials_2025": {
+  "worksheet_form_described": false,
+  "catalogue_term_for_k4_item": "coding system (K1-K3 and K5 items: coding charts)",
+  "photos_of_items": false,
+  "items_found_in_archive": "five pieces of cut and taped plaintext, not coding charts (content not described here)"
+ },
+ "original_footage": {
+  "source": "NOVA scienceNOW, 2007-07-01, stills on The Kryptos Project media page",
+  "fold_seen": "one crease about 19% along the long side of a tractor-feed sheet, consistent with column 6 (6/31 = 19%)",
+  "undetermined": ["which sheet it is", "the second fold (hidden by a hand)", "whether either fold crosses K4's rows"]
+ },
+ "restart_test": {
+  "all six crossings": {"same_phase_groups": [[28, 71], [29, 72], [30, 73], [32, 63], [33, 64]],
+                        "fixed_disagreements_every_convention": 5, "fixed_shuffles_le": 1.0,
+                        "rows_conflicts": 0, "rows_shuffles_le": 0.8323},
+  "column 6 only": {"same_phase_groups": [[32, 63], [33, 64]], "fixed_disagreements_every_convention": 2,
+                    "fixed_shuffles_le": 1.0, "rows_conflicts": 0, "rows_shuffles_le": 0.9307},
+  "column 25 only": {"same_phase_groups": [[32, 63], [33, 64]], "fixed_disagreements_every_convention": 2,
+                     "fixed_shuffles_le": 1.0, "rows_conflicts": 0, "rows_shuffles_le": 0.9298}
+ },
+ "verdict": {"fixed shift table": "closed for every key generator (logical refutation, not rarer than random)",
+             "arbitrary rows by phase": "undecidable (5 pairs; most shuffles pass)"}
+}

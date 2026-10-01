@@ -13,6 +13,7 @@ python make_figure.py out.svg     # redraws the Note's figure
 | `k4_carving_errors.py` | For a periodic key (Vigenère, Beaufort, variant; A–Z or KRYPTOS), the fewest crib letters that must be wrong at each period, for K4 and for shuffled K4 |
 | `results/carving-errors-20260927.json` | Recorded results, including the families not rerun here |
 | `verify_carving_errors.py` | Recomputes the table for periods 1–48 with 100 shuffles and prints `PASS` |
+| `results/transcription-check-20260930.json` | Later check (EP-0147, 2026-09-30): the 97 letters and three line breaks against photographs; a record, not rerun |
 | `make_figure.py` | The Note's figure |
 
 This package keeps the crib at its published position. The internal run also slid the crib

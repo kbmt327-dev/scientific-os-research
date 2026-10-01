@@ -230,7 +230,7 @@ Program overview:
 
 Question: Which mechanisms can the 97 ciphertext letters and 24 crib letters rule out, and which apparent patterns survive once the freedom used to find them is counted?
 
-Current claim (EP-0146): No decryption and no new plaintext letter (as of 2026-09-28). What has been tested is only whether a procedure short enough to write down is compatible with the 24 crib letters, and every answer is no. Besides the K1–K3 form (one chart, shifted), methods outside it (digraph squares, Hill, Slidefair, Portax and Doppelkasten, rotor machines, an Enigma-type machine behind a free substitution) and an enumerator of 4.7 × 10¹⁵ procedures built from a grammar of parts gave no candidate wherever the cribs decide; the enumerator still gives 0 with up to seven crib errors or with letters reordered inside words. These are logical refutations; none shows K4 to be rarer than random. K4's flat letter frequencies need a row spread of at least 3 bits per position in a model that picks rows uniformly (a model-internal quantity), and hand-made charts, homophones and codebooks cannot be decided without an outside source for the chart, the device or K5. The TOKIO reading of the W gaps is compatible with chance once the choice of target list is paid (expected 0.054, EP-0135). Operators fixed by the sculpture's production facts are either rejected or undecidable, and K1–K3's carved layout follows letter widths and shows no trace of their methods (EP-0140, EP-0141). A matrix of the capabilities covered so far leaves eleven gap groups, almost all without a source that would fix an operator; the one with a source, fixed counting origins, also gave 0 (EP-0142, EP-0143). The width-21 excess in the ciphertext looks real, but only one pair table points to 21; predictions for K5 and the plaintext are sealed (EP-0146).
+Current claim (EP-0186): No decryption and no new plaintext letter (as of 2026-10-01). What has been tested is only whether a procedure short enough to write down is compatible with the 24 crib letters, and every answer is no. Besides the K1–K3 form (one chart, shifted), methods outside it (digraph squares, Hill, Slidefair, Portax and Doppelkasten, rotor machines, an Enigma-type machine behind a free substitution) and an enumerator of 4.7 × 10¹⁵ procedures built from a grammar of parts gave no candidate wherever the cribs decide; the enumerator still gives 0 with up to seven crib errors or with letters reordered inside words. These are logical refutations; none shows K4 to be rarer than random. K4's flat letter frequencies need a row spread of at least 3 bits per position in a model that picks rows uniformly (a model-internal quantity), and hand-made charts, homophones and codebooks cannot be decided without an outside source for the chart, the device or K5. The TOKIO reading of the W gaps is compatible with chance once the choice of target list is paid (expected 0.054, EP-0135). Operators fixed by the sculpture's production facts are either rejected or undecidable, and K1–K3's carved layout follows letter widths and shows no trace of their methods (EP-0140, EP-0141). A matrix of the capabilities covered so far leaves eleven gap groups, almost all without a source that would fix an operator; the one with a source, fixed counting origins, also gave 0 (EP-0142, EP-0143). The width-21 excess in the ciphertext looks real, but only one pair table points to 21; predictions for K5 and the plaintext are sealed (EP-0146). Since then, crib positions off by a letter or two, phase breaks in machine and block ciphers, plaintext-driven keys, the fold lines of chart #3, and layout transpositions as routes on K4's carved shape in front of the enumerator were tested; every decidable form is inconsistent (EP-0165 to EP-0186). A Hagelin-type machine with a break and some CM-Bifid settings remain undecidable for lack of power.
 
 Evidence boundary: Exploratory computation on the public ciphertext, the 24 crib letters and public photos of the sculpture. Most later tests were committed before running on K4, but none is externally preregistered; no external independent replication and no review by a cryptographer. The ground truth exists but is withheld.
 
@@ -304,9 +304,33 @@ Published Research Notes:
 - KRYPTOS-K4-EP-0142 — What have the tests covered, and where are the gaps? (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-capability-matrix/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-capability-matrix/
-- KRYPTOS-K4-EP-0146 — Does anything besides one pair table point to width 21? (Finding) — CURRENT
+- KRYPTOS-K4-EP-0146 — Does anything besides one pair table point to width 21? (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-width21/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-width21/
+- KRYPTOS-K4-EP-0156 — Can Portax with a free substitution, or a free-square Playfair followed by a mask, produce K4? (Negative Result)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-portax-playfair-mask/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-portax-playfair-mask/
+- KRYPTOS-K4-EP-0165 — Does the procedure enumerator fit K4 if the key position slips once inside or between the cribs? (Negative Result)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-crib-shifts/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-crib-shifts/
+- KRYPTOS-K4-EP-0167 — Do the fold lines on the K3 worksheet tell where K4's key restarts? (Negative Result)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-chart3-folds/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-chart3-folds/
+- KRYPTOS-K4-EP-0168 — Does one phase break reopen the rotor, Enigma or Hagelin machines? (Negative Result)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-machine-phase-break/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-machine-phase-break/
+- KRYPTOS-K4-EP-0169 — Does one phase shift in the grouping reopen the square and Bifid ciphers? (Finding)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-block-phase-shift/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-block-phase-shift/
+- KRYPTOS-K4-EP-0179 — Do keys that follow the plaintext (plaintext autokey, a plaintext-indexed periodic key) fit K4's cribs? (Negative Result)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-plaintext-keys/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-plaintext-keys/
+- KRYPTOS-K4-EP-0182 — Does K4 fit W as a null, a reversed key, a Morse mask or digit-wise addition? (Negative Result)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-w-morse-digits/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-w-morse-digits/
+- KRYPTOS-K4-EP-0186 — Does a transposition fixed by K4's layout, followed by the procedure enumerator, fit K4? (Negative Result) — CURRENT
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/kryptos-k4-layout-transposition/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/kryptos-k4-layout-transposition/
 <!-- GENERATED: research-current:END -->
 
 ### Measurement design

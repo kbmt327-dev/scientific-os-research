@@ -79,7 +79,7 @@ lang: en
     </div>
     <nav aria-label="Kryptos K4">
       <a href="/en/programs/kryptos-k4/">Program overview</a>
-      <a href="/en/research/kryptos-k4-width21/">Current Note</a>
+      <a href="/en/research/kryptos-k4-layout-transposition/">Current Note</a>
     </nav>
   </article>
 </div>

@@ -6,6 +6,18 @@ lang: ja
 
 ここは履歴の入口です。現在の結論を知りたい場合は、先に[研究分野ごとの現在地](/ja/research/)を読んでください。
 
+## 2026-10-01
+
+- **KRYPTOS-K4-EP-0186** · Negative Result — [K4の配置で決まる転置のあとに手順の列挙器をかけると、K4に合うか](/ja/research/kryptos-k4-layout-transposition/)
+## 2026-09-30
+
+- **KRYPTOS-K4-EP-0182** · Negative Result — [Wを空文字とみる索引、逆向きの鍵、Morse上のmask、桁ごとの加算で、K4を作れるか](/ja/research/kryptos-k4-w-morse-digits/)
+- **KRYPTOS-K4-EP-0179** · Negative Result — [平文で変わる鍵（平文autokey、平文で進む索引の周期鍵）は、K4のcribと合うか](/ja/research/kryptos-k4-plaintext-keys/)
+- **KRYPTOS-K4-EP-0169** · Finding — [組み方の位相を1回ずらすと、方陣とBifidの暗号は開くか](/ja/research/kryptos-k4-block-phase-shift/)
+- **KRYPTOS-K4-EP-0168** · Negative Result — [位相の切れ目を1つ足すと、回転盤・Enigma・Hagelinの機械は開くか](/ja/research/kryptos-k4-machine-phase-break/)
+- **KRYPTOS-K4-EP-0167** · Negative Result — [K3の作業表の折り線は、K4の鍵が再開する場所を示すか](/ja/research/kryptos-k4-chart3-folds/)
+- **KRYPTOS-K4-EP-0165** · Negative Result — [鍵の位置がcribの内側やcribの間で1回ずれていたら、手順の列挙器はK4に合うか](/ja/research/kryptos-k4-crib-shifts/)
+- **KRYPTOS-K4-EP-0156** · Negative Result — [自由な置換をつけたPortaxと、自由な方陣のPlayfair＋maskで、K4を作れるか](/ja/research/kryptos-k4-portax-playfair-mask/)
 ## 2026-09-28
 
 - **KRYPTOS-K4-EP-0146** · Finding — [幅21を指すものは、1つの対の表のほかにあるか](/ja/research/kryptos-k4-width21/)

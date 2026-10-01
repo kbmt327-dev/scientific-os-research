@@ -1,0 +1,64 @@
+{
+ "source": "EP-0186 (author's runs of 2026-10-01): the EP-0119 procedure enumerator after each layout transposition, GPU; Pi from k4_r41_pi.py committed with EP-0185's pre-registration (audit 8dbe98e); enumerator stages, chance values, stop rule and confirmation statistic pre-registered in audit 6e06de2 before any run on K4. The stage order was changed before running (S1 first, then S2, S3), rules unchanged. Values copied from the episode; no hit file was opened for this package.",
+ "enumerator_procedures": 4700684904000000.0,
+ "pi": {
+  "raw_items": 176,
+  "distinct_non_identity": 104,
+  "by_family": {
+   "T1": 24,
+   "T2": 16,
+   "T4": 64
+  },
+  "sha256": "493992dde23a3fb132a3d197cf95db77016e130283fbbcd95826b9140b029a40",
+  "log2": 6.7
+ },
+ "orders": [
+  "A: undo pi, crib at plaintext positions",
+  "B: crib moved to carved positions inv[i]"
+ ],
+ "settings": 208,
+ "capacity_bits": 7.7,
+ "stages": {
+  "S1": {
+   "crib_errors_max": 4,
+   "settings": 208,
+   "chance": 4.5e-07,
+   "K4_non_identity_hits": 0,
+   "K4_identities": 0
+  },
+  "S2": {
+   "crib_errors_max": 7,
+   "settings": 48,
+   "family": "T1 x 2 orders",
+   "chance": 0.053,
+   "K4_non_identity_hits": 1,
+   "K4_identities": 0,
+   "hit": "caught by the pre-set stop rule; metadata only; not confirmed by the EP-0136 confirmation statistic (p = 0.81, threshold 0.001/m with m = 1)"
+  },
+  "S3": {
+   "crib_errors_max": 7,
+   "settings": 160,
+   "chance": 0.18,
+   "K4_non_identity_hits": 0,
+   "K4_identities": 0
+  }
+ },
+ "confirmation_statistic": "log-likelihood ratio of English single-letter frequencies over the 73 letters outside the cribs, against 10,000 shuffles; confirmed if p <= 0.001/m",
+ "stop_rule": "on a non-identity hit, record metadata only and stop; no candidate text displayed or written. After the stop the researcher decided to record the hit as unconfirmed and continue the remaining settings.",
+ "controls": {
+  "selftest": "equal at e = 4 and 7",
+  "planted_e4": {
+   "A pi0": "7/9 (2 misses: ciphertext autokey spreading the errors)",
+   "B pi14": "9/9",
+   "wrong pi": 0
+  },
+  "planted_e7": {
+   "A pi0": "9/9",
+   "B pi14": "9/9",
+   "wrong pi": 0
+  },
+  "shuffles_e4": "16 runs (7 CPU, 9 GPU), 0 hits",
+  "shuffles_e7": "8 runs (A/B x pi 0/14 x shuffle 1/2), 0 hits",
+  "periodic_shift_variant_control": "K4 passes 5,671, all forced by <= 5 constraints; 0 with > 5 constraints (chance 1.0e-5)"
+ }
+}

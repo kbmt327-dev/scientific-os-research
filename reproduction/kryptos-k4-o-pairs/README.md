@@ -12,12 +12,14 @@ python make_figure.py out.svg
 |---|---|
 | `k4_o_pairs.py` | The pairs (21+o, 59+o) and the mirror pairing, repeated-input checks, and a brute-force 2x2 Hill solver |
 | `results/o-pairs-20260928.json` | The author's recorded results: CP-SAT proofs for the 56 free-square settings, shuffle consistency, keyed squares, controls and the minimal contradicting sets |
-| `verify_o_pairs.py` | Recomputes the pair facts (no repeated inputs, Playfair's (R,R), the mirror contradiction) and the 2x2 Hill search in four alphabets with planted controls; prints `PASS` |
+| `results/o-pairs-more-20260930.json` | Later check (EP-0157): the recorded CP-SAT results for the 28 square families on four other pairings (224 settings, with plants and 20 shuffles each) and the mixed-alphabet Hill count |
+| `verify_o_pairs.py` | Recomputes the pair facts (no repeated inputs, Playfair's (R,R), the mirror contradiction) and the 2x2 Hill search in four alphabets with planted controls; and, for the later check, the pair counts, the Hill equation count and the mirror contradiction on the other pairings; prints `PASS` |
 | `make_figure.py` | The Note's figure |
 
 ## What is not rerun here
 
 The free-square results are exact proofs from a constraint solver (OR-tools CP-SAT), one model
 per setting, up to 120 s each, 1,000 shuffles per setting; the keyed squares use word lists
-from an earlier Note. They are recorded, not rerun here. A rerun of the author's code, not an
+from an earlier Note. They are recorded, not rerun here. The same holds for the later check's 224 square
+settings on the other pairings (EP-0157). A rerun of the author's code, not an
 independent replication.

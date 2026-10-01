@@ -1,0 +1,1009 @@
+{
+ "source": "EP-0156 (audit repo k4_portax_sat.py and k4_playfair_free_sat.py; decision rules committed before any run on K4). Exact crib consistency by CP-SAT (OR-tools); INFEASIBLE (UNSAT) is a proof. Values copied from the run logs of 2026-09-30.",
+ "portax": {
+  "model": "before: C = Portax(sigma(P)); after: C = tau(Portax(P)); sigma, tau free substitutions; every vertical pair with at least one crib letter used; plants = English with the cribs written in, random key and substitution",
+  "earlier_EP0116": "before: inconsistent at P = 1..22 and 34..48, P = 23..33 unfinished (backtracking stopped after 8.5 h); after: undecided at P = 7, 11..33, 48",
+  "K4_problems": 96,
+  "K4_UNSAT": 96,
+  "per_period": {
+   "before": {
+    "1": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 13,
+     "key_columns": 1,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "2": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 15,
+     "key_columns": 2,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "3": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 17,
+     "key_columns": 3,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "4": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 16,
+     "key_columns": 4,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "5": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 18,
+     "key_columns": 5,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "6": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 17,
+     "key_columns": 6,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "7": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 7,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "8": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 19,
+     "key_columns": 8,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "9": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 20,
+     "key_columns": 9,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "10": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 20,
+     "key_columns": 10,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "11": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 23,
+     "key_columns": 11,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "12": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 12,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "13": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 13,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "14": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 13,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "15": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 15,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "16": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 16,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "17": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 17,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "18": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 17,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "19": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 15,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "20": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 13,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "21": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 13,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "22": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 15,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "23": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 17,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "24": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 19,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "25": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 21,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "26": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 23,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "27": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 24,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "28": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 24,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "29": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 24,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "30": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 23,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "31": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 22,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "32": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 23,
+     "key_columns": 21,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "33": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 21,
+     "key_columns": 20,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "34": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 19,
+     "key_columns": 19,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "35": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 18,
+     "key_columns": 18,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "36": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 17,
+     "key_columns": 17,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "37": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 16,
+     "key_columns": 16,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "38": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 15,
+     "key_columns": 15,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "39": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 14,
+     "key_columns": 14,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "40": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 13,
+     "key_columns": 13,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "41": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 13,
+     "key_columns": 13,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "42": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 13,
+     "key_columns": 13,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "43": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 14,
+     "key_columns": 14,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "44": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 15,
+     "key_columns": 15,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "45": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 16,
+     "key_columns": 16,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "46": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 17,
+     "key_columns": 17,
+     "shuffles_SAT": 1,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "47": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 18,
+     "key_columns": 18,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "48": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 19,
+     "key_columns": 19,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    }
+   },
+   "after": {
+    "1": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 13,
+     "key_columns": 1,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "2": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 15,
+     "key_columns": 2,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "3": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 17,
+     "key_columns": 3,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "4": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 16,
+     "key_columns": 4,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "5": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 18,
+     "key_columns": 5,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "6": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 17,
+     "key_columns": 6,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "7": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 7,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "8": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 19,
+     "key_columns": 8,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "9": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 20,
+     "key_columns": 9,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "10": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 20,
+     "key_columns": 10,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "11": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 23,
+     "key_columns": 11,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "12": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 12,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "13": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 13,
+     "shuffles_SAT": 4,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "14": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 13,
+     "shuffles_SAT": 4,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "15": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 15,
+     "shuffles_SAT": 20,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "16": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 16,
+     "shuffles_SAT": 8,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "17": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 17,
+     "shuffles_SAT": 18,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "18": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 17,
+     "shuffles_SAT": 35,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "19": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 15,
+     "shuffles_SAT": 15,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "20": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 13,
+     "shuffles_SAT": 7,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "21": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 13,
+     "shuffles_SAT": 5,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "22": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 15,
+     "shuffles_SAT": 19,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "23": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 17,
+     "shuffles_SAT": 49,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "24": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 19,
+     "shuffles_SAT": 61,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "25": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 21,
+     "shuffles_SAT": 66,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "26": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 23,
+     "shuffles_SAT": 74,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "27": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 24,
+     "shuffles_SAT": 64,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "28": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 24,
+     "shuffles_SAT": 43,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "29": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 24,
+     "shuffles_SAT": 40,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "30": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 23,
+     "shuffles_SAT": 31,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "31": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 24,
+     "key_columns": 22,
+     "shuffles_SAT": 33,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "32": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 23,
+     "key_columns": 21,
+     "shuffles_SAT": 18,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "33": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 21,
+     "key_columns": 20,
+     "shuffles_SAT": 2,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "34": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 19,
+     "key_columns": 19,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "35": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 18,
+     "key_columns": 18,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "36": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 17,
+     "key_columns": 17,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "37": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 16,
+     "key_columns": 16,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "38": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 15,
+     "key_columns": 15,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "39": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 14,
+     "key_columns": 14,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "40": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 13,
+     "key_columns": 13,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "41": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 13,
+     "key_columns": 13,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "42": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 13,
+     "key_columns": 13,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "43": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 14,
+     "key_columns": 14,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "44": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 15,
+     "key_columns": 15,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "45": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 16,
+     "key_columns": 16,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "46": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 17,
+     "key_columns": 17,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "47": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 18,
+     "key_columns": 18,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    },
+    "48": {
+     "K4": "UNSAT",
+     "pairs_touching_crib": 19,
+     "key_columns": 19,
+     "shuffles_SAT": 0,
+     "shuffles": 200,
+     "shuffles_unknown": 0,
+     "plants_SAT": "20/20"
+    }
+   }
+  }
+ },
+ "playfair_free_square_then_mask": {
+  "model": "W as separator (92 letters, 25-letter alphabet); pairings from offset 0, offset 1, per W-segment; Playfair with a free square; then a shift mask over A-Z or KRYPTOS order (W dropped), key indexed by reduced or original position",
+  "masks": {
+   "m1": {
+    "desc": "constant per W-segment",
+    "settings": 6,
+    "K4": "all UNSAT",
+    "by_cp_sat": 6,
+    "by_screen": 0,
+    "controls": "plants 20/20 SAT; the shuffle under the same setting UNSAT 20/20"
+   },
+   "m2_p_le_5": {
+    "desc": "period p = 1..5",
+    "settings": 60,
+    "K4": "all UNSAT",
+    "by_cp_sat": 60,
+    "timeouts": 0,
+    "seconds": 1228
+   },
+   "m2_p_6_12": {
+    "desc": "period p = 6..12",
+    "K4": "not run (undecidable)",
+    "controls": "11 of a planned 24 run: plants at p = 8, 9, 7 timed out (UNKNOWN); shuffles at p = 9 and 10 SAT; at p = 5 and p = 6 one shuffle UNSAT and one UNKNOWN each",
+    "rule": "after these controls and before any run on K4: run m2 on K4 for p <= 5 only, record p = 6..12 as undecidable"
+   },
+   "m3": {
+    "desc": "keyword letters, every phase (EP-0125's list)",
+    "settings": 7680,
+    "K4": "all UNSAT",
+    "by_screen": 6035,
+    "by_cp_sat": 1645,
+    "controls": "plants 20/20 SAT; shuffles all UNSAT"
+   },
+   "m4": {
+    "desc": "K1-K3 plaintext as running key, every offset, forward and reversed (the text is not published here)",
+    "settings": 15660,
+    "K4": "all UNSAT",
+    "by_screen": 11779,
+    "by_cp_sat": 3881,
+    "controls": "plants 20/20 SAT; shuffles all UNSAT"
+   }
+  },
+  "log_last_lines": {
+   "m1": "m1 target 0: {'UNSAT': 6} (17s)",
+   "m2": "m2 target 0: {'UNSAT': 60} (1228s)",
+   "m3": "m3 target 0: {'UNSAT-screen': 6035, 'UNSAT': 1645} (81s)",
+   "m4": "m4 target 0: {'UNSAT-screen': 11779, 'UNSAT': 3881} (175s)"
+  },
+  "control_lines": {
+   "m1": [
+    "plant 0 m1 mode=1 KA red p=1: SAT ; shuffle under the same setting: UNSAT (5.7s)",
+    "plant 1 m1 mode=seg KA red p=1: SAT ; shuffle under the same setting: UNSAT (4.9s)",
+    "plant 2 m1 mode=1 AZ red p=1: SAT ; shuffle under the same setting: UNSAT (3.7s)",
+    "plant 3 m1 mode=seg AZ red p=1: SAT ; shuffle under the same setting: UNSAT (4.9s)",
+    "plant 4 m1 mode=1 KA red p=1: SAT ; shuffle under the same setting: UNSAT (4.0s)",
+    "plant 5 m1 mode=1 AZ red p=1: SAT ; shuffle under the same setting: UNSAT (4.2s)",
+    "plant 6 m1 mode=0 KA red p=1: SAT ; shuffle under the same setting: UNSAT (5.2s)",
+    "plant 7 m1 mode=0 AZ red p=1: SAT ; shuffle under the same setting: UNSAT (4.4s)",
+    "plant 8 m1 mode=seg KA red p=1: SAT ; shuffle under the same setting: UNSAT (5.4s)",
+    "plant 9 m1 mode=1 KA red p=1: SAT ; shuffle under the same setting: UNSAT (5.3s)",
+    "plant 10 m1 mode=0 KA red p=1: SAT ; shuffle under the same setting: UNSAT (4.5s)",
+    "plant 11 m1 mode=0 KA red p=1: SAT ; shuffle under the same setting: UNSAT (4.4s)",
+    "plant 12 m1 mode=seg KA red p=1: SAT ; shuffle under the same setting: UNSAT (5.1s)",
+    "plant 13 m1 mode=0 KA red p=1: SAT ; shuffle under the same setting: UNSAT (5.1s)",
+    "plant 14 m1 mode=1 AZ red p=1: SAT ; shuffle under the same setting: UNSAT (4.5s)",
+    "plant 15 m1 mode=0 KA red p=1: SAT ; shuffle under the same setting: UNSAT (4.4s)",
+    "plant 16 m1 mode=1 AZ red p=1: SAT ; shuffle under the same setting: UNSAT (4.5s)",
+    "plant 17 m1 mode=0 AZ red p=1: SAT ; shuffle under the same setting: UNSAT (5.2s)",
+    "plant 18 m1 mode=0 KA red p=1: SAT ; shuffle under the same setting: UNSAT (4.7s)",
+    "plant 19 m1 mode=1 KA red p=1: SAT ; shuffle under the same setting: UNSAT (5.1s)"
+   ],
+   "m2": [
+    "plant 0 m2 mode=seg KA red p=6: SAT ; shuffle under the same setting: UNKNOWN (193.2s)",
+    "plant 1 m2 mode=0 AZ orig p=8: UNKNOWN ; shuffle under the same setting: UNKNOWN (240.3s)",
+    "plant 2 m2 mode=1 AZ orig p=9: UNKNOWN ; shuffle under the same setting: SAT (168.8s)",
+    "plant 3 m2 mode=0 KA red p=4: SAT ; shuffle under the same setting: UNSAT (12.0s)",
+    "plant 4 m2 mode=0 KA orig p=6: SAT ; shuffle under the same setting: UNSAT (55.2s)",
+    "plant 5 m2 mode=0 KA red p=5: SAT ; shuffle under the same setting: UNSAT (142.5s)",
+    "plant 6 m2 mode=1 AZ red p=10: SAT ; shuffle under the same setting: SAT (19.5s)",
+    "plant 7 m2 mode=1 AZ red p=2: SAT ; shuffle under the same setting: UNSAT (5.0s)",
+    "plant 8 m2 mode=1 KA orig p=5: SAT ; shuffle under the same setting: UNKNOWN (130.9s)",
+    "plant 9 m2 mode=1 KA orig p=3: SAT ; shuffle under the same setting: UNSAT (22.6s)",
+    "plant 10 m2 mode=seg AZ orig p=7: UNKNOWN ; shuffle under the same setting: UNKNOWN (240.2s)"
+   ],
+   "m3": [
+    "plant 0 m3 mode=1 KA orig p=1: SAT ; shuffle under the same setting: UNSAT (0.4s)",
+    "plant 1 m3 mode=0 AZ orig p=1: SAT ; shuffle under the same setting: UNSAT (0.4s)",
+    "plant 2 m3 mode=1 AZ orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 3 m3 mode=1 AZ red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 4 m3 mode=seg AZ orig p=1: SAT ; shuffle under the same setting: UNSAT (0.1s)",
+    "plant 5 m3 mode=seg KA red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 6 m3 mode=seg KA red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.0s)",
+    "plant 7 m3 mode=0 KA orig p=1: SAT ; shuffle under the same setting: UNSAT (0.2s)",
+    "plant 8 m3 mode=0 KA red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.3s)",
+    "plant 9 m3 mode=seg AZ red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 10 m3 mode=0 AZ orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 11 m3 mode=seg AZ red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 12 m3 mode=seg AZ orig p=1: SAT ; shuffle under the same setting: UNSAT (0.1s)",
+    "plant 13 m3 mode=0 AZ red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.3s)",
+    "plant 14 m3 mode=0 KA orig p=1: SAT ; shuffle under the same setting: UNSAT (0.2s)",
+    "plant 15 m3 mode=seg KA orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.2s)",
+    "plant 16 m3 mode=1 AZ orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.2s)",
+    "plant 17 m3 mode=seg AZ red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 18 m3 mode=1 AZ red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 19 m3 mode=0 AZ red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.2s)"
+   ],
+   "m4": [
+    "plant 0 m4 mode=seg AZ red p=1: SAT ; shuffle under the same setting: UNSAT (0.1s)",
+    "plant 1 m4 mode=1 AZ orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 2 m4 mode=seg KA orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 3 m4 mode=seg AZ red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.2s)",
+    "plant 4 m4 mode=0 KA red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.2s)",
+    "plant 5 m4 mode=1 KA orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.2s)",
+    "plant 6 m4 mode=1 KA orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 7 m4 mode=1 AZ red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.2s)",
+    "plant 8 m4 mode=1 AZ orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 9 m4 mode=seg AZ orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 10 m4 mode=seg KA orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.2s)",
+    "plant 11 m4 mode=0 KA red p=1: SAT ; shuffle under the same setting: UNSAT (0.2s)",
+    "plant 12 m4 mode=0 AZ orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.2s)",
+    "plant 13 m4 mode=0 KA red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 14 m4 mode=1 AZ orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 15 m4 mode=seg KA orig p=1: SAT ; shuffle under the same setting: UNSAT (0.1s)",
+    "plant 16 m4 mode=seg KA red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.2s)",
+    "plant 17 m4 mode=0 AZ orig p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.1s)",
+    "plant 18 m4 mode=0 KA red p=1: SAT ; shuffle under the same setting: UNSAT-screen (0.2s)",
+    "plant 19 m4 mode=seg AZ orig p=1: SAT ; shuffle under the same setting: UNSAT (0.2s)"
+   ]
+  }
+ }
+}

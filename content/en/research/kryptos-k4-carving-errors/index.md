@@ -38,6 +38,10 @@ tags:
 
 Kryptos has known carving errors in K1–K3, so K4 might have some too. Allowing one wrong crib letter reopens none of the rejected families. Allowing up to five, families that the cribs constrain heavily (periodic keys up to period 22–23, Trifid, 2×2 Hill) stay closed, while loosely constrained ones (free alphabets per residue, 3×3 Hill, English running keys) can no longer be decided. In every family K4 needs about as many errors as shuffled ciphertext does, so "a few carving errors" does not favour any family.
 
+## Later check (2026-09-30)
+
+The 97 ciphertext letters themselves were checked against photographs of the sculpture (EP-0147), with the judgment rule committed before looking. The photographs (viewed only, not saved) were Carol M. Highsmith's back view in the Library of Congress (item 2011631531) and three photographs by Jim Gillogly (1999-10-27). Every one of the 97 positions was read clearly in at least one photograph, and all 97 agree with the transcription used throughout this program: **0 discrepancies**. The three line breaks (after the first 4 letters and then every 31) were confirmed at the seam and the left edge. Three letters that were unclear in one photograph were read clearly in another. Limitation: the reader knew the reference transcription while reading, so a misreading cannot be fully excluded. This concerns transcription, not carving: it does not tell whether the carved letters are what the artist intended, so the counts above stand unchanged. It does mean that results that read the non-crib letters do not rest on a transcription error. The summary is in `results/transcription-check-20260930.json`; the photographs are not published.
+
 ## Key figure
 
 ![Dot-and-bar chart over periods 1 to 48: the fewest wrong crib letters a periodic key needs, K4 as dots and the range of 100 shuffles as bars; K4 needs more than 5 at every period up to 23 and lies inside the shuffle range almost everywhere](/assets/kryptos-k4-carving-errors.svg)

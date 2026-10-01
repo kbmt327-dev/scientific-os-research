@@ -486,6 +486,78 @@ notes:
     type: Finding
     publication:
       status: publishable
+  - research_id: KRYPTOS-K4-EP-0156
+    source_episode: KRYPTOS-K4/EP-0156
+    source_episode_sha256: 3413b4000a5a4abf6edd9092f44f80bd47802e67661fb7fe354ed7ea8ffe31a3
+    views:
+      en: content/en/research/kryptos-k4-portax-playfair-mask/index.md
+      ja: content/ja/research/kryptos-k4-portax-playfair-mask/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+  - research_id: KRYPTOS-K4-EP-0165
+    source_episode: KRYPTOS-K4/EP-0165
+    source_episode_sha256: e270f4d4a47bba1c4559aabec342ef51a7f0110cc7bfec4639e6f92ba01d0acf
+    views:
+      en: content/en/research/kryptos-k4-crib-shifts/index.md
+      ja: content/ja/research/kryptos-k4-crib-shifts/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+  - research_id: KRYPTOS-K4-EP-0167
+    source_episode: KRYPTOS-K4/EP-0167
+    source_episode_sha256: 00452341e521be3accf4484ab70e5b3d67a9af992b30d8aec8e18e4d9f112e08
+    views:
+      en: content/en/research/kryptos-k4-chart3-folds/index.md
+      ja: content/ja/research/kryptos-k4-chart3-folds/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+  - research_id: KRYPTOS-K4-EP-0168
+    source_episode: KRYPTOS-K4/EP-0168
+    source_episode_sha256: 990614ffce8ad8a16d5c602486def2c50d15bdb25e6ebd50c0df821a4db5aeeb
+    views:
+      en: content/en/research/kryptos-k4-machine-phase-break/index.md
+      ja: content/ja/research/kryptos-k4-machine-phase-break/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+  - research_id: KRYPTOS-K4-EP-0169
+    source_episode: KRYPTOS-K4/EP-0169
+    source_episode_sha256: ccdfdc7b15c8139d0f5275489d5aea852a22b9f46bd1794eacfe1b6297df4fcd
+    views:
+      en: content/en/research/kryptos-k4-block-phase-shift/index.md
+      ja: content/ja/research/kryptos-k4-block-phase-shift/index.md
+    type: Finding
+    publication:
+      status: publishable
+  - research_id: KRYPTOS-K4-EP-0179
+    source_episode: KRYPTOS-K4/EP-0179
+    source_episode_sha256: cfda8298610b8adffe0f8213a30dba407128bac2caa889334729381986f91f0d
+    views:
+      en: content/en/research/kryptos-k4-plaintext-keys/index.md
+      ja: content/ja/research/kryptos-k4-plaintext-keys/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+  - research_id: KRYPTOS-K4-EP-0182
+    source_episode: KRYPTOS-K4/EP-0182
+    source_episode_sha256: daf1af88b7bd7730cc854324b2454b99977d779d48cdc80905b9dc3ef078bf29
+    views:
+      en: content/en/research/kryptos-k4-w-morse-digits/index.md
+      ja: content/ja/research/kryptos-k4-w-morse-digits/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+  - research_id: KRYPTOS-K4-EP-0186
+    source_episode: KRYPTOS-K4/EP-0186
+    source_episode_sha256: 244810b6aabaedd456b3f2e44944a682c28a21f60856d8eddcf9c633a13de94f
+    views:
+      en: content/en/research/kryptos-k4-layout-transposition/index.md
+      ja: content/ja/research/kryptos-k4-layout-transposition/index.md
+    type: Negative Result
+    publication:
+      status: publishable
   - research_id: GPU-SCHED-EP-0029
     source_episode: GPU-SCHEDULING/EP-0029
     source_episode_sha256: 88e85fe7c39894030467205bc28b547382a841a13153f050bc477821522dc8cd

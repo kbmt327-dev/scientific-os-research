@@ -1,0 +1,1409 @@
+{
+ "source": "EP-0157 (audit repo k4_opairs_more.py; EP-0138's CP-SAT square test imported unchanged; rules committed before any run on K4). Values copied from the run logs of 2026-09-30. All pairings were thought of after seeing the W positions and the cribs (post hoc).",
+ "pairings": {
+  "mirror": "(21+o, 73-o)",
+  "fold": "(21+o, 35-o), (59+o, 73-o), o = 0..6",
+  "adj0": "(s+2k, s+2k+1), s = 21, 59, k = 0..6",
+  "adj1": "(s+1+2k, s+2+2k)"
+ },
+ "square_settings": 224,
+ "K4_UNSAT": 220,
+ "K4_SAT": 4,
+ "K4_SAT_settings": [
+  "FSfree fold/fwd",
+  "FSfree fold/rev",
+  "FSfree adj1/fwd",
+  "FSfree adj1/rev"
+ ],
+ "plants": "5/5 in all 224 settings, no timeouts",
+ "max_shuffles_SAT_other_families": 5,
+ "settings": {
+  "FSstd mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "FSfree mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00- mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00row mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00col mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01- mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01row mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01col mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02- mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02row mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02col mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03- mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03row mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03col mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10- mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10row mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10col mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11- mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11row mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11col mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12- mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12row mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12col mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13- mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13row mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13col mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "DK+ mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "DK- mirror/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "FSstd mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "FSfree mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00- mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00row mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00col mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01- mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01row mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01col mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02- mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02row mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02col mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03- mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03row mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03col mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10- mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10row mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10col mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11- mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11row mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11col mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12- mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12row mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12col mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13- mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13row mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13col mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "DK+ mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "DK- mirror/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "FSstd fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "FSfree fold/fwd": {
+   "K4": "SAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 16,
+   "shuffles": 20
+  },
+  "TS00- fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 1,
+   "shuffles": 20
+  },
+  "TS00row fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00col fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01- fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01row fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 1,
+   "shuffles": 20
+  },
+  "TS01col fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02- fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 1,
+   "shuffles": 20
+  },
+  "TS02row fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02col fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03- fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03row fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03col fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10- fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10row fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10col fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11- fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11row fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11col fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12- fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12row fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12col fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13- fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13row fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13col fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "DK+ fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 1,
+   "shuffles": 20
+  },
+  "DK- fold/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 5,
+   "shuffles": 20
+  },
+  "FSstd fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "FSfree fold/rev": {
+   "K4": "SAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 18,
+   "shuffles": 20
+  },
+  "TS00- fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00row fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00col fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01- fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01row fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01col fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02- fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02row fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 1,
+   "shuffles": 20
+  },
+  "TS02col fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 1,
+   "shuffles": 20
+  },
+  "TS03- fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03row fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03col fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10- fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10row fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10col fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11- fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11row fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11col fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12- fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12row fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12col fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13- fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13row fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13col fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "DK+ fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 1,
+   "shuffles": 20
+  },
+  "DK- fold/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 1,
+   "shuffles": 20
+  },
+  "FSstd adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "FSfree adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 14,
+   "shuffles": 20
+  },
+  "TS00- adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00row adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00col adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01- adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01row adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01col adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02- adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02row adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02col adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03- adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03row adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 1,
+   "shuffles": 20
+  },
+  "TS03col adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10- adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10row adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10col adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11- adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11row adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11col adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12- adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12row adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12col adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13- adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13row adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13col adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "DK+ adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "DK- adj0/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 1,
+   "shuffles": 20
+  },
+  "FSstd adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "FSfree adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 12,
+   "shuffles": 20
+  },
+  "TS00- adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00row adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00col adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01- adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01row adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 1,
+   "shuffles": 20
+  },
+  "TS01col adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02- adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02row adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02col adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03- adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03row adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03col adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10- adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10row adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10col adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11- adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11row adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11col adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12- adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12row adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12col adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13- adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13row adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13col adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "DK+ adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 1,
+   "shuffles": 20
+  },
+  "DK- adj0/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "FSstd adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "FSfree adj1/fwd": {
+   "K4": "SAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 15,
+   "shuffles": 20
+  },
+  "TS00- adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00row adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00col adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01- adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01row adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01col adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02- adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02row adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02col adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03- adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03row adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03col adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10- adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10row adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10col adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11- adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11row adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11col adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12- adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12row adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12col adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13- adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13row adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13col adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "DK+ adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "DK- adj1/fwd": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "FSstd adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "FSfree adj1/rev": {
+   "K4": "SAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 14,
+   "shuffles": 20
+  },
+  "TS00- adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00row adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS00col adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01- adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01row adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS01col adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02- adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02row adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS02col adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03- adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03row adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS03col adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10- adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10row adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS10col adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11- adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11row adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS11col adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12- adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12row adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS12col adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13- adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13row adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "TS13col adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "DK+ adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 0,
+   "shuffles": 20
+  },
+  "DK- adj1/rev": {
+   "K4": "UNSAT",
+   "plants_SAT": "5/5",
+   "shuffles_SAT": 1,
+   "shuffles": 20
+  }
+ },
+ "mixed_alphabet_hill": {
+  "mirror": "closed by logic: the input (T,L) gives (V,Z) and (R,V)",
+  "same, fold, adj0, adj1": "undecidable: fewer crib equations than unknowns; not run",
+  "count": {
+   "same": [
+    9,
+    6,
+    24,
+    32
+   ],
+   "mirror": [
+    11,
+    2,
+    24,
+    28
+   ],
+   "fold": [
+    8,
+    6,
+    22,
+    32
+   ],
+   "adj0": [
+    11,
+    1,
+    23,
+    27
+   ],
+   "adj1": [
+    11,
+    1,
+    23,
+    27
+   ]
+  },
+  "count_fields": [
+   "pairs both known",
+   "pairs one known",
+   "equations",
+   "unknowns"
+  ],
+  "note": "plants did not resolve within 60 s in CP-SAT (3 settings tried)"
+ }
+}

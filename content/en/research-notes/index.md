@@ -6,6 +6,18 @@ lang: en
 
 This is the historical log. For current claims, start with the [research-area index](/en/research/).
 
+## 2026-10-01
+
+- **KRYPTOS-K4-EP-0186** · Negative Result — [Does a transposition fixed by K4's layout, followed by the procedure enumerator, fit K4?](/en/research/kryptos-k4-layout-transposition/)
+## 2026-09-30
+
+- **KRYPTOS-K4-EP-0182** · Negative Result — [Does K4 fit W as a null, a reversed key, a Morse mask or digit-wise addition?](/en/research/kryptos-k4-w-morse-digits/)
+- **KRYPTOS-K4-EP-0179** · Negative Result — [Do keys that follow the plaintext (plaintext autokey, a plaintext-indexed periodic key) fit K4's cribs?](/en/research/kryptos-k4-plaintext-keys/)
+- **KRYPTOS-K4-EP-0169** · Finding — [Does one phase shift in the grouping reopen the square and Bifid ciphers?](/en/research/kryptos-k4-block-phase-shift/)
+- **KRYPTOS-K4-EP-0168** · Negative Result — [Does one phase break reopen the rotor, Enigma or Hagelin machines?](/en/research/kryptos-k4-machine-phase-break/)
+- **KRYPTOS-K4-EP-0167** · Negative Result — [Do the fold lines on the K3 worksheet tell where K4's key restarts?](/en/research/kryptos-k4-chart3-folds/)
+- **KRYPTOS-K4-EP-0165** · Negative Result — [Does the procedure enumerator fit K4 if the key position slips once inside or between the cribs?](/en/research/kryptos-k4-crib-shifts/)
+- **KRYPTOS-K4-EP-0156** · Negative Result — [Can Portax with a free substitution, or a free-square Playfair followed by a mask, produce K4?](/en/research/kryptos-k4-portax-playfair-mask/)
 ## 2026-09-28
 
 - **KRYPTOS-K4-EP-0146** · Finding — [Does anything besides one pair table point to width 21?](/en/research/kryptos-k4-width21/)

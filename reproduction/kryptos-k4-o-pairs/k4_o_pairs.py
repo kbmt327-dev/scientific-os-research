@@ -63,3 +63,30 @@ def solve_rows(eqs, n, affine):
                 k += 1
         counts.append(k)
     return counts
+
+
+# ---- Later check (EP-0157): other pairings inside the two O-segments ------------------------------------------
+def other_pairings():
+    """EP-0157's pairings in original positions (no W inside the O-segments), first orientation"""
+    s1, s2 = A, B
+    return {
+        "same": [(s1 + o, s2 + o) for o in range(LEN)],
+        "mirror": [(s1 + o, s2 + LEN - 1 - o) for o in range(LEN)],
+        "fold": [(s + o, s + LEN - 1 - o) for s in (s1, s2) for o in range(7)],
+        "adj0": [(s + 2 * k, s + 2 * k + 1) for s in (s1, s2) for k in range(7)],
+        "adj1": [(s + 1 + 2 * k, s + 2 + 2 * k) for s in (s1, s2) for k in range(7)],
+    }
+
+
+def hill_count(pp):
+    """EP-0157's count for the mixed-alphabet 2x2 Hill C = s^-1(M s(P) + b): equations = known output letters
+    (2 per fully known pair, 1 per half-known pair); unknowns = s values of the distinct letters involved
+    + 6 (M and b) - 1 (a shift of s is absorbed by b) + the unknown plaintext letters of half pairs."""
+    used = [(i, j) for i, j in pp if i in CRIB or j in CRIB]
+    full = [(i, j) for i, j in used if i in CRIB and j in CRIB]
+    half = len(used) - len(full)
+    letters = set()
+    for i, j in used:
+        letters |= {K4[i], K4[j]} | {CRIB[q] for q in (i, j) if q in CRIB}
+    clash = repeated_inputs([(0, (CRIB[i], CRIB[j]), (K4[i], K4[j])) for i, j in full])[0]
+    return len(full), half, 2 * len(full) + half, len(letters) + 6 - 1 + half, clash

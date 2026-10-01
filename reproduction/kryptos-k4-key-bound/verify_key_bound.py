@@ -1,4 +1,5 @@
 """Recompute the key lower bound and the window conflicts (EP-0091) and compare with the record.
+Later check (EP-0152): the share of uniform 97-letter strings with an IC at or below K4's (20,000 draws).
 
     python verify_key_bound.py
 
@@ -30,6 +31,14 @@ def main():
     print(f"  window shapes with a crib conflict: {sum(v is not None for v in wc.values())} of {len(wc)}")
     if wc != rec["window_conflicts"]:
         fails.append("windows")
+    # later check (EP-0152, 2026-09-30): only the uniform model needs no English text, so only it is rerun
+    ic2 = json.loads((HERE / "results" / "ic-recheck-20260930.json").read_text(encoding="utf-8"))
+    u = K.uniform_share(20000)
+    want = ic2["models"]["uniform letters (uniform key)"]["p_ic_le_k4"]
+    print(f"  uniform 97-letter strings with IC <= K4: {u:.4f} (recorded {want}; English-key models recorded: "
+          f"{ic2['models']['English + English text as key (running key)']['p_ic_le_k4']}, not rerun)")
+    if abs(u - want) > 0.01:
+        fails.append("uniform IC")
     if fails:
         print("FAIL:", ", ".join(fails))
         return 1

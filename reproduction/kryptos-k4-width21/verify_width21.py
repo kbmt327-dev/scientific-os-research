@@ -61,6 +61,28 @@ def main():
     print(f"  sealed prediction PRED-013 sha256 {h[:16]}...")
     if h != rec["pred013_sha256"]:
         bad.append("PRED-013 hash")
+    # Later check (EP-0185): the T1 prediction at lags 21, 42, 63 with the closed-form expectation (97 - L) q
+    t1 = json.loads((HERE / "results" / "t1-lags-20260930.json").read_text(encoding="utf-8"))
+    from collections import Counter
+    q = sum(c * (c - 1) for c in Counter(W.K4).values()) / (97 * 96)
+    print(f"  EP-0185: flat coincidence rate q = {q:.5f}")
+    if abs(q - t1["q"]) > 1e-12:
+        bad.append("EP-0185 q")
+    tot_k = tot_e = 0
+    for L in (21, 42, 63):
+        kk, e = int(W.kappa(K, L)[0]), (97 - L) * q
+        tot_k, tot_e = tot_k + kk, tot_e + e
+        r = t1["lags"][str(L)]
+        print(f"    lag {L}: kappa {kk}, closed-form expectation {e:.2f} (recorded {r['kappa']}, {r['E']}, "
+              f"shuffle p {r['p']})")
+        if kk != r["kappa"] or round(e, 2) != r["E"]:
+            bad.append(f"EP-0185 lag {L}")
+    print(f"    sum over 21, 42, 63: {tot_k} against {tot_e:.2f}; literal prediction met: "
+          f"{t1['literal_prediction_met']} (recorded power {t1['power']['all_three']}: cannot decide)")
+    if tot_k != t1["sum_21_42_63"] or W.R(K, 21)[0] != t1["R"]["21"]:
+        bad.append("EP-0185 sum or R_21")
+    print(f"    recorded: T1 x periodic key dropped for p = {t1['general_form']['dropped_periods']}; "
+          f"R_21 >= 11 under T1 + period 7 in {t1['power']['R21_ge_11_under_T1_period7']:.1%} of plants")
     if bad:
         print("FAIL:", ", ".join(bad))
         return 1

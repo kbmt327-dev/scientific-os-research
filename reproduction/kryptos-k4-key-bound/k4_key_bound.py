@@ -42,6 +42,13 @@ def free_rows_share(m, trials, seed=910):
     return low / trials
 
 
+def uniform_share(trials, seed=20260930):
+    """share of uniform 97-letter strings with IC <= K4's (EP-0152: a uniform key gives uniform ciphertext)"""
+    rng = random.Random(seed)
+    target = ic(K4)
+    return sum(ic("".join(rng.choice(AZ) for _ in range(97))) <= target for _ in range(trials)) / trials
+
+
 def english_entropy():
     return -sum(p * log2(p) for p in ENGLISH)
 

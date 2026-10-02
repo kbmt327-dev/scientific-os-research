@@ -5,8 +5,8 @@ date: '2026-09-30'
 lang: en
 domain: Kryptos K4
 type: Negative Result
-status: With one phase break (1,300 positions and sizes, 10.3 bit), one free-wiring rotor in two forms and Enigma behind a free substitution still give 0 settings (logical refutation, not rarer than random); a Hagelin-type machine with a break gave no English-like setting, but its controls were not run and its null was not size-matched, so it is undecidable; Chaocipher is out of scope
-evidence_level: Exact injectivity tests on the public ciphertext and cribs, decision rule committed before any run on K4, planted controls 100/100, 100/100, 20/20; the Hagelin-type run (EP-0176) used an English hill-climb with no planted controls and three shuffles of unmatched size
+status: With one phase break (1,300 positions and sizes, 10.3 bit), one free-wiring rotor in two forms and Enigma behind a free substitution still give 0 settings (logical refutation, not rarer than random); a Hagelin-type machine with a break gave no English-like setting, but its controls were not run and its null was not size-matched, so it is undecidable; Chaocipher is out of scope. On 2026-10-02 the Hagelin-type row became closed within the family (controls planted under K4's own crib stage 5/5, K4's 38.64 reproduced)
+evidence_level: Exact injectivity tests on the public ciphertext and cribs, decision rule committed before any run on K4, planted controls 100/100, 100/100, 20/20; the Hagelin-type run (EP-0176) used an English hill-climb with no planted controls and three shuffles of unmatched size; 2026-10-02, five controls planted under K4's own crib stage, 5/5
 peer_reviewed: false
 independent_replications: 0
 evidence:
@@ -33,6 +33,34 @@ tags:
 ---
 
 <p class="research-area"><b>Kryptos K4</b><a href="/ja/research/kryptos-k4-machine-phase-break/" hreflang="ja">日本語</a></p>
+
+> **Later check (2026-10-02).** The Hagelin-type-with-a-break row moved from undecidable to closed within the family: five controls planted under K4's own crib stage were all recovered as the global English maximum (E 126–156, all ≥ 40.4), while K4's maximum stays 38.64 (reproduced on engine v5). The text and numbers below are unchanged from 2026-09-30. Details are in the section "Later check (2026-10-02)" directly below.
+
+## Later check (2026-10-02)
+
+Of the two reasons that kept the Hagelin-type-with-a-break row undecidable, the planted controls were run on 2026-10-02.
+
+**The registered size rule could accept nothing.** The registered rule accepted a planted control if the size L of its crib stage (the leaf count of that stage) was at most 5 × 10⁸, with 10 controls planned. Sizing seeds 0–4 all had L above 5 × 10⁸ and none was accepted (two sizing runs: 75 min, ended by a GPU driver event with rc −1, and 66 min, capped). This is structural: a planted ciphertext agrees with its own true key at the 24 crib positions, so its crib stage counts that key's whole neighbourhood and cannot be small.
+
+**The amended construction was committed before any control ran** (kryptos-k4-audit 1fae8ca; the engine in 3e0b3b2). Plant under K4's own crib stage: draw one row of K4's crib stage (cage, split m, t, pin-solution count ns) with probability proportional to ns × |b range(m)|, take one crib-consistent pin solution of that row, b uniform in its range, the unconstrained pins at random, and encrypt corpus English with the 24 cribs forced in by the same formula. The control equals K4 at the 24 crib positions and its allowed-bit set is K4's, so its crib stage (274,604 rows, 1,020,522,169 climbs) is K4's by construction; each English stage costs one K4 run. n = 5, adequate iff at least 4/5. The power of this check itself is P(≥ 4/5) = 0.34 at a true recovery rate of 0.6 and 0.92 at 0.9.
+
+**Engine v5 (80d263d).** The free-pin structure is built once per (row, b) pair and shared (thread state 16 KB → 2.3 KB); same leaves, same RNG stream, same climb, float64 in the same order. On a 60-row check the CPU kernel, v4 and v5 agree bit for bit on the per-row counts, best E and best P. Speed × 1.76 (3,654 rows, 1.9 × 10⁶ leaves: v4 9.7 s, v5 5.5 s).
+
+| Control | Cage | b | t | E_true | Truth is the global maximum | Leaves E ≥ 40.4 | Time |
+|---|---|---|---|---|---|---|---|
+| 0 | 2, 2, 3, 5, 10, 1 | 40 | 23 | 126.36 | yes | 2,071 | 46 min |
+| 1 | 7, 3, 2, 1, 9, 2 | 60 | 23 | 139.16 | yes | 89 | 45 min |
+| 2 | 5, 8, 3, 3, 2, 2 | 57 | 19 | 130.44 | yes | 265 | 45 min |
+| 3 | 1, 1, 3, 3, 6, 8 | 67 | 15 | 156.44 | yes | 2,634 | 44 min |
+| 4 | 3, 9, 1, 2, 7, 1 | 35 | 16 | 151.59 | yes | 91 | 44 min |
+
+K4 rerun on v5: E_max 38.64, 29,578 leaves with E ≥ 20, 0 with E ≥ 40.4, 1,020,522,169 climbs, identical to the v4 record (crib stage 137 s, English stage 2,529 s).
+
+**Verdict: undecidable → closed within the family** (M-209 type, six pinwheels 26/25/23/21/19/17, no-overlap cages, C = 25 − P + k, one break, no mask). In two columns: logical refutation, yes (no leaf of K4 reaches 40.4 while every planted truth reaches 126–156 and is the global maximum); rarer than random, not judged (no size-matched null). Two caveats. The planted class passes the crib stage by construction, so only the English stage's power on K4's own leaf set is tested. The control plaintexts are corpus English with the cribs, so a less English-like K4 plaintext could score lower.
+
+**Record.** When the researcher tailed the K4 v5 log, the top-3 leaf strings (below the threshold, E ≤ 38.64; hill-climb outputs) were displayed; they were not used for anything.
+
+**What the package now checks.** `verify_machine_phase_break.py` checks that the five recorded control ciphertexts equal K4 at the 24 crib positions, that each decrypts under its recorded key to the cribs at 21–33 and 63–73 (the text is not printed), that the crib-position key values k_i = (C_i − 25 + P_i) mod 26 of K4 and of every control agree (the identity behind "same crib stage"), the acceptance arithmetic (5/5 ≥ 4/5; the binomial 0.34 and 0.92), and that every control's E_true ≥ 40.4 while K4's 38.64 < 40.4. The five control runs (about 45 min each on a GPU) and the K4 v5 rerun are recorded, not rerun.
 
 ## Research question
 
@@ -69,7 +97,7 @@ One phase break does not reopen the free-wiring rotors or Enigma behind a free s
 
 ## Key figure
 
-![Upper panel: five rows. Free-wiring rotor R-a (31.2 bit) closed, K4 0, shuffles 0/200, planted 100/100; R-b (36.8 bit) closed, same; Enigma with a free substitution (43.7 bit) closed, K4 0, shuffles 0/10, planted 20/20; Hagelin M-209 type (search 52.6 bit) undecidable, no score at least 40.4, controls not run; Chaocipher out of scope, no step counter. Lower panel: horizontal bars of the best English score for the Hagelin type: K4 38.64 from 1,020,522,169 climbs, shuffles 24.43, 28.17 and 28.46 from about 1.9 to 2.2 million climbs each, all left of a dashed threshold line at 40.4; a note says the bars are not comparable because the shuffles had about 500 times fewer climbs, and that controls were not run](/assets/kryptos-k4-machine-phase-break.svg)
+![Upper panel: five rows. Free-wiring rotor R-a (31.2 bit) closed, K4 0, shuffles 0/200, planted 100/100; R-b (36.8 bit) closed, same; Enigma with a free substitution (43.7 bit) closed, K4 0, shuffles 0/10, planted 20/20; Hagelin M-209 type (search 52.6 bit) closed (controls 5/5), no score at least 40.4, controls under K4's crib stage 5/5 (2026-10-02); Chaocipher out of scope, no step counter. Lower panel: horizontal bars of the best English score for the Hagelin type on a 0–160 axis: K4 on engine v5 38.64 from 1,020,522,169 climbs, shuffles 24.43, 28.17 and 28.46 from about 1.9 to 2.2 million climbs each, all left of a dashed threshold line at 40.4; controls 0 to 4, each one K4-size run, reach their true plaintext at 126.36, 139.16, 130.44, 156.44 and 151.59, all right of the line. A note says the shuffles are still not comparable because they had about 500 times fewer climbs, that every control planted under K4's crib stage was recovered as the global maximum, and that K4's 38.64 stays below the threshold, so the row is closed within the family and not rarer than random](/assets/kryptos-k4-machine-phase-break.svg)
 
 ## What this research shows
 
@@ -115,7 +143,7 @@ No external independent replication. No review by a cryptographer.
 
 ## Next experiment
 
-Planted controls for the Hagelin type with a break, accepted by the size of the crib-consistent set, and a null with as many climbs as K4. Two breaks for the rotors, if a source suggests them.
+(Done on 2026-10-02; see the later check above.) Planted controls for the Hagelin type with a break, accepted by the size of the crib-consistent set, and a null with as many climbs as K4. Two breaks for the rotors, if a source suggests them.
 
 ## Sources
 

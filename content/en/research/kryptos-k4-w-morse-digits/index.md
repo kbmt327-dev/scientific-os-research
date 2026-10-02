@@ -5,7 +5,7 @@ date: '2026-09-30'
 lang: en
 domain: Kryptos K4
 type: Negative Result
-status: With W skipped in the key index, the procedure enumerator (up to 2 errors) and the text keys with a shift table, a mask on the plaintext or a mask on the ciphertext give 0 (closed); with masks on both sides, 5,970 settings pass the crib against about 5,390 by chance and the English stage was not run (undecidable). A reversed key direction is the forward family again (forced before testing). The pure Morse mask is excluded by logic, and with a free substitution it gives 0 of 22.4 million; digit-wise addition with 22 fixed digit strings gives 0. Logical refutations, not rarer than random
+status: With W skipped in the key index, the procedure enumerator (up to 2 errors) and the text keys with a shift table, a mask on the plaintext or a mask on the ciphertext give 0 (closed); with masks on both sides, 5,970 settings pass the crib against about 5,390 by chance and the English stage was not run (undecidable). A reversed key direction is the forward family again (forced before testing). The pure Morse mask is excluded by logic, and with a free substitution it gives 0 of 22.4 million; digit-wise addition with 22 fixed digit strings gives 0. Logical refutations, not rarer than random. On 2026-10-02 the English stage for the two-sided masks was run, 0 candidates at power 0.56, still undecidable
 evidence_level: Exact crib tests with closed-form chance expectations, shuffles and planted controls on the public ciphertext and cribs; decision rules committed before each K4 run; the W-as-null reading was thought of after looking at K4 (post hoc)
 peer_reviewed: false
 independent_replications: 0
@@ -34,6 +34,27 @@ tags:
 ---
 
 <p class="research-area"><b>Kryptos K4</b><a href="/ja/research/kryptos-k4-w-morse-digits/" hreflang="ja">日本語</a></p>
+
+> **Later check (2026-10-02).** The English stage for the two-sided masks under the W-skipping index was run (EP-0187, 2026-10-01): 0 candidates on all 5,970 survivors of the crib sieve, K4's best −225.02 in the same band as shuffle 3's −225.79, threshold −207.51. The power is 0.56, so the row stays undecidable. The text and numbers below are unchanged from 2026-09-30. Details are in the section "Later check (2026-10-02)" directly below.
+
+## Later check (2026-10-02)
+
+The English stage that part (b) of the method had left unrun, for the text key E04 with masks on both sides under the W-as-null index, was run on 2026-10-01 as EP-0187 (Next Candidates 69; pre-registration 7de3397, results 7fb2336, 758b820, 13e52c6). It covered all 5,970 K4 survivors of the crib sieve, and the same device covers the reversed direction of EP-0183.
+
+- **Scorer.** 4-gram log-frequency over the 92 letters with the five W positions excluded (`k4gpu_anneal._score_pos`). Scoring all 97 positions reproduces the old kernel bit for bit on 4 planted texts (best score and plaintext identical), and the host scorer agrees on 200 states.
+- **Threshold and candidate rule.** THETA = −207.51, the 10th percentile of the 92-letter windows of the K3 plaintext. A candidate is a setting with score ≥ THETA and above the shuffle maximum.
+- **Planted controls.** 16 W-as-null plants, 32 restarts × 10⁶ iterations each; a plant counts as recovered when at least 0.90 of the 68 unknown letters are correct: 14/16. The recovered truth scores were −207.1 to −167.0.
+- **Power.** 0.875 × 0.641 = 0.56. The 0.641 is the fraction of K1–K3 92-letter windows that exceed THETA; a true plaintext need not clear the threshold either, so the power cannot exceed 0.64. It was written before the run that a negative could not close the row.
+
+| Ciphertext | Settings | Max | Median | p99 | ≥ THETA |
+|---|---|---|---|---|---|
+| K4 | 5,970 | −225.02 | −238.22 | −229.78 | 0 |
+| Shuffle 3 | 5,661 | −225.79 | −238.23 | −230.86 | 0 |
+
+- Shuffles 1 and 2 were not run: about 1.9 million survivors each, about 300 times the cost (as in EP-0077, one null).
+- Three K4 settings lie above the shuffle maximum but below THETA. The nine settings that use K4 itself as the key text have a maximum of −235.61.
+- **Verdict.** Still undecidable: 0 candidates at power 0.56 (a correct setting would be missed with probability about 0.44). In two columns: no logical refutation (a search negative); not rarer than random (the K4 and shuffle distributions lie in the same band).
+- No plaintext was viewed. GPU faults: 0.
 
 ## Research question
 
@@ -110,7 +131,7 @@ Public K4 ciphertext and cribs, and the author's code. The enumerator, the text-
 
 ## UNKNOWN
 
-Whether any of the 5,970 two-sided-mask passes reads as English. Running that stage needs a scorer that skips the five Ws and about 1.5 GPU hours; the researcher has not yet decided to run it. Whether W means anything in K4 ([EP-0135](/en/research/kryptos-k4-list-price/): compatible with chance once the target list is paid). External independent replications: zero.
+(The stage was run on 2026-10-01; see the later check above. What is now unknown is whether a test with higher power exists: the calibration pass rate 0.641 caps it.) Whether any of the 5,970 two-sided-mask passes reads as English. Running that stage needs a scorer that skips the five Ws and about 1.5 GPU hours; the researcher has not yet decided to run it. Whether W means anything in K4 ([EP-0135](/en/research/kryptos-k4-list-price/): compatible with chance once the target list is paid). External independent replications: zero.
 
 ## Falsification targets
 
@@ -130,7 +151,7 @@ No external independent replication. No review by a cryptographer.
 
 ## Next experiment
 
-The English stage for the two-sided masks under the W-skipping index, if the researcher decides to run it (one run covers the reversed direction too).
+(Run on 2026-10-01; see the later check above. What remains is whether a test with power above the 0.641 calibration cap exists.) The English stage for the two-sided masks under the W-skipping index, if the researcher decides to run it (one run covers the reversed direction too).
 
 ## Sources
 

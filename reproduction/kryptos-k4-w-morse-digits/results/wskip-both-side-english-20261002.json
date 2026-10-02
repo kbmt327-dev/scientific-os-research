@@ -1,0 +1,46 @@
+{
+ "source": "EP-0187 (2026-10-01), the English stage of EP-0182 (b): recorded, not rerun in the public package (GPU)",
+ "episode": "EP-0187 (2026-10-01), Next Candidates 69, pre-registration 7de3397, results 7fb2336 758b820 13e52c6",
+ "what": "EP-0182 (b): the text key E04 with masks on both sides under the W-as-null index; the English stage on all 5,970 K4 crib-sieve survivors (and H41 EP-0183's same device)",
+ "scorer": "4-gram log-frequency over the 92 letters with the 5 W positions excluded (k4gpu_anneal._score_pos); identity with the old kernel: scoring all 97 positions reproduces it bit for bit on 4 planted texts (best score and plaintext identical); host scorer identical on 200 states",
+ "threshold": {
+  "THETA": -207.51,
+  "definition": "10th percentile of 92-letter windows of the K3 plaintext"
+ },
+ "candidate_rule": "score >= THETA and above the shuffle maximum",
+ "planted": {
+  "n": 16,
+  "recovered": 14,
+  "type": "W-as-null, 32 restarts x 1e6 iterations each",
+  "criterion": "unknown 68 letters correct >= 0.90",
+  "recovered_truth_scores": "-207.1 to -167.0"
+ },
+ "power": {
+  "recovery": 0.875,
+  "calibration_pass_rate": 0.641,
+  "product": 0.56,
+  "ep0077_form": 0.7,
+  "note": "0.641 of K1-K3 92-letter windows exceed THETA, so power <= 0.64 and a negative cannot close; written before the run"
+ },
+ "K4": {
+  "settings": 5970,
+  "settings_with_K4_as_key": 9,
+  "max": -225.02,
+  "median": -238.22,
+  "p99": -229.78,
+  "ge_THETA": 0,
+  "above_shuffle_max": 3,
+  "K4_as_key_max": -235.61
+ },
+ "shuffle3": {
+  "settings": 5661,
+  "max": -225.79,
+  "median": -238.23,
+  "p99": -230.86,
+  "ge_THETA": 0
+ },
+ "shuffles_1_2": "not run: about 1.9 million survivors each, about 300x the cost (as in EP-0077, one null)",
+ "verdict": "stays undecidable: candidates 0, power 0.56 (a correct setting would be missed with probability about 0.44); two columns: no logical refutation (a search negative); not rarer than random (K4 and shuffle distributions in the same band)",
+ "no_plaintext_viewed": true,
+ "gpu_faults": 0
+}

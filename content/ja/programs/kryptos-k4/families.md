@@ -71,12 +71,12 @@ lang: ja
 | K3の頭・彫刻の頭から数えた位置（起点の決まった特徴。K3の格子の幅と高さ、板の幅、KRYPTOSの長さ）を列挙器に足す | 足した特徴を使う手順は、同時でもcribごとでも0（新しく1.06×10¹⁴手順、[Note](/ja/research/kryptos-k4-procedure-enumerator/)） |
 | 幅21を作業の格子とみる読み（格子の上の操作は決めない） | K4の中では検定できない。21を指すのは遅れ21の対の表だけで、列の周期・2行離れた対・斜めは偶然の水準。K5と平文への予言を封印（[Note](/ja/research/kryptos-k4-width21/)） |
 | cribの位置のずれ：各cribの内側に1か所（480設定）、cribどうしが±1〜2文字（それぞれ誤り数文字まで、列挙器と周期鍵） | 列挙器はどれも0（偶然の期待1.0×10⁻⁶と3.6×10⁻¹³）。周期の任意の行は判定できない（[Note](/ja/research/kryptos-k4-crib-shifts/)） |
-| 機械（ロータ1枚・2枚、Enigma＋σ）に位相の切れ目を1つ（1,300通り） | 0件で否定。Hagelin型＋切れ目は、陽性対照を回しておらず判定できない（[Note](/ja/research/kryptos-k4-machine-phase-break/)） |
+| 機械（ロータ1枚・2枚、Enigma＋σ）に位相の切れ目を1つ（1,300通り） | 0件で否定。Hagelin型＋切れ目は、K4自身のcribの段の下に植え込んだ対照5/5で族の中で閉（2026-10-02）（[Note](/ja/research/kryptos-k4-machine-phase-break/)） |
 | 塊の方式（Four-square、Two-square、鍵語の方陣、Bifid）の組み方を1回ずらす | 0件で否定。CM-Bifidは27設定が両立し、以前の「閉」を訂正して判定できないに戻した。語の断片・平文の候補集合でも決まらない（[Note](/ja/research/kryptos-k4-block-phase-shift/)） |
 | Portax＋自由な置換、自由な方陣のPlayfair＋mask | Portaxは96問すべて矛盾。Playfair＋maskは周期5以下などで矛盾、周期6〜12は判定できない（[Note](/ja/research/kryptos-k4-portax-playfair-mask/)） |
 | 2つのOの区間のほかの組み方（28族、224設定）、混合alphabetのHill | 220設定が矛盾。自由なFour-squareの4設定は判定できない（[Note](/ja/research/kryptos-k4-o-pairs/)） |
 | 平文で鍵が進む族：遅れ20以下の平文autokey、平文の文字で行を選ぶ周期鍵 | autokeyは全120セルで矛盾（対照として回したK1〜K3変種）。ずらしの表は挙げた60集合で周期23以下が矛盾（集合を自由にすると偶然の水準、事後の点検）、任意の行は判定できない（[Note](/ja/research/kryptos-k4-plaintext-keys/)） |
-| Wを空文字・索引とみる形、鍵の向きを逆にする形、Morseの上のmask、固定した数字列の桁ごとの加算 | どれも0件で否定。Wの両側のmaskは判定できない（[Note](/ja/research/kryptos-k4-w-morse-digits/)） |
+| Wを空文字・索引とみる形、鍵の向きを逆にする形、Morseの上のmask、固定した数字列の桁ごとの加算 | どれも0件で否定。Wの両側のmaskは英語度の段で候補0（2026-10-02）だが、検出力0.56で判定できないまま（[Note](/ja/research/kryptos-k4-w-morse-digits/)） |
 | 公開の表#3の折り線（列6・25）で鍵をやり直す | ずらしの表は否定。任意の行は判定できない（[Note](/ja/research/kryptos-k4-chart3-folds/)） |
 | K4の刻まれた形（4文字＋31列×3行）・幅21・96/98マスの長方形の上の経路で作った配置の転置（208設定）を列挙器の前に置く | 文法の中では0件。止める規則に当たった1件は確認の統計で確かめられなかった（p＝0.81）（[Note](/ja/research/kryptos-k4-layout-transposition/)） |
 

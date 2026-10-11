@@ -579,6 +579,9 @@ notes:
       status: publishable
 
   - research_id: KRYPTOS-K4-EP-0195
+    followup_sources:
+      - source_episode: KRYPTOS-K4/EP-0224
+        source_episode_sha256: f91c1f43e6ffaaab900d71fbc37a0040f1763513d46174f3afac47f3c3274099
     source_episode: KRYPTOS-K4/EP-0195
     source_episode_sha256: 7ee86b1668f64ee244a9fece8170dda626fc77086e2e32b3770c61b1016829fc
     views:

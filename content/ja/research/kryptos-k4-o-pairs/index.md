@@ -134,3 +134,10 @@ TOKIOの区切りを「方式の一部」とみる読み方の1つが、方陣�
 ## 出典
 
 - K4の暗号文とcrib：Jim Sanborn, *Kryptos*（1990）。[Wikipedia](https://en.wikipedia.org/wiki/Kryptos)、[Elonka Dunin](https://elonka.com/kryptos/)。cribの公開：[WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/)、[WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/)、NPR 2020。
+
+
+## その後の点検（2026-10-11）
+
+EP-0210のO区間上の2×2アフィンHill（alphabet274、配置4種）はh≤2が0、最小hは11でした。EP-0214の平文側を4枚の標準方陣に固定したFour-squareも、自由な暗号側の8系がすべて不成立、暗号側をU²に固定した54,999,072設定にh≤2はありませんでした。EP-0226の語内並べ替えとの組では、自由な方陣228設定が両立のまま未判定です。
+
+公開パッケージの軽い検算と、元の研究記録が報告した全探索は別です。新しい平文文字は0、外部の独立再現は0件です。 [後続の検定と検算の範囲](/ja/research/kryptos-k4-square-lists/).

@@ -23,11 +23,11 @@ GPUクラスタでは、多数のジョブが限られたGPUを取り合いま�
 <!-- GENERATED: program-current:START -->
 ## 現在の公開結論
 
-EP-0029は当初の問いRQ-1に戻り、未測だったgang/localityを768 runで測定。封印予測1/6で、決定予測（順位の逆転）は外れ、逆転0件。gang_heavyはneedがnodeの倍数で断片化が起きず、π=0.6はほぼ全cell発散と、検出力はほぼなかった。事後の観察ではtrace_likeの劣化がsrpt < sf_srpt < easy_backfill < fcfsの順（未確認）。実クラスタ・新規性はUNKNOWN。
+EP-0030の封印予測は3/6で、決定予測P2はFAIL。912 runの合成検定では、trace_likeの順位は採点可能な3/3行で保った一方、gang_oddでは4/4行でsrptとsf_srptが逆転しました。EP-0029の事後順位をmix一般へ広げる主張は撤回します。近似的な負荷対照P5は計算可能な4/8行でPASSし、保存gradingからの再計算では差の約64〜100%が負荷余裕と整合します。これは因果分解ではありません。152 cell中8はUNKNOWN。実クラスタと新規性はUNKNOWN。
 
-**証拠の境界：** 合成MSJ model1つ、64 GPU・8-GPU node、負荷0.6/0.7、πは設定値。封印はlocal commitのみ。断片化の害と集約配置の効果は既知です。
+**証拠の境界：** 合成MSJ model1つ、64 GPU・8 GPU/node、指数サービス、sticky配置・migrationなし。封印はlocal commitのみ。公開検算は保存gradingの投影と算術で、912 runの再実行でも独立追試でもありません。
 
-**[現在のResearch Note（EP-0029）を読む →](/ja/research/gpu-scheduling-locality/)**
+**[現在のResearch Note（EP-0030）を読む →](/ja/research/gpu-scheduling-headroom/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -58,5 +58,6 @@ EP-0029は当初の問いRQ-1に戻り、未測だったgang/localityを768 run�
 23. [[ja/research/gpu-scheduling-transition-refusal/index|EP-0026 — 永久parameter遷移を、定常診断はいつ拒否すべきか]]
 24. [[ja/research/gpu-scheduling-self-containment/index|EP-0027 — 公開記事は、自分の主張を読み違えないための事実を載せていたか]]
 25. [[ja/research/gpu-scheduling-cold-reader/index|EP-0028 — 作者を知らないAI読者は、遷移拒否の記事を正しく読めたか]]
-26. **[[ja/research/gpu-scheduling-locality/index|EP-0029 — nodeの断片化は、サイズ優先とFCFS・backfillの順位を入れ替えるか]]（最新）**
+26. [[ja/research/gpu-scheduling-locality/index|EP-0029 — nodeの断片化は、サイズ優先とFCFS・backfillの順位を入れ替えるか]]
+27. **[[ja/research/gpu-scheduling-headroom/index|EP-0030 — gang mixで断片化順位が逆転し、負荷対照が大半を説明する]]（最新）**
 <!-- GENERATED: program-history:END -->

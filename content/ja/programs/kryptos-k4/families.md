@@ -85,3 +85,19 @@ lang: ja
 W区間を `TOKIO`（Tokyoのドイツ語綴りで、ベルリンの世界時計に刻まれている）と読むのは、凍結した外部の標的リストに対して p ≤ 1.5×10⁻³ で通りました（[Note](/ja/research/kryptos-k4-tokio-price/)）。その後の点検（2026-09-27）で、標的リストを選ぶ自由まで払いました。K4を見る前に凍結した6つのリスト（3,036語）の和集合に対し、K4の読みの族が偶然に当たる期待値は0.054で、そのうち世界時計の分は3.7%です。K1〜K4のほかの目印まで数えると、当たり1件に対し期待0.211（p＝0.19）でした。この読みは偶然と両立し、目立つパターンではなくなりました（[Note](/ja/research/kryptos-k4-list-price/)）。Wを暗号化の後に入れた・上書きした目印とみる仕組みも、候補なしでした。
 
 この研究は、K4はprimer 57973の反転Gromark暗号だという主張の監査から始まりました。数値は再現しますが、公開cribではそれを偶然と区別できません（[Note](/ja/research/kryptos-k4-57973-audit/)）。
+
+
+## 2026-10-11の追記
+
+| 族 | 結果 |
+|---|---|
+| [前提を外す監査と誤り2字までの再検定](/ja/research/kryptos-k4-premise-audit/) | 監査の判定一致不足は未。検定済み有限族の陰性と分ける。 |
+| [固定した行・帯・折り・数え方の一覧](/ja/research/kryptos-k4-fixed-row-lists/) | 登録一覧の決定可能な列に通過0。 |
+| [公開機・Enigmaの入口と配置・cribのずれ](/ja/research/kryptos-k4-public-machines/) | 列ごとの登録規則で通過0。自由配線一般は対象外。 |
+| [方陣の一覧とO区間・語内並べ替え](/ja/research/kryptos-k4-square-lists/) | 登録有限列の陰性。自由方陣と語内並べ替えの228設定は両立・未判定。 |
+| [自由な方陣と固定mask](/ja/research/kryptos-k4-free-squares-masks/) | 決定できた登録列に通過0。自由mask一般の反証ではない。 |
+| [印刷されたHillの表と標準形](/ja/research/kryptos-k4-hill-printed/) | 登録された表・組み方に通過0。 |
+| [公開古典資料の有限手順](/ja/research/kryptos-k4-printed-procedures/) | 登録一覧に通過0。資料の全方式の反証ではない。 |
+| [異種fractionation2段と配置の転置](/ja/research/kryptos-k4-two-stage-fractionation/) | 段順・表・周期を固定した登録列に通過0。 |
+
+| [cribのずれ・自由cube・2方式・Hillとの2段](/ja/research/kryptos-k4-two-stage-and-errors/) | 登録通過0。subset nullと事前接触を開示し、未検査空間を残す。 |

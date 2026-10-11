@@ -6,6 +6,20 @@ lang: ja
 
 ここは履歴の入口です。現在の結論を知りたい場合は、先に[研究分野ごとの現在地](/ja/research/)を読んでください。
 
+## 2026-10-11
+
+- **KRYPTOS-K4-EP-0241** · Negative Result — [二段階・誤差族の記録では検査範囲内の登録通過なし](/ja/research/kryptos-k4-two-stage-and-errors/)
+- **KRYPTOS-K4-EP-0232** · Negative Result — [列挙した印刷手順は公開 K4 crib と整合するか](/ja/research/kryptos-k4-printed-procedures/)
+- **KRYPTOS-K4-EP-0221** · Negative Result — [列挙した二段階分画族は公開 K4 crib と整合するか](/ja/research/kryptos-k4-two-stage-fractionation/)
+- **KRYPTOS-K4-EP-0218** · Negative Result — [Hillの印刷変換は公開 K4 crib と整合するか](/ja/research/kryptos-k4-hill-printed/)
+- **KRYPTOS-K4-EP-0206** · Negative Result — [公開機械族でのK4一致は有限設定の記録に限る](/ja/research/kryptos-k4-public-machines/)
+- **KRYPTOS-K4-EP-0200** · Negative Result — [正方形リストを使う有限族の記録結果と検証範囲](/ja/research/kryptos-k4-square-lists/)
+- **KRYPTOS-K4-EP-0196** · Negative Result — [固定した行リストをcribで調べた有限範囲](/ja/research/kryptos-k4-fixed-row-lists/)
+- **KRYPTOS-K4-EP-0195** · Negative Result — [登録済み自由方陣マスク族は公開 crib と整合するか](/ja/research/kryptos-k4-free-squares-masks/)
+- **KRYPTOS-K4-EP-0188** · Finding — [K4の前提記録を監査し、確定と未判定を分ける](/ja/research/kryptos-k4-premise-audit/)
+## 2026-10-02
+
+- **GPU-SCHED-EP-0030** · Finding — [gang mixで断片化順位が逆転し、負荷対照が大半を説明する](/ja/research/gpu-scheduling-headroom/)
 ## 2026-10-01
 
 - **KRYPTOS-K4-EP-0186** · Negative Result — [K4の配置で決まる転置のあとに手順の列挙器をかけると、K4に合うか](/ja/research/kryptos-k4-layout-transposition/)

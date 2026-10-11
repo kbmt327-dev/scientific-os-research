@@ -1,0 +1,1517 @@
+{
+  "source": "EP-0196, EP-0197, EP-0198, EP-0208 (kryptos-k4-audit, directories ep0196-c14bc-wordpos-rows-20261009, ep0197-h12r-fold-rows-20261009, ep0198-j12-behind-rows-20261009, ep0208-e01-band-keyword-rows-20261010: prereg.md, k4.json/log, null.json/log, plants.json/log, ic.json/log, count.log, verify.log, diag.log, record.md). Registrations committed before any run on K4. Statistics copied from the run outputs of 2026-10-09 and 2026-10-10; best-setting lists and plant settings are not copied.",
+  "statistic": "h = number of the 24 crib positions where the predicted ciphertext letter differs from K4; pass: h <= 2",
+  "readings": "29 = m1 C=R[AZ(P)], m2 C=AZ[R^-1(P)], m3 C=KA[R^-1(P)], m4 C=R[KA(P)], m5 C=R[(R^-1(P)+g) mod 26], g=1..25; R = keyed(word)",
+  "lists": {
+    "sizes": {
+      "98:K1": 13,
+      "98:K2": 75,
+      "98:K3": 75,
+      "98:K1-K3": 163,
+      "98:WorldClock146": 146,
+      "98:keywords": 40,
+      "KW:KRYPTOS_WORDS": 31,
+      "KW:EGYPT": 35,
+      "KW:BERLIN": 24,
+      "KW:CLOCK": 18,
+      "KW:MESSAGE": 21,
+      "KW:CLUES": 21
+    },
+    "sum": 662,
+    "origin": "6 word lists of EP-0098 (sum 512) and the 6 KWROWS lists of EP-0119 (150 words); nothing added",
+    "withheld": [
+      "98:K1",
+      "98:K2",
+      "98:K3",
+      "98:K1-K3"
+    ],
+    "withheld_reason": "words of the K1-K3 plaintexts in text order; this site does not publish K1-K3 text"
+  },
+  "ep0196": {
+    "family": "C14b (position j counted from the word start) / C14c (from the word end); row = (c + dir*j) mod |W|",
+    "commits": {
+      "prereg": "ce2dca3",
+      "controls": "aca21fe",
+      "k4": "9f2505f"
+    },
+    "N_main": 460752,
+    "N_all": 7372032,
+    "bits_all": 22.8,
+    "factors_main": {
+      "direction": 2,
+      "sum_W": 662,
+      "readings": 29,
+      "dir": 2,
+      "crib_word_breaks": 6
+    },
+    "outer_offsets": 16,
+    "unique_J_per_direction": 96,
+    "E_recorded": {
+      "h<=2": 1.4e-22,
+      "h<=3": 2.6e-20,
+      "h<=4": 3.4e-18
+    },
+    "k4": {
+      "min_all": 16,
+      "min_main": 17,
+      "count_h_le_k_all": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "per_group_min": {
+        "head/98:K1": 19,
+        "end/98:K1": 17,
+        "head/98:K2": 16,
+        "end/98:K2": 17,
+        "head/98:K3": 17,
+        "end/98:K3": 17,
+        "head/98:K1-K3": 16,
+        "end/98:K1-K3": 16,
+        "head/98:WorldClock146": 16,
+        "end/98:WorldClock146": 17,
+        "head/98:keywords": 17,
+        "end/98:keywords": 17,
+        "head/KW:KRYPTOS_WORDS": 17,
+        "end/KW:KRYPTOS_WORDS": 17,
+        "head/KW:EGYPT": 17,
+        "end/KW:EGYPT": 17,
+        "head/KW:BERLIN": 18,
+        "end/KW:BERLIN": 18,
+        "head/KW:CLOCK": 18,
+        "end/KW:CLOCK": 17,
+        "head/KW:MESSAGE": 18,
+        "end/KW:MESSAGE": 17,
+        "head/KW:CLUES": 17,
+        "end/KW:CLUES": 17
+      }
+    },
+    "null": {
+      "n": 2000,
+      "seed": 196,
+      "kind": "K4 with the non-W letters permuted (W positions kept)",
+      "min_all_hist": {
+        "13": 2,
+        "14": 53,
+        "15": 456,
+        "16": 1320,
+        "17": 169
+      },
+      "min_main_hist": {
+        "14": 7,
+        "15": 67,
+        "16": 615,
+        "17": 1239,
+        "18": 72
+      },
+      "share_le_k4_all": 0.915,
+      "share_le_k4_main": 0.964,
+      "mean_min_all": 15.8
+    },
+    "plants": {
+      "head/exact": "20/20",
+      "head/two_subs": "20/20",
+      "end/exact": "20/20",
+      "end/two_subs": "20/20"
+    },
+    "ic_check": {
+      "groups": {
+        "head/98:K1": {
+          "q01": 0.03952,
+          "median": 0.05037,
+          "frac_le_k4": 0.0
+        },
+        "head/98:K2": {
+          "q01": 0.03866,
+          "median": 0.04693,
+          "frac_le_k4": 0.0
+        },
+        "head/98:K3": {
+          "q01": 0.04036,
+          "median": 0.04811,
+          "frac_le_k4": 0.0
+        },
+        "head/98:K1-K3": {
+          "q01": 0.03928,
+          "median": 0.04875,
+          "frac_le_k4": 0.0
+        },
+        "head/98:WorldClock146": {
+          "q01": 0.03716,
+          "median": 0.04682,
+          "frac_le_k4": 0.0
+        },
+        "head/98:keywords": {
+          "q01": 0.03844,
+          "median": 0.04564,
+          "frac_le_k4": 0.0
+        },
+        "head/KW:KRYPTOS_WORDS": {
+          "q01": 0.03715,
+          "median": 0.04596,
+          "frac_le_k4": 0.0
+        },
+        "head/KW:EGYPT": {
+          "q01": 0.03887,
+          "median": 0.04607,
+          "frac_le_k4": 0.0
+        },
+        "head/KW:BERLIN": {
+          "q01": 0.03801,
+          "median": 0.04757,
+          "frac_le_k4": 0.0
+        },
+        "head/KW:CLOCK": {
+          "q01": 0.03778,
+          "median": 0.04661,
+          "frac_le_k4": 0.01
+        },
+        "head/KW:MESSAGE": {
+          "q01": 0.03909,
+          "median": 0.04747,
+          "frac_le_k4": 0.0
+        },
+        "head/KW:CLUES": {
+          "q01": 0.03736,
+          "median": 0.04618,
+          "frac_le_k4": 0.0
+        },
+        "end/98:K1": {
+          "q01": 0.03907,
+          "median": 0.0494,
+          "frac_le_k4": 0.0
+        },
+        "end/98:K2": {
+          "q01": 0.03694,
+          "median": 0.04832,
+          "frac_le_k4": 0.0
+        },
+        "end/98:K3": {
+          "q01": 0.04037,
+          "median": 0.04725,
+          "frac_le_k4": 0.0
+        },
+        "end/98:K1-K3": {
+          "q01": 0.03801,
+          "median": 0.04747,
+          "frac_le_k4": 0.0
+        },
+        "end/98:WorldClock146": {
+          "q01": 0.0393,
+          "median": 0.04704,
+          "frac_le_k4": 0.0
+        },
+        "end/98:keywords": {
+          "q01": 0.0365,
+          "median": 0.0451,
+          "frac_le_k4": 0.01
+        },
+        "end/KW:KRYPTOS_WORDS": {
+          "q01": 0.03822,
+          "median": 0.04693,
+          "frac_le_k4": 0.0
+        },
+        "end/KW:EGYPT": {
+          "q01": 0.03823,
+          "median": 0.04596,
+          "frac_le_k4": 0.0
+        },
+        "end/KW:BERLIN": {
+          "q01": 0.03843,
+          "median": 0.04822,
+          "frac_le_k4": 0.0
+        },
+        "end/KW:CLOCK": {
+          "q01": 0.03801,
+          "median": 0.04704,
+          "frac_le_k4": 0.0
+        },
+        "end/KW:MESSAGE": {
+          "q01": 0.03822,
+          "median": 0.04725,
+          "frac_le_k4": 0.0
+        },
+        "end/KW:CLUES": {
+          "q01": 0.04016,
+          "median": 0.04532,
+          "frac_le_k4": 0.0
+        }
+      },
+      "excluded": 24,
+      "per_group_plants": 100,
+      "k4_ic": 0.036082
+    },
+    "verdict": {
+      "logical": "refuted within the stated scope (no setting with h <= 2; min h 16)",
+      "rarer_than_random": "cannot say (K4's min 16 is at the null median)",
+      "ic": "K4's IC below the family's 1% quantile in 24/24 groups"
+    }
+  },
+  "ep0197": {
+    "family": "H12r: phase counted from the chart-#3 fold lines (columns 6 and 25) selects the row",
+    "commits": {
+      "prereg": "3a6f038",
+      "controls": "30a6698",
+      "k4": "317ed69"
+    },
+    "restarts": {
+      "col6": [
+        9,
+        40,
+        71
+      ],
+      "col25": [
+        28,
+        59,
+        90
+      ]
+    },
+    "N": 230376,
+    "bits": 17.8,
+    "factors": {
+      "restart_sets": 6,
+      "sum_W": 662,
+      "readings": 29,
+      "dir": 2
+    },
+    "E_recorded": {
+      "h<=2": 4.4e-24
+    },
+    "k4": {
+      "min": 17,
+      "overlap_EP0119_min": 18,
+      "count_h_le_k": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "per_group_min": {
+        "col6/crossed/98:K1": 18,
+        "col6/next/98:K1": 19,
+        "col25/crossed/98:K1": 17,
+        "col25/next/98:K1": 19,
+        "both/crossed/98:K1": 19,
+        "both/next/98:K1": 19,
+        "col6/crossed/98:K2": 18,
+        "col6/next/98:K2": 18,
+        "col25/crossed/98:K2": 18,
+        "col25/next/98:K2": 18,
+        "both/crossed/98:K2": 18,
+        "both/next/98:K2": 17,
+        "col6/crossed/98:K3": 18,
+        "col6/next/98:K3": 19,
+        "col25/crossed/98:K3": 19,
+        "col25/next/98:K3": 19,
+        "both/crossed/98:K3": 18,
+        "both/next/98:K3": 19,
+        "col6/crossed/98:K1-K3": 18,
+        "col6/next/98:K1-K3": 18,
+        "col25/crossed/98:K1-K3": 18,
+        "col25/next/98:K1-K3": 19,
+        "both/crossed/98:K1-K3": 18,
+        "both/next/98:K1-K3": 17,
+        "col6/crossed/98:WorldClock146": 17,
+        "col6/next/98:WorldClock146": 18,
+        "col25/crossed/98:WorldClock146": 18,
+        "col25/next/98:WorldClock146": 18,
+        "both/crossed/98:WorldClock146": 18,
+        "both/next/98:WorldClock146": 19,
+        "col6/crossed/98:keywords": 18,
+        "col6/next/98:keywords": 18,
+        "col25/crossed/98:keywords": 19,
+        "col25/next/98:keywords": 19,
+        "both/crossed/98:keywords": 17,
+        "both/next/98:keywords": 18,
+        "col6/crossed/KW:KRYPTOS_WORDS": 19,
+        "col6/next/KW:KRYPTOS_WORDS": 19,
+        "col25/crossed/KW:KRYPTOS_WORDS": 19,
+        "col25/next/KW:KRYPTOS_WORDS": 19,
+        "both/crossed/KW:KRYPTOS_WORDS": 19,
+        "both/next/KW:KRYPTOS_WORDS": 19,
+        "col6/crossed/KW:EGYPT": 19,
+        "col6/next/KW:EGYPT": 19,
+        "col25/crossed/KW:EGYPT": 19,
+        "col25/next/KW:EGYPT": 18,
+        "both/crossed/KW:EGYPT": 18,
+        "both/next/KW:EGYPT": 19,
+        "col6/crossed/KW:BERLIN": 18,
+        "col6/next/KW:BERLIN": 19,
+        "col25/crossed/KW:BERLIN": 18,
+        "col25/next/KW:BERLIN": 19,
+        "both/crossed/KW:BERLIN": 19,
+        "both/next/KW:BERLIN": 19,
+        "col6/crossed/KW:CLOCK": 19,
+        "col6/next/KW:CLOCK": 19,
+        "col25/crossed/KW:CLOCK": 19,
+        "col25/next/KW:CLOCK": 20,
+        "both/crossed/KW:CLOCK": 19,
+        "both/next/KW:CLOCK": 19,
+        "col6/crossed/KW:MESSAGE": 19,
+        "col6/next/KW:MESSAGE": 18,
+        "col25/crossed/KW:MESSAGE": 19,
+        "col25/next/KW:MESSAGE": 19,
+        "both/crossed/KW:MESSAGE": 19,
+        "both/next/KW:MESSAGE": 18,
+        "col6/crossed/KW:CLUES": 18,
+        "col6/next/KW:CLUES": 19,
+        "col25/crossed/KW:CLUES": 19,
+        "col25/next/KW:CLUES": 20,
+        "both/crossed/KW:CLUES": 19,
+        "both/next/KW:CLUES": 19
+      }
+    },
+    "null": {
+      "n": 2000,
+      "seed": 197,
+      "min_hist": {
+        "14": 2,
+        "15": 45,
+        "16": 379,
+        "17": 1364,
+        "18": 210
+      },
+      "share_le_k4": 0.895,
+      "mean_min": 16.9
+    },
+    "plants": {
+      "exact": "20/20",
+      "two_subs": "20/20"
+    },
+    "ic_check": {
+      "groups": {
+        "col6/crossed/98:K1": {
+          "q01": 0.03522,
+          "median": 0.04618,
+          "frac_le_k4": 0.02
+        },
+        "col6/crossed/98:K2": {
+          "q01": 0.03543,
+          "median": 0.04403,
+          "frac_le_k4": 0.02
+        },
+        "col6/crossed/98:K3": {
+          "q01": 0.03949,
+          "median": 0.04618,
+          "frac_le_k4": 0.0
+        },
+        "col6/crossed/98:K1-K3": {
+          "q01": 0.03757,
+          "median": 0.04371,
+          "frac_le_k4": 0.01
+        },
+        "col6/crossed/98:WorldClock146": {
+          "q01": 0.03521,
+          "median": 0.04188,
+          "frac_le_k4": 0.03
+        },
+        "col6/crossed/98:keywords": {
+          "q01": 0.03479,
+          "median": 0.04134,
+          "frac_le_k4": 0.07
+        },
+        "col6/crossed/KW:KRYPTOS_WORDS": {
+          "q01": 0.03435,
+          "median": 0.04317,
+          "frac_le_k4": 0.06
+        },
+        "col6/crossed/KW:EGYPT": {
+          "q01": 0.03393,
+          "median": 0.0436,
+          "frac_le_k4": 0.07
+        },
+        "col6/crossed/KW:BERLIN": {
+          "q01": 0.03521,
+          "median": 0.04274,
+          "frac_le_k4": 0.03
+        },
+        "col6/crossed/KW:CLOCK": {
+          "q01": 0.03587,
+          "median": 0.04253,
+          "frac_le_k4": 0.02
+        },
+        "col6/crossed/KW:MESSAGE": {
+          "q01": 0.03501,
+          "median": 0.04231,
+          "frac_le_k4": 0.05
+        },
+        "col6/crossed/KW:CLUES": {
+          "q01": 0.0365,
+          "median": 0.04199,
+          "frac_le_k4": 0.01
+        },
+        "col6/next/98:K1": {
+          "q01": 0.0395,
+          "median": 0.04607,
+          "frac_le_k4": 0.0
+        },
+        "col6/next/98:K2": {
+          "q01": 0.03521,
+          "median": 0.04403,
+          "frac_le_k4": 0.03
+        },
+        "col6/next/98:K3": {
+          "q01": 0.03715,
+          "median": 0.04585,
+          "frac_le_k4": 0.0
+        },
+        "col6/next/98:K1-K3": {
+          "q01": 0.0365,
+          "median": 0.04457,
+          "frac_le_k4": 0.01
+        },
+        "col6/next/98:WorldClock146": {
+          "q01": 0.03544,
+          "median": 0.04296,
+          "frac_le_k4": 0.04
+        },
+        "col6/next/98:keywords": {
+          "q01": 0.03543,
+          "median": 0.04177,
+          "frac_le_k4": 0.03
+        },
+        "col6/next/KW:KRYPTOS_WORDS": {
+          "q01": 0.03543,
+          "median": 0.0422,
+          "frac_le_k4": 0.04
+        },
+        "col6/next/KW:EGYPT": {
+          "q01": 0.03544,
+          "median": 0.0422,
+          "frac_le_k4": 0.02
+        },
+        "col6/next/KW:BERLIN": {
+          "q01": 0.03607,
+          "median": 0.04253,
+          "frac_le_k4": 0.02
+        },
+        "col6/next/KW:CLOCK": {
+          "q01": 0.03649,
+          "median": 0.04274,
+          "frac_le_k4": 0.01
+        },
+        "col6/next/KW:MESSAGE": {
+          "q01": 0.03608,
+          "median": 0.04285,
+          "frac_le_k4": 0.02
+        },
+        "col6/next/KW:CLUES": {
+          "q01": 0.03522,
+          "median": 0.0422,
+          "frac_le_k4": 0.04
+        },
+        "col25/crossed/98:K1": {
+          "q01": 0.03909,
+          "median": 0.04736,
+          "frac_le_k4": 0.0
+        },
+        "col25/crossed/98:K2": {
+          "q01": 0.03651,
+          "median": 0.0436,
+          "frac_le_k4": 0.01
+        },
+        "col25/crossed/98:K3": {
+          "q01": 0.0365,
+          "median": 0.0451,
+          "frac_le_k4": 0.01
+        },
+        "col25/crossed/98:K1-K3": {
+          "q01": 0.03608,
+          "median": 0.04446,
+          "frac_le_k4": 0.02
+        },
+        "col25/crossed/98:WorldClock146": {
+          "q01": 0.03651,
+          "median": 0.04328,
+          "frac_le_k4": 0.0
+        },
+        "col25/crossed/98:keywords": {
+          "q01": 0.03521,
+          "median": 0.04188,
+          "frac_le_k4": 0.05
+        },
+        "col25/crossed/KW:KRYPTOS_WORDS": {
+          "q01": 0.03693,
+          "median": 0.0421,
+          "frac_le_k4": 0.01
+        },
+        "col25/crossed/KW:EGYPT": {
+          "q01": 0.03587,
+          "median": 0.04253,
+          "frac_le_k4": 0.03
+        },
+        "col25/crossed/KW:BERLIN": {
+          "q01": 0.03586,
+          "median": 0.04338,
+          "frac_le_k4": 0.03
+        },
+        "col25/crossed/KW:CLOCK": {
+          "q01": 0.0365,
+          "median": 0.04306,
+          "frac_le_k4": 0.01
+        },
+        "col25/crossed/KW:MESSAGE": {
+          "q01": 0.03565,
+          "median": 0.04253,
+          "frac_le_k4": 0.02
+        },
+        "col25/crossed/KW:CLUES": {
+          "q01": 0.03544,
+          "median": 0.04188,
+          "frac_le_k4": 0.06
+        },
+        "col25/next/98:K1": {
+          "q01": 0.03887,
+          "median": 0.04704,
+          "frac_le_k4": 0.0
+        },
+        "col25/next/98:K2": {
+          "q01": 0.03565,
+          "median": 0.04317,
+          "frac_le_k4": 0.04
+        },
+        "col25/next/98:K3": {
+          "q01": 0.03694,
+          "median": 0.04478,
+          "frac_le_k4": 0.0
+        },
+        "col25/next/98:K1-K3": {
+          "q01": 0.03737,
+          "median": 0.04585,
+          "frac_le_k4": 0.0
+        },
+        "col25/next/98:WorldClock146": {
+          "q01": 0.03586,
+          "median": 0.04263,
+          "frac_le_k4": 0.02
+        },
+        "col25/next/98:keywords": {
+          "q01": 0.03586,
+          "median": 0.04253,
+          "frac_le_k4": 0.03
+        },
+        "col25/next/KW:KRYPTOS_WORDS": {
+          "q01": 0.03584,
+          "median": 0.04296,
+          "frac_le_k4": 0.03
+        },
+        "col25/next/KW:EGYPT": {
+          "q01": 0.03543,
+          "median": 0.04274,
+          "frac_le_k4": 0.04
+        },
+        "col25/next/KW:BERLIN": {
+          "q01": 0.03586,
+          "median": 0.04403,
+          "frac_le_k4": 0.04
+        },
+        "col25/next/KW:CLOCK": {
+          "q01": 0.0365,
+          "median": 0.04296,
+          "frac_le_k4": 0.01
+        },
+        "col25/next/KW:MESSAGE": {
+          "q01": 0.03522,
+          "median": 0.04274,
+          "frac_le_k4": 0.05
+        },
+        "col25/next/KW:CLUES": {
+          "q01": 0.03479,
+          "median": 0.04253,
+          "frac_le_k4": 0.02
+        },
+        "both/crossed/98:K1": {
+          "q01": 0.03823,
+          "median": 0.04682,
+          "frac_le_k4": 0.0
+        },
+        "both/crossed/98:K2": {
+          "q01": 0.03777,
+          "median": 0.04457,
+          "frac_le_k4": 0.01
+        },
+        "both/crossed/98:K3": {
+          "q01": 0.03735,
+          "median": 0.04478,
+          "frac_le_k4": 0.01
+        },
+        "both/crossed/98:K1-K3": {
+          "q01": 0.03822,
+          "median": 0.04414,
+          "frac_le_k4": 0.0
+        },
+        "both/crossed/98:WorldClock146": {
+          "q01": 0.03478,
+          "median": 0.04317,
+          "frac_le_k4": 0.05
+        },
+        "both/crossed/98:keywords": {
+          "q01": 0.03736,
+          "median": 0.04274,
+          "frac_le_k4": 0.0
+        },
+        "both/crossed/KW:KRYPTOS_WORDS": {
+          "q01": 0.03501,
+          "median": 0.04253,
+          "frac_le_k4": 0.05
+        },
+        "both/crossed/KW:EGYPT": {
+          "q01": 0.03565,
+          "median": 0.04338,
+          "frac_le_k4": 0.04
+        },
+        "both/crossed/KW:BERLIN": {
+          "q01": 0.03415,
+          "median": 0.04242,
+          "frac_le_k4": 0.08
+        },
+        "both/crossed/KW:CLOCK": {
+          "q01": 0.03606,
+          "median": 0.04242,
+          "frac_le_k4": 0.02
+        },
+        "both/crossed/KW:MESSAGE": {
+          "q01": 0.03458,
+          "median": 0.04263,
+          "frac_le_k4": 0.07
+        },
+        "both/crossed/KW:CLUES": {
+          "q01": 0.03608,
+          "median": 0.04296,
+          "frac_le_k4": 0.02
+        },
+        "both/next/98:K1": {
+          "q01": 0.0393,
+          "median": 0.04682,
+          "frac_le_k4": 0.0
+        },
+        "both/next/98:K2": {
+          "q01": 0.03522,
+          "median": 0.04403,
+          "frac_le_k4": 0.03
+        },
+        "both/next/98:K3": {
+          "q01": 0.03801,
+          "median": 0.04564,
+          "frac_le_k4": 0.0
+        },
+        "both/next/98:K1-K3": {
+          "q01": 0.03756,
+          "median": 0.04521,
+          "frac_le_k4": 0.01
+        },
+        "both/next/98:WorldClock146": {
+          "q01": 0.03522,
+          "median": 0.04306,
+          "frac_le_k4": 0.04
+        },
+        "both/next/98:keywords": {
+          "q01": 0.03564,
+          "median": 0.0422,
+          "frac_le_k4": 0.04
+        },
+        "both/next/KW:KRYPTOS_WORDS": {
+          "q01": 0.03671,
+          "median": 0.04274,
+          "frac_le_k4": 0.01
+        },
+        "both/next/KW:EGYPT": {
+          "q01": 0.03585,
+          "median": 0.04274,
+          "frac_le_k4": 0.02
+        },
+        "both/next/KW:BERLIN": {
+          "q01": 0.03458,
+          "median": 0.04317,
+          "frac_le_k4": 0.02
+        },
+        "both/next/KW:CLOCK": {
+          "q01": 0.035,
+          "median": 0.04242,
+          "frac_le_k4": 0.04
+        },
+        "both/next/KW:MESSAGE": {
+          "q01": 0.03693,
+          "median": 0.0421,
+          "frac_le_k4": 0.01
+        },
+        "both/next/KW:CLUES": {
+          "q01": 0.03586,
+          "median": 0.04285,
+          "frac_le_k4": 0.02
+        }
+      },
+      "excluded": 27,
+      "excluded_by_line": {
+        "col6": 7,
+        "col25": 10,
+        "both": 10
+      },
+      "per_group_plants": 100,
+      "k4_ic": 0.036082
+    },
+    "verdict": {
+      "logical": "refuted within the stated scope (min h 17)",
+      "rarer_than_random": "cannot say (K4 at the null median)",
+      "ic": "27/72 groups"
+    }
+  },
+  "ep0198": {
+    "family": "J12 G1/G3/G2: the letter behind a K4 cell when the sculpture is folded at a seam selects the row",
+    "commits": {
+      "prereg": "a641f20",
+      "controls": "65920e0",
+      "k4": "149a415"
+    },
+    "N_main": 5068272,
+    "bits_main": 22.3,
+    "N_aux": 307168,
+    "factors_main": {
+      "geometries": 33,
+      "numbering": 2,
+      "blank_rule": 2,
+      "sum_W": 662,
+      "readings": 29,
+      "dir": 2
+    },
+    "geometries": {
+      "G1": 3,
+      "G3": 3,
+      "G2": 27
+    },
+    "factors_aux": {
+      "geometry_types": 2,
+      "numbering": 2,
+      "blank_rule": 2,
+      "sum_W": 662,
+      "readings": 29,
+      "dir": 2
+    },
+    "blank_crib_positions": {
+      "G1 d-1": [
+        66,
+        67
+      ],
+      "G3 d-1": [
+        66,
+        67
+      ],
+      "G1 d+0": [
+        66
+      ],
+      "G3 d+0": [
+        66
+      ],
+      "G1 d+1": [
+        65
+      ],
+      "G3 d+1": [
+        65
+      ],
+      "G2 (round, floor, ceil) x (dA -1, 0, +1), dB +1 (9 geometries)": [
+        65
+      ]
+    },
+    "blank_rule_note": "rule (a): the position is not used and counts as a match; rule (b): selector value 26",
+    "E_recorded": {
+      "h<=2": 9.6e-23,
+      "aux_upper_h_w<=2": 1.6e-13
+    },
+    "k4": {
+      "min": 14,
+      "min_aux": 12,
+      "count_h_le_k": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "count_aux_h_le_k": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "per_group_min": {
+        "G1/98:K1": 17,
+        "G3/98:K1": 17,
+        "G2/98:K1": 18,
+        "G1/98:K2": 16,
+        "G3/98:K2": 14,
+        "G2/98:K2": 16,
+        "G1/98:K3": 16,
+        "G3/98:K3": 16,
+        "G2/98:K3": 17,
+        "G1/98:K1-K3": 16,
+        "G3/98:K1-K3": 14,
+        "G2/98:K1-K3": 16,
+        "G1/98:WorldClock146": 16,
+        "G3/98:WorldClock146": 16,
+        "G2/98:WorldClock146": 16,
+        "G1/98:keywords": 16,
+        "G3/98:keywords": 16,
+        "G2/98:keywords": 17,
+        "G1/KW:KRYPTOS_WORDS": 16,
+        "G3/KW:KRYPTOS_WORDS": 16,
+        "G2/KW:KRYPTOS_WORDS": 16,
+        "G1/KW:EGYPT": 17,
+        "G3/KW:EGYPT": 16,
+        "G2/KW:EGYPT": 16,
+        "G1/KW:BERLIN": 17,
+        "G3/KW:BERLIN": 17,
+        "G2/KW:BERLIN": 16,
+        "G1/KW:CLOCK": 17,
+        "G3/KW:CLOCK": 17,
+        "G2/KW:CLOCK": 18,
+        "G1/KW:MESSAGE": 17,
+        "G3/KW:MESSAGE": 16,
+        "G2/KW:MESSAGE": 17,
+        "G1/KW:CLUES": 15,
+        "G3/KW:CLUES": 16,
+        "G2/KW:CLUES": 17
+      }
+    },
+    "null": {
+      "n": 2000,
+      "seed": 198,
+      "min_hist": {
+        "12": 1,
+        "13": 13,
+        "14": 280,
+        "15": 1300,
+        "16": 406
+      },
+      "min_aux_hist": {
+        "8": 4,
+        "9": 32,
+        "10": 246,
+        "11": 924,
+        "12": 770,
+        "13": 24
+      },
+      "share_le_k4": 0.147,
+      "share_le_k4_aux": 0.988
+    },
+    "plants": {
+      "exact": "20/20",
+      "two_subs": "20/20",
+      "aux_wobble": "20/20"
+    },
+    "ic_check": {
+      "groups": {
+        "G1/98:K1": {
+          "q01": 0.03757,
+          "median": 0.04661,
+          "frac_le_k4": 0.01
+        },
+        "G1/98:K2": {
+          "q01": 0.03673,
+          "median": 0.04478,
+          "frac_le_k4": 0.0
+        },
+        "G1/98:K3": {
+          "q01": 0.03694,
+          "median": 0.04424,
+          "frac_le_k4": 0.0
+        },
+        "G1/98:K1-K3": {
+          "q01": 0.03737,
+          "median": 0.04532,
+          "frac_le_k4": 0.0
+        },
+        "G1/98:WorldClock146": {
+          "q01": 0.03585,
+          "median": 0.04296,
+          "frac_le_k4": 0.02
+        },
+        "G1/98:keywords": {
+          "q01": 0.03608,
+          "median": 0.04253,
+          "frac_le_k4": 0.02
+        },
+        "G1/KW:KRYPTOS_WORDS": {
+          "q01": 0.0363,
+          "median": 0.0421,
+          "frac_le_k4": 0.01
+        },
+        "G1/KW:EGYPT": {
+          "q01": 0.03501,
+          "median": 0.0422,
+          "frac_le_k4": 0.03
+        },
+        "G1/KW:BERLIN": {
+          "q01": 0.03627,
+          "median": 0.04424,
+          "frac_le_k4": 0.01
+        },
+        "G1/KW:CLOCK": {
+          "q01": 0.03544,
+          "median": 0.04317,
+          "frac_le_k4": 0.03
+        },
+        "G1/KW:MESSAGE": {
+          "q01": 0.03608,
+          "median": 0.04274,
+          "frac_le_k4": 0.02
+        },
+        "G1/KW:CLUES": {
+          "q01": 0.03608,
+          "median": 0.0421,
+          "frac_le_k4": 0.02
+        },
+        "G3/98:K1": {
+          "q01": 0.03841,
+          "median": 0.04628,
+          "frac_le_k4": 0.01
+        },
+        "G3/98:K2": {
+          "q01": 0.03585,
+          "median": 0.04446,
+          "frac_le_k4": 0.03
+        },
+        "G3/98:K3": {
+          "q01": 0.03838,
+          "median": 0.04704,
+          "frac_le_k4": 0.01
+        },
+        "G3/98:K1-K3": {
+          "q01": 0.03628,
+          "median": 0.04381,
+          "frac_le_k4": 0.01
+        },
+        "G3/98:WorldClock146": {
+          "q01": 0.03587,
+          "median": 0.04306,
+          "frac_le_k4": 0.03
+        },
+        "G3/98:keywords": {
+          "q01": 0.03522,
+          "median": 0.04167,
+          "frac_le_k4": 0.03
+        },
+        "G3/KW:KRYPTOS_WORDS": {
+          "q01": 0.03608,
+          "median": 0.04177,
+          "frac_le_k4": 0.02
+        },
+        "G3/KW:EGYPT": {
+          "q01": 0.03479,
+          "median": 0.04199,
+          "frac_le_k4": 0.03
+        },
+        "G3/KW:BERLIN": {
+          "q01": 0.03522,
+          "median": 0.04317,
+          "frac_le_k4": 0.03
+        },
+        "G3/KW:CLOCK": {
+          "q01": 0.03543,
+          "median": 0.04285,
+          "frac_le_k4": 0.04
+        },
+        "G3/KW:MESSAGE": {
+          "q01": 0.03735,
+          "median": 0.04403,
+          "frac_le_k4": 0.01
+        },
+        "G3/KW:CLUES": {
+          "q01": 0.03651,
+          "median": 0.04199,
+          "frac_le_k4": 0.01
+        },
+        "G2/98:K1": {
+          "q01": 0.03758,
+          "median": 0.04768,
+          "frac_le_k4": 0.0
+        },
+        "G2/98:K2": {
+          "q01": 0.03694,
+          "median": 0.04306,
+          "frac_le_k4": 0.0
+        },
+        "G2/98:K3": {
+          "q01": 0.03565,
+          "median": 0.04435,
+          "frac_le_k4": 0.02
+        },
+        "G2/98:K1-K3": {
+          "q01": 0.03777,
+          "median": 0.04478,
+          "frac_le_k4": 0.01
+        },
+        "G2/98:WorldClock146": {
+          "q01": 0.03587,
+          "median": 0.04296,
+          "frac_le_k4": 0.03
+        },
+        "G2/98:keywords": {
+          "q01": 0.03757,
+          "median": 0.04188,
+          "frac_le_k4": 0.0
+        },
+        "G2/KW:KRYPTOS_WORDS": {
+          "q01": 0.03479,
+          "median": 0.04188,
+          "frac_le_k4": 0.04
+        },
+        "G2/KW:EGYPT": {
+          "q01": 0.03542,
+          "median": 0.04274,
+          "frac_le_k4": 0.05
+        },
+        "G2/KW:BERLIN": {
+          "q01": 0.03607,
+          "median": 0.0436,
+          "frac_le_k4": 0.02
+        },
+        "G2/KW:CLOCK": {
+          "q01": 0.03672,
+          "median": 0.04231,
+          "frac_le_k4": 0.01
+        },
+        "G2/KW:MESSAGE": {
+          "q01": 0.03628,
+          "median": 0.04263,
+          "frac_le_k4": 0.01
+        },
+        "G2/KW:CLUES": {
+          "q01": 0.03586,
+          "median": 0.0422,
+          "frac_le_k4": 0.02
+        }
+      },
+      "excluded": 17,
+      "excluded_by_type": {
+        "G1": 6,
+        "G3": 5,
+        "G2": 6
+      },
+      "per_group_plants": 100,
+      "k4_ic": 0.036082
+    },
+    "verdict": {
+      "logical": "refuted within the stated scope (main min h 14, per-position wobble min 12)",
+      "rarer_than_random": "cannot say (both within the null)",
+      "ic": "17/36 groups"
+    }
+  },
+  "ep0208": {
+    "family": "E01 open band: row of position i = (c + dir*(i mod p)) mod |W|, row 0 at K4's first letter",
+    "commits": {
+      "prereg": "8e86742",
+      "controls": "25f3b8e",
+      "k4_null": "fb071c3",
+      "diagnostics": "909b085",
+      "record": "3bfd3e0"
+    },
+    "band": [
+      26,
+      27,
+      28,
+      29,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73
+    ],
+    "layer1_p": [
+      28,
+      26
+    ],
+    "N": {
+      "L1": 76038,
+      "L2": 872610,
+      "dup_excluded": 11252,
+      "dup_L1": 754,
+      "dup_L2": 10498,
+      "ref_d1": 38396
+    },
+    "bits": {
+      "L1": 16.21,
+      "L2": 19.73
+    },
+    "dup_pairs_recorded_in_count_log": {
+      "98:K1": [
+        26,
+        65
+      ],
+      "KW:KRYPTOS_WORDS": [
+        62
+      ],
+      "KW:EGYPT": [
+        70
+      ],
+      "KW:BERLIN": [
+        72
+      ],
+      "KW:CLOCK": [
+        54,
+        72
+      ],
+      "KW:MESSAGE": [
+        63
+      ],
+      "KW:CLUES": [
+        63
+      ]
+    },
+    "dup_pairs_stated_in_record": 11,
+    "E_recorded": {
+      "L1 h<=2": 1.4e-24,
+      "L2 h<=2": 1.7e-23
+    },
+    "k4": {
+      "L1": {
+        "min": 18,
+        "hist": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          27,
+          146,
+          968,
+          4002,
+          12639,
+          27380,
+          30876
+        ]
+      },
+      "L2": {
+        "min": 16,
+        "hist": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          35,
+          233,
+          1732,
+          10665,
+          47174,
+          145954,
+          310287,
+          356529
+        ]
+      },
+      "dup": {
+        "min": 18,
+        "hist": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          25,
+          117,
+          567,
+          1911,
+          4106,
+          4524
+        ]
+      },
+      "ref": {
+        "min": 17,
+        "hist": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          2,
+          8,
+          78,
+          475,
+          2054,
+          6434,
+          13672,
+          15673
+        ]
+      }
+    },
+    "k4_per_group_min": {
+      "L1 98:K1": 18,
+      "dup 98:K1": 19,
+      "L2 98:K1": 18,
+      "ref 98:K1": 19,
+      "L1 98:K2": 18,
+      "L2 98:K2": 16,
+      "ref 98:K2": 17,
+      "L1 98:K3": 18,
+      "L2 98:K3": 18,
+      "ref 98:K3": 19,
+      "L1 98:K1-K3": 18,
+      "L2 98:K1-K3": 17,
+      "ref 98:K1-K3": 18,
+      "L1 98:WorldClock146": 18,
+      "L2 98:WorldClock146": 17,
+      "ref 98:WorldClock146": 17,
+      "L1 98:keywords": 19,
+      "L2 98:keywords": 18,
+      "ref 98:keywords": 19,
+      "L1 KW:KRYPTOS_WORDS": 18,
+      "L2 KW:KRYPTOS_WORDS": 17,
+      "dup KW:KRYPTOS_WORDS": 19,
+      "ref KW:KRYPTOS_WORDS": 19,
+      "L1 KW:EGYPT": 18,
+      "L2 KW:EGYPT": 17,
+      "dup KW:EGYPT": 18,
+      "ref KW:EGYPT": 18,
+      "L1 KW:BERLIN": 18,
+      "L2 KW:BERLIN": 18,
+      "dup KW:BERLIN": 19,
+      "ref KW:BERLIN": 19,
+      "L1 KW:CLOCK": 19,
+      "L2 KW:CLOCK": 18,
+      "dup KW:CLOCK": 19,
+      "ref KW:CLOCK": 19,
+      "L1 KW:MESSAGE": 19,
+      "L2 KW:MESSAGE": 18,
+      "dup KW:MESSAGE": 20,
+      "ref KW:MESSAGE": 20,
+      "L1 KW:CLUES": 18,
+      "L2 KW:CLUES": 18,
+      "dup KW:CLUES": 18,
+      "ref KW:CLUES": 18
+    },
+    "null": {
+      "n": 20,
+      "seed": 208,
+      "shuffle_mins": {
+        "L1": [
+          17,
+          18,
+          18,
+          17,
+          17,
+          18,
+          17,
+          17,
+          17,
+          18,
+          17,
+          17,
+          15,
+          17,
+          17,
+          18,
+          16,
+          17,
+          17,
+          18
+        ],
+        "L2": [
+          16,
+          15,
+          17,
+          17,
+          16,
+          16,
+          16,
+          16,
+          17,
+          17,
+          17,
+          17,
+          16,
+          16,
+          17,
+          16,
+          16,
+          17,
+          17,
+          17
+        ],
+        "dup": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          17,
+          18,
+          18,
+          18,
+          17,
+          19,
+          18,
+          17,
+          17,
+          18,
+          18,
+          18,
+          18,
+          18,
+          18
+        ],
+        "ref": [
+          18,
+          18,
+          17,
+          18,
+          18,
+          17,
+          18,
+          18,
+          18,
+          17,
+          18,
+          18,
+          17,
+          17,
+          17,
+          17,
+          18,
+          17,
+          18,
+          18
+        ]
+      },
+      "P": {
+        "L1": 1.0,
+        "L2": 0.5,
+        "dup": 0.95,
+        "ref": 0.4
+      }
+    },
+    "plants": {
+      "band/exact": "20/20",
+      "band/two_subs": "20/20",
+      "L1/exact": "10/10",
+      "L1/two_subs": "10/10",
+      "alias_hits_h_le_2": 13
+    },
+    "diagnostics_outside_rules": {
+      "m5_settings": {
+        "L1": 65550,
+        "L2": 752250
+      },
+      "self_encrypted_crib_positions": [
+        32,
+        73
+      ],
+      "m1_m4_settings_matching_both_32_and_73": {
+        "L1": 34,
+        "L2": 366
+      }
+    },
+    "verdict": {
+      "logical": "refuted within the stated scope (L1 min h 18, L2 min h 16); for m5 (86% of settings) two mismatches are forced, so the closure there holds only up to 0 misspellings",
+      "rarer_than_random": "cannot say (P 1.00 and 0.50)"
+    }
+  },
+  "cover_bound_computed_for_this_note": {
+    "what": "Selection-free cover (the EP-0114 argument): with one reading for all positions, a crib position that no row of the list can produce is a mismatch in every setting of every row rule. Lower bound on h = min over the 29 readings of the number of such positions. Computed when this Note was written, with the author's tables; not part of the EP records.",
+    "bound_per_list": {
+      "98:K1": 14,
+      "98:K2": 8,
+      "98:K3": 9,
+      "98:K1-K3": 6,
+      "98:WorldClock146": 4,
+      "98:keywords": 6,
+      "KW:KRYPTOS_WORDS": 7,
+      "KW:EGYPT": 10,
+      "KW:BERLIN": 8,
+      "KW:CLOCK": 12,
+      "KW:MESSAGE": 8,
+      "KW:CLUES": 8
+    },
+    "bound_per_list_with_ep0198_blank_rule_a": {
+      "98:K1": 13,
+      "98:K2": 8,
+      "98:K3": 7,
+      "98:K1-K3": 6,
+      "98:WorldClock146": 3,
+      "98:keywords": 5,
+      "KW:KRYPTOS_WORDS": 6,
+      "KW:EGYPT": 9,
+      "KW:BERLIN": 7,
+      "KW:CLOCK": 11,
+      "KW:MESSAGE": 8,
+      "KW:CLUES": 7
+    }
+  }
+}

@@ -6,6 +6,20 @@ lang: en
 
 This is the historical log. For current claims, start with the [research-area index](/en/research/).
 
+## 2026-10-11
+
+- **KRYPTOS-K4-EP-0241** · Negative Result — [Two-stage and error-family records show no registered passes in tested scopes](/en/research/kryptos-k4-two-stage-and-errors/)
+- **KRYPTOS-K4-EP-0232** · Negative Result — [Do the listed printed procedures fit the public K4 cribs?](/en/research/kryptos-k4-printed-procedures/)
+- **KRYPTOS-K4-EP-0221** · Negative Result — [Do the listed two-stage fractionation families fit the public K4 cribs?](/en/research/kryptos-k4-two-stage-fractionation/)
+- **KRYPTOS-K4-EP-0218** · Negative Result — [Do Hill's printed transformations fit the public K4 cribs?](/en/research/kryptos-k4-hill-printed/)
+- **KRYPTOS-K4-EP-0206** · Negative Result — [K4 matches in public machine families are bounded to finite recorded settings](/en/research/kryptos-k4-public-machines/)
+- **KRYPTOS-K4-EP-0200** · Negative Result — [Recorded results and verification limits for finite square-list families](/en/research/kryptos-k4-square-lists/)
+- **KRYPTOS-K4-EP-0196** · Negative Result — [A finite test of fixed row lists against the K4 cribs](/en/research/kryptos-k4-fixed-row-lists/)
+- **KRYPTOS-K4-EP-0195** · Negative Result — [Do registered free-square mask families fit the public K4 cribs?](/en/research/kryptos-k4-free-squares-masks/)
+- **KRYPTOS-K4-EP-0188** · Finding — [Auditing K4 premise records while separating settled counts from unknowns](/en/research/kryptos-k4-premise-audit/)
+## 2026-10-02
+
+- **GPU-SCHED-EP-0030** · Finding — [Gang mix reverses the fragmentation ranking; a load control explains much of the gap](/en/research/gpu-scheduling-headroom/)
 ## 2026-10-01
 
 - **KRYPTOS-K4-EP-0186** · Negative Result — [Does a transposition fixed by K4's layout, followed by the procedure enumerator, fit K4?](/en/research/kryptos-k4-layout-transposition/)

@@ -61,11 +61,11 @@ v0.5では、写真の文字にカメラと円筒を当てはめて列の間隔�
 <!-- GENERATED: program-current:START -->
 ## 現在の公開結論
 
-復号はしていません。新しい平文文字は0です（2026-10-02時点）。検証できたのは「短く書ける手順がcrib 24文字と両立するか」だけで、答えはすべて「両立しない」でした。K1〜K3と同じ「1枚の表のずらし」の形に加え、それを外した別方式（2文字の方陣、Hill、Slidefair・Portax・Doppelkasten、ロータ機、Enigma型＋前段の置換）や、部品の文法から作った4.7×10¹⁵手順の列挙器も、判定できる範囲では候補なしでした。列挙器はcribの誤りを7文字まで許しても、語の中の並べ替えを許しても0件です。どれも論理的な反証で、でたらめより起きにくいとは言えません。K4の文字頻度は平らで、行を一様に選ぶ模型では1位置あたり3 bit以上の行の広がりが要り（模型の中の量）、手製の表・同音・符号帳などは、表や装置、K5の出どころがなければ判定できません。W区間をTOKIOと読むパターンは、標的リストを選ぶ自由まで払うと偶然と両立します（期待0.054、EP-0135）。彫刻の制作・施工の事実から決まる演算子は、判定できないか否定され、K1〜K3の配置は字幅で決まっていて方式の痕跡を残していません（EP-0140、EP-0141）。これまでの検定が覆った能力を行列にすると、空きは11群あり、ほとんどは演算子を決める出どころがありません。出どころのあった起点の決まった特徴も0件でした（EP-0142、EP-0143）。暗号文だけで見える幅21の偏りは本物らしいものの、21を指すのは1つの対の表だけで、K5と平文への予言を封印しました（EP-0146）。その後、cribの位置のずれ、機械や塊の方式の位相の切れ目、平文で進む鍵、表#3の折り線、K4の刻まれた形などの上の経路で作った配置の転置＋列挙器を調べ、判定できる形はすべて両立しませんでした（EP-0165〜0186）。Hagelin型＋切れ目は、K4自身のcribの段の下に植え込んだ対照5本で族の中で閉になりました（5/5を回収、K4の38.64は閾値40.4より下、2026-10-02）。Wを飛ばす索引での両側のmaskは英語度の段で候補0でしたが、検出力0.56で判定できないままです。CM-Bifidの残りの設定と自由なFour-squareの設定も判定できないままです。
+解読なし、新しい平文文字0（2026-10-11）。第10〜15ラウンドで、固定した行の一覧、公開機、方陣とmask、印刷されたHill・古典手順、異種2段と配置の転置を検定しました。登録した有限族の決定可能な列に通過はありませんでした。これは述べた設定と誤り許容の範囲の論理的な陰性で、方式一般の否定でも、K4がでたらめより起きにくいという支持でもありません。前提監査の判定一致が不足した箇所、自由な表・長い周期のmask、語内並べ替えとの自由方陣228設定など、両立と未判定を別に残しています。EP-0213の二方陣12類と非全単射Four-squareの3類は両立したまま、EP-0222の16方陣の部分集合外と停止した枝も未検定です。公開パッケージは数・判定器・保存された集計の限定検算で、元の全探索を一括で再実行するものではありません。 直近ではcrib間のずれと誤り、自由cubeのTrifid、cribごとの2方式、印刷cubeを固定した2段、Hillと方陣の2段でも登録通過0でした。Hill×方陣の1列は26方陣部分集合のnullで、全空間を検定していません。K4への事前接触と事後の診断指標選択がある検定は独立確認として扱いません。
 
-**証拠の境界：** 公開暗号文と24文字のcrib、彫刻の公開写真を使った探索的な計算です。後半の検定の多くはK4に回す前にコミットしましたが、外部の事前登録はなく、外部の独立replicationも暗号専門家のレビューもありません。正解は存在しますが公開されていません。
+**証拠の境界：** 公開暗号文と24文字のcribに対する探索的な計算。後半の検定の多くはK4に当てる前にlocal commitで固定しましたが、外部の事前登録はなく、一部の事前試行や判定器の訂正を開示しています。公開の内部検算は独立再現ではありません。外部の独立replication・暗号専門家レビューは0。正解は存在しますが公開されていません。
 
-**[現在のResearch Note（EP-0186）を読む →](/ja/research/kryptos-k4-layout-transposition/)**
+**[現在のResearch Note（EP-0241）を読む →](/ja/research/kryptos-k4-two-stage-and-errors/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -102,9 +102,23 @@ v0.5では、写真の文字にカメラと円筒を当てはめて列の間隔�
 29. [[ja/research/kryptos-k4-block-phase-shift/index|EP-0169 — 組み方の位相を1回ずらすと、方陣とBifidの暗号は開くか]]
 30. [[ja/research/kryptos-k4-plaintext-keys/index|EP-0179 — 平文で変わる鍵（平文autokey、平文で進む索引の周期鍵）は、K4のcribと合うか]]
 31. [[ja/research/kryptos-k4-w-morse-digits/index|EP-0182 — Wを空文字とみる索引、逆向きの鍵、Morse上のmask、桁ごとの加算で、K4を作れるか]]
-32. **[[ja/research/kryptos-k4-layout-transposition/index|EP-0186 — K4の配置で決まる転置のあとに手順の列挙器をかけると、K4に合うか]]（最新）**
+32. [[ja/research/kryptos-k4-layout-transposition/index|EP-0186 — K4の配置で決まる転置のあとに手順の列挙器をかけると、K4に合うか]]
+33. [[ja/research/kryptos-k4-premise-audit/index|EP-0188 — K4の前提記録を監査し、確定と未判定を分ける]]
+34. [[ja/research/kryptos-k4-free-squares-masks/index|EP-0195 — 登録済み自由方陣マスク族は公開 crib と整合するか]]
+35. [[ja/research/kryptos-k4-fixed-row-lists/index|EP-0196 — 固定した行リストをcribで調べた有限範囲]]
+36. [[ja/research/kryptos-k4-square-lists/index|EP-0200 — 正方形リストを使う有限族の記録結果と検証範囲]]
+37. [[ja/research/kryptos-k4-public-machines/index|EP-0206 — 公開機械族でのK4一致は有限設定の記録に限る]]
+38. [[ja/research/kryptos-k4-hill-printed/index|EP-0218 — Hillの印刷変換は公開 K4 crib と整合するか]]
+39. [[ja/research/kryptos-k4-two-stage-fractionation/index|EP-0221 — 列挙した二段階分画族は公開 K4 crib と整合するか]]
+40. [[ja/research/kryptos-k4-printed-procedures/index|EP-0232 — 列挙した印刷手順は公開 K4 crib と整合するか]]
+41. **[[ja/research/kryptos-k4-two-stage-and-errors/index|EP-0241 — 二段階・誤差族の記録では検査範囲内の登録通過なし]]（最新）**
 <!-- GENERATED: program-history:END -->
 
 ## 出典
 
 Jim Sanborn, *Kryptos*（1990）。暗号文は[Wikipedia](https://en.wikipedia.org/wiki/Kryptos)と[Elonka Dunin](https://elonka.com/kryptos/)の転記による。cribの公開：[WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/)、[WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/)、NPR 2020（[transcript](https://www.kunc.org/2020-01-30/a-new-and-final-clue-to-kryptos-a-long-standing-puzzle)）、`EAST` は[Elonka Duninのarchive](https://elonka.com/kryptos/)。Scheidtの発言（英語をmaskした、まず技法を解く）：[WIRED 2005](https://www.wired.com/2005/01/inside-info-on-kryptos-codes/)。Sanbornの2025年のヒント：[Scientific American](https://www.scientificamerican.com/article/cia-kryptos-puzzle-creator-releases-final-clues/)。2025年の資料での発見：[RR Auction](https://content.rrauction.com/kryptos-k4-discovered-not-solved-heres-what-actually-happened/)。暗号文とcribは研究と論評のための引用であり、このサイトのライセンスの対象外です。
+
+
+## 2026-10-11時点の整理
+
+完了済みのEP-0188〜0241を9つの新しいNoteと既存Noteの追記に分けた。登録有限族の陰性、自由方陣の両立・未判定、対照失敗で止めた枝、K4接触後の診断選択を別に示す。EP-0224は残る対照を実行中で、この完了範囲に含めない。公開検算は元探索の全数再実行や独立replicationではない。新しい平文文字0。直近の結果は[こちら](/ja/research/kryptos-k4-two-stage-and-errors/)。

@@ -567,3 +567,103 @@ notes:
     type: Finding
     publication:
       status: publishable
+
+  - research_id: KRYPTOS-K4-EP-0188
+    source_episode: KRYPTOS-K4/EP-0188
+    source_episode_sha256: b10d035bd88c2c8f8fd86191f75ac71664f600e10b376df3ec8bf891326f80e2
+    views:
+      ja: content/ja/research/kryptos-k4-premise-audit/index.md
+      en: content/en/research/kryptos-k4-premise-audit/index.md
+    type: Finding
+    publication:
+      status: publishable
+
+  - research_id: KRYPTOS-K4-EP-0195
+    source_episode: KRYPTOS-K4/EP-0195
+    source_episode_sha256: 7ee86b1668f64ee244a9fece8170dda626fc77086e2e32b3770c61b1016829fc
+    views:
+      ja: content/ja/research/kryptos-k4-free-squares-masks/index.md
+      en: content/en/research/kryptos-k4-free-squares-masks/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+
+  - research_id: KRYPTOS-K4-EP-0196
+    source_episode: KRYPTOS-K4/EP-0196
+    source_episode_sha256: f2ff8d5e0fadb8370a84a2cf01f20da2408e9304ea2cc6b34277cf462917b85f
+    views:
+      ja: content/ja/research/kryptos-k4-fixed-row-lists/index.md
+      en: content/en/research/kryptos-k4-fixed-row-lists/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+
+  - research_id: KRYPTOS-K4-EP-0200
+    source_episode: KRYPTOS-K4/EP-0200
+    source_episode_sha256: 49b73d5dc511003122bff8d840cda15b61563d25fb07c0c9eecdf3c840a08305
+    views:
+      ja: content/ja/research/kryptos-k4-square-lists/index.md
+      en: content/en/research/kryptos-k4-square-lists/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+
+  - research_id: KRYPTOS-K4-EP-0206
+    source_episode: KRYPTOS-K4/EP-0206
+    source_episode_sha256: 91d9dd2ac17c054b8bae47719c13f152edf0fca3f2be151eff67ebd38a287984
+    views:
+      ja: content/ja/research/kryptos-k4-public-machines/index.md
+      en: content/en/research/kryptos-k4-public-machines/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+
+  - research_id: KRYPTOS-K4-EP-0218
+    source_episode: KRYPTOS-K4/EP-0218
+    source_episode_sha256: 1f5afa09da4e12a3b63bcd1f56ebaf3566b4e543548701267ad2cf17b2945d57
+    views:
+      ja: content/ja/research/kryptos-k4-hill-printed/index.md
+      en: content/en/research/kryptos-k4-hill-printed/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+
+  - research_id: KRYPTOS-K4-EP-0221
+    source_episode: KRYPTOS-K4/EP-0221
+    source_episode_sha256: c9e7a11e209556aca518fa45ae363b11765223321dc751af0d2773606ed0ec3a
+    views:
+      ja: content/ja/research/kryptos-k4-two-stage-fractionation/index.md
+      en: content/en/research/kryptos-k4-two-stage-fractionation/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+
+  - research_id: KRYPTOS-K4-EP-0232
+    source_episode: KRYPTOS-K4/EP-0232
+    source_episode_sha256: 1de3b47a3cb766c7b051d6344db1b204119449d70e3373b2714af225663d43af
+    views:
+      ja: content/ja/research/kryptos-k4-printed-procedures/index.md
+      en: content/en/research/kryptos-k4-printed-procedures/index.md
+    type: Negative Result
+    publication:
+      status: publishable
+
+  - research_id: GPU-SCHED-EP-0030
+    source_episode: GPU-SCHEDULING/EP-0030
+    source_episode_sha256: 7e6375fa8addfdac5fbd3737b938bf0e4f4e6a61ed49732163813d36ab29a398
+    views:
+      ja: content/ja/research/gpu-scheduling-headroom/index.md
+      en: content/en/research/gpu-scheduling-headroom/index.md
+    type: Finding
+    publication:
+      status: publishable
+
+  - research_id: KRYPTOS-K4-EP-0241
+    source_episode: KRYPTOS-K4/EP-0241
+    source_episode_sha256: 2bfb1fc591b586fe1323fee84a38d7174ea6ba5a7588a5349179b3cc67acdfc2
+    views:
+      ja: content/ja/research/kryptos-k4-two-stage-and-errors/index.md
+      en: content/en/research/kryptos-k4-two-stage-and-errors/index.md
+    type: Negative Result
+    publication:
+      status: publishable

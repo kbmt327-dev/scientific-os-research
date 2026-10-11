@@ -37,3 +37,5 @@ The quick reproduction command validates public digests and bounded deterministi
 Use Issues for concrete defects and Discussions for replication reports, counterexamples, interpretations, and collaboration. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Do not silently change sealed artifacts, erase failed predictions, broaden a claim beyond its evidence class, or submit confidential data. The original code and datasets do not share one blanket reuse license; see [LICENSES.md](LICENSES.md).
+
+- GPU-SCHED-EP-0030: [summary and bounded verifier](reproduction/gpu-scheduling-headroom/README.md) · [日本語](content/ja/research/gpu-scheduling-headroom/index.md) · [English](content/en/research/gpu-scheduling-headroom/index.md)

@@ -1,0 +1,4 @@
+command=python -B verify_premise_audit.py
+exit_code=0
+elapsed_seconds=0.09
+PASS public aggregate metadata; no search rerun; new plaintext 0

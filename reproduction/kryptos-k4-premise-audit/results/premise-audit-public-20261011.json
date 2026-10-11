@@ -1,0 +1,23 @@
+{
+  "publication_scope": "aggregate_metadata_only",
+  "source_episodes": ["EP-0188", "EP-0189", "EP-0190", "EP-0191", "EP-0192", "EP-0194"],
+  "ep0188": {
+    "ledger_rows": 100,
+    "premises": 20,
+    "grade_counts": {"A": 4, "A-": 4, "B": 9, "C": 3},
+    "double_coded_rows": 14,
+    "mean_jaccard": 0.8,
+    "rows_without_dependency": 4
+  },
+  "ep0189": {"rows": 62, "salvaged_groups": 6, "threshold": 7},
+  "ep0190": {"groups_with_reported_zero_exact_hits": ["G2", "G3", "G4", "G5", "G6"]},
+  "ep0191": {
+    "rows_coded": 72,
+    "rows_in_ep0188_summary": 73,
+    "states": {"undecidable": 36, "unknown": 16, "done": 7, "decidable_untested": 13},
+    "multiplier_recorded": 172501,
+    "multiplier_recomputed": 173101
+  },
+  "ep0192": {"finite_groups": 6, "groups_with_zero_exact_hits": 6, "T6_settings": 1898208, "T6_best_matched": 8},
+  "ep0194": {"unknown_subfamily_count": 1}
+}

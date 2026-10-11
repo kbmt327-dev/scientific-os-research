@@ -125,3 +125,10 @@ An exact solver for the double-pass Doppelkasten that treats the intermediate le
 
 - K4 ciphertext and cribs: Jim Sanborn, *Kryptos* (1990); [Wikipedia](https://en.wikipedia.org/wiki/Kryptos); [Elonka Dunin](https://elonka.com/kryptos/); [WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/), [WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/), NPR 2020.
 - Slidefair and Portax: American Cryptogram Association, cipher type descriptions ([ACA](https://www.cryptogram.org/resource-area/cipher-types/)).
+
+
+## Later checks (2026-10-11)
+
+The registered arrangements of double Doppelkasten also gave no pass in later finite tests. This does not close arbitrary squares or arrangements.
+
+Lightweight public verification is distinct from the full search reported by the source records. New plaintext letters and independent replications remain zero. [Later tests and verification scope](/en/research/kryptos-k4-square-lists/).

@@ -1,0 +1,54 @@
+{
+  "publication_scope": "source_record_aggregate_projection",
+  "public_verification_scope": "inventory_and_histogram_arithmetic_only",
+  "inventory": {
+    "worldclock_places": 146,
+    "keyword_seeds": 40,
+    "unique_squares": 185,
+    "pairings": 48,
+    "adjacent_modes": 3,
+    "segment_starts": 6,
+    "bifid_settings": 2765
+  },
+  "families": [
+    {
+      "episode": "EP-0193 T1",
+      "recorded_exact_passes": 0,
+      "public_scan_rerun": false,
+      "nulls": null
+    },
+    {
+      "episode": "EP-0199",
+      "minimum_mismatches": 13,
+      "registered_exact_passes": 0,
+      "nulls": {"n": 200, "minimum_mismatch_histogram": {"11": 3, "12": 55, "13": 137, "14": 5}, "share_at_or_below_observed": 0.975}
+    },
+    {
+      "episode": "EP-0200",
+      "minimum_mismatches": 11,
+      "registered_exact_passes": 0,
+      "nulls": {"n": 10, "minimum_mismatch_histogram": {"11": 1, "12": 7, "13": 2}, "share_at_or_below_observed": 0.1}
+    },
+    {
+      "episode": "EP-0201",
+      "joint_minimum_mismatches": 8,
+      "registered_passes_h_le_2": 0,
+      "nulls": {"n": 2000, "joint_minimum_mismatch_histogram": {"7": 22, "8": 356, "9": 1116, "10": 495, "11": 11}, "share_at_or_below_observed": 0.189}
+    },
+    {
+      "episode": "EP-0205",
+      "minimum_mismatches": 14,
+      "registered_exact_passes": 0,
+      "nulls": {"n": 20, "minimum_mismatch_histogram": {"12": 1, "13": 7, "14": 12}, "share_at_or_below_observed": 1.0}
+    },
+    {
+      "episode": "EP-0228",
+      "settings": 48608736,
+      "minimum_mismatches": 15,
+      "registered_passes": 0,
+      "nulls": {"n": 20, "minimum_mismatch_histogram": {"13": 1, "14": 9, "15": 10}, "share_at_or_below_observed": 1.0},
+      "recorded_p": 1.0
+    }
+  ],
+  "interpretation": "Null shares are descriptive finite-sample comparisons, not independent p-values."
+}

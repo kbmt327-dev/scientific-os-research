@@ -1,0 +1,6 @@
+command=python -B verify_fixed_row_lists.py
+exit_code=0
+elapsed_seconds=0.67
+PASS: public subset checks and aggregate arithmetic completed.
+Scope: EP-0196, EP-0197, and EP-0208 rerun on eight public lists; EP-0198, omitted lists, null generation, planted controls, and IC checks remain source-record-only.
+Record discrepancy: EP-0208 prose states 11 qualifying list-period pairs; input sizes yield 9, consistent with the recorded excluded-setting count.

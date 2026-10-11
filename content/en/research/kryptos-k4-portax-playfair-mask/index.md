@@ -144,3 +144,10 @@ First a control design under which long-period m2 can be decided (plants solved 
 
 - K4 ciphertext and cribs: Jim Sanborn, *Kryptos* (1990); [Wikipedia](https://en.wikipedia.org/wiki/Kryptos); [Elonka Dunin](https://elonka.com/kryptos/); crib releases [WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/), [WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/), NPR 2020.
 - Portax and Playfair: American Cryptogram Association cipher type descriptions ([ACA](https://www.cryptogram.org/resource-area/cipher-types/)).
+
+
+## Later checks (2026-10-11)
+
+EP-0212 extended free-square Playfair→mask to frozen world-clock place names and both Beaufort directions. None of the 47,328 settings was compatible even after dropping one crib letter. Public verification does not rerun this full search. Undecided long-period free masks remain separate.
+
+Lightweight public verification is distinct from the full search reported by the source records. New plaintext letters and independent replications remain zero. [Later tests and verification scope](/en/research/kryptos-k4-free-squares-masks/).

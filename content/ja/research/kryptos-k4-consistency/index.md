@@ -125,3 +125,10 @@ tags:
 
 - K4の暗号文とcrib：Jim Sanborn, *Kryptos*（1990）。[Wikipedia](https://en.wikipedia.org/wiki/Kryptos)、[Elonka Dunin](https://elonka.com/kryptos/)、[WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/)、[WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/)、NPR 2020。
 - SlidefairとPortax：American Cryptogram Associationの暗号の種類の説明（[ACA](https://www.cryptogram.org/resource-area/cipher-types/)）。
+
+
+## その後の点検（2026-10-11）
+
+2回がけDoppelkastenの登録済みの組み方は、後続の有限検定でも通過0でした。自由な方陣や、別の組み方一般を閉じた結果ではありません。
+
+公開パッケージの軽い検算と、元の研究記録が報告した全探索は別です。新しい平文文字は0、外部の独立再現は0件です。 [後続の検定と検算の範囲](/ja/research/kryptos-k4-square-lists/).

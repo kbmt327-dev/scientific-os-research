@@ -123,3 +123,10 @@ None planned inside this grammar. A transposition family would need an outside r
 ## Sources
 
 - K4 ciphertext and cribs: Jim Sanborn, *Kryptos* (1990); [Wikipedia](https://en.wikipedia.org/wiki/Kryptos); [Elonka Dunin](https://elonka.com/kryptos/); crib releases [WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/), [WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/), NPR 2020.
+
+
+## Later checks (2026-10-11)
+
+Finite tests placed listed layout permutations around squares, masks and distinct fractionation stages, with no registered pass. Stage order was fixed in each test; this neither adds arbitrary permutations nor refutes these ciphers in general.
+
+Lightweight public verification is distinct from the full search reported by the source records. New plaintext letters and independent replications remain zero. [Later tests and verification scope](/en/research/kryptos-k4-two-stage-fractionation/).

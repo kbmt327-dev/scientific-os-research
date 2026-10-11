@@ -123,3 +123,10 @@ None within these families. Machines with two free wirings cannot be decided fro
 
 - K4 ciphertext and cribs: Jim Sanborn, *Kryptos* (1990); [Wikipedia](https://en.wikipedia.org/wiki/Kryptos); [Elonka Dunin](https://elonka.com/kryptos/); [WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/), [WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/), NPR 2020.
 - Enigma wirings: [Crypto Museum, Enigma wiring](https://www.cryptomuseum.com/crypto/enigma/wiring.htm).
+
+
+## Later checks (2026-10-11)
+
+Later finite tests added Enigma I, QW entry conventions, layout permutations and crib-gap offsets. No registered pass was found within the listed machines and each column's rule; arbitrary wirings are not refuted.
+
+Lightweight public verification is distinct from the full search reported by the source records. New plaintext letters and independent replications remain zero. [Later tests and verification scope](/en/research/kryptos-k4-public-machines/).

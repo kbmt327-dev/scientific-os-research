@@ -1,0 +1,13 @@
+{
+  "slug": "kryptos-k4-hill-printed",
+  "projection_only": true,
+  "registered_search_rerun": false,
+  "new_plaintext_characters": 0,
+  "independent_replications": 0,
+  "episodes": [
+    {"episode": "EP-0216", "search_space": 32, "registered_pass_count": 0, "finding": "no label passed its registered decidable threshold", "null_shuffles": 1000},
+    {"episode": "EP-0217", "search_space": 1839948, "registered_pass_count": 0, "minimum_h": {"R3-7": 13, "R1-7": 16, "R1-8": 13}, "null_shuffles": 20},
+    {"episode": "EP-0218", "search_space": 348, "registered_rule": "h<=2", "registered_pass_count": 0, "minimum_h": 19, "null_shuffles": 200, "reported_null_p": 0.435, "printed_example_checks": "57/57"},
+    {"episode": "EP-0230", "search_space": 42, "registered_rule": "h<=2", "registered_pass_count": 0, "minimum_h": 21, "one_cipher_error_auxiliary_minimum_h": 19, "null_shuffles": 1000, "transcription_checks": "80/80"}
+  ]
+}

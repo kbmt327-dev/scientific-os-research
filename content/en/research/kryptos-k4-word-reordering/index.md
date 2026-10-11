@@ -126,3 +126,10 @@ Rerun the families closed outside the grammar (squares, Doppelkasten, periodic H
 ## Sources
 
 - K4 ciphertext and cribs: Jim Sanborn, *Kryptos* (1990); [Wikipedia](https://en.wikipedia.org/wiki/Kryptos); [Elonka Dunin](https://elonka.com/kryptos/); crib releases [WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/), [WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/), NPR 2020.
+
+
+## Later checks (2026-10-11)
+
+EP-0225 applied twenty nonidentity within-word reorderings to twelve families judged on both cribs together, with no registered pass. In EP-0226, no keyword-square setting among 49,528,800 had h≤2; 10,972 of 11,200 free-square settings were infeasible. The remaining 228 were compatible but undecided. Within-word reordering in general is not refuted.
+
+Lightweight public verification is distinct from the full search reported by the source records. New plaintext letters and independent replications remain zero. [Later tests and verification scope](/en/research/kryptos-k4-square-lists/).

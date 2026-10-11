@@ -1,0 +1,357 @@
+{
+ "what": "Lester S. Hill, 'Cryptography in an Algebraic Alphabet', The American Mathematical Monthly 36(6), June-July 1929: the letter-number table of section 2 (p.307) and the two linear ciphers of section 5, Example 1 (type C3, 3x3, printed name T1) and Example 2 (type C4, 4x4, printed name T2), with their printed inverses and worked examples (pp.310-311). Letters as printed (italic lowercase).",
+ "status": "Published in the United States in 1929; in the public domain in the United States. Transcribed by eye from the free page images of the archive.org scan; no page image is included here.",
+ "source": {
+  "item": "https://archive.org/details/sim_american-mathematical-monthly_june-july-1929_36_6",
+  "pages": {
+   "307": {
+    "leaf": 4,
+    "image_sha256": "ecc28bfcedfe2b9630bd9888b8b7867e10dab88bde69012126c2e81abe786963"
+   },
+   "310": {
+    "leaf": 7,
+    "image_sha256": "85dec9522c829a8ae69e6f3259d7ea52e1a8447c4a9db8487e38eb5ee2e0cbc2"
+   },
+   "311": {
+    "leaf": 8,
+    "image_sha256": "083d7d24bdce871719b2915247c1478f5b2573317152d4203bc27781eb29f9ae"
+   }
+  },
+  "transcription": "EP-0230, author's audit repository kryptos-k4-audit, ep0230-hill1929-printed-c3c4-20261010/transcript.json sha256 4c748ecabc80fd09e0b568fba282b9839bb300f085e7258abb02ade2250cdd0c and operators.json sha256 a9895a39b10514322a625dde0efbd1ccc9d7b9466c6e16b238c2704c57696b05 (registered in commit bdff7fa, before K4). Transcription gate: 80/80 hand-copied items (50 coefficients, 28 example cipher letters, 2 determinants) agree with a reconstruction made beforehand from the printed examples."
+ },
+ "table_1929": {
+  "page": 307,
+  "alphabetical_row_letters": "abcdefghijklmnopqrstuvwxyz",
+  "alphabetical_row_numbers": [
+   5,
+   23,
+   2,
+   20,
+   10,
+   15,
+   8,
+   4,
+   18,
+   25,
+   0,
+   16,
+   13,
+   7,
+   3,
+   1,
+   19,
+   6,
+   12,
+   24,
+   21,
+   17,
+   14,
+   22,
+   11,
+   9
+  ],
+  "number_to_letter": "kpcoharngzeysmwflviqduxbtj",
+  "printed_identities": [
+   "c+x=t",
+   "j+w=m",
+   "f+y=k",
+   "-f=y",
+   "-y=f",
+   "an=z",
+   "hm=k",
+   "cr=s"
+  ],
+  "note": "On the journal page f = 15 in both formulations. A web reproduction of the table prints f = 1, which is that reproduction's typo."
+ },
+ "C3": {
+  "page": 310,
+  "printed_name": "T1",
+  "n": 3,
+  "T_equations": {
+   "y1": {
+    "x1": "y",
+    "x3": "o"
+   },
+   "y2": {
+    "x1": "z",
+    "x2": "x"
+   },
+   "y3": {
+    "x1": "r",
+    "x2": "n",
+    "x3": "y"
+   }
+  },
+  "Tinv_equations": {
+   "x1": {
+    "y1": "x",
+    "y2": "z",
+    "y3": "d"
+   },
+   "x2": {
+    "y1": "v",
+    "y2": "n",
+    "y3": "q"
+   },
+   "x3": {
+    "y1": "f",
+    "y2": "q",
+    "y3": "x"
+   }
+  },
+  "absent_terms": "an absent term is the zero letter k (the printed determinant rows show it)",
+  "determinant_rows": [
+   [
+    "y",
+    "k",
+    "o"
+   ],
+   [
+    "z",
+    "x",
+    "k"
+   ],
+   [
+    "r",
+    "n",
+    "y"
+   ]
+  ],
+  "identity_determinant_3Iy": [
+   [
+    "p",
+    "k",
+    "k"
+   ],
+   [
+    "k",
+    "p",
+    "k"
+   ],
+   [
+    "k",
+    "k",
+    "y"
+   ]
+  ],
+  "determinants_printed": {
+   "T": "y",
+   "Tinv": "q"
+  },
+  "example": {
+   "message": "Mississippi",
+   "plain_groups": [
+    "mis",
+    "sis",
+    "sip",
+    "pik"
+   ],
+   "pad_letter": "k",
+   "cipher_groups": [
+    "bqt",
+    "sei",
+    "aep",
+    "yfc"
+   ]
+  },
+  "direction": "p.310 allows enciphering with T (deciphering with T^-1) or enciphering with T^-1 (deciphering with T)"
+ },
+ "C4": {
+  "page": 311,
+  "printed_name": "T2",
+  "n": 4,
+  "T_equations": {
+   "y1": {
+    "x1": "g",
+    "x2": "r",
+    "x3": "z",
+    "x4": "a"
+   },
+   "y2": {
+    "x1": "r",
+    "x2": "z",
+    "x3": "a",
+    "x4": "e"
+   },
+   "y3": {
+    "x1": "a",
+    "x2": "g",
+    "x3": "h",
+    "x4": "z"
+   },
+   "y4": {
+    "x1": "e",
+    "x2": "r",
+    "x3": "y",
+    "x4": "h"
+   }
+  },
+  "Tinv_equations": {
+   "x1": {
+    "y1": "b",
+    "y2": "d",
+    "y3": "a",
+    "y4": "p"
+   },
+   "x2": {
+    "y1": "c",
+    "y2": "y",
+    "y3": "i",
+    "y4": "p"
+   },
+   "x3": {
+    "y1": "c",
+    "y2": "d",
+    "y3": "r",
+    "y4": "j"
+   },
+   "x4": {
+    "y1": "j",
+    "y2": "c",
+    "y3": "x",
+    "y4": "j"
+   }
+  },
+  "identity_determinant_4Ij": [
+   [
+    "p",
+    "k",
+    "k",
+    "k"
+   ],
+   [
+    "k",
+    "p",
+    "k",
+    "k"
+   ],
+   [
+    "k",
+    "k",
+    "p",
+    "k"
+   ],
+   [
+    "k",
+    "k",
+    "k",
+    "j"
+   ]
+  ],
+  "determinants_printed": {
+   "T": "j",
+   "Tinv": "j"
+  },
+  "example": {
+   "message": "Delay operations",
+   "plain_groups": [
+    "dela",
+    "yope",
+    "rati",
+    "onsu"
+   ],
+   "pad_letter": "u",
+   "cipher_groups": [
+    "jcow",
+    "zlvb",
+    "dvle",
+    "qmxc"
+   ]
+  }
+ },
+ "matrices_numeric": {
+  "C3": {
+   "T": [
+    [
+     11,
+     0,
+     3
+    ],
+    [
+     9,
+     22,
+     0
+    ],
+    [
+     6,
+     7,
+     11
+    ]
+   ],
+   "Tinv": [
+    [
+     22,
+     9,
+     20
+    ],
+    [
+     17,
+     7,
+     19
+    ],
+    [
+     15,
+     19,
+     22
+    ]
+   ],
+   "n": 3
+  },
+  "C4": {
+   "T": [
+    [
+     8,
+     6,
+     9,
+     5
+    ],
+    [
+     6,
+     9,
+     5,
+     10
+    ],
+    [
+     5,
+     8,
+     4,
+     9
+    ],
+    [
+     10,
+     6,
+     11,
+     4
+    ]
+   ],
+   "Tinv": [
+    [
+     23,
+     20,
+     5,
+     1
+    ],
+    [
+     2,
+     11,
+     18,
+     1
+    ],
+    [
+     2,
+     20,
+     6,
+     25
+    ],
+    [
+     25,
+     2,
+     22,
+     25
+    ]
+   ],
+   "n": 4
+  }
+ },
+ "matrices_numeric_note": "numbers in the 1929 numbering (k = 0, p = 1, c = 2, ...); row i of T gives y_i from x_1..x_n"
+}

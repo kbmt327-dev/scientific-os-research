@@ -37,6 +37,9 @@ aliases:
 
 <p class="research-area"><b>GPU cluster scheduling</b><a href="/ja/research/gpu-scheduling-locality/" hreflang="ja">日本語</a></p>
 
+> [!important] Follow-up on 2026-10-11
+> The generalized four-policy ranking was withdrawn in EP-0030. The original dated observation is retained. See the [follow-up results](/en/research/gpu-scheduling-headroom/).
+
 ## Current finding
 
 In a model where a gang slows down when it spans extra nodes, we tested whether the ranking of four policies changes. Only one of six sealed predictions held, and the decision prediction (a ranking reversal occurs) failed: zero reversals. The test had little power. In one of the two job mixes fragmentation cannot occur by construction, and at the strongest penalty nearly every cell diverged.
@@ -119,3 +122,9 @@ Zero independent external replications. The seal is a local commit only.
 Seal the post-hoc order srpt < sf_srpt < easy_backfill < fcfs as the decision prediction and test it on fresh seeds, pi {0.05, 0.1, 0.2}, and a gang mix with needs that are not node multiples (e.g. 4/12/24/40).
 
 [[en/research/gpu-scheduling-cold-reader/index|EP-0028]] → EP-0029
+
+## 2026-10-11 correction: EP-0030 retests the four-policy order
+
+The EP-0029 statement that srpt < sf_srpt < easy_backfill < fcfs in eight trace_like rows remains a post-hoc E18 observation. E19 sealed a test of that order on new seeds and gang_odd, and P2 failed. The scorable trace_like rows held the order in 3/3 cases, while gang_odd reversed srpt and sf_srpt in 4/4. We therefore withdraw the old post-hoc order as a cross-mix conclusion or as evidence that size-first policies are generally more robust to fragmentation. The E18 observation remains, bounded to its trace_like mix.
+
+The [EP-0030 note](/en/research/gpu-scheduling-headroom/) records the results, the approximate scope of the load control, and the bounded verifier. The old “Next experiment” section was a proposal at the time of E18 and is superseded by this test result.

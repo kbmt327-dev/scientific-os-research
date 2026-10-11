@@ -134,3 +134,10 @@ Mixed-alphabet Hill on the same pairs (σ⁻¹(M·σ(P) + b) with σ free); othe
 ## Sources
 
 - K4 ciphertext and cribs: Jim Sanborn, *Kryptos* (1990); [Wikipedia](https://en.wikipedia.org/wiki/Kryptos); [Elonka Dunin](https://elonka.com/kryptos/); crib releases [WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/), [WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/), NPR 2020.
+
+
+## Later checks (2026-10-11)
+
+The O-segment affine Hill test in EP-0210 (274 alphabets, four arrangements) had no h≤2 and minimum h=11. In EP-0214, all eight systems with four fixed standard plaintext squares and free ciphertext squares were infeasible; no h≤2 occurred among 54,999,072 settings with ciphertext squares fixed to U². The within-word/free-square combinations in EP-0226 retain 228 compatible but undecided settings.
+
+Lightweight public verification is distinct from the full search reported by the source records. New plaintext letters and independent replications remain zero. [Later tests and verification scope](/en/research/kryptos-k4-square-lists/).

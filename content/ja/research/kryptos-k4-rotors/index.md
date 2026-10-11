@@ -123,3 +123,10 @@ odometerの族はcribの容量に近く（設定36 bit＋自由なロータ1枚�
 
 - K4の暗号文とcrib：Jim Sanborn, *Kryptos*（1990）。[Wikipedia](https://en.wikipedia.org/wiki/Kryptos)、[Elonka Dunin](https://elonka.com/kryptos/)、[WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/)、[WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/)、NPR 2020。
 - Enigmaの配線：[Crypto Museum, Enigma wiring](https://www.cryptomuseum.com/crypto/enigma/wiring.htm)。
+
+
+## その後の点検（2026-10-11）
+
+後続ではEnigma Iを追加し、入口のQW規約、配置の転置、crib間のずれも固定した範囲で検定しました。登録通過0は、公開機の有限一覧と列ごとの規則に限る結果です。自由な配線を持つ機械一般の反証ではありません。
+
+公開パッケージの軽い検算と、元の研究記録が報告した全探索は別です。新しい平文文字は0、外部の独立再現は0件です。 [後続の検定と検算の範囲](/ja/research/kryptos-k4-public-machines/).

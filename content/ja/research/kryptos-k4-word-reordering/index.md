@@ -126,3 +126,10 @@ cribだけで決まる検算も2つ行いました（事後の観察で、検定
 ## 出典
 
 - K4の暗号文とcrib：Jim Sanborn, *Kryptos*（1990）。[Wikipedia](https://en.wikipedia.org/wiki/Kryptos)、[Elonka Dunin](https://elonka.com/kryptos/)。cribの公開：[WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/)、[WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/)、NPR 2020。
+
+
+## その後の点検（2026-10-11）
+
+語の中の20個の非恒等な並べ替えを、両cribを同時に判定する12族へ適用したEP-0225は登録通過0でした。J01×J02のEP-0226では、鍵語方陣の49,528,800設定にh≤2がなく、自由な方陣11,200設定のうち10,972は不成立でした。残る228は両立しただけで判定できません。語の中の並べ替え一般を否定する結果ではありません。
+
+公開パッケージの軽い検算と、元の研究記録が報告した全探索は別です。新しい平文文字は0、外部の独立再現は0件です。 [後続の検定と検算の範囲](/ja/research/kryptos-k4-square-lists/).

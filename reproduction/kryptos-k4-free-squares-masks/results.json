@@ -1,0 +1,16 @@
+{
+  "slug": "kryptos-k4-free-squares-masks",
+  "projection_only": true,
+  "registered_search_rerun": false,
+  "new_plaintext_characters": 0,
+  "independent_replications": 0,
+  "episodes": [
+    {"episode": "EP-0195", "search_space": 324, "registered_rule": "d*=0 and d*<=1 in the preregistered groups", "registered_pass_count": 0, "null_shuffles": 20000},
+    {"episode": "EP-0204", "search_space": 321368, "registered_rule": "d*<=1", "registered_pass_count": 0, "minimum_dstar": {"single_bifid": 3, "q_dropped_four_square": 2}, "null_shuffles": 20000},
+    {"episode": "EP-0212", "search_space": 47328, "registered_rule": "h<=1", "registered_pass_count": 0, "null_zero_mismatch_shuffles": 20, "null_one_drop_shuffles": 3},
+    {"episode": "EP-0213", "search_space": 6048, "registered_rule": "one-square d*<=2", "registered_pass_count": 0, "one_square_minimum_dstar": 6, "two_square_column": "logic-only; not capacity-decidable", "two_square_compatible_labels": 24, "two_square_compatible_classes": 12},
+    {"episode": "EP-0223", "search_space": 219896, "registered_pass_count": 0, "family_minima": {"a_dstar": ">=2", "b_dstar": 2, "c_h": ">=3"}, "null_shuffles": {"a": 2000, "b": 2000, "c": 200}},
+    {"episode": "EP-0229", "surviving_classes_examined": 4, "refuted_classes": 1, "still_compatible_classes": 3, "null_shuffles": 50, "null_removal_p": 0.44},
+    {"episode": "EP-0235", "search_space": 14913936, "registered_rule": "d*<=2", "registered_pass_count": 0, "minimum_dstar": {"order_1": 6, "order_2": 3}, "null_shuffles": 100, "fake_key_null_shuffles": 200}
+  ]
+}

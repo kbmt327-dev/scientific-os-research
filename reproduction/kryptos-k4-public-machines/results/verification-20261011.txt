@@ -1,0 +1,6 @@
+command=python -B verify_public_machines.py
+exit_code=0
+elapsed_seconds=2.97
+PASS: machine components, small slices, counts, and chance arithmetic completed.
+Scope: full CPU/GPU sweeps, null generation, and confirmation statistic remain source-record-only.
+EP-0207 post-hoc observation remains unconfirmed; recorded p=0.415.

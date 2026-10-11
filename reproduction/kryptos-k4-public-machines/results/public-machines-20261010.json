@@ -1,0 +1,967 @@
+{
+  "symbols": {
+    "h": "number of the 24 crib positions where the machine's output differs from the carved letter (machines with no free part)",
+    "d_star": "fewest crib positions to drop so that the free part (sigma, or the disk order) exists; EP-0207's record calls it e, EP-0215's record calls it h",
+    "E": "expected number of chance passes on a random ciphertext (closed form)",
+    "P": "share of null texts whose minimum is <= K4's minimum (ties counted on the null side)",
+    "QW": "entry-wheel reading contact = QWERTZ.index(letter) (key Q at contact A)",
+    "QWi": "entry-wheel reading contact = AZ.index(QWERTZ[letter]) (the reading EP-0132 and EP-0193 used)"
+  },
+  "EP-0193_T2": {
+    "family": "Enigma I (rotors I-V, reflectors A/B/C; 30 machines) behind a free substitution sigma; no plugboard; Pi = id",
+    "origin": "a proposal round (ideas only, no computation); a check of earlier tests found that EP-0132 had scanned only the commercial machines, not Enigma I",
+    "settings": {
+      "machines": 30,
+      "rotor_orders": 6,
+      "entry_wheels": 2,
+      "offsets_LMR": 17576,
+      "reflector_positions": 26,
+      "turnover_phases": 676,
+      "N": 111209679360,
+      "log2_N": 36.69
+    },
+    "entry_wheels": [
+      "QWERTZ read as QWi",
+      "identity"
+    ],
+    "pass_rule": "the 24 values E_t(C_j) define a consistent injection (d* = 0)",
+    "expected_chance_passes": 7.9e-07,
+    "test_vectors": {
+      "AAA AAAAA": "BDZGO",
+      "ADU AAAA": "EQIB",
+      "reproduced": true
+    },
+    "plants": {
+      "recovered": "5/5",
+      "passes_per_plant": [
+        120,
+        48,
+        1,
+        24,
+        24
+      ]
+    },
+    "K4_passes": 0,
+    "K4_seconds": 79,
+    "null": {
+      "kind": "shuffles of K4 (null_ct 1-5)",
+      "n": 5,
+      "passes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "min_d_star_from_EP0209": {
+      "K4": 4,
+      "null_min": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ]
+    },
+    "verdict": {
+      "logical_refutation": "closed",
+      "rarer_than_random": "cannot say (E 7.9e-7; the null also gives 0)"
+    }
+  },
+  "EP-0203": {
+    "family": "reflector-less 3-rotor and 2-rotor machines built only from 14 public wirings (Enigma D/K, Swiss-K, Railway I-III; Enigma I I-V); odometer and lever/pawl stepping; entry and exit alphabets AZ / KA / QWERTZ",
+    "settings": {
+      "ordered_triples": 2184,
+      "path_orders": 6,
+      "offsets": 17576,
+      "phase_and_case": 235,
+      "N3_per_pair": 54124237440,
+      "N3_main9": 487118136960,
+      "log2_N3_main9": 38.83,
+      "N3_supp16": 865987799040,
+      "N3_proposal": 538939215360,
+      "N2_per_pair": 32234384,
+      "N2_main9": 290109456
+    },
+    "pass_rule": "h <= 2",
+    "E_h_le_2": {
+      "N3_main9": 9.26e-18,
+      "N2_main9": 5.51e-21
+    },
+    "controls": {
+      "notch_test": "676/676",
+      "GPU_equals_reference_settings": 1239108000,
+      "round_trip": "200/200",
+      "plants": {
+        "3-rotor exact": "30/30",
+        "3-rotor 2 subs": "20/20",
+        "2-rotor exact": "10/10",
+        "2-rotor 2 subs": "10/10",
+        "supp reverse exact": "10/10",
+        "supp reverse 2 subs": "10/10",
+        "supp KAi/QWi exact": "10/10",
+        "supp KAi/QWi rev 2 subs": "10/10"
+      }
+    },
+    "K4_settings_h_le_2": 0,
+    "columns": [
+      {
+        "column": "forward 3-rotor main9",
+        "K4_min_h": 12,
+        "null_min": [
+          11,
+          11,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          13
+        ],
+        "P": 0.9
+      },
+      {
+        "column": "forward 3-rotor AZ/AZ",
+        "K4_min_h": 13,
+        "null_min": [
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13,
+          13
+        ],
+        "P": 1.0
+      },
+      {
+        "column": "forward 2-rotor main9",
+        "K4_min_h": 14,
+        "null_min": [
+          14,
+          14,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15
+        ],
+        "P": 0.2
+      },
+      {
+        "column": "forward 3-rotor KAi/QWi (supplement)",
+        "K4_min_h": 11,
+        "null_min": [
+          11,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12
+        ],
+        "P": 0.1
+      },
+      {
+        "column": "reverse 3-rotor main9",
+        "K4_min_h": 12,
+        "null_min": [
+          11,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          12,
+          13,
+          13
+        ],
+        "P": 0.8
+      },
+      {
+        "column": "reverse 2-rotor main9",
+        "K4_min_h": 15,
+        "null_min": [
+          14,
+          14,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15,
+          15
+        ],
+        "P": 1.0
+      }
+    ],
+    "null": {
+      "kind": "10 shuffles of K4's non-W letters (W positions kept, seed 203)",
+      "n": 10
+    },
+    "post_hoc_h_le_12": {
+      "K4_settings": 38,
+      "K4_distinct_crib_permutations": 10,
+      "null_settings": [
+        0,
+        1,
+        1,
+        3,
+        6,
+        6,
+        8,
+        17,
+        25,
+        28
+      ],
+      "null_distinct_in_three_largest": [
+        21,
+        5,
+        7
+      ]
+    },
+    "byproduct": "EP-0132 and EP-0193 read the QWERTZ entry wheel as QWi only; sigma does not absorb the entry wheel on the cipher side, so the other reading QW had not been tested (rerun in EP-0209)",
+    "verdict": {
+      "logical_refutation": "closed (every column h >= 11)",
+      "rarer_than_random": "cannot say (P 0.1-1.0, resolution 0.1)"
+    }
+  },
+  "EP-0206": {
+    "family": "reflector Enigma, no sigma, no plugboard (commercial D/K, Swiss-K, Railway + Enigma I 30 = 33 machines), entry id / QW / QWi, x the 104 layout transpositions Pi of EP-0186 in order A (C = Pi(E(P))) and order B (C = E(Pi(P))), plus Pi = id as a reference",
+    "why": "R4 (position 32 S -> S, position 73 K -> K) excludes a reflector machine only when Pi = id",
+    "settings": {
+      "machines": 33,
+      "rotor_orders": 6,
+      "entry_readings": 3,
+      "offsets_and_reflector": 456976,
+      "turnover_phases": 676,
+      "per_Pi_order": 183495970944,
+      "N_208": 38167161956352,
+      "log2_N_208": 45.12,
+      "N_proposal_id_QWi": 25444774637568
+    },
+    "pi_digest": "493992dde23a3fb132a3d197cf95db77016e130283fbbcd95826b9140b029a40",
+    "pass_rule": "h <= 2",
+    "E": {
+      "h_le_2": 7.25e-16,
+      "h_le_11": 25.7,
+      "h_le_12": 701
+    },
+    "forced": {
+      "pi_id": [
+        32,
+        73
+      ],
+      "pi_returning_both_S_and_K": 0,
+      "pi_with_32_forced": 3,
+      "pi_with_73_forced": 12,
+      "f_distribution": {
+        "0": 43,
+        "1": 36,
+        "2": 16,
+        "3": 7,
+        "4": 2
+      },
+      "pi_with_f_ge_3": 9
+    },
+    "controls": {
+      "test_vectors": true,
+      "notch_test": "676/676",
+      "round_trip": "200/200",
+      "GPU_equals_reference": "12 slices x 11,881,376 settings",
+      "plants_exact": "208/208 + id 4/4 (h = 0)",
+      "plants_2_altered": "20/20 (h = 2)",
+      "extra_hits_per_plant": "1-276, all neighbours of the true setting"
+    },
+    "K4": [
+      {
+        "column": "all 208",
+        "min_h": 12,
+        "h_le_11": 0,
+        "h_le_12": 999,
+        "h_le_13": 16986
+      },
+      {
+        "column": "order A (104)",
+        "min_h": 12,
+        "h_le_11": 0,
+        "h_le_12": 572,
+        "h_le_13": 9309
+      },
+      {
+        "column": "order B (104)",
+        "min_h": 12,
+        "h_le_11": 0,
+        "h_le_12": 427,
+        "h_le_13": 7677
+      },
+      {
+        "column": "T1 48",
+        "min_h": 12,
+        "h_le_11": 0,
+        "h_le_12": 363,
+        "h_le_13": 4808
+      },
+      {
+        "column": "T2 32",
+        "min_h": 12,
+        "h_le_11": 0,
+        "h_le_12": 30,
+        "h_le_13": 2100
+      },
+      {
+        "column": "T4 128",
+        "min_h": 12,
+        "h_le_11": 0,
+        "h_le_12": 606,
+        "h_le_13": 10078
+      },
+      {
+        "column": "entry id",
+        "min_h": 12,
+        "h_le_11": 0,
+        "h_le_12": 249,
+        "h_le_13": 6130
+      },
+      {
+        "column": "entry QW",
+        "min_h": 12,
+        "h_le_11": 0,
+        "h_le_12": 473,
+        "h_le_13": 6219
+      },
+      {
+        "column": "entry QWi",
+        "min_h": 12,
+        "h_le_11": 0,
+        "h_le_12": 277,
+        "h_le_13": 4637
+      },
+      {
+        "column": "commercial x QW",
+        "min_h": 12,
+        "h_le_11": 0,
+        "h_le_12": 1,
+        "h_le_13": 241
+      },
+      {
+        "column": "Enigma I (all entries)",
+        "min_h": 12,
+        "h_le_11": 0,
+        "h_le_12": 998,
+        "h_le_13": 16288
+      },
+      {
+        "column": "Pi = id reference",
+        "min_h": 13,
+        "h_le_11": 0,
+        "h_le_12": 0,
+        "h_le_13": 99
+      }
+    ],
+    "K4_settings_h_le_2": 0,
+    "K4_h_le_12_clusters": 40,
+    "pi_id_check": {
+      "settings_h_le_14": 858,
+      "with_32_and_73_mismatched": 858,
+      "min_h": 13
+    },
+    "null_t1id": {
+      "kind": "20 shuffles of K4's non-W letters (seed 206), T1 48 + id",
+      "n": 20,
+      "columns": [
+        {
+          "column": "T1 A+B",
+          "K4_min_h": 12,
+          "null_min": [
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            11,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            12
+          ],
+          "P": 1.0
+        },
+        {
+          "column": "Pi = id reference",
+          "K4_min_h": 13,
+          "null_min": [
+            12,
+            12,
+            12,
+            12,
+            12,
+            12,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13,
+            13
+          ],
+          "P": 1.0
+        }
+      ],
+      "T1_h_le_12_range": [
+        6,
+        419
+      ],
+      "K4_T1_h_le_12": 363
+    },
+    "null_full": {
+      "kind": "5 shuffles over all 208 + id (same seed and order)",
+      "n": 5,
+      "columns": [
+        {
+          "column": "all 208",
+          "K4_min_h": 12,
+          "null_min": [
+            11,
+            11,
+            11,
+            12,
+            11
+          ],
+          "P": 1.0
+        },
+        {
+          "column": "commercial x QW",
+          "K4_min_h": 12,
+          "null_min": [
+            13,
+            13,
+            12,
+            12,
+            12
+          ],
+          "P": 0.6
+        },
+        {
+          "column": "commercial x QWi",
+          "K4_min_h": 13,
+          "null_min": [
+            12,
+            12,
+            13,
+            13,
+            12
+          ],
+          "P": 1.0
+        },
+        {
+          "column": "Pi = id reference",
+          "K4_min_h": 13,
+          "null_min": [
+            12,
+            12,
+            13,
+            13,
+            13
+          ],
+          "P": 1.0
+        }
+      ]
+    },
+    "P_range_over_columns": [
+      0.6,
+      1.0
+    ],
+    "verdict": {
+      "logical_refutation": "closed (every column h >= 12; up to two altered crib letters)",
+      "rarer_than_random": "cannot say (P 0.6-1.0)"
+    }
+  },
+  "EP-0207": {
+    "family": "M-94 cylinder, 25 published disks, any disk order (bipartite matching), one read-off g != 0 per 25-letter line, x the 104 layout transpositions Pi in order A (C = Pi(M(P))) and order B (C = M(Pi(P)))",
+    "columns_defined": {
+      "order A main": "s = 0",
+      "order B main": "s = 0",
+      "sensitivity": "order A, line phase s = 0..24",
+      "excluded before K4": "order B with s free (E0 0.162)"
+    },
+    "forced_pi": {
+      "rule": "src[32] = 32 or src[73] = 73 (S -> S at 32 or K -> K at 73 stays in place; M-94 with g != 0 never keeps a letter)",
+      "indices": [
+        9,
+        11,
+        21,
+        23,
+        93
+      ],
+      "judged_denominator": 198
+    },
+    "counts": {
+      "formula": "N = sum over Pi (and s) of 25^L * 25!/(25-R)!, L = lines and R = residues the crib touches; E0 = N * 26^-24",
+      "A_s0": {
+        "N104": 1.05e+30,
+        "log2": 99.73,
+        "E0_104": 0.0001153,
+        "N99": 9.997e+29,
+        "E0_99": 0.0001098
+      },
+      "B_s0": {
+        "N104": 4.125e+30,
+        "log2": 101.7,
+        "E0_104": 0.000453,
+        "N99": 3.82e+30,
+        "E0_99": 0.0004194
+      },
+      "A_s_free": {
+        "N104": 7.163e+31,
+        "log2": 105.82,
+        "E0_104": 0.007865,
+        "N99": 6.818e+31,
+        "E0_99": 0.007487
+      },
+      "B_s_free_excluded": {
+        "N104": 1.476e+33,
+        "log2": 110.19,
+        "E0_104": 0.1621,
+        "E0_99": 0.1496
+      },
+      "main": {
+        "log2_104": 102.03,
+        "E0_104": 0.0005683,
+        "E0_99": 0.0005292
+      },
+      "main_plus_sensitivity": {
+        "log2_104": 105.9,
+        "E0_104": 0.008318,
+        "E0_99": 0.007907
+      },
+      "grid_A_s0": 1625000,
+      "grid_B_s0": 36125000,
+      "grid_A_s_free": 110825000,
+      "factor_e_le_1": 601,
+      "factor_e_le_2": 173101
+    },
+    "stage2": {
+      "rule": "e <= 1 is judged if its measured false-pass rate x 198 < 0.05",
+      "random_texts": 20000,
+      "hits_e_le_1": 3,
+      "rate_per_configuration": 0.00015,
+      "x198": 0.0297,
+      "interval_95_x198": [
+        0.006,
+        0.087
+      ],
+      "closed_form_bound_x198": 0.32
+    },
+    "controls": {
+      "unit_tests": "equal to EP-0099 search, naive loop and brute force",
+      "round_trip": "200/200",
+      "plants": {
+        "order A s = 0 (main)": "7/7",
+        "order A all (sensitivity)": "20/20",
+        "order B (main)": "20/20",
+        "one crib letter changed (stage 2)": "20/20",
+        "wrong Pi": "0 hits (40 plants x 103 Pi)"
+      },
+      "random_texts_50x198": {
+        "e0_hits": 0,
+        "stage2_hits": 0
+      },
+      "confirmation_power": "p <= 0.001 for 53 of 60 true settings"
+    },
+    "K4": [
+      {
+        "column": "order A main",
+        "n": 99,
+        "sieve_dead": 56,
+        "survivors": 43,
+        "min_e": 2,
+        "passes": 0,
+        "stage2_hits": 0
+      },
+      {
+        "column": "order B main",
+        "n": 99,
+        "sieve_dead": 56,
+        "survivors": 43,
+        "min_e": 2,
+        "passes": 0,
+        "stage2_hits": 0
+      },
+      {
+        "column": "sensitivity (order A, s free)",
+        "n": 99,
+        "sieve_dead": 56,
+        "survivors": 43,
+        "min_e": 0,
+        "passes": 1,
+        "stage2_hits": null
+      },
+      {
+        "column": "forced (not judged)",
+        "n": 10,
+        "sieve_dead": 10,
+        "survivors": 0,
+        "min_e": 5,
+        "passes": 0,
+        "stage2_hits": 0
+      }
+    ],
+    "sensitivity_hit_metadata": {
+      "settings": 1,
+      "disk_assignments": 4,
+      "pi_index": 47,
+      "pi_family": "T4 (96 = 4 x 24 grid, one letter outside)",
+      "letters_decided": 51,
+      "confirmation_S_bits": -36.6,
+      "null_mean": -39.5,
+      "null_sd": 13.2,
+      "english_expectation": 27,
+      "p": 0.415,
+      "threshold": 0.001,
+      "confirmed": false,
+      "status": "unconfirmed; the sensitivity column is not counted as closed",
+      "post_hoc_null_rate": 0.0012,
+      "post_hoc_any_false_pass_in_EP": 0.03
+    },
+    "null": {
+      "kind": "10 shuffles of K4 (null_ct 1-10) and 50 uniform random texts",
+      "columns": [
+        {
+          "column": "order A main",
+          "K4_min_e": 2,
+          "null_min": [
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "P_shuffles": 0.0,
+          "random_min": {
+            "2": 6,
+            "3": 43,
+            "4": 1
+          },
+          "P_random": 0.12
+        },
+        {
+          "column": "order B main",
+          "K4_min_e": 2,
+          "null_min": [
+            2,
+            2,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ],
+          "P_shuffles": 0.2,
+          "random_min": {
+            "2": 21,
+            "3": 29
+          },
+          "P_random": 0.42
+        },
+        {
+          "column": "sensitivity (order A, s free)",
+          "K4_min_e": 0,
+          "null_min": [
+            1,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2,
+            2
+          ],
+          "P_shuffles": 0.0,
+          "random_min": {
+            "1": 6,
+            "2": 39,
+            "3": 5
+          },
+          "P_random": 0.0
+        }
+      ],
+      "null_passes": "0/10 shuffles, 0/50 random texts"
+    },
+    "verdict": {
+      "main": {
+        "logical_refutation": "closed (no e = 0, no e <= 1)",
+        "rarer_than_random": "cannot say"
+      },
+      "sensitivity": {
+        "logical_refutation": "not closed (one setting remains; unconfirmed, p = 0.415)",
+        "rarer_than_random": "not claimed (the hit is rejected by the confirmation statistic)"
+      }
+    }
+  },
+  "EP-0209": {
+    "family": "EP-0132 (commercial + sigma) and EP-0193 T2 (Enigma I + sigma) rerun with the QWERTZ entry wheel read as QW; only the entry table was swapped",
+    "settings": {
+      "EP-0132_QW": 5560483968,
+      "EP-0193_T2_QW": 55604839680,
+      "total": 61165323648,
+      "log2_total": 35.83
+    },
+    "E": {
+      "per_setting": 7.11e-18,
+      "EP-0132_QW": 3.95e-08,
+      "EP-0193_T2_QW": 3.95e-07,
+      "total": 4.35e-07
+    },
+    "units": {
+      "QW_QWi_mutual_inverses": true,
+      "letters_agreeing": 3,
+      "contact_shift_maps_QWi_to_QW": false
+    },
+    "controls": {
+      "reproduction_of_original_plants": "30/30 and 5/5 line by line",
+      "QW_plants": "30/30 and 5/5",
+      "QW_plants_scanned_under_QWi": "0 passes in all 35"
+    },
+    "K4_passes": {
+      "EP-0132_QW": 0,
+      "EP-0132_QWi": 0,
+      "EP-0193_T2_QW": 0,
+      "EP-0193_T2_QWi": 0
+    },
+    "diagnostic_d_star": [
+      {
+        "column": "EP-0132 x QW",
+        "K4": 4,
+        "null_min": {
+          "3": 2,
+          "4": 36,
+          "5": 12
+        },
+        "n": 50,
+        "P": 0.76
+      },
+      {
+        "column": "EP-0132 x QWi",
+        "K4": 5,
+        "null_min": {
+          "3": 1,
+          "4": 39,
+          "5": 10
+        },
+        "n": 50,
+        "P": 1.0
+      },
+      {
+        "column": "EP-0193 T2 x QW",
+        "K4": 4,
+        "null_min": {
+          "3": 2,
+          "4": 3
+        },
+        "n": 5,
+        "P": 1.0
+      },
+      {
+        "column": "EP-0193 T2 x QWi",
+        "K4": 4,
+        "null_min": {
+          "4": 5
+        },
+        "n": 5,
+        "P": 1.0
+      }
+    ],
+    "lesson": "plants enciphered and searched with the same code do not detect a convention error such as the entry-wheel orientation",
+    "verdict": {
+      "logical_refutation": "closed under QW, QWi and identity entry",
+      "rarer_than_random": "cannot say (P 0.76-1.00)"
+    }
+  },
+  "EP-0215": {
+    "family": "reflector Enigma + free sigma (Enigma I 30 = R1-1; commercial 3 = R2-6), no plugboard, crib 2 read d machine steps away, d in {-2, -1, +1, +2}, entry QW / QWi / id",
+    "operator_source": "d = +1 and d = -1 from the two one-letter carving precedents in K2 (a deleted S and an extra L)",
+    "settings": {
+      "column_N_EnigmaI": 55604839680,
+      "column_N_commercial": 5560483968,
+      "columns": 24,
+      "N": 733983883776,
+      "log2_N": 39.42
+    },
+    "budgets": {
+      "EnigmaI": {
+        "-2": 1,
+        "-1": 1,
+        "+1": 1,
+        "+2": 1
+      },
+      "commercial": {
+        "-2": 1,
+        "-1": 2,
+        "+1": 2,
+        "+2": 1
+      }
+    },
+    "P_per_setting": {
+      "h_le_1": 3.758e-15,
+      "h_le_2": 9.136e-13
+    },
+    "E": {
+      "EnigmaI": 0.00251,
+      "commercial_d_pm1": 0.0305,
+      "commercial_d_pm2": 0.000125,
+      "registered_total": 0.0331,
+      "unadjusted_total": 0.0635
+    },
+    "controls": {
+      "plants": "51/51 in each family",
+      "true_setting_picked_up_in_other_columns": "0/102",
+      "regression_d0": "identical to EP-0209 (histograms and exact counts)"
+    },
+    "K4_registered_passes": 0,
+    "K4_any_column_h_le_2": 0,
+    "K4_min": {
+      "EnigmaI_columns": [
+        4,
+        4,
+        4,
+        3,
+        4,
+        4,
+        4,
+        4,
+        3,
+        4,
+        4,
+        3
+      ],
+      "commercial_columns": [
+        5,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        5,
+        4
+      ],
+      "column_order": [
+        "QW-2",
+        "QW-1",
+        "QW+1",
+        "QW+2",
+        "QWi-2",
+        "QWi-1",
+        "QWi+1",
+        "QWi+2",
+        "id-2",
+        "id-1",
+        "id+1",
+        "id+2"
+      ]
+    },
+    "null": {
+      "EnigmaI": {
+        "kind": "4 W-keeping shuffles, QW row only, d != 0 (16 column values)",
+        "column_min": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "P_h3_columns": 0.31,
+        "P_h4_columns": 1.0
+      },
+      "commercial": {
+        "kind": "15 W-keeping shuffles, 3 readings, d != 0",
+        "family_min": [
+          3,
+          3,
+          3,
+          3,
+          3,
+          3,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "K4_family_min": 4,
+        "P_family": 1.0,
+        "P_columns": [
+          0.67,
+          1.0
+        ]
+      },
+      "passes": "0 in every null text",
+      "smallest_P": 0.07,
+      "comparisons": "24 columns x 2 quantities"
+    },
+    "verdict": {
+      "logical_refutation": "closed (Enigma I: 1 altered letter; commercial: 2 at d = +-1, 1 at d = +-2)",
+      "rarer_than_random": "cannot say (E 0.033: zero passes happen about 97% of the time by chance)"
+    }
+  }
+}

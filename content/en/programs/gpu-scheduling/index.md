@@ -23,11 +23,11 @@ The replacement, **alpha** (the elasticity of mean response time with respect to
 <!-- GENERATED: program-current:START -->
 ## Current public state
 
-EP-0029 returns to RQ-1 and measures the never-measured gang/locality friction in 768 runs. Sealed predictions 1/6; the decision prediction (a ranking reversal) failed with zero reversals. Power was low; gang_heavy needs are node multiples and never fragment, and pi = 0.6 diverged almost everywhere. Post hoc, trace_like degradation ordered srpt < sf_srpt < easy_backfill < fcfs (unconfirmed). Real clusters and novelty remain UNKNOWN.
+EP-0030 met 3/6 sealed predictions and failed the decision prediction P2. In 912 synthetic runs, the order held in 3/3 scorable trace_like rows but srpt and sf_srpt reversed in 4/4 gang_odd rows. The EP-0029 post hoc order is withdrawn as a general claim across mixes. Approximate load controls P5 passed in 4/8 computable rows; saved-grading arithmetic makes roughly 64–100% of the gap consistent with load headroom. This is not a causal decomposition. Eight of 152 cells are UNKNOWN. Real clusters and novelty remain UNKNOWN.
 
-**Evidence boundary:** One synthetic MSJ model, 64 GPUs in 8-GPU nodes, loads 0.6 and 0.7, pi is a setting. Local-commit seal only. That fragmentation hurts and consolidation helps is known.
+**Evidence boundary:** One synthetic MSJ model, 64 GPUs in 8-GPU nodes, exponential service, sticky placement and no migration. Local-commit seals only. Public checks verify a projection of saved grading and arithmetic, not a rerun of 912 simulations or independent replication.
 
-**[Read the current Research Note (EP-0029) →](/en/research/gpu-scheduling-locality/)**
+**[Read the current Research Note (EP-0030) →](/en/research/gpu-scheduling-headroom/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -58,5 +58,6 @@ EP-0029 returns to RQ-1 and measures the never-measured gang/locality friction i
 23. [[en/research/gpu-scheduling-transition-refusal/index|EP-0026 — When should a stationary diagnostic refuse a permanent parameter transition?]]
 24. [[en/research/gpu-scheduling-self-containment/index|EP-0027 — Did the public article carry the facts needed not to misread its own claim?]]
 25. [[en/research/gpu-scheduling-cold-reader/index|EP-0028 — Do fresh AI readers read the transition-refusal note correctly?]]
-26. **[[en/research/gpu-scheduling-locality/index|EP-0029 — Does node fragmentation reorder size-first policies against FCFS and backfill?]] (latest)**
+26. [[en/research/gpu-scheduling-locality/index|EP-0029 — Does node fragmentation reorder size-first policies against FCFS and backfill?]]
+27. **[[en/research/gpu-scheduling-headroom/index|EP-0030 — Gang mix reverses the fragmentation ranking; a load control explains much of the gap]] (latest)**
 <!-- GENERATED: program-history:END -->

@@ -1,0 +1,4 @@
+command=python -B verify_square_lists.py
+exit_code=0
+elapsed_seconds=0.35
+PASS inventory=7 checks; histogram_families=5; no scan rerun; new plaintext 0

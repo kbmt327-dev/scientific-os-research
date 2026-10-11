@@ -35,6 +35,9 @@ tags:
 
 <p class="research-area"><b>GPU cluster scheduling</b><a href="/en/research/gpu-scheduling-locality/" hreflang="en">English</a></p>
 
+> [!important] 2026-10-11の後続検定
+> 一般化した四policyの順位はEP-0030で撤回しました。元の日付の観察は残しています。[後続検定の結果](/ja/research/gpu-scheduling-headroom/)を参照してください。
+
 ## 現在わかっていること
 
 gangが複数nodeにまたがると遅くなるmodelで、4つのpolicyの順位が入れ替わるかを調べました。封印した予測は6本中1本しか当たらず、決定予測（順位の逆転が起きる）も外れました。逆転は0件です。ただしこの検定には検出力がほとんどありませんでした。片方のjob mixでは断片化がそもそも起きない設計になっており、強いpenaltyではほぼ全cellが発散しました。
@@ -117,3 +120,9 @@ nodeの倍数でないgang mixや小さいπでも同じ順序が出るか、劣
 事後に見えた「srpt < sf_srpt < easy_backfill < fcfs」を決定予測にして、新しいseed、π {0.05, 0.1, 0.2}、nodeの倍数でないneed（例：4/12/24/40）を含むgang mixで封印検定します。
 
 [[ja/research/gpu-scheduling-cold-reader/index|EP-0028]] → EP-0029
+
+## 2026-10-11訂正：EP-0030で四policy順位を再検定
+
+EP-0029で記した「trace_likeの8行で srpt < sf_srpt < easy_backfill < fcfs」という順位は、E18の封印外観察として残します。E19ではこの順を新しいseedとgang_oddに対して封印検定し、P2は失敗しました。採点可能なtrace_likeは3/3行で順を保ちましたが、gang_oddは4/4行でsrptとsf_srptが逆転しました。したがって、旧ノートの事後順位をmixをまたぐ結論や「size優先ほど断片化に強い」という主張として使うことを撤回します。E18での観察そのものは消さず、trace_likeに限る事後結果として扱います。
+
+EP-0030の結果、負荷対照の近似範囲、検算packageは[新しいノート](/ja/research/gpu-scheduling-headroom/)にまとめています。旧「次の実験」欄はE18時点での提案であり、この検定結果で置き換えます。

@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "research_id": "KRYPTOS-K4-EP-0241",
+  "source_episode": "KRYPTOS-K4/EP-0241",
+  "source_episode_sha256": "2bfb1fc591b586fe1323fee84a38d7174ea6ba5a7588a5349179b3cc67acdfc2",
+  "calculation_scope": "Checks over packaged aggregates only; no original candidate or null search is rerun.",
+  "independent_replications": 0,
+  "new_k4_plaintext": 0,
+  "source_records": [
+    "EP-0227",
+    "EP-0236",
+    "EP-0238",
+    "EP-0240",
+    "EP-0241"
+  ],
+  "experiments": {
+    "EP-0227": {
+      "k4_registered_passes": 0,
+      "null_targets": 22,
+      "null_rows": 88,
+      "null_registered_pass_targets": 0,
+      "null_identity_hits": 1,
+      "registered_rule_requires_nonidentity": true,
+      "identity_hit_eligible": false
+    },
+    "EP-0236": {
+      "k4_settings": 466,
+      "k4_timeouts": 0,
+      "k4_unknown": 0,
+      "k4_registered_passes": 0,
+      "k4_min_dstar": 4,
+      "null_count": 20,
+      "null_registered_passes": 0,
+      "null_min_dstar_histogram": {
+        "3": 6,
+        "4": 14
+      },
+      "recorded_null_min_le_k4_fraction": 1,
+      "preregistration_k4_exposure": true,
+      "candidate_family_and_face_selection_affected": true,
+      "registered_settings_changed_after_registration": false
+    },
+    "EP-0238": {
+      "null_count": 200,
+      "k4_joint_min_max": 4,
+      "k4_joint_min_sum": 8,
+      "null_min_max_histogram": {
+        "4": 28,
+        "5": 162,
+        "6": 10
+      },
+      "null_min_sum_histogram": {
+        "5": 1,
+        "6": 2,
+        "7": 11,
+        "8": 87,
+        "9": 96,
+        "10": 3
+      },
+      "recorded_fraction_max_le_k4": 0.14,
+      "recorded_fraction_sum_le_k4": 0.505,
+      "null_registered_passes": 0,
+      "row_null_registered_passes": 0
+    },
+    "EP-0240": {
+      "main_null_targets_per_column": 200,
+      "auxiliary_null_targets": 10,
+      "k4_registered_passes": 0,
+      "main_null_registered_passes": 0,
+      "auxiliary_null_registered_passes": 0,
+      "columns": {
+        "A": {
+          "k4_min_h": 15,
+          "rank_numerator": 170,
+          "rank_denominator": 200,
+          "source_recorded_fraction": 0.85
+        },
+        "AB": {
+          "k4_min_h": 15,
+          "rank_numerator": 174,
+          "rank_denominator": 200,
+          "source_recorded_fraction": 0.87
+        },
+        "B": {
+          "k4_min_h": null,
+          "rank_numerator": null,
+          "rank_denominator": 200,
+          "source_recorded_fraction": null
+        },
+        "C": {
+          "k4_min_h": null,
+          "rank_numerator": null,
+          "rank_denominator": 200,
+          "source_recorded_fraction": null
+        }
+      }
+    },
+    "EP-0241": {
+      "other_registered_families": {
+        "r26": {
+          "k4_registered_passes": 0,
+          "null_count": 1000,
+          "null_texts_with_pass": 0,
+          "k4_min_dstar": 5
+        },
+        "hb": {
+          "k4_registered_passes": 0,
+          "null_count": 1000,
+          "null_texts_with_pass": 0,
+          "k4_min_dstar": 6
+        },
+        "bh": {
+          "k4_registered_passes": 0,
+          "null_count": 1000,
+          "null_texts_with_pass": 0,
+          "k4_min_dstar": 3
+        },
+        "r21": {
+          "k4_registered_passes": 0,
+          "null_count": 1000,
+          "null_texts_with_pass": 0,
+          "k4_min_dstar": 6
+        }
+      },
+      "r27": {
+        "registered_q1_settings": 26,
+        "q1_fraction": 0.01,
+        "k4_registered_passes": 0,
+        "null_count": 100,
+        "null_texts_with_pass": 0,
+        "nulls_complete_for_registered_subset": true,
+        "full_q1_k4_search_completed": false,
+        "full_q1_null_evaluation_completed": false
+      },
+      "preregistration_k4_exposure": true,
+      "metric_and_subset_selection_after_exposure": true,
+      "registered_rules_threshold_settings_and_column_split_unchanged_after_exposure": true,
+      "per_run_code_hash_verified": false
+    }
+  }
+}

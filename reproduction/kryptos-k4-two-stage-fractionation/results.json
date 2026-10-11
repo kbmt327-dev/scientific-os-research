@@ -1,0 +1,15 @@
+{
+  "slug": "kryptos-k4-two-stage-fractionation",
+  "projection_only": true,
+  "registered_search_rerun": false,
+  "new_plaintext_characters": 0,
+  "independent_replications": 0,
+  "episodes": [
+    {"episode": "EP-0202", "search_space": 187858944, "registered_rule": "h<=12", "registered_pass_count": 0, "minimum_h": 13, "null_shuffles": 200, "reported_p": 0.045, "registered_p_values": 9},
+    {"episode": "EP-0219", "search_space_approx": 280000000, "registered_rule": "h<=2", "registered_pass_count": 0, "minimum_h": {"R1-1": 17, "R1-3_single": 17, "R1-3_double": 13}, "null_shuffles": 200},
+    {"episode": "EP-0220", "registered_rule": "h<=2", "registered_pass_count": 0, "minimum_h": {"engraved_rows": 19, "Bifid_then_Trifid": 15}, "search_space_Bifid_then_Trifid": 27800000000, "null_shuffles": 200},
+    {"episode": "EP-0221", "search_space": 22027128336, "registered_rule": "h<=2", "registered_pass_count": 0, "minimum_h_by_column": [14, 14, 13, 13, 13], "null_shuffles_by_column": [50, 50, 8, 8, 8]},
+    {"episode": "EP-0222", "scope": "fixed preregistered square subset only", "square_bank_size": 16, "decisionable_columns": ["R2-4", "R1-6"], "registered_pass_count": 0, "null_shuffles_per_decisionable_column": 50, "reported_p": 1.0, "R3-3_specificity": "failed; K4 and null not run", "full_2622_square_bank_closed": false},
+    {"episode": "EP-0239", "search_space": 13137903324, "registered_rule": "h<=2", "registered_pass_count": 0, "minimum_h": 12, "null_shuffles": 59, "reported_p_by_direction": [0.20, 0.22]}
+  ]
+}

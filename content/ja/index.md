@@ -19,7 +19,7 @@ lang: ja
     </div>
     <nav aria-label="GPUクラスタのスケジューリング">
       <a href="/ja/programs/gpu-scheduling/">研究概要</a>
-      <a href="/ja/research/gpu-scheduling-locality/">最新Note</a>
+      <a href="/ja/research/gpu-scheduling-headroom/">最新Note</a>
     </nav>
   </article>
   <article class="program-row">
@@ -79,7 +79,7 @@ lang: ja
     </div>
     <nav aria-label="Kryptos K4">
       <a href="/ja/programs/kryptos-k4/">研究概要</a>
-      <a href="/ja/research/kryptos-k4-layout-transposition/">最新Note</a>
+      <a href="/ja/research/kryptos-k4-two-stage-and-errors/">最新Note</a>
     </nav>
   </article>
 </div>

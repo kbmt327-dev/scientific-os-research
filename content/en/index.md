@@ -19,7 +19,7 @@ lang: en
     </div>
     <nav aria-label="GPU cluster scheduling">
       <a href="/en/programs/gpu-scheduling/">Program overview</a>
-      <a href="/en/research/gpu-scheduling-locality/">Current Note</a>
+      <a href="/en/research/gpu-scheduling-headroom/">Current Note</a>
     </nav>
   </article>
   <article class="program-row">
@@ -79,7 +79,7 @@ lang: en
     </div>
     <nav aria-label="Kryptos K4">
       <a href="/en/programs/kryptos-k4/">Program overview</a>
-      <a href="/en/research/kryptos-k4-layout-transposition/">Current Note</a>
+      <a href="/en/research/kryptos-k4-two-stage-and-errors/">Current Note</a>
     </nav>
   </article>
 </div>

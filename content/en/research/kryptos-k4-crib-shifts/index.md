@@ -121,3 +121,8 @@ Up to 7 crib errors together with a slip, if a faster index makes it affordable;
 ## Sources
 
 - K4 ciphertext and cribs: Jim Sanborn, *Kryptos* (1990); [Wikipedia](https://en.wikipedia.org/wiki/Kryptos); [Elonka Dunin](https://elonka.com/kryptos/); crib releases [WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/), [WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/), NPR 2020.
+
+
+## Later checks (2026-10-10)
+
+EP-0211 tested a free single-square Bifid with a one- or two-letter deletion/insertion between the cribs (2,741 settings; 2,649 distinct structures), and the edge systems with 480 free Four-square and 3,577,080 keyword Four-square/Two-square settings. All were incompatible. EP-0215 tested free-substitution Enigma with the second crib shifted by ±1 or ±2, including thirty Enigma I machines, three commercial machines and id/QW/QWi entry conventions. No h≤2 occurred in any of thirty columns; minimum h was four for commercial machines and three for Enigma I. These finite logical refutations do not establish rarity against random. The public package checks counts, expectations and saved summaries; it does not rerun the full machine search or constitute independent replication. See the [public machine tests](/en/research/kryptos-k4-public-machines/) and [square tests](/en/research/kryptos-k4-square-lists/).

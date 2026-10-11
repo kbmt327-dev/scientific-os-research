@@ -112,3 +112,172 @@ def planted(p, d, seed):
         rows.append(dict(zip(AZ, r)))
     pt = [CRIB.get(i, rng.choice(AZ)) for i in range(len(K4))]
     return "".join(rows[(i + (d if i >= 50 else 0)) % p][ch] for i, ch in enumerate(pt))
+
+
+# ---------- 2026-10-10 addendum, EP-0211: one-square Bifid with a deletion / insertion between the cribs ----------
+# Ported from the author's f3d.py (settings only: crib positions and W positions, no other K4 letters).
+# W removed -> 92 coordinates.  d > 0: d cipher letters lost after enciphering at true q..q+d-1;
+# d < 0: |d| junk letters carved at q..q+|d|-1.  Events sit between the cribs (carved 33..59).
+
+KEEP = [i for i, ch in enumerate(K4) if ch != "W"]
+RIDX = {i: k for k, i in enumerate(KEEP)}
+N92 = len(KEEP)
+CR92 = {RIDX[i] for i in CRIB}
+_WCUT = [0] + [RIDX[i + 1] for i, ch in enumerate(K4) if ch == "W" and i + 1 < len(K4)] + [N92]
+SEGS = list(zip(_WCUT[:-1], _WCUT[1:]))             # W segments in the 92 coordinates
+F3D_DS = (1, 2, -1, -2)
+F3D_QS = range(33, 60)
+SEG_QS = [33, 34, 35, 55, 56, 57, 58, 59]
+
+
+def tl_global(d, q, n=N92):
+    """true position -> carved index (None = lost cipher letter)"""
+    if d >= 0:
+        return list(range(q)) + [None] * d + list(range(q, n))
+    return list(range(q)) + list(range(q - d, n))
+
+
+def per_blocks(L, p, a0):
+    bd = [0] + ([a0] if a0 else []) + list(range(a0 + p if a0 else p, L, p)) + [L]
+    bd = sorted(set(x for x in bd if 0 <= x <= L))
+    return [list(range(s, e)) for s, e in zip(bd[:-1], bd[1:]) if e > s]
+
+
+def seg_true(d, q):
+    segs = [list(range(s, e)) for s, e in SEGS]
+    if d > 0:
+        si = 1 if q <= 35 else 4                       # crib 1's segment (events 33..35) or crib 2's (55..59)
+        s = SEGS[si][0]
+        segs[si] = segs[si][:q - s] + [None] * d + segs[si][q - s:]
+    elif d < 0:
+        junk = set(range(q, q - d))
+        segs = [[c for c in seg if c not in junk] for seg in segs]
+    return segs
+
+
+def layout(conv, p, a0, d, q):
+    """-> (tl, tblocks): true position -> carved index / None, and the blocks as lists of true positions"""
+    if conv in ("per", "full"):
+        tl = tl_global(d, q)
+        tb = [list(range(len(tl)))] if conv == "full" else per_blocks(len(tl), p, a0)
+        return tl, tb
+    tl, tb = [], []
+    for seg in seg_true(d, q):
+        base, m = len(tl), len(seg)
+        tl += seg
+        if p == 0:
+            tb.append(list(range(base, base + m)))
+        else:
+            tb += [list(range(base + s, base + min(m, s + p))) for s in range(0, m, p)]
+    return tl, tb
+
+
+def crib_key(tl, tb):
+    """the crib-touching blocks as carved indices: the structure the exact solver sees"""
+    blocks = [[tl[t] for t in b] for b in tb]
+    return tuple(tuple(b) for b in blocks if any(c is not None and c in CR92 for c in b))
+
+
+def contiguous(b):
+    return None not in b and all(y == x + 1 for x, y in zip(b[:-1], b[1:]))
+
+
+def f3d_settings():
+    """EP-0211's generator: periodic settings split into covered (the broken block touches no crib letter, so
+    the crib blocks are those of EP-0169's model) and residual, plus the full-text and W-segment settings"""
+    S = {"per_raw": 0, "per_cov": [], "per_res": [], "full": [], "seg": []}
+    for p in range(2, 13):
+        for a0 in range(p):
+            for d in F3D_DS:
+                for q in F3D_QS:
+                    S["per_raw"] += 1
+                    if d < 0 and q - d - 1 >= 59:     # the junk would run into crib 2
+                        continue
+                    key = crib_key(*layout("per", p, a0, d, q))
+                    grp = "per_cov" if all(contiguous(b) for b in key) else "per_res"
+                    S[grp].append((("per", p, a0, d, q), key))
+    for d in F3D_DS:
+        for q in F3D_QS:
+            if d < 0 and q - d - 1 >= 59:
+                continue
+            S["full"].append((("full", 0, 0, d, q), crib_key(*layout("full", 0, 0, d, q))))
+    for p in list(range(2, 13)) + [0]:
+        for d in F3D_DS:
+            for q in SEG_QS:
+                if d < 0 and q - d - 1 >= 59 and q >= 55:
+                    continue
+                S["seg"].append((("seg", p, 0, d, q), crib_key(*layout("seg", p, 0, d, q))))
+    return S
+
+
+def f3d_structures(S):
+    """{structure: [labels]} over the residual settings (periodic residual + full text + W segments)"""
+    out = {}
+    for grp in ("per_res", "full", "seg"):
+        for lab, key in S[grp]:
+            out.setdefault(key, []).append(lab)
+    return out
+
+
+EDGE_SYSTEMS = [(d, edge, phi) for d in (2, -2) for edge in ("T", "B", "TB") for phi in (0, 1)]
+
+
+def edge_tl(d, edge):
+    if d == 2:
+        if edge == "T":
+            return tl_global(2, 33)                   # lost right after crib 1
+        if edge == "B":
+            return tl_global(2, 59)                   # lost right before crib 2
+        return list(range(33)) + [None] + list(range(33, 59)) + [None] + list(range(59, N92))
+    if edge == "T":
+        return tl_global(-2, 33)
+    if edge == "B":
+        return tl_global(-2, 57)
+    return [c for c in range(N92) if c not in (33, 58)]
+
+
+def edge_constraints(system):
+    """(pairs with both plaintext letters known, pairs with one known) in the true pairing of the system"""
+    d, edge, phi = system
+    tl = edge_tl(d, edge)
+    full, weak = [], []
+    for t in range(phi, len(tl) - 1, 2):
+        ca, cb = tl[t], tl[t + 1]
+        ka = ca is not None and ca in CR92
+        kb = cb is not None and cb in CR92
+        if ka and kb:
+            full.append((ca, cb))
+        elif ka or kb:
+            weak.append((ca, cb, 0 if ka else 1))
+    return tuple(full), tuple(weak)
+
+
+# ---------- 2026-10-10 addendum, EP-0215: Enigma + sigma with a machine-step shift between the cribs ----------
+
+def crib_group_sizes():
+    """multiplicities of the 13 distinct crib letters over the 24 positions"""
+    return sorted(Counter(CRIB.values()).values(), reverse=True)
+
+
+def chance_drop_le(h):
+    """EP-0192 T3's closed form: P(some drop set D, |D| <= h, leaves a consistent injection) for values uniform
+    on 26 letters, as the union bound sum_D (26)_k / 26^m (m remaining positions, k distinct letters among them).
+    Exact rational arithmetic over the 1 + 24 + 276 drop sets for h = 2."""
+    from fractions import Fraction
+    from itertools import combinations
+    pos = sorted(CRIB)
+    tot = Fraction(0)
+    for size in range(h + 1):
+        for D in combinations(pos, size):
+            rem = [CRIB[i] for i in pos if i not in D]
+            m, k = len(rem), len(set(rem))
+            q = 1
+            for j in range(k):
+                q *= 26 - j
+            tot += Fraction(q, 26 ** m)
+    return float(tot)
+
+
+def enigma_settings_per_column(machines):
+    """machines x 6 rotor orders x 26^3 ring offsets x 26 reflector positions x 26^2 turnover phases"""
+    return machines * 6 * 26 ** 3 * 26 * 26 ** 2

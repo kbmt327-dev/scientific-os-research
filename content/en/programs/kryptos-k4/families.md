@@ -85,3 +85,19 @@ Every negative in the rows added from 2026-09-27 to 2026-10-01 (from "Key source
 The reading of the W gaps as `TOKIO` (the German spelling of Tokyo, which appears on Berlin's World Clock) passed a frozen external target list at p ≤ 1.5 × 10⁻³ ([Note](/en/research/kryptos-k4-tokio-price/)). A later check (2026-09-27) also paid for choosing the list: against the union of six lists frozen before looking at K4 (3,036 words), the expected number of chance hits for K4's reading family is 0.054, of which the World Clock contributes 3.7%; counting the other markers in K1–K4 as well, there is one hit against 0.211 expected (p = 0.19). The reading is compatible with chance and is no longer a pattern that stands out ([Note](/en/research/kryptos-k4-list-price/)). Mechanisms that treat the Ws as markers inserted or overwritten after encryption also gave no candidate.
 
 The program began by auditing a claim that K4 is a reversed Gromark cipher with primer 57973. Its numbers reproduce, but the public cribs cannot tell it from chance ([Note](/en/research/kryptos-k4-57973-audit/)).
+
+
+## Additions on 2026-10-11
+
+| Family | Result |
+|---|---|
+| [Premise audits and tests allowing two crib errors](/en/research/kryptos-k4-premise-audit/) | Insufficient audit agreement is undecided and distinct from finite tested negatives. |
+| [Fixed row, band, fold and counting lists](/en/research/kryptos-k4-fixed-row-lists/) | No pass in decidable columns of the registered lists. |
+| [Listed machines, Enigma entry/layout/crib offsets](/en/research/kryptos-k4-public-machines/) | No pass under each registered column rule; arbitrary wirings are outside scope. |
+| [Square lists, O segments and within-word reorderings](/en/research/kryptos-k4-square-lists/) | Finite registered negatives; 228 free-square/within-word settings remain compatible but undecided. |
+| [Free squares with fixed masks](/en/research/kryptos-k4-free-squares-masks/) | No pass in decidable registered columns, not a refutation of arbitrary masks. |
+| [Printed Hill tables and standard forms](/en/research/kryptos-k4-hill-printed/) | No pass for the registered tables and arrangements. |
+| [Finite procedures from public classical sources](/en/research/kryptos-k4-printed-procedures/) | No pass in the registered lists, not all ciphers in those sources. |
+| [Two distinct fractionation stages and layout permutations](/en/research/kryptos-k4-two-stage-fractionation/) | No pass with stage order, tables and periods fixed as registered. |
+
+| [Crib gaps, free cubes, two systems and Hill compositions](/en/research/kryptos-k4-two-stage-and-errors/) | No registered pass; subset nulls and preliminary exposure disclosed, untested spaces remain. |

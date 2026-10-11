@@ -123,3 +123,10 @@ K3は格子の上の転置でした。[手順の列挙器](/ja/research/kryptos-
 ## 出典
 
 - K4の暗号文とcrib：Jim Sanborn, *Kryptos*（1990）。[Wikipedia](https://en.wikipedia.org/wiki/Kryptos)、[Elonka Dunin](https://elonka.com/kryptos/)。cribの公開：[WIRED 2010](https://www.wired.com/2010/11/clue-kryptos/)、[WIRED 2014](https://www.wired.com/2014/11/second-kryptos-clue/)、NPR 2020。
+
+
+## その後の点検（2026-10-11）
+
+配置の転置Πを別方式の前後に置く有限検定は、方陣・mask・異なるfractionationの一覧と組み合わせても登録通過0でした。段の順は各検定で固定しています。自由な転置を追加した結果ではなく、方式一般の反証でもありません。
+
+公開パッケージの軽い検算と、元の研究記録が報告した全探索は別です。新しい平文文字は0、外部の独立再現は0件です。 [後続の検定と検算の範囲](/ja/research/kryptos-k4-two-stage-fractionation/).

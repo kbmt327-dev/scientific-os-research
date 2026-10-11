@@ -1,0 +1,14 @@
+{
+  "slug": "kryptos-k4-printed-procedures",
+  "projection_only": true,
+  "registered_search_rerun": false,
+  "new_plaintext_characters": 0,
+  "independent_replications": 0,
+  "episodes": [
+    {"episode": "EP-0231", "search_space": 3456, "registered_pass_count": 0, "minimum_h": 17, "one_cipher_error_auxiliary_minimum_h": 15, "null_shuffles": 1000, "reported_null_p": {"primary": 0.033, "auxiliary": 0.022}},
+    {"episode": "EP-0232", "main_search_space": 4706861, "all_columns_search_space": 25426316, "registered_pass_count": 0, "minimum_h": {"R1-7": 17, "R1-3_Bifid": 16, "R1-3_Trifid": 16}, "null_shuffles": {"R1-7": 1000, "R1-3": 200}},
+    {"episode": "EP-0233", "main_search_space": 989605728, "all_columns_search_space": 39600000000, "registered_pass_count": 0, "minimum_h": {"decryption": 14, "encryption": 16}, "null_shuffles": 200},
+    {"episode": "EP-0234", "scope": "separate free-square diagnostic", "one_square_minimum_dstar_range": [7, 8], "one_square_registered_dstar_le_2_pass_count": 0, "two_square_auxiliary": "not decisionable; 50-91% of nulls meet d*<=2"},
+    {"episode": "EP-0237", "search_space": 52119235008, "registered_rule": "h<=2", "registered_pass_count": 0, "minimum_h": 13, "null_shuffles": 200, "reported_p": 1.0}
+  ]
+}

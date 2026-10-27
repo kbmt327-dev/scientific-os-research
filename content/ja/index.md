@@ -15,11 +15,11 @@ lang: ja
   <article class="program-row">
     <div>
       <h3>GPUクラスタのスケジューリング</h3>
-      <p>nodeの断片化がサイズ優先とFCFS・backfillの順位を入れ替えるかを、封印した予測で試しました。</p>
+      <p>nodeの断片化でfcfsが余分に遅くなる分を同じ仕事量の対照で分け、その中身を配置時点の状態で確かめました。</p>
     </div>
     <nav aria-label="GPUクラスタのスケジューリング">
       <a href="/ja/programs/gpu-scheduling/">研究概要</a>
-      <a href="/ja/research/gpu-scheduling-headroom/">最新Note</a>
+      <a href="/ja/research/gpu-scheduling-occupancy-strata/">最新Note</a>
     </nav>
   </article>
   <article class="program-row">

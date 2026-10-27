@@ -12,13 +12,13 @@ Notes are grouped by what they contribute, not by how confident they sound. A **
 <!-- GENERATED: research-current:START -->
 ## GPU cluster scheduling
 
-**Question:** Under which information and observation windows can size-first conditions and capacity boundaries be established?
+**Question:** Under which information and observation windows can size-first conditions and capacity boundaries be established? Is the cost of fragmentation explained by added work alone?
 
-**Current state:** EP-0030 met 3/6 sealed predictions and failed the decision prediction P2. In 912 synthetic runs, the order held in 3/3 scorable trace_like rows but srpt and sf_srpt reversed in 4/4 gang_odd rows. The EP-0029 post hoc order is withdrawn as a general claim across mixes. Approximate load controls P5 passed in 4/8 computable rows; saved-grading arithmetic makes roughly 64–100% of the gap consistent with load headroom. This is not a causal decomposition. Eight of 152 cells are UNKNOWN. Real clusters and novelty remain UNKNOWN.
+**Current state:** In the synthetic model at (ρ, π) = (0.6, 0.2), about half (0.52–0.56) of FCFS's extra fragmentation delay is state coupling (the part that disappears when slowdowns are shuffled within need class). The decision prediction also passed a sealed replication on new seeds, but the margin is thin; the pooled 12-seed lower bound, which includes E21 and is not an independent test, is 0.0006. In EP-0034, shuffling slowdowns only within busy-GPU strata at placement restored 77% of state coupling, against 6% for coarse arrival-order blocks (one decision row, (0.55, 0.2), was scorable). The mechanism candidate within the model is "fragmentation concentrates when the cluster is busy, and FCFS pays for it then". Real clusters and novelty remain UNKNOWN.
 
-**Evidence boundary:** One synthetic MSJ model, 64 GPUs in 8-GPU nodes, exponential service, sticky placement and no migration. Local-commit seals only. Public checks verify a projection of saved grading and arithmetic, not a rerun of 912 simulations or independent replication.
+**Evidence boundary:** One synthetic MSJ model, 64 GPUs in 8-GPU nodes, trace_like, first-fit, exponential service, sticky placement and no migration, three rows. Local-commit seals only. Public checks verify sealed digests, rerun the grading and re-simulate two tasks; they are not independent replication.
 
-**[Read the current Research Note (EP-0030) →](/en/research/gpu-scheduling-headroom/)** — Finding
+**[Read the current Research Note (EP-0034) →](/en/research/gpu-scheduling-occupancy-strata/)** — Finding
 
 [See the current state and revision history →](/en/programs/gpu-scheduling/)
 

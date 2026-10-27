@@ -42,11 +42,11 @@ Program overview:
 - English: https://kbmt327-dev.github.io/scientific-os-research/en/programs/gpu-scheduling/
 - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/programs/gpu-scheduling/
 
-Question: Under which information and observation windows can size-first conditions and capacity boundaries be established?
+Question: Under which information and observation windows can size-first conditions and capacity boundaries be established? Is the cost of fragmentation explained by added work alone?
 
-Current claim (EP-0030): EP-0030 met 3/6 sealed predictions and failed the decision prediction P2. In 912 synthetic runs, the order held in 3/3 scorable trace_like rows but srpt and sf_srpt reversed in 4/4 gang_odd rows. The EP-0029 post hoc order is withdrawn as a general claim across mixes. Approximate load controls P5 passed in 4/8 computable rows; saved-grading arithmetic makes roughly 64–100% of the gap consistent with load headroom. This is not a causal decomposition. Eight of 152 cells are UNKNOWN. Real clusters and novelty remain UNKNOWN.
+Current claim (EP-0034): In the synthetic model at (ρ, π) = (0.6, 0.2), about half (0.52–0.56) of FCFS's extra fragmentation delay is state coupling (the part that disappears when slowdowns are shuffled within need class). The decision prediction also passed a sealed replication on new seeds, but the margin is thin; the pooled 12-seed lower bound, which includes E21 and is not an independent test, is 0.0006. In EP-0034, shuffling slowdowns only within busy-GPU strata at placement restored 77% of state coupling, against 6% for coarse arrival-order blocks (one decision row, (0.55, 0.2), was scorable). The mechanism candidate within the model is "fragmentation concentrates when the cluster is busy, and FCFS pays for it then". Real clusters and novelty remain UNKNOWN.
 
-Evidence boundary: One synthetic MSJ model, 64 GPUs in 8-GPU nodes, exponential service, sticky placement and no migration. Local-commit seals only. Public checks verify a projection of saved grading and arithmetic, not a rerun of 912 simulations or independent replication.
+Evidence boundary: One synthetic MSJ model, 64 GPUs in 8-GPU nodes, trace_like, first-fit, exponential service, sticky placement and no migration, three rows. Local-commit seals only. Public checks verify sealed digests, rerun the grading and re-simulate two tasks; they are not independent replication.
 
 Published Research Notes:
 - GPU-SCHED-EP-0001 — Estimation error and restart cost reverse which GPU scheduler wins (Finding)
@@ -127,9 +127,15 @@ Published Research Notes:
 - GPU-SCHED-EP-0029 — Does node fragmentation reorder size-first policies against FCFS and backfill? (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-locality/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-locality/
-- GPU-SCHED-EP-0030 — Gang mix reverses the fragmentation ranking; a load control explains much of the gap (Finding) — CURRENT
+- GPU-SCHED-EP-0030 — Gang mix reverses the fragmentation ranking; a load control explains much of the gap (Finding)
   - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-headroom/
   - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-headroom/
+- GPU-SCHED-EP-0032 — About half of FCFS's extra fragmentation delay comes from slowdowns tied to cluster state (Finding)
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-fcfs-residual/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-fcfs-residual/
+- GPU-SCHED-EP-0034 — Keeping only the busy-GPU stratum at placement restores 77% of state coupling (Finding) — CURRENT
+  - English: https://kbmt327-dev.github.io/scientific-os-research/en/research/gpu-scheduling-occupancy-strata/
+  - Japanese: https://kbmt327-dev.github.io/scientific-os-research/ja/research/gpu-scheduling-occupancy-strata/
 
 ### Queueing system identification
 

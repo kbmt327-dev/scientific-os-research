@@ -1,0 +1,76 @@
+{
+  "pred_id": "PRED-019",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0031",
+  "sealed_by": "claude-code (opus)",
+  "sealed_at": "2026-10-17",
+  "status": "sealed",
+  "why": "E19 (PRED-018) found that fragmentation acts on the policy ranking mostly as a load increase (P5 PASS), with one residual: trace_like rho 0.6 pi 0.2 first_fit, R_fcfs 1.66 against R_srpt 1.15 (gap 0.50). E19's control had two weaknesses found after grading: (1) it scaled every arrival instead of the jobs fragmentation actually slowed; (2) deg_load = J(rho_eff)/J(rho) at unit durations omits the slower service itself, so R mixed the service-time inflation into the residual. E20 replaces it with pi = 0 arms that carry exactly F's GPU-work and asks where the fcfs residual comes from.",
+  "prior_art": {
+    "why_this_block_exists": "Required since PRED-016.",
+    "already_known": [
+      "FCFS waiting time grows with service-time variability (Pollaczek-Khinchine for M/G/1; Kingman's approximation for G/G/c); SRPT is far less sensitive (Schrage 1968; Harchol-Balter 2013). So P4 (within-class spread hurts fcfs) is expected from known theory.",
+      "Multiserver-job FCFS has head-of-line blocking and its stability region depends on the job mix (Brill and Green 1984; Grosof, Harchol-Balter, Scheller-Wolf, e.g. 'Stability for two-class multiserver-job systems' and 'WCFS', 2022-2023). Inflating wide jobs lengthens blocking.",
+      "Queues whose service rate depends on the system state (load-dependent service, e.g. contention slowdowns) are a classical topic; state-dependent degradation creating positive feedback near saturation is known in general terms. Not checked for the specific fragmentation-placement coupling.",
+      "Fragmentation hurts and consolidated placement helps (Tiresias NSDI 2019, Philly ATC 2019, Gandiva OSDI 2018)."
+    ],
+    "what_is_not_claimed_new": "That FCFS is variance-sensitive; that wide-job inflation hurts MSJ FCFS; that fragmentation hurts.",
+    "candidate_contribution": "Within the MSJ model with node locality: a decomposition of fragmentation's extra fcfs delay into state coupling, within-class spread and between-class composition, at exactly matched GPU-work. Novelty UNKNOWN.",
+    "search_done": "Recall only; no systematic search before sealing."
+  },
+  "seal_integrity": {
+    "problem": "What was seen before sealing.",
+    "seen": [
+      "All of E19 (seeds 1901-1903), including per-seed fcfs J at trace_like rho 0.6 pi 0.2 (3.685, 2.922, 2.689; alpha 0.086-0.141) and the load arm. The residual this seal tests was found there; E20 uses new seeds 2001-2006.",
+      "Before writing the predictions, from E19 numbers: util_over_rho at pi 0.2 is about 1.33 for both policies, so a rough expectation of Q_fcfs ~ 3.1 / (1.33 x 1.88) ~ 1.24 and Q_srpt ~ 1.25 / (1.33 x 1.09) ~ 0.86 (gap ~0.38). This back-of-envelope used E19's J(0.8) at unit durations and is not E20 data.",
+      "pilot_e20.py, seeds 9901/9902 at 10k jobs, rho 0.6 pi 0.2 (not used by E20), printed only: fcfs replay RP vs F relative difference of mean JCT (3.7e-16, 1.7e-16) and each arm's GPU-work ratio against F (RP/CM/U 1.0000; CS 0.9994-1.0039; srpt U 1.0000). No JCT level or ratio was printed.",
+      "analyze_e20.py was exercised on fabricated rows (random numbers in the scratchpad, not simulator output) to check that every code path runs."
+    ],
+    "not_seen": "No E20 metric on seeds 2001-2006; no JCT of any CS, CM or U arm on any seed; no rho 0.55 run in any experiment at pi > 0.",
+    "timestamp": "Local git commit only; no external timestamp."
+  },
+  "measurand_validity": {
+    "model": "As E19: N=64, 8-GPU nodes, trace_like mix (needs 1/2/4/8/16/32, probs .50/.20/.15/.10/.04/.01), exponential sizes mean 1, sigma 0, penalty_mode excess, rate = 1/(1 + pi * excess_nodes), sticky first_fit placement, no migration, placement never blocks admission.",
+    "arms": "F = fragmented run at pi. All other arms are pi = 0 runs on the same arrivals, needs and sizes with job durations multiplied: RP by each job's realised slowdown 1/rate_j in F; CS by those slowdowns permuted within need class (rng seed + 7,000,000); CM by the class's GPU-work-weighted mean slowdown; U by the overall GPU-work-weighted mean slowdown. RP, CM and U carry exactly F's GPU-work; CS within 0.5% (pilot). The scheduler sees the arm's durations as sizes (sigma 0).",
+    "why_RP_is_forced_for_fcfs": "fcfs is non-preemptive and admits by free-GPU count only; placement never blocks admission. Given realised durations the schedule is identical, so RP = F is an instrument check, not a finding.",
+    "srpt": "srpt is preemptive and re-places jobs; its F slowdown uses the job's final rate, so srpt's U carries F's work only approximately. srpt gets only BASE, F and U.",
+    "statistics": "Q = J_F / J_U per seed (residual against exact uniform work, including the slower service). For fcfs: a = log(J_F/J_CS) state coupling (slowdowns tied to the cluster state at placement), b = log(J_CS/J_CM) within-class spread, c = log(J_CM/J_U) between-class composition; T = log(J_F/J_U) = a + b + c. Seed-paired, 80k horizon, shares on seed means."
+  },
+  "experiment": {
+    "runner": "run_e20.py",
+    "analysis": "analyze_e20.py (written and sealed with this file)",
+    "grid": "trace_like, first_fit, rows (rho, pi) in {(0.55, 0.2), (0.6, 0.2), (0.6, 0.1)} x seeds 2001-2006 x horizons {40k, 80k}; fcfs arms BASE, F, RP, CS, CM, U; srpt arms BASE, F, U. 72 tasks, 648 simulations.",
+    "fixed": "backlog cap 6000, t_limit_factor 2.0"
+  },
+  "detector": {
+    "statistic": "alpha on the 40k/80k pair (as E18/E19)",
+    "label": "DIVERGING if aborted/time limit or alpha >= 0.8; STABLE if alpha <= 0.2; else UNKNOWN. A cell (policy, rho, pi, arm) is labelled only when all six seeds agree.",
+    "status": "alpha is unaudited near a boundary (U-31). E19's fcfs F at rho 0.6 pi 0.2 had alpha 0.086-0.141, so that cell may come out UNKNOWN on six seeds; rho 0.55 pi 0.2 is in the decision rows for that reason. UNKNOWN cells make the statistic unscorable; they are not relabelled."
+  },
+  "predictions": {
+    "P0": "Instrument (forced): fcfs RP mean JCT equals F within relative 1e-9 in every run. Failure stops the episode as R3.",
+    "P1": "The residual replicates against the exact-work control: at (0.6, 0.2), seed-mean Q_fcfs - Q_srpt >= 0.2 and every one of the six seeds > 0. Unscorable if any of fcfs F/U, srpt F/U is not STABLE.",
+    "P2": "DECISION. State coupling carries at least half of the fcfs residual: in every decision row ((0.55, 0.2), (0.6, 0.2)) where fcfs F, CS, CM, U are STABLE and mean T > 0, mean a >= 0.5 * mean T. At least one such row.",
+    "P3": "Composition hurts fcfs: mean c > 0 in every scorable decision row.",
+    "P4": "Within-class spread hurts fcfs (expected from known theory): mean b >= 0 in every scorable decision row. Low resolution expected; report b in SE units.",
+    "P5": "The residual grows with pi: at rho 0.6, mean T(pi 0.2) > mean T(pi 0.1)."
+  },
+  "pre_committed_consequence": {
+    "P1_fail_or_T_le_0": "E19's fcfs residual does not survive an exact-work control on new seeds. Record it as an artefact of the approximate control or of seed noise; close the residual thread; H10 stays a level effect with no fragmentation-specific term.",
+    "P2_pass": "Most of fcfs's extra delay under fragmentation comes from the coupling between fragmentation and the cluster state (slowdowns land when the cluster is busy), which no static work-distribution model reproduces. Record as a candidate fragmentation-specific mechanism within this model, with srpt's insensitivity beside it. Next would be measuring the coupling directly (slowdown vs occupancy at placement).",
+    "P2_fail_c_largest": "The residual is mostly composition: fragmentation inflates wide jobs and MSJ FCFS is sensitive to wide-job size. This is a change of job-size distribution, i.e. known theory; record no fragmentation-specific dynamic.",
+    "P2_fail_other": "Report the three shares as measured and do not name a mechanism.",
+    "P2_unscorable": "If no decision row is scorable, say that the decomposition was not answered; do not interpret Q."
+  },
+  "declared_unknowns": [
+    "Whether CS removes all state coupling: permuting within class also breaks any correlation of slowdown with the job's arrival order inside a busy period, which is part of what a counts.",
+    "srpt's U arm work match (final rate only).",
+    "Other mixes, loads, placements, penalty shapes; real clusters."
+  ],
+  "rules": [
+    "No edits to this file, run_e20.py or analyze_e20.py after the sealing commit.",
+    "If more than one third of cells are UNKNOWN, report that before any grade interpretation.",
+    "Keep failed predictions; do not re-grade with new thresholds.",
+    "Report each graded mean with its per-seed SD and SE next to the grade."
+  ]
+}

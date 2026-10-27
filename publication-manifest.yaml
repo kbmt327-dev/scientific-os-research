@@ -661,6 +661,26 @@ notes:
     publication:
       status: publishable
 
+  - research_id: GPU-SCHED-EP-0032
+    source_episode: GPU-SCHEDULING/EP-0032
+    source_episode_sha256: 96438ae02cbbb411074130c15c9270577cae0972e48c056c604bb46ff6f72e1a
+    views:
+      ja: content/ja/research/gpu-scheduling-fcfs-residual/index.md
+      en: content/en/research/gpu-scheduling-fcfs-residual/index.md
+    type: Finding
+    publication:
+      status: publishable
+
+  - research_id: GPU-SCHED-EP-0034
+    source_episode: GPU-SCHEDULING/EP-0034
+    source_episode_sha256: 838a51fd85bd0ca4c26e4d6694fd1db23a4bb2b0fd5ada41942eefff29fa3830
+    views:
+      ja: content/ja/research/gpu-scheduling-occupancy-strata/index.md
+      en: content/en/research/gpu-scheduling-occupancy-strata/index.md
+    type: Finding
+    publication:
+      status: publishable
+
   - research_id: KRYPTOS-K4-EP-0241
     source_episode: KRYPTOS-K4/EP-0241
     source_episode_sha256: 2bfb1fc591b586fe1323fee84a38d7174ea6ba5a7588a5349179b3cc67acdfc2

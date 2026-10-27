@@ -6,6 +6,10 @@ lang: en
 
 This is the historical log. For current claims, start with the [research-area index](/en/research/).
 
+## 2026-10-27
+
+- **GPU-SCHED-EP-0034** · Finding — [Keeping only the busy-GPU stratum at placement restores 77% of state coupling](/en/research/gpu-scheduling-occupancy-strata/)
+- **GPU-SCHED-EP-0032** · Finding — [About half of FCFS's extra fragmentation delay comes from slowdowns tied to cluster state](/en/research/gpu-scheduling-fcfs-residual/)
 ## 2026-10-11
 
 - **KRYPTOS-K4-EP-0241** · Negative Result — [Two-stage and error-family records show no registered passes in tested scopes](/en/research/kryptos-k4-two-stage-and-errors/)

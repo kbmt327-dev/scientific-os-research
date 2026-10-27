@@ -6,6 +6,10 @@ lang: ja
 
 ここは履歴の入口です。現在の結論を知りたい場合は、先に[研究分野ごとの現在地](/ja/research/)を読んでください。
 
+## 2026-10-27
+
+- **GPU-SCHED-EP-0034** · Finding — [状態結合の77%は、配置時点の使用中GPU数の層を残すだけで戻った](/ja/research/gpu-scheduling-occupancy-strata/)
+- **GPU-SCHED-EP-0032** · Finding — [fcfsが断片化で余分に遅くなる分の、およそ半分は減速と状態の結びつきだった](/ja/research/gpu-scheduling-fcfs-residual/)
 ## 2026-10-11
 
 - **KRYPTOS-K4-EP-0241** · Negative Result — [二段階・誤差族の記録では検査範囲内の登録通過なし](/ja/research/kryptos-k4-two-stage-and-errors/)

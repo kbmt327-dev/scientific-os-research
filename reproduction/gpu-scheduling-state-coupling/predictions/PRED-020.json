@@ -1,0 +1,79 @@
+{
+  "pred_id": "PRED-020",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0032",
+  "candidate": "C-056",
+  "sealed_by": "claude-code (opus)",
+  "sealed_at": "2026-10-17",
+  "status": "sealed",
+  "why": "E20 (PRED-019, EP-0031) was unscorable: every fcfs cell at pi > 0 was UNKNOWN with the 40k/80k pair on six seeds (alpha -0.48 to 0.97), so E19's lone fcfs residual is unsettled. The decomposition design worked (fcfs replay RP = F to 6e-15); only the stability labels were missing. E21 reruns PRED-019 unchanged on longer windows, after a label-only pilot on separate seeds.",
+  "inherits": {
+    "from": "predictions/PRED-019.json (sha256 294870b90dc6f47b9103cbb6e145cb0b9a59cffdd160e0e216d2f958d0bbe98d)",
+    "unchanged": "prior_art, measurand_validity (model, arms, srpt approximation, statistics), predictions P0-P5 and their thresholds, pre_committed_consequence, declared_unknowns, rules. Restated below so this file stands alone.",
+    "changed": "horizons 40k/80k -> 160k/320k (labels from the 160k/320k pair, values at 320k); seeds 2001-2006 -> 2101-2106; runner run_e21.py (calls run_e20.one unchanged); grader analyze_e21.py (analyze_e20.py with only the horizon keys and file names changed)."
+  },
+  "seal_integrity": {
+    "problem": "What was seen before sealing.",
+    "seen": [
+      "All of E19 and E20. Importantly, after E20 was graded unscorable, a descriptive diagnostic printed per-seed mean JCT at 40k and 80k for every arm of E20 (seeds 2001-2006). From it one can read rough 80k-window values of the decomposition: at (0.6, 0.2), F > CS ~ CM > U for fcfs on most seeds, and srpt's F below its U. Those windows were not stationary (that is why E20 was unscorable), but they do preview the direction. PRED-019's predictions were fixed before that diagnostic and are carried over unchanged; no threshold was moved.",
+      "pilot_e21.py, seeds 3001-3006 (not used by E21), horizons 160k/320k, all 27 cells of E20's design: printed only the alpha label and per-seed alpha. All 27 STABLE; largest alpha 0.172 (fcfs F at (0.6, 0.2)), fcfs at (0.55, 0.2) at most 0.074, srpt within +-0.01. No JCT level or arm ratio was printed; results/E21_pilot_labels.json holds labels and alphas only.",
+      "analyze_e21.py was exercised on fabricated rows (random numbers in the scratchpad) to check that every code path runs."
+    ],
+    "not_seen": "No metric on seeds 2101-2106; no JCT at 160k/320k on any seed.",
+    "timestamp": "Local git commit only; no external timestamp."
+  },
+  "prior_art": {
+    "already_known": [
+      "FCFS waiting grows with service-time variability (Pollaczek-Khinchine; Kingman); SRPT is far less sensitive (Schrage 1968; Harchol-Balter 2013). P4 is expected from known theory.",
+      "MSJ FCFS has head-of-line blocking and its stability region depends on the job mix (Brill and Green 1984; Grosof, Harchol-Balter, Scheller-Wolf 2022-2023).",
+      "State-dependent service slowdowns creating feedback near saturation are known in general terms; not checked for the fragmentation-placement coupling.",
+      "Fragmentation hurts and consolidated placement helps (Tiresias NSDI 2019, Philly ATC 2019, Gandiva OSDI 2018)."
+    ],
+    "what_is_not_claimed_new": "That FCFS is variance-sensitive; that wide-job inflation hurts MSJ FCFS; that fragmentation hurts.",
+    "candidate_contribution": "Within the MSJ model with node locality: a decomposition of fragmentation's extra fcfs delay into state coupling, within-class spread and between-class composition at exactly matched GPU-work. Novelty UNKNOWN.",
+    "search_done": "Recall only."
+  },
+  "measurand_validity": {
+    "model": "As E19/E20: N=64, 8-GPU nodes, trace_like (needs 1/2/4/8/16/32, probs .50/.20/.15/.10/.04/.01), exponential sizes mean 1, sigma 0, penalty_mode excess, rate = 1/(1 + pi * excess_nodes), sticky first_fit, no migration, placement never blocks admission.",
+    "arms": "F = fragmented run at pi. pi = 0 arms on the same arrivals/needs/sizes with durations multiplied: RP by each job's realised slowdown in F; CS by those slowdowns permuted within need class; CM by the class's GPU-work-weighted mean slowdown; U by the overall GPU-work-weighted mean slowdown. RP, CM, U carry exactly F's GPU-work, CS within about 0.5%.",
+    "srpt": "BASE, F, U only; srpt's U uses final rates of re-placed jobs, so its work match is approximate.",
+    "statistics": "Q = J_F / J_U per seed. fcfs: a = log(J_F/J_CS) state coupling, b = log(J_CS/J_CM) within-class spread, c = log(J_CM/J_U) composition, T = log(J_F/J_U) = a + b + c. Seed-paired at 320k; shares on seed means."
+  },
+  "experiment": {
+    "runner": "run_e21.py",
+    "analysis": "analyze_e21.py",
+    "grid": "trace_like, first_fit, rows (rho, pi) in {(0.55, 0.2), (0.6, 0.2), (0.6, 0.1)} x seeds 2101-2106 x horizons {160k, 320k}; fcfs arms BASE, F, RP, CS, CM, U; srpt arms BASE, F, U. 72 tasks, 648 simulations.",
+    "fixed": "backlog cap 6000, t_limit_factor 2.0"
+  },
+  "detector": {
+    "statistic": "alpha on the 160k/320k pair",
+    "label": "DIVERGING if aborted/time limit or alpha >= 0.8; STABLE if alpha <= 0.2; else UNKNOWN. A cell is labelled only when all six seeds agree.",
+    "status": "alpha is unaudited near a boundary (U-31). The pilot's largest alpha (0.172) is close to 0.2, so (0.6, 0.2) can still come out UNKNOWN; (0.55, 0.2) is in the decision rows for that reason. UNKNOWN cells are not relabelled."
+  },
+  "predictions": {
+    "P0": "Instrument (forced): fcfs RP mean JCT equals F within relative 1e-9 in every run. Failure stops the episode as R3.",
+    "P1": "The residual replicates against the exact-work control: at (0.6, 0.2), seed-mean Q_fcfs - Q_srpt >= 0.2 and every one of the six seeds > 0. Unscorable if any of fcfs F/U, srpt F/U is not STABLE.",
+    "P2": "DECISION. State coupling carries at least half of the fcfs residual: in every decision row ((0.55, 0.2), (0.6, 0.2)) where fcfs F, CS, CM, U are STABLE and mean T > 0, mean a >= 0.5 * mean T. At least one such row.",
+    "P3": "Composition hurts fcfs: mean c > 0 in every scorable decision row.",
+    "P4": "Within-class spread hurts fcfs (expected from known theory): mean b >= 0 in every scorable decision row. Low resolution expected; report b in SE units.",
+    "P5": "The residual grows with pi: at rho 0.6, mean T(pi 0.2) > mean T(pi 0.1)."
+  },
+  "pre_committed_consequence": {
+    "P1_fail_or_T_le_0": "E19's fcfs residual does not survive an exact-work control on new seeds and stationary windows. Record it as an artefact of the approximate control or of non-stationary windows; close the residual thread; H10 stays a level effect with no fragmentation-specific term.",
+    "P2_pass": "Most of fcfs's extra delay under fragmentation comes from the coupling between fragmentation and the cluster state, which no static work-distribution model reproduces. Record as a candidate fragmentation-specific mechanism within this model, with srpt's insensitivity beside it. Next: measure the coupling directly (slowdown vs occupancy at placement).",
+    "P2_fail_c_largest": "The residual is mostly composition (wide jobs inflated, MSJ FCFS sensitive to that): a change of job-size distribution, i.e. known theory; no fragmentation-specific dynamic.",
+    "P2_fail_other": "Report the three shares as measured and do not name a mechanism.",
+    "P2_unscorable": "Say the decomposition was not answered on these windows either; do not interpret Q; close C-056 and move to C-057 or another question."
+  },
+  "declared_unknowns": [
+    "Whether CS removes all state coupling (it also breaks correlation with arrival order inside a busy period).",
+    "srpt's U arm work match (final rate only).",
+    "Other mixes, loads, placements, penalty shapes; real clusters."
+  ],
+  "rules": [
+    "No edits to this file, run_e21.py or analyze_e21.py after the sealing commit.",
+    "If more than one third of cells are UNKNOWN, report that before any grade interpretation.",
+    "Keep failed predictions; do not re-grade with new thresholds.",
+    "Report each graded mean with its per-seed SD and SE next to the grade."
+  ]
+}

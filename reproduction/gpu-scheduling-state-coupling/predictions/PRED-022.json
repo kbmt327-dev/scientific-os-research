@@ -1,0 +1,76 @@
+{
+  "pred_id": "PRED-022",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0034",
+  "candidate": "C-058",
+  "sealed_by": "claude-code (opus)",
+  "sealed_at": "2026-10-27",
+  "status": "sealed",
+  "why": "E21 (PRED-020) and its replication E22 (PRED-021: R1 PASS, share of a in T 0.52 on seeds 2201-2206; pooled 12-seed margin lower bound 0.0006, barely > 0) found that fcfs's extra delay under fragmentation is about half or more state coupling a = log(J_F / J_CS): shuffling F's slowdowns within need class (CS) removes it. CS breaks two links at once: the link between a slowdown and the cluster state it was placed into, and its link with neighbours in arrival order. C-058 records the placement-time state and asks which link carries a, by shuffling within finer strata that keep one link and not the other.",
+  "inherits": {
+    "from": "predictions/PRED-020.json and PRED-021.json",
+    "unchanged": "model, rows, policies, horizons 160k/320k, detector and labels (analyze_e21.cells), arms BASE F RP CS CM U and their construction, P0.",
+    "changed": "seeds 2301-2306 (never used); run_e20.one gains an opt-in C-058 mode (sixth task element {'c058': True}); sim.simulate gains an optional read-only trace= argument; runner run_e23.py; grader analyze_e23.py."
+  },
+  "instrument": {
+    "trace": "Every placement appends (jid, t, need, excess_nodes, rate, busy, n_waiting, n_free, free_nodes_any, free_nodes_full). busy = servers held by other jobs at that moment; n_waiting = jobs waiting at the decision epoch before admission; scatter = free_nodes_any - ceil(n_free / 8). Recorded in BASE (pi 0: placement and excess are the same rule, with no slowdown) and F, for fcfs and srpt; summarised per need class over measured jobs (jid >= 20% of n) as Spearman correlations of excess with busy, n_waiting and scatter, and mean excess by busy and queue bins.",
+    "new_arms": "fcfs only, pi = 0, same arrivals/needs/sizes, F's per-job slowdowns permuted within need class AND a stratum: CO = five bins of F's busy servers at that job's placement (value quantiles, ties kept together), CQ = five bins of F's queue length at placement, CT = five equal-count arrival-order blocks. Each keeps F's per-class multiset of slowdowns, but because sizes differ within a class, permuting slowdowns changes GPU-work: like CS (PRED-020: within about 0.5%), CO/CQ/CT match F's GPU-work only approximately. Each run records work_ratio_vs_F and the grader reports its range per arm and row.",
+    "check_before_seal": "With the C-058 mode on, every pre-existing arm must reproduce the sealed E22 numbers exactly (bit-identical mean_jct) and RP must equal F (relative <= 1e-9). Done before sealing; see seal_integrity."
+  },
+  "seal_integrity": {
+    "seen": [
+      "All of E19-E22, including E22's per-seed values on 2201-2206.",
+      "Instrument smoke test, seed 9999, horizon 20k only, (0.6, 0.2): fcfs J = F 2.583, CS 2.370, CQ 2.403, CO 2.606, CT 2.644, i.e. at that non-stationary 20k window CO and CT restored more than all of a and CQ about a sixth. Spearman(excess, busy) 0.17-0.55 for needs 2-32 in fcfs and srpt F; Spearman(excess, queue) 0.05-0.25. This was seen BEFORE the predictions below were fixed. A 20k window is far from stationary for fcfs here (E20), and five arrival-order blocks of a 20k run follow its drift, so it previews little about 320k; it is declared because it did shape the choice of CO as the decision arm and of CT as its rival.",
+      "Bit-identity check with the C-058 mode on, four E22 tasks (fcfs (0.6,0.2) 2201 160k, fcfs (0.55,0.2) 2202 160k, srpt (0.6,0.2) 2203 160k, fcfs (0.6,0.1) 2204 320k): every KEEP field of every pre-existing arm identical to results/E22.json after a JSON round trip; RP vs F relative difference <= 1.2e-16; GPU-work of CO/CQ/CT within 0.2% of F. CO/CQ/CT JCTs of these runs were not printed.",
+      "analyze_e23.py was exercised in the scratchpad on a throwaway E23.json made with seeds 9001-9006 at 4k/8k windows relabelled as 160k/320k (far from stationary). Its grade lines were printed: P0 and D, S1-S4 all PASS, S4 mean difference 0.107. Declared as seen; the predictions were already fixed and were not changed after it.",
+      "Codex (read-only review, 2026-10-27) found four defects before sealing, all fixed before the sealing commit: (1) this file claimed CO/CQ/CT carry exactly CS's GPU-work -- false, corrected above, work ratios now reported; (2) CT gave strata to jobs F never placed -- now over placed jobs only; (3) a P0 failure did not stop grading -- now it does; (4) an undefined (None) correlation crashed the report -- now counted and skipped in the printed range. It also re-checked 9 pre-existing arm outputs against HEAD on 2,000-job runs (identical)."
+    ],
+    "not_seen": "No simulation on seeds 2301-2306.",
+    "timestamp": "Local git commit only; no external timestamp."
+  },
+  "prior_art": {
+    "already_known": [
+      "Fragmentation is worse when the cluster is fuller (geometric: fewer whole free nodes); known in GPU scheduling practice (Tiresias, Gandiva, Philly analyses) and bin-packing.",
+      "State-dependent service slowdowns create feedback near saturation (general queueing knowledge).",
+      "FCFS head-of-line blocking in MSJ (Grosof, Harchol-Balter, Scheller-Wolf)."
+    ],
+    "what_is_not_claimed_new": "That fuller clusters fragment more (S2 is expected from geometry).",
+    "candidate_contribution": "Within this model: which link CS breaks carries fcfs's state coupling -- slowdowns placed at high occupancy (CO), at long queues (CQ), or coarse arrival-order drift (CT). Novelty UNKNOWN.",
+    "search_done": "Recall only."
+  },
+  "experiment": {
+    "runner": "run_e23.py",
+    "analysis": "analyze_e23.py",
+    "grid": "trace_like, first_fit, rows (rho, pi) in {(0.55, 0.2), (0.6, 0.2), (0.6, 0.1)} x seeds 2301-2306 x horizons {160k, 320k}; fcfs arms BASE F RP CS CM U CO CQ CT; srpt BASE F U. 72 tasks, 864 simulations, CPU only."
+  },
+  "predictions": {
+    "P0": "Instrument: fcfs RP mean JCT equals F within relative 1e-9 in every run. Failure stops the episode.",
+    "D": "DECISION. Occupancy carries the coupling: in every decision row ((0.55, 0.2), (0.6, 0.2)) where fcfs F, CS, CO are STABLE and mean a > 0, mean d_CO >= 0.5 * mean a, d_CO = log(J_CO / J_CS). At least one such row.",
+    "S1": "Occupancy beats coarse arrival order: in the same rows (CT also STABLE), mean d_CO > mean d_CT.",
+    "S2": "Fuller clusters fragment more, without any slowdown (expected from geometry): in fcfs BASE at (0.6, 0.2), Spearman(excess, busy) > 0 for needs 2, 4, 8, 16 on all six seeds.",
+    "S3": "The same holds in F for fcfs and for srpt.",
+    "S4": "Feedback: at (0.6, 0.2), fcfs F's excess nodes per placement exceeds BASE's on all six seeds (F's slowdowns keep the cluster fuller, so later jobs land on a more fragmented cluster).",
+    "reported": "CQ's share; Spearman(excess, queue length) and (excess, scatter); E21's P2 rule re-applied on these seeds (descriptive, not a third replication test)."
+  },
+  "pre_committed_consequence": {
+    "D_pass_S1_pass": "Within this model, the state coupling is mostly 'slowdowns land when the cluster is full': keeping each slowdown in its occupancy stratum restores at least half of a, more than coarse arrival-order blocks do. Write it as the mechanism candidate 'fragmentation concentrates at high occupancy and fcfs pays for it then'. Local arrival-order correlation inside busy periods is not separated (see unknowns).",
+    "D_pass_S1_fail": "Occupancy strata restore half of a, but coarse arrival-order blocks restore as much or more: the coupling is time-local and occupancy is one proxy for it. Do not name occupancy as the mechanism.",
+    "D_fail": "Occupancy at placement does not carry most of the coupling. Report the three shares as measured; do not name a mechanism.",
+    "D_unscorable": "Do not interpret the shares; report labels."
+  },
+  "declared_unknowns": [
+    "CS, CO, CQ, CT each change GPU-work slightly (about 0.1-0.5% at 160k in the check runs; up to 1.7% for CS at 2,000 jobs in Codex's check). d_X = log(J_X/J_CS) therefore mixes a small work difference into what X restores. If any |work_ratio - 1| at 320k exceeds 0.01, this is flagged before interpreting D.",
+    "Five strata are coarse: a stratum shuffle that restores little may only mean the strata are too wide, not that the variable is irrelevant.",
+    "Occupancy and arrival order are correlated (busy periods are contiguous in time); CT with five blocks is a coarse-drift control only and does not test local order inside a busy period.",
+    "Strata are F's state; the replayed arm's own state differs once slowdowns move.",
+    "srpt has no stratified arms (it re-places jobs; per-job state is not unique).",
+    "Other mixes, loads, placements, penalty shapes; real clusters."
+  ],
+  "rules": [
+    "No edits to this file, run_e23.py, analyze_e23.py, run_e20.py or sim/cluster.py after the sealing commit.",
+    "If more than one third of cells are UNKNOWN, report that before any grade interpretation.",
+    "Keep failed predictions; do not re-grade with new thresholds.",
+    "Report each graded mean with its per-seed SD and SE.",
+    "If any CS/CO/CQ/CT work_ratio_vs_F at 320k is outside [0.99, 1.01], report that before interpreting D."
+  ]
+}

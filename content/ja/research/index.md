@@ -11,13 +11,13 @@ lang: ja
 <!-- GENERATED: research-current:START -->
 ## GPUクラスタのスケジューリング
 
-**テーマ：** サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
+**テーマ：** サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。断片化の害は仕事量の増加だけで説明できるか。
 
-**現在地：** EP-0030の封印予測は3/6で、決定予測P2はFAIL。912 runの合成検定では、trace_likeの順位は採点可能な3/3行で保った一方、gang_oddでは4/4行でsrptとsf_srptが逆転しました。EP-0029の事後順位をmix一般へ広げる主張は撤回します。近似的な負荷対照P5は計算可能な4/8行でPASSし、保存gradingからの再計算では差の約64〜100%が負荷余裕と整合します。これは因果分解ではありません。152 cell中8はUNKNOWN。実クラスタと新規性はUNKNOWN。
+**現在地：** 合成modelの(ρ, π)=(0.6, 0.2)では、fcfsが断片化で余分に遅くなる分のおよそ半分（0.52〜0.56）が状態結合（同じneed classの中で減速を並べ替えると消える部分）でした。決定予測は新seedの封印再現でも通りましたが、余裕は薄く、E21を含む12 seed合算の下限は0.0006で、独立の検定ではありません。EP-0034では、配置時点の使用中GPU数の層を残して並べ替えるだけで状態結合の77%が戻り、到着順の粗いblockでは6%でした（採点できた決定行は(0.55, 0.2)の1行）。このmodelの中での機構の候補は「断片化は混んでいるときに集中し、fcfsはそのときに代価を払う」です。実クラスタと新規性はUNKNOWN。
 
-**証拠の境界：** 合成MSJ model1つ、64 GPU・8 GPU/node、指数サービス、sticky配置・migrationなし。封印はlocal commitのみ。公開検算は保存gradingの投影と算術で、912 runの再実行でも独立追試でもありません。
+**証拠の境界：** 合成MSJ model1つ、64 GPU・8 GPU/node、trace_like、first_fit、指数サービス、sticky配置・migrationなし、3行。封印はlocal commitのみ。公開検算は封印hash、採点の再実行、2 taskの再simulationで、独立追試ではありません。
 
-**[現在のResearch Note（EP-0030）→](/ja/research/gpu-scheduling-headroom/)** — Finding
+**[現在のResearch Note（EP-0034）→](/ja/research/gpu-scheduling-occupancy-strata/)** — Finding
 
 [研究の現在地と更新履歴を見る →](/ja/programs/gpu-scheduling/)
 

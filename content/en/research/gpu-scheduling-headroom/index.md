@@ -59,6 +59,8 @@ The P5 load control met its preregistered condition in all four computable rows 
 
 It does not establish rankings on real clusters, generality across schedulers or workloads, or a causal fragmentation effect. Fragmentation increases work only for gangs spanning nodes, while the load-control arm increases work uniformly for arrivals. P5 is therefore an approximate control, not a causal decomposition. About 0.50 of the gap remains for trace_like at rho = 0.6 and pi = 0.2 after load matching.
 
+Later (2026-10-27): this residual could not be scored in E20, whose windows were too short, and was restated as real under an exact same-work control with longer windows in E21 and E22. The definitions differ, so the numbers are not compared with 0.50. See the [follow-up Note](/en/research/gpu-scheduling-fcfs-residual/).
+
 ## Research question
 
 Would the post-hoc EP-0029 order hold with new seeds and a gang mix whose sizes are not node multiples? A pi = 0 arm that raises arrival load alone also tested whether policy headroom could account for the degradation differences.

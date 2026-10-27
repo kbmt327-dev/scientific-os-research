@@ -23,11 +23,11 @@ The replacement, **alpha** (the elasticity of mean response time with respect to
 <!-- GENERATED: program-current:START -->
 ## Current public state
 
-EP-0030 met 3/6 sealed predictions and failed the decision prediction P2. In 912 synthetic runs, the order held in 3/3 scorable trace_like rows but srpt and sf_srpt reversed in 4/4 gang_odd rows. The EP-0029 post hoc order is withdrawn as a general claim across mixes. Approximate load controls P5 passed in 4/8 computable rows; saved-grading arithmetic makes roughly 64–100% of the gap consistent with load headroom. This is not a causal decomposition. Eight of 152 cells are UNKNOWN. Real clusters and novelty remain UNKNOWN.
+In the synthetic model at (ρ, π) = (0.6, 0.2), about half (0.52–0.56) of FCFS's extra fragmentation delay is state coupling (the part that disappears when slowdowns are shuffled within need class). The decision prediction also passed a sealed replication on new seeds, but the margin is thin; the pooled 12-seed lower bound, which includes E21 and is not an independent test, is 0.0006. In EP-0034, shuffling slowdowns only within busy-GPU strata at placement restored 77% of state coupling, against 6% for coarse arrival-order blocks (one decision row, (0.55, 0.2), was scorable). The mechanism candidate within the model is "fragmentation concentrates when the cluster is busy, and FCFS pays for it then". Real clusters and novelty remain UNKNOWN.
 
-**Evidence boundary:** One synthetic MSJ model, 64 GPUs in 8-GPU nodes, exponential service, sticky placement and no migration. Local-commit seals only. Public checks verify a projection of saved grading and arithmetic, not a rerun of 912 simulations or independent replication.
+**Evidence boundary:** One synthetic MSJ model, 64 GPUs in 8-GPU nodes, trace_like, first-fit, exponential service, sticky placement and no migration, three rows. Local-commit seals only. Public checks verify sealed digests, rerun the grading and re-simulate two tasks; they are not independent replication.
 
-**[Read the current Research Note (EP-0030) →](/en/research/gpu-scheduling-headroom/)**
+**[Read the current Research Note (EP-0034) →](/en/research/gpu-scheduling-occupancy-strata/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -59,5 +59,7 @@ EP-0030 met 3/6 sealed predictions and failed the decision prediction P2. In 912
 24. [[en/research/gpu-scheduling-self-containment/index|EP-0027 — Did the public article carry the facts needed not to misread its own claim?]]
 25. [[en/research/gpu-scheduling-cold-reader/index|EP-0028 — Do fresh AI readers read the transition-refusal note correctly?]]
 26. [[en/research/gpu-scheduling-locality/index|EP-0029 — Does node fragmentation reorder size-first policies against FCFS and backfill?]]
-27. **[[en/research/gpu-scheduling-headroom/index|EP-0030 — Gang mix reverses the fragmentation ranking; a load control explains much of the gap]] (latest)**
+27. [[en/research/gpu-scheduling-headroom/index|EP-0030 — Gang mix reverses the fragmentation ranking; a load control explains much of the gap]]
+28. [[en/research/gpu-scheduling-fcfs-residual/index|EP-0032 — About half of FCFS's extra fragmentation delay comes from slowdowns tied to cluster state]]
+29. **[[en/research/gpu-scheduling-occupancy-strata/index|EP-0034 — Keeping only the busy-GPU stratum at placement restores 77% of state coupling]] (latest)**
 <!-- GENERATED: program-history:END -->

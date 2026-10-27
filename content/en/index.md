@@ -15,11 +15,11 @@ lang: en
   <article class="program-row">
     <div>
       <h3>GPU cluster scheduling</h3>
-      <p>We test, with sealed predictions, whether node fragmentation reorders size-first policies against FCFS and backfill.</p>
+      <p>We split FCFS's extra delay under node fragmentation with same-work controls, then tested what carries it using placement-time state.</p>
     </div>
     <nav aria-label="GPU cluster scheduling">
       <a href="/en/programs/gpu-scheduling/">Program overview</a>
-      <a href="/en/research/gpu-scheduling-headroom/">Current Note</a>
+      <a href="/en/research/gpu-scheduling-occupancy-strata/">Current Note</a>
     </nav>
   </article>
   <article class="program-row">

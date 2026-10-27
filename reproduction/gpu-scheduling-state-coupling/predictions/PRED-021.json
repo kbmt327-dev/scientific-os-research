@@ -1,0 +1,59 @@
+{
+  "pred_id": "PRED-021",
+  "domain": "GPU Cluster Scheduling",
+  "episode": "EP-0033",
+  "candidate": "replication of PRED-020 P2 (before C-058)",
+  "sealed_by": "claude-code (opus)",
+  "sealed_at": "2026-10-27",
+  "status": "sealed",
+  "why": "E21 (PRED-020, EP-0032) passed its decision prediction P2 (state coupling a >= 0.5 * T in every decision row with T > 0) with a thin margin at (0.6, 0.2): per-seed a - 0.5T was 0.0001 to 0.026, mean 0.011, SE 0.0045 (about 2.5 SE), and one seed sat on the threshold. A pass with that margin can come from seed luck. E22 reruns E21 exactly on six seeds never used before (2201-2206) to see whether P2 replicates before C-058 builds on it.",
+  "inherits": {
+    "from": "predictions/PRED-020.json (sha256 c21ae6da67e37814ddc6bebefc1c2a27c506c746fe1f733e6eed35f33693d4c1)",
+    "unchanged": "model, arms, rows, policies, horizons 160k/320k, detector and labels, statistics, P0-P5 text and thresholds, analyze_e21.py's labelling and grading functions (imported, not copied).",
+    "changed": "seeds 2101-2106 -> 2201-2206; runner run_e22.py (run_e21.py with SEEDS and file names changed; calls run_e20.one at commit c9fc05e, unchanged); grader analyze_e22.py (imports analyze_e21 and adds R1-R3 below). No pilot: E21's pilot (3001-3006) and E21 itself (2101-2106) were 27/27 STABLE on the same windows."
+  },
+  "seal_integrity": {
+    "seen": [
+      "Everything from E19, E20, E21 and E21's pilot, including E21's per-seed values (a, T, margins).",
+      "analyze_e22.py was exercised in the scratchpad on a fabricated E22.json (E21's rows with seeds renamed and JCT jittered by +-0.2%) to check that every code path runs."
+    ],
+    "not_seen": "No simulation on seeds 2201-2206.",
+    "timestamp": "Local git commit only; no external timestamp."
+  },
+  "prior_art": {
+    "already_known": "As PRED-020 (Pollaczek-Khinchine/Kingman, SRPT insensitivity, MSJ FCFS head-of-line blocking, fragmentation hurts). Replicating a thin pass on fresh seeds is standard practice.",
+    "what_is_not_claimed_new": "Everything in PRED-020's list.",
+    "search_done": "Recall only."
+  },
+  "experiment": {
+    "runner": "run_e22.py",
+    "analysis": "analyze_e22.py",
+    "grid": "trace_like, first_fit, rows (rho, pi) in {(0.55, 0.2), (0.6, 0.2), (0.6, 0.1)} x seeds 2201-2206 x horizons {160k, 320k}; fcfs arms BASE, F, RP, CS, CM, U; srpt BASE, F, U. 72 tasks, 648 simulations, CPU only.",
+    "fixed": "backlog cap 6000, t_limit_factor 2.0"
+  },
+  "predictions": {
+    "P0_P5": "PRED-020's P0-P5, word for word, re-graded on seeds 2201-2206 by analyze_e21's grade(). P3 failed in E21; it stays as written and is expected to fail again (not a decision).",
+    "R1": "DECISION. P2 replicates: PRED-020's P2 rule passes on seeds 2201-2206 (in every decision row where fcfs F, CS, CM, U are STABLE and mean T > 0, mean a >= 0.5 * mean T; at least one such row).",
+    "R2": "The margin is resolved: at (0.6, 0.2), over the 12 seeds 2101-2106 and 2201-2206, the one-sided 95% lower bound of mean (a - 0.5T), t with 11 df, is > 0. Requires (0.6, 0.2) scorable in both E21 and E22.",
+    "R3": "Reported, not a decision: the same lower bound on E22's six seeds alone (t, 5 df)."
+  },
+  "pre_committed_consequence": {
+    "P0_fail": "Instrument broken: stop, report, do not grade R1.",
+    "R1_pass_R2_pass": "P2 replicated and its margin is resolved within this model: state coupling carries more than half of fcfs's fragmentation residual at (0.6, 0.2) and (0.55, 0.2). Proceed to C-058.",
+    "R1_pass_R2_fail": "P2 replicated as a rule, but the margin over 0.5T is not resolved: write 'a is about half of T or more', not 'more than half'. a > 0 itself is not in question. Proceed to C-058.",
+    "R1_fail": "P2 did not replicate. Downgrade EP-0032's P2 PASS to 'passed once, not replicated'; state that a's share of T is near 0.5 and unresolved. Stop before C-058's main run and report to the owner.",
+    "R1_unscorable": "Any needed cell UNKNOWN: the replication was not obtained. Do not interpret. Stop before C-058's main run and report to the owner."
+  },
+  "declared_unknowns": [
+    "PRED-020's declared unknowns, unchanged (CS also breaks busy-period arrival-order correlation; srpt U work match; other mixes, loads, placements, penalty shapes; real clusters).",
+    "R2 pools the E21 seeds whose thin margin prompted this replication; it is a precision estimate, not an independent test. R1 is the independent test.",
+    "Under a true margin of exactly 0, R1 passes about half the time; R1 alone cannot establish a >= 0.5T. That is why R2 is reported beside it."
+  ],
+  "rules": [
+    "No edits to this file, run_e22.py or analyze_e22.py after the sealing commit.",
+    "run_e20.py is used at its sealed state; C-058 instrumentation is added only after E22's results are committed.",
+    "If more than one third of cells are UNKNOWN, report that before any grade interpretation.",
+    "Keep failed predictions; do not re-grade with new thresholds.",
+    "Report each graded mean with its per-seed SD and SE next to the grade."
+  ]
+}

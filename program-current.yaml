@@ -3,30 +3,30 @@ site_url: https://kbmt327-dev.github.io/scientific-os-research
 programs:
   - id: gpu-scheduling
     research_id_prefix: GPU-SCHED-
-    current_research_id: GPU-SCHED-EP-0030
+    current_research_id: GPU-SCHED-EP-0034
     ja:
       title: GPUクラスタのスケジューリング
-      home_summary: nodeの断片化がサイズ優先とFCFS・backfillの順位を入れ替えるかを、封印した予測で試しました。
-      question: サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。
-      claim: EP-0030の封印予測は3/6で、決定予測P2はFAIL。912 runの合成検定では、trace_likeの順位は採点可能な3/3行で保った一方、gang_oddでは4/4行でsrptとsf_srptが逆転しました。EP-0029の事後順位をmix一般へ広げる主張は撤回します。近似的な負荷対照P5は計算可能な4/8行でPASSし、保存gradingからの再計算では差の約64〜100%が負荷余裕と整合します。これは因果分解ではありません。152
-        cell中8はUNKNOWN。実クラスタと新規性はUNKNOWN。
-      evidence_boundary: 合成MSJ model1つ、64 GPU・8 GPU/node、指数サービス、sticky配置・migrationなし。封印はlocal commitのみ。公開検算は保存gradingの投影と算術で、912
-        runの再実行でも独立追試でもありません。
+      home_summary: nodeの断片化でfcfsが余分に遅くなる分を同じ仕事量の対照で分け、その中身を配置時点の状態で確かめました。
+      question: サイズ優先の条件と容量境界を、どの情報・観測窓なら確かめられるか。断片化の害は仕事量の増加だけで説明できるか。
+      claim: 合成modelの(ρ, π)=(0.6, 0.2)では、fcfsが断片化で余分に遅くなる分のおよそ半分（0.52〜0.56）が状態結合（同じneed classの中で減速を並べ替えると消える部分）でした。決定予測は新seedの封印再現でも通りましたが、余裕は薄く、E21を含む12
+        seed合算の下限は0.0006で、独立の検定ではありません。EP-0034では、配置時点の使用中GPU数の層を残して並べ替えるだけで状態結合の77%が戻り、到着順の粗いblockでは6%でした（採点できた決定行は(0.55, 0.2)の1行）。このmodelの中での機構の候補は「断片化は混んでいるときに集中し、fcfsはそのときに代価を払う」です。実クラスタと新規性はUNKNOWN。
+      evidence_boundary: 合成MSJ model1つ、64 GPU・8 GPU/node、trace_like、first_fit、指数サービス、sticky配置・migrationなし、3行。封印はlocal commitのみ。公開検算は封印hash、採点の再実行、2
+        taskの再simulationで、独立追試ではありません。
     en:
       title: GPU cluster scheduling
-      home_summary: We test, with sealed predictions, whether node fragmentation reorders size-first policies
-        against FCFS and backfill.
+      home_summary: We split FCFS's extra delay under node fragmentation with same-work controls, then tested what carries it using placement-time state.
       question: Under which information and observation windows can size-first conditions and capacity boundaries
-        be established?
-      claim: EP-0030 met 3/6 sealed predictions and failed the decision prediction P2. In 912 synthetic
-        runs, the order held in 3/3 scorable trace_like rows but srpt and sf_srpt reversed in 4/4 gang_odd
-        rows. The EP-0029 post hoc order is withdrawn as a general claim across mixes. Approximate load
-        controls P5 passed in 4/8 computable rows; saved-grading arithmetic makes roughly 64–100% of the
-        gap consistent with load headroom. This is not a causal decomposition. Eight of 152 cells are UNKNOWN.
-        Real clusters and novelty remain UNKNOWN.
-      evidence_boundary: One synthetic MSJ model, 64 GPUs in 8-GPU nodes, exponential service, sticky placement
-        and no migration. Local-commit seals only. Public checks verify a projection of saved grading and
-        arithmetic, not a rerun of 912 simulations or independent replication.
+        be established? Is the cost of fragmentation explained by added work alone?
+      claim: In the synthetic model at (ρ, π) = (0.6, 0.2), about half (0.52–0.56) of FCFS's extra fragmentation
+        delay is state coupling (the part that disappears when slowdowns are shuffled within need class). The decision prediction
+        also passed a sealed replication on new seeds, but the margin is thin; the pooled 12-seed lower bound,
+        which includes E21 and is not an independent test, is 0.0006. In EP-0034, shuffling slowdowns only within busy-GPU strata at placement restored 77% of
+        state coupling, against 6% for coarse arrival-order blocks (one decision row, (0.55, 0.2), was scorable).
+        The mechanism candidate within the model is "fragmentation concentrates when the cluster is busy, and
+        FCFS pays for it then". Real clusters and novelty remain UNKNOWN.
+      evidence_boundary: One synthetic MSJ model, 64 GPUs in 8-GPU nodes, trace_like, first-fit, exponential
+        service, sticky placement and no migration, three rows. Local-commit seals only. Public checks verify
+        sealed digests, rerun the grading and re-simulate two tasks; they are not independent replication.
   - id: queueing-system-identification
     research_id_prefix: SIM-WORLD-
     current_research_id: SIM-WORLD-EP-0001

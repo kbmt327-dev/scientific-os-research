@@ -23,11 +23,11 @@ GPUクラスタでは、多数のジョブが限られたGPUを取り合いま�
 <!-- GENERATED: program-current:START -->
 ## 現在の公開結論
 
-EP-0030の封印予測は3/6で、決定予測P2はFAIL。912 runの合成検定では、trace_likeの順位は採点可能な3/3行で保った一方、gang_oddでは4/4行でsrptとsf_srptが逆転しました。EP-0029の事後順位をmix一般へ広げる主張は撤回します。近似的な負荷対照P5は計算可能な4/8行でPASSし、保存gradingからの再計算では差の約64〜100%が負荷余裕と整合します。これは因果分解ではありません。152 cell中8はUNKNOWN。実クラスタと新規性はUNKNOWN。
+合成modelの(ρ, π)=(0.6, 0.2)では、fcfsが断片化で余分に遅くなる分のおよそ半分（0.52〜0.56）が状態結合（同じneed classの中で減速を並べ替えると消える部分）でした。決定予測は新seedの封印再現でも通りましたが、余裕は薄く、E21を含む12 seed合算の下限は0.0006で、独立の検定ではありません。EP-0034では、配置時点の使用中GPU数の層を残して並べ替えるだけで状態結合の77%が戻り、到着順の粗いblockでは6%でした（採点できた決定行は(0.55, 0.2)の1行）。このmodelの中での機構の候補は「断片化は混んでいるときに集中し、fcfsはそのときに代価を払う」です。実クラスタと新規性はUNKNOWN。
 
-**証拠の境界：** 合成MSJ model1つ、64 GPU・8 GPU/node、指数サービス、sticky配置・migrationなし。封印はlocal commitのみ。公開検算は保存gradingの投影と算術で、912 runの再実行でも独立追試でもありません。
+**証拠の境界：** 合成MSJ model1つ、64 GPU・8 GPU/node、trace_like、first_fit、指数サービス、sticky配置・migrationなし、3行。封印はlocal commitのみ。公開検算は封印hash、採点の再実行、2 taskの再simulationで、独立追試ではありません。
 
-**[現在のResearch Note（EP-0030）を読む →](/ja/research/gpu-scheduling-headroom/)**
+**[現在のResearch Note（EP-0034）を読む →](/ja/research/gpu-scheduling-occupancy-strata/)**
 <!-- GENERATED: program-current:END -->
 
 <!-- GENERATED: program-history:START -->
@@ -59,5 +59,7 @@ EP-0030の封印予測は3/6で、決定予測P2はFAIL。912 runの合成検定
 24. [[ja/research/gpu-scheduling-self-containment/index|EP-0027 — 公開記事は、自分の主張を読み違えないための事実を載せていたか]]
 25. [[ja/research/gpu-scheduling-cold-reader/index|EP-0028 — 作者を知らないAI読者は、遷移拒否の記事を正しく読めたか]]
 26. [[ja/research/gpu-scheduling-locality/index|EP-0029 — nodeの断片化は、サイズ優先とFCFS・backfillの順位を入れ替えるか]]
-27. **[[ja/research/gpu-scheduling-headroom/index|EP-0030 — gang mixで断片化順位が逆転し、負荷対照が大半を説明する]]（最新）**
+27. [[ja/research/gpu-scheduling-headroom/index|EP-0030 — gang mixで断片化順位が逆転し、負荷対照が大半を説明する]]
+28. [[ja/research/gpu-scheduling-fcfs-residual/index|EP-0032 — fcfsが断片化で余分に遅くなる分の、およそ半分は減速と状態の結びつきだった]]
+29. **[[ja/research/gpu-scheduling-occupancy-strata/index|EP-0034 — 状態結合の77%は、配置時点の使用中GPU数の層を残すだけで戻った]]（最新）**
 <!-- GENERATED: program-history:END -->
